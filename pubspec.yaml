@@ -1,0 +1,27 @@
+name: mapbox_gl
+description: A new Flutter project.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  strings: any
+  protobuf: any
+  built_value: any
+  built_collection: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: any
+  built_value_generator: any
+
+flutter:
+  plugin:
+    androidPackage: com.tophap.mapbox_gl
+    pluginClass: MapboxGlPlugin

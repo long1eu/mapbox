@@ -1,0 +1,126 @@
+syntax = "proto3";
+package com.tophap.mapbox_gl.proto;
+option java_package = "com.tophap.mapbox_gl.proto";
+
+import "util.proto";
+
+// protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto
+message Map_ {
+  message Options {
+    string api_base_uri = 1;
+    string local_ideograph_font_family = 2;
+    bool cross_source_collisions = 3;
+    CameraPosition camera_position = 4;
+    double max_zoom = 5;
+    double min_zoom = 6;
+    bool zoom_gestures = 7;
+    bool scroll_gestures = 8;
+    bool rotate_gestures = 9;
+    bool tilt_gestures = 10;
+    bool double_tap_gestures = 11;
+    bool quick_zoom_gestures = 12;
+    bool compass = 13;
+    Gravity compass_gravity = 14;
+    repeated int32 compass_margin = 15;
+    bool compass_fade_facing_north = 16;
+    bool logo = 17;
+    Gravity logo_gravity = 18;
+    repeated int32 logo_margin = 19;
+    bool attribution = 20;
+    Gravity attribution_gravity = 21;
+    repeated int32 attribution_margin = 22;
+    Color attribution_tint_color = 23;
+    bool render_texture_mode = 24;
+    bool render_texture_translucent_surface = 25;
+    bool enable_tile_prefetch = 26;
+    bool enable_z_media_overlay = 27;
+    float pixel_ratio = 28;
+    Color foreground_load_color = 29;
+  }
+
+  message CameraPosition {
+    double bearing = 1;
+    LatLng target = 2;
+    double tilt = 3;
+    double zoom = 4;
+
+    enum MoveReason {
+      API_GESTURE = 0;
+      DEVELOPER_ANIMATION = 1;
+      API_ANIMATION = 2;
+    }
+  }
+
+  message Operations {
+    message Ready {
+      int32 view_id = 1;
+      bool prefetches_tiles = 2;
+      double min_zoom = 3;
+      double max_zoom = 4;
+      CameraPosition camera = 5;
+    }
+
+    message CameraUpdate {
+      CameraPosition camera_position = 1;
+      LatLng lat_lng = 2;
+      LatLngBounds bounds = 3;
+      double bearing = 4;
+      double tilt = 5;
+      repeated int32 padding = 6;
+      double zoom = 7;
+      double amount = 8;
+      int32 focus_x = 9;
+      int32 focus_y = 10;
+      Type operation = 11;
+
+      enum Result {
+        FINISHED = 0;
+        CANCELED = 1;
+      }
+
+      enum Type {
+        NEW_CAMERA_POSITION = 0;
+        NEW_LAT_LNG = 1;
+        NEW_LAT_LNG_BOUNDS = 2;
+        NEW_LAT_LNG_ZOOM = 3;
+        ZOOM_BY = 4;
+        ZOOM_IN = 5;
+        ZOOM_OUT = 6;
+        ZOOM_TO = 7;
+        BEARING_TO = 8;
+        TILT_TO = 9;
+      }
+    }
+
+    message EaseCamera {
+      CameraUpdate update = 1;
+      int32 duration = 2;
+      bool easing_interpolator = 3;
+    }
+
+    message AnimateCamera {
+      CameraUpdate update = 1;
+      int32 duration = 2;
+    }
+
+    message ScrollBy {
+      float x = 1;
+      float y = 2;
+      int64 duration = 3;
+    }
+
+    message SetFocalBearing {
+      double bearing = 1;
+      float focal_x = 2;
+      float focal_y = 3;
+      int64 duration = 4;
+    }
+
+    message GetCameraForLatLngBounds {
+      LatLngBounds bounds = 1;
+      repeated int32 padding = 2;
+      double bearing = 3;
+      double tilt = 4;
+    }
+  }
+}

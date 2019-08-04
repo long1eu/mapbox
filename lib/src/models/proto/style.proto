@@ -1,0 +1,55 @@
+syntax = "proto3";
+package com.tophap.mapbox_gl.proto;
+option java_package = "com.tophap.mapbox_gl.proto";
+
+import "layers.proto";
+import "sources.proto";
+import "util.proto";
+
+message Style {
+  string uri = 1;
+  string json = 2;
+  repeated Source sources = 3;
+  repeated Layer layers = 4;
+  TransitionOptions transition = 5;
+  Light light = 6;
+
+  message Light {
+    TranslateAnchor anchor = 1;
+    Position position = 2;
+    Color color = 3;
+    float intensity = 4;
+    TransitionOptions positionTransition = 5;
+    TransitionOptions colorTransition = 6;
+    TransitionOptions intensityTransition = 7;
+  }
+
+  message Position {
+    float radial_coordinate = 1;
+    float azimuthal_angle = 2;
+    float polar_angle = 3;
+  }
+
+  enum DefaultMapboxStyle {
+    MAPBOX_STREETS = 0;
+    OUTDOORS = 1;
+    LIGHT = 2;
+    DARK = 3;
+    SATELLITE = 4;
+    SATELLITE_STREETS = 5;
+    TRAFFIC_DAY = 6;
+    TRAFFIC_NIGHT = 7;
+  }
+
+  message Operations {
+    message Build {
+      oneof source {
+        Style.DefaultMapboxStyle default = 1;
+        string uri = 2;
+        string json = 3;
+      }
+    }
+  }
+}
+
+

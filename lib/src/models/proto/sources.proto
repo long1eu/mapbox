@@ -1,0 +1,45 @@
+syntax = "proto3";
+package com.tophap.mapbox_gl.proto;
+option java_package = "com.tophap.mapbox_gl.proto";
+
+import "util.proto";
+
+message Source {
+  oneof type {
+    GeoJson geoJson = 1;
+    Image image = 2;
+  }
+
+  message GeoJson {
+    string id = 1;
+    string attribution = 2;
+    Options options = 3;
+
+    oneof source {
+      string uri = 4;
+      string geo_json = 5;
+    }
+
+    message Options {
+      int32 min_zoom = 1;
+      int32 max_zoom = 2;
+      int32 buffer = 3;
+      bool line_metrics = 4;
+      float tolerance = 5;
+      bool cluster = 6;
+      int32 cluster_max_zoom = 7;
+      int32 cluster_radius = 8;
+    }
+  }
+
+  message Image {
+    string id = 1;
+    string attribution = 2;
+    LatLngQuad coordinates = 3;
+
+    oneof source {
+      string uri = 4;
+      bytes image = 5;
+    }
+  }
+}
