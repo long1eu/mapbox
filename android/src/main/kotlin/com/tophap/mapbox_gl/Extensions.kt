@@ -6,19 +6,17 @@ import com.google.protobuf.DoubleValue
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
-import com.mapbox.mapboxsdk.maps.MapboxMapOptions
 import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.*
 import com.mapbox.mapboxsdk.style.light.Light
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import com.mapbox.mapboxsdk.style.sources.ImageSource
-import com.mapbox.mapboxsdk.style.sources.Source
+import com.mapbox.mapboxsdk.style.sources.*
 import com.mapbox.mapboxsdk.style.types.FormattedSection
 import com.mapbox.mapboxsdk.utils.ColorUtils
 import com.tophap.mapbox_gl.proto.*
 import com.tophap.mapbox_gl.proto.Map
 
-fun Int.color(opacity: Float? = null): MapboxUtil.Color {
+fun Int.color(): MapboxUtil.Color {
     val a = this shr 24 and 0xff
     val r = this shr 16 and 0xff
     val g = this shr 8 and 0xff
@@ -30,11 +28,6 @@ fun Int.color(opacity: Float? = null): MapboxUtil.Color {
             .setGreen(g)
             .setBlue(b)
             .setOpacity(a / 255.0f)
-
-    opacity?.let {
-        builder.alpha = (it * 255).toInt()
-        builder.opacity = it
-    }
     return builder.build()
 }
 
@@ -200,23 +193,13 @@ fun PropertyValue<String>.textAnchor(): MapboxUtil.PositionAnchor {
     }
 }
 
-fun Int.gravity(): MapboxUtil.Gravity {
+fun Int.position(): MapboxUtil.OrnamentPosition {
     return when (this) {
-        Gravity.TOP -> MapboxUtil.Gravity.GRAVITY_TOP
-        Gravity.BOTTOM -> MapboxUtil.Gravity.GRAVITY_BOTTOM
-        Gravity.LEFT -> MapboxUtil.Gravity.GRAVITY_LEFT
-        Gravity.RIGHT -> MapboxUtil.Gravity.GRAVITY_RIGHT
-        Gravity.CENTER_VERTICAL -> MapboxUtil.Gravity.GRAVITY_CENTER_VERTICAL
-        Gravity.FILL_VERTICAL -> MapboxUtil.Gravity.GRAVITY_FILL_VERTICAL
-        Gravity.CENTER_HORIZONTAL -> MapboxUtil.Gravity.GRAVITY_CENTER_HORIZONTAL
-        Gravity.FILL_HORIZONTAL -> MapboxUtil.Gravity.GRAVITY_FILL_HORIZONTAL
-        Gravity.CENTER -> MapboxUtil.Gravity.GRAVITY_CENTER
-        Gravity.FILL -> MapboxUtil.Gravity.GRAVITY_FILL
-        Gravity.CLIP_VERTICAL -> MapboxUtil.Gravity.GRAVITY_CLIP_VERTICAL
-        Gravity.CLIP_HORIZONTAL -> MapboxUtil.Gravity.GRAVITY_CLIP_HORIZONTAL
-        Gravity.START -> MapboxUtil.Gravity.GRAVITY_START
-        Gravity.END -> MapboxUtil.Gravity.GRAVITY_END
-        else -> MapboxUtil.Gravity.UNRECOGNIZED
+        Gravity.TOP or Gravity.LEFT -> MapboxUtil.OrnamentPosition.TOP_LEFT
+        Gravity.TOP or Gravity.RIGHT -> MapboxUtil.OrnamentPosition.TOP_RIGHT
+        Gravity.BOTTOM or Gravity.LEFT -> MapboxUtil.OrnamentPosition.BOTTOM_LEFT
+        Gravity.BOTTOM or Gravity.RIGHT -> MapboxUtil.OrnamentPosition.BOTTOM_RIGHT
+        else -> MapboxUtil.OrnamentPosition.UNRECOGNIZED
     }
 }
 
@@ -227,40 +210,6 @@ fun Int.cameraMoveReason(): Map.Map_.CameraPosition.MoveReason {
         else -> Map.Map_.CameraPosition.MoveReason.API_ANIMATION
     }
 }
-
-fun MapboxMapOptions.toProto(): Map.Map_.Options {
-    val builder = Map.Map_.Options.newBuilder()
-    builder.apiBaseUri = apiBaseUri
-    builder.localIdeographFontFamily = localIdeographFontFamily
-    builder.crossSourceCollisions = crossSourceCollisions
-    builder.cameraPosition = camera.toProto()
-    builder.maxZoom = maxZoomPreference
-    builder.minZoom = minZoomPreference
-    builder.zoomGestures = zoomGesturesEnabled
-    builder.scrollGestures = scrollGesturesEnabled
-    builder.rotateGestures = rotateGesturesEnabled
-    builder.tiltGestures = tiltGesturesEnabled
-    builder.doubleTapGestures = doubleTapGesturesEnabled
-    builder.quickZoomGestures = quickZoomGesturesEnabled
-    builder.compass = compassEnabled
-    builder.compassGravity = compassGravity.gravity()
-    builder.compassMarginList.addAll(compassMargins.toList())
-    builder.compassFadeFacingNorth = compassFadeFacingNorth
-    builder.logo = logoEnabled
-    builder.logoGravity = logoGravity.gravity()
-    builder.logoMarginList.addAll(logoMargins.toList())
-    builder.attribution = attributionEnabled
-    builder.attributionMarginList.addAll(attributionMargins.toList())
-    builder.attributionTintColor = attributionTintColor.color()
-    builder.renderTextureMode = textureMode
-    builder.renderTextureTranslucentSurface = translucentTextureSurface
-    builder.enableTilePrefetch = prefetchesTiles
-    builder.enableZMediaOverlay = renderSurfaceOnTop
-    builder.pixelRatio = pixelRatio
-    builder.foregroundLoadColor = foregroundLoadColor.color()
-    return builder.build()
-}
-
 
 fun CameraPosition.toProto(): Map.Map_.CameraPosition {
     val builder = Map.Map_.CameraPosition.newBuilder()
@@ -302,8 +251,9 @@ fun BackgroundLayer.toProto(): Layers.Layer.Background {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.color = backgroundColorAsInt.color(backgroundOpacity.value)
-    builder.pattern = backgroundPattern.value
+    if (backgroundOpacity.isValue) builder.opacity = backgroundOpacity.value
+    if (backgroundColor.isValue) builder.color = backgroundColorAsInt.color()
+    if (backgroundPattern.value != null) builder.pattern = backgroundPattern.value
     builder.colorTransition = backgroundColorTransition.toProto()
     builder.patternTransition = backgroundPatternTransition.toProto()
     builder.opacityTransition = backgroundOpacityTransition.toProto()
@@ -316,15 +266,17 @@ fun CircleLayer.toProto(): Layers.Layer.Circle {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.radius = circleRadius.value
-    builder.color = circleColorAsInt.color(circleOpacity.value)
-    builder.blur = circleBlur.value
-    builder.translateList.addAll(circleTranslate.value)
-    builder.translateAnchor = circleTranslateAnchor.anchor()
-    builder.pitchScale = circlePitchScale.anchor()
-    builder.pitchAlignment = circlePitchAlignment.anchor()
-    builder.strokeWidth = circleStrokeWidth.value
-    builder.strokeColor = circleStrokeColorAsInt.color(circleStrokeOpacity.value)
+    if (circleRadius.value != null) builder.radius = circleRadius.value
+    if (circleOpacity.isValue) builder.opacity = circleOpacity.value
+    if (circleColor.isValue) builder.color = circleColorAsInt.color()
+    if (circleBlur.value != null) builder.blur = circleBlur.value
+    if (circleTranslate.value != null) builder.addAllTranslate(circleTranslate.value.toList())
+    if (circleTranslateAnchor.value != null) builder.translateAnchor = circleTranslateAnchor.anchor()
+    if (circlePitchScale.value != null) builder.pitchScale = circlePitchScale.anchor()
+    if (circlePitchAlignment.value != null) builder.pitchAlignment = circlePitchAlignment.anchor()
+    if (circleStrokeWidth.value != null) builder.strokeWidth = circleStrokeWidth.value
+    if (circleStrokeOpacity.isValue) builder.strokeOpacity = circleStrokeOpacity.value
+    if (circleStrokeColor.isValue) builder.strokeColor = circleStrokeColorAsInt.color()
     builder.radiusTransition = circleRadiusTransition.toProto()
     builder.colorTransition = circleColorTransition.toProto()
     builder.blurTransition = circleBlurTransition.toProto()
@@ -342,12 +294,13 @@ fun FillLayer.toProto(): Layers.Layer.Fill {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.antialias = fillAntialias.value
-    builder.color = fillColorAsInt.color(fillOpacity.value)
-    builder.outlineColor = fillOutlineColorAsInt.color()
-    builder.translateList.addAll(fillTranslate.value)
-    builder.translateAnchor = fillTranslateAnchor.anchor()
-    builder.pattern = fillPattern.value
+    if (fillAntialias.value != null) builder.antialias = fillAntialias.value
+    if (fillOpacity.isValue) builder.opacity = fillOpacity.value
+    if (fillColor.value != null && fillColor.isValue) builder.color = fillColorAsInt.color()
+    if (fillOutlineColor.isValue) builder.outlineColor = fillOutlineColorAsInt.color()
+    if (fillTranslate.value != null && fillTranslate.isValue) builder.addAllTranslate(fillTranslate.value.toList())
+    if (fillTranslateAnchor.value != null) builder.translateAnchor = fillTranslateAnchor.anchor()
+    if (fillPattern.value != null) builder.pattern = fillPattern.value
     builder.opacityTransition = fillOpacityTransition.toProto()
     builder.colorTransition = fillColorTransition.toProto()
     builder.outlineColorTransition = fillOutlineColorTransition.toProto()
@@ -362,13 +315,14 @@ fun FillExtrusionLayer.toProto(): Layers.Layer.FillExtrusion {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.color = fillExtrusionColorAsInt.color(fillExtrusionOpacity.value)
-    builder.translateList.addAll(fillExtrusionTranslate.value)
-    builder.translateAnchor = fillExtrusionTranslateAnchor.anchor()
-    builder.pattern = fillExtrusionPattern.value
-    builder.height = fillExtrusionHeight.value
-    builder.base = fillExtrusionBase.value
-    builder.verticalGradient = fillExtrusionVerticalGradient.value
+    if (fillExtrusionOpacity.isValue) builder.opacity = fillExtrusionOpacity.value
+    if (fillExtrusionColor.isValue) builder.color = fillExtrusionColorAsInt.color()
+    if (fillExtrusionTranslate.value != null) builder.addAllTranslate(fillExtrusionTranslate.value.toList())
+    if (fillExtrusionTranslateAnchor.value != null) builder.translateAnchor = fillExtrusionTranslateAnchor.anchor()
+    if (fillExtrusionPattern.value != null) builder.pattern = fillExtrusionPattern.value
+    if (fillExtrusionHeight.value != null) builder.height = fillExtrusionHeight.value
+    if (fillExtrusionBase.value != null) builder.base = fillExtrusionBase.value
+    if (fillExtrusionVerticalGradient.value != null) builder.verticalGradient = fillExtrusionVerticalGradient.value
     builder.opacityTransition = fillExtrusionOpacityTransition.toProto()
     builder.colorTransition = fillExtrusionColorTransition.toProto()
     builder.translateTransition = fillExtrusionTranslateTransition.toProto()
@@ -384,20 +338,21 @@ fun LineLayer.toProto(): Layers.Layer.Line {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.cap = lineCap.lineCap()
-    builder.join = lineJoin.lineJoin()
-    builder.miterLimit = lineMiterLimit.value
-    builder.roundLimit = lineRoundLimit.value
-    builder.color = lineColorAsInt.color(lineOpacity.value)
-    builder.translateList.addAll(lineTranslate.value)
-    builder.translateAnchor = lineTranslateAnchor.anchor()
-    builder.width = lineWidth.value
-    builder.gapWidth = lineGapWidth.value
-    builder.offset = lineOffset.value
-    builder.blur = lineBlur.value
-    builder.dasharrayList.addAll(lineDasharray.value)
-    builder.pattern = linePattern.value
-    builder.gradient = Color.parseColor(lineGradient.value)
+    if (lineCap.value != null && lineCap.isValue) builder.cap = lineCap.lineCap()
+    if (lineJoin.value != null) builder.join = lineJoin.lineJoin()
+    if (lineMiterLimit.value != null) builder.miterLimit = lineMiterLimit.value
+    if (lineRoundLimit.value != null) builder.roundLimit = lineRoundLimit.value
+    if (lineOpacity.isValue) builder.opacity = lineOpacity.value
+    if (lineColor.isValue) builder.color = lineColorAsInt.color()
+    if (lineTranslate.value != null) builder.addAllTranslate(lineTranslate.value.toList())
+    if (lineTranslateAnchor.value != null) builder.translateAnchor = lineTranslateAnchor.anchor()
+    if (lineWidth.value != null) builder.width = lineWidth.value
+    if (lineGapWidth.value != null) builder.gapWidth = lineGapWidth.value
+    if (lineOffset.value != null) builder.offset = lineOffset.value
+    if (lineBlur.value != null) builder.blur = lineBlur.value
+    if (lineDasharray.value != null) builder.addAllDasharray(lineDasharray.value.toList())
+    if (linePattern.value != null) builder.pattern = linePattern.value
+    if (lineGradient.value != null && lineGradient.isValue) builder.gradient = lineGradientAsInt
     builder.opacityTransition = lineOpacityTransition.toProto()
     builder.colorTransition = lineColorTransition.toProto()
     builder.translateTransition = lineTranslateTransition.toProto()
@@ -416,57 +371,59 @@ fun SymbolLayer.toProto(): Layers.Layer.Symbol {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.symbolPlacement = symbolPlacement.symbolPlacement()
-    builder.symbolSpacing = symbolSpacing.value
-    builder.symbolAvoidEdges = symbolAvoidEdges.value
-    builder.symbolZOrder = symbolZOrder.symbolZOrder()
-    builder.iconAllowOverlap = iconAllowOverlap.value
-    builder.iconIgnorePlacement = iconIgnorePlacement.value
-    builder.iconOptional = iconOptional.value
-    builder.iconRotationAlignment = iconRotationAlignment.iconRotationAlignment()
-    builder.iconSize = iconSize.value
-    builder.iconTextFit = iconTextFit.iconTextFit()
-    builder.iconTextFitPaddingList.addAll(iconTextFitPadding.value)
-    builder.iconImage = iconImage.value
-    builder.iconRotate = iconRotate.value
-    builder.iconPadding = iconPadding.value
-    builder.iconKeepUpright = iconKeepUpright.value
-    builder.iconOffsetList.addAll(iconOffset.value)
-    builder.iconAnchor = iconAnchor.iconAnchor()
-    builder.iconPitchAlignment = iconPitchAlignment.iconPitchAlignment()
-    builder.textPitchAlignment = textPitchAlignment.textPitchAlignment()
-    builder.textRotationAlignment = textRotationAlignment.textRotationAlignment()
-    builder.textFieldList.addAll(textField.value.formattedSections.map { it.toProto() })
-    builder.textFontList.addAll(textFont.value)
-    builder.textSize = textSize.value
-    builder.textMaxWidth = textMaxWidth.value
-    builder.textLineHeight = textLineHeight.value
-    builder.textLetterSpacing = textLetterSpacing.value
-    builder.textJustify = textJustify.textJustify()
-    builder.textRadialOffset = textRadialOffset.value
-    builder.textVariableAnchorList.addAll(textVariableAnchor.value.map { it.iconAnchor() })
-    builder.textAnchor = textAnchor.iconAnchor()
-    builder.textMaxAngle = textMaxAngle.value
-    builder.textRotate = textRotate.value
-    builder.textPadding = textPadding.value
-    builder.textKeepUpright = textKeepUpright.value
-    builder.textTransform = textTransform.textTransform()
-    builder.textOffsetList.addAll(textOffset.value)
-    builder.textAllowOverlap = textAllowOverlap.value
-    builder.textIgnorePlacement = textIgnorePlacement.value
-    builder.textOptional = textOptional.value
-    builder.iconColor = iconColorAsInt.color(iconOpacity.value)
-    builder.iconHaloColor = iconHaloColorAsInt.color()
-    builder.iconHaloWidth = iconHaloWidth.value
-    builder.iconHaloBlur = iconHaloBlur.value
-    builder.iconTranslateList.addAll(iconTranslate.value)
-    builder.iconTranslateAnchor = iconTranslateAnchor.anchor()
-    builder.textColor = textColorAsInt.color(textOpacity.value)
-    builder.textHaloColor = textHaloColorAsInt.color()
-    builder.textHaloWidth = textHaloWidth.value
-    builder.textHaloBlur = textHaloBlur.value
-    builder.textTranslateList.addAll(textTranslate.value)
-    builder.textTranslateAnchor = textTranslateAnchor.anchor()
+    if (symbolPlacement.value != null) builder.symbolPlacement = symbolPlacement.symbolPlacement()
+    if (symbolSpacing.value != null) builder.symbolSpacing = symbolSpacing.value
+    if (symbolAvoidEdges.value != null) builder.symbolAvoidEdges = symbolAvoidEdges.value
+    if (symbolZOrder.value != null) builder.symbolZOrder = symbolZOrder.symbolZOrder()
+    if (iconAllowOverlap.value != null) builder.iconAllowOverlap = iconAllowOverlap.value
+    if (iconIgnorePlacement.value != null) builder.iconIgnorePlacement = iconIgnorePlacement.value
+    if (iconOptional.value != null) builder.iconOptional = iconOptional.value
+    if (iconRotationAlignment.value != null) builder.iconRotationAlignment = iconRotationAlignment.iconRotationAlignment()
+    if (iconSize.value != null) builder.iconSize = iconSize.value
+    if (iconTextFit.value != null) builder.iconTextFit = iconTextFit.iconTextFit()
+    if (iconTextFitPadding.value != null) builder.addAllIconTextFitPadding(iconTextFitPadding.value.toList())
+    if (iconImage.value != null) builder.iconImage = iconImage.value
+    if (iconRotate.value != null) builder.iconRotate = iconRotate.value
+    if (iconPadding.value != null) builder.iconPadding = iconPadding.value
+    if (iconKeepUpright.value != null) builder.iconKeepUpright = iconKeepUpright.value
+    if (iconOffset.value != null) builder.addAllIconOffset(iconOffset.value.toList())
+    if (iconAnchor.value != null) builder.iconAnchor = iconAnchor.iconAnchor()
+    if (iconPitchAlignment.value != null) builder.iconPitchAlignment = iconPitchAlignment.iconPitchAlignment()
+    if (textPitchAlignment.value != null) builder.textPitchAlignment = textPitchAlignment.textPitchAlignment()
+    if (textRotationAlignment.value != null) builder.textRotationAlignment = textRotationAlignment.textRotationAlignment()
+    if (textField.value != null) builder.addAllTextField(textField.value.formattedSections.map { it.toProto() })
+    if (textFont.value != null) builder.addAllTextFont(textFont.value.toList())
+    if (textSize.value != null) builder.textSize = textSize.value
+    if (textMaxWidth.value != null) builder.textMaxWidth = textMaxWidth.value
+    if (textLineHeight.value != null) builder.textLineHeight = textLineHeight.value
+    if (textLetterSpacing.value != null) builder.textLetterSpacing = textLetterSpacing.value
+    if (textJustify.value != null) builder.textJustify = textJustify.textJustify()
+    if (textRadialOffset.value != null) builder.textRadialOffset = textRadialOffset.value
+    if (textVariableAnchor.value != null) builder.addAllTextVariableAnchor(textVariableAnchor.value.map { it.iconAnchor() })
+    if (textAnchor.value != null) builder.textAnchor = textAnchor.iconAnchor()
+    if (textMaxAngle.value != null) builder.textMaxAngle = textMaxAngle.value
+    if (textRotate.value != null) builder.textRotate = textRotate.value
+    if (textPadding.value != null) builder.textPadding = textPadding.value
+    if (textKeepUpright.value != null) builder.textKeepUpright = textKeepUpright.value
+    if (textTransform.value != null) builder.textTransform = textTransform.textTransform()
+    if (textOffset.value != null) builder.addAllTextOffset(textOffset.value.toList())
+    if (textAllowOverlap.value != null) builder.textAllowOverlap = textAllowOverlap.value
+    if (textIgnorePlacement.value != null) builder.textIgnorePlacement = textIgnorePlacement.value
+    if (textOptional.value != null) builder.textOptional = textOptional.value
+    if (iconOpacity.value != null && iconOpacity.isValue) builder.iconOpacity = iconOpacity.value
+    if (iconColor.value != null && iconColor.isValue) builder.iconColor = iconColorAsInt.color()
+    if (iconHaloColor.value != null) builder.iconHaloColor = iconHaloColorAsInt.color()
+    if (iconHaloWidth.value != null) builder.iconHaloWidth = iconHaloWidth.value
+    if (iconHaloBlur.value != null) builder.iconHaloBlur = iconHaloBlur.value
+    if (iconTranslate.value != null) builder.addAllIconTranslate(iconTranslate.value.toList())
+    if (iconTranslateAnchor.value != null) builder.iconTranslateAnchor = iconTranslateAnchor.anchor()
+    if (textOpacity.value != null && textOpacity.isValue) builder.textOpacity = textOpacity.value
+    if (textColor.value != null) if (textColor.isValue) builder.textColor = textColorAsInt.color()
+    if (textHaloColor.value != null) builder.textHaloColor = textHaloColorAsInt.color()
+    if (textHaloWidth.value != null) builder.textHaloWidth = textHaloWidth.value
+    if (textHaloBlur.value != null) builder.textHaloBlur = textHaloBlur.value
+    if (textTranslate.value != null) builder.addAllTextTranslate(textTranslate.value.toList())
+    if (textTranslateAnchor.value != null) builder.textTranslateAnchor = textTranslateAnchor.anchor()
     builder.iconOpacityTransition = iconOpacityTransition.toProto()
     builder.iconColorTransition = iconColorTransition.toProto()
     builder.iconHaloColorTransition = iconHaloColorTransition.toProto()
@@ -488,12 +445,12 @@ fun HillshadeLayer.toProto(): Layers.Layer.Hillshade {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.illuminationDirection = hillshadeIlluminationDirection.value
-    builder.illuminationAnchor = hillshadeIlluminationAnchor.anchor()
-    builder.exaggeration = hillshadeExaggeration.value
-    builder.shadowColor = hillshadeAccentColorAsInt.color()
-    builder.highlightColor = hillshadeAccentColorAsInt.color()
-    builder.accentColor = hillshadeAccentColorAsInt.color()
+    if (hillshadeIlluminationDirection.value != null) builder.illuminationDirection = hillshadeIlluminationDirection.value
+    if (hillshadeIlluminationAnchor.value != null) builder.illuminationAnchor = hillshadeIlluminationAnchor.anchor()
+    if (hillshadeExaggeration.value != null) builder.exaggeration = hillshadeExaggeration.value
+    if (hillshadeAccentColor.value != null) builder.shadowColor = hillshadeAccentColorAsInt.color()
+    if (hillshadeAccentColor.value != null) builder.highlightColor = hillshadeAccentColorAsInt.color()
+    if (hillshadeAccentColor.value != null) builder.accentColor = hillshadeAccentColorAsInt.color()
     builder.exaggerationTransition = hillshadeExaggerationTransition.toProto()
     builder.shadowColorTransition = hillshadeShadowColorTransition.toProto()
     builder.highlightColorTransition = hillshadeHighlightColorTransition.toProto()
@@ -507,10 +464,11 @@ fun HeatmapLayer.toProto(): Layers.Layer.Heatmap {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    builder.radius = heatmapRadius.value
-    builder.weight = heatmapWeight.value
-    builder.intensity = heatmapIntensity.value
-    builder.color = heatmapColorAsInt.color(heatmapOpacity.value)
+    if (heatmapRadius.value != null) builder.radius = heatmapRadius.value
+    if (heatmapWeight.value != null) builder.weight = heatmapWeight.value
+    if (heatmapIntensity.value != null) builder.intensity = heatmapIntensity.value
+    if (heatmapOpacity.isValue) builder.opacity = heatmapOpacity.value
+    if (heatmapColor.isValue) builder.color = heatmapColorAsInt.color()
     builder.radiusTransition = heatmapRadiusTransition.toProto()
     builder.intensityTransition = heatmapIntensityTransition.toProto()
     builder.opacityTransition = heatmapOpacityTransition.toProto()
@@ -521,8 +479,8 @@ fun Style.toProto(): StyleOuterClass.Style {
     val builder = StyleOuterClass.Style.newBuilder()
     builder.uri = uri
     builder.json = json
-    builder.sourcesList.addAll(sources.map { it.toProto() })
-    builder.layersList.addAll(layers.map { it.toProto() })
+    builder.addAllSources(sources.map { it.toProto() })
+    builder.addAllLayers(layers.map { it.toProto() })
     builder.transition = transition.toProto()
     light?.let { builder.light = it.toProto() }
     return builder.build()
@@ -556,6 +514,19 @@ fun Source.toProto(): Sources.Source {
             builder.attribution = attribution
             builder.uri = uri
             sourceBuilder.image = builder.build()
+        }
+        this is VectorSource -> {
+            val builder = Sources.Source.Vector.newBuilder()
+            builder.id = id
+            builder.attribution = attribution
+            builder.uri = uri
+            sourceBuilder.vector = builder.build()
+        }
+        this is UnknownSource -> {
+            val builder = Sources.Source.Unknown.newBuilder()
+            builder.id = id
+            builder.attribution = attribution
+            sourceBuilder.unknown = builder.build()
         }
         else -> {
             throw IllegalArgumentException("Unknown source $this")

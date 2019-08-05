@@ -16,21 +16,24 @@ class MapController {
         _maxZoom = info.maxZoom,
         _cameraPosition = CameraPosition.fromProto(info.camera) {
     sub = _calls.where((it) => it.method == 'cameraEvent#onCameraMove').listen(_cameraPositionChanged);
+    _style = Style._(channel: _channel, style: StyleModel.fromProto(info.style));
   }
 
   final int _viewId;
   final MethodChannel _channel;
   final Stream<MethodCall> _calls;
+
   StreamSubscription<MethodCall> sub;
 
   bool _prefetchesTiles;
   double _minZoom;
   double _maxZoom;
   CameraPosition _cameraPosition;
+  Style _style;
 
-  void _cameraPositionChanged(MethodCall event) => _cameraPosition = CameraPosition.fromProtoData(event.arguments);
+  Style get style => _style;
 
-  Future<Style> setStyle({DefaultMapStyle fromMapbox, String fromUri, String fromJson}) async {
+  Future<void> setStyle({DefaultMapStyle fromMapbox, String fromUri, String fromJson}) async {
     assert(fromMapbox != null || fromUri != null || fromJson != null);
     final pb.Style_Operations_Build message = pb.Style_Operations_Build.create();
     if (fromMapbox != null) {
@@ -42,12 +45,7 @@ class MapController {
     }
 
     final Uint8List data = await _channel.invokeMethod('style#set', message.writeToBuffer());
-    return Style._(channel: _channel, style: StyleModel.fromProtoData(data));
-  }
-
-  Future<Style> getStyle() async {
-    final Uint8List data = await _channel.invokeMethod('style#get');
-    return Style._(channel: _channel, style: StyleModel.fromProtoData(data));
+    _style = Style._(channel: _channel, style: StyleModel.fromProtoData(data));
   }
 
   bool get prefetchesTiles => _prefetchesTiles;
@@ -215,4 +213,6 @@ class MapController {
   Future<Uint8List> snapshot() => _channel.invokeListMethod<int>('map#snapshot');
 
   void dispose() => sub.cancel();
+
+  void _cameraPositionChanged(MethodCall event) => _cameraPosition = CameraPosition.fromProtoData(event.arguments);
 }

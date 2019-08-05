@@ -12,6 +12,10 @@ Serializer<GeoJsonOptions> _$geoJsonOptionsSerializer =
     new _$GeoJsonOptionsSerializer();
 Serializer<ImageSourceModel> _$imageSourceModelSerializer =
     new _$ImageSourceModelSerializer();
+Serializer<VectorSourceModel> _$vectorSourceModelSerializer =
+    new _$VectorSourceModelSerializer();
+Serializer<UnknownSourceModel> _$unknownSourceModelSerializer =
+    new _$UnknownSourceModelSerializer();
 
 class _$GeoJsonSourceModelSerializer
     implements StructuredSerializer<GeoJsonSourceModel> {
@@ -200,6 +204,121 @@ class _$ImageSourceModelSerializer
           result.uri = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'attribution':
+          result.attribution = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$VectorSourceModelSerializer
+    implements StructuredSerializer<VectorSourceModel> {
+  @override
+  final Iterable<Type> types = const [VectorSourceModel, _$VectorSourceModel];
+  @override
+  final String wireName = 'VectorSourceModel';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, VectorSourceModel object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'attribution',
+      serializers.serialize(object.attribution,
+          specifiedType: const FullType(String)),
+    ];
+    if (object.uri != null) {
+      result
+        ..add('uri')
+        ..add(serializers.serialize(object.uri,
+            specifiedType: const FullType(String)));
+    }
+    if (object.tileSet != null) {
+      result
+        ..add('tileSet')
+        ..add(serializers.serialize(object.tileSet,
+            specifiedType: const FullType(TileSet)));
+    }
+    return result;
+  }
+
+  @override
+  VectorSourceModel deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new VectorSourceModelBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'uri':
+          result.uri = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'tileSet':
+          result.tileSet.replace(serializers.deserialize(value,
+              specifiedType: const FullType(TileSet)) as TileSet);
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'attribution':
+          result.attribution = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$UnknownSourceModelSerializer
+    implements StructuredSerializer<UnknownSourceModel> {
+  @override
+  final Iterable<Type> types = const [UnknownSourceModel, _$UnknownSourceModel];
+  @override
+  final String wireName = 'UnknownSourceModel';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, UnknownSourceModel object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'attribution',
+      serializers.serialize(object.attribution,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  UnknownSourceModel deserialize(
+      Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new UnknownSourceModelBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -639,6 +758,245 @@ class ImageSourceModelBuilder
   _$ImageSourceModel build() {
     final _$result = _$v ??
         new _$ImageSourceModel._(uri: uri, id: id, attribution: attribution);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$VectorSourceModel extends VectorSourceModel {
+  @override
+  final String uri;
+  @override
+  final TileSet tileSet;
+  @override
+  final String id;
+  @override
+  final String attribution;
+  Uint8List __data;
+
+  factory _$VectorSourceModel(
+          [void Function(VectorSourceModelBuilder) updates]) =>
+      (new VectorSourceModelBuilder()..update(updates)).build();
+
+  _$VectorSourceModel._({this.uri, this.tileSet, this.id, this.attribution})
+      : super._() {
+    if (id == null) {
+      throw new BuiltValueNullFieldError('VectorSourceModel', 'id');
+    }
+    if (attribution == null) {
+      throw new BuiltValueNullFieldError('VectorSourceModel', 'attribution');
+    }
+  }
+
+  @override
+  Uint8List get data => __data ??= super.data;
+
+  @override
+  VectorSourceModel rebuild(void Function(VectorSourceModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  VectorSourceModelBuilder toBuilder() =>
+      new VectorSourceModelBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is VectorSourceModel &&
+        uri == other.uri &&
+        tileSet == other.tileSet &&
+        id == other.id &&
+        attribution == other.attribution;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc($jc($jc(0, uri.hashCode), tileSet.hashCode), id.hashCode),
+        attribution.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('VectorSourceModel')
+          ..add('uri', uri)
+          ..add('tileSet', tileSet)
+          ..add('id', id)
+          ..add('attribution', attribution))
+        .toString();
+  }
+}
+
+class VectorSourceModelBuilder
+    implements
+        Builder<VectorSourceModel, VectorSourceModelBuilder>,
+        SourceModelBuilder {
+  _$VectorSourceModel _$v;
+
+  String _uri;
+  String get uri => _$this._uri;
+  set uri(String uri) => _$this._uri = uri;
+
+  TileSetBuilder _tileSet;
+  TileSetBuilder get tileSet => _$this._tileSet ??= new TileSetBuilder();
+  set tileSet(TileSetBuilder tileSet) => _$this._tileSet = tileSet;
+
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
+
+  String _attribution;
+  String get attribution => _$this._attribution;
+  set attribution(String attribution) => _$this._attribution = attribution;
+
+  VectorSourceModelBuilder();
+
+  VectorSourceModelBuilder get _$this {
+    if (_$v != null) {
+      _uri = _$v.uri;
+      _tileSet = _$v.tileSet?.toBuilder();
+      _id = _$v.id;
+      _attribution = _$v.attribution;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(covariant VectorSourceModel other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$VectorSourceModel;
+  }
+
+  @override
+  void update(void Function(VectorSourceModelBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$VectorSourceModel build() {
+    _$VectorSourceModel _$result;
+    try {
+      _$result = _$v ??
+          new _$VectorSourceModel._(
+              uri: uri,
+              tileSet: _tileSet?.build(),
+              id: id,
+              attribution: attribution);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'tileSet';
+        _tileSet?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'VectorSourceModel', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$UnknownSourceModel extends UnknownSourceModel {
+  @override
+  final String id;
+  @override
+  final String attribution;
+  Uint8List __data;
+
+  factory _$UnknownSourceModel(
+          [void Function(UnknownSourceModelBuilder) updates]) =>
+      (new UnknownSourceModelBuilder()..update(updates)).build();
+
+  _$UnknownSourceModel._({this.id, this.attribution}) : super._() {
+    if (id == null) {
+      throw new BuiltValueNullFieldError('UnknownSourceModel', 'id');
+    }
+    if (attribution == null) {
+      throw new BuiltValueNullFieldError('UnknownSourceModel', 'attribution');
+    }
+  }
+
+  @override
+  Uint8List get data => __data ??= super.data;
+
+  @override
+  UnknownSourceModel rebuild(
+          void Function(UnknownSourceModelBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  UnknownSourceModelBuilder toBuilder() =>
+      new UnknownSourceModelBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is UnknownSourceModel &&
+        id == other.id &&
+        attribution == other.attribution;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, id.hashCode), attribution.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('UnknownSourceModel')
+          ..add('id', id)
+          ..add('attribution', attribution))
+        .toString();
+  }
+}
+
+class UnknownSourceModelBuilder
+    implements
+        Builder<UnknownSourceModel, UnknownSourceModelBuilder>,
+        SourceModelBuilder {
+  _$UnknownSourceModel _$v;
+
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
+
+  String _attribution;
+  String get attribution => _$this._attribution;
+  set attribution(String attribution) => _$this._attribution = attribution;
+
+  UnknownSourceModelBuilder();
+
+  UnknownSourceModelBuilder get _$this {
+    if (_$v != null) {
+      _id = _$v.id;
+      _attribution = _$v.attribution;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(covariant UnknownSourceModel other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$UnknownSourceModel;
+  }
+
+  @override
+  void update(void Function(UnknownSourceModelBuilder) updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$UnknownSourceModel build() {
+    final _$result =
+        _$v ?? new _$UnknownSourceModel._(id: id, attribution: attribution);
     replace(_$result);
     return _$result;
   }

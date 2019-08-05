@@ -9,43 +9,23 @@
 import 'dart:core' as $core show int, dynamic, String, List, Map;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class Gravity extends $pb.ProtobufEnum {
-  static const Gravity GRAVITY_TOP = Gravity._(0, 'GRAVITY_TOP');
-  static const Gravity GRAVITY_BOTTOM = Gravity._(1, 'GRAVITY_BOTTOM');
-  static const Gravity GRAVITY_LEFT = Gravity._(2, 'GRAVITY_LEFT');
-  static const Gravity GRAVITY_RIGHT = Gravity._(3, 'GRAVITY_RIGHT');
-  static const Gravity GRAVITY_CENTER_VERTICAL = Gravity._(4, 'GRAVITY_CENTER_VERTICAL');
-  static const Gravity GRAVITY_FILL_VERTICAL = Gravity._(5, 'GRAVITY_FILL_VERTICAL');
-  static const Gravity GRAVITY_CENTER_HORIZONTAL = Gravity._(6, 'GRAVITY_CENTER_HORIZONTAL');
-  static const Gravity GRAVITY_FILL_HORIZONTAL = Gravity._(7, 'GRAVITY_FILL_HORIZONTAL');
-  static const Gravity GRAVITY_CENTER = Gravity._(8, 'GRAVITY_CENTER');
-  static const Gravity GRAVITY_FILL = Gravity._(9, 'GRAVITY_FILL');
-  static const Gravity GRAVITY_CLIP_VERTICAL = Gravity._(10, 'GRAVITY_CLIP_VERTICAL');
-  static const Gravity GRAVITY_CLIP_HORIZONTAL = Gravity._(11, 'GRAVITY_CLIP_HORIZONTAL');
-  static const Gravity GRAVITY_START = Gravity._(12, 'GRAVITY_START');
-  static const Gravity GRAVITY_END = Gravity._(13, 'GRAVITY_END');
+class OrnamentPosition extends $pb.ProtobufEnum {
+  static const OrnamentPosition TOP_LEFT = OrnamentPosition._(0, 'TOP_LEFT');
+  static const OrnamentPosition TOP_RIGHT = OrnamentPosition._(1, 'TOP_RIGHT');
+  static const OrnamentPosition BOTTOM_LEFT = OrnamentPosition._(2, 'BOTTOM_LEFT');
+  static const OrnamentPosition BOTTOM_RIGHT = OrnamentPosition._(3, 'BOTTOM_RIGHT');
 
-  static const $core.List<Gravity> values = <Gravity> [
-    GRAVITY_TOP,
-    GRAVITY_BOTTOM,
-    GRAVITY_LEFT,
-    GRAVITY_RIGHT,
-    GRAVITY_CENTER_VERTICAL,
-    GRAVITY_FILL_VERTICAL,
-    GRAVITY_CENTER_HORIZONTAL,
-    GRAVITY_FILL_HORIZONTAL,
-    GRAVITY_CENTER,
-    GRAVITY_FILL,
-    GRAVITY_CLIP_VERTICAL,
-    GRAVITY_CLIP_HORIZONTAL,
-    GRAVITY_START,
-    GRAVITY_END,
+  static const $core.List<OrnamentPosition> values = <OrnamentPosition> [
+    TOP_LEFT,
+    TOP_RIGHT,
+    BOTTOM_LEFT,
+    BOTTOM_RIGHT,
   ];
 
-  static final $core.Map<$core.int, Gravity> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static Gravity valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, OrnamentPosition> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static OrnamentPosition valueOf($core.int value) => _byValue[value];
 
-  const Gravity._($core.int v, $core.String n) : super(v, n);
+  const OrnamentPosition._($core.int v, $core.String n) : super(v, n);
 }
 
 class TranslateAnchor extends $pb.ProtobufEnum {

@@ -30,6 +30,8 @@ class BackgroundLayer extends _Layer {
 
   BackgroundLayerModel get _model => _layer;
 
+  double get opacity => _model.opacity;
+
   Color get color => Color(_model.color);
 
   @nullable
@@ -66,7 +68,7 @@ class BackgroundLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..backgroundLayer = message
       ..freeze();
 
@@ -83,6 +85,8 @@ class CircleLayer extends _Layer {
 
   double get radius => _model.radius;
 
+  double get opacity => _model.opacity;
+
   Color get color => Color(_model.color);
 
   double get blur => _model.blur;
@@ -96,6 +100,8 @@ class CircleLayer extends _Layer {
   TranslateAnchor get pitchAlignment => _model.pitchAlignment;
 
   double get strokeWidth => _model.strokeWidth;
+
+  double get strokeOpacity => _model.strokeOpacity;
 
   Color get strokeColor => Color(_model.strokeColor);
 
@@ -178,7 +184,7 @@ class CircleLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..circleLayer = message
       ..freeze();
 
@@ -193,6 +199,8 @@ class FillExtrusionLayer extends _Layer {
   FillExtrusionLayerModel get _model => _layer;
 
   String get sourceId => _model.sourceId;
+
+  double get opacity => _model.opacity;
 
   Color get color => Color(_model.color);
 
@@ -268,7 +276,7 @@ class FillExtrusionLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..fillExtrusionLayer = message
       ..freeze();
 
@@ -285,12 +293,16 @@ class FillLayer extends _Layer {
 
   bool get antialias => _model.antialias;
 
+  double get opacity => _model.opacity;
+
   Color get color => Color(_model.color);
 
   Color get outlineColor => _model.outlineColor == null ? null : Color(_model.outlineColor);
 
-  Offset get translate => Offset(_model.translate[0], _model.translate[1]);
+  @nullable
+  Offset get translate => _model.translate != null ? Offset(_model.translate[0], _model.translate[1]) : null;
 
+  @nullable
   TranslateAnchor get translateAnchor => _model.translateAnchor;
 
   @nullable
@@ -349,7 +361,7 @@ class FillLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..fillLayer = message
       ..freeze();
 
@@ -371,6 +383,8 @@ class HeatmapLayer extends _Layer {
   double get intensity => _model.intensity;
 
   Color get color => Color(_model.color);
+
+  double get opacity => _model.opacity;
 
   TransitionOptions get radiusTransition => _model.radiusTransition;
 
@@ -407,7 +421,7 @@ class HeatmapLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..heatmapLayer = message
       ..freeze();
 
@@ -478,7 +492,7 @@ class HillshadeLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..hillshadeLayer = message
       ..freeze();
 
@@ -500,6 +514,8 @@ class LineLayer extends _Layer {
   double get miterLimit => _model.miterLimit;
 
   double get roundLimit => _model.roundLimit;
+
+  double get opacity => _model.opacity;
 
   Color get color => Color(_model.color);
 
@@ -618,7 +634,7 @@ class LineLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..lineLayer = message
       ..freeze();
 
@@ -721,6 +737,8 @@ class SymbolLayer extends _Layer {
 
   bool get textOptional => _model.textOptional;
 
+  double get iconOpacity => _model.iconOpacity;
+
   Color get iconColor => Color(_model.iconColor);
 
   Color get iconHaloColor => Color(_model.iconHaloColor);
@@ -732,6 +750,8 @@ class SymbolLayer extends _Layer {
   Offset get iconTranslate => Offset(_model.iconTranslate[0], _model.iconTranslate[1]);
 
   TranslateAnchor get iconTranslateAnchor => _model.iconTranslateAnchor;
+
+  double get textOpacity => _model.textOpacity;
 
   Color get textColor => Color(_model.textColor);
 
@@ -977,7 +997,7 @@ class SymbolLayer extends _Layer {
     message.freeze();
 
     final pb.Operations_Update updateOp = pb.Operations_Update.create()
-      ..id = id
+      ..id = this.id
       ..symbolLayer = message
       ..freeze();
 

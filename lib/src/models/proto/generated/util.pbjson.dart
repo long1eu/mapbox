@@ -5,23 +5,13 @@
 // @dart = 2.3
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
-const Gravity$json = const {
-  '1': 'Gravity',
+const OrnamentPosition$json = const {
+  '1': 'OrnamentPosition',
   '2': const [
-    const {'1': 'GRAVITY_TOP', '2': 0},
-    const {'1': 'GRAVITY_BOTTOM', '2': 1},
-    const {'1': 'GRAVITY_LEFT', '2': 2},
-    const {'1': 'GRAVITY_RIGHT', '2': 3},
-    const {'1': 'GRAVITY_CENTER_VERTICAL', '2': 4},
-    const {'1': 'GRAVITY_FILL_VERTICAL', '2': 5},
-    const {'1': 'GRAVITY_CENTER_HORIZONTAL', '2': 6},
-    const {'1': 'GRAVITY_FILL_HORIZONTAL', '2': 7},
-    const {'1': 'GRAVITY_CENTER', '2': 8},
-    const {'1': 'GRAVITY_FILL', '2': 9},
-    const {'1': 'GRAVITY_CLIP_VERTICAL', '2': 10},
-    const {'1': 'GRAVITY_CLIP_HORIZONTAL', '2': 11},
-    const {'1': 'GRAVITY_START', '2': 12},
-    const {'1': 'GRAVITY_END', '2': 13},
+    const {'1': 'TOP_LEFT', '2': 0},
+    const {'1': 'TOP_RIGHT', '2': 1},
+    const {'1': 'BOTTOM_LEFT', '2': 2},
+    const {'1': 'BOTTOM_RIGHT', '2': 3},
   ],
 };
 

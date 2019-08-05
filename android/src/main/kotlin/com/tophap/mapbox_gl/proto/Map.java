@@ -20,7 +20,7 @@ public final class Map {
   }
   /**
    * <pre>
-   * protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/&#42;*.proto lib/src/models/proto/google/protobuf/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/&#42;*.proto
+   * protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/&#42;*.proto lib/src/models/proto/google/protobuf/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/&#42;*.proto
    * </pre>
    *
    * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_}
@@ -180,13 +180,13 @@ public final class Map {
       boolean getCompass();
 
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
        */
-      int getCompassGravityValue();
+      int getCompassPositionValue();
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
        */
-      com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getCompassGravity();
+      com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getCompassPosition();
 
       /**
        * <code>repeated int32 compass_margin = 15;</code>
@@ -212,13 +212,13 @@ public final class Map {
       boolean getLogo();
 
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
        */
-      int getLogoGravityValue();
+      int getLogoPositionValue();
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
        */
-      com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getLogoGravity();
+      com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getLogoPosition();
 
       /**
        * <code>repeated int32 logo_margin = 19;</code>
@@ -239,13 +239,13 @@ public final class Map {
       boolean getAttribution();
 
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
        */
-      int getAttributionGravityValue();
+      int getAttributionPositionValue();
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
        */
-      com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getAttributionGravity();
+      com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getAttributionPosition();
 
       /**
        * <code>repeated int32 attribution_margin = 22;</code>
@@ -310,6 +310,37 @@ public final class Map {
        * <code>.com.tophap.mapbox_gl.proto.Color foreground_load_color = 29;</code>
        */
       com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder getForegroundLoadColorOrBuilder();
+
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+       */
+      int getFromMapboxValue();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+       */
+      com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle getFromMapbox();
+
+      /**
+       * <code>string from_uri = 31;</code>
+       */
+      java.lang.String getFromUri();
+      /**
+       * <code>string from_uri = 31;</code>
+       */
+      com.google.protobuf.ByteString
+          getFromUriBytes();
+
+      /**
+       * <code>string from_json = 32;</code>
+       */
+      java.lang.String getFromJson();
+      /**
+       * <code>string from_json = 32;</code>
+       */
+      com.google.protobuf.ByteString
+          getFromJsonBytes();
+
+      public com.tophap.mapbox_gl.proto.Map.Map_.Options.StyleCase getStyleCase();
     }
     /**
      * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Options}
@@ -326,11 +357,11 @@ public final class Map {
       private Options() {
         apiBaseUri_ = "";
         localIdeographFontFamily_ = "";
-        compassGravity_ = 0;
+        compassPosition_ = 0;
         compassMargin_ = emptyIntList();
-        logoGravity_ = 0;
+        logoPosition_ = 0;
         logoMargin_ = emptyIntList();
-        attributionGravity_ = 0;
+        attributionPosition_ = 0;
         attributionMargin_ = emptyIntList();
       }
 
@@ -436,7 +467,7 @@ public final class Map {
               case 112: {
                 int rawValue = input.readEnum();
 
-                compassGravity_ = rawValue;
+                compassPosition_ = rawValue;
                 break;
               }
               case 120: {
@@ -473,7 +504,7 @@ public final class Map {
               case 144: {
                 int rawValue = input.readEnum();
 
-                logoGravity_ = rawValue;
+                logoPosition_ = rawValue;
                 break;
               }
               case 152: {
@@ -505,7 +536,7 @@ public final class Map {
               case 168: {
                 int rawValue = input.readEnum();
 
-                attributionGravity_ = rawValue;
+                attributionPosition_ = rawValue;
                 break;
               }
               case 176: {
@@ -580,6 +611,24 @@ public final class Map {
 
                 break;
               }
+              case 240: {
+                int rawValue = input.readEnum();
+                styleCase_ = 30;
+                style_ = rawValue;
+                break;
+              }
+              case 250: {
+                java.lang.String s = input.readStringRequireUtf8();
+                styleCase_ = 31;
+                style_ = s;
+                break;
+              }
+              case 258: {
+                java.lang.String s = input.readStringRequireUtf8();
+                styleCase_ = 32;
+                style_ = s;
+                break;
+              }
               default: {
                 if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
@@ -622,6 +671,46 @@ public final class Map {
       }
 
       private int bitField0_;
+      private int styleCase_ = 0;
+      private java.lang.Object style_;
+      public enum StyleCase
+          implements com.google.protobuf.Internal.EnumLite {
+        FROM_MAPBOX(30),
+        FROM_URI(31),
+        FROM_JSON(32),
+        STYLE_NOT_SET(0);
+        private final int value;
+        private StyleCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static StyleCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static StyleCase forNumber(int value) {
+          switch (value) {
+            case 30: return FROM_MAPBOX;
+            case 31: return FROM_URI;
+            case 32: return FROM_JSON;
+            case 0: return STYLE_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public StyleCase
+      getStyleCase() {
+        return StyleCase.forNumber(
+            styleCase_);
+      }
+
       public static final int API_BASE_URI_FIELD_NUMBER = 1;
       private volatile java.lang.Object apiBaseUri_;
       /**
@@ -801,21 +890,21 @@ public final class Map {
         return compass_;
       }
 
-      public static final int COMPASS_GRAVITY_FIELD_NUMBER = 14;
-      private int compassGravity_;
+      public static final int COMPASS_POSITION_FIELD_NUMBER = 14;
+      private int compassPosition_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
        */
-      public int getCompassGravityValue() {
-        return compassGravity_;
+      public int getCompassPositionValue() {
+        return compassPosition_;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
        */
-      public com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getCompassGravity() {
+      public com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getCompassPosition() {
         @SuppressWarnings("deprecation")
-        com.tophap.mapbox_gl.proto.MapboxUtil.Gravity result = com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.valueOf(compassGravity_);
-        return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.UNRECOGNIZED : result;
+        com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition result = com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.valueOf(compassPosition_);
+        return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.UNRECOGNIZED : result;
       }
 
       public static final int COMPASS_MARGIN_FIELD_NUMBER = 15;
@@ -859,21 +948,21 @@ public final class Map {
         return logo_;
       }
 
-      public static final int LOGO_GRAVITY_FIELD_NUMBER = 18;
-      private int logoGravity_;
+      public static final int LOGO_POSITION_FIELD_NUMBER = 18;
+      private int logoPosition_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
        */
-      public int getLogoGravityValue() {
-        return logoGravity_;
+      public int getLogoPositionValue() {
+        return logoPosition_;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
        */
-      public com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getLogoGravity() {
+      public com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getLogoPosition() {
         @SuppressWarnings("deprecation")
-        com.tophap.mapbox_gl.proto.MapboxUtil.Gravity result = com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.valueOf(logoGravity_);
-        return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.UNRECOGNIZED : result;
+        com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition result = com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.valueOf(logoPosition_);
+        return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.UNRECOGNIZED : result;
       }
 
       public static final int LOGO_MARGIN_FIELD_NUMBER = 19;
@@ -908,21 +997,21 @@ public final class Map {
         return attribution_;
       }
 
-      public static final int ATTRIBUTION_GRAVITY_FIELD_NUMBER = 21;
-      private int attributionGravity_;
+      public static final int ATTRIBUTION_POSITION_FIELD_NUMBER = 21;
+      private int attributionPosition_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
        */
-      public int getAttributionGravityValue() {
-        return attributionGravity_;
+      public int getAttributionPositionValue() {
+        return attributionPosition_;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+       * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
        */
-      public com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getAttributionGravity() {
+      public com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getAttributionPosition() {
         @SuppressWarnings("deprecation")
-        com.tophap.mapbox_gl.proto.MapboxUtil.Gravity result = com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.valueOf(attributionGravity_);
-        return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.UNRECOGNIZED : result;
+        com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition result = com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.valueOf(attributionPosition_);
+        return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.UNRECOGNIZED : result;
       }
 
       public static final int ATTRIBUTION_MARGIN_FIELD_NUMBER = 22;
@@ -1035,6 +1124,115 @@ public final class Map {
         return getForegroundLoadColor();
       }
 
+      public static final int FROM_MAPBOX_FIELD_NUMBER = 30;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+       */
+      public int getFromMapboxValue() {
+        if (styleCase_ == 30) {
+          return (java.lang.Integer) style_;
+        }
+        return 0;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+       */
+      public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle getFromMapbox() {
+        if (styleCase_ == 30) {
+          @SuppressWarnings("deprecation")
+          com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle result = com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.valueOf(
+              (java.lang.Integer) style_);
+          return result == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.UNRECOGNIZED : result;
+        }
+        return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.MAPBOX_STREETS;
+      }
+
+      public static final int FROM_URI_FIELD_NUMBER = 31;
+      /**
+       * <code>string from_uri = 31;</code>
+       */
+      public java.lang.String getFromUri() {
+        java.lang.Object ref = "";
+        if (styleCase_ == 31) {
+          ref = style_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (styleCase_ == 31) {
+            style_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string from_uri = 31;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFromUriBytes() {
+        java.lang.Object ref = "";
+        if (styleCase_ == 31) {
+          ref = style_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (styleCase_ == 31) {
+            style_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int FROM_JSON_FIELD_NUMBER = 32;
+      /**
+       * <code>string from_json = 32;</code>
+       */
+      public java.lang.String getFromJson() {
+        java.lang.Object ref = "";
+        if (styleCase_ == 32) {
+          ref = style_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (styleCase_ == 32) {
+            style_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string from_json = 32;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFromJsonBytes() {
+        java.lang.Object ref = "";
+        if (styleCase_ == 32) {
+          ref = style_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (styleCase_ == 32) {
+            style_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -1089,8 +1287,8 @@ public final class Map {
         if (compass_ != false) {
           output.writeBool(13, compass_);
         }
-        if (compassGravity_ != com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.GRAVITY_TOP.getNumber()) {
-          output.writeEnum(14, compassGravity_);
+        if (compassPosition_ != com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.TOP_LEFT.getNumber()) {
+          output.writeEnum(14, compassPosition_);
         }
         if (getCompassMarginList().size() > 0) {
           output.writeUInt32NoTag(122);
@@ -1105,8 +1303,8 @@ public final class Map {
         if (logo_ != false) {
           output.writeBool(17, logo_);
         }
-        if (logoGravity_ != com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.GRAVITY_TOP.getNumber()) {
-          output.writeEnum(18, logoGravity_);
+        if (logoPosition_ != com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.TOP_LEFT.getNumber()) {
+          output.writeEnum(18, logoPosition_);
         }
         if (getLogoMarginList().size() > 0) {
           output.writeUInt32NoTag(154);
@@ -1118,8 +1316,8 @@ public final class Map {
         if (attribution_ != false) {
           output.writeBool(20, attribution_);
         }
-        if (attributionGravity_ != com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.GRAVITY_TOP.getNumber()) {
-          output.writeEnum(21, attributionGravity_);
+        if (attributionPosition_ != com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.TOP_LEFT.getNumber()) {
+          output.writeEnum(21, attributionPosition_);
         }
         if (getAttributionMarginList().size() > 0) {
           output.writeUInt32NoTag(178);
@@ -1148,6 +1346,15 @@ public final class Map {
         }
         if (foregroundLoadColor_ != null) {
           output.writeMessage(29, getForegroundLoadColor());
+        }
+        if (styleCase_ == 30) {
+          output.writeEnum(30, ((java.lang.Integer) style_));
+        }
+        if (styleCase_ == 31) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 31, style_);
+        }
+        if (styleCase_ == 32) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 32, style_);
         }
         unknownFields.writeTo(output);
       }
@@ -1208,9 +1415,9 @@ public final class Map {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(13, compass_);
         }
-        if (compassGravity_ != com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.GRAVITY_TOP.getNumber()) {
+        if (compassPosition_ != com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.TOP_LEFT.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(14, compassGravity_);
+            .computeEnumSize(14, compassPosition_);
         }
         {
           int dataSize = 0;
@@ -1234,9 +1441,9 @@ public final class Map {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(17, logo_);
         }
-        if (logoGravity_ != com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.GRAVITY_TOP.getNumber()) {
+        if (logoPosition_ != com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.TOP_LEFT.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(18, logoGravity_);
+            .computeEnumSize(18, logoPosition_);
         }
         {
           int dataSize = 0;
@@ -1256,9 +1463,9 @@ public final class Map {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(20, attribution_);
         }
-        if (attributionGravity_ != com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.GRAVITY_TOP.getNumber()) {
+        if (attributionPosition_ != com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.TOP_LEFT.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(21, attributionGravity_);
+            .computeEnumSize(21, attributionPosition_);
         }
         {
           int dataSize = 0;
@@ -1301,6 +1508,16 @@ public final class Map {
         if (foregroundLoadColor_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(29, getForegroundLoadColor());
+        }
+        if (styleCase_ == 30) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(30, ((java.lang.Integer) style_));
+        }
+        if (styleCase_ == 31) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(31, style_);
+        }
+        if (styleCase_ == 32) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(32, style_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -1348,19 +1565,19 @@ public final class Map {
             != other.getQuickZoomGestures()) return false;
         if (getCompass()
             != other.getCompass()) return false;
-        if (compassGravity_ != other.compassGravity_) return false;
+        if (compassPosition_ != other.compassPosition_) return false;
         if (!getCompassMarginList()
             .equals(other.getCompassMarginList())) return false;
         if (getCompassFadeFacingNorth()
             != other.getCompassFadeFacingNorth()) return false;
         if (getLogo()
             != other.getLogo()) return false;
-        if (logoGravity_ != other.logoGravity_) return false;
+        if (logoPosition_ != other.logoPosition_) return false;
         if (!getLogoMarginList()
             .equals(other.getLogoMarginList())) return false;
         if (getAttribution()
             != other.getAttribution()) return false;
-        if (attributionGravity_ != other.attributionGravity_) return false;
+        if (attributionPosition_ != other.attributionPosition_) return false;
         if (!getAttributionMarginList()
             .equals(other.getAttributionMarginList())) return false;
         if (hasAttributionTintColor() != other.hasAttributionTintColor()) return false;
@@ -1383,6 +1600,23 @@ public final class Map {
         if (hasForegroundLoadColor()) {
           if (!getForegroundLoadColor()
               .equals(other.getForegroundLoadColor())) return false;
+        }
+        if (!getStyleCase().equals(other.getStyleCase())) return false;
+        switch (styleCase_) {
+          case 30:
+            if (getFromMapboxValue()
+                != other.getFromMapboxValue()) return false;
+            break;
+          case 31:
+            if (!getFromUri()
+                .equals(other.getFromUri())) return false;
+            break;
+          case 32:
+            if (!getFromJson()
+                .equals(other.getFromJson())) return false;
+            break;
+          case 0:
+          default:
         }
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
@@ -1433,8 +1667,8 @@ public final class Map {
         hash = (37 * hash) + COMPASS_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getCompass());
-        hash = (37 * hash) + COMPASS_GRAVITY_FIELD_NUMBER;
-        hash = (53 * hash) + compassGravity_;
+        hash = (37 * hash) + COMPASS_POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + compassPosition_;
         if (getCompassMarginCount() > 0) {
           hash = (37 * hash) + COMPASS_MARGIN_FIELD_NUMBER;
           hash = (53 * hash) + getCompassMarginList().hashCode();
@@ -1445,8 +1679,8 @@ public final class Map {
         hash = (37 * hash) + LOGO_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getLogo());
-        hash = (37 * hash) + LOGO_GRAVITY_FIELD_NUMBER;
-        hash = (53 * hash) + logoGravity_;
+        hash = (37 * hash) + LOGO_POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + logoPosition_;
         if (getLogoMarginCount() > 0) {
           hash = (37 * hash) + LOGO_MARGIN_FIELD_NUMBER;
           hash = (53 * hash) + getLogoMarginList().hashCode();
@@ -1454,8 +1688,8 @@ public final class Map {
         hash = (37 * hash) + ATTRIBUTION_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getAttribution());
-        hash = (37 * hash) + ATTRIBUTION_GRAVITY_FIELD_NUMBER;
-        hash = (53 * hash) + attributionGravity_;
+        hash = (37 * hash) + ATTRIBUTION_POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + attributionPosition_;
         if (getAttributionMarginCount() > 0) {
           hash = (37 * hash) + ATTRIBUTION_MARGIN_FIELD_NUMBER;
           hash = (53 * hash) + getAttributionMarginList().hashCode();
@@ -1482,6 +1716,22 @@ public final class Map {
         if (hasForegroundLoadColor()) {
           hash = (37 * hash) + FOREGROUND_LOAD_COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getForegroundLoadColor().hashCode();
+        }
+        switch (styleCase_) {
+          case 30:
+            hash = (37 * hash) + FROM_MAPBOX_FIELD_NUMBER;
+            hash = (53 * hash) + getFromMapboxValue();
+            break;
+          case 31:
+            hash = (37 * hash) + FROM_URI_FIELD_NUMBER;
+            hash = (53 * hash) + getFromUri().hashCode();
+            break;
+          case 32:
+            hash = (37 * hash) + FROM_JSON_FIELD_NUMBER;
+            hash = (53 * hash) + getFromJson().hashCode();
+            break;
+          case 0:
+          default:
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
@@ -1646,7 +1896,7 @@ public final class Map {
 
           compass_ = false;
 
-          compassGravity_ = 0;
+          compassPosition_ = 0;
 
           compassMargin_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00004000);
@@ -1654,13 +1904,13 @@ public final class Map {
 
           logo_ = false;
 
-          logoGravity_ = 0;
+          logoPosition_ = 0;
 
           logoMargin_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00040000);
           attribution_ = false;
 
-          attributionGravity_ = 0;
+          attributionPosition_ = 0;
 
           attributionMargin_ = emptyIntList();
           bitField0_ = (bitField0_ & ~0x00200000);
@@ -1686,6 +1936,8 @@ public final class Map {
             foregroundLoadColor_ = null;
             foregroundLoadColorBuilder_ = null;
           }
+          styleCase_ = 0;
+          style_ = null;
           return this;
         }
 
@@ -1731,7 +1983,7 @@ public final class Map {
           result.doubleTapGestures_ = doubleTapGestures_;
           result.quickZoomGestures_ = quickZoomGestures_;
           result.compass_ = compass_;
-          result.compassGravity_ = compassGravity_;
+          result.compassPosition_ = compassPosition_;
           if (((bitField0_ & 0x00004000) != 0)) {
             compassMargin_.makeImmutable();
             bitField0_ = (bitField0_ & ~0x00004000);
@@ -1739,14 +1991,14 @@ public final class Map {
           result.compassMargin_ = compassMargin_;
           result.compassFadeFacingNorth_ = compassFadeFacingNorth_;
           result.logo_ = logo_;
-          result.logoGravity_ = logoGravity_;
+          result.logoPosition_ = logoPosition_;
           if (((bitField0_ & 0x00040000) != 0)) {
             logoMargin_.makeImmutable();
             bitField0_ = (bitField0_ & ~0x00040000);
           }
           result.logoMargin_ = logoMargin_;
           result.attribution_ = attribution_;
-          result.attributionGravity_ = attributionGravity_;
+          result.attributionPosition_ = attributionPosition_;
           if (((bitField0_ & 0x00200000) != 0)) {
             attributionMargin_.makeImmutable();
             bitField0_ = (bitField0_ & ~0x00200000);
@@ -1767,7 +2019,17 @@ public final class Map {
           } else {
             result.foregroundLoadColor_ = foregroundLoadColorBuilder_.build();
           }
+          if (styleCase_ == 30) {
+            result.style_ = style_;
+          }
+          if (styleCase_ == 31) {
+            result.style_ = style_;
+          }
+          if (styleCase_ == 32) {
+            result.style_ = style_;
+          }
           result.bitField0_ = to_bitField0_;
+          result.styleCase_ = styleCase_;
           onBuilt();
           return result;
         }
@@ -1857,8 +2119,8 @@ public final class Map {
           if (other.getCompass() != false) {
             setCompass(other.getCompass());
           }
-          if (other.compassGravity_ != 0) {
-            setCompassGravityValue(other.getCompassGravityValue());
+          if (other.compassPosition_ != 0) {
+            setCompassPositionValue(other.getCompassPositionValue());
           }
           if (!other.compassMargin_.isEmpty()) {
             if (compassMargin_.isEmpty()) {
@@ -1876,8 +2138,8 @@ public final class Map {
           if (other.getLogo() != false) {
             setLogo(other.getLogo());
           }
-          if (other.logoGravity_ != 0) {
-            setLogoGravityValue(other.getLogoGravityValue());
+          if (other.logoPosition_ != 0) {
+            setLogoPositionValue(other.getLogoPositionValue());
           }
           if (!other.logoMargin_.isEmpty()) {
             if (logoMargin_.isEmpty()) {
@@ -1892,8 +2154,8 @@ public final class Map {
           if (other.getAttribution() != false) {
             setAttribution(other.getAttribution());
           }
-          if (other.attributionGravity_ != 0) {
-            setAttributionGravityValue(other.getAttributionGravityValue());
+          if (other.attributionPosition_ != 0) {
+            setAttributionPositionValue(other.getAttributionPositionValue());
           }
           if (!other.attributionMargin_.isEmpty()) {
             if (attributionMargin_.isEmpty()) {
@@ -1926,6 +2188,27 @@ public final class Map {
           if (other.hasForegroundLoadColor()) {
             mergeForegroundLoadColor(other.getForegroundLoadColor());
           }
+          switch (other.getStyleCase()) {
+            case FROM_MAPBOX: {
+              setFromMapboxValue(other.getFromMapboxValue());
+              break;
+            }
+            case FROM_URI: {
+              styleCase_ = 31;
+              style_ = other.style_;
+              onChanged();
+              break;
+            }
+            case FROM_JSON: {
+              styleCase_ = 32;
+              style_ = other.style_;
+              onChanged();
+              break;
+            }
+            case STYLE_NOT_SET: {
+              break;
+            }
+          }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
           return this;
@@ -1954,6 +2237,21 @@ public final class Map {
           }
           return this;
         }
+        private int styleCase_ = 0;
+        private java.lang.Object style_;
+        public StyleCase
+            getStyleCase() {
+          return StyleCase.forNumber(
+              styleCase_);
+        }
+
+        public Builder clearStyle() {
+          styleCase_ = 0;
+          style_ = null;
+          onChanged();
+          return this;
+        }
+
         private int bitField0_;
 
         private java.lang.Object apiBaseUri_ = "";
@@ -2471,47 +2769,47 @@ public final class Map {
           return this;
         }
 
-        private int compassGravity_ = 0;
+        private int compassPosition_ = 0;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
          */
-        public int getCompassGravityValue() {
-          return compassGravity_;
+        public int getCompassPositionValue() {
+          return compassPosition_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
          */
-        public Builder setCompassGravityValue(int value) {
-          compassGravity_ = value;
+        public Builder setCompassPositionValue(int value) {
+          compassPosition_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
          */
-        public com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getCompassGravity() {
+        public com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getCompassPosition() {
           @SuppressWarnings("deprecation")
-          com.tophap.mapbox_gl.proto.MapboxUtil.Gravity result = com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.valueOf(compassGravity_);
-          return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.UNRECOGNIZED : result;
+          com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition result = com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.valueOf(compassPosition_);
+          return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.UNRECOGNIZED : result;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
          */
-        public Builder setCompassGravity(com.tophap.mapbox_gl.proto.MapboxUtil.Gravity value) {
+        public Builder setCompassPosition(com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition value) {
           if (value == null) {
             throw new NullPointerException();
           }
           
-          compassGravity_ = value.getNumber();
+          compassPosition_ = value.getNumber();
           onChanged();
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity compass_gravity = 14;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition compass_position = 14;</code>
          */
-        public Builder clearCompassGravity() {
+        public Builder clearCompassPosition() {
           
-          compassGravity_ = 0;
+          compassPosition_ = 0;
           onChanged();
           return this;
         }
@@ -2635,47 +2933,47 @@ public final class Map {
           return this;
         }
 
-        private int logoGravity_ = 0;
+        private int logoPosition_ = 0;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
          */
-        public int getLogoGravityValue() {
-          return logoGravity_;
+        public int getLogoPositionValue() {
+          return logoPosition_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
          */
-        public Builder setLogoGravityValue(int value) {
-          logoGravity_ = value;
+        public Builder setLogoPositionValue(int value) {
+          logoPosition_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
          */
-        public com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getLogoGravity() {
+        public com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getLogoPosition() {
           @SuppressWarnings("deprecation")
-          com.tophap.mapbox_gl.proto.MapboxUtil.Gravity result = com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.valueOf(logoGravity_);
-          return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.UNRECOGNIZED : result;
+          com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition result = com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.valueOf(logoPosition_);
+          return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.UNRECOGNIZED : result;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
          */
-        public Builder setLogoGravity(com.tophap.mapbox_gl.proto.MapboxUtil.Gravity value) {
+        public Builder setLogoPosition(com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition value) {
           if (value == null) {
             throw new NullPointerException();
           }
           
-          logoGravity_ = value.getNumber();
+          logoPosition_ = value.getNumber();
           onChanged();
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity logo_gravity = 18;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition logo_position = 18;</code>
          */
-        public Builder clearLogoGravity() {
+        public Builder clearLogoPosition() {
           
-          logoGravity_ = 0;
+          logoPosition_ = 0;
           onChanged();
           return this;
         }
@@ -2773,47 +3071,47 @@ public final class Map {
           return this;
         }
 
-        private int attributionGravity_ = 0;
+        private int attributionPosition_ = 0;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
          */
-        public int getAttributionGravityValue() {
-          return attributionGravity_;
+        public int getAttributionPositionValue() {
+          return attributionPosition_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
          */
-        public Builder setAttributionGravityValue(int value) {
-          attributionGravity_ = value;
+        public Builder setAttributionPositionValue(int value) {
+          attributionPosition_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
          */
-        public com.tophap.mapbox_gl.proto.MapboxUtil.Gravity getAttributionGravity() {
+        public com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition getAttributionPosition() {
           @SuppressWarnings("deprecation")
-          com.tophap.mapbox_gl.proto.MapboxUtil.Gravity result = com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.valueOf(attributionGravity_);
-          return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.Gravity.UNRECOGNIZED : result;
+          com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition result = com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.valueOf(attributionPosition_);
+          return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition.UNRECOGNIZED : result;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
          */
-        public Builder setAttributionGravity(com.tophap.mapbox_gl.proto.MapboxUtil.Gravity value) {
+        public Builder setAttributionPosition(com.tophap.mapbox_gl.proto.MapboxUtil.OrnamentPosition value) {
           if (value == null) {
             throw new NullPointerException();
           }
           
-          attributionGravity_ = value.getNumber();
+          attributionPosition_ = value.getNumber();
           onChanged();
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Gravity attribution_gravity = 21;</code>
+         * <code>.com.tophap.mapbox_gl.proto.OrnamentPosition attribution_position = 21;</code>
          */
-        public Builder clearAttributionGravity() {
+        public Builder clearAttributionPosition() {
           
-          attributionGravity_ = 0;
+          attributionPosition_ = 0;
           onChanged();
           return this;
         }
@@ -3247,6 +3545,220 @@ public final class Map {
             foregroundLoadColor_ = null;
           }
           return foregroundLoadColorBuilder_;
+        }
+
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+         */
+        public int getFromMapboxValue() {
+          if (styleCase_ == 30) {
+            return ((java.lang.Integer) style_).intValue();
+          }
+          return 0;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+         */
+        public Builder setFromMapboxValue(int value) {
+          styleCase_ = 30;
+          style_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+         */
+        public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle getFromMapbox() {
+          if (styleCase_ == 30) {
+            @SuppressWarnings("deprecation")
+            com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle result = com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.valueOf(
+                (java.lang.Integer) style_);
+            return result == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.UNRECOGNIZED : result;
+          }
+          return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.MAPBOX_STREETS;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+         */
+        public Builder setFromMapbox(com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          styleCase_ = 30;
+          style_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle from_mapbox = 30;</code>
+         */
+        public Builder clearFromMapbox() {
+          if (styleCase_ == 30) {
+            styleCase_ = 0;
+            style_ = null;
+            onChanged();
+          }
+          return this;
+        }
+
+        /**
+         * <code>string from_uri = 31;</code>
+         */
+        public java.lang.String getFromUri() {
+          java.lang.Object ref = "";
+          if (styleCase_ == 31) {
+            ref = style_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (styleCase_ == 31) {
+              style_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string from_uri = 31;</code>
+         */
+        public com.google.protobuf.ByteString
+            getFromUriBytes() {
+          java.lang.Object ref = "";
+          if (styleCase_ == 31) {
+            ref = style_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (styleCase_ == 31) {
+              style_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string from_uri = 31;</code>
+         */
+        public Builder setFromUri(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  styleCase_ = 31;
+          style_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string from_uri = 31;</code>
+         */
+        public Builder clearFromUri() {
+          if (styleCase_ == 31) {
+            styleCase_ = 0;
+            style_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string from_uri = 31;</code>
+         */
+        public Builder setFromUriBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          styleCase_ = 31;
+          style_ = value;
+          onChanged();
+          return this;
+        }
+
+        /**
+         * <code>string from_json = 32;</code>
+         */
+        public java.lang.String getFromJson() {
+          java.lang.Object ref = "";
+          if (styleCase_ == 32) {
+            ref = style_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (styleCase_ == 32) {
+              style_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string from_json = 32;</code>
+         */
+        public com.google.protobuf.ByteString
+            getFromJsonBytes() {
+          java.lang.Object ref = "";
+          if (styleCase_ == 32) {
+            ref = style_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (styleCase_ == 32) {
+              style_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string from_json = 32;</code>
+         */
+        public Builder setFromJson(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  styleCase_ = 32;
+          style_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string from_json = 32;</code>
+         */
+        public Builder clearFromJson() {
+          if (styleCase_ == 32) {
+            styleCase_ = 0;
+            style_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string from_json = 32;</code>
+         */
+        public Builder setFromJsonBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          styleCase_ = 32;
+          style_ = value;
+          onChanged();
+          return this;
         }
         @java.lang.Override
         public final Builder setUnknownFields(
@@ -4316,6 +4828,19 @@ public final class Map {
          * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
          */
         com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraOrBuilder();
+
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+         */
+        boolean hasStyle();
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+         */
+        com.tophap.mapbox_gl.proto.StyleOuterClass.Style getStyle();
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+         */
+        com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder getStyleOrBuilder();
       }
       /**
        * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.Ready}
@@ -4385,6 +4910,19 @@ public final class Map {
                   if (subBuilder != null) {
                     subBuilder.mergeFrom(camera_);
                     camera_ = subBuilder.buildPartial();
+                  }
+
+                  break;
+                }
+                case 50: {
+                  com.tophap.mapbox_gl.proto.StyleOuterClass.Style.Builder subBuilder = null;
+                  if (style_ != null) {
+                    subBuilder = style_.toBuilder();
+                  }
+                  style_ = input.readMessage(com.tophap.mapbox_gl.proto.StyleOuterClass.Style.parser(), extensionRegistry);
+                  if (subBuilder != null) {
+                    subBuilder.mergeFrom(style_);
+                    style_ = subBuilder.buildPartial();
                   }
 
                   break;
@@ -4478,6 +5016,27 @@ public final class Map {
           return getCamera();
         }
 
+        public static final int STYLE_FIELD_NUMBER = 6;
+        private com.tophap.mapbox_gl.proto.StyleOuterClass.Style style_;
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+         */
+        public boolean hasStyle() {
+          return style_ != null;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+         */
+        public com.tophap.mapbox_gl.proto.StyleOuterClass.Style getStyle() {
+          return style_ == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.getDefaultInstance() : style_;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+         */
+        public com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder getStyleOrBuilder() {
+          return getStyle();
+        }
+
         private byte memoizedIsInitialized = -1;
         @java.lang.Override
         public final boolean isInitialized() {
@@ -4507,6 +5066,9 @@ public final class Map {
           if (camera_ != null) {
             output.writeMessage(5, getCamera());
           }
+          if (style_ != null) {
+            output.writeMessage(6, getStyle());
+          }
           unknownFields.writeTo(output);
         }
 
@@ -4535,6 +5097,10 @@ public final class Map {
           if (camera_ != null) {
             size += com.google.protobuf.CodedOutputStream
               .computeMessageSize(5, getCamera());
+          }
+          if (style_ != null) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeMessageSize(6, getStyle());
           }
           size += unknownFields.getSerializedSize();
           memoizedSize = size;
@@ -4566,6 +5132,11 @@ public final class Map {
             if (!getCamera()
                 .equals(other.getCamera())) return false;
           }
+          if (hasStyle() != other.hasStyle()) return false;
+          if (hasStyle()) {
+            if (!getStyle()
+                .equals(other.getStyle())) return false;
+          }
           if (!unknownFields.equals(other.unknownFields)) return false;
           return true;
         }
@@ -4591,6 +5162,10 @@ public final class Map {
           if (hasCamera()) {
             hash = (37 * hash) + CAMERA_FIELD_NUMBER;
             hash = (53 * hash) + getCamera().hashCode();
+          }
+          if (hasStyle()) {
+            hash = (37 * hash) + STYLE_FIELD_NUMBER;
+            hash = (53 * hash) + getStyle().hashCode();
           }
           hash = (29 * hash) + unknownFields.hashCode();
           memoizedHashCode = hash;
@@ -4739,6 +5314,12 @@ public final class Map {
               camera_ = null;
               cameraBuilder_ = null;
             }
+            if (styleBuilder_ == null) {
+              style_ = null;
+            } else {
+              style_ = null;
+              styleBuilder_ = null;
+            }
             return this;
           }
 
@@ -4773,6 +5354,11 @@ public final class Map {
               result.camera_ = camera_;
             } else {
               result.camera_ = cameraBuilder_.build();
+            }
+            if (styleBuilder_ == null) {
+              result.style_ = style_;
+            } else {
+              result.style_ = styleBuilder_.build();
             }
             onBuilt();
             return result;
@@ -4836,6 +5422,9 @@ public final class Map {
             }
             if (other.hasCamera()) {
               mergeCamera(other.getCamera());
+            }
+            if (other.hasStyle()) {
+              mergeStyle(other.getStyle());
             }
             this.mergeUnknownFields(other.unknownFields);
             onChanged();
@@ -5085,6 +5674,123 @@ public final class Map {
               camera_ = null;
             }
             return cameraBuilder_;
+          }
+
+          private com.tophap.mapbox_gl.proto.StyleOuterClass.Style style_;
+          private com.google.protobuf.SingleFieldBuilderV3<
+              com.tophap.mapbox_gl.proto.StyleOuterClass.Style, com.tophap.mapbox_gl.proto.StyleOuterClass.Style.Builder, com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder> styleBuilder_;
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public boolean hasStyle() {
+            return styleBuilder_ != null || style_ != null;
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public com.tophap.mapbox_gl.proto.StyleOuterClass.Style getStyle() {
+            if (styleBuilder_ == null) {
+              return style_ == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.getDefaultInstance() : style_;
+            } else {
+              return styleBuilder_.getMessage();
+            }
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public Builder setStyle(com.tophap.mapbox_gl.proto.StyleOuterClass.Style value) {
+            if (styleBuilder_ == null) {
+              if (value == null) {
+                throw new NullPointerException();
+              }
+              style_ = value;
+              onChanged();
+            } else {
+              styleBuilder_.setMessage(value);
+            }
+
+            return this;
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public Builder setStyle(
+              com.tophap.mapbox_gl.proto.StyleOuterClass.Style.Builder builderForValue) {
+            if (styleBuilder_ == null) {
+              style_ = builderForValue.build();
+              onChanged();
+            } else {
+              styleBuilder_.setMessage(builderForValue.build());
+            }
+
+            return this;
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public Builder mergeStyle(com.tophap.mapbox_gl.proto.StyleOuterClass.Style value) {
+            if (styleBuilder_ == null) {
+              if (style_ != null) {
+                style_ =
+                  com.tophap.mapbox_gl.proto.StyleOuterClass.Style.newBuilder(style_).mergeFrom(value).buildPartial();
+              } else {
+                style_ = value;
+              }
+              onChanged();
+            } else {
+              styleBuilder_.mergeFrom(value);
+            }
+
+            return this;
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public Builder clearStyle() {
+            if (styleBuilder_ == null) {
+              style_ = null;
+              onChanged();
+            } else {
+              style_ = null;
+              styleBuilder_ = null;
+            }
+
+            return this;
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.Builder getStyleBuilder() {
+            
+            onChanged();
+            return getStyleFieldBuilder().getBuilder();
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          public com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder getStyleOrBuilder() {
+            if (styleBuilder_ != null) {
+              return styleBuilder_.getMessageOrBuilder();
+            } else {
+              return style_ == null ?
+                  com.tophap.mapbox_gl.proto.StyleOuterClass.Style.getDefaultInstance() : style_;
+            }
+          }
+          /**
+           * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
+           */
+          private com.google.protobuf.SingleFieldBuilderV3<
+              com.tophap.mapbox_gl.proto.StyleOuterClass.Style, com.tophap.mapbox_gl.proto.StyleOuterClass.Style.Builder, com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder> 
+              getStyleFieldBuilder() {
+            if (styleBuilder_ == null) {
+              styleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                  com.tophap.mapbox_gl.proto.StyleOuterClass.Style, com.tophap.mapbox_gl.proto.StyleOuterClass.Style.Builder, com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder>(
+                      getStyle(),
+                      getParentForChildren(),
+                      isClean());
+              style_ = null;
+            }
+            return styleBuilder_;
           }
           @java.lang.Override
           public final Builder setUnknownFields(
@@ -11117,7 +11823,7 @@ public final class Map {
     }
     /**
      * <pre>
-     * protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/&#42;*.proto lib/src/models/proto/google/protobuf/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/&#42;*.proto
+     * protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/&#42;*.proto lib/src/models/proto/google/protobuf/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/&#42;*.proto
      * </pre>
      *
      * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_}
@@ -11377,70 +12083,76 @@ public final class Map {
   static {
     java.lang.String[] descriptorData = {
       "\n\tmap.proto\022\032com.tophap.mapbox_gl.proto\032" +
-      "\nutil.proto\"\307\023\n\004Map_\032\351\007\n\007Options\022\024\n\014api_" +
-      "base_uri\030\001 \001(\t\022#\n\033local_ideograph_font_f" +
-      "amily\030\002 \001(\t\022\037\n\027cross_source_collisions\030\003" +
-      " \001(\010\022H\n\017camera_position\030\004 \001(\0132/.com.toph" +
-      "ap.mapbox_gl.proto.Map_.CameraPosition\022\020" +
-      "\n\010max_zoom\030\005 \001(\001\022\020\n\010min_zoom\030\006 \001(\001\022\025\n\rzo" +
-      "om_gestures\030\007 \001(\010\022\027\n\017scroll_gestures\030\010 \001" +
-      "(\010\022\027\n\017rotate_gestures\030\t \001(\010\022\025\n\rtilt_gest" +
-      "ures\030\n \001(\010\022\033\n\023double_tap_gestures\030\013 \001(\010\022" +
-      "\033\n\023quick_zoom_gestures\030\014 \001(\010\022\017\n\007compass\030" +
-      "\r \001(\010\022<\n\017compass_gravity\030\016 \001(\0162#.com.top" +
-      "hap.mapbox_gl.proto.Gravity\022\026\n\016compass_m" +
-      "argin\030\017 \003(\005\022!\n\031compass_fade_facing_north" +
-      "\030\020 \001(\010\022\014\n\004logo\030\021 \001(\010\0229\n\014logo_gravity\030\022 \001" +
-      "(\0162#.com.tophap.mapbox_gl.proto.Gravity\022" +
-      "\023\n\013logo_margin\030\023 \003(\005\022\023\n\013attribution\030\024 \001(" +
-      "\010\022@\n\023attribution_gravity\030\025 \001(\0162#.com.top" +
-      "hap.mapbox_gl.proto.Gravity\022\032\n\022attributi" +
-      "on_margin\030\026 \003(\005\022A\n\026attribution_tint_colo" +
-      "r\030\027 \001(\0132!.com.tophap.mapbox_gl.proto.Col" +
-      "or\022\033\n\023render_texture_mode\030\030 \001(\010\022*\n\"rende" +
-      "r_texture_translucent_surface\030\031 \001(\010\022\034\n\024e" +
-      "nable_tile_prefetch\030\032 \001(\010\022\036\n\026enable_z_me" +
-      "dia_overlay\030\033 \001(\010\022\023\n\013pixel_ratio\030\034 \001(\002\022@" +
-      "\n\025foreground_load_color\030\035 \001(\0132!.com.toph" +
-      "ap.mapbox_gl.proto.Color\032\274\001\n\016CameraPosit" +
-      "ion\022\017\n\007bearing\030\001 \001(\001\0222\n\006target\030\002 \001(\0132\".c" +
-      "om.tophap.mapbox_gl.proto.LatLng\022\014\n\004tilt" +
-      "\030\003 \001(\001\022\014\n\004zoom\030\004 \001(\001\"I\n\nMoveReason\022\017\n\013AP" +
-      "I_GESTURE\020\000\022\027\n\023DEVELOPER_ANIMATION\020\001\022\021\n\r" +
-      "API_ANIMATION\020\002\032\223\n\n\nOperations\032\227\001\n\005Ready" +
-      "\022\017\n\007view_id\030\001 \001(\005\022\030\n\020prefetches_tiles\030\002 " +
-      "\001(\010\022\020\n\010min_zoom\030\003 \001(\001\022\020\n\010max_zoom\030\004 \001(\001\022" +
-      "?\n\006camera\030\005 \001(\0132/.com.tophap.mapbox_gl.p" +
-      "roto.Map_.CameraPosition\032\342\004\n\014CameraUpdat" +
-      "e\022H\n\017camera_position\030\001 \001(\0132/.com.tophap." +
-      "mapbox_gl.proto.Map_.CameraPosition\0223\n\007l" +
-      "at_lng\030\002 \001(\0132\".com.tophap.mapbox_gl.prot" +
-      "o.LatLng\0228\n\006bounds\030\003 \001(\0132(.com.tophap.ma" +
-      "pbox_gl.proto.LatLngBounds\022\017\n\007bearing\030\004 " +
-      "\001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n\007padding\030\006 \003(\005\022\014\n\004zo" +
-      "om\030\007 \001(\001\022\016\n\006amount\030\010 \001(\001\022\017\n\007focus_x\030\t \001(" +
-      "\005\022\017\n\007focus_y\030\n \001(\005\022P\n\toperation\030\013 \001(\0162=." +
-      "com.tophap.mapbox_gl.proto.Map_.Operatio" +
-      "ns.CameraUpdate.Type\"$\n\006Result\022\014\n\010FINISH" +
-      "ED\020\000\022\014\n\010CANCELED\020\001\"\260\001\n\004Type\022\027\n\023NEW_CAMER" +
-      "A_POSITION\020\000\022\017\n\013NEW_LAT_LNG\020\001\022\026\n\022NEW_LAT" +
-      "_LNG_BOUNDS\020\002\022\024\n\020NEW_LAT_LNG_ZOOM\020\003\022\013\n\007Z" +
-      "OOM_BY\020\004\022\013\n\007ZOOM_IN\020\005\022\014\n\010ZOOM_OUT\020\006\022\013\n\007Z" +
-      "OOM_TO\020\007\022\016\n\nBEARING_TO\020\010\022\013\n\007TILT_TO\020\t\032\205\001" +
-      "\n\nEaseCamera\022H\n\006update\030\001 \001(\01328.com.topha" +
-      "p.mapbox_gl.proto.Map_.Operations.Camera" +
-      "Update\022\020\n\010duration\030\002 \001(\005\022\033\n\023easing_inter" +
-      "polator\030\003 \001(\010\032k\n\rAnimateCamera\022H\n\006update" +
-      "\030\001 \001(\01328.com.tophap.mapbox_gl.proto.Map_" +
-      ".Operations.CameraUpdate\022\020\n\010duration\030\002 \001" +
-      "(\005\0322\n\010ScrollBy\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\020\n\010" +
-      "duration\030\003 \001(\003\032V\n\017SetFocalBearing\022\017\n\007bea" +
-      "ring\030\001 \001(\001\022\017\n\007focal_x\030\002 \001(\002\022\017\n\007focal_y\030\003" +
-      " \001(\002\022\020\n\010duration\030\004 \001(\003\032\204\001\n\030GetCameraForL" +
-      "atLngBounds\0228\n\006bounds\030\001 \001(\0132(.com.tophap" +
-      ".mapbox_gl.proto.LatLngBounds\022\017\n\007padding" +
-      "\030\002 \003(\005\022\017\n\007bearing\030\003 \001(\001\022\014\n\004tilt\030\004 \001(\001B\034\n" +
-      "\032com.tophap.mapbox_gl.protob\006proto3"
+      "\nutil.proto\032\013style.proto\"\226\025\n\004Map_\032\206\t\n\007Op" +
+      "tions\022\024\n\014api_base_uri\030\001 \001(\t\022#\n\033local_ide" +
+      "ograph_font_family\030\002 \001(\t\022\037\n\027cross_source" +
+      "_collisions\030\003 \001(\010\022H\n\017camera_position\030\004 \001" +
+      "(\0132/.com.tophap.mapbox_gl.proto.Map_.Cam" +
+      "eraPosition\022\020\n\010max_zoom\030\005 \001(\001\022\020\n\010min_zoo" +
+      "m\030\006 \001(\001\022\025\n\rzoom_gestures\030\007 \001(\010\022\027\n\017scroll" +
+      "_gestures\030\010 \001(\010\022\027\n\017rotate_gestures\030\t \001(\010" +
+      "\022\025\n\rtilt_gestures\030\n \001(\010\022\033\n\023double_tap_ge" +
+      "stures\030\013 \001(\010\022\033\n\023quick_zoom_gestures\030\014 \001(" +
+      "\010\022\017\n\007compass\030\r \001(\010\022F\n\020compass_position\030\016" +
+      " \001(\0162,.com.tophap.mapbox_gl.proto.Orname" +
+      "ntPosition\022\026\n\016compass_margin\030\017 \003(\005\022!\n\031co" +
+      "mpass_fade_facing_north\030\020 \001(\010\022\014\n\004logo\030\021 " +
+      "\001(\010\022C\n\rlogo_position\030\022 \001(\0162,.com.tophap." +
+      "mapbox_gl.proto.OrnamentPosition\022\023\n\013logo" +
+      "_margin\030\023 \003(\005\022\023\n\013attribution\030\024 \001(\010\022J\n\024at" +
+      "tribution_position\030\025 \001(\0162,.com.tophap.ma" +
+      "pbox_gl.proto.OrnamentPosition\022\032\n\022attrib" +
+      "ution_margin\030\026 \003(\005\022A\n\026attribution_tint_c" +
+      "olor\030\027 \001(\0132!.com.tophap.mapbox_gl.proto." +
+      "Color\022\033\n\023render_texture_mode\030\030 \001(\010\022*\n\"re" +
+      "nder_texture_translucent_surface\030\031 \001(\010\022\034" +
+      "\n\024enable_tile_prefetch\030\032 \001(\010\022\036\n\026enable_z" +
+      "_media_overlay\030\033 \001(\010\022\023\n\013pixel_ratio\030\034 \001(" +
+      "\002\022@\n\025foreground_load_color\030\035 \001(\0132!.com.t" +
+      "ophap.mapbox_gl.proto.Color\022K\n\013from_mapb" +
+      "ox\030\036 \001(\01624.com.tophap.mapbox_gl.proto.St" +
+      "yle.DefaultMapboxStyleH\000\022\022\n\010from_uri\030\037 \001" +
+      "(\tH\000\022\023\n\tfrom_json\030  \001(\tH\000B\007\n\005style\032\274\001\n\016C" +
+      "ameraPosition\022\017\n\007bearing\030\001 \001(\001\0222\n\006target" +
+      "\030\002 \001(\0132\".com.tophap.mapbox_gl.proto.LatL" +
+      "ng\022\014\n\004tilt\030\003 \001(\001\022\014\n\004zoom\030\004 \001(\001\"I\n\nMoveRe" +
+      "ason\022\017\n\013API_GESTURE\020\000\022\027\n\023DEVELOPER_ANIMA" +
+      "TION\020\001\022\021\n\rAPI_ANIMATION\020\002\032\305\n\n\nOperations" +
+      "\032\311\001\n\005Ready\022\017\n\007view_id\030\001 \001(\005\022\030\n\020prefetche" +
+      "s_tiles\030\002 \001(\010\022\020\n\010min_zoom\030\003 \001(\001\022\020\n\010max_z" +
+      "oom\030\004 \001(\001\022?\n\006camera\030\005 \001(\0132/.com.tophap.m" +
+      "apbox_gl.proto.Map_.CameraPosition\0220\n\005st" +
+      "yle\030\006 \001(\0132!.com.tophap.mapbox_gl.proto.S" +
+      "tyle\032\342\004\n\014CameraUpdate\022H\n\017camera_position" +
+      "\030\001 \001(\0132/.com.tophap.mapbox_gl.proto.Map_" +
+      ".CameraPosition\0223\n\007lat_lng\030\002 \001(\0132\".com.t" +
+      "ophap.mapbox_gl.proto.LatLng\0228\n\006bounds\030\003" +
+      " \001(\0132(.com.tophap.mapbox_gl.proto.LatLng" +
+      "Bounds\022\017\n\007bearing\030\004 \001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n" +
+      "\007padding\030\006 \003(\005\022\014\n\004zoom\030\007 \001(\001\022\016\n\006amount\030\010" +
+      " \001(\001\022\017\n\007focus_x\030\t \001(\005\022\017\n\007focus_y\030\n \001(\005\022P" +
+      "\n\toperation\030\013 \001(\0162=.com.tophap.mapbox_gl" +
+      ".proto.Map_.Operations.CameraUpdate.Type" +
+      "\"$\n\006Result\022\014\n\010FINISHED\020\000\022\014\n\010CANCELED\020\001\"\260" +
+      "\001\n\004Type\022\027\n\023NEW_CAMERA_POSITION\020\000\022\017\n\013NEW_" +
+      "LAT_LNG\020\001\022\026\n\022NEW_LAT_LNG_BOUNDS\020\002\022\024\n\020NEW" +
+      "_LAT_LNG_ZOOM\020\003\022\013\n\007ZOOM_BY\020\004\022\013\n\007ZOOM_IN\020" +
+      "\005\022\014\n\010ZOOM_OUT\020\006\022\013\n\007ZOOM_TO\020\007\022\016\n\nBEARING_" +
+      "TO\020\010\022\013\n\007TILT_TO\020\t\032\205\001\n\nEaseCamera\022H\n\006upda" +
+      "te\030\001 \001(\01328.com.tophap.mapbox_gl.proto.Ma" +
+      "p_.Operations.CameraUpdate\022\020\n\010duration\030\002" +
+      " \001(\005\022\033\n\023easing_interpolator\030\003 \001(\010\032k\n\rAni" +
+      "mateCamera\022H\n\006update\030\001 \001(\01328.com.tophap." +
+      "mapbox_gl.proto.Map_.Operations.CameraUp" +
+      "date\022\020\n\010duration\030\002 \001(\005\0322\n\010ScrollBy\022\t\n\001x\030" +
+      "\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\020\n\010duration\030\003 \001(\003\032V\n\017Se" +
+      "tFocalBearing\022\017\n\007bearing\030\001 \001(\001\022\017\n\007focal_" +
+      "x\030\002 \001(\002\022\017\n\007focal_y\030\003 \001(\002\022\020\n\010duration\030\004 \001" +
+      "(\003\032\204\001\n\030GetCameraForLatLngBounds\0228\n\006bound" +
+      "s\030\001 \001(\0132(.com.tophap.mapbox_gl.proto.Lat" +
+      "LngBounds\022\017\n\007padding\030\002 \003(\005\022\017\n\007bearing\030\003 " +
+      "\001(\001\022\014\n\004tilt\030\004 \001(\001B\034\n\032com.tophap.mapbox_g" +
+      "l.protob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11454,6 +12166,7 @@ public final class Map {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor(),
+          com.tophap.mapbox_gl.proto.StyleOuterClass.getDescriptor(),
         }, assigner);
     internal_static_com_tophap_mapbox_gl_proto_Map__descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -11466,7 +12179,7 @@ public final class Map {
     internal_static_com_tophap_mapbox_gl_proto_Map__Options_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor,
-        new java.lang.String[] { "ApiBaseUri", "LocalIdeographFontFamily", "CrossSourceCollisions", "CameraPosition", "MaxZoom", "MinZoom", "ZoomGestures", "ScrollGestures", "RotateGestures", "TiltGestures", "DoubleTapGestures", "QuickZoomGestures", "Compass", "CompassGravity", "CompassMargin", "CompassFadeFacingNorth", "Logo", "LogoGravity", "LogoMargin", "Attribution", "AttributionGravity", "AttributionMargin", "AttributionTintColor", "RenderTextureMode", "RenderTextureTranslucentSurface", "EnableTilePrefetch", "EnableZMediaOverlay", "PixelRatio", "ForegroundLoadColor", });
+        new java.lang.String[] { "ApiBaseUri", "LocalIdeographFontFamily", "CrossSourceCollisions", "CameraPosition", "MaxZoom", "MinZoom", "ZoomGestures", "ScrollGestures", "RotateGestures", "TiltGestures", "DoubleTapGestures", "QuickZoomGestures", "Compass", "CompassPosition", "CompassMargin", "CompassFadeFacingNorth", "Logo", "LogoPosition", "LogoMargin", "Attribution", "AttributionPosition", "AttributionMargin", "AttributionTintColor", "RenderTextureMode", "RenderTextureTranslucentSurface", "EnableTilePrefetch", "EnableZMediaOverlay", "PixelRatio", "ForegroundLoadColor", "FromMapbox", "FromUri", "FromJson", "Style", });
     internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Map__descriptor.getNestedTypes().get(1);
     internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_fieldAccessorTable = new
@@ -11484,7 +12197,7 @@ public final class Map {
     internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor,
-        new java.lang.String[] { "ViewId", "PrefetchesTiles", "MinZoom", "MaxZoom", "Camera", });
+        new java.lang.String[] { "ViewId", "PrefetchesTiles", "MinZoom", "MaxZoom", "Camera", "Style", });
     internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(1);
     internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_fieldAccessorTable = new
@@ -11522,6 +12235,7 @@ public final class Map {
         internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor,
         new java.lang.String[] { "Bounds", "Padding", "Bearing", "Tilt", });
     com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor();
+    com.tophap.mapbox_gl.proto.StyleOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

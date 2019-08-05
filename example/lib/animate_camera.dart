@@ -28,8 +28,15 @@ class AnimateCamera extends StatefulWidget {
 class AnimateCameraState extends State<AnimateCamera> {
   MapController mapController;
 
-  void _onMapReady(MapController controller) {
+  void _onMapReady(MapController controller) async {
     mapController = controller;
+    try {
+      print('s');
+      print(controller.style);
+      print('sb');
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -44,9 +51,6 @@ class AnimateCameraState extends State<AnimateCamera> {
             height: 200.0,
             child: MapboxMap(
               onMapReady: _onMapReady,
-              options: MapOptions(
-                cameraPosition: CameraPosition(),
-              ),
             ),
           ),
         ),

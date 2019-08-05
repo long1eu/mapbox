@@ -27,7 +27,7 @@ abstract class LatLngBounds implements Built<LatLngBounds, LatLngBoundsBuilder> 
     assert(latitudeSouth >= -90 && latitudeSouth <= 90);
     assert(latitudeNorth > latitudeSouth,
         "latitudeNorth($latitudeNorth) cannot be less than latitudeSouth($latitudeSouth)");
-    assert(longitudeEast < longitudeWest,
+    assert(longitudeEast > longitudeWest,
         "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
 
     return _$LatLngBounds((b) {

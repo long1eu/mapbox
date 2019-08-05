@@ -10,11 +10,9 @@ import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.geometry.LatLngQuad
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions
 import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.*
-import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import com.mapbox.mapboxsdk.style.sources.ImageSource
-import com.mapbox.mapboxsdk.style.sources.Source
+import com.mapbox.mapboxsdk.style.sources.*
 import com.mapbox.mapboxsdk.style.types.Formatted
 import com.mapbox.mapboxsdk.style.types.FormattedSection
 import com.tophap.mapbox_gl.proto.*
@@ -190,22 +188,12 @@ fun MapboxUtil.PositionAnchor.iconAnchor(): String {
     }
 }
 
-private fun MapboxUtil.Gravity.fieldValue(): Int {
+private fun MapboxUtil.OrnamentPosition.fieldValue(): Int {
     return when (this) {
-        MapboxUtil.Gravity.GRAVITY_TOP -> Gravity.TOP
-        MapboxUtil.Gravity.GRAVITY_BOTTOM -> Gravity.BOTTOM
-        MapboxUtil.Gravity.GRAVITY_LEFT -> Gravity.LEFT
-        MapboxUtil.Gravity.GRAVITY_RIGHT -> Gravity.RIGHT
-        MapboxUtil.Gravity.GRAVITY_CENTER_VERTICAL -> Gravity.CENTER_VERTICAL
-        MapboxUtil.Gravity.GRAVITY_FILL_VERTICAL -> Gravity.FILL_VERTICAL
-        MapboxUtil.Gravity.GRAVITY_CENTER_HORIZONTAL -> Gravity.CENTER_HORIZONTAL
-        MapboxUtil.Gravity.GRAVITY_FILL_HORIZONTAL -> Gravity.FILL_HORIZONTAL
-        MapboxUtil.Gravity.GRAVITY_CENTER -> Gravity.CENTER
-        MapboxUtil.Gravity.GRAVITY_FILL -> Gravity.FILL
-        MapboxUtil.Gravity.GRAVITY_CLIP_VERTICAL -> Gravity.CLIP_VERTICAL
-        MapboxUtil.Gravity.GRAVITY_CLIP_HORIZONTAL -> Gravity.CLIP_HORIZONTAL
-        MapboxUtil.Gravity.GRAVITY_START -> Gravity.START
-        MapboxUtil.Gravity.GRAVITY_END -> Gravity.END
+        MapboxUtil.OrnamentPosition.TOP_LEFT -> Gravity.TOP or Gravity.LEFT
+        MapboxUtil.OrnamentPosition.TOP_RIGHT -> Gravity.TOP or Gravity.RIGHT
+        MapboxUtil.OrnamentPosition.BOTTOM_LEFT -> Gravity.BOTTOM or Gravity.LEFT
+        MapboxUtil.OrnamentPosition.BOTTOM_RIGHT -> Gravity.BOTTOM or Gravity.RIGHT
         else -> throw IllegalArgumentException("Unknown value $this")
     }
 }
@@ -229,14 +217,14 @@ fun Map.Map_.Options.fieldValue(): MapboxMapOptions {
             .doubleTapGesturesEnabled(doubleTapGestures)
             .quickZoomGesturesEnabled(quickZoomGestures)
             .compassEnabled(compass)
-            .compassGravity(compassGravity.fieldValue())
+            .compassGravity(compassPosition.fieldValue())
             .compassMargins(compassMarginList.toIntArray())
             .compassFadesWhenFacingNorth(compassFadeFacingNorth)
             .logoEnabled(logo)
-            .logoGravity(logoGravity.fieldValue())
+            .logoGravity(logoPosition.fieldValue())
             .logoMargins(logoMarginList.toIntArray())
             .attributionEnabled(attribution)
-            .attributionGravity(attributionGravity.fieldValue())
+            .attributionGravity(attributionPosition.fieldValue())
             .attributionMargins(attributionMarginList.toIntArray())
             .textureMode(renderTextureMode)
             .translucentTextureSurface(renderTextureTranslucentSurface)
@@ -288,9 +276,12 @@ fun Sources.Source.fieldValue(): Source {
     return when (typeCase!!) {
         Sources.Source.TypeCase.GEOJSON -> geoJson.fieldValue()
         Sources.Source.TypeCase.IMAGE -> image.fieldValue()
+        Sources.Source.TypeCase.VECTOR -> vector.fieldValue()
+        Sources.Source.TypeCase.UNKNOWN,
         Sources.Source.TypeCase.TYPE_NOT_SET -> throw IllegalArgumentException("Unknown source type $this")
     }
 }
+
 
 fun Sources.Source.GeoJson.fieldValue(): GeoJsonSource {
     val source: GeoJsonSource = if (hasOptions()) GeoJsonSource(id, options.fieldValue()) else GeoJsonSource(id)
@@ -324,6 +315,35 @@ fun Sources.Source.Image.fieldValue(): ImageSource {
         }
         Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> throw IllegalArgumentException("Unknown source $sourceCase")
     }
+}
+
+fun Sources.Source.Vector.fieldValue(): VectorSource {
+    return when (sourceCase!!) {
+        Sources.Source.Vector.SourceCase.URI -> VectorSource(id, uri)
+        Sources.Source.Vector.SourceCase.TILE_SET -> VectorSource(id, tileSet.fieldValue())
+        Sources.Source.Vector.SourceCase.SOURCE_NOT_SET -> throw IllegalArgumentException("Unknown source $sourceCase")
+    }
+}
+
+fun Sources.Source.TileSet.fieldValue(): TileSet {
+    val set = TileSet(tileJson, *tilesList.toTypedArray())
+    set.scheme = scheme
+    set.setGrids(*gridsList.toTypedArray())
+    set.setData(*dataList.toTypedArray())
+    set.minZoom = minZoom
+    set.maxZoom = maxZoom
+    set.setBounds(*boundsList.toTypedArray())
+
+    if (name.isNotEmpty()) set.name = name
+    if (description.isNotEmpty()) set.description = description
+    if (version.isNotEmpty()) set.version = version
+    if (attribution.isNotEmpty()) set.attribution = attribution
+    if (template.isNotEmpty()) set.template = template
+    if (legend.isNotEmpty()) set.legend = legend
+    if (centerList.isNotEmpty()) set.setCenter(*centerList.toTypedArray())
+    if (encoding.isNotEmpty()) set.encoding = encoding
+
+    return set
 }
 
 fun MapboxUtil.LatLngQuad.fieldValue(): LatLngQuad = LatLngQuad(topLeft.fieldValue(), topRight.fieldValue(), bottomRight.fieldValue(), bottomLeft.fieldValue())
@@ -850,4 +870,28 @@ fun MapboxUtil.Color.toColorInt(): Int {
 fun MapboxUtil.Color.toColorString(): String {
     val a = alpha / 255.0f
     return "rgba($red, $green, $blue, $a)"
+}
+
+
+fun Expressions.Expression.fieldValue(): Expression {
+    val arguments = argumentsList.map { e ->
+        when (e.dataCase!!) {
+            Expressions.Expression.DataCase.MAP -> e.map.mapMap.map { it.key to it.value.fieldValue() }
+            Expressions.Expression.DataCase.LITERAL -> return e.literal.filedValue()
+            else -> throw  IllegalArgumentException("Unknown argument ${e.dataCase}")
+        }
+    }
+
+    return Expression(operator, *arguments.toTypedArray())
+}
+
+fun Expressions.Value.filedValue(): Expression {
+    return when (kindCase) {
+        Expressions.Value.KindCase.INT_VALUE -> Expression.literal(intValue)
+        Expressions.Value.KindCase.DOUBLE_VALUE -> Expression.literal(doubleValue)
+        Expressions.Value.KindCase.STRING_VALUE -> Expression.literal(stringValue)
+        Expressions.Value.KindCase.BOOL_VALUE -> Expression.literal(boolValue)
+        Expressions.Value.KindCase.LIST_VALUE -> Expression.literal(listValue.valuesList.map { (it.filedValue() as Expression.ExpressionLiteral).toValue() }.toTypedArray())
+        else -> throw IllegalArgumentException("Unknown argument $kindCase")
+    }
 }

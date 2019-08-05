@@ -209,9 +209,203 @@ class Source_Image extends $pb.GeneratedMessage {
   void clearImage() => clearField(5);
 }
 
+enum Source_Vector_Source {
+  uri, 
+  tileSet, 
+  notSet
+}
+
+class Source_Vector extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, Source_Vector_Source> _Source_Vector_SourceByTag = {
+    3 : Source_Vector_Source.uri,
+    4 : Source_Vector_Source.tileSet,
+    0 : Source_Vector_Source.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Vector', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+    ..oo(0, [3, 4])
+    ..aOS(1, 'id')
+    ..aOS(2, 'attribution')
+    ..aOS(3, 'uri')
+    ..a<Source_TileSet>(4, 'tileSet', $pb.PbFieldType.OM, Source_TileSet.getDefault, Source_TileSet.create)
+    ..hasRequiredFields = false
+  ;
+
+  Source_Vector._() : super();
+  factory Source_Vector() => create();
+  factory Source_Vector.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source_Vector.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Source_Vector clone() => Source_Vector()..mergeFromMessage(this);
+  Source_Vector copyWith(void Function(Source_Vector) updates) => super.copyWith((message) => updates(message as Source_Vector));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Source_Vector create() => Source_Vector._();
+  Source_Vector createEmptyInstance() => create();
+  static $pb.PbList<Source_Vector> createRepeated() => $pb.PbList<Source_Vector>();
+  static Source_Vector getDefault() => _defaultInstance ??= create()..freeze();
+  static Source_Vector _defaultInstance;
+
+  Source_Vector_Source whichSource() => _Source_Vector_SourceByTag[$_whichOneof(0)];
+  void clearSource() => clearField($_whichOneof(0));
+
+  $core.String get id => $_getS(0, '');
+  set id($core.String v) { $_setString(0, v); }
+  $core.bool hasId() => $_has(0);
+  void clearId() => clearField(1);
+
+  $core.String get attribution => $_getS(1, '');
+  set attribution($core.String v) { $_setString(1, v); }
+  $core.bool hasAttribution() => $_has(1);
+  void clearAttribution() => clearField(2);
+
+  $core.String get uri => $_getS(2, '');
+  set uri($core.String v) { $_setString(2, v); }
+  $core.bool hasUri() => $_has(2);
+  void clearUri() => clearField(3);
+
+  Source_TileSet get tileSet => $_getN(3);
+  set tileSet(Source_TileSet v) { setField(4, v); }
+  $core.bool hasTileSet() => $_has(3);
+  void clearTileSet() => clearField(4);
+}
+
+class Source_Unknown extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Unknown', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+    ..aOS(1, 'id')
+    ..aOS(2, 'attribution')
+    ..hasRequiredFields = false
+  ;
+
+  Source_Unknown._() : super();
+  factory Source_Unknown() => create();
+  factory Source_Unknown.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source_Unknown.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Source_Unknown clone() => Source_Unknown()..mergeFromMessage(this);
+  Source_Unknown copyWith(void Function(Source_Unknown) updates) => super.copyWith((message) => updates(message as Source_Unknown));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Source_Unknown create() => Source_Unknown._();
+  Source_Unknown createEmptyInstance() => create();
+  static $pb.PbList<Source_Unknown> createRepeated() => $pb.PbList<Source_Unknown>();
+  static Source_Unknown getDefault() => _defaultInstance ??= create()..freeze();
+  static Source_Unknown _defaultInstance;
+
+  $core.String get id => $_getS(0, '');
+  set id($core.String v) { $_setString(0, v); }
+  $core.bool hasId() => $_has(0);
+  void clearId() => clearField(1);
+
+  $core.String get attribution => $_getS(1, '');
+  set attribution($core.String v) { $_setString(1, v); }
+  $core.bool hasAttribution() => $_has(1);
+  void clearAttribution() => clearField(2);
+}
+
+class Source_TileSet extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.TileSet', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+    ..aOS(1, 'tileJson')
+    ..aOS(2, 'name')
+    ..aOS(3, 'description')
+    ..aOS(4, 'version')
+    ..aOS(5, 'attribution')
+    ..aOS(6, 'template')
+    ..aOS(7, 'legend')
+    ..aOS(8, 'scheme')
+    ..pPS(9, 'tiles')
+    ..pPS(10, 'grids')
+    ..pPS(11, 'data')
+    ..a<$core.double>(12, 'minZoom', $pb.PbFieldType.OF)
+    ..a<$core.double>(13, 'maxZoom', $pb.PbFieldType.OF)
+    ..p<$core.double>(14, 'bounds', $pb.PbFieldType.PF)
+    ..p<$core.double>(15, 'center', $pb.PbFieldType.PF)
+    ..aOS(16, 'encoding')
+    ..hasRequiredFields = false
+  ;
+
+  Source_TileSet._() : super();
+  factory Source_TileSet() => create();
+  factory Source_TileSet.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source_TileSet.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Source_TileSet clone() => Source_TileSet()..mergeFromMessage(this);
+  Source_TileSet copyWith(void Function(Source_TileSet) updates) => super.copyWith((message) => updates(message as Source_TileSet));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Source_TileSet create() => Source_TileSet._();
+  Source_TileSet createEmptyInstance() => create();
+  static $pb.PbList<Source_TileSet> createRepeated() => $pb.PbList<Source_TileSet>();
+  static Source_TileSet getDefault() => _defaultInstance ??= create()..freeze();
+  static Source_TileSet _defaultInstance;
+
+  $core.String get tileJson => $_getS(0, '');
+  set tileJson($core.String v) { $_setString(0, v); }
+  $core.bool hasTileJson() => $_has(0);
+  void clearTileJson() => clearField(1);
+
+  $core.String get name => $_getS(1, '');
+  set name($core.String v) { $_setString(1, v); }
+  $core.bool hasName() => $_has(1);
+  void clearName() => clearField(2);
+
+  $core.String get description => $_getS(2, '');
+  set description($core.String v) { $_setString(2, v); }
+  $core.bool hasDescription() => $_has(2);
+  void clearDescription() => clearField(3);
+
+  $core.String get version => $_getS(3, '');
+  set version($core.String v) { $_setString(3, v); }
+  $core.bool hasVersion() => $_has(3);
+  void clearVersion() => clearField(4);
+
+  $core.String get attribution => $_getS(4, '');
+  set attribution($core.String v) { $_setString(4, v); }
+  $core.bool hasAttribution() => $_has(4);
+  void clearAttribution() => clearField(5);
+
+  $core.String get template => $_getS(5, '');
+  set template($core.String v) { $_setString(5, v); }
+  $core.bool hasTemplate() => $_has(5);
+  void clearTemplate() => clearField(6);
+
+  $core.String get legend => $_getS(6, '');
+  set legend($core.String v) { $_setString(6, v); }
+  $core.bool hasLegend() => $_has(6);
+  void clearLegend() => clearField(7);
+
+  $core.String get scheme => $_getS(7, '');
+  set scheme($core.String v) { $_setString(7, v); }
+  $core.bool hasScheme() => $_has(7);
+  void clearScheme() => clearField(8);
+
+  $core.List<$core.String> get tiles => $_getList(8);
+
+  $core.List<$core.String> get grids => $_getList(9);
+
+  $core.List<$core.String> get data => $_getList(10);
+
+  $core.double get minZoom => $_getN(11);
+  set minZoom($core.double v) { $_setFloat(11, v); }
+  $core.bool hasMinZoom() => $_has(11);
+  void clearMinZoom() => clearField(12);
+
+  $core.double get maxZoom => $_getN(12);
+  set maxZoom($core.double v) { $_setFloat(12, v); }
+  $core.bool hasMaxZoom() => $_has(12);
+  void clearMaxZoom() => clearField(13);
+
+  $core.List<$core.double> get bounds => $_getList(13);
+
+  $core.List<$core.double> get center => $_getList(14);
+
+  $core.String get encoding => $_getS(15, '');
+  set encoding($core.String v) { $_setString(15, v); }
+  $core.bool hasEncoding() => $_has(15);
+  void clearEncoding() => clearField(16);
+}
+
 enum Source_Type {
   geoJson, 
   image, 
+  vector, 
+  unknown, 
   notSet
 }
 
@@ -219,12 +413,16 @@ class Source extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, Source_Type> _Source_TypeByTag = {
     1 : Source_Type.geoJson,
     2 : Source_Type.image,
+    3 : Source_Type.vector,
+    4 : Source_Type.unknown,
     0 : Source_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
-    ..oo(0, [1, 2])
+    ..oo(0, [1, 2, 3, 4])
     ..a<Source_GeoJson>(1, 'geoJson', $pb.PbFieldType.OM, Source_GeoJson.getDefault, Source_GeoJson.create)
     ..a<Source_Image>(2, 'image', $pb.PbFieldType.OM, Source_Image.getDefault, Source_Image.create)
+    ..a<Source_Vector>(3, 'vector', $pb.PbFieldType.OM, Source_Vector.getDefault, Source_Vector.create)
+    ..a<Source_Unknown>(4, 'unknown', $pb.PbFieldType.OM, Source_Unknown.getDefault, Source_Unknown.create)
     ..hasRequiredFields = false
   ;
 
@@ -254,5 +452,15 @@ class Source extends $pb.GeneratedMessage {
   set image(Source_Image v) { setField(2, v); }
   $core.bool hasImage() => $_has(1);
   void clearImage() => clearField(2);
+
+  Source_Vector get vector => $_getN(2);
+  set vector(Source_Vector v) { setField(3, v); }
+  $core.bool hasVector() => $_has(2);
+  void clearVector() => clearField(3);
+
+  Source_Unknown get unknown => $_getN(3);
+  set unknown(Source_Unknown v) { setField(4, v); }
+  $core.bool hasUnknown() => $_has(3);
+  void clearUnknown() => clearField(4);
 }
 

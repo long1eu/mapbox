@@ -10,9 +10,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:mapbox_gl/src/models/style/layer.dart';
+import 'package:mapbox_gl/src/models/layer/layer.dart';
 import 'package:mapbox_gl/src/models/style/light.dart';
-import 'package:mapbox_gl/src/models/style/source.dart';
+import 'package:mapbox_gl/src/models/source/source.dart';
 import 'package:mapbox_gl/src/models/transition_options.dart';
 
 part 'style.g.dart';

@@ -144,8 +144,8 @@ class CameraUpdate {
       message.operation = operation;
     }
     if (focus != null) {
-      message.focusX = focus.x ?? 0;
-      message.focusY = focus.y ?? 0;
+      message.focusX = (focus.x ?? 0).toInt();
+      message.focusY = (focus.y ?? 0).toInt();
     }
     _proto = message..freeze();
     return _proto;

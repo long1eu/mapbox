@@ -360,6 +360,11 @@ public final class Layers {
           getPatternBytes();
 
       /**
+       * <code>float opacity = 7;</code>
+       */
+      float getOpacity();
+
+      /**
        * <code>.com.tophap.mapbox_gl.proto.TransitionOptions color_transition = 8;</code>
        */
       boolean hasColorTransition();
@@ -477,6 +482,11 @@ public final class Layers {
                 java.lang.String s = input.readStringRequireUtf8();
 
                 pattern_ = s;
+                break;
+              }
+              case 61: {
+
+                opacity_ = input.readFloat();
                 break;
               }
               case 66: {
@@ -666,6 +676,15 @@ public final class Layers {
         }
       }
 
+      public static final int OPACITY_FIELD_NUMBER = 7;
+      private float opacity_;
+      /**
+       * <code>float opacity = 7;</code>
+       */
+      public float getOpacity() {
+        return opacity_;
+      }
+
       public static final int COLOR_TRANSITION_FIELD_NUMBER = 8;
       private com.tophap.mapbox_gl.proto.MapboxUtil.TransitionOptions colorTransition_;
       /**
@@ -761,6 +780,9 @@ public final class Layers {
         if (!getPatternBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 6, pattern_);
         }
+        if (opacity_ != 0F) {
+          output.writeFloat(7, opacity_);
+        }
         if (colorTransition_ != null) {
           output.writeMessage(8, getColorTransition());
         }
@@ -800,6 +822,10 @@ public final class Layers {
         }
         if (!getPatternBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, pattern_);
+        }
+        if (opacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(7, opacity_);
         }
         if (colorTransition_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -845,6 +871,9 @@ public final class Layers {
         }
         if (!getPattern()
             .equals(other.getPattern())) return false;
+        if (java.lang.Float.floatToIntBits(getOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getOpacity())) return false;
         if (hasColorTransition() != other.hasColorTransition()) return false;
         if (hasColorTransition()) {
           if (!getColorTransition()
@@ -888,6 +917,9 @@ public final class Layers {
         }
         hash = (37 * hash) + PATTERN_FIELD_NUMBER;
         hash = (53 * hash) + getPattern().hashCode();
+        hash = (37 * hash) + OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getOpacity());
         if (hasColorTransition()) {
           hash = (37 * hash) + COLOR_TRANSITION_FIELD_NUMBER;
           hash = (53 * hash) + getColorTransition().hashCode();
@@ -1049,6 +1081,8 @@ public final class Layers {
           }
           pattern_ = "";
 
+          opacity_ = 0F;
+
           if (colorTransitionBuilder_ == null) {
             colorTransition_ = null;
           } else {
@@ -1103,6 +1137,7 @@ public final class Layers {
             result.color_ = colorBuilder_.build();
           }
           result.pattern_ = pattern_;
+          result.opacity_ = opacity_;
           if (colorTransitionBuilder_ == null) {
             result.colorTransition_ = colorTransition_;
           } else {
@@ -1185,6 +1220,9 @@ public final class Layers {
           if (!other.getPattern().isEmpty()) {
             pattern_ = other.pattern_;
             onChanged();
+          }
+          if (other.getOpacity() != 0F) {
+            setOpacity(other.getOpacity());
           }
           if (other.hasColorTransition()) {
             mergeColorTransition(other.getColorTransition());
@@ -1553,6 +1591,32 @@ public final class Layers {
   checkByteStringIsUtf8(value);
           
           pattern_ = value;
+          onChanged();
+          return this;
+        }
+
+        private float opacity_ ;
+        /**
+         * <code>float opacity = 7;</code>
+         */
+        public float getOpacity() {
+          return opacity_;
+        }
+        /**
+         * <code>float opacity = 7;</code>
+         */
+        public Builder setOpacity(float value) {
+          
+          opacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float opacity = 7;</code>
+         */
+        public Builder clearOpacity() {
+          
+          opacity_ = 0F;
           onChanged();
           return this;
         }
@@ -2023,6 +2087,11 @@ public final class Layers {
       float getBlur();
 
       /**
+       * <code>float opacity = 9;</code>
+       */
+      float getOpacity();
+
+      /**
        * <code>repeated float translate = 10;</code>
        */
       java.util.List<java.lang.Float> getTranslateList();
@@ -2079,6 +2148,11 @@ public final class Layers {
        * <code>.com.tophap.mapbox_gl.proto.Color stroke_color = 15;</code>
        */
       com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder getStrokeColorOrBuilder();
+
+      /**
+       * <code>float stroke_opacity = 16;</code>
+       */
+      float getStrokeOpacity();
 
       /**
        * <code>.com.tophap.mapbox_gl.proto.TransitionOptions radius_transition = 17;</code>
@@ -2279,10 +2353,15 @@ public final class Layers {
                 blur_ = input.readFloat();
                 break;
               }
+              case 77: {
+
+                opacity_ = input.readFloat();
+                break;
+              }
               case 85: {
-                if (!((mutable_bitField0_ & 0x00000100) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000200) != 0)) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000100;
+                  mutable_bitField0_ |= 0x00000200;
                 }
                 translate_.addFloat(input.readFloat());
                 break;
@@ -2290,9 +2369,9 @@ public final class Layers {
               case 82: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00000100) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000200) != 0) && input.getBytesUntilLimit() > 0) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000100;
+                  mutable_bitField0_ |= 0x00000200;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   translate_.addFloat(input.readFloat());
@@ -2334,6 +2413,11 @@ public final class Layers {
                   strokeColor_ = subBuilder.buildPartial();
                 }
 
+                break;
+              }
+              case 133: {
+
+                strokeOpacity_ = input.readFloat();
                 break;
               }
               case 138: {
@@ -2455,7 +2539,7 @@ public final class Layers {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000100) != 0)) {
+          if (((mutable_bitField0_ & 0x00000200) != 0)) {
             translate_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -2610,6 +2694,15 @@ public final class Layers {
         return blur_;
       }
 
+      public static final int OPACITY_FIELD_NUMBER = 9;
+      private float opacity_;
+      /**
+       * <code>float opacity = 9;</code>
+       */
+      public float getOpacity() {
+        return opacity_;
+      }
+
       public static final int TRANSLATE_FIELD_NUMBER = 10;
       private com.google.protobuf.Internal.FloatList translate_;
       /**
@@ -2712,6 +2805,15 @@ public final class Layers {
        */
       public com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder getStrokeColorOrBuilder() {
         return getStrokeColor();
+      }
+
+      public static final int STROKE_OPACITY_FIELD_NUMBER = 16;
+      private float strokeOpacity_;
+      /**
+       * <code>float stroke_opacity = 16;</code>
+       */
+      public float getStrokeOpacity() {
+        return strokeOpacity_;
       }
 
       public static final int RADIUS_TRANSITION_FIELD_NUMBER = 17;
@@ -2921,6 +3023,9 @@ public final class Layers {
         if (blur_ != 0F) {
           output.writeFloat(8, blur_);
         }
+        if (opacity_ != 0F) {
+          output.writeFloat(9, opacity_);
+        }
         if (getTranslateList().size() > 0) {
           output.writeUInt32NoTag(82);
           output.writeUInt32NoTag(translateMemoizedSerializedSize);
@@ -2942,6 +3047,9 @@ public final class Layers {
         }
         if (strokeColor_ != null) {
           output.writeMessage(15, getStrokeColor());
+        }
+        if (strokeOpacity_ != 0F) {
+          output.writeFloat(16, strokeOpacity_);
         }
         if (radiusTransition_ != null) {
           output.writeMessage(17, getRadiusTransition());
@@ -3006,6 +3114,10 @@ public final class Layers {
           size += com.google.protobuf.CodedOutputStream
             .computeFloatSize(8, blur_);
         }
+        if (opacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(9, opacity_);
+        }
         {
           int dataSize = 0;
           dataSize = 4 * getTranslateList().size();
@@ -3036,6 +3148,10 @@ public final class Layers {
         if (strokeColor_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(15, getStrokeColor());
+        }
+        if (strokeOpacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(16, strokeOpacity_);
         }
         if (radiusTransition_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -3107,6 +3223,9 @@ public final class Layers {
         if (java.lang.Float.floatToIntBits(getBlur())
             != java.lang.Float.floatToIntBits(
                 other.getBlur())) return false;
+        if (java.lang.Float.floatToIntBits(getOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getOpacity())) return false;
         if (!getTranslateList()
             .equals(other.getTranslateList())) return false;
         if (translateAnchor_ != other.translateAnchor_) return false;
@@ -3120,6 +3239,9 @@ public final class Layers {
           if (!getStrokeColor()
               .equals(other.getStrokeColor())) return false;
         }
+        if (java.lang.Float.floatToIntBits(getStrokeOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getStrokeOpacity())) return false;
         if (hasRadiusTransition() != other.hasRadiusTransition()) return false;
         if (hasRadiusTransition()) {
           if (!getRadiusTransition()
@@ -3194,6 +3316,9 @@ public final class Layers {
         hash = (37 * hash) + BLUR_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getBlur());
+        hash = (37 * hash) + OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getOpacity());
         if (getTranslateCount() > 0) {
           hash = (37 * hash) + TRANSLATE_FIELD_NUMBER;
           hash = (53 * hash) + getTranslateList().hashCode();
@@ -3211,6 +3336,9 @@ public final class Layers {
           hash = (37 * hash) + STROKE_COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getStrokeColor().hashCode();
         }
+        hash = (37 * hash) + STROKE_OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getStrokeOpacity());
         if (hasRadiusTransition()) {
           hash = (37 * hash) + RADIUS_TRANSITION_FIELD_NUMBER;
           hash = (53 * hash) + getRadiusTransition().hashCode();
@@ -3396,8 +3524,10 @@ public final class Layers {
           }
           blur_ = 0F;
 
+          opacity_ = 0F;
+
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
           translateAnchor_ = 0;
 
           pitchScale_ = 0;
@@ -3412,6 +3542,8 @@ public final class Layers {
             strokeColor_ = null;
             strokeColorBuilder_ = null;
           }
+          strokeOpacity_ = 0F;
+
           if (radiusTransitionBuilder_ == null) {
             radiusTransition_ = null;
           } else {
@@ -3500,9 +3632,10 @@ public final class Layers {
             result.color_ = colorBuilder_.build();
           }
           result.blur_ = blur_;
-          if (((bitField0_ & 0x00000100) != 0)) {
+          result.opacity_ = opacity_;
+          if (((bitField0_ & 0x00000200) != 0)) {
             translate_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.translate_ = translate_;
           result.translateAnchor_ = translateAnchor_;
@@ -3514,6 +3647,7 @@ public final class Layers {
           } else {
             result.strokeColor_ = strokeColorBuilder_.build();
           }
+          result.strokeOpacity_ = strokeOpacity_;
           if (radiusTransitionBuilder_ == null) {
             result.radiusTransition_ = radiusTransition_;
           } else {
@@ -3629,10 +3763,13 @@ public final class Layers {
           if (other.getBlur() != 0F) {
             setBlur(other.getBlur());
           }
+          if (other.getOpacity() != 0F) {
+            setOpacity(other.getOpacity());
+          }
           if (!other.translate_.isEmpty()) {
             if (translate_.isEmpty()) {
               translate_ = other.translate_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureTranslateIsMutable();
               translate_.addAll(other.translate_);
@@ -3653,6 +3790,9 @@ public final class Layers {
           }
           if (other.hasStrokeColor()) {
             mergeStrokeColor(other.getStrokeColor());
+          }
+          if (other.getStrokeOpacity() != 0F) {
+            setStrokeOpacity(other.getStrokeOpacity());
           }
           if (other.hasRadiusTransition()) {
             mergeRadiusTransition(other.getRadiusTransition());
@@ -4093,11 +4233,37 @@ public final class Layers {
           return this;
         }
 
+        private float opacity_ ;
+        /**
+         * <code>float opacity = 9;</code>
+         */
+        public float getOpacity() {
+          return opacity_;
+        }
+        /**
+         * <code>float opacity = 9;</code>
+         */
+        public Builder setOpacity(float value) {
+          
+          opacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float opacity = 9;</code>
+         */
+        public Builder clearOpacity() {
+          
+          opacity_ = 0F;
+          onChanged();
+          return this;
+        }
+
         private com.google.protobuf.Internal.FloatList translate_ = emptyFloatList();
         private void ensureTranslateIsMutable() {
-          if (!((bitField0_ & 0x00000100) != 0)) {
+          if (!((bitField0_ & 0x00000200) != 0)) {
             translate_ = mutableCopy(translate_);
-            bitField0_ |= 0x00000100;
+            bitField0_ |= 0x00000200;
            }
         }
         /**
@@ -4105,7 +4271,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getTranslateList() {
-          return ((bitField0_ & 0x00000100) != 0) ?
+          return ((bitField0_ & 0x00000200) != 0) ?
                    java.util.Collections.unmodifiableList(translate_) : translate_;
         }
         /**
@@ -4155,7 +4321,7 @@ public final class Layers {
          */
         public Builder clearTranslate() {
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
           return this;
         }
@@ -4436,6 +4602,32 @@ public final class Layers {
             strokeColor_ = null;
           }
           return strokeColorBuilder_;
+        }
+
+        private float strokeOpacity_ ;
+        /**
+         * <code>float stroke_opacity = 16;</code>
+         */
+        public float getStrokeOpacity() {
+          return strokeOpacity_;
+        }
+        /**
+         * <code>float stroke_opacity = 16;</code>
+         */
+        public Builder setStrokeOpacity(float value) {
+          
+          strokeOpacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float stroke_opacity = 16;</code>
+         */
+        public Builder clearStrokeOpacity() {
+          
+          strokeOpacity_ = 0F;
+          onChanged();
+          return this;
         }
 
         private com.tophap.mapbox_gl.proto.MapboxUtil.TransitionOptions radiusTransition_;
@@ -5466,6 +5658,11 @@ public final class Layers {
       float getMaxZoom();
 
       /**
+       * <code>float opacity = 6;</code>
+       */
+      float getOpacity();
+
+      /**
        * <code>.com.tophap.mapbox_gl.proto.Color color = 7;</code>
        */
       boolean hasColor();
@@ -5674,6 +5871,11 @@ public final class Layers {
                 maxZoom_ = input.readFloat();
                 break;
               }
+              case 53: {
+
+                opacity_ = input.readFloat();
+                break;
+              }
               case 58: {
                 com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder subBuilder = null;
                 if (color_ != null) {
@@ -5688,9 +5890,9 @@ public final class Layers {
                 break;
               }
               case 69: {
-                if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000080) != 0)) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000040;
+                  mutable_bitField0_ |= 0x00000080;
                 }
                 translate_.addFloat(input.readFloat());
                 break;
@@ -5698,9 +5900,9 @@ public final class Layers {
               case 66: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00000040) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000080) != 0) && input.getBytesUntilLimit() > 0) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000040;
+                  mutable_bitField0_ |= 0x00000080;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   translate_.addFloat(input.readFloat());
@@ -5828,7 +6030,7 @@ public final class Layers {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000040) != 0)) {
+          if (((mutable_bitField0_ & 0x00000080) != 0)) {
             translate_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -5942,6 +6144,15 @@ public final class Layers {
        */
       public float getMaxZoom() {
         return maxZoom_;
+      }
+
+      public static final int OPACITY_FIELD_NUMBER = 6;
+      private float opacity_;
+      /**
+       * <code>float opacity = 6;</code>
+       */
+      public float getOpacity() {
+        return opacity_;
       }
 
       public static final int COLOR_FIELD_NUMBER = 7;
@@ -6222,6 +6433,9 @@ public final class Layers {
         if (maxZoom_ != 0F) {
           output.writeFloat(5, maxZoom_);
         }
+        if (opacity_ != 0F) {
+          output.writeFloat(6, opacity_);
+        }
         if (color_ != null) {
           output.writeMessage(7, getColor());
         }
@@ -6291,6 +6505,10 @@ public final class Layers {
         if (maxZoom_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
             .computeFloatSize(5, maxZoom_);
+        }
+        if (opacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(6, opacity_);
         }
         if (color_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -6377,6 +6595,9 @@ public final class Layers {
         if (java.lang.Float.floatToIntBits(getMaxZoom())
             != java.lang.Float.floatToIntBits(
                 other.getMaxZoom())) return false;
+        if (java.lang.Float.floatToIntBits(getOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getOpacity())) return false;
         if (hasColor() != other.hasColor()) return false;
         if (hasColor()) {
           if (!getColor()
@@ -6449,6 +6670,9 @@ public final class Layers {
         hash = (37 * hash) + MAX_ZOOM_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getMaxZoom());
+        hash = (37 * hash) + OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getOpacity());
         if (hasColor()) {
           hash = (37 * hash) + COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getColor().hashCode();
@@ -6637,6 +6861,8 @@ public final class Layers {
 
           maxZoom_ = 0F;
 
+          opacity_ = 0F;
+
           if (colorBuilder_ == null) {
             color_ = null;
           } else {
@@ -6644,7 +6870,7 @@ public final class Layers {
             colorBuilder_ = null;
           }
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
           translateAnchor_ = 0;
 
           pattern_ = "";
@@ -6724,14 +6950,15 @@ public final class Layers {
           result.visible_ = visible_;
           result.minZoom_ = minZoom_;
           result.maxZoom_ = maxZoom_;
+          result.opacity_ = opacity_;
           if (colorBuilder_ == null) {
             result.color_ = color_;
           } else {
             result.color_ = colorBuilder_.build();
           }
-          if (((bitField0_ & 0x00000040) != 0)) {
+          if (((bitField0_ & 0x00000080) != 0)) {
             translate_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
           }
           result.translate_ = translate_;
           result.translateAnchor_ = translateAnchor_;
@@ -6835,13 +7062,16 @@ public final class Layers {
           if (other.getMaxZoom() != 0F) {
             setMaxZoom(other.getMaxZoom());
           }
+          if (other.getOpacity() != 0F) {
+            setOpacity(other.getOpacity());
+          }
           if (other.hasColor()) {
             mergeColor(other.getColor());
           }
           if (!other.translate_.isEmpty()) {
             if (translate_.isEmpty()) {
               translate_ = other.translate_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
             } else {
               ensureTranslateIsMutable();
               translate_.addAll(other.translate_);
@@ -7128,6 +7358,32 @@ public final class Layers {
           return this;
         }
 
+        private float opacity_ ;
+        /**
+         * <code>float opacity = 6;</code>
+         */
+        public float getOpacity() {
+          return opacity_;
+        }
+        /**
+         * <code>float opacity = 6;</code>
+         */
+        public Builder setOpacity(float value) {
+          
+          opacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float opacity = 6;</code>
+         */
+        public Builder clearOpacity() {
+          
+          opacity_ = 0F;
+          onChanged();
+          return this;
+        }
+
         private com.tophap.mapbox_gl.proto.MapboxUtil.Color color_;
         private com.google.protobuf.SingleFieldBuilderV3<
             com.tophap.mapbox_gl.proto.MapboxUtil.Color, com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder, com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder> colorBuilder_;
@@ -7247,9 +7503,9 @@ public final class Layers {
 
         private com.google.protobuf.Internal.FloatList translate_ = emptyFloatList();
         private void ensureTranslateIsMutable() {
-          if (!((bitField0_ & 0x00000040) != 0)) {
+          if (!((bitField0_ & 0x00000080) != 0)) {
             translate_ = mutableCopy(translate_);
-            bitField0_ |= 0x00000040;
+            bitField0_ |= 0x00000080;
            }
         }
         /**
@@ -7257,7 +7513,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getTranslateList() {
-          return ((bitField0_ & 0x00000040) != 0) ?
+          return ((bitField0_ & 0x00000080) != 0) ?
                    java.util.Collections.unmodifiableList(translate_) : translate_;
         }
         /**
@@ -7307,7 +7563,7 @@ public final class Layers {
          */
         public Builder clearTranslate() {
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
           return this;
         }
@@ -8303,6 +8559,11 @@ public final class Layers {
       boolean getAntialias();
 
       /**
+       * <code>float opacity = 7;</code>
+       */
+      float getOpacity();
+
+      /**
        * <code>.com.tophap.mapbox_gl.proto.Color color = 8;</code>
        */
       boolean hasColor();
@@ -8501,6 +8762,11 @@ public final class Layers {
                 antialias_ = input.readBool();
                 break;
               }
+              case 61: {
+
+                opacity_ = input.readFloat();
+                break;
+              }
               case 66: {
                 com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder subBuilder = null;
                 if (color_ != null) {
@@ -8528,9 +8794,9 @@ public final class Layers {
                 break;
               }
               case 85: {
-                if (!((mutable_bitField0_ & 0x00000100) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000200) != 0)) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000100;
+                  mutable_bitField0_ |= 0x00000200;
                 }
                 translate_.addFloat(input.readFloat());
                 break;
@@ -8538,9 +8804,9 @@ public final class Layers {
               case 82: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00000100) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000200) != 0) && input.getBytesUntilLimit() > 0) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000100;
+                  mutable_bitField0_ |= 0x00000200;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   translate_.addFloat(input.readFloat());
@@ -8640,7 +8906,7 @@ public final class Layers {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000100) != 0)) {
+          if (((mutable_bitField0_ & 0x00000200) != 0)) {
             translate_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -8763,6 +9029,15 @@ public final class Layers {
        */
       public boolean getAntialias() {
         return antialias_;
+      }
+
+      public static final int OPACITY_FIELD_NUMBER = 7;
+      private float opacity_;
+      /**
+       * <code>float opacity = 7;</code>
+       */
+      public float getOpacity() {
+        return opacity_;
       }
 
       public static final int COLOR_FIELD_NUMBER = 8;
@@ -9019,6 +9294,9 @@ public final class Layers {
         if (antialias_ != false) {
           output.writeBool(6, antialias_);
         }
+        if (opacity_ != 0F) {
+          output.writeFloat(7, opacity_);
+        }
         if (color_ != null) {
           output.writeMessage(8, getColor());
         }
@@ -9083,6 +9361,10 @@ public final class Layers {
         if (antialias_ != false) {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(6, antialias_);
+        }
+        if (opacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(7, opacity_);
         }
         if (color_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -9159,6 +9441,9 @@ public final class Layers {
                 other.getMaxZoom())) return false;
         if (getAntialias()
             != other.getAntialias()) return false;
+        if (java.lang.Float.floatToIntBits(getOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getOpacity())) return false;
         if (hasColor() != other.hasColor()) return false;
         if (hasColor()) {
           if (!getColor()
@@ -9226,6 +9511,9 @@ public final class Layers {
         hash = (37 * hash) + ANTIALIAS_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getAntialias());
+        hash = (37 * hash) + OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getOpacity());
         if (hasColor()) {
           hash = (37 * hash) + COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getColor().hashCode();
@@ -9407,6 +9695,8 @@ public final class Layers {
 
           antialias_ = false;
 
+          opacity_ = 0F;
+
           if (colorBuilder_ == null) {
             color_ = null;
           } else {
@@ -9420,7 +9710,7 @@ public final class Layers {
             outlineColorBuilder_ = null;
           }
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
           translateAnchor_ = 0;
 
           pattern_ = "";
@@ -9489,6 +9779,7 @@ public final class Layers {
           result.minZoom_ = minZoom_;
           result.maxZoom_ = maxZoom_;
           result.antialias_ = antialias_;
+          result.opacity_ = opacity_;
           if (colorBuilder_ == null) {
             result.color_ = color_;
           } else {
@@ -9499,9 +9790,9 @@ public final class Layers {
           } else {
             result.outlineColor_ = outlineColorBuilder_.build();
           }
-          if (((bitField0_ & 0x00000100) != 0)) {
+          if (((bitField0_ & 0x00000200) != 0)) {
             translate_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.translate_ = translate_;
           result.translateAnchor_ = translateAnchor_;
@@ -9600,6 +9891,9 @@ public final class Layers {
           if (other.getAntialias() != false) {
             setAntialias(other.getAntialias());
           }
+          if (other.getOpacity() != 0F) {
+            setOpacity(other.getOpacity());
+          }
           if (other.hasColor()) {
             mergeColor(other.getColor());
           }
@@ -9609,7 +9903,7 @@ public final class Layers {
           if (!other.translate_.isEmpty()) {
             if (translate_.isEmpty()) {
               translate_ = other.translate_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureTranslateIsMutable();
               translate_.addAll(other.translate_);
@@ -9910,6 +10204,32 @@ public final class Layers {
           return this;
         }
 
+        private float opacity_ ;
+        /**
+         * <code>float opacity = 7;</code>
+         */
+        public float getOpacity() {
+          return opacity_;
+        }
+        /**
+         * <code>float opacity = 7;</code>
+         */
+        public Builder setOpacity(float value) {
+          
+          opacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float opacity = 7;</code>
+         */
+        public Builder clearOpacity() {
+          
+          opacity_ = 0F;
+          onChanged();
+          return this;
+        }
+
         private com.tophap.mapbox_gl.proto.MapboxUtil.Color color_;
         private com.google.protobuf.SingleFieldBuilderV3<
             com.tophap.mapbox_gl.proto.MapboxUtil.Color, com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder, com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder> colorBuilder_;
@@ -10146,9 +10466,9 @@ public final class Layers {
 
         private com.google.protobuf.Internal.FloatList translate_ = emptyFloatList();
         private void ensureTranslateIsMutable() {
-          if (!((bitField0_ & 0x00000100) != 0)) {
+          if (!((bitField0_ & 0x00000200) != 0)) {
             translate_ = mutableCopy(translate_);
-            bitField0_ |= 0x00000100;
+            bitField0_ |= 0x00000200;
            }
         }
         /**
@@ -10156,7 +10476,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getTranslateList() {
-          return ((bitField0_ & 0x00000100) != 0) ?
+          return ((bitField0_ & 0x00000200) != 0) ?
                    java.util.Collections.unmodifiableList(translate_) : translate_;
         }
         /**
@@ -10206,7 +10526,7 @@ public final class Layers {
          */
         public Builder clearTranslate() {
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
           return this;
         }
@@ -11030,6 +11350,11 @@ public final class Layers {
       com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder getColorOrBuilder();
 
       /**
+       * <code>float opacity = 10;</code>
+       */
+      float getOpacity();
+
+      /**
        * <code>.com.tophap.mapbox_gl.proto.TransitionOptions radius_transition = 11;</code>
        */
       boolean hasRadiusTransition();
@@ -11162,6 +11487,11 @@ public final class Layers {
                   color_ = subBuilder.buildPartial();
                 }
 
+                break;
+              }
+              case 85: {
+
+                opacity_ = input.readFloat();
                 break;
               }
               case 90: {
@@ -11378,6 +11708,15 @@ public final class Layers {
         return getColor();
       }
 
+      public static final int OPACITY_FIELD_NUMBER = 10;
+      private float opacity_;
+      /**
+       * <code>float opacity = 10;</code>
+       */
+      public float getOpacity() {
+        return opacity_;
+      }
+
       public static final int RADIUS_TRANSITION_FIELD_NUMBER = 11;
       private com.tophap.mapbox_gl.proto.MapboxUtil.TransitionOptions radiusTransition_;
       /**
@@ -11482,6 +11821,9 @@ public final class Layers {
         if (color_ != null) {
           output.writeMessage(9, getColor());
         }
+        if (opacity_ != 0F) {
+          output.writeFloat(10, opacity_);
+        }
         if (radiusTransition_ != null) {
           output.writeMessage(11, getRadiusTransition());
         }
@@ -11533,6 +11875,10 @@ public final class Layers {
         if (color_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(9, getColor());
+        }
+        if (opacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(10, opacity_);
         }
         if (radiusTransition_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -11587,6 +11933,9 @@ public final class Layers {
           if (!getColor()
               .equals(other.getColor())) return false;
         }
+        if (java.lang.Float.floatToIntBits(getOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getOpacity())) return false;
         if (hasRadiusTransition() != other.hasRadiusTransition()) return false;
         if (hasRadiusTransition()) {
           if (!getRadiusTransition()
@@ -11639,6 +11988,9 @@ public final class Layers {
           hash = (37 * hash) + COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getColor().hashCode();
         }
+        hash = (37 * hash) + OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getOpacity());
         if (hasRadiusTransition()) {
           hash = (37 * hash) + RADIUS_TRANSITION_FIELD_NUMBER;
           hash = (53 * hash) + getRadiusTransition().hashCode();
@@ -11806,6 +12158,8 @@ public final class Layers {
             color_ = null;
             colorBuilder_ = null;
           }
+          opacity_ = 0F;
+
           if (radiusTransitionBuilder_ == null) {
             radiusTransition_ = null;
           } else {
@@ -11863,6 +12217,7 @@ public final class Layers {
           } else {
             result.color_ = colorBuilder_.build();
           }
+          result.opacity_ = opacity_;
           if (radiusTransitionBuilder_ == null) {
             result.radiusTransition_ = radiusTransition_;
           } else {
@@ -11954,6 +12309,9 @@ public final class Layers {
           }
           if (other.hasColor()) {
             mergeColor(other.getColor());
+          }
+          if (other.getOpacity() != 0F) {
+            setOpacity(other.getOpacity());
           }
           if (other.hasRadiusTransition()) {
             mergeRadiusTransition(other.getRadiusTransition());
@@ -12402,6 +12760,32 @@ public final class Layers {
             color_ = null;
           }
           return colorBuilder_;
+        }
+
+        private float opacity_ ;
+        /**
+         * <code>float opacity = 10;</code>
+         */
+        public float getOpacity() {
+          return opacity_;
+        }
+        /**
+         * <code>float opacity = 10;</code>
+         */
+        public Builder setOpacity(float value) {
+          
+          opacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float opacity = 10;</code>
+         */
+        public Builder clearOpacity() {
+          
+          opacity_ = 0F;
+          onChanged();
+          return this;
         }
 
         private com.tophap.mapbox_gl.proto.MapboxUtil.TransitionOptions radiusTransition_;
@@ -15332,6 +15716,11 @@ public final class Layers {
       float getRoundLimit();
 
       /**
+       * <code>float opacity = 10;</code>
+       */
+      float getOpacity();
+
+      /**
        * <code>.com.tophap.mapbox_gl.proto.Color color = 11;</code>
        */
       boolean hasColor();
@@ -15627,6 +16016,11 @@ public final class Layers {
                 roundLimit_ = input.readFloat();
                 break;
               }
+              case 85: {
+
+                opacity_ = input.readFloat();
+                break;
+              }
               case 90: {
                 com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder subBuilder = null;
                 if (color_ != null) {
@@ -15641,9 +16035,9 @@ public final class Layers {
                 break;
               }
               case 101: {
-                if (!((mutable_bitField0_ & 0x00000400) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000800) != 0)) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000400;
+                  mutable_bitField0_ |= 0x00000800;
                 }
                 translate_.addFloat(input.readFloat());
                 break;
@@ -15651,9 +16045,9 @@ public final class Layers {
               case 98: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00000400) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000800) != 0) && input.getBytesUntilLimit() > 0) {
                   translate_ = newFloatList();
-                  mutable_bitField0_ |= 0x00000400;
+                  mutable_bitField0_ |= 0x00000800;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   translate_.addFloat(input.readFloat());
@@ -15688,9 +16082,9 @@ public final class Layers {
                 break;
               }
               case 149: {
-                if (!((mutable_bitField0_ & 0x00010000) != 0)) {
+                if (!((mutable_bitField0_ & 0x00020000) != 0)) {
                   dasharray_ = newFloatList();
-                  mutable_bitField0_ |= 0x00010000;
+                  mutable_bitField0_ |= 0x00020000;
                 }
                 dasharray_.addFloat(input.readFloat());
                 break;
@@ -15698,9 +16092,9 @@ public final class Layers {
               case 146: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00010000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00020000) != 0) && input.getBytesUntilLimit() > 0) {
                   dasharray_ = newFloatList();
-                  mutable_bitField0_ |= 0x00010000;
+                  mutable_bitField0_ |= 0x00020000;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   dasharray_.addFloat(input.readFloat());
@@ -15851,10 +16245,10 @@ public final class Layers {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000400) != 0)) {
+          if (((mutable_bitField0_ & 0x00000800) != 0)) {
             translate_.makeImmutable(); // C
           }
-          if (((mutable_bitField0_ & 0x00010000) != 0)) {
+          if (((mutable_bitField0_ & 0x00020000) != 0)) {
             dasharray_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -16234,6 +16628,15 @@ public final class Layers {
        */
       public float getRoundLimit() {
         return roundLimit_;
+      }
+
+      public static final int OPACITY_FIELD_NUMBER = 10;
+      private float opacity_;
+      /**
+       * <code>float opacity = 10;</code>
+       */
+      public float getOpacity() {
+        return opacity_;
       }
 
       public static final int COLOR_FIELD_NUMBER = 11;
@@ -16630,6 +17033,9 @@ public final class Layers {
         if (roundLimit_ != 0F) {
           output.writeFloat(9, roundLimit_);
         }
+        if (opacity_ != 0F) {
+          output.writeFloat(10, opacity_);
+        }
         if (color_ != null) {
           output.writeMessage(11, getColor());
         }
@@ -16737,6 +17143,10 @@ public final class Layers {
         if (roundLimit_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
             .computeFloatSize(9, roundLimit_);
+        }
+        if (opacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(10, opacity_);
         }
         if (color_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -16862,6 +17272,9 @@ public final class Layers {
         if (java.lang.Float.floatToIntBits(getRoundLimit())
             != java.lang.Float.floatToIntBits(
                 other.getRoundLimit())) return false;
+        if (java.lang.Float.floatToIntBits(getOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getOpacity())) return false;
         if (hasColor() != other.hasColor()) return false;
         if (hasColor()) {
           if (!getColor()
@@ -16967,6 +17380,9 @@ public final class Layers {
         hash = (37 * hash) + ROUND_LIMIT_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getRoundLimit());
+        hash = (37 * hash) + OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getOpacity());
         if (hasColor()) {
           hash = (37 * hash) + COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getColor().hashCode();
@@ -17184,6 +17600,8 @@ public final class Layers {
 
           roundLimit_ = 0F;
 
+          opacity_ = 0F;
+
           if (colorBuilder_ == null) {
             color_ = null;
           } else {
@@ -17191,7 +17609,7 @@ public final class Layers {
             colorBuilder_ = null;
           }
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000800);
           translateAnchor_ = 0;
 
           width_ = 0F;
@@ -17203,7 +17621,7 @@ public final class Layers {
           blur_ = 0F;
 
           dasharray_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00010000);
+          bitField0_ = (bitField0_ & ~0x00020000);
           pattern_ = "";
 
           gradient_ = 0;
@@ -17299,14 +17717,15 @@ public final class Layers {
           result.join_ = join_;
           result.miterLimit_ = miterLimit_;
           result.roundLimit_ = roundLimit_;
+          result.opacity_ = opacity_;
           if (colorBuilder_ == null) {
             result.color_ = color_;
           } else {
             result.color_ = colorBuilder_.build();
           }
-          if (((bitField0_ & 0x00000400) != 0)) {
+          if (((bitField0_ & 0x00000800) != 0)) {
             translate_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00000400);
+            bitField0_ = (bitField0_ & ~0x00000800);
           }
           result.translate_ = translate_;
           result.translateAnchor_ = translateAnchor_;
@@ -17314,9 +17733,9 @@ public final class Layers {
           result.gapWidth_ = gapWidth_;
           result.offset_ = offset_;
           result.blur_ = blur_;
-          if (((bitField0_ & 0x00010000) != 0)) {
+          if (((bitField0_ & 0x00020000) != 0)) {
             dasharray_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00010000);
+            bitField0_ = (bitField0_ & ~0x00020000);
           }
           result.dasharray_ = dasharray_;
           result.pattern_ = pattern_;
@@ -17444,13 +17863,16 @@ public final class Layers {
           if (other.getRoundLimit() != 0F) {
             setRoundLimit(other.getRoundLimit());
           }
+          if (other.getOpacity() != 0F) {
+            setOpacity(other.getOpacity());
+          }
           if (other.hasColor()) {
             mergeColor(other.getColor());
           }
           if (!other.translate_.isEmpty()) {
             if (translate_.isEmpty()) {
               translate_ = other.translate_;
-              bitField0_ = (bitField0_ & ~0x00000400);
+              bitField0_ = (bitField0_ & ~0x00000800);
             } else {
               ensureTranslateIsMutable();
               translate_.addAll(other.translate_);
@@ -17475,7 +17897,7 @@ public final class Layers {
           if (!other.dasharray_.isEmpty()) {
             if (dasharray_.isEmpty()) {
               dasharray_ = other.dasharray_;
-              bitField0_ = (bitField0_ & ~0x00010000);
+              bitField0_ = (bitField0_ & ~0x00020000);
             } else {
               ensureDasharrayIsMutable();
               dasharray_.addAll(other.dasharray_);
@@ -17904,6 +18326,32 @@ public final class Layers {
           return this;
         }
 
+        private float opacity_ ;
+        /**
+         * <code>float opacity = 10;</code>
+         */
+        public float getOpacity() {
+          return opacity_;
+        }
+        /**
+         * <code>float opacity = 10;</code>
+         */
+        public Builder setOpacity(float value) {
+          
+          opacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float opacity = 10;</code>
+         */
+        public Builder clearOpacity() {
+          
+          opacity_ = 0F;
+          onChanged();
+          return this;
+        }
+
         private com.tophap.mapbox_gl.proto.MapboxUtil.Color color_;
         private com.google.protobuf.SingleFieldBuilderV3<
             com.tophap.mapbox_gl.proto.MapboxUtil.Color, com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder, com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder> colorBuilder_;
@@ -18023,9 +18471,9 @@ public final class Layers {
 
         private com.google.protobuf.Internal.FloatList translate_ = emptyFloatList();
         private void ensureTranslateIsMutable() {
-          if (!((bitField0_ & 0x00000400) != 0)) {
+          if (!((bitField0_ & 0x00000800) != 0)) {
             translate_ = mutableCopy(translate_);
-            bitField0_ |= 0x00000400;
+            bitField0_ |= 0x00000800;
            }
         }
         /**
@@ -18033,7 +18481,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getTranslateList() {
-          return ((bitField0_ & 0x00000400) != 0) ?
+          return ((bitField0_ & 0x00000800) != 0) ?
                    java.util.Collections.unmodifiableList(translate_) : translate_;
         }
         /**
@@ -18083,7 +18531,7 @@ public final class Layers {
          */
         public Builder clearTranslate() {
           translate_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000800);
           onChanged();
           return this;
         }
@@ -18239,9 +18687,9 @@ public final class Layers {
 
         private com.google.protobuf.Internal.FloatList dasharray_ = emptyFloatList();
         private void ensureDasharrayIsMutable() {
-          if (!((bitField0_ & 0x00010000) != 0)) {
+          if (!((bitField0_ & 0x00020000) != 0)) {
             dasharray_ = mutableCopy(dasharray_);
-            bitField0_ |= 0x00010000;
+            bitField0_ |= 0x00020000;
            }
         }
         /**
@@ -18249,7 +18697,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getDasharrayList() {
-          return ((bitField0_ & 0x00010000) != 0) ?
+          return ((bitField0_ & 0x00020000) != 0) ?
                    java.util.Collections.unmodifiableList(dasharray_) : dasharray_;
         }
         /**
@@ -18299,7 +18747,7 @@ public final class Layers {
          */
         public Builder clearDasharray() {
           dasharray_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00010000);
+          bitField0_ = (bitField0_ & ~0x00020000);
           onChanged();
           return this;
         }
@@ -19862,6 +20310,11 @@ public final class Layers {
       boolean getTextOptional();
 
       /**
+       * <code>float icon_opacity = 45;</code>
+       */
+      float getIconOpacity();
+
+      /**
        * <code>.com.tophap.mapbox_gl.proto.Color icon_color = 46;</code>
        */
       boolean hasIconColor();
@@ -19918,6 +20371,11 @@ public final class Layers {
        * <code>.com.tophap.mapbox_gl.proto.TranslateAnchor icon_translate_anchor = 51;</code>
        */
       com.tophap.mapbox_gl.proto.MapboxUtil.TranslateAnchor getIconTranslateAnchor();
+
+      /**
+       * <code>float text_opacity = 52;</code>
+       */
+      float getTextOpacity();
 
       /**
        * <code>.com.tophap.mapbox_gl.proto.Color text_color = 53;</code>
@@ -20506,6 +20964,11 @@ public final class Layers {
                 textOptional_ = input.readBool();
                 break;
               }
+              case 365: {
+
+                iconOpacity_ = input.readFloat();
+                break;
+              }
               case 370: {
                 com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder subBuilder = null;
                 if (iconColor_ != null) {
@@ -20543,9 +21006,9 @@ public final class Layers {
                 break;
               }
               case 405: {
-                if (!((mutable_bitField1_ & 0x00010000) != 0)) {
+                if (!((mutable_bitField1_ & 0x00020000) != 0)) {
                   iconTranslate_ = newFloatList();
-                  mutable_bitField1_ |= 0x00010000;
+                  mutable_bitField1_ |= 0x00020000;
                 }
                 iconTranslate_.addFloat(input.readFloat());
                 break;
@@ -20553,9 +21016,9 @@ public final class Layers {
               case 402: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField1_ & 0x00010000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField1_ & 0x00020000) != 0) && input.getBytesUntilLimit() > 0) {
                   iconTranslate_ = newFloatList();
-                  mutable_bitField1_ |= 0x00010000;
+                  mutable_bitField1_ |= 0x00020000;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   iconTranslate_.addFloat(input.readFloat());
@@ -20567,6 +21030,11 @@ public final class Layers {
                 int rawValue = input.readEnum();
 
                 iconTranslateAnchor_ = rawValue;
+                break;
+              }
+              case 421: {
+
+                textOpacity_ = input.readFloat();
                 break;
               }
               case 426: {
@@ -20606,9 +21074,9 @@ public final class Layers {
                 break;
               }
               case 461: {
-                if (!((mutable_bitField1_ & 0x00400000) != 0)) {
+                if (!((mutable_bitField1_ & 0x01000000) != 0)) {
                   textTranslate_ = newFloatList();
-                  mutable_bitField1_ |= 0x00400000;
+                  mutable_bitField1_ |= 0x01000000;
                 }
                 textTranslate_.addFloat(input.readFloat());
                 break;
@@ -20616,9 +21084,9 @@ public final class Layers {
               case 458: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField1_ & 0x00400000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField1_ & 0x01000000) != 0) && input.getBytesUntilLimit() > 0) {
                   textTranslate_ = newFloatList();
-                  mutable_bitField1_ |= 0x00400000;
+                  mutable_bitField1_ |= 0x01000000;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   textTranslate_.addFloat(input.readFloat());
@@ -20821,10 +21289,10 @@ public final class Layers {
           if (((mutable_bitField1_ & 0x00000100) != 0)) {
             textOffset_.makeImmutable(); // C
           }
-          if (((mutable_bitField1_ & 0x00010000) != 0)) {
+          if (((mutable_bitField1_ & 0x00020000) != 0)) {
             iconTranslate_.makeImmutable(); // C
           }
-          if (((mutable_bitField1_ & 0x00400000) != 0)) {
+          if (((mutable_bitField1_ & 0x01000000) != 0)) {
             textTranslate_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -22190,6 +22658,15 @@ public final class Layers {
         return textOptional_;
       }
 
+      public static final int ICON_OPACITY_FIELD_NUMBER = 45;
+      private float iconOpacity_;
+      /**
+       * <code>float icon_opacity = 45;</code>
+       */
+      public float getIconOpacity() {
+        return iconOpacity_;
+      }
+
       public static final int ICON_COLOR_FIELD_NUMBER = 46;
       private com.tophap.mapbox_gl.proto.MapboxUtil.Color iconColor_;
       /**
@@ -22288,6 +22765,15 @@ public final class Layers {
         @SuppressWarnings("deprecation")
         com.tophap.mapbox_gl.proto.MapboxUtil.TranslateAnchor result = com.tophap.mapbox_gl.proto.MapboxUtil.TranslateAnchor.valueOf(iconTranslateAnchor_);
         return result == null ? com.tophap.mapbox_gl.proto.MapboxUtil.TranslateAnchor.UNRECOGNIZED : result;
+      }
+
+      public static final int TEXT_OPACITY_FIELD_NUMBER = 52;
+      private float textOpacity_;
+      /**
+       * <code>float text_opacity = 52;</code>
+       */
+      public float getTextOpacity() {
+        return textOpacity_;
       }
 
       public static final int TEXT_COLOR_FIELD_NUMBER = 53;
@@ -22805,6 +23291,9 @@ public final class Layers {
         if (textOptional_ != false) {
           output.writeBool(44, textOptional_);
         }
+        if (iconOpacity_ != 0F) {
+          output.writeFloat(45, iconOpacity_);
+        }
         if (iconColor_ != null) {
           output.writeMessage(46, getIconColor());
         }
@@ -22826,6 +23315,9 @@ public final class Layers {
         }
         if (iconTranslateAnchor_ != com.tophap.mapbox_gl.proto.MapboxUtil.TranslateAnchor.MAP.getNumber()) {
           output.writeEnum(51, iconTranslateAnchor_);
+        }
+        if (textOpacity_ != 0F) {
+          output.writeFloat(52, textOpacity_);
         }
         if (textColor_ != null) {
           output.writeMessage(53, getTextColor());
@@ -23100,6 +23592,10 @@ public final class Layers {
           size += com.google.protobuf.CodedOutputStream
             .computeBoolSize(44, textOptional_);
         }
+        if (iconOpacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(45, iconOpacity_);
+        }
         if (iconColor_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(46, getIconColor());
@@ -23130,6 +23626,10 @@ public final class Layers {
         if (iconTranslateAnchor_ != com.tophap.mapbox_gl.proto.MapboxUtil.TranslateAnchor.MAP.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
             .computeEnumSize(51, iconTranslateAnchor_);
+        }
+        if (textOpacity_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(52, textOpacity_);
         }
         if (textColor_ != null) {
           size += com.google.protobuf.CodedOutputStream
@@ -23315,6 +23815,9 @@ public final class Layers {
             != other.getTextIgnorePlacement()) return false;
         if (getTextOptional()
             != other.getTextOptional()) return false;
+        if (java.lang.Float.floatToIntBits(getIconOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getIconOpacity())) return false;
         if (hasIconColor() != other.hasIconColor()) return false;
         if (hasIconColor()) {
           if (!getIconColor()
@@ -23334,6 +23837,9 @@ public final class Layers {
         if (!getIconTranslateList()
             .equals(other.getIconTranslateList())) return false;
         if (iconTranslateAnchor_ != other.iconTranslateAnchor_) return false;
+        if (java.lang.Float.floatToIntBits(getTextOpacity())
+            != java.lang.Float.floatToIntBits(
+                other.getTextOpacity())) return false;
         if (hasTextColor() != other.hasTextColor()) return false;
         if (hasTextColor()) {
           if (!getTextColor()
@@ -23548,6 +24054,9 @@ public final class Layers {
         hash = (37 * hash) + TEXT_OPTIONAL_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getTextOptional());
+        hash = (37 * hash) + ICON_OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getIconOpacity());
         if (hasIconColor()) {
           hash = (37 * hash) + ICON_COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getIconColor().hashCode();
@@ -23568,6 +24077,9 @@ public final class Layers {
         }
         hash = (37 * hash) + ICON_TRANSLATE_ANCHOR_FIELD_NUMBER;
         hash = (53 * hash) + iconTranslateAnchor_;
+        hash = (37 * hash) + TEXT_OPACITY_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getTextOpacity());
         if (hasTextColor()) {
           hash = (37 * hash) + TEXT_COLOR_FIELD_NUMBER;
           hash = (53 * hash) + getTextColor().hashCode();
@@ -23862,6 +24374,8 @@ public final class Layers {
 
           textOptional_ = false;
 
+          iconOpacity_ = 0F;
+
           if (iconColorBuilder_ == null) {
             iconColor_ = null;
           } else {
@@ -23879,8 +24393,10 @@ public final class Layers {
           iconHaloBlur_ = 0F;
 
           iconTranslate_ = emptyFloatList();
-          bitField1_ = (bitField1_ & ~0x00010000);
+          bitField1_ = (bitField1_ & ~0x00020000);
           iconTranslateAnchor_ = 0;
+
+          textOpacity_ = 0F;
 
           if (textColorBuilder_ == null) {
             textColor_ = null;
@@ -23899,7 +24415,7 @@ public final class Layers {
           textHaloBlur_ = 0F;
 
           textTranslate_ = emptyFloatList();
-          bitField1_ = (bitField1_ & ~0x00400000);
+          bitField1_ = (bitField1_ & ~0x01000000);
           textTranslateAnchor_ = 0;
 
           if (iconOpacityTransitionBuilder_ == null) {
@@ -24077,6 +24593,7 @@ public final class Layers {
           result.textAllowOverlap_ = textAllowOverlap_;
           result.textIgnorePlacement_ = textIgnorePlacement_;
           result.textOptional_ = textOptional_;
+          result.iconOpacity_ = iconOpacity_;
           if (iconColorBuilder_ == null) {
             result.iconColor_ = iconColor_;
           } else {
@@ -24089,12 +24606,13 @@ public final class Layers {
           }
           result.iconHaloWidth_ = iconHaloWidth_;
           result.iconHaloBlur_ = iconHaloBlur_;
-          if (((bitField1_ & 0x00010000) != 0)) {
+          if (((bitField1_ & 0x00020000) != 0)) {
             iconTranslate_.makeImmutable();
-            bitField1_ = (bitField1_ & ~0x00010000);
+            bitField1_ = (bitField1_ & ~0x00020000);
           }
           result.iconTranslate_ = iconTranslate_;
           result.iconTranslateAnchor_ = iconTranslateAnchor_;
+          result.textOpacity_ = textOpacity_;
           if (textColorBuilder_ == null) {
             result.textColor_ = textColor_;
           } else {
@@ -24107,9 +24625,9 @@ public final class Layers {
           }
           result.textHaloWidth_ = textHaloWidth_;
           result.textHaloBlur_ = textHaloBlur_;
-          if (((bitField1_ & 0x00400000) != 0)) {
+          if (((bitField1_ & 0x01000000) != 0)) {
             textTranslate_.makeImmutable();
-            bitField1_ = (bitField1_ & ~0x00400000);
+            bitField1_ = (bitField1_ & ~0x01000000);
           }
           result.textTranslate_ = textTranslate_;
           result.textTranslateAnchor_ = textTranslateAnchor_;
@@ -24416,6 +24934,9 @@ public final class Layers {
           if (other.getTextOptional() != false) {
             setTextOptional(other.getTextOptional());
           }
+          if (other.getIconOpacity() != 0F) {
+            setIconOpacity(other.getIconOpacity());
+          }
           if (other.hasIconColor()) {
             mergeIconColor(other.getIconColor());
           }
@@ -24431,7 +24952,7 @@ public final class Layers {
           if (!other.iconTranslate_.isEmpty()) {
             if (iconTranslate_.isEmpty()) {
               iconTranslate_ = other.iconTranslate_;
-              bitField1_ = (bitField1_ & ~0x00010000);
+              bitField1_ = (bitField1_ & ~0x00020000);
             } else {
               ensureIconTranslateIsMutable();
               iconTranslate_.addAll(other.iconTranslate_);
@@ -24440,6 +24961,9 @@ public final class Layers {
           }
           if (other.iconTranslateAnchor_ != 0) {
             setIconTranslateAnchorValue(other.getIconTranslateAnchorValue());
+          }
+          if (other.getTextOpacity() != 0F) {
+            setTextOpacity(other.getTextOpacity());
           }
           if (other.hasTextColor()) {
             mergeTextColor(other.getTextColor());
@@ -24456,7 +24980,7 @@ public final class Layers {
           if (!other.textTranslate_.isEmpty()) {
             if (textTranslate_.isEmpty()) {
               textTranslate_ = other.textTranslate_;
-              bitField1_ = (bitField1_ & ~0x00400000);
+              bitField1_ = (bitField1_ & ~0x01000000);
             } else {
               ensureTextTranslateIsMutable();
               textTranslate_.addAll(other.textTranslate_);
@@ -26513,6 +27037,32 @@ public final class Layers {
           return this;
         }
 
+        private float iconOpacity_ ;
+        /**
+         * <code>float icon_opacity = 45;</code>
+         */
+        public float getIconOpacity() {
+          return iconOpacity_;
+        }
+        /**
+         * <code>float icon_opacity = 45;</code>
+         */
+        public Builder setIconOpacity(float value) {
+          
+          iconOpacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float icon_opacity = 45;</code>
+         */
+        public Builder clearIconOpacity() {
+          
+          iconOpacity_ = 0F;
+          onChanged();
+          return this;
+        }
+
         private com.tophap.mapbox_gl.proto.MapboxUtil.Color iconColor_;
         private com.google.protobuf.SingleFieldBuilderV3<
             com.tophap.mapbox_gl.proto.MapboxUtil.Color, com.tophap.mapbox_gl.proto.MapboxUtil.Color.Builder, com.tophap.mapbox_gl.proto.MapboxUtil.ColorOrBuilder> iconColorBuilder_;
@@ -26801,9 +27351,9 @@ public final class Layers {
 
         private com.google.protobuf.Internal.FloatList iconTranslate_ = emptyFloatList();
         private void ensureIconTranslateIsMutable() {
-          if (!((bitField1_ & 0x00010000) != 0)) {
+          if (!((bitField1_ & 0x00020000) != 0)) {
             iconTranslate_ = mutableCopy(iconTranslate_);
-            bitField1_ |= 0x00010000;
+            bitField1_ |= 0x00020000;
            }
         }
         /**
@@ -26811,7 +27361,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getIconTranslateList() {
-          return ((bitField1_ & 0x00010000) != 0) ?
+          return ((bitField1_ & 0x00020000) != 0) ?
                    java.util.Collections.unmodifiableList(iconTranslate_) : iconTranslate_;
         }
         /**
@@ -26861,7 +27411,7 @@ public final class Layers {
          */
         public Builder clearIconTranslate() {
           iconTranslate_ = emptyFloatList();
-          bitField1_ = (bitField1_ & ~0x00010000);
+          bitField1_ = (bitField1_ & ~0x00020000);
           onChanged();
           return this;
         }
@@ -26907,6 +27457,32 @@ public final class Layers {
         public Builder clearIconTranslateAnchor() {
           
           iconTranslateAnchor_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private float textOpacity_ ;
+        /**
+         * <code>float text_opacity = 52;</code>
+         */
+        public float getTextOpacity() {
+          return textOpacity_;
+        }
+        /**
+         * <code>float text_opacity = 52;</code>
+         */
+        public Builder setTextOpacity(float value) {
+          
+          textOpacity_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float text_opacity = 52;</code>
+         */
+        public Builder clearTextOpacity() {
+          
+          textOpacity_ = 0F;
           onChanged();
           return this;
         }
@@ -27199,9 +27775,9 @@ public final class Layers {
 
         private com.google.protobuf.Internal.FloatList textTranslate_ = emptyFloatList();
         private void ensureTextTranslateIsMutable() {
-          if (!((bitField1_ & 0x00400000) != 0)) {
+          if (!((bitField1_ & 0x01000000) != 0)) {
             textTranslate_ = mutableCopy(textTranslate_);
-            bitField1_ |= 0x00400000;
+            bitField1_ |= 0x01000000;
            }
         }
         /**
@@ -27209,7 +27785,7 @@ public final class Layers {
          */
         public java.util.List<java.lang.Float>
             getTextTranslateList() {
-          return ((bitField1_ & 0x00400000) != 0) ?
+          return ((bitField1_ & 0x01000000) != 0) ?
                    java.util.Collections.unmodifiableList(textTranslate_) : textTranslate_;
         }
         /**
@@ -27259,7 +27835,7 @@ public final class Layers {
          */
         public Builder clearTextTranslate() {
           textTranslate_ = emptyFloatList();
-          bitField1_ = (bitField1_ & ~0x00400000);
+          bitField1_ = (bitField1_ & ~0x01000000);
           onChanged();
           return this;
         }
@@ -30743,7 +31319,7 @@ public final class Layers {
   static {
     java.lang.String[] descriptorData = {
       "\n\014layers.proto\022\032com.tophap.mapbox_gl.pro" +
-      "to\032\nutil.proto\"\263K\n\005Layer\022H\n\020background_l" +
+      "to\032\nutil.proto\"\335L\n\005Layer\022H\n\020background_l" +
       "ayer\030\001 \001(\0132,.com.tophap.mapbox_gl.proto." +
       "Layer.BackgroundH\000\022@\n\014circle_layer\030\002 \001(\013" +
       "2(.com.tophap.mapbox_gl.proto.Layer.Circ" +
@@ -30757,235 +31333,240 @@ public final class Layers {
       "illshade_layer\030\007 \001(\0132+.com.tophap.mapbox" +
       "_gl.proto.Layer.HillshadeH\000\022B\n\rheatmap_l" +
       "ayer\030\010 \001(\0132).com.tophap.mapbox_gl.proto." +
-      "Layer.HeatmapH\000\032\357\002\n\nBackground\022\n\n\002id\030\001 \001" +
+      "Layer.HeatmapH\000\032\200\003\n\nBackground\022\n\n\002id\030\001 \001" +
       "(\t\022\017\n\007visible\030\002 \001(\010\022\020\n\010min_zoom\030\003 \001(\002\022\020\n" +
       "\010max_zoom\030\004 \001(\002\0220\n\005color\030\005 \001(\0132!.com.top" +
       "hap.mapbox_gl.proto.Color\022\017\n\007pattern\030\006 \001" +
-      "(\t\022G\n\020color_transition\030\010 \001(\0132-.com.topha" +
-      "p.mapbox_gl.proto.TransitionOptions\022I\n\022p" +
-      "attern_transition\030\t \001(\0132-.com.tophap.map" +
-      "box_gl.proto.TransitionOptions\022I\n\022opacit" +
-      "y_transition\030\n \001(\0132-.com.tophap.mapbox_g" +
-      "l.proto.TransitionOptions\032\302\010\n\006Circle\022\n\n\002" +
-      "id\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t\022\017\n\007visible\030\003" +
-      " \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010max_zoom\030\005 \001(\002" +
-      "\022\016\n\006radius\030\006 \001(\002\0220\n\005color\030\007 \001(\0132!.com.to" +
-      "phap.mapbox_gl.proto.Color\022\014\n\004blur\030\010 \001(\002" +
-      "\022\021\n\ttranslate\030\n \003(\002\022E\n\020translate_anchor\030" +
-      "\013 \001(\0162+.com.tophap.mapbox_gl.proto.Trans" +
-      "lateAnchor\022@\n\013pitch_scale\030\014 \001(\0162+.com.to" +
-      "phap.mapbox_gl.proto.TranslateAnchor\022D\n\017" +
-      "pitch_alignment\030\r \001(\0162+.com.tophap.mapbo" +
-      "x_gl.proto.TranslateAnchor\022\024\n\014stroke_wid" +
-      "th\030\016 \001(\002\0227\n\014stroke_color\030\017 \001(\0132!.com.top" +
-      "hap.mapbox_gl.proto.Color\022H\n\021radius_tran" +
-      "sition\030\021 \001(\0132-.com.tophap.mapbox_gl.prot" +
-      "o.TransitionOptions\022G\n\020color_transition\030" +
-      "\022 \001(\0132-.com.tophap.mapbox_gl.proto.Trans" +
-      "itionOptions\022F\n\017blur_transition\030\023 \001(\0132-." +
-      "com.tophap.mapbox_gl.proto.TransitionOpt" +
-      "ions\022I\n\022opacity_transition\030\024 \001(\0132-.com.t" +
-      "ophap.mapbox_gl.proto.TransitionOptions\022" +
-      "K\n\024translate_transition\030\025 \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\022N\n\027" +
-      "stroke_width_transition\030\026 \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\022N\n\027" +
-      "stroke_color_transition\030\027 \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\022P\n\031" +
-      "stroke_opacity_transition\030\030 \001(\0132-.com.to" +
-      "phap.mapbox_gl.proto.TransitionOptions\032\367" +
-      "\005\n\rFillExtrusion\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_i" +
-      "d\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001" +
-      "(\002\022\020\n\010max_zoom\030\005 \001(\002\0220\n\005color\030\007 \001(\0132!.co" +
-      "m.tophap.mapbox_gl.proto.Color\022\021\n\ttransl" +
-      "ate\030\010 \003(\002\022E\n\020translate_anchor\030\t \001(\0162+.co" +
-      "m.tophap.mapbox_gl.proto.TranslateAnchor" +
-      "\022\017\n\007pattern\030\n \001(\t\022\016\n\006height\030\013 \001(\002\022\014\n\004bas" +
-      "e\030\014 \001(\002\022\031\n\021vertical_gradient\030\r \001(\010\022I\n\022op" +
-      "acity_transition\030\016 \001(\0132-.com.tophap.mapb" +
-      "ox_gl.proto.TransitionOptions\022G\n\020color_t" +
-      "ransition\030\017 \001(\0132-.com.tophap.mapbox_gl.p" +
-      "roto.TransitionOptions\022K\n\024translate_tran" +
-      "sition\030\020 \001(\0132-.com.tophap.mapbox_gl.prot" +
-      "o.TransitionOptions\022I\n\022pattern_transitio" +
-      "n\030\021 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
-      "nsitionOptions\022H\n\021height_transition\030\022 \001(" +
-      "\0132-.com.tophap.mapbox_gl.proto.Transitio" +
-      "nOptions\022F\n\017base_transition\030\023 \001(\0132-.com." +
-      "tophap.mapbox_gl.proto.TransitionOptions" +
-      "\032\301\005\n\004Fill\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t" +
-      "\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010m" +
-      "ax_zoom\030\005 \001(\002\022\021\n\tantialias\030\006 \001(\010\0220\n\005colo" +
-      "r\030\010 \001(\0132!.com.tophap.mapbox_gl.proto.Col" +
-      "or\0228\n\routline_color\030\t \001(\0132!.com.tophap.m" +
-      "apbox_gl.proto.Color\022\021\n\ttranslate\030\n \003(\002\022" +
-      "E\n\020translate_anchor\030\013 \001(\0162+.com.tophap.m" +
-      "apbox_gl.proto.TranslateAnchor\022\017\n\007patter" +
-      "n\030\014 \001(\t\022I\n\022opacity_transition\030\r \001(\0132-.co" +
+      "(\t\022\017\n\007opacity\030\007 \001(\002\022G\n\020color_transition\030" +
+      "\010 \001(\0132-.com.tophap.mapbox_gl.proto.Trans" +
+      "itionOptions\022I\n\022pattern_transition\030\t \001(\013" +
+      "2-.com.tophap.mapbox_gl.proto.Transition" +
+      "Options\022I\n\022opacity_transition\030\n \001(\0132-.co" +
       "m.tophap.mapbox_gl.proto.TransitionOptio" +
-      "ns\022G\n\020color_transition\030\016 \001(\0132-.com.topha" +
-      "p.mapbox_gl.proto.TransitionOptions\022O\n\030o" +
-      "utline_color_transition\030\017 \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\022K\n\024" +
-      "translate_transition\030\020 \001(\0132-.com.tophap." +
-      "mapbox_gl.proto.TransitionOptions\022I\n\022pat" +
-      "tern_transition\030\021 \001(\0132-.com.tophap.mapbo" +
-      "x_gl.proto.TransitionOptions\032\244\003\n\007Heatmap" +
-      "\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t\022\017\n\007visib" +
-      "le\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010max_zoom\030\005" +
-      " \001(\002\022\016\n\006radius\030\006 \001(\002\022\016\n\006weight\030\007 \001(\002\022\021\n\t" +
-      "intensity\030\010 \001(\002\0220\n\005color\030\t \001(\0132!.com.top" +
-      "hap.mapbox_gl.proto.Color\022H\n\021radius_tran" +
-      "sition\030\013 \001(\0132-.com.tophap.mapbox_gl.prot" +
-      "o.TransitionOptions\022K\n\024intensity_transit" +
-      "ion\030\014 \001(\0132-.com.tophap.mapbox_gl.proto.T" +
-      "ransitionOptions\022I\n\022opacity_transition\030\r" +
-      " \001(\0132-.com.tophap.mapbox_gl.proto.Transi" +
-      "tionOptions\032\320\005\n\tHillshade\022\n\n\002id\030\001 \001(\t\022\021\n" +
-      "\tsource_id\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min" +
-      "_zoom\030\004 \001(\002\022\020\n\010max_zoom\030\005 \001(\002\022\036\n\026illumin" +
-      "ation_direction\030\006 \001(\002\022H\n\023illumination_an" +
-      "chor\030\007 \001(\0162+.com.tophap.mapbox_gl.proto." +
-      "TranslateAnchor\022\024\n\014exaggeration\030\010 \001(\002\0227\n" +
-      "\014shadow_color\030\t \001(\0132!.com.tophap.mapbox_" +
-      "gl.proto.Color\022:\n\017highlight_color\030\n \001(\0132" +
-      "!.com.tophap.mapbox_gl.proto.Color\0227\n\014ac" +
-      "cent_color\030\013 \001(\0132!.com.tophap.mapbox_gl." +
-      "proto.Color\022N\n\027exaggeration_transition\030\014" +
-      " \001(\0132-.com.tophap.mapbox_gl.proto.Transi" +
-      "tionOptions\022N\n\027shadow_color_transition\030\r" +
-      " \001(\0132-.com.tophap.mapbox_gl.proto.Transi" +
-      "tionOptions\022Q\n\032highlight_color_transitio" +
-      "n\030\016 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
-      "nsitionOptions\022N\n\027accent_color_transitio" +
-      "n\030\017 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
-      "nsitionOptions\032\207\n\n\004Line\022\n\n\002id\030\001 \001(\t\022\021\n\ts" +
-      "ource_id\030\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_z" +
-      "oom\030\004 \001(\002\022\020\n\010max_zoom\030\005 \001(\002\0227\n\003cap\030\006 \001(\016" +
-      "2*.com.tophap.mapbox_gl.proto.Layer.Line" +
-      ".Cap\0229\n\004join\030\007 \001(\0162+.com.tophap.mapbox_g" +
-      "l.proto.Layer.Line.Join\022\023\n\013miter_limit\030\010" +
-      " \001(\002\022\023\n\013round_limit\030\t \001(\002\0220\n\005color\030\013 \001(\013" +
-      "2!.com.tophap.mapbox_gl.proto.Color\022\021\n\tt" +
-      "ranslate\030\014 \003(\002\022E\n\020translate_anchor\030\r \001(\016" +
-      "2+.com.tophap.mapbox_gl.proto.TranslateA" +
-      "nchor\022\r\n\005width\030\016 \001(\002\022\021\n\tgap_width\030\017 \001(\002\022" +
-      "\016\n\006offset\030\020 \001(\002\022\014\n\004blur\030\021 \001(\002\022\021\n\tdasharr" +
-      "ay\030\022 \003(\002\022\017\n\007pattern\030\023 \001(\t\022\020\n\010gradient\030\024 " +
-      "\001(\005\022I\n\022opacity_transition\030\025 \001(\0132-.com.to" +
-      "phap.mapbox_gl.proto.TransitionOptions\022G" +
-      "\n\020color_transition\030\026 \001(\0132-.com.tophap.ma" +
-      "pbox_gl.proto.TransitionOptions\022K\n\024trans" +
-      "late_transition\030\027 \001(\0132-.com.tophap.mapbo" +
-      "x_gl.proto.TransitionOptions\022G\n\020width_tr" +
-      "ansition\030\030 \001(\0132-.com.tophap.mapbox_gl.pr" +
-      "oto.TransitionOptions\022K\n\024gap_width_trans" +
-      "ition\030\031 \001(\0132-.com.tophap.mapbox_gl.proto" +
-      ".TransitionOptions\022H\n\021offset_transition\030" +
-      "\032 \001(\0132-.com.tophap.mapbox_gl.proto.Trans" +
-      "itionOptions\022F\n\017blur_transition\030\033 \001(\0132-." +
-      "com.tophap.mapbox_gl.proto.TransitionOpt" +
-      "ions\022K\n\024dasharray_transition\030\034 \001(\0132-.com" +
-      ".tophap.mapbox_gl.proto.TransitionOption" +
-      "s\022I\n\022pattern_transition\030\035 \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\"2\n\003" +
-      "Cap\022\014\n\010CAP_BUTT\020\000\022\r\n\tCAP_ROUND\020\001\022\016\n\nCAP_" +
-      "SQUARE\020\003\"6\n\004Join\022\016\n\nJOIN_MITER\020\000\022\016\n\nJOIN" +
-      "_BEVEL\020\001\022\016\n\nJOIN_ROUND\020\002\032\201\035\n\006Symbol\022\n\n\002i" +
-      "d\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t\022\017\n\007visible\030\003 " +
-      "\001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010max_zoom\030\005 \001(\002\022" +
-      "L\n\020symbol_placement\030\006 \001(\01622.com.tophap.m" +
-      "apbox_gl.proto.Layer.Symbol.Placement\022\026\n" +
-      "\016symbol_spacing\030\007 \001(\002\022\032\n\022symbol_avoid_ed" +
-      "ges\030\010 \001(\010\022G\n\016symbol_z_order\030\t \001(\0162/.com." +
-      "tophap.mapbox_gl.proto.Layer.Symbol.ZOrd" +
-      "er\022\032\n\022icon_allow_overlap\030\n \001(\010\022\035\n\025icon_i" +
-      "gnore_placement\030\013 \001(\010\022\025\n\ricon_optional\030\014" +
-      " \001(\010\022S\n\027icon_rotation_alignment\030\r \001(\01622." +
-      "com.tophap.mapbox_gl.proto.Layer.Symbol." +
-      "Alignment\022\021\n\ticon_size\030\016 \001(\002\022G\n\ricon_tex" +
-      "t_fit\030\017 \001(\01620.com.tophap.mapbox_gl.proto" +
-      ".Layer.Symbol.TextFit\022\035\n\025icon_text_fit_p" +
-      "adding\030\020 \003(\002\022\022\n\nicon_image\030\021 \001(\t\022\023\n\013icon" +
-      "_rotate\030\022 \001(\002\022\024\n\014icon_padding\030\023 \001(\002\022\031\n\021i" +
-      "con_keep_upright\030\024 \001(\010\022\023\n\013icon_offset\030\025 " +
-      "\003(\002\022?\n\013icon_anchor\030\026 \001(\0162*.com.tophap.ma" +
-      "pbox_gl.proto.PositionAnchor\022P\n\024icon_pit" +
-      "ch_alignment\030\027 \001(\01622.com.tophap.mapbox_g" +
-      "l.proto.Layer.Symbol.Alignment\022P\n\024text_p" +
-      "itch_alignment\030\030 \001(\01622.com.tophap.mapbox" +
-      "_gl.proto.Layer.Symbol.Alignment\022S\n\027text" +
-      "_rotation_alignment\030\031 \001(\01622.com.tophap.m" +
-      "apbox_gl.proto.Layer.Symbol.Alignment\022@\n" +
-      "\ntext_field\030\032 \003(\0132,.com.tophap.mapbox_gl" +
-      ".proto.FormattedSection\022\021\n\ttext_font\030\033 \003" +
-      "(\t\022\021\n\ttext_size\030\034 \001(\002\022\026\n\016text_max_width\030" +
-      "\035 \001(\002\022\030\n\020text_line_height\030\036 \001(\002\022\033\n\023text_" +
-      "letter_spacing\030\037 \001(\002\022J\n\014text_justify\030  \001" +
-      "(\01624.com.tophap.mapbox_gl.proto.Layer.Sy" +
-      "mbol.TextJustify\022\032\n\022text_radial_offset\030!" +
-      " \001(\002\022H\n\024text_variable_anchor\030\" \003(\0162*.com" +
-      ".tophap.mapbox_gl.proto.PositionAnchor\022?" +
-      "\n\013text_anchor\030# \001(\0162*.com.tophap.mapbox_" +
-      "gl.proto.PositionAnchor\022\026\n\016text_max_angl" +
-      "e\030$ \001(\002\022\023\n\013text_rotate\030% \001(\002\022\024\n\014text_pad" +
-      "ding\030& \001(\002\022\031\n\021text_keep_upright\030\' \001(\010\022N\n" +
-      "\016text_transform\030( \001(\01626.com.tophap.mapbo" +
-      "x_gl.proto.Layer.Symbol.TextTransform\022\023\n" +
-      "\013text_offset\030) \003(\002\022\032\n\022text_allow_overlap" +
-      "\030* \001(\010\022\035\n\025text_ignore_placement\030+ \001(\010\022\025\n" +
-      "\rtext_optional\030, \001(\010\0225\n\nicon_color\030. \001(\013" +
-      "2!.com.tophap.mapbox_gl.proto.Color\022:\n\017i" +
-      "con_halo_color\030/ \001(\0132!.com.tophap.mapbox" +
-      "_gl.proto.Color\022\027\n\017icon_halo_width\0300 \001(\002" +
-      "\022\026\n\016icon_halo_blur\0301 \001(\002\022\026\n\016icon_transla" +
-      "te\0302 \003(\002\022J\n\025icon_translate_anchor\0303 \001(\0162" +
+      "ns\032\353\010\n\006Circle\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002" +
+      " \001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022" +
+      "\020\n\010max_zoom\030\005 \001(\002\022\016\n\006radius\030\006 \001(\002\0220\n\005col" +
+      "or\030\007 \001(\0132!.com.tophap.mapbox_gl.proto.Co" +
+      "lor\022\014\n\004blur\030\010 \001(\002\022\017\n\007opacity\030\t \001(\002\022\021\n\ttr" +
+      "anslate\030\n \003(\002\022E\n\020translate_anchor\030\013 \001(\0162" +
       "+.com.tophap.mapbox_gl.proto.TranslateAn" +
-      "chor\0225\n\ntext_color\0305 \001(\0132!.com.tophap.ma" +
-      "pbox_gl.proto.Color\022:\n\017text_halo_color\0306" +
-      " \001(\0132!.com.tophap.mapbox_gl.proto.Color\022" +
-      "\027\n\017text_halo_width\0307 \001(\002\022\026\n\016text_halo_bl" +
-      "ur\0308 \001(\002\022\026\n\016text_translate\0309 \003(\002\022J\n\025text" +
-      "_translate_anchor\030: \001(\0162+.com.tophap.map" +
-      "box_gl.proto.TranslateAnchor\022N\n\027icon_opa" +
-      "city_transition\030; \001(\0132-.com.tophap.mapbo" +
-      "x_gl.proto.TransitionOptions\022L\n\025icon_col" +
-      "or_transition\030< \001(\0132-.com.tophap.mapbox_" +
-      "gl.proto.TransitionOptions\022Q\n\032icon_halo_" +
-      "color_transition\030= \001(\0132-.com.tophap.mapb" +
-      "ox_gl.proto.TransitionOptions\022Q\n\032icon_ha" +
-      "lo_width_transition\030> \001(\0132-.com.tophap.m" +
-      "apbox_gl.proto.TransitionOptions\022P\n\031icon" +
-      "_halo_blur_transition\030? \001(\0132-.com.tophap" +
-      ".mapbox_gl.proto.TransitionOptions\022P\n\031ic" +
-      "on_translate_transition\030@ \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\022N\n\027" +
-      "text_opacity_transition\030A \001(\0132-.com.toph" +
-      "ap.mapbox_gl.proto.TransitionOptions\022L\n\025" +
-      "text_color_transition\030B \001(\0132-.com.tophap" +
-      ".mapbox_gl.proto.TransitionOptions\022Q\n\032te" +
-      "xt_halo_color_transition\030C \001(\0132-.com.top" +
-      "hap.mapbox_gl.proto.TransitionOptions\022Q\n" +
-      "\032text_halo_width_transition\030D \001(\0132-.com." +
+      "chor\022@\n\013pitch_scale\030\014 \001(\0162+.com.tophap.m" +
+      "apbox_gl.proto.TranslateAnchor\022D\n\017pitch_" +
+      "alignment\030\r \001(\0162+.com.tophap.mapbox_gl.p" +
+      "roto.TranslateAnchor\022\024\n\014stroke_width\030\016 \001" +
+      "(\002\0227\n\014stroke_color\030\017 \001(\0132!.com.tophap.ma" +
+      "pbox_gl.proto.Color\022\026\n\016stroke_opacity\030\020 " +
+      "\001(\002\022H\n\021radius_transition\030\021 \001(\0132-.com.top" +
+      "hap.mapbox_gl.proto.TransitionOptions\022G\n" +
+      "\020color_transition\030\022 \001(\0132-.com.tophap.map" +
+      "box_gl.proto.TransitionOptions\022F\n\017blur_t" +
+      "ransition\030\023 \001(\0132-.com.tophap.mapbox_gl.p" +
+      "roto.TransitionOptions\022I\n\022opacity_transi" +
+      "tion\030\024 \001(\0132-.com.tophap.mapbox_gl.proto." +
+      "TransitionOptions\022K\n\024translate_transitio" +
+      "n\030\025 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
+      "nsitionOptions\022N\n\027stroke_width_transitio" +
+      "n\030\026 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
+      "nsitionOptions\022N\n\027stroke_color_transitio" +
+      "n\030\027 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
+      "nsitionOptions\022P\n\031stroke_opacity_transit" +
+      "ion\030\030 \001(\0132-.com.tophap.mapbox_gl.proto.T" +
+      "ransitionOptions\032\210\006\n\rFillExtrusion\022\n\n\002id" +
+      "\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t\022\017\n\007visible\030\003 \001" +
+      "(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010max_zoom\030\005 \001(\002\022\017" +
+      "\n\007opacity\030\006 \001(\002\0220\n\005color\030\007 \001(\0132!.com.top" +
+      "hap.mapbox_gl.proto.Color\022\021\n\ttranslate\030\010" +
+      " \003(\002\022E\n\020translate_anchor\030\t \001(\0162+.com.top" +
+      "hap.mapbox_gl.proto.TranslateAnchor\022\017\n\007p" +
+      "attern\030\n \001(\t\022\016\n\006height\030\013 \001(\002\022\014\n\004base\030\014 \001" +
+      "(\002\022\031\n\021vertical_gradient\030\r \001(\010\022I\n\022opacity" +
+      "_transition\030\016 \001(\0132-.com.tophap.mapbox_gl" +
+      ".proto.TransitionOptions\022G\n\020color_transi" +
+      "tion\030\017 \001(\0132-.com.tophap.mapbox_gl.proto." +
+      "TransitionOptions\022K\n\024translate_transitio" +
+      "n\030\020 \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
+      "nsitionOptions\022I\n\022pattern_transition\030\021 \001" +
+      "(\0132-.com.tophap.mapbox_gl.proto.Transiti" +
+      "onOptions\022H\n\021height_transition\030\022 \001(\0132-.c" +
+      "om.tophap.mapbox_gl.proto.TransitionOpti" +
+      "ons\022F\n\017base_transition\030\023 \001(\0132-.com.topha" +
+      "p.mapbox_gl.proto.TransitionOptions\032\322\005\n\004" +
+      "Fill\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t\022\017\n\007v" +
+      "isible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010max_zo" +
+      "om\030\005 \001(\002\022\021\n\tantialias\030\006 \001(\010\022\017\n\007opacity\030\007" +
+      " \001(\002\0220\n\005color\030\010 \001(\0132!.com.tophap.mapbox_" +
+      "gl.proto.Color\0228\n\routline_color\030\t \001(\0132!." +
+      "com.tophap.mapbox_gl.proto.Color\022\021\n\ttran" +
+      "slate\030\n \003(\002\022E\n\020translate_anchor\030\013 \001(\0162+." +
+      "com.tophap.mapbox_gl.proto.TranslateAnch" +
+      "or\022\017\n\007pattern\030\014 \001(\t\022I\n\022opacity_transitio" +
+      "n\030\r \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
+      "nsitionOptions\022G\n\020color_transition\030\016 \001(\013" +
+      "2-.com.tophap.mapbox_gl.proto.Transition" +
+      "Options\022O\n\030outline_color_transition\030\017 \001(" +
+      "\0132-.com.tophap.mapbox_gl.proto.Transitio" +
+      "nOptions\022K\n\024translate_transition\030\020 \001(\0132-" +
+      ".com.tophap.mapbox_gl.proto.TransitionOp" +
+      "tions\022I\n\022pattern_transition\030\021 \001(\0132-.com." +
       "tophap.mapbox_gl.proto.TransitionOptions" +
-      "\022P\n\031text_halo_blur_transition\030E \001(\0132-.co" +
-      "m.tophap.mapbox_gl.proto.TransitionOptio" +
-      "ns\022P\n\031text_translate_transition\030F \001(\0132-." +
+      "\032\265\003\n\007Heatmap\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002 " +
+      "\001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020" +
+      "\n\010max_zoom\030\005 \001(\002\022\016\n\006radius\030\006 \001(\002\022\016\n\006weig" +
+      "ht\030\007 \001(\002\022\021\n\tintensity\030\010 \001(\002\0220\n\005color\030\t \001" +
+      "(\0132!.com.tophap.mapbox_gl.proto.Color\022\017\n" +
+      "\007opacity\030\n \001(\002\022H\n\021radius_transition\030\013 \001(" +
+      "\0132-.com.tophap.mapbox_gl.proto.Transitio" +
+      "nOptions\022K\n\024intensity_transition\030\014 \001(\0132-" +
+      ".com.tophap.mapbox_gl.proto.TransitionOp" +
+      "tions\022I\n\022opacity_transition\030\r \001(\0132-.com." +
+      "tophap.mapbox_gl.proto.TransitionOptions" +
+      "\032\320\005\n\tHillshade\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030" +
+      "\002 \001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002" +
+      "\022\020\n\010max_zoom\030\005 \001(\002\022\036\n\026illumination_direc" +
+      "tion\030\006 \001(\002\022H\n\023illumination_anchor\030\007 \001(\0162" +
+      "+.com.tophap.mapbox_gl.proto.TranslateAn" +
+      "chor\022\024\n\014exaggeration\030\010 \001(\002\0227\n\014shadow_col" +
+      "or\030\t \001(\0132!.com.tophap.mapbox_gl.proto.Co" +
+      "lor\022:\n\017highlight_color\030\n \001(\0132!.com.topha" +
+      "p.mapbox_gl.proto.Color\0227\n\014accent_color\030" +
+      "\013 \001(\0132!.com.tophap.mapbox_gl.proto.Color" +
+      "\022N\n\027exaggeration_transition\030\014 \001(\0132-.com." +
+      "tophap.mapbox_gl.proto.TransitionOptions" +
+      "\022N\n\027shadow_color_transition\030\r \001(\0132-.com." +
+      "tophap.mapbox_gl.proto.TransitionOptions" +
+      "\022Q\n\032highlight_color_transition\030\016 \001(\0132-.c" +
+      "om.tophap.mapbox_gl.proto.TransitionOpti" +
+      "ons\022N\n\027accent_color_transition\030\017 \001(\0132-.c" +
+      "om.tophap.mapbox_gl.proto.TransitionOpti" +
+      "ons\032\230\n\n\004Line\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002 " +
+      "\001(\t\022\017\n\007visible\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020" +
+      "\n\010max_zoom\030\005 \001(\002\0227\n\003cap\030\006 \001(\0162*.com.toph" +
+      "ap.mapbox_gl.proto.Layer.Line.Cap\0229\n\004joi" +
+      "n\030\007 \001(\0162+.com.tophap.mapbox_gl.proto.Lay" +
+      "er.Line.Join\022\023\n\013miter_limit\030\010 \001(\002\022\023\n\013rou" +
+      "nd_limit\030\t \001(\002\022\017\n\007opacity\030\n \001(\002\0220\n\005color" +
+      "\030\013 \001(\0132!.com.tophap.mapbox_gl.proto.Colo" +
+      "r\022\021\n\ttranslate\030\014 \003(\002\022E\n\020translate_anchor" +
+      "\030\r \001(\0162+.com.tophap.mapbox_gl.proto.Tran" +
+      "slateAnchor\022\r\n\005width\030\016 \001(\002\022\021\n\tgap_width\030" +
+      "\017 \001(\002\022\016\n\006offset\030\020 \001(\002\022\014\n\004blur\030\021 \001(\002\022\021\n\td" +
+      "asharray\030\022 \003(\002\022\017\n\007pattern\030\023 \001(\t\022\020\n\010gradi" +
+      "ent\030\024 \001(\005\022I\n\022opacity_transition\030\025 \001(\0132-." +
       "com.tophap.mapbox_gl.proto.TransitionOpt" +
-      "ions\"O\n\tPlacement\022\023\n\017PLACEMENT_POINT\020\000\022\022" +
-      "\n\016PLACEMENT_LINE\020\001\022\031\n\025PLACEMENT_LINE_CEN" +
-      "TER\020\002\"F\n\006ZOrder\022\020\n\014Z_ORDER_AUTO\020\000\022\026\n\022Z_O" +
-      "RDER_VIEWPORT_Y\020\001\022\022\n\016Z_ORDER_SOURCE\020\002\"J\n" +
-      "\tAlignment\022\022\n\016ALIGNMENT_AUTO\020\000\022\021\n\rALIGNM" +
-      "ENT_MAP\020\001\022\026\n\022ALIGNMENT_VIEWPORT\020\002\"X\n\007Tex" +
-      "tFit\022\021\n\rTEXT_FIT_NONE\020\000\022\022\n\016TEXT_FIT_WIDT" +
-      "H\020\001\022\023\n\017TEXT_FIT_HEIGHT\020\002\022\021\n\rTEXT_FIT_BOT" +
-      "H\020\003\"X\n\013TextJustify\022\020\n\014JUSTIFY_AUTO\020\000\022\020\n\014" +
-      "JUSTIFY_LEFT\020\001\022\022\n\016JUSTIFY_CENTER\020\002\022\021\n\rJU" +
-      "STIFY_RIGHT\020\003\"U\n\rTextTransform\022\022\n\016TRANSF" +
-      "ORM_NONE\020\000\022\027\n\023TRANSFORM_UPPERCASE\020\001\022\027\n\023T" +
-      "RANSFORM_LOWERCASE\020\002B\006\n\004typeB$\n\032com.toph" +
-      "ap.mapbox_gl.protoB\006Layersb\006proto3"
+      "ions\022G\n\020color_transition\030\026 \001(\0132-.com.top" +
+      "hap.mapbox_gl.proto.TransitionOptions\022K\n" +
+      "\024translate_transition\030\027 \001(\0132-.com.tophap" +
+      ".mapbox_gl.proto.TransitionOptions\022G\n\020wi" +
+      "dth_transition\030\030 \001(\0132-.com.tophap.mapbox" +
+      "_gl.proto.TransitionOptions\022K\n\024gap_width" +
+      "_transition\030\031 \001(\0132-.com.tophap.mapbox_gl" +
+      ".proto.TransitionOptions\022H\n\021offset_trans" +
+      "ition\030\032 \001(\0132-.com.tophap.mapbox_gl.proto" +
+      ".TransitionOptions\022F\n\017blur_transition\030\033 " +
+      "\001(\0132-.com.tophap.mapbox_gl.proto.Transit" +
+      "ionOptions\022K\n\024dasharray_transition\030\034 \001(\013" +
+      "2-.com.tophap.mapbox_gl.proto.Transition" +
+      "Options\022I\n\022pattern_transition\030\035 \001(\0132-.co" +
+      "m.tophap.mapbox_gl.proto.TransitionOptio" +
+      "ns\"2\n\003Cap\022\014\n\010CAP_BUTT\020\000\022\r\n\tCAP_ROUND\020\001\022\016" +
+      "\n\nCAP_SQUARE\020\003\"6\n\004Join\022\016\n\nJOIN_MITER\020\000\022\016" +
+      "\n\nJOIN_BEVEL\020\001\022\016\n\nJOIN_ROUND\020\002\032\255\035\n\006Symbo" +
+      "l\022\n\n\002id\030\001 \001(\t\022\021\n\tsource_id\030\002 \001(\t\022\017\n\007visi" +
+      "ble\030\003 \001(\010\022\020\n\010min_zoom\030\004 \001(\002\022\020\n\010max_zoom\030" +
+      "\005 \001(\002\022L\n\020symbol_placement\030\006 \001(\01622.com.to" +
+      "phap.mapbox_gl.proto.Layer.Symbol.Placem" +
+      "ent\022\026\n\016symbol_spacing\030\007 \001(\002\022\032\n\022symbol_av" +
+      "oid_edges\030\010 \001(\010\022G\n\016symbol_z_order\030\t \001(\0162" +
+      "/.com.tophap.mapbox_gl.proto.Layer.Symbo" +
+      "l.ZOrder\022\032\n\022icon_allow_overlap\030\n \001(\010\022\035\n\025" +
+      "icon_ignore_placement\030\013 \001(\010\022\025\n\ricon_opti" +
+      "onal\030\014 \001(\010\022S\n\027icon_rotation_alignment\030\r " +
+      "\001(\01622.com.tophap.mapbox_gl.proto.Layer.S" +
+      "ymbol.Alignment\022\021\n\ticon_size\030\016 \001(\002\022G\n\ric" +
+      "on_text_fit\030\017 \001(\01620.com.tophap.mapbox_gl" +
+      ".proto.Layer.Symbol.TextFit\022\035\n\025icon_text" +
+      "_fit_padding\030\020 \003(\002\022\022\n\nicon_image\030\021 \001(\t\022\023" +
+      "\n\013icon_rotate\030\022 \001(\002\022\024\n\014icon_padding\030\023 \001(" +
+      "\002\022\031\n\021icon_keep_upright\030\024 \001(\010\022\023\n\013icon_off" +
+      "set\030\025 \003(\002\022?\n\013icon_anchor\030\026 \001(\0162*.com.top" +
+      "hap.mapbox_gl.proto.PositionAnchor\022P\n\024ic" +
+      "on_pitch_alignment\030\027 \001(\01622.com.tophap.ma" +
+      "pbox_gl.proto.Layer.Symbol.Alignment\022P\n\024" +
+      "text_pitch_alignment\030\030 \001(\01622.com.tophap." +
+      "mapbox_gl.proto.Layer.Symbol.Alignment\022S" +
+      "\n\027text_rotation_alignment\030\031 \001(\01622.com.to" +
+      "phap.mapbox_gl.proto.Layer.Symbol.Alignm" +
+      "ent\022@\n\ntext_field\030\032 \003(\0132,.com.tophap.map" +
+      "box_gl.proto.FormattedSection\022\021\n\ttext_fo" +
+      "nt\030\033 \003(\t\022\021\n\ttext_size\030\034 \001(\002\022\026\n\016text_max_" +
+      "width\030\035 \001(\002\022\030\n\020text_line_height\030\036 \001(\002\022\033\n" +
+      "\023text_letter_spacing\030\037 \001(\002\022J\n\014text_justi" +
+      "fy\030  \001(\01624.com.tophap.mapbox_gl.proto.La" +
+      "yer.Symbol.TextJustify\022\032\n\022text_radial_of" +
+      "fset\030! \001(\002\022H\n\024text_variable_anchor\030\" \003(\016" +
+      "2*.com.tophap.mapbox_gl.proto.PositionAn" +
+      "chor\022?\n\013text_anchor\030# \001(\0162*.com.tophap.m" +
+      "apbox_gl.proto.PositionAnchor\022\026\n\016text_ma" +
+      "x_angle\030$ \001(\002\022\023\n\013text_rotate\030% \001(\002\022\024\n\014te" +
+      "xt_padding\030& \001(\002\022\031\n\021text_keep_upright\030\' " +
+      "\001(\010\022N\n\016text_transform\030( \001(\01626.com.tophap" +
+      ".mapbox_gl.proto.Layer.Symbol.TextTransf" +
+      "orm\022\023\n\013text_offset\030) \003(\002\022\032\n\022text_allow_o" +
+      "verlap\030* \001(\010\022\035\n\025text_ignore_placement\030+ " +
+      "\001(\010\022\025\n\rtext_optional\030, \001(\010\022\024\n\014icon_opaci" +
+      "ty\030- \001(\002\0225\n\nicon_color\030. \001(\0132!.com.topha" +
+      "p.mapbox_gl.proto.Color\022:\n\017icon_halo_col" +
+      "or\030/ \001(\0132!.com.tophap.mapbox_gl.proto.Co" +
+      "lor\022\027\n\017icon_halo_width\0300 \001(\002\022\026\n\016icon_hal" +
+      "o_blur\0301 \001(\002\022\026\n\016icon_translate\0302 \003(\002\022J\n\025" +
+      "icon_translate_anchor\0303 \001(\0162+.com.tophap" +
+      ".mapbox_gl.proto.TranslateAnchor\022\024\n\014text" +
+      "_opacity\0304 \001(\002\0225\n\ntext_color\0305 \001(\0132!.com" +
+      ".tophap.mapbox_gl.proto.Color\022:\n\017text_ha" +
+      "lo_color\0306 \001(\0132!.com.tophap.mapbox_gl.pr" +
+      "oto.Color\022\027\n\017text_halo_width\0307 \001(\002\022\026\n\016te" +
+      "xt_halo_blur\0308 \001(\002\022\026\n\016text_translate\0309 \003" +
+      "(\002\022J\n\025text_translate_anchor\030: \001(\0162+.com." +
+      "tophap.mapbox_gl.proto.TranslateAnchor\022N" +
+      "\n\027icon_opacity_transition\030; \001(\0132-.com.to" +
+      "phap.mapbox_gl.proto.TransitionOptions\022L" +
+      "\n\025icon_color_transition\030< \001(\0132-.com.toph" +
+      "ap.mapbox_gl.proto.TransitionOptions\022Q\n\032" +
+      "icon_halo_color_transition\030= \001(\0132-.com.t" +
+      "ophap.mapbox_gl.proto.TransitionOptions\022" +
+      "Q\n\032icon_halo_width_transition\030> \001(\0132-.co" +
+      "m.tophap.mapbox_gl.proto.TransitionOptio" +
+      "ns\022P\n\031icon_halo_blur_transition\030? \001(\0132-." +
+      "com.tophap.mapbox_gl.proto.TransitionOpt" +
+      "ions\022P\n\031icon_translate_transition\030@ \001(\0132" +
+      "-.com.tophap.mapbox_gl.proto.TransitionO" +
+      "ptions\022N\n\027text_opacity_transition\030A \001(\0132" +
+      "-.com.tophap.mapbox_gl.proto.TransitionO" +
+      "ptions\022L\n\025text_color_transition\030B \001(\0132-." +
+      "com.tophap.mapbox_gl.proto.TransitionOpt" +
+      "ions\022Q\n\032text_halo_color_transition\030C \001(\013" +
+      "2-.com.tophap.mapbox_gl.proto.Transition" +
+      "Options\022Q\n\032text_halo_width_transition\030D " +
+      "\001(\0132-.com.tophap.mapbox_gl.proto.Transit" +
+      "ionOptions\022P\n\031text_halo_blur_transition\030" +
+      "E \001(\0132-.com.tophap.mapbox_gl.proto.Trans" +
+      "itionOptions\022P\n\031text_translate_transitio" +
+      "n\030F \001(\0132-.com.tophap.mapbox_gl.proto.Tra" +
+      "nsitionOptions\"O\n\tPlacement\022\023\n\017PLACEMENT" +
+      "_POINT\020\000\022\022\n\016PLACEMENT_LINE\020\001\022\031\n\025PLACEMEN" +
+      "T_LINE_CENTER\020\002\"F\n\006ZOrder\022\020\n\014Z_ORDER_AUT" +
+      "O\020\000\022\026\n\022Z_ORDER_VIEWPORT_Y\020\001\022\022\n\016Z_ORDER_S" +
+      "OURCE\020\002\"J\n\tAlignment\022\022\n\016ALIGNMENT_AUTO\020\000" +
+      "\022\021\n\rALIGNMENT_MAP\020\001\022\026\n\022ALIGNMENT_VIEWPOR" +
+      "T\020\002\"X\n\007TextFit\022\021\n\rTEXT_FIT_NONE\020\000\022\022\n\016TEX" +
+      "T_FIT_WIDTH\020\001\022\023\n\017TEXT_FIT_HEIGHT\020\002\022\021\n\rTE" +
+      "XT_FIT_BOTH\020\003\"X\n\013TextJustify\022\020\n\014JUSTIFY_" +
+      "AUTO\020\000\022\020\n\014JUSTIFY_LEFT\020\001\022\022\n\016JUSTIFY_CENT" +
+      "ER\020\002\022\021\n\rJUSTIFY_RIGHT\020\003\"U\n\rTextTransform" +
+      "\022\022\n\016TRANSFORM_NONE\020\000\022\027\n\023TRANSFORM_UPPERC" +
+      "ASE\020\001\022\027\n\023TRANSFORM_LOWERCASE\020\002B\006\n\004typeB$" +
+      "\n\032com.tophap.mapbox_gl.protoB\006Layersb\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -31011,31 +31592,31 @@ public final class Layers {
     internal_static_com_tophap_mapbox_gl_proto_Layer_Background_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_Background_descriptor,
-        new java.lang.String[] { "Id", "Visible", "MinZoom", "MaxZoom", "Color", "Pattern", "ColorTransition", "PatternTransition", "OpacityTransition", });
+        new java.lang.String[] { "Id", "Visible", "MinZoom", "MaxZoom", "Color", "Pattern", "Opacity", "ColorTransition", "PatternTransition", "OpacityTransition", });
     internal_static_com_tophap_mapbox_gl_proto_Layer_Circle_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Layer_descriptor.getNestedTypes().get(1);
     internal_static_com_tophap_mapbox_gl_proto_Layer_Circle_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_Circle_descriptor,
-        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Radius", "Color", "Blur", "Translate", "TranslateAnchor", "PitchScale", "PitchAlignment", "StrokeWidth", "StrokeColor", "RadiusTransition", "ColorTransition", "BlurTransition", "OpacityTransition", "TranslateTransition", "StrokeWidthTransition", "StrokeColorTransition", "StrokeOpacityTransition", });
+        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Radius", "Color", "Blur", "Opacity", "Translate", "TranslateAnchor", "PitchScale", "PitchAlignment", "StrokeWidth", "StrokeColor", "StrokeOpacity", "RadiusTransition", "ColorTransition", "BlurTransition", "OpacityTransition", "TranslateTransition", "StrokeWidthTransition", "StrokeColorTransition", "StrokeOpacityTransition", });
     internal_static_com_tophap_mapbox_gl_proto_Layer_FillExtrusion_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Layer_descriptor.getNestedTypes().get(2);
     internal_static_com_tophap_mapbox_gl_proto_Layer_FillExtrusion_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_FillExtrusion_descriptor,
-        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Color", "Translate", "TranslateAnchor", "Pattern", "Height", "Base", "VerticalGradient", "OpacityTransition", "ColorTransition", "TranslateTransition", "PatternTransition", "HeightTransition", "BaseTransition", });
+        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Opacity", "Color", "Translate", "TranslateAnchor", "Pattern", "Height", "Base", "VerticalGradient", "OpacityTransition", "ColorTransition", "TranslateTransition", "PatternTransition", "HeightTransition", "BaseTransition", });
     internal_static_com_tophap_mapbox_gl_proto_Layer_Fill_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Layer_descriptor.getNestedTypes().get(3);
     internal_static_com_tophap_mapbox_gl_proto_Layer_Fill_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_Fill_descriptor,
-        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Antialias", "Color", "OutlineColor", "Translate", "TranslateAnchor", "Pattern", "OpacityTransition", "ColorTransition", "OutlineColorTransition", "TranslateTransition", "PatternTransition", });
+        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Antialias", "Opacity", "Color", "OutlineColor", "Translate", "TranslateAnchor", "Pattern", "OpacityTransition", "ColorTransition", "OutlineColorTransition", "TranslateTransition", "PatternTransition", });
     internal_static_com_tophap_mapbox_gl_proto_Layer_Heatmap_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Layer_descriptor.getNestedTypes().get(4);
     internal_static_com_tophap_mapbox_gl_proto_Layer_Heatmap_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_Heatmap_descriptor,
-        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Radius", "Weight", "Intensity", "Color", "RadiusTransition", "IntensityTransition", "OpacityTransition", });
+        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Radius", "Weight", "Intensity", "Color", "Opacity", "RadiusTransition", "IntensityTransition", "OpacityTransition", });
     internal_static_com_tophap_mapbox_gl_proto_Layer_Hillshade_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Layer_descriptor.getNestedTypes().get(5);
     internal_static_com_tophap_mapbox_gl_proto_Layer_Hillshade_fieldAccessorTable = new
@@ -31047,13 +31628,13 @@ public final class Layers {
     internal_static_com_tophap_mapbox_gl_proto_Layer_Line_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_Line_descriptor,
-        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Cap", "Join", "MiterLimit", "RoundLimit", "Color", "Translate", "TranslateAnchor", "Width", "GapWidth", "Offset", "Blur", "Dasharray", "Pattern", "Gradient", "OpacityTransition", "ColorTransition", "TranslateTransition", "WidthTransition", "GapWidthTransition", "OffsetTransition", "BlurTransition", "DasharrayTransition", "PatternTransition", });
+        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "Cap", "Join", "MiterLimit", "RoundLimit", "Opacity", "Color", "Translate", "TranslateAnchor", "Width", "GapWidth", "Offset", "Blur", "Dasharray", "Pattern", "Gradient", "OpacityTransition", "ColorTransition", "TranslateTransition", "WidthTransition", "GapWidthTransition", "OffsetTransition", "BlurTransition", "DasharrayTransition", "PatternTransition", });
     internal_static_com_tophap_mapbox_gl_proto_Layer_Symbol_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Layer_descriptor.getNestedTypes().get(7);
     internal_static_com_tophap_mapbox_gl_proto_Layer_Symbol_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Layer_Symbol_descriptor,
-        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "SymbolPlacement", "SymbolSpacing", "SymbolAvoidEdges", "SymbolZOrder", "IconAllowOverlap", "IconIgnorePlacement", "IconOptional", "IconRotationAlignment", "IconSize", "IconTextFit", "IconTextFitPadding", "IconImage", "IconRotate", "IconPadding", "IconKeepUpright", "IconOffset", "IconAnchor", "IconPitchAlignment", "TextPitchAlignment", "TextRotationAlignment", "TextField", "TextFont", "TextSize", "TextMaxWidth", "TextLineHeight", "TextLetterSpacing", "TextJustify", "TextRadialOffset", "TextVariableAnchor", "TextAnchor", "TextMaxAngle", "TextRotate", "TextPadding", "TextKeepUpright", "TextTransform", "TextOffset", "TextAllowOverlap", "TextIgnorePlacement", "TextOptional", "IconColor", "IconHaloColor", "IconHaloWidth", "IconHaloBlur", "IconTranslate", "IconTranslateAnchor", "TextColor", "TextHaloColor", "TextHaloWidth", "TextHaloBlur", "TextTranslate", "TextTranslateAnchor", "IconOpacityTransition", "IconColorTransition", "IconHaloColorTransition", "IconHaloWidthTransition", "IconHaloBlurTransition", "IconTranslateTransition", "TextOpacityTransition", "TextColorTransition", "TextHaloColorTransition", "TextHaloWidthTransition", "TextHaloBlurTransition", "TextTranslateTransition", });
+        new java.lang.String[] { "Id", "SourceId", "Visible", "MinZoom", "MaxZoom", "SymbolPlacement", "SymbolSpacing", "SymbolAvoidEdges", "SymbolZOrder", "IconAllowOverlap", "IconIgnorePlacement", "IconOptional", "IconRotationAlignment", "IconSize", "IconTextFit", "IconTextFitPadding", "IconImage", "IconRotate", "IconPadding", "IconKeepUpright", "IconOffset", "IconAnchor", "IconPitchAlignment", "TextPitchAlignment", "TextRotationAlignment", "TextField", "TextFont", "TextSize", "TextMaxWidth", "TextLineHeight", "TextLetterSpacing", "TextJustify", "TextRadialOffset", "TextVariableAnchor", "TextAnchor", "TextMaxAngle", "TextRotate", "TextPadding", "TextKeepUpright", "TextTransform", "TextOffset", "TextAllowOverlap", "TextIgnorePlacement", "TextOptional", "IconOpacity", "IconColor", "IconHaloColor", "IconHaloWidth", "IconHaloBlur", "IconTranslate", "IconTranslateAnchor", "TextOpacity", "TextColor", "TextHaloColor", "TextHaloWidth", "TextHaloBlur", "TextTranslate", "TextTranslateAnchor", "IconOpacityTransition", "IconColorTransition", "IconHaloColorTransition", "IconHaloWidthTransition", "IconHaloBlurTransition", "IconTranslateTransition", "TextOpacityTransition", "TextColorTransition", "TextHaloColorTransition", "TextHaloWidthTransition", "TextHaloBlurTransition", "TextTranslateTransition", });
     com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor();
   }
 

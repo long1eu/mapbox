@@ -1,0 +1,32 @@
+syntax = "proto3";
+package com.tophap.mapbox_gl.proto;
+option java_package = "com.tophap.mapbox_gl.proto";
+option java_outer_classname = "Expressions";
+
+message Expression {
+  string operator = 1;
+  repeated Expression arguments = 2;
+
+  oneof data {
+    MapExpression map = 3;
+    Value literal = 4;
+  }
+}
+
+message Value {
+  oneof kind {
+    int32 int_value = 1;
+    double double_value = 2;
+    string string_value = 3;
+    bool bool_value = 4;
+    ListValue list_value = 5;
+  }
+}
+
+message ListValue {
+  repeated Value values = 1;
+}
+
+message MapExpression {
+  map<string, Expression> map = 1;
+}

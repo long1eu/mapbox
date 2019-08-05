@@ -1,12 +1,16 @@
 <component name="ProjectDictionaryState">
   <dictionary name="long1eu">
     <words>
+      <w>donwcase</w>
+      <w>downcase</w>
       <w>heatmap</w>
       <w>hillshade</w>
       <w>mapbox</w>
       <w>prefetches</w>
       <w>protobuf</w>
+      <w>tilejson</w>
       <w>tophap</w>
+      <w>upcase</w>
     </words>
   </dictionary>
 </component>

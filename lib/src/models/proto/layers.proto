@@ -24,6 +24,7 @@ message Layer {
     float max_zoom = 4;
     Color color = 5;
     string pattern = 6;
+    float opacity = 7;
     TransitionOptions color_transition = 8;
     TransitionOptions pattern_transition = 9;
     TransitionOptions opacity_transition = 10;
@@ -38,12 +39,14 @@ message Layer {
     float radius = 6;
     Color color = 7;
     float blur = 8;
+    float opacity = 9;
     repeated float translate = 10;
     TranslateAnchor translate_anchor = 11;
     TranslateAnchor pitch_scale = 12;
     TranslateAnchor pitch_alignment = 13;
     float stroke_width = 14;
     Color stroke_color = 15;
+    float stroke_opacity = 16;
     TransitionOptions radius_transition = 17;
     TransitionOptions color_transition = 18;
     TransitionOptions blur_transition = 19;
@@ -60,6 +63,7 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
+    float opacity = 6;
     Color color = 7;
     repeated float translate = 8;
     TranslateAnchor translate_anchor = 9;
@@ -82,6 +86,7 @@ message Layer {
     float min_zoom = 4;
     float max_zoom = 5;
     bool antialias = 6;
+    float opacity = 7;
     Color color = 8;
     Color outline_color = 9;
     repeated float translate = 10;
@@ -104,6 +109,7 @@ message Layer {
     float weight = 7;
     float intensity = 8;
     Color color = 9;
+    float opacity = 10;
     TransitionOptions radius_transition = 11;
     TransitionOptions intensity_transition = 12;
     TransitionOptions opacity_transition = 13;
@@ -137,6 +143,7 @@ message Layer {
     Join join = 7;
     float miter_limit = 8;
     float round_limit = 9;
+    float opacity = 10;
     Color color = 11;
     repeated float translate = 12;
     TranslateAnchor translate_anchor = 13;
@@ -215,12 +222,14 @@ message Layer {
     bool text_allow_overlap = 42;
     bool text_ignore_placement = 43;
     bool text_optional = 44;
+    float icon_opacity = 45;
     Color icon_color = 46;
     Color icon_halo_color = 47;
     float icon_halo_width = 48;
     float icon_halo_blur = 49;
     repeated float icon_translate = 50;
     TranslateAnchor icon_translate_anchor = 51;
+    float text_opacity = 52;
     Color text_color = 53;
     Color text_halo_color = 54;
     float text_halo_width = 55;

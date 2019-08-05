@@ -44,6 +44,32 @@ public final class Sources {
      */
     com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder getImageOrBuilder();
 
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     */
+    boolean hasVector();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.Vector getVector();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder getVectorOrBuilder();
+
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     */
+    boolean hasUnknown();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.Unknown getUnknown();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder getUnknownOrBuilder();
+
     public com.tophap.mapbox_gl.proto.Sources.Source.TypeCase getTypeCase();
   }
   /**
@@ -111,6 +137,34 @@ public final class Sources {
                 type_ = subBuilder.buildPartial();
               }
               typeCase_ = 2;
+              break;
+            }
+            case 26: {
+              com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder subBuilder = null;
+              if (typeCase_ == 3) {
+                subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_).toBuilder();
+              }
+              type_ =
+                  input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.Vector.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+                type_ = subBuilder.buildPartial();
+              }
+              typeCase_ = 3;
+              break;
+            }
+            case 34: {
+              com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder subBuilder = null;
+              if (typeCase_ == 4) {
+                subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_).toBuilder();
+              }
+              type_ =
+                  input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.Unknown.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
+                type_ = subBuilder.buildPartial();
+              }
+              typeCase_ = 4;
               break;
             }
             default: {
@@ -3525,12 +3579,4519 @@ public final class Sources {
 
     }
 
+    public interface VectorOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Source.Vector)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string id = 1;</code>
+       */
+      java.lang.String getId();
+      /**
+       * <code>string id = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getIdBytes();
+
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      java.lang.String getAttribution();
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getAttributionBytes();
+
+      /**
+       * <code>string uri = 3;</code>
+       */
+      java.lang.String getUri();
+      /**
+       * <code>string uri = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getUriBytes();
+
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+       */
+      boolean hasTileSet();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+       */
+      com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+       */
+      com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder();
+
+      public com.tophap.mapbox_gl.proto.Sources.Source.Vector.SourceCase getSourceCase();
+    }
+    /**
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.Vector}
+     */
+    public  static final class Vector extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Source.Vector)
+        VectorOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Vector.newBuilder() to construct.
+      private Vector(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Vector() {
+        id_ = "";
+        attribution_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Vector(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                id_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                attribution_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+                sourceCase_ = 3;
+                source_ = s;
+                break;
+              }
+              case 34: {
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder subBuilder = null;
+                if (sourceCase_ == 4) {
+                  subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_).toBuilder();
+                }
+                source_ =
+                    input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.TileSet.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+                  source_ = subBuilder.buildPartial();
+                }
+                sourceCase_ = 4;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Vector_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Sources.Source.Vector.class, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder.class);
+      }
+
+      private int sourceCase_ = 0;
+      private java.lang.Object source_;
+      public enum SourceCase
+          implements com.google.protobuf.Internal.EnumLite {
+        URI(3),
+        TILE_SET(4),
+        SOURCE_NOT_SET(0);
+        private final int value;
+        private SourceCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static SourceCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static SourceCase forNumber(int value) {
+          switch (value) {
+            case 3: return URI;
+            case 4: return TILE_SET;
+            case 0: return SOURCE_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public SourceCase
+      getSourceCase() {
+        return SourceCase.forNumber(
+            sourceCase_);
+      }
+
+      public static final int ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object id_;
+      /**
+       * <code>string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ATTRIBUTION_FIELD_NUMBER = 2;
+      private volatile java.lang.Object attribution_;
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public java.lang.String getAttribution() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          attribution_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAttributionBytes() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          attribution_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int URI_FIELD_NUMBER = 3;
+      /**
+       * <code>string uri = 3;</code>
+       */
+      public java.lang.String getUri() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 3) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (sourceCase_ == 3) {
+            source_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string uri = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUriBytes() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 3) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (sourceCase_ == 3) {
+            source_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TILE_SET_FIELD_NUMBER = 4;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+       */
+      public boolean hasTileSet() {
+        return sourceCase_ == 4;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet() {
+        if (sourceCase_ == 4) {
+           return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder() {
+        if (sourceCase_ == 4) {
+           return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getIdBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, attribution_);
+        }
+        if (sourceCase_ == 3) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, source_);
+        }
+        if (sourceCase_ == 4) {
+          output.writeMessage(4, (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getIdBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, attribution_);
+        }
+        if (sourceCase_ == 3) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, source_);
+        }
+        if (sourceCase_ == 4) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(4, (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Sources.Source.Vector)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Sources.Source.Vector other = (com.tophap.mapbox_gl.proto.Sources.Source.Vector) obj;
+
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (!getAttribution()
+            .equals(other.getAttribution())) return false;
+        if (!getSourceCase().equals(other.getSourceCase())) return false;
+        switch (sourceCase_) {
+          case 3:
+            if (!getUri()
+                .equals(other.getUri())) return false;
+            break;
+          case 4:
+            if (!getTileSet()
+                .equals(other.getTileSet())) return false;
+            break;
+          case 0:
+          default:
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId().hashCode();
+        hash = (37 * hash) + ATTRIBUTION_FIELD_NUMBER;
+        hash = (53 * hash) + getAttribution().hashCode();
+        switch (sourceCase_) {
+          case 3:
+            hash = (37 * hash) + URI_FIELD_NUMBER;
+            hash = (53 * hash) + getUri().hashCode();
+            break;
+          case 4:
+            hash = (37 * hash) + TILE_SET_FIELD_NUMBER;
+            hash = (53 * hash) + getTileSet().hashCode();
+            break;
+          case 0:
+          default:
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Sources.Source.Vector prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.Vector}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Source.Vector)
+          com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Vector_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Sources.Source.Vector.class, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Sources.Source.Vector.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = "";
+
+          attribution_ = "";
+
+          sourceCase_ = 0;
+          source_ = null;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Vector getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Vector build() {
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Vector buildPartial() {
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector result = new com.tophap.mapbox_gl.proto.Sources.Source.Vector(this);
+          result.id_ = id_;
+          result.attribution_ = attribution_;
+          if (sourceCase_ == 3) {
+            result.source_ = source_;
+          }
+          if (sourceCase_ == 4) {
+            if (tileSetBuilder_ == null) {
+              result.source_ = source_;
+            } else {
+              result.source_ = tileSetBuilder_.build();
+            }
+          }
+          result.sourceCase_ = sourceCase_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Sources.Source.Vector) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Vector)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Sources.Source.Vector other) {
+          if (other == com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance()) return this;
+          if (!other.getId().isEmpty()) {
+            id_ = other.id_;
+            onChanged();
+          }
+          if (!other.getAttribution().isEmpty()) {
+            attribution_ = other.attribution_;
+            onChanged();
+          }
+          switch (other.getSourceCase()) {
+            case URI: {
+              sourceCase_ = 3;
+              source_ = other.source_;
+              onChanged();
+              break;
+            }
+            case TILE_SET: {
+              mergeTileSet(other.getTileSet());
+              break;
+            }
+            case SOURCE_NOT_SET: {
+              break;
+            }
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Sources.Source.Vector) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int sourceCase_ = 0;
+        private java.lang.Object source_;
+        public SourceCase
+            getSourceCase() {
+          return SourceCase.forNumber(
+              sourceCase_);
+        }
+
+        public Builder clearSource() {
+          sourceCase_ = 0;
+          source_ = null;
+          onChanged();
+          return this;
+        }
+
+
+        private java.lang.Object id_ = "";
+        /**
+         * <code>string id = 1;</code>
+         */
+        public java.lang.String getId() {
+          java.lang.Object ref = id_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            id_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIdBytes() {
+          java.lang.Object ref = id_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            id_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder clearId() {
+          
+          id_ = getDefaultInstance().getId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          id_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object attribution_ = "";
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public java.lang.String getAttribution() {
+          java.lang.Object ref = attribution_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            attribution_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAttributionBytes() {
+          java.lang.Object ref = attribution_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            attribution_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttribution(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder clearAttribution() {
+          
+          attribution_ = getDefaultInstance().getAttribution();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttributionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+
+        /**
+         * <code>string uri = 3;</code>
+         */
+        public java.lang.String getUri() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 3) {
+            ref = source_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (sourceCase_ == 3) {
+              source_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string uri = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getUriBytes() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 3) {
+            ref = source_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (sourceCase_ == 3) {
+              source_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string uri = 3;</code>
+         */
+        public Builder setUri(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  sourceCase_ = 3;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string uri = 3;</code>
+         */
+        public Builder clearUri() {
+          if (sourceCase_ == 3) {
+            sourceCase_ = 0;
+            source_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string uri = 3;</code>
+         */
+        public Builder setUriBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          sourceCase_ = 3;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder> tileSetBuilder_;
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public boolean hasTileSet() {
+          return sourceCase_ == 4;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet() {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 4) {
+              return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          } else {
+            if (sourceCase_ == 4) {
+              return tileSetBuilder_.getMessage();
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public Builder setTileSet(com.tophap.mapbox_gl.proto.Sources.Source.TileSet value) {
+          if (tileSetBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            source_ = value;
+            onChanged();
+          } else {
+            tileSetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 4;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public Builder setTileSet(
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder builderForValue) {
+          if (tileSetBuilder_ == null) {
+            source_ = builderForValue.build();
+            onChanged();
+          } else {
+            tileSetBuilder_.setMessage(builderForValue.build());
+          }
+          sourceCase_ = 4;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public Builder mergeTileSet(com.tophap.mapbox_gl.proto.Sources.Source.TileSet value) {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 4 &&
+                source_ != com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance()) {
+              source_ = com.tophap.mapbox_gl.proto.Sources.Source.TileSet.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_)
+                  .mergeFrom(value).buildPartial();
+            } else {
+              source_ = value;
+            }
+            onChanged();
+          } else {
+            if (sourceCase_ == 4) {
+              tileSetBuilder_.mergeFrom(value);
+            }
+            tileSetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 4;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public Builder clearTileSet() {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 4) {
+              sourceCase_ = 0;
+              source_ = null;
+              onChanged();
+            }
+          } else {
+            if (sourceCase_ == 4) {
+              sourceCase_ = 0;
+              source_ = null;
+            }
+            tileSetBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder getTileSetBuilder() {
+          return getTileSetFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder() {
+          if ((sourceCase_ == 4) && (tileSetBuilder_ != null)) {
+            return tileSetBuilder_.getMessageOrBuilder();
+          } else {
+            if (sourceCase_ == 4) {
+              return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 4;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder> 
+            getTileSetFieldBuilder() {
+          if (tileSetBuilder_ == null) {
+            if (!(sourceCase_ == 4)) {
+              source_ = com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+            }
+            tileSetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder>(
+                    (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_,
+                    getParentForChildren(),
+                    isClean());
+            source_ = null;
+          }
+          sourceCase_ = 4;
+          onChanged();;
+          return tileSetBuilder_;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Source.Vector)
+      }
+
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Source.Vector)
+      private static final com.tophap.mapbox_gl.proto.Sources.Source.Vector DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Sources.Source.Vector();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Vector getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Vector>
+          PARSER = new com.google.protobuf.AbstractParser<Vector>() {
+        @java.lang.Override
+        public Vector parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Vector(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Vector> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Vector> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Sources.Source.Vector getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface UnknownOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Source.Unknown)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string id = 1;</code>
+       */
+      java.lang.String getId();
+      /**
+       * <code>string id = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getIdBytes();
+
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      java.lang.String getAttribution();
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getAttributionBytes();
+    }
+    /**
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.Unknown}
+     */
+    public  static final class Unknown extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Source.Unknown)
+        UnknownOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Unknown.newBuilder() to construct.
+      private Unknown(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Unknown() {
+        id_ = "";
+        attribution_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Unknown(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                id_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                attribution_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Sources.Source.Unknown.class, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder.class);
+      }
+
+      public static final int ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object id_;
+      /**
+       * <code>string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ATTRIBUTION_FIELD_NUMBER = 2;
+      private volatile java.lang.Object attribution_;
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public java.lang.String getAttribution() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          attribution_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAttributionBytes() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          attribution_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getIdBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, attribution_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getIdBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, attribution_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Sources.Source.Unknown)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Sources.Source.Unknown other = (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) obj;
+
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (!getAttribution()
+            .equals(other.getAttribution())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId().hashCode();
+        hash = (37 * hash) + ATTRIBUTION_FIELD_NUMBER;
+        hash = (53 * hash) + getAttribution().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Sources.Source.Unknown prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.Unknown}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Source.Unknown)
+          com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Sources.Source.Unknown.class, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Sources.Source.Unknown.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = "";
+
+          attribution_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Unknown getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Unknown build() {
+          com.tophap.mapbox_gl.proto.Sources.Source.Unknown result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Unknown buildPartial() {
+          com.tophap.mapbox_gl.proto.Sources.Source.Unknown result = new com.tophap.mapbox_gl.proto.Sources.Source.Unknown(this);
+          result.id_ = id_;
+          result.attribution_ = attribution_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Sources.Source.Unknown) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Unknown)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Sources.Source.Unknown other) {
+          if (other == com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance()) return this;
+          if (!other.getId().isEmpty()) {
+            id_ = other.id_;
+            onChanged();
+          }
+          if (!other.getAttribution().isEmpty()) {
+            attribution_ = other.attribution_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Sources.Source.Unknown parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object id_ = "";
+        /**
+         * <code>string id = 1;</code>
+         */
+        public java.lang.String getId() {
+          java.lang.Object ref = id_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            id_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIdBytes() {
+          java.lang.Object ref = id_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            id_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder clearId() {
+          
+          id_ = getDefaultInstance().getId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          id_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object attribution_ = "";
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public java.lang.String getAttribution() {
+          java.lang.Object ref = attribution_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            attribution_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAttributionBytes() {
+          java.lang.Object ref = attribution_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            attribution_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttribution(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder clearAttribution() {
+          
+          attribution_ = getDefaultInstance().getAttribution();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttributionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Source.Unknown)
+      }
+
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Source.Unknown)
+      private static final com.tophap.mapbox_gl.proto.Sources.Source.Unknown DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Sources.Source.Unknown();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Unknown getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Unknown>
+          PARSER = new com.google.protobuf.AbstractParser<Unknown>() {
+        @java.lang.Override
+        public Unknown parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Unknown(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Unknown> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Unknown> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Sources.Source.Unknown getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface TileSetOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Source.TileSet)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string tile_json = 1;</code>
+       */
+      java.lang.String getTileJson();
+      /**
+       * <code>string tile_json = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getTileJsonBytes();
+
+      /**
+       * <code>string name = 2;</code>
+       */
+      java.lang.String getName();
+      /**
+       * <code>string name = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+
+      /**
+       * <code>string description = 3;</code>
+       */
+      java.lang.String getDescription();
+      /**
+       * <code>string description = 3;</code>
+       */
+      com.google.protobuf.ByteString
+          getDescriptionBytes();
+
+      /**
+       * <code>string version = 4;</code>
+       */
+      java.lang.String getVersion();
+      /**
+       * <code>string version = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getVersionBytes();
+
+      /**
+       * <code>string attribution = 5;</code>
+       */
+      java.lang.String getAttribution();
+      /**
+       * <code>string attribution = 5;</code>
+       */
+      com.google.protobuf.ByteString
+          getAttributionBytes();
+
+      /**
+       * <code>string template = 6;</code>
+       */
+      java.lang.String getTemplate();
+      /**
+       * <code>string template = 6;</code>
+       */
+      com.google.protobuf.ByteString
+          getTemplateBytes();
+
+      /**
+       * <code>string legend = 7;</code>
+       */
+      java.lang.String getLegend();
+      /**
+       * <code>string legend = 7;</code>
+       */
+      com.google.protobuf.ByteString
+          getLegendBytes();
+
+      /**
+       * <code>string scheme = 8;</code>
+       */
+      java.lang.String getScheme();
+      /**
+       * <code>string scheme = 8;</code>
+       */
+      com.google.protobuf.ByteString
+          getSchemeBytes();
+
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      java.util.List<java.lang.String>
+          getTilesList();
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      int getTilesCount();
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      java.lang.String getTiles(int index);
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      com.google.protobuf.ByteString
+          getTilesBytes(int index);
+
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      java.util.List<java.lang.String>
+          getGridsList();
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      int getGridsCount();
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      java.lang.String getGrids(int index);
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      com.google.protobuf.ByteString
+          getGridsBytes(int index);
+
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      java.util.List<java.lang.String>
+          getDataList();
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      int getDataCount();
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      java.lang.String getData(int index);
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      com.google.protobuf.ByteString
+          getDataBytes(int index);
+
+      /**
+       * <code>float min_zoom = 12;</code>
+       */
+      float getMinZoom();
+
+      /**
+       * <code>float max_zoom = 13;</code>
+       */
+      float getMaxZoom();
+
+      /**
+       * <code>repeated float bounds = 14;</code>
+       */
+      java.util.List<java.lang.Float> getBoundsList();
+      /**
+       * <code>repeated float bounds = 14;</code>
+       */
+      int getBoundsCount();
+      /**
+       * <code>repeated float bounds = 14;</code>
+       */
+      float getBounds(int index);
+
+      /**
+       * <code>repeated float center = 15;</code>
+       */
+      java.util.List<java.lang.Float> getCenterList();
+      /**
+       * <code>repeated float center = 15;</code>
+       */
+      int getCenterCount();
+      /**
+       * <code>repeated float center = 15;</code>
+       */
+      float getCenter(int index);
+
+      /**
+       * <code>string encoding = 16;</code>
+       */
+      java.lang.String getEncoding();
+      /**
+       * <code>string encoding = 16;</code>
+       */
+      com.google.protobuf.ByteString
+          getEncodingBytes();
+    }
+    /**
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.TileSet}
+     */
+    public  static final class TileSet extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Source.TileSet)
+        TileSetOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use TileSet.newBuilder() to construct.
+      private TileSet(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private TileSet() {
+        tileJson_ = "";
+        name_ = "";
+        description_ = "";
+        version_ = "";
+        attribution_ = "";
+        template_ = "";
+        legend_ = "";
+        scheme_ = "";
+        tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bounds_ = emptyFloatList();
+        center_ = emptyFloatList();
+        encoding_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private TileSet(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                tileJson_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                name_ = s;
+                break;
+              }
+              case 26: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                description_ = s;
+                break;
+              }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                version_ = s;
+                break;
+              }
+              case 42: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                attribution_ = s;
+                break;
+              }
+              case 50: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                template_ = s;
+                break;
+              }
+              case 58: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                legend_ = s;
+                break;
+              }
+              case 66: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                scheme_ = s;
+                break;
+              }
+              case 74: {
+                java.lang.String s = input.readStringRequireUtf8();
+                if (!((mutable_bitField0_ & 0x00000100) != 0)) {
+                  tiles_ = new com.google.protobuf.LazyStringArrayList();
+                  mutable_bitField0_ |= 0x00000100;
+                }
+                tiles_.add(s);
+                break;
+              }
+              case 82: {
+                java.lang.String s = input.readStringRequireUtf8();
+                if (!((mutable_bitField0_ & 0x00000200) != 0)) {
+                  grids_ = new com.google.protobuf.LazyStringArrayList();
+                  mutable_bitField0_ |= 0x00000200;
+                }
+                grids_.add(s);
+                break;
+              }
+              case 90: {
+                java.lang.String s = input.readStringRequireUtf8();
+                if (!((mutable_bitField0_ & 0x00000400) != 0)) {
+                  data_ = new com.google.protobuf.LazyStringArrayList();
+                  mutable_bitField0_ |= 0x00000400;
+                }
+                data_.add(s);
+                break;
+              }
+              case 101: {
+
+                minZoom_ = input.readFloat();
+                break;
+              }
+              case 109: {
+
+                maxZoom_ = input.readFloat();
+                break;
+              }
+              case 117: {
+                if (!((mutable_bitField0_ & 0x00002000) != 0)) {
+                  bounds_ = newFloatList();
+                  mutable_bitField0_ |= 0x00002000;
+                }
+                bounds_.addFloat(input.readFloat());
+                break;
+              }
+              case 114: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                if (!((mutable_bitField0_ & 0x00002000) != 0) && input.getBytesUntilLimit() > 0) {
+                  bounds_ = newFloatList();
+                  mutable_bitField0_ |= 0x00002000;
+                }
+                while (input.getBytesUntilLimit() > 0) {
+                  bounds_.addFloat(input.readFloat());
+                }
+                input.popLimit(limit);
+                break;
+              }
+              case 125: {
+                if (!((mutable_bitField0_ & 0x00004000) != 0)) {
+                  center_ = newFloatList();
+                  mutable_bitField0_ |= 0x00004000;
+                }
+                center_.addFloat(input.readFloat());
+                break;
+              }
+              case 122: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                if (!((mutable_bitField0_ & 0x00004000) != 0) && input.getBytesUntilLimit() > 0) {
+                  center_ = newFloatList();
+                  mutable_bitField0_ |= 0x00004000;
+                }
+                while (input.getBytesUntilLimit() > 0) {
+                  center_.addFloat(input.readFloat());
+                }
+                input.popLimit(limit);
+                break;
+              }
+              case 130: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                encoding_ = s;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          if (((mutable_bitField0_ & 0x00000100) != 0)) {
+            tiles_ = tiles_.getUnmodifiableView();
+          }
+          if (((mutable_bitField0_ & 0x00000200) != 0)) {
+            grids_ = grids_.getUnmodifiableView();
+          }
+          if (((mutable_bitField0_ & 0x00000400) != 0)) {
+            data_ = data_.getUnmodifiableView();
+          }
+          if (((mutable_bitField0_ & 0x00002000) != 0)) {
+            bounds_.makeImmutable(); // C
+          }
+          if (((mutable_bitField0_ & 0x00004000) != 0)) {
+            center_.makeImmutable(); // C
+          }
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet.class, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder.class);
+      }
+
+      private int bitField0_;
+      public static final int TILE_JSON_FIELD_NUMBER = 1;
+      private volatile java.lang.Object tileJson_;
+      /**
+       * <code>string tile_json = 1;</code>
+       */
+      public java.lang.String getTileJson() {
+        java.lang.Object ref = tileJson_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          tileJson_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string tile_json = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTileJsonBytes() {
+        java.lang.Object ref = tileJson_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          tileJson_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int NAME_FIELD_NUMBER = 2;
+      private volatile java.lang.Object name_;
+      /**
+       * <code>string name = 2;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int DESCRIPTION_FIELD_NUMBER = 3;
+      private volatile java.lang.Object description_;
+      /**
+       * <code>string description = 3;</code>
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int VERSION_FIELD_NUMBER = 4;
+      private volatile java.lang.Object version_;
+      /**
+       * <code>string version = 4;</code>
+       */
+      public java.lang.String getVersion() {
+        java.lang.Object ref = version_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          version_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string version = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getVersionBytes() {
+        java.lang.Object ref = version_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          version_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ATTRIBUTION_FIELD_NUMBER = 5;
+      private volatile java.lang.Object attribution_;
+      /**
+       * <code>string attribution = 5;</code>
+       */
+      public java.lang.String getAttribution() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          attribution_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string attribution = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAttributionBytes() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          attribution_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TEMPLATE_FIELD_NUMBER = 6;
+      private volatile java.lang.Object template_;
+      /**
+       * <code>string template = 6;</code>
+       */
+      public java.lang.String getTemplate() {
+        java.lang.Object ref = template_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          template_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string template = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTemplateBytes() {
+        java.lang.Object ref = template_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          template_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int LEGEND_FIELD_NUMBER = 7;
+      private volatile java.lang.Object legend_;
+      /**
+       * <code>string legend = 7;</code>
+       */
+      public java.lang.String getLegend() {
+        java.lang.Object ref = legend_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          legend_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string legend = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getLegendBytes() {
+        java.lang.Object ref = legend_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          legend_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int SCHEME_FIELD_NUMBER = 8;
+      private volatile java.lang.Object scheme_;
+      /**
+       * <code>string scheme = 8;</code>
+       */
+      public java.lang.String getScheme() {
+        java.lang.Object ref = scheme_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          scheme_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string scheme = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSchemeBytes() {
+        java.lang.Object ref = scheme_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          scheme_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TILES_FIELD_NUMBER = 9;
+      private com.google.protobuf.LazyStringList tiles_;
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getTilesList() {
+        return tiles_;
+      }
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      public int getTilesCount() {
+        return tiles_.size();
+      }
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      public java.lang.String getTiles(int index) {
+        return tiles_.get(index);
+      }
+      /**
+       * <code>repeated string tiles = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTilesBytes(int index) {
+        return tiles_.getByteString(index);
+      }
+
+      public static final int GRIDS_FIELD_NUMBER = 10;
+      private com.google.protobuf.LazyStringList grids_;
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getGridsList() {
+        return grids_;
+      }
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      public int getGridsCount() {
+        return grids_.size();
+      }
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      public java.lang.String getGrids(int index) {
+        return grids_.get(index);
+      }
+      /**
+       * <code>repeated string grids = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGridsBytes(int index) {
+        return grids_.getByteString(index);
+      }
+
+      public static final int DATA_FIELD_NUMBER = 11;
+      private com.google.protobuf.LazyStringList data_;
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getDataList() {
+        return data_;
+      }
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      public int getDataCount() {
+        return data_.size();
+      }
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      public java.lang.String getData(int index) {
+        return data_.get(index);
+      }
+      /**
+       * <code>repeated string data = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDataBytes(int index) {
+        return data_.getByteString(index);
+      }
+
+      public static final int MIN_ZOOM_FIELD_NUMBER = 12;
+      private float minZoom_;
+      /**
+       * <code>float min_zoom = 12;</code>
+       */
+      public float getMinZoom() {
+        return minZoom_;
+      }
+
+      public static final int MAX_ZOOM_FIELD_NUMBER = 13;
+      private float maxZoom_;
+      /**
+       * <code>float max_zoom = 13;</code>
+       */
+      public float getMaxZoom() {
+        return maxZoom_;
+      }
+
+      public static final int BOUNDS_FIELD_NUMBER = 14;
+      private com.google.protobuf.Internal.FloatList bounds_;
+      /**
+       * <code>repeated float bounds = 14;</code>
+       */
+      public java.util.List<java.lang.Float>
+          getBoundsList() {
+        return bounds_;
+      }
+      /**
+       * <code>repeated float bounds = 14;</code>
+       */
+      public int getBoundsCount() {
+        return bounds_.size();
+      }
+      /**
+       * <code>repeated float bounds = 14;</code>
+       */
+      public float getBounds(int index) {
+        return bounds_.getFloat(index);
+      }
+      private int boundsMemoizedSerializedSize = -1;
+
+      public static final int CENTER_FIELD_NUMBER = 15;
+      private com.google.protobuf.Internal.FloatList center_;
+      /**
+       * <code>repeated float center = 15;</code>
+       */
+      public java.util.List<java.lang.Float>
+          getCenterList() {
+        return center_;
+      }
+      /**
+       * <code>repeated float center = 15;</code>
+       */
+      public int getCenterCount() {
+        return center_.size();
+      }
+      /**
+       * <code>repeated float center = 15;</code>
+       */
+      public float getCenter(int index) {
+        return center_.getFloat(index);
+      }
+      private int centerMemoizedSerializedSize = -1;
+
+      public static final int ENCODING_FIELD_NUMBER = 16;
+      private volatile java.lang.Object encoding_;
+      /**
+       * <code>string encoding = 16;</code>
+       */
+      public java.lang.String getEncoding() {
+        java.lang.Object ref = encoding_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          encoding_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string encoding = 16;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEncodingBytes() {
+        java.lang.Object ref = encoding_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          encoding_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (!getTileJsonBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tileJson_);
+        }
+        if (!getNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+        }
+        if (!getDescriptionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+        }
+        if (!getVersionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, version_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 5, attribution_);
+        }
+        if (!getTemplateBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 6, template_);
+        }
+        if (!getLegendBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 7, legend_);
+        }
+        if (!getSchemeBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 8, scheme_);
+        }
+        for (int i = 0; i < tiles_.size(); i++) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 9, tiles_.getRaw(i));
+        }
+        for (int i = 0; i < grids_.size(); i++) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 10, grids_.getRaw(i));
+        }
+        for (int i = 0; i < data_.size(); i++) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 11, data_.getRaw(i));
+        }
+        if (minZoom_ != 0F) {
+          output.writeFloat(12, minZoom_);
+        }
+        if (maxZoom_ != 0F) {
+          output.writeFloat(13, maxZoom_);
+        }
+        if (getBoundsList().size() > 0) {
+          output.writeUInt32NoTag(114);
+          output.writeUInt32NoTag(boundsMemoizedSerializedSize);
+        }
+        for (int i = 0; i < bounds_.size(); i++) {
+          output.writeFloatNoTag(bounds_.getFloat(i));
+        }
+        if (getCenterList().size() > 0) {
+          output.writeUInt32NoTag(122);
+          output.writeUInt32NoTag(centerMemoizedSerializedSize);
+        }
+        for (int i = 0; i < center_.size(); i++) {
+          output.writeFloatNoTag(center_.getFloat(i));
+        }
+        if (!getEncodingBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 16, encoding_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getTileJsonBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tileJson_);
+        }
+        if (!getNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+        }
+        if (!getDescriptionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+        }
+        if (!getVersionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, version_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, attribution_);
+        }
+        if (!getTemplateBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, template_);
+        }
+        if (!getLegendBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, legend_);
+        }
+        if (!getSchemeBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, scheme_);
+        }
+        {
+          int dataSize = 0;
+          for (int i = 0; i < tiles_.size(); i++) {
+            dataSize += computeStringSizeNoTag(tiles_.getRaw(i));
+          }
+          size += dataSize;
+          size += 1 * getTilesList().size();
+        }
+        {
+          int dataSize = 0;
+          for (int i = 0; i < grids_.size(); i++) {
+            dataSize += computeStringSizeNoTag(grids_.getRaw(i));
+          }
+          size += dataSize;
+          size += 1 * getGridsList().size();
+        }
+        {
+          int dataSize = 0;
+          for (int i = 0; i < data_.size(); i++) {
+            dataSize += computeStringSizeNoTag(data_.getRaw(i));
+          }
+          size += dataSize;
+          size += 1 * getDataList().size();
+        }
+        if (minZoom_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(12, minZoom_);
+        }
+        if (maxZoom_ != 0F) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(13, maxZoom_);
+        }
+        {
+          int dataSize = 0;
+          dataSize = 4 * getBoundsList().size();
+          size += dataSize;
+          if (!getBoundsList().isEmpty()) {
+            size += 1;
+            size += com.google.protobuf.CodedOutputStream
+                .computeInt32SizeNoTag(dataSize);
+          }
+          boundsMemoizedSerializedSize = dataSize;
+        }
+        {
+          int dataSize = 0;
+          dataSize = 4 * getCenterList().size();
+          size += dataSize;
+          if (!getCenterList().isEmpty()) {
+            size += 1;
+            size += com.google.protobuf.CodedOutputStream
+                .computeInt32SizeNoTag(dataSize);
+          }
+          centerMemoizedSerializedSize = dataSize;
+        }
+        if (!getEncodingBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, encoding_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Sources.Source.TileSet)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Sources.Source.TileSet other = (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) obj;
+
+        if (!getTileJson()
+            .equals(other.getTileJson())) return false;
+        if (!getName()
+            .equals(other.getName())) return false;
+        if (!getDescription()
+            .equals(other.getDescription())) return false;
+        if (!getVersion()
+            .equals(other.getVersion())) return false;
+        if (!getAttribution()
+            .equals(other.getAttribution())) return false;
+        if (!getTemplate()
+            .equals(other.getTemplate())) return false;
+        if (!getLegend()
+            .equals(other.getLegend())) return false;
+        if (!getScheme()
+            .equals(other.getScheme())) return false;
+        if (!getTilesList()
+            .equals(other.getTilesList())) return false;
+        if (!getGridsList()
+            .equals(other.getGridsList())) return false;
+        if (!getDataList()
+            .equals(other.getDataList())) return false;
+        if (java.lang.Float.floatToIntBits(getMinZoom())
+            != java.lang.Float.floatToIntBits(
+                other.getMinZoom())) return false;
+        if (java.lang.Float.floatToIntBits(getMaxZoom())
+            != java.lang.Float.floatToIntBits(
+                other.getMaxZoom())) return false;
+        if (!getBoundsList()
+            .equals(other.getBoundsList())) return false;
+        if (!getCenterList()
+            .equals(other.getCenterList())) return false;
+        if (!getEncoding()
+            .equals(other.getEncoding())) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + TILE_JSON_FIELD_NUMBER;
+        hash = (53 * hash) + getTileJson().hashCode();
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+        hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+        hash = (53 * hash) + getDescription().hashCode();
+        hash = (37 * hash) + VERSION_FIELD_NUMBER;
+        hash = (53 * hash) + getVersion().hashCode();
+        hash = (37 * hash) + ATTRIBUTION_FIELD_NUMBER;
+        hash = (53 * hash) + getAttribution().hashCode();
+        hash = (37 * hash) + TEMPLATE_FIELD_NUMBER;
+        hash = (53 * hash) + getTemplate().hashCode();
+        hash = (37 * hash) + LEGEND_FIELD_NUMBER;
+        hash = (53 * hash) + getLegend().hashCode();
+        hash = (37 * hash) + SCHEME_FIELD_NUMBER;
+        hash = (53 * hash) + getScheme().hashCode();
+        if (getTilesCount() > 0) {
+          hash = (37 * hash) + TILES_FIELD_NUMBER;
+          hash = (53 * hash) + getTilesList().hashCode();
+        }
+        if (getGridsCount() > 0) {
+          hash = (37 * hash) + GRIDS_FIELD_NUMBER;
+          hash = (53 * hash) + getGridsList().hashCode();
+        }
+        if (getDataCount() > 0) {
+          hash = (37 * hash) + DATA_FIELD_NUMBER;
+          hash = (53 * hash) + getDataList().hashCode();
+        }
+        hash = (37 * hash) + MIN_ZOOM_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getMinZoom());
+        hash = (37 * hash) + MAX_ZOOM_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getMaxZoom());
+        if (getBoundsCount() > 0) {
+          hash = (37 * hash) + BOUNDS_FIELD_NUMBER;
+          hash = (53 * hash) + getBoundsList().hashCode();
+        }
+        if (getCenterCount() > 0) {
+          hash = (37 * hash) + CENTER_FIELD_NUMBER;
+          hash = (53 * hash) + getCenterList().hashCode();
+        }
+        hash = (37 * hash) + ENCODING_FIELD_NUMBER;
+        hash = (53 * hash) + getEncoding().hashCode();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Sources.Source.TileSet prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.TileSet}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Source.TileSet)
+          com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Sources.Source.TileSet.class, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Sources.Source.TileSet.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          tileJson_ = "";
+
+          name_ = "";
+
+          description_ = "";
+
+          version_ = "";
+
+          attribution_ = "";
+
+          template_ = "";
+
+          legend_ = "";
+
+          scheme_ = "";
+
+          tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          bitField0_ = (bitField0_ & ~0x00000100);
+          grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          bitField0_ = (bitField0_ & ~0x00000200);
+          data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          bitField0_ = (bitField0_ & ~0x00000400);
+          minZoom_ = 0F;
+
+          maxZoom_ = 0F;
+
+          bounds_ = emptyFloatList();
+          bitField0_ = (bitField0_ & ~0x00002000);
+          center_ = emptyFloatList();
+          bitField0_ = (bitField0_ & ~0x00004000);
+          encoding_ = "";
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet build() {
+          com.tophap.mapbox_gl.proto.Sources.Source.TileSet result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet buildPartial() {
+          com.tophap.mapbox_gl.proto.Sources.Source.TileSet result = new com.tophap.mapbox_gl.proto.Sources.Source.TileSet(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          result.tileJson_ = tileJson_;
+          result.name_ = name_;
+          result.description_ = description_;
+          result.version_ = version_;
+          result.attribution_ = attribution_;
+          result.template_ = template_;
+          result.legend_ = legend_;
+          result.scheme_ = scheme_;
+          if (((bitField0_ & 0x00000100) != 0)) {
+            tiles_ = tiles_.getUnmodifiableView();
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
+          result.tiles_ = tiles_;
+          if (((bitField0_ & 0x00000200) != 0)) {
+            grids_ = grids_.getUnmodifiableView();
+            bitField0_ = (bitField0_ & ~0x00000200);
+          }
+          result.grids_ = grids_;
+          if (((bitField0_ & 0x00000400) != 0)) {
+            data_ = data_.getUnmodifiableView();
+            bitField0_ = (bitField0_ & ~0x00000400);
+          }
+          result.data_ = data_;
+          result.minZoom_ = minZoom_;
+          result.maxZoom_ = maxZoom_;
+          if (((bitField0_ & 0x00002000) != 0)) {
+            bounds_.makeImmutable();
+            bitField0_ = (bitField0_ & ~0x00002000);
+          }
+          result.bounds_ = bounds_;
+          if (((bitField0_ & 0x00004000) != 0)) {
+            center_.makeImmutable();
+            bitField0_ = (bitField0_ & ~0x00004000);
+          }
+          result.center_ = center_;
+          result.encoding_ = encoding_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Sources.Source.TileSet) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.TileSet)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Sources.Source.TileSet other) {
+          if (other == com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance()) return this;
+          if (!other.getTileJson().isEmpty()) {
+            tileJson_ = other.tileJson_;
+            onChanged();
+          }
+          if (!other.getName().isEmpty()) {
+            name_ = other.name_;
+            onChanged();
+          }
+          if (!other.getDescription().isEmpty()) {
+            description_ = other.description_;
+            onChanged();
+          }
+          if (!other.getVersion().isEmpty()) {
+            version_ = other.version_;
+            onChanged();
+          }
+          if (!other.getAttribution().isEmpty()) {
+            attribution_ = other.attribution_;
+            onChanged();
+          }
+          if (!other.getTemplate().isEmpty()) {
+            template_ = other.template_;
+            onChanged();
+          }
+          if (!other.getLegend().isEmpty()) {
+            legend_ = other.legend_;
+            onChanged();
+          }
+          if (!other.getScheme().isEmpty()) {
+            scheme_ = other.scheme_;
+            onChanged();
+          }
+          if (!other.tiles_.isEmpty()) {
+            if (tiles_.isEmpty()) {
+              tiles_ = other.tiles_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensureTilesIsMutable();
+              tiles_.addAll(other.tiles_);
+            }
+            onChanged();
+          }
+          if (!other.grids_.isEmpty()) {
+            if (grids_.isEmpty()) {
+              grids_ = other.grids_;
+              bitField0_ = (bitField0_ & ~0x00000200);
+            } else {
+              ensureGridsIsMutable();
+              grids_.addAll(other.grids_);
+            }
+            onChanged();
+          }
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000400);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+          if (other.getMinZoom() != 0F) {
+            setMinZoom(other.getMinZoom());
+          }
+          if (other.getMaxZoom() != 0F) {
+            setMaxZoom(other.getMaxZoom());
+          }
+          if (!other.bounds_.isEmpty()) {
+            if (bounds_.isEmpty()) {
+              bounds_ = other.bounds_;
+              bitField0_ = (bitField0_ & ~0x00002000);
+            } else {
+              ensureBoundsIsMutable();
+              bounds_.addAll(other.bounds_);
+            }
+            onChanged();
+          }
+          if (!other.center_.isEmpty()) {
+            if (center_.isEmpty()) {
+              center_ = other.center_;
+              bitField0_ = (bitField0_ & ~0x00004000);
+            } else {
+              ensureCenterIsMutable();
+              center_.addAll(other.center_);
+            }
+            onChanged();
+          }
+          if (!other.getEncoding().isEmpty()) {
+            encoding_ = other.encoding_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Sources.Source.TileSet parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object tileJson_ = "";
+        /**
+         * <code>string tile_json = 1;</code>
+         */
+        public java.lang.String getTileJson() {
+          java.lang.Object ref = tileJson_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            tileJson_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string tile_json = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTileJsonBytes() {
+          java.lang.Object ref = tileJson_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            tileJson_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string tile_json = 1;</code>
+         */
+        public Builder setTileJson(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          tileJson_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string tile_json = 1;</code>
+         */
+        public Builder clearTileJson() {
+          
+          tileJson_ = getDefaultInstance().getTileJson();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string tile_json = 1;</code>
+         */
+        public Builder setTileJsonBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          tileJson_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object name_ = "";
+        /**
+         * <code>string name = 2;</code>
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            name_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string name = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string name = 2;</code>
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          name_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string name = 2;</code>
+         */
+        public Builder clearName() {
+          
+          name_ = getDefaultInstance().getName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string name = 2;</code>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          name_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object description_ = "";
+        /**
+         * <code>string description = 3;</code>
+         */
+        public java.lang.String getDescription() {
+          java.lang.Object ref = description_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            description_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string description = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+            getDescriptionBytes() {
+          java.lang.Object ref = description_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            description_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string description = 3;</code>
+         */
+        public Builder setDescription(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          description_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string description = 3;</code>
+         */
+        public Builder clearDescription() {
+          
+          description_ = getDefaultInstance().getDescription();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string description = 3;</code>
+         */
+        public Builder setDescriptionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          description_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object version_ = "";
+        /**
+         * <code>string version = 4;</code>
+         */
+        public java.lang.String getVersion() {
+          java.lang.Object ref = version_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            version_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string version = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getVersionBytes() {
+          java.lang.Object ref = version_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            version_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string version = 4;</code>
+         */
+        public Builder setVersion(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          version_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string version = 4;</code>
+         */
+        public Builder clearVersion() {
+          
+          version_ = getDefaultInstance().getVersion();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string version = 4;</code>
+         */
+        public Builder setVersionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          version_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object attribution_ = "";
+        /**
+         * <code>string attribution = 5;</code>
+         */
+        public java.lang.String getAttribution() {
+          java.lang.Object ref = attribution_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            attribution_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 5;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAttributionBytes() {
+          java.lang.Object ref = attribution_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            attribution_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 5;</code>
+         */
+        public Builder setAttribution(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 5;</code>
+         */
+        public Builder clearAttribution() {
+          
+          attribution_ = getDefaultInstance().getAttribution();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 5;</code>
+         */
+        public Builder setAttributionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object template_ = "";
+        /**
+         * <code>string template = 6;</code>
+         */
+        public java.lang.String getTemplate() {
+          java.lang.Object ref = template_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            template_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string template = 6;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTemplateBytes() {
+          java.lang.Object ref = template_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            template_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string template = 6;</code>
+         */
+        public Builder setTemplate(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          template_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string template = 6;</code>
+         */
+        public Builder clearTemplate() {
+          
+          template_ = getDefaultInstance().getTemplate();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string template = 6;</code>
+         */
+        public Builder setTemplateBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          template_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object legend_ = "";
+        /**
+         * <code>string legend = 7;</code>
+         */
+        public java.lang.String getLegend() {
+          java.lang.Object ref = legend_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            legend_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string legend = 7;</code>
+         */
+        public com.google.protobuf.ByteString
+            getLegendBytes() {
+          java.lang.Object ref = legend_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            legend_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string legend = 7;</code>
+         */
+        public Builder setLegend(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          legend_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string legend = 7;</code>
+         */
+        public Builder clearLegend() {
+          
+          legend_ = getDefaultInstance().getLegend();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string legend = 7;</code>
+         */
+        public Builder setLegendBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          legend_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object scheme_ = "";
+        /**
+         * <code>string scheme = 8;</code>
+         */
+        public java.lang.String getScheme() {
+          java.lang.Object ref = scheme_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            scheme_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string scheme = 8;</code>
+         */
+        public com.google.protobuf.ByteString
+            getSchemeBytes() {
+          java.lang.Object ref = scheme_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            scheme_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string scheme = 8;</code>
+         */
+        public Builder setScheme(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          scheme_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string scheme = 8;</code>
+         */
+        public Builder clearScheme() {
+          
+          scheme_ = getDefaultInstance().getScheme();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string scheme = 8;</code>
+         */
+        public Builder setSchemeBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          scheme_ = value;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.LazyStringList tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        private void ensureTilesIsMutable() {
+          if (!((bitField0_ & 0x00000100) != 0)) {
+            tiles_ = new com.google.protobuf.LazyStringArrayList(tiles_);
+            bitField0_ |= 0x00000100;
+           }
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public com.google.protobuf.ProtocolStringList
+            getTilesList() {
+          return tiles_.getUnmodifiableView();
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public int getTilesCount() {
+          return tiles_.size();
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public java.lang.String getTiles(int index) {
+          return tiles_.get(index);
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public com.google.protobuf.ByteString
+            getTilesBytes(int index) {
+          return tiles_.getByteString(index);
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public Builder setTiles(
+            int index, java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTilesIsMutable();
+          tiles_.set(index, value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public Builder addTiles(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTilesIsMutable();
+          tiles_.add(value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public Builder addAllTiles(
+            java.lang.Iterable<java.lang.String> values) {
+          ensureTilesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, tiles_);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public Builder clearTiles() {
+          tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          bitField0_ = (bitField0_ & ~0x00000100);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string tiles = 9;</code>
+         */
+        public Builder addTilesBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          ensureTilesIsMutable();
+          tiles_.add(value);
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.LazyStringList grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        private void ensureGridsIsMutable() {
+          if (!((bitField0_ & 0x00000200) != 0)) {
+            grids_ = new com.google.protobuf.LazyStringArrayList(grids_);
+            bitField0_ |= 0x00000200;
+           }
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public com.google.protobuf.ProtocolStringList
+            getGridsList() {
+          return grids_.getUnmodifiableView();
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public int getGridsCount() {
+          return grids_.size();
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public java.lang.String getGrids(int index) {
+          return grids_.get(index);
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public com.google.protobuf.ByteString
+            getGridsBytes(int index) {
+          return grids_.getByteString(index);
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public Builder setGrids(
+            int index, java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGridsIsMutable();
+          grids_.set(index, value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public Builder addGrids(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGridsIsMutable();
+          grids_.add(value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public Builder addAllGrids(
+            java.lang.Iterable<java.lang.String> values) {
+          ensureGridsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, grids_);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public Builder clearGrids() {
+          grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          bitField0_ = (bitField0_ & ~0x00000200);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string grids = 10;</code>
+         */
+        public Builder addGridsBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          ensureGridsIsMutable();
+          grids_.add(value);
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.LazyStringList data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        private void ensureDataIsMutable() {
+          if (!((bitField0_ & 0x00000400) != 0)) {
+            data_ = new com.google.protobuf.LazyStringArrayList(data_);
+            bitField0_ |= 0x00000400;
+           }
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public com.google.protobuf.ProtocolStringList
+            getDataList() {
+          return data_.getUnmodifiableView();
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public int getDataCount() {
+          return data_.size();
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public java.lang.String getData(int index) {
+          return data_.get(index);
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public com.google.protobuf.ByteString
+            getDataBytes(int index) {
+          return data_.getByteString(index);
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public Builder setData(
+            int index, java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public Builder addData(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public Builder addAllData(
+            java.lang.Iterable<java.lang.String> values) {
+          ensureDataIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, data_);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public Builder clearData() {
+          data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+          bitField0_ = (bitField0_ & ~0x00000400);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated string data = 11;</code>
+         */
+        public Builder addDataBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+          return this;
+        }
+
+        private float minZoom_ ;
+        /**
+         * <code>float min_zoom = 12;</code>
+         */
+        public float getMinZoom() {
+          return minZoom_;
+        }
+        /**
+         * <code>float min_zoom = 12;</code>
+         */
+        public Builder setMinZoom(float value) {
+          
+          minZoom_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float min_zoom = 12;</code>
+         */
+        public Builder clearMinZoom() {
+          
+          minZoom_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        private float maxZoom_ ;
+        /**
+         * <code>float max_zoom = 13;</code>
+         */
+        public float getMaxZoom() {
+          return maxZoom_;
+        }
+        /**
+         * <code>float max_zoom = 13;</code>
+         */
+        public Builder setMaxZoom(float value) {
+          
+          maxZoom_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>float max_zoom = 13;</code>
+         */
+        public Builder clearMaxZoom() {
+          
+          maxZoom_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.Internal.FloatList bounds_ = emptyFloatList();
+        private void ensureBoundsIsMutable() {
+          if (!((bitField0_ & 0x00002000) != 0)) {
+            bounds_ = mutableCopy(bounds_);
+            bitField0_ |= 0x00002000;
+           }
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public java.util.List<java.lang.Float>
+            getBoundsList() {
+          return ((bitField0_ & 0x00002000) != 0) ?
+                   java.util.Collections.unmodifiableList(bounds_) : bounds_;
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public int getBoundsCount() {
+          return bounds_.size();
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public float getBounds(int index) {
+          return bounds_.getFloat(index);
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public Builder setBounds(
+            int index, float value) {
+          ensureBoundsIsMutable();
+          bounds_.setFloat(index, value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public Builder addBounds(float value) {
+          ensureBoundsIsMutable();
+          bounds_.addFloat(value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public Builder addAllBounds(
+            java.lang.Iterable<? extends java.lang.Float> values) {
+          ensureBoundsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, bounds_);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated float bounds = 14;</code>
+         */
+        public Builder clearBounds() {
+          bounds_ = emptyFloatList();
+          bitField0_ = (bitField0_ & ~0x00002000);
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.Internal.FloatList center_ = emptyFloatList();
+        private void ensureCenterIsMutable() {
+          if (!((bitField0_ & 0x00004000) != 0)) {
+            center_ = mutableCopy(center_);
+            bitField0_ |= 0x00004000;
+           }
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public java.util.List<java.lang.Float>
+            getCenterList() {
+          return ((bitField0_ & 0x00004000) != 0) ?
+                   java.util.Collections.unmodifiableList(center_) : center_;
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public int getCenterCount() {
+          return center_.size();
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public float getCenter(int index) {
+          return center_.getFloat(index);
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public Builder setCenter(
+            int index, float value) {
+          ensureCenterIsMutable();
+          center_.setFloat(index, value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public Builder addCenter(float value) {
+          ensureCenterIsMutable();
+          center_.addFloat(value);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public Builder addAllCenter(
+            java.lang.Iterable<? extends java.lang.Float> values) {
+          ensureCenterIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, center_);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>repeated float center = 15;</code>
+         */
+        public Builder clearCenter() {
+          center_ = emptyFloatList();
+          bitField0_ = (bitField0_ & ~0x00004000);
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object encoding_ = "";
+        /**
+         * <code>string encoding = 16;</code>
+         */
+        public java.lang.String getEncoding() {
+          java.lang.Object ref = encoding_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            encoding_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string encoding = 16;</code>
+         */
+        public com.google.protobuf.ByteString
+            getEncodingBytes() {
+          java.lang.Object ref = encoding_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            encoding_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string encoding = 16;</code>
+         */
+        public Builder setEncoding(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          encoding_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string encoding = 16;</code>
+         */
+        public Builder clearEncoding() {
+          
+          encoding_ = getDefaultInstance().getEncoding();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string encoding = 16;</code>
+         */
+        public Builder setEncodingBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          encoding_ = value;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Source.TileSet)
+      }
+
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Source.TileSet)
+      private static final com.tophap.mapbox_gl.proto.Sources.Source.TileSet DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Sources.Source.TileSet();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.TileSet getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<TileSet>
+          PARSER = new com.google.protobuf.AbstractParser<TileSet>() {
+        @java.lang.Override
+        public TileSet parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new TileSet(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<TileSet> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<TileSet> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     private int typeCase_ = 0;
     private java.lang.Object type_;
     public enum TypeCase
         implements com.google.protobuf.Internal.EnumLite {
       GEOJSON(1),
       IMAGE(2),
+      VECTOR(3),
+      UNKNOWN(4),
       TYPE_NOT_SET(0);
       private final int value;
       private TypeCase(int value) {
@@ -3548,6 +8109,8 @@ public final class Sources {
         switch (value) {
           case 1: return GEOJSON;
           case 2: return IMAGE;
+          case 3: return VECTOR;
+          case 4: return UNKNOWN;
           case 0: return TYPE_NOT_SET;
           default: return null;
         }
@@ -3615,6 +8178,58 @@ public final class Sources {
       return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
     }
 
+    public static final int VECTOR_FIELD_NUMBER = 3;
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     */
+    public boolean hasVector() {
+      return typeCase_ == 3;
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.Vector getVector() {
+      if (typeCase_ == 3) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder getVectorOrBuilder() {
+      if (typeCase_ == 3) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+    }
+
+    public static final int UNKNOWN_FIELD_NUMBER = 4;
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     */
+    public boolean hasUnknown() {
+      return typeCase_ == 4;
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.Unknown getUnknown() {
+      if (typeCase_ == 4) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder getUnknownOrBuilder() {
+      if (typeCase_ == 4) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3635,6 +8250,12 @@ public final class Sources {
       if (typeCase_ == 2) {
         output.writeMessage(2, (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
       }
+      if (typeCase_ == 3) {
+        output.writeMessage(3, (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+      }
+      if (typeCase_ == 4) {
+        output.writeMessage(4, (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3651,6 +8272,14 @@ public final class Sources {
       if (typeCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
+      }
+      if (typeCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+      }
+      if (typeCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3677,6 +8306,14 @@ public final class Sources {
           if (!getImage()
               .equals(other.getImage())) return false;
           break;
+        case 3:
+          if (!getVector()
+              .equals(other.getVector())) return false;
+          break;
+        case 4:
+          if (!getUnknown()
+              .equals(other.getUnknown())) return false;
+          break;
         case 0:
         default:
       }
@@ -3699,6 +8336,14 @@ public final class Sources {
         case 2:
           hash = (37 * hash) + IMAGE_FIELD_NUMBER;
           hash = (53 * hash) + getImage().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + VECTOR_FIELD_NUMBER;
+          hash = (53 * hash) + getVector().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + UNKNOWN_FIELD_NUMBER;
+          hash = (53 * hash) + getUnknown().hashCode();
           break;
         case 0:
         default:
@@ -3878,6 +8523,20 @@ public final class Sources {
             result.type_ = imageBuilder_.build();
           }
         }
+        if (typeCase_ == 3) {
+          if (vectorBuilder_ == null) {
+            result.type_ = type_;
+          } else {
+            result.type_ = vectorBuilder_.build();
+          }
+        }
+        if (typeCase_ == 4) {
+          if (unknownBuilder_ == null) {
+            result.type_ = type_;
+          } else {
+            result.type_ = unknownBuilder_.build();
+          }
+        }
         result.typeCase_ = typeCase_;
         onBuilt();
         return result;
@@ -3934,6 +8593,14 @@ public final class Sources {
           }
           case IMAGE: {
             mergeImage(other.getImage());
+            break;
+          }
+          case VECTOR: {
+            mergeVector(other.getVector());
+            break;
+          }
+          case UNKNOWN: {
+            mergeUnknown(other.getUnknown());
             break;
           }
           case TYPE_NOT_SET: {
@@ -4255,6 +8922,278 @@ public final class Sources {
         onChanged();;
         return imageBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder, com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder> vectorBuilder_;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public boolean hasVector() {
+        return typeCase_ == 3;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.Vector getVector() {
+        if (vectorBuilder_ == null) {
+          if (typeCase_ == 3) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+        } else {
+          if (typeCase_ == 3) {
+            return vectorBuilder_.getMessage();
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public Builder setVector(com.tophap.mapbox_gl.proto.Sources.Source.Vector value) {
+        if (vectorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          type_ = value;
+          onChanged();
+        } else {
+          vectorBuilder_.setMessage(value);
+        }
+        typeCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public Builder setVector(
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder builderForValue) {
+        if (vectorBuilder_ == null) {
+          type_ = builderForValue.build();
+          onChanged();
+        } else {
+          vectorBuilder_.setMessage(builderForValue.build());
+        }
+        typeCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public Builder mergeVector(com.tophap.mapbox_gl.proto.Sources.Source.Vector value) {
+        if (vectorBuilder_ == null) {
+          if (typeCase_ == 3 &&
+              type_ != com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance()) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.Vector.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            type_ = value;
+          }
+          onChanged();
+        } else {
+          if (typeCase_ == 3) {
+            vectorBuilder_.mergeFrom(value);
+          }
+          vectorBuilder_.setMessage(value);
+        }
+        typeCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public Builder clearVector() {
+        if (vectorBuilder_ == null) {
+          if (typeCase_ == 3) {
+            typeCase_ = 0;
+            type_ = null;
+            onChanged();
+          }
+        } else {
+          if (typeCase_ == 3) {
+            typeCase_ = 0;
+            type_ = null;
+          }
+          vectorBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder getVectorBuilder() {
+        return getVectorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder getVectorOrBuilder() {
+        if ((typeCase_ == 3) && (vectorBuilder_ != null)) {
+          return vectorBuilder_.getMessageOrBuilder();
+        } else {
+          if (typeCase_ == 3) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder, com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder> 
+          getVectorFieldBuilder() {
+        if (vectorBuilder_ == null) {
+          if (!(typeCase_ == 3)) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
+          }
+          vectorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.tophap.mapbox_gl.proto.Sources.Source.Vector, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder, com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder>(
+                  (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_,
+                  getParentForChildren(),
+                  isClean());
+          type_ = null;
+        }
+        typeCase_ = 3;
+        onChanged();;
+        return vectorBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Unknown, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder, com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder> unknownBuilder_;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public boolean hasUnknown() {
+        return typeCase_ == 4;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.Unknown getUnknown() {
+        if (unknownBuilder_ == null) {
+          if (typeCase_ == 4) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+        } else {
+          if (typeCase_ == 4) {
+            return unknownBuilder_.getMessage();
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public Builder setUnknown(com.tophap.mapbox_gl.proto.Sources.Source.Unknown value) {
+        if (unknownBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          type_ = value;
+          onChanged();
+        } else {
+          unknownBuilder_.setMessage(value);
+        }
+        typeCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public Builder setUnknown(
+          com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder builderForValue) {
+        if (unknownBuilder_ == null) {
+          type_ = builderForValue.build();
+          onChanged();
+        } else {
+          unknownBuilder_.setMessage(builderForValue.build());
+        }
+        typeCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public Builder mergeUnknown(com.tophap.mapbox_gl.proto.Sources.Source.Unknown value) {
+        if (unknownBuilder_ == null) {
+          if (typeCase_ == 4 &&
+              type_ != com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance()) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.Unknown.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            type_ = value;
+          }
+          onChanged();
+        } else {
+          if (typeCase_ == 4) {
+            unknownBuilder_.mergeFrom(value);
+          }
+          unknownBuilder_.setMessage(value);
+        }
+        typeCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public Builder clearUnknown() {
+        if (unknownBuilder_ == null) {
+          if (typeCase_ == 4) {
+            typeCase_ = 0;
+            type_ = null;
+            onChanged();
+          }
+        } else {
+          if (typeCase_ == 4) {
+            typeCase_ = 0;
+            type_ = null;
+          }
+          unknownBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder getUnknownBuilder() {
+        return getUnknownFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder getUnknownOrBuilder() {
+        if ((typeCase_ == 4) && (unknownBuilder_ != null)) {
+          return unknownBuilder_.getMessageOrBuilder();
+        } else {
+          if (typeCase_ == 4) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Unknown, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder, com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder> 
+          getUnknownFieldBuilder() {
+        if (unknownBuilder_ == null) {
+          if (!(typeCase_ == 4)) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
+          }
+          unknownBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.tophap.mapbox_gl.proto.Sources.Source.Unknown, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder, com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder>(
+                  (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_,
+                  getParentForChildren(),
+                  isClean());
+          type_ = null;
+        }
+        typeCase_ = 4;
+        onChanged();;
+        return unknownBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4328,6 +9267,21 @@ public final class Sources {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_tophap_mapbox_gl_proto_Source_Image_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_tophap_mapbox_gl_proto_Source_Vector_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4338,23 +9292,38 @@ public final class Sources {
   static {
     java.lang.String[] descriptorData = {
       "\n\rsources.proto\022\032com.tophap.mapbox_gl.pr" +
-      "oto\032\nutil.proto\"\347\004\n\006Source\022=\n\007geoJson\030\001 " +
+      "oto\032\nutil.proto\"\260\t\n\006Source\022=\n\007geoJson\030\001 " +
       "\001(\0132*.com.tophap.mapbox_gl.proto.Source." +
       "GeoJsonH\000\0229\n\005image\030\002 \001(\0132(.com.tophap.ma" +
-      "pbox_gl.proto.Source.ImageH\000\032\310\002\n\007GeoJson" +
-      "\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022C\n\007opt" +
-      "ions\030\003 \001(\01322.com.tophap.mapbox_gl.proto." +
-      "Source.GeoJson.Options\022\r\n\003uri\030\004 \001(\tH\000\022\022\n" +
-      "\010geo_json\030\005 \001(\tH\000\032\251\001\n\007Options\022\020\n\010min_zoo" +
-      "m\030\001 \001(\005\022\020\n\010max_zoom\030\002 \001(\005\022\016\n\006buffer\030\003 \001(" +
-      "\005\022\024\n\014line_metrics\030\004 \001(\010\022\021\n\ttolerance\030\005 \001" +
-      "(\002\022\017\n\007cluster\030\006 \001(\010\022\030\n\020cluster_max_zoom\030" +
-      "\007 \001(\005\022\026\n\016cluster_radius\030\010 \001(\005B\010\n\006source\032" +
-      "\217\001\n\005Image\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001" +
-      "(\t\022;\n\013coordinates\030\003 \001(\0132&.com.tophap.map" +
-      "box_gl.proto.LatLngQuad\022\r\n\003uri\030\004 \001(\tH\000\022\017" +
-      "\n\005image\030\005 \001(\014H\000B\010\n\006sourceB\006\n\004typeB\034\n\032com" +
-      ".tophap.mapbox_gl.protob\006proto3"
+      "pbox_gl.proto.Source.ImageH\000\022;\n\006vector\030\003" +
+      " \001(\0132).com.tophap.mapbox_gl.proto.Source" +
+      ".VectorH\000\022=\n\007unknown\030\004 \001(\0132*.com.tophap." +
+      "mapbox_gl.proto.Source.UnknownH\000\032\310\002\n\007Geo" +
+      "Json\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022C\n" +
+      "\007options\030\003 \001(\01322.com.tophap.mapbox_gl.pr" +
+      "oto.Source.GeoJson.Options\022\r\n\003uri\030\004 \001(\tH" +
+      "\000\022\022\n\010geo_json\030\005 \001(\tH\000\032\251\001\n\007Options\022\020\n\010min" +
+      "_zoom\030\001 \001(\005\022\020\n\010max_zoom\030\002 \001(\005\022\016\n\006buffer\030" +
+      "\003 \001(\005\022\024\n\014line_metrics\030\004 \001(\010\022\021\n\ttolerance" +
+      "\030\005 \001(\002\022\017\n\007cluster\030\006 \001(\010\022\030\n\020cluster_max_z" +
+      "oom\030\007 \001(\005\022\026\n\016cluster_radius\030\010 \001(\005B\010\n\006sou" +
+      "rce\032\217\001\n\005Image\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution" +
+      "\030\002 \001(\t\022;\n\013coordinates\030\003 \001(\0132&.com.tophap" +
+      ".mapbox_gl.proto.LatLngQuad\022\r\n\003uri\030\004 \001(\t" +
+      "H\000\022\017\n\005image\030\005 \001(\014H\000B\010\n\006source\032\202\001\n\006Vector" +
+      "\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022\r\n\003uri" +
+      "\030\003 \001(\tH\000\022>\n\010tile_set\030\004 \001(\0132*.com.tophap." +
+      "mapbox_gl.proto.Source.TileSetH\000B\010\n\006sour" +
+      "ce\032*\n\007Unknown\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution" +
+      "\030\002 \001(\t\032\231\002\n\007TileSet\022\021\n\ttile_json\030\001 \001(\t\022\014\n" +
+      "\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\017\n\007vers" +
+      "ion\030\004 \001(\t\022\023\n\013attribution\030\005 \001(\t\022\020\n\010templa" +
+      "te\030\006 \001(\t\022\016\n\006legend\030\007 \001(\t\022\016\n\006scheme\030\010 \001(\t" +
+      "\022\r\n\005tiles\030\t \003(\t\022\r\n\005grids\030\n \003(\t\022\014\n\004data\030\013" +
+      " \003(\t\022\020\n\010min_zoom\030\014 \001(\002\022\020\n\010max_zoom\030\r \001(\002" +
+      "\022\016\n\006bounds\030\016 \003(\002\022\016\n\006center\030\017 \003(\002\022\020\n\010enco" +
+      "ding\030\020 \001(\tB\006\n\004typeB\034\n\032com.tophap.mapbox_" +
+      "gl.protob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4374,7 +9343,7 @@ public final class Sources {
     internal_static_com_tophap_mapbox_gl_proto_Source_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_descriptor,
-        new java.lang.String[] { "GeoJson", "Image", "Type", });
+        new java.lang.String[] { "GeoJson", "Image", "Vector", "Unknown", "Type", });
     internal_static_com_tophap_mapbox_gl_proto_Source_GeoJson_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(0);
     internal_static_com_tophap_mapbox_gl_proto_Source_GeoJson_fieldAccessorTable = new
@@ -4393,6 +9362,24 @@ public final class Sources {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_Image_descriptor,
         new java.lang.String[] { "Id", "Attribution", "Coordinates", "Uri", "Image", "Source", });
+    internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(2);
+    internal_static_com_tophap_mapbox_gl_proto_Source_Vector_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor,
+        new java.lang.String[] { "Id", "Attribution", "Uri", "TileSet", "Source", });
+    internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(3);
+    internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor,
+        new java.lang.String[] { "Id", "Attribution", });
+    internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(4);
+    internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor,
+        new java.lang.String[] { "TileJson", "Name", "Description", "Version", "Attribution", "Template", "Legend", "Scheme", "Tiles", "Grids", "Data", "MinZoom", "MaxZoom", "Bounds", "Center", "Encoding", });
     com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor();
   }
 

@@ -26,14 +26,14 @@ const Map__Options$json = const {
     const {'1': 'double_tap_gestures', '3': 11, '4': 1, '5': 8, '10': 'doubleTapGestures'},
     const {'1': 'quick_zoom_gestures', '3': 12, '4': 1, '5': 8, '10': 'quickZoomGestures'},
     const {'1': 'compass', '3': 13, '4': 1, '5': 8, '10': 'compass'},
-    const {'1': 'compass_gravity', '3': 14, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Gravity', '10': 'compassGravity'},
+    const {'1': 'compass_position', '3': 14, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.OrnamentPosition', '10': 'compassPosition'},
     const {'1': 'compass_margin', '3': 15, '4': 3, '5': 5, '10': 'compassMargin'},
     const {'1': 'compass_fade_facing_north', '3': 16, '4': 1, '5': 8, '10': 'compassFadeFacingNorth'},
     const {'1': 'logo', '3': 17, '4': 1, '5': 8, '10': 'logo'},
-    const {'1': 'logo_gravity', '3': 18, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Gravity', '10': 'logoGravity'},
+    const {'1': 'logo_position', '3': 18, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.OrnamentPosition', '10': 'logoPosition'},
     const {'1': 'logo_margin', '3': 19, '4': 3, '5': 5, '10': 'logoMargin'},
     const {'1': 'attribution', '3': 20, '4': 1, '5': 8, '10': 'attribution'},
-    const {'1': 'attribution_gravity', '3': 21, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Gravity', '10': 'attributionGravity'},
+    const {'1': 'attribution_position', '3': 21, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.OrnamentPosition', '10': 'attributionPosition'},
     const {'1': 'attribution_margin', '3': 22, '4': 3, '5': 5, '10': 'attributionMargin'},
     const {'1': 'attribution_tint_color', '3': 23, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Color', '10': 'attributionTintColor'},
     const {'1': 'render_texture_mode', '3': 24, '4': 1, '5': 8, '10': 'renderTextureMode'},
@@ -42,6 +42,12 @@ const Map__Options$json = const {
     const {'1': 'enable_z_media_overlay', '3': 27, '4': 1, '5': 8, '10': 'enableZMediaOverlay'},
     const {'1': 'pixel_ratio', '3': 28, '4': 1, '5': 2, '10': 'pixelRatio'},
     const {'1': 'foreground_load_color', '3': 29, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Color', '10': 'foregroundLoadColor'},
+    const {'1': 'from_mapbox', '3': 30, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle', '9': 0, '10': 'fromMapbox'},
+    const {'1': 'from_uri', '3': 31, '4': 1, '5': 9, '9': 0, '10': 'fromUri'},
+    const {'1': 'from_json', '3': 32, '4': 1, '5': 9, '9': 0, '10': 'fromJson'},
+  ],
+  '8': const [
+    const {'1': 'style'},
   ],
 };
 
@@ -78,6 +84,7 @@ const Map__Operations_Ready$json = const {
     const {'1': 'min_zoom', '3': 3, '4': 1, '5': 1, '10': 'minZoom'},
     const {'1': 'max_zoom', '3': 4, '4': 1, '5': 1, '10': 'maxZoom'},
     const {'1': 'camera', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map_.CameraPosition', '10': 'camera'},
+    const {'1': 'style', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Style', '10': 'style'},
   ],
 };
 

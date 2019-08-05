@@ -8,6 +8,8 @@ message Source {
   oneof type {
     GeoJson geoJson = 1;
     Image image = 2;
+    Vector vector = 3;
+    Unknown unknown = 4;
   }
 
   message GeoJson {
@@ -41,5 +43,39 @@ message Source {
       string uri = 4;
       bytes image = 5;
     }
+  }
+
+  message Vector {
+    string id = 1;
+    string attribution = 2;
+
+    oneof source {
+      string uri = 3;
+      TileSet tile_set = 4;
+    }
+  }
+
+  message Unknown {
+    string id = 1;
+    string attribution = 2;
+  }
+
+  message TileSet {
+    string tile_json = 1;
+    string name = 2;
+    string description = 3;
+    string version = 4;
+    string attribution = 5;
+    string template = 6;
+    string legend = 7;
+    string scheme = 8;
+    repeated string tiles = 9;
+    repeated string grids = 10;
+    repeated string data = 11;
+    float min_zoom = 12;
+    float max_zoom = 13;
+    repeated float bounds = 14;
+    repeated float center = 15;
+    string encoding = 16;
   }
 }

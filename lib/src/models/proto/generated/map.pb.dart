@@ -11,14 +11,30 @@ import 'package:fixnum/fixnum.dart';
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'util.pb.dart' as $1;
+import 'style.pb.dart' as $4;
 
 import 'util.pbenum.dart' as $1;
+import 'style.pbenum.dart' as $4;
 import 'map.pbenum.dart';
 
 export 'map.pbenum.dart';
 
+enum Map__Options_Style {
+  fromMapbox, 
+  fromUri, 
+  fromJson_32, 
+  notSet
+}
+
 class Map__Options extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, Map__Options_Style> _Map__Options_StyleByTag = {
+    30 : Map__Options_Style.fromMapbox,
+    31 : Map__Options_Style.fromUri,
+    32 : Map__Options_Style.fromJson_32,
+    0 : Map__Options_Style.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Options', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+    ..oo(0, [30, 31, 32])
     ..aOS(1, 'apiBaseUri')
     ..aOS(2, 'localIdeographFontFamily')
     ..aOB(3, 'crossSourceCollisions')
@@ -32,14 +48,14 @@ class Map__Options extends $pb.GeneratedMessage {
     ..aOB(11, 'doubleTapGestures')
     ..aOB(12, 'quickZoomGestures')
     ..aOB(13, 'compass')
-    ..e<$1.Gravity>(14, 'compassGravity', $pb.PbFieldType.OE, $1.Gravity.GRAVITY_TOP, $1.Gravity.valueOf, $1.Gravity.values)
+    ..e<$1.OrnamentPosition>(14, 'compassPosition', $pb.PbFieldType.OE, $1.OrnamentPosition.TOP_LEFT, $1.OrnamentPosition.valueOf, $1.OrnamentPosition.values)
     ..p<$core.int>(15, 'compassMargin', $pb.PbFieldType.P3)
     ..aOB(16, 'compassFadeFacingNorth')
     ..aOB(17, 'logo')
-    ..e<$1.Gravity>(18, 'logoGravity', $pb.PbFieldType.OE, $1.Gravity.GRAVITY_TOP, $1.Gravity.valueOf, $1.Gravity.values)
+    ..e<$1.OrnamentPosition>(18, 'logoPosition', $pb.PbFieldType.OE, $1.OrnamentPosition.TOP_LEFT, $1.OrnamentPosition.valueOf, $1.OrnamentPosition.values)
     ..p<$core.int>(19, 'logoMargin', $pb.PbFieldType.P3)
     ..aOB(20, 'attribution')
-    ..e<$1.Gravity>(21, 'attributionGravity', $pb.PbFieldType.OE, $1.Gravity.GRAVITY_TOP, $1.Gravity.valueOf, $1.Gravity.values)
+    ..e<$1.OrnamentPosition>(21, 'attributionPosition', $pb.PbFieldType.OE, $1.OrnamentPosition.TOP_LEFT, $1.OrnamentPosition.valueOf, $1.OrnamentPosition.values)
     ..p<$core.int>(22, 'attributionMargin', $pb.PbFieldType.P3)
     ..a<$1.Color>(23, 'attributionTintColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..aOB(24, 'renderTextureMode')
@@ -48,6 +64,9 @@ class Map__Options extends $pb.GeneratedMessage {
     ..aOB(27, 'enableZMediaOverlay')
     ..a<$core.double>(28, 'pixelRatio', $pb.PbFieldType.OF)
     ..a<$1.Color>(29, 'foregroundLoadColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
+    ..e<$4.Style_DefaultMapboxStyle>(30, 'fromMapbox', $pb.PbFieldType.OE, $4.Style_DefaultMapboxStyle.MAPBOX_STREETS, $4.Style_DefaultMapboxStyle.valueOf, $4.Style_DefaultMapboxStyle.values)
+    ..aOS(31, 'fromUri')
+    ..aOS(32, 'fromJson_32')
     ..hasRequiredFields = false
   ;
 
@@ -64,6 +83,9 @@ class Map__Options extends $pb.GeneratedMessage {
   static $pb.PbList<Map__Options> createRepeated() => $pb.PbList<Map__Options>();
   static Map__Options getDefault() => _defaultInstance ??= create()..freeze();
   static Map__Options _defaultInstance;
+
+  Map__Options_Style whichStyle() => _Map__Options_StyleByTag[$_whichOneof(0)];
+  void clearStyle() => clearField($_whichOneof(0));
 
   $core.String get apiBaseUri => $_getS(0, '');
   set apiBaseUri($core.String v) { $_setString(0, v); }
@@ -130,10 +152,10 @@ class Map__Options extends $pb.GeneratedMessage {
   $core.bool hasCompass() => $_has(12);
   void clearCompass() => clearField(13);
 
-  $1.Gravity get compassGravity => $_getN(13);
-  set compassGravity($1.Gravity v) { setField(14, v); }
-  $core.bool hasCompassGravity() => $_has(13);
-  void clearCompassGravity() => clearField(14);
+  $1.OrnamentPosition get compassPosition => $_getN(13);
+  set compassPosition($1.OrnamentPosition v) { setField(14, v); }
+  $core.bool hasCompassPosition() => $_has(13);
+  void clearCompassPosition() => clearField(14);
 
   $core.List<$core.int> get compassMargin => $_getList(14);
 
@@ -147,10 +169,10 @@ class Map__Options extends $pb.GeneratedMessage {
   $core.bool hasLogo() => $_has(16);
   void clearLogo() => clearField(17);
 
-  $1.Gravity get logoGravity => $_getN(17);
-  set logoGravity($1.Gravity v) { setField(18, v); }
-  $core.bool hasLogoGravity() => $_has(17);
-  void clearLogoGravity() => clearField(18);
+  $1.OrnamentPosition get logoPosition => $_getN(17);
+  set logoPosition($1.OrnamentPosition v) { setField(18, v); }
+  $core.bool hasLogoPosition() => $_has(17);
+  void clearLogoPosition() => clearField(18);
 
   $core.List<$core.int> get logoMargin => $_getList(18);
 
@@ -159,10 +181,10 @@ class Map__Options extends $pb.GeneratedMessage {
   $core.bool hasAttribution() => $_has(19);
   void clearAttribution() => clearField(20);
 
-  $1.Gravity get attributionGravity => $_getN(20);
-  set attributionGravity($1.Gravity v) { setField(21, v); }
-  $core.bool hasAttributionGravity() => $_has(20);
-  void clearAttributionGravity() => clearField(21);
+  $1.OrnamentPosition get attributionPosition => $_getN(20);
+  set attributionPosition($1.OrnamentPosition v) { setField(21, v); }
+  $core.bool hasAttributionPosition() => $_has(20);
+  void clearAttributionPosition() => clearField(21);
 
   $core.List<$core.int> get attributionMargin => $_getList(21);
 
@@ -200,6 +222,21 @@ class Map__Options extends $pb.GeneratedMessage {
   set foregroundLoadColor($1.Color v) { setField(29, v); }
   $core.bool hasForegroundLoadColor() => $_has(28);
   void clearForegroundLoadColor() => clearField(29);
+
+  $4.Style_DefaultMapboxStyle get fromMapbox => $_getN(29);
+  set fromMapbox($4.Style_DefaultMapboxStyle v) { setField(30, v); }
+  $core.bool hasFromMapbox() => $_has(29);
+  void clearFromMapbox() => clearField(30);
+
+  $core.String get fromUri => $_getS(30, '');
+  set fromUri($core.String v) { $_setString(30, v); }
+  $core.bool hasFromUri() => $_has(30);
+  void clearFromUri() => clearField(31);
+
+  $core.String get fromJson_32 => $_getS(31, '');
+  set fromJson_32($core.String v) { $_setString(31, v); }
+  $core.bool hasFromJson_32() => $_has(31);
+  void clearFromJson_32() => clearField(32);
 }
 
 class Map__CameraPosition extends $pb.GeneratedMessage {
@@ -253,6 +290,7 @@ class Map__Operations_Ready extends $pb.GeneratedMessage {
     ..a<$core.double>(3, 'minZoom', $pb.PbFieldType.OD)
     ..a<$core.double>(4, 'maxZoom', $pb.PbFieldType.OD)
     ..a<Map__CameraPosition>(5, 'camera', $pb.PbFieldType.OM, Map__CameraPosition.getDefault, Map__CameraPosition.create)
+    ..a<$4.Style>(6, 'style', $pb.PbFieldType.OM, $4.Style.getDefault, $4.Style.create)
     ..hasRequiredFields = false
   ;
 
@@ -294,6 +332,11 @@ class Map__Operations_Ready extends $pb.GeneratedMessage {
   set camera(Map__CameraPosition v) { setField(5, v); }
   $core.bool hasCamera() => $_has(4);
   void clearCamera() => clearField(5);
+
+  $4.Style get style => $_getN(5);
+  set style($4.Style v) { setField(6, v); }
+  $core.bool hasStyle() => $_has(5);
+  void clearStyle() => clearField(6);
 }
 
 class Map__Operations_CameraUpdate extends $pb.GeneratedMessage {

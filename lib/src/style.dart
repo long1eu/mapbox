@@ -98,6 +98,7 @@ class Style {
     double maxZoom = 24.0,
     Color color = const Color(0xFF000000),
     String pattern,
+    double opacity = 1.0,
     TransitionOptions colorTransition,
     TransitionOptions patternTransition,
     TransitionOptions opacityTransition,
@@ -109,7 +110,7 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(color != null);
+    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final BackgroundLayerModel model = BackgroundLayerModel((BackgroundLayerModelBuilder b) {
@@ -120,6 +121,7 @@ class Style {
         ..maxZoom = maxZoom
         ..color = color.value
         ..pattern = pattern
+        ..opacity = opacity
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..patternTransition = (patternTransition ?? transitionOptions).toBuilder()
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder();
@@ -139,12 +141,14 @@ class Style {
     double radius = 5.0,
     Color color = const Color(0xFF000000),
     double blur = 0.0,
+    double opacity = 1.0,
     Offset translate = Offset.zero,
     TranslateAnchor translateAnchor = TranslateAnchor.map,
     TranslateAnchor pitchScale,
     TranslateAnchor pitchAlignment,
     double strokeWidth = 0.0,
     Color strokeColor = const Color(0xFF000000),
+    double strokeOpacity = 1.0,
     TransitionOptions radiusTransition,
     TransitionOptions colorTransition,
     TransitionOptions blurTransition,
@@ -162,14 +166,11 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(radius != null && radius >= 0);
-    assert(color != null);
-    assert(blur != null);
-    assert(translate != null && translate.dx != null && translate.dy != null);
-    assert(pitchScale != null);
-    assert(pitchAlignment != null);
-    assert(strokeWidth != null && strokeWidth >= 0);
-    assert(strokeColor != null);
+    if (radius != null) assert(radius >= 0);
+    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
+    if (translate != null) assert(translate.dx != null && translate.dy != null);
+    if (strokeWidth != null) assert(strokeWidth >= 0);
+    if (strokeOpacity != null) assert(strokeOpacity >= 0 && strokeOpacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final CircleLayerModel model = CircleLayerModel((CircleLayerModelBuilder b) {
@@ -182,12 +183,14 @@ class Style {
         ..radius = radius
         ..color = color.value
         ..blur = blur
+        ..opacity = opacity
         ..translate = ListBuilder<double>(<double>[translate.dx, translate.dy])
         ..translateAnchor = translateAnchor
         ..pitchScale = pitchScale
         ..pitchAlignment = pitchAlignment
         ..strokeWidth = strokeWidth
         ..strokeColor = strokeColor.value
+        ..strokeOpacity = strokeOpacity
         ..radiusTransition = (radiusTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..blurTransition = (blurTransition ?? transitionOptions).toBuilder()
@@ -209,6 +212,7 @@ class Style {
     bool visible = true,
     double minZoom = 0.0,
     double maxZoom = 24.0,
+    double opacity = 1.0,
     Color color = const Color(0xFF000000),
     Offset translate = Offset.zero,
     TranslateAnchor translateAnchor = TranslateAnchor.map,
@@ -231,11 +235,10 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(color != null);
-    assert(translate != null && translate.dx != null && translate.dy != null);
-    assert(height != null && height >= 0);
-    assert(base != null && base >= 0);
-    assert(verticalGradient != null);
+    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
+    if (translate != null) assert(translate.dx != null && translate.dy != null);
+    if (height != null) assert(height >= 0);
+    if (base != null) assert(base >= 0);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final FillExtrusionLayerModel model = FillExtrusionLayerModel((FillExtrusionLayerModelBuilder b) {
@@ -245,8 +248,9 @@ class Style {
         ..visible = visible
         ..minZoom = minZoom
         ..maxZoom = maxZoom
-        ..color = color.value
-        ..translate = ListBuilder<double>(<double>[translate.dx, translate.dy])
+        ..opacity = opacity
+        ..color = color?.value
+        ..translate = translate != null ? ListBuilder<double>(<double>[translate.dx, translate.dy]) : null
         ..translateAnchor = translateAnchor
         ..pattern = pattern
         ..height = height
@@ -272,9 +276,10 @@ class Style {
     double minZoom = 0.0,
     double maxZoom = 24.0,
     bool antialias = true,
+    double opacity = 1.0,
     Color color = const Color(0xFF000000),
     Color outlineColor,
-    Offset translate = Offset.zero,
+    Offset translate,
     TranslateAnchor translateAnchor = TranslateAnchor.map,
     String pattern,
     TransitionOptions opacityTransition,
@@ -291,10 +296,8 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(antialias != null);
-    assert(color != null);
-    assert(translate != null && translate.dx != null && translate.dy != null);
-    assert(translateAnchor != null);
+    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
+    if (translate != null) assert(translate.dx != null && translate.dy != null);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final FillLayerModel model = FillLayerModel((FillLayerModelBuilder b) {
@@ -305,9 +308,10 @@ class Style {
         ..minZoom = minZoom
         ..maxZoom = maxZoom
         ..antialias = antialias
-        ..color = color.value
-        ..outlineColor = outlineColor.value
-        ..translate = ListBuilder<double>(<double>[translate.dx, translate.dy])
+        ..opacity = opacity
+        ..color = color?.value
+        ..outlineColor = outlineColor?.value
+        ..translate = translate != null ? ListBuilder<double>(<double>[translate.dx, translate.dy]) : null
         ..translateAnchor = translateAnchor
         ..pattern = pattern
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
@@ -331,7 +335,8 @@ class Style {
     double radius = 30.0,
     double weight = 1.0,
     double intensity = 1.0,
-    Color color = const Color(0xFF000000),
+    Color color,
+    double opacity = 1.0,
     TransitionOptions radiusTransition,
     TransitionOptions intensityTransition,
     TransitionOptions opacityTransition,
@@ -344,10 +349,10 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(radius != null && radius >= 1);
-    assert(weight != null && weight >= 0);
-    assert(intensity != null && intensity >= 0);
-    assert(color != null);
+    if (radius != null) assert(radius >= 1);
+    if (weight != null) assert(weight >= 0);
+    if (intensity != null) assert(intensity >= 0);
+    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final HeatmapLayerModel model = HeatmapLayerModel((HeatmapLayerModelBuilder b) {
@@ -360,7 +365,8 @@ class Style {
         ..radius = radius
         ..weight = weight
         ..intensity = intensity
-        ..color = color.value
+        ..color = color?.value
+        ..opacity = opacity
         ..radiusTransition = (radiusTransition ?? transitionOptions).toBuilder()
         ..intensityTransition = (intensityTransition ?? transitionOptions).toBuilder()
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder();
@@ -396,11 +402,8 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(illuminationDirection != null && illuminationDirection >= 0 && illuminationDirection < 360);
-    assert(exaggeration != null && exaggeration >= 0 && exaggeration <= 1);
-    assert(shadowColor != null);
-    assert(highlightColor != null);
-    assert(accentColor != null);
+    if (illuminationDirection != null) assert(illuminationDirection >= 0 && illuminationDirection < 360);
+    if (exaggeration != null) assert(exaggeration >= 0 && exaggeration <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final HillshadeLayerModel model = HillshadeLayerModel((HillshadeLayerModelBuilder b) {
@@ -437,6 +440,7 @@ class Style {
     LineJoin join = LineJoin.miter,
     double miterLimit = 2.0,
     double roundLimit = 1.05,
+    double opacity = 1.0,
     Color color = const Color(0xFF000000),
     Offset translate = Offset.zero,
     TranslateAnchor translateAnchor = TranslateAnchor.map,
@@ -465,20 +469,11 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(cap != null);
-    assert(join != null);
-    assert(miterLimit != null);
-    assert(roundLimit != null);
-    assert(translate != null && translate.dx != null && translate.dy != null);
-    assert(translateAnchor != null);
-    assert(width != 0 && width >= 0);
-    assert(gapWidth != 0 && gapWidth >= 0);
-    assert(offset != null);
-    assert(blur != 0 && blur >= 0);
-
-    if (dasharray != null) {
-      assert(dasharray.every((it) => it > 0));
-    }
+    if (translate != null) assert(translate.dx != null && translate.dy != null);
+    if (width != null) assert(width != 0 && width >= 0);
+    if (gapWidth != null) assert(gapWidth != 0 && gapWidth >= 0);
+    if (blur != null) assert(blur != 0 && blur >= 0);
+    if (dasharray != null) assert(dasharray.every((it) => it > 0));
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final LineLayerModel model = LineLayerModel((LineLayerModelBuilder b) {
@@ -492,8 +487,9 @@ class Style {
         ..join = join
         ..miterLimit = miterLimit
         ..roundLimit = roundLimit
+        ..opacity = opacity
         ..color = color.value
-        ..translate = ListBuilder<double>(<double>[translate.dx, translate.dy])
+        ..translate = translate != null ? ListBuilder<double>(<double>[translate.dx, translate.dy]) : null
         ..translateAnchor = translateAnchor
         ..width = width
         ..gapWidth = gapWidth
@@ -563,12 +559,14 @@ class Style {
     bool textAllowOverlap = false,
     bool textIgnorePlacement = false,
     bool textOptional = false,
+    double iconOpacity = 1.0,
     Color iconColor = const Color(0xFF000000),
     Color iconHaloColor = const Color(0x00000000),
     double iconHaloWidth = 0.0,
     double iconHaloBlur = 0.0,
     Offset iconTranslate = Offset.zero,
     TranslateAnchor iconTranslateAnchor = TranslateAnchor.map,
+    double textOpacity = 1.0,
     Color textColor = const Color(0xFF000000),
     Color textHaloColor = const Color(0x00000000),
     double textHaloWidth = 0.0,
@@ -596,52 +594,21 @@ class Style {
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    assert(symbolSpacing != null && symbolSpacing >= 1);
-    assert(symbolAvoidEdges != null);
-    assert(symbolZOrder != null);
-    assert(iconAllowOverlap != null);
-    assert(iconIgnorePlacement != null);
-    assert(iconOptional != null);
-    assert(iconRotationAlignment != null);
-    assert(iconSize != null && iconSize >= 0);
-    assert(iconTextFitPadding != null);
-    assert(iconRotate != null);
-    assert(iconPadding != null && iconPadding >= 0);
-    assert(iconKeepUpright != null);
-    assert(iconOffset != null && iconOffset.dx != null && iconOffset.dy != null);
-    assert(iconAnchor != null);
-    assert(iconPitchAlignment != null);
-    assert(textPitchAlignment != null);
-    assert(textRotationAlignment != null);
-    assert(textFont != null);
-    assert(textSize != null && textSize >= 0);
-    assert(textMaxWidth != null && textMaxWidth >= 0);
-    assert(textLineHeight != null);
-    assert(textLetterSpacing != null);
-    assert(textJustify != null);
-    assert(textRadialOffset != null);
-    assert(textAnchor != null);
-    assert(textMaxAngle != null);
-    assert(textRotate != null);
-    assert(textPadding != null);
-    assert(textKeepUpright != null);
-    assert(textTransform != null);
-    assert(textOffset != null && textOffset.dx != null && textOffset.dy != null);
-    assert(textAllowOverlap != null);
-    assert(textIgnorePlacement != null);
-    assert(textOptional != null);
-    assert(iconColor != null);
-    assert(iconHaloColor != null);
-    assert(iconHaloWidth != null && iconHaloWidth >= 0);
-    assert(iconHaloBlur != null && iconHaloBlur >= 0);
-    assert(iconTranslate != null && iconTranslate.dx != null && iconTranslate.dy != null);
-    assert(iconTranslateAnchor != null);
-    assert(textColor != null);
-    assert(textHaloColor != null);
-    assert(textHaloWidth != null && textHaloWidth >= 0);
-    assert(textHaloBlur != null && textHaloBlur >= 0);
-    assert(textTranslate != null && textTranslate.dx != null && textTranslate.dy != null);
-    assert(textTranslateAnchor != null);
+    if (symbolSpacing != null) assert(symbolSpacing >= 1);
+    if (iconSize != null) assert(iconSize >= 0);
+    if (iconPadding != null) assert(iconPadding >= 0);
+    if (iconOffset != null) assert(iconOffset.dx != null && iconOffset.dy != null);
+    if (textSize != null) assert(textSize >= 0);
+    if (textMaxWidth != null) assert(textMaxWidth >= 0);
+    if (textOffset != null) assert(textOffset.dx != null && textOffset.dy != null);
+    if (iconOpacity != null) assert(iconOpacity >= 0 && iconOpacity <= 1);
+    if (iconHaloWidth != null) assert(iconHaloWidth >= 0);
+    if (iconHaloBlur != null) assert(iconHaloBlur >= 0);
+    if (iconTranslate != null) assert(iconTranslate.dx != null && iconTranslate.dy != null);
+    if (textOpacity != null) assert(textOpacity >= 0 && textOpacity <= 1);
+    if (textHaloWidth != null) assert(textHaloWidth >= 0);
+    if (textHaloBlur != null) assert(textHaloBlur >= 0);
+    if (textTranslate != null) assert(textTranslate.dx != null && textTranslate.dy != null);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     final SymbolLayerModel model = SymbolLayerModel((SymbolLayerModelBuilder b) {
@@ -695,12 +662,14 @@ class Style {
         ..textAllowOverlap = textAllowOverlap
         ..textIgnorePlacement = textIgnorePlacement
         ..textOptional = textOptional
+        ..iconOpacity = iconOpacity
         ..iconColor = iconColor.value
         ..iconHaloColor = iconHaloColor.value
         ..iconHaloWidth = iconHaloWidth
         ..iconHaloBlur = iconHaloBlur
         ..iconTranslate = ListBuilder<double>(<double>[iconTranslate.dx, iconTranslate.dy])
         ..iconTranslateAnchor = iconTranslateAnchor
+        ..textOpacity = textOpacity
         ..textColor = textColor.value
         ..textHaloColor = textHaloColor.value
         ..textHaloWidth = textHaloWidth

@@ -5,12 +5,14 @@
 export 'camera_operation_result.dart';
 export 'camera_position.dart';
 export 'formatted_section.dart';
-export 'gravity.dart';
 export 'latlng.dart';
 export 'latlng_bounds.dart';
 export 'latlng_quad.dart';
 export 'map_options.dart';
+export 'ornament_position.dart';
 export 'position_anchor.dart';
 export 'style/index.dart';
 export 'transition_options.dart';
 export 'translate_anchor.dart';
+export 'layer/index.dart';
+export 'source/index.dart';

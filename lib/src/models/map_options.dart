@@ -11,7 +11,6 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter/painting.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
-import 'package:mapbox_gl/src/models/gravity.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
 
 part 'map_options.g.dart';
@@ -19,6 +18,9 @@ part 'map_options.g.dart';
 abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
   factory MapOptions({
     CameraPosition cameraPosition,
+    DefaultMapStyle styleFromMapbox = DefaultMapStyle.mapboxStreets,
+    String styleFromUri,
+    String styleFromJson,
     String apiBaseUri,
     String localIdeographFontFamily,
     bool crossSourceCollisions = true,
@@ -31,14 +33,14 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     bool doubleTapGestures = true,
     bool quickZoomGestures = true,
     bool compass = true,
-    Gravity compassGravity = Gravity.top,
+    OrnamentPosition compassPosition = OrnamentPosition.topLeft,
     EdgeInsets compassMargin = const EdgeInsets.all(4.0),
     bool compassFadeFacingNorth = true,
     bool logo = true,
-    Gravity logoGravity = Gravity.bottom,
+    OrnamentPosition logoPosition = OrnamentPosition.bottomRight,
     EdgeInsets logoMargin = const EdgeInsets.all(4.0),
     bool attribution = true,
-    Gravity attributionGravity = Gravity.bottom,
+    OrnamentPosition attributionPosition = OrnamentPosition.bottomRight,
     EdgeInsets attributionMargin = const EdgeInsets.only(left: 92, top: 4.0, right: 4.0, bottom: 4.0),
     Color attributionTintColor,
     bool renderTextureMode = false,
@@ -58,7 +60,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(doubleTapGestures != null);
     assert(quickZoomGestures != null);
     assert(compass != null);
-    assert(compassGravity != null);
+    assert(compassPosition != null);
     assert(compassMargin != null &&
         compassMargin.left != null &&
         compassMargin.top != null &&
@@ -66,14 +68,14 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
         compassMargin.bottom != null);
     assert(compassFadeFacingNorth != null);
     assert(logo != null);
-    assert(logoGravity != null);
+    assert(logoPosition != null);
     assert(logoMargin != null &&
         logoMargin.left != null &&
         logoMargin.top != null &&
         logoMargin.right != null &&
         logoMargin.bottom != null);
     assert(attribution != null);
-    assert(attributionGravity != null);
+    assert(attributionPosition != null);
     assert(attributionMargin != null &&
         attributionMargin.left != null &&
         attributionMargin.top != null &&
@@ -86,6 +88,8 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(pixelRatio != null);
     assert(foregroundLoadColor != null && foregroundLoadColor.opacity == 1.0);
     cameraPosition ??= CameraPosition();
+    assert([styleFromMapbox, styleFromUri, styleFromJson].any((it) => it != null),
+        'You need to set at leat one style source.');
 
     if (attributionTintColor != null) {
       assert(attributionTintColor.opacity == 1.0);
@@ -94,6 +98,9 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     return _$MapOptions((b) {
       b
         ..apiBaseUri = apiBaseUri
+        ..styleFromMapbox = styleFromMapbox
+        ..styleFromUri = styleFromUri
+        ..styleFromJson = styleFromJson
         ..localIdeographFontFamily = localIdeographFontFamily
         ..crossSourceCollisions = crossSourceCollisions
         ..cameraPosition = cameraPosition.toBuilder()
@@ -106,7 +113,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
         ..doubleTapGestures = doubleTapGestures
         ..quickZoomGestures = quickZoomGestures
         ..compass = compass
-        ..compassGravity = compassGravity
+        ..compassPosition = compassPosition
         ..compassMargin = ListBuilder<int>(<int>[
           compassMargin.left.toInt(),
           compassMargin.top.toInt(),
@@ -115,7 +122,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
         ])
         ..compassFadeFacingNorth = compassFadeFacingNorth
         ..logo = logo
-        ..logoGravity = logoGravity
+        ..logoPosition = logoPosition
         ..logoMargin = ListBuilder<int>(<int>[
           logoMargin.left.toInt(),
           logoMargin.top.toInt(),
@@ -123,7 +130,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
           logoMargin.bottom.toInt(),
         ])
         ..attribution = attribution
-        ..attributionGravity = attributionGravity
+        ..attributionPosition = attributionPosition
         ..attributionMargin = ListBuilder<int>(<int>[
           compassMargin.left.toInt(),
           compassMargin.top.toInt(),
@@ -148,6 +155,9 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     return _$MapOptions((MapOptionsBuilder b) {
       b
         ..apiBaseUri = proto.apiBaseUri
+        ..styleFromMapbox = proto.hasFromMapbox() ? DefaultMapStyle.fromProto(proto.fromMapbox) : null
+        ..styleFromUri = proto.hasFromUri() ? proto.fromUri : null
+        ..styleFromJson = proto.hasFromJson_32() ? proto.fromJson_32 : null
         ..localIdeographFontFamily = proto.localIdeographFontFamily
         ..crossSourceCollisions = proto.crossSourceCollisions
         ..cameraPosition = CameraPosition.fromProto(proto.cameraPosition).toBuilder()
@@ -160,14 +170,14 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
         ..doubleTapGestures = proto.doubleTapGestures
         ..quickZoomGestures = proto.quickZoomGestures
         ..compass = proto.compass
-        ..compassGravity = Gravity.fromProto(proto.compassGravity)
+        ..compassPosition = OrnamentPosition.fromProto(proto.compassPosition)
         ..compassMargin = ListBuilder<int>(proto.compassMargin)
         ..compassFadeFacingNorth = proto.compassFadeFacingNorth
         ..logo = proto.logo
-        ..logoGravity = Gravity.fromProto(proto.logoGravity)
+        ..logoPosition = OrnamentPosition.fromProto(proto.logoPosition)
         ..logoMargin = ListBuilder<int>(proto.logoMargin)
         ..attribution = proto.attribution
-        ..attributionGravity = Gravity.fromProto(proto.attributionGravity)
+        ..attributionPosition = OrnamentPosition.fromProto(proto.attributionPosition)
         ..attributionMargin = ListBuilder<int>(proto.attributionMargin)
         ..attributionTintColor = proto.hasAttributionTintColor() ? colorValue_(proto.attributionTintColor) : null
         ..renderTextureMode = proto.renderTextureMode
@@ -183,6 +193,15 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   @nullable
   String get apiBaseUri;
+
+  @nullable
+  DefaultMapStyle get styleFromMapbox;
+
+  @nullable
+  String get styleFromUri;
+
+  @nullable
+  String get styleFromJson;
 
   @nullable
   String get localIdeographFontFamily;
@@ -209,7 +228,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   bool get compass;
 
-  Gravity get compassGravity;
+  OrnamentPosition get compassPosition;
 
   BuiltList<int> get compassMargin;
 
@@ -226,7 +245,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   bool get logo;
 
-  Gravity get logoGravity;
+  OrnamentPosition get logoPosition;
 
   BuiltList<int> get logoMargin;
 
@@ -241,7 +260,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   bool get attribution;
 
-  Gravity get attributionGravity;
+  OrnamentPosition get attributionPosition;
 
   BuiltList<int> get attributionMargin;
 
@@ -286,14 +305,14 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
       ..doubleTapGestures = doubleTapGestures
       ..quickZoomGestures = quickZoomGestures
       ..compass = compass
-      ..compassGravity = compassGravity.proto
+      ..compassPosition = compassPosition.proto
       ..compassMargin.addAll(compassMargin)
       ..compassFadeFacingNorth = compassFadeFacingNorth
       ..logo = logo
-      ..logoGravity = logoGravity.proto
+      ..logoPosition = logoPosition.proto
       ..logoMargin.addAll(logoMargin)
       ..attribution = attribution
-      ..attributionGravity = attributionGravity.proto
+      ..attributionPosition = attributionPosition.proto
       ..attributionMargin.addAll(attributionMargin)
       ..renderTextureMode = renderTextureMode
       ..renderTextureTranslucentSurface = renderTextureTranslucentSurface
@@ -301,6 +320,10 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
       ..enableZMediaOverlay = enableZMediaOverlay
       ..pixelRatio = pixelRatio
       ..foregroundLoadColor = color_(foregroundLoadColor);
+
+    if (styleFromMapbox != null) message.fromMapbox = styleFromMapbox.proto;
+    if (styleFromUri != null) message.fromUri = styleFromUri;
+    if (styleFromJson != null) message.fromJson_32 = styleFromJson;
 
     if (apiBaseUri != null) message.apiBaseUri = apiBaseUri;
     if (localIdeographFontFamily != null) message.localIdeographFontFamily = localIdeographFontFamily;

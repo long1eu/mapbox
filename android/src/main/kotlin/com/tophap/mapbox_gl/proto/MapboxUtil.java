@@ -15,125 +15,45 @@ public final class MapboxUtil {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code com.tophap.mapbox_gl.proto.Gravity}
+   * Protobuf enum {@code com.tophap.mapbox_gl.proto.OrnamentPosition}
    */
-  public enum Gravity
+  public enum OrnamentPosition
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>GRAVITY_TOP = 0;</code>
+     * <code>TOP_LEFT = 0;</code>
      */
-    GRAVITY_TOP(0),
+    TOP_LEFT(0),
     /**
-     * <code>GRAVITY_BOTTOM = 1;</code>
+     * <code>TOP_RIGHT = 1;</code>
      */
-    GRAVITY_BOTTOM(1),
+    TOP_RIGHT(1),
     /**
-     * <code>GRAVITY_LEFT = 2;</code>
+     * <code>BOTTOM_LEFT = 2;</code>
      */
-    GRAVITY_LEFT(2),
+    BOTTOM_LEFT(2),
     /**
-     * <code>GRAVITY_RIGHT = 3;</code>
+     * <code>BOTTOM_RIGHT = 3;</code>
      */
-    GRAVITY_RIGHT(3),
-    /**
-     * <code>GRAVITY_CENTER_VERTICAL = 4;</code>
-     */
-    GRAVITY_CENTER_VERTICAL(4),
-    /**
-     * <code>GRAVITY_FILL_VERTICAL = 5;</code>
-     */
-    GRAVITY_FILL_VERTICAL(5),
-    /**
-     * <code>GRAVITY_CENTER_HORIZONTAL = 6;</code>
-     */
-    GRAVITY_CENTER_HORIZONTAL(6),
-    /**
-     * <code>GRAVITY_FILL_HORIZONTAL = 7;</code>
-     */
-    GRAVITY_FILL_HORIZONTAL(7),
-    /**
-     * <code>GRAVITY_CENTER = 8;</code>
-     */
-    GRAVITY_CENTER(8),
-    /**
-     * <code>GRAVITY_FILL = 9;</code>
-     */
-    GRAVITY_FILL(9),
-    /**
-     * <code>GRAVITY_CLIP_VERTICAL = 10;</code>
-     */
-    GRAVITY_CLIP_VERTICAL(10),
-    /**
-     * <code>GRAVITY_CLIP_HORIZONTAL = 11;</code>
-     */
-    GRAVITY_CLIP_HORIZONTAL(11),
-    /**
-     * <code>GRAVITY_START = 12;</code>
-     */
-    GRAVITY_START(12),
-    /**
-     * <code>GRAVITY_END = 13;</code>
-     */
-    GRAVITY_END(13),
+    BOTTOM_RIGHT(3),
     UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>GRAVITY_TOP = 0;</code>
+     * <code>TOP_LEFT = 0;</code>
      */
-    public static final int GRAVITY_TOP_VALUE = 0;
+    public static final int TOP_LEFT_VALUE = 0;
     /**
-     * <code>GRAVITY_BOTTOM = 1;</code>
+     * <code>TOP_RIGHT = 1;</code>
      */
-    public static final int GRAVITY_BOTTOM_VALUE = 1;
+    public static final int TOP_RIGHT_VALUE = 1;
     /**
-     * <code>GRAVITY_LEFT = 2;</code>
+     * <code>BOTTOM_LEFT = 2;</code>
      */
-    public static final int GRAVITY_LEFT_VALUE = 2;
+    public static final int BOTTOM_LEFT_VALUE = 2;
     /**
-     * <code>GRAVITY_RIGHT = 3;</code>
+     * <code>BOTTOM_RIGHT = 3;</code>
      */
-    public static final int GRAVITY_RIGHT_VALUE = 3;
-    /**
-     * <code>GRAVITY_CENTER_VERTICAL = 4;</code>
-     */
-    public static final int GRAVITY_CENTER_VERTICAL_VALUE = 4;
-    /**
-     * <code>GRAVITY_FILL_VERTICAL = 5;</code>
-     */
-    public static final int GRAVITY_FILL_VERTICAL_VALUE = 5;
-    /**
-     * <code>GRAVITY_CENTER_HORIZONTAL = 6;</code>
-     */
-    public static final int GRAVITY_CENTER_HORIZONTAL_VALUE = 6;
-    /**
-     * <code>GRAVITY_FILL_HORIZONTAL = 7;</code>
-     */
-    public static final int GRAVITY_FILL_HORIZONTAL_VALUE = 7;
-    /**
-     * <code>GRAVITY_CENTER = 8;</code>
-     */
-    public static final int GRAVITY_CENTER_VALUE = 8;
-    /**
-     * <code>GRAVITY_FILL = 9;</code>
-     */
-    public static final int GRAVITY_FILL_VALUE = 9;
-    /**
-     * <code>GRAVITY_CLIP_VERTICAL = 10;</code>
-     */
-    public static final int GRAVITY_CLIP_VERTICAL_VALUE = 10;
-    /**
-     * <code>GRAVITY_CLIP_HORIZONTAL = 11;</code>
-     */
-    public static final int GRAVITY_CLIP_HORIZONTAL_VALUE = 11;
-    /**
-     * <code>GRAVITY_START = 12;</code>
-     */
-    public static final int GRAVITY_START_VALUE = 12;
-    /**
-     * <code>GRAVITY_END = 13;</code>
-     */
-    public static final int GRAVITY_END_VALUE = 13;
+    public static final int BOTTOM_RIGHT_VALUE = 3;
 
 
     public final int getNumber() {
@@ -148,39 +68,29 @@ public final class MapboxUtil {
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static Gravity valueOf(int value) {
+    public static OrnamentPosition valueOf(int value) {
       return forNumber(value);
     }
 
-    public static Gravity forNumber(int value) {
+    public static OrnamentPosition forNumber(int value) {
       switch (value) {
-        case 0: return GRAVITY_TOP;
-        case 1: return GRAVITY_BOTTOM;
-        case 2: return GRAVITY_LEFT;
-        case 3: return GRAVITY_RIGHT;
-        case 4: return GRAVITY_CENTER_VERTICAL;
-        case 5: return GRAVITY_FILL_VERTICAL;
-        case 6: return GRAVITY_CENTER_HORIZONTAL;
-        case 7: return GRAVITY_FILL_HORIZONTAL;
-        case 8: return GRAVITY_CENTER;
-        case 9: return GRAVITY_FILL;
-        case 10: return GRAVITY_CLIP_VERTICAL;
-        case 11: return GRAVITY_CLIP_HORIZONTAL;
-        case 12: return GRAVITY_START;
-        case 13: return GRAVITY_END;
+        case 0: return TOP_LEFT;
+        case 1: return TOP_RIGHT;
+        case 2: return BOTTOM_LEFT;
+        case 3: return BOTTOM_RIGHT;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Gravity>
+    public static com.google.protobuf.Internal.EnumLiteMap<OrnamentPosition>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        Gravity> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Gravity>() {
-            public Gravity findValueByNumber(int number) {
-              return Gravity.forNumber(number);
+        OrnamentPosition> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<OrnamentPosition>() {
+            public OrnamentPosition findValueByNumber(int number) {
+              return OrnamentPosition.forNumber(number);
             }
           };
 
@@ -197,9 +107,9 @@ public final class MapboxUtil {
       return com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final Gravity[] VALUES = values();
+    private static final OrnamentPosition[] VALUES = values();
 
-    public static Gravity valueOf(
+    public static OrnamentPosition valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -213,11 +123,11 @@ public final class MapboxUtil {
 
     private final int value;
 
-    private Gravity(int value) {
+    private OrnamentPosition(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Gravity)
+    // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.OrnamentPosition)
   }
 
   /**
@@ -5517,23 +5427,17 @@ public final class MapboxUtil {
       "\030\002 \001(\001\022\025\n\rlongitudeEast\030\003 \001(\001\022\025\n\rlongitu" +
       "deWest\030\004 \001(\001\"d\n\005Color\022\013\n\003red\030\001 \001(\005\022\r\n\005gr" +
       "een\030\002 \001(\005\022\014\n\004blue\030\003 \001(\005\022\r\n\005alpha\030\004 \001(\005\022\017" +
-      "\n\007opacity\030\005 \001(\002\022\021\n\thas_color\030\006 \001(\010*\311\002\n\007G" +
-      "ravity\022\017\n\013GRAVITY_TOP\020\000\022\022\n\016GRAVITY_BOTTO" +
-      "M\020\001\022\020\n\014GRAVITY_LEFT\020\002\022\021\n\rGRAVITY_RIGHT\020\003" +
-      "\022\033\n\027GRAVITY_CENTER_VERTICAL\020\004\022\031\n\025GRAVITY" +
-      "_FILL_VERTICAL\020\005\022\035\n\031GRAVITY_CENTER_HORIZ" +
-      "ONTAL\020\006\022\033\n\027GRAVITY_FILL_HORIZONTAL\020\007\022\022\n\016" +
-      "GRAVITY_CENTER\020\010\022\020\n\014GRAVITY_FILL\020\t\022\031\n\025GR" +
-      "AVITY_CLIP_VERTICAL\020\n\022\033\n\027GRAVITY_CLIP_HO" +
-      "RIZONTAL\020\013\022\021\n\rGRAVITY_START\020\014\022\017\n\013GRAVITY" +
-      "_END\020\r*(\n\017TranslateAnchor\022\007\n\003MAP\020\000\022\014\n\010VI" +
-      "EWPORT\020\001*\327\001\n\016PositionAnchor\022\023\n\017POSITION_" +
-      "CENTER\020\000\022\021\n\rPOSITION_LEFT\020\001\022\022\n\016POSITION_" +
-      "RIGHT\020\002\022\020\n\014POSITION_TOP\020\003\022\023\n\017POSITION_BO" +
-      "TTOM\020\004\022\025\n\021POSITION_TOP_LEFT\020\005\022\026\n\022POSITIO" +
-      "N_TOP_RIGHT\020\006\022\030\n\024POSITION_BOTTOM_LEFT\020\007\022" +
-      "\031\n\025POSITION_BOTTOM_RIGHT\020\010B(\n\032com.tophap" +
-      ".mapbox_gl.protoB\nMapboxUtilb\006proto3"
+      "\n\007opacity\030\005 \001(\002\022\021\n\thas_color\030\006 \001(\010*R\n\020Or" +
+      "namentPosition\022\014\n\010TOP_LEFT\020\000\022\r\n\tTOP_RIGH" +
+      "T\020\001\022\017\n\013BOTTOM_LEFT\020\002\022\020\n\014BOTTOM_RIGHT\020\003*(" +
+      "\n\017TranslateAnchor\022\007\n\003MAP\020\000\022\014\n\010VIEWPORT\020\001" +
+      "*\327\001\n\016PositionAnchor\022\023\n\017POSITION_CENTER\020\000" +
+      "\022\021\n\rPOSITION_LEFT\020\001\022\022\n\016POSITION_RIGHT\020\002\022" +
+      "\020\n\014POSITION_TOP\020\003\022\023\n\017POSITION_BOTTOM\020\004\022\025" +
+      "\n\021POSITION_TOP_LEFT\020\005\022\026\n\022POSITION_TOP_RI" +
+      "GHT\020\006\022\030\n\024POSITION_BOTTOM_LEFT\020\007\022\031\n\025POSIT" +
+      "ION_BOTTOM_RIGHT\020\010B(\n\032com.tophap.mapbox_" +
+      "gl.protoB\nMapboxUtilb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

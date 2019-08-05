@@ -14,6 +14,6 @@ class MapboxMapFactory(private val registrar: PluginRegistry.Registrar) : Platfo
         val proto = Map.Map_.Options.parseFrom(args as ByteArray)
 
         val platformViewChannel = MethodChannel(registrar.messenger(), "com.tophap/mapbox_gl_factory_$viewId")
-        return MapboxPlatformView(context.applicationContext, proto.fieldValue(), platformViewChannel, viewId)
+        return MapboxPlatformView(context.applicationContext, proto, platformViewChannel, viewId)
     }
 }

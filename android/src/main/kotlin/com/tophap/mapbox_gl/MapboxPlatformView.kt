@@ -15,7 +15,10 @@ import com.mapbox.android.gestures.ShoveGestureDetector
 import com.mapbox.android.gestures.StandardScaleGestureDetector
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.maps.*
+import com.mapbox.mapboxsdk.maps.MapView
+import com.mapbox.mapboxsdk.maps.MapboxMap
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
+import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.layers.*
 import com.tophap.mapbox_gl.proto.*
 import com.tophap.mapbox_gl.proto.Map
@@ -25,7 +28,7 @@ import io.flutter.plugin.platform.PlatformView
 import java.io.ByteArrayOutputStream
 
 
-class MapboxPlatformView(private val context: Context, private val options: MapboxMapOptions, private val channel: MethodChannel, private val viewId: Int) :
+class MapboxPlatformView(private val context: Context, private val options: Map.Map_.Options, private val channel: MethodChannel, private val viewId: Int) :
         PlatformView,
         Application.ActivityLifecycleCallbacks,
         ComponentCallbacks,
@@ -54,25 +57,26 @@ class MapboxPlatformView(private val context: Context, private val options: Mapb
 
         val ai = context.packageManager.getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
         val token = ai.metaData.getString("com.tophap.mapbox_token")
+        println(token)
         Mapbox.getInstance(context, token)
     }
 
     override fun getView(): View {
-        mapView = MapView(context, options)
+        mapView = MapView(context, options.fieldValue())
         mapView.getMapAsync(this)
         return mapView
     }
 
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
+        when (options.styleCase!!) {
+            Map.Map_.Options.StyleCase.FROM_MAPBOX -> mapboxMap.setStyle(options.fromMapbox.fieldValue()) { onStyleLoaded(it) }
+            Map.Map_.Options.StyleCase.FROM_URI -> mapboxMap.setStyle(Style.Builder().fromUri(options.fromUri)) { onStyleLoaded(it) }
+            Map.Map_.Options.StyleCase.FROM_JSON -> mapboxMap.setStyle(Style.Builder().fromJson(options.fromJson)) { onStyleLoaded(it) }
+            Map.Map_.Options.StyleCase.STYLE_NOT_SET -> throw IllegalArgumentException("Unknown source ${options.styleCase}")
+        }
 
-        val builder = Map.Map_.Operations.Ready.newBuilder()
-        builder.viewId = viewId
-        builder.prefetchesTiles = mapboxMap.prefetchesTiles
-        builder.minZoom = mapboxMap.minZoomLevel
-        builder.maxZoom = mapboxMap.maxZoomLevel
-        builder.camera = mapboxMap.cameraPosition.toProto()
-        channel.invokeMethod("mapReady", builder.build().toByteArray())
+
 
         this.mapboxMap.addOnCameraIdleListener(this)
         this.mapboxMap.addOnCameraMoveCancelListener(this)
@@ -86,6 +90,18 @@ class MapboxPlatformView(private val context: Context, private val options: Mapb
         this.mapboxMap.addOnShoveListener(this)
         this.mapboxMap.addOnMapClickListener(this)
         this.mapboxMap.addOnMapLongClickListener(this)
+    }
+
+    private fun onStyleLoaded(style: Style): Unit {
+        val builder = Map.Map_.Operations.Ready.newBuilder()
+        builder.viewId = viewId
+        builder.prefetchesTiles = mapboxMap.prefetchesTiles
+        builder.minZoom = mapboxMap.minZoomLevel
+        builder.maxZoom = mapboxMap.maxZoomLevel
+        builder.camera = mapboxMap.cameraPosition.toProto()
+        builder.style = style.toProto()
+
+        channel.invokeMethod("mapReady", builder.build().toByteArray())
     }
 
     override fun dispose() {
@@ -180,11 +196,6 @@ class MapboxPlatformView(private val context: Context, private val options: Mapb
                     val byteArray = stream.toByteArray()
                     it.recycle()
                     result.success(byteArray)
-                }
-            }
-            "style#get" -> {
-                mapboxMap.getStyle {
-                    result.success(it.toProto().toByteArray())
                 }
             }
             "style#set" -> {

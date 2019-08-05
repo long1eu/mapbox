@@ -24,6 +24,7 @@ class Layer_Background extends $pb.GeneratedMessage {
     ..a<$core.double>(4, 'maxZoom', $pb.PbFieldType.OF)
     ..a<$1.Color>(5, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..aOS(6, 'pattern')
+    ..a<$core.double>(7, 'opacity', $pb.PbFieldType.OF)
     ..a<$1.TransitionOptions>(8, 'colorTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<$1.TransitionOptions>(9, 'patternTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<$1.TransitionOptions>(10, 'opacityTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
@@ -74,19 +75,24 @@ class Layer_Background extends $pb.GeneratedMessage {
   $core.bool hasPattern() => $_has(5);
   void clearPattern() => clearField(6);
 
-  $1.TransitionOptions get colorTransition => $_getN(6);
+  $core.double get opacity => $_getN(6);
+  set opacity($core.double v) { $_setFloat(6, v); }
+  $core.bool hasOpacity() => $_has(6);
+  void clearOpacity() => clearField(7);
+
+  $1.TransitionOptions get colorTransition => $_getN(7);
   set colorTransition($1.TransitionOptions v) { setField(8, v); }
-  $core.bool hasColorTransition() => $_has(6);
+  $core.bool hasColorTransition() => $_has(7);
   void clearColorTransition() => clearField(8);
 
-  $1.TransitionOptions get patternTransition => $_getN(7);
+  $1.TransitionOptions get patternTransition => $_getN(8);
   set patternTransition($1.TransitionOptions v) { setField(9, v); }
-  $core.bool hasPatternTransition() => $_has(7);
+  $core.bool hasPatternTransition() => $_has(8);
   void clearPatternTransition() => clearField(9);
 
-  $1.TransitionOptions get opacityTransition => $_getN(8);
+  $1.TransitionOptions get opacityTransition => $_getN(9);
   set opacityTransition($1.TransitionOptions v) { setField(10, v); }
-  $core.bool hasOpacityTransition() => $_has(8);
+  $core.bool hasOpacityTransition() => $_has(9);
   void clearOpacityTransition() => clearField(10);
 }
 
@@ -100,12 +106,14 @@ class Layer_Circle extends $pb.GeneratedMessage {
     ..a<$core.double>(6, 'radius', $pb.PbFieldType.OF)
     ..a<$1.Color>(7, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..a<$core.double>(8, 'blur', $pb.PbFieldType.OF)
+    ..a<$core.double>(9, 'opacity', $pb.PbFieldType.OF)
     ..p<$core.double>(10, 'translate', $pb.PbFieldType.PF)
     ..e<$1.TranslateAnchor>(11, 'translateAnchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
     ..e<$1.TranslateAnchor>(12, 'pitchScale', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
     ..e<$1.TranslateAnchor>(13, 'pitchAlignment', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
     ..a<$core.double>(14, 'strokeWidth', $pb.PbFieldType.OF)
     ..a<$1.Color>(15, 'strokeColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
+    ..a<$core.double>(16, 'strokeOpacity', $pb.PbFieldType.OF)
     ..a<$1.TransitionOptions>(17, 'radiusTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<$1.TransitionOptions>(18, 'colorTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<$1.TransitionOptions>(19, 'blurTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
@@ -171,71 +179,81 @@ class Layer_Circle extends $pb.GeneratedMessage {
   $core.bool hasBlur() => $_has(7);
   void clearBlur() => clearField(8);
 
-  $core.List<$core.double> get translate => $_getList(8);
+  $core.double get opacity => $_getN(8);
+  set opacity($core.double v) { $_setFloat(8, v); }
+  $core.bool hasOpacity() => $_has(8);
+  void clearOpacity() => clearField(9);
 
-  $1.TranslateAnchor get translateAnchor => $_getN(9);
+  $core.List<$core.double> get translate => $_getList(9);
+
+  $1.TranslateAnchor get translateAnchor => $_getN(10);
   set translateAnchor($1.TranslateAnchor v) { setField(11, v); }
-  $core.bool hasTranslateAnchor() => $_has(9);
+  $core.bool hasTranslateAnchor() => $_has(10);
   void clearTranslateAnchor() => clearField(11);
 
-  $1.TranslateAnchor get pitchScale => $_getN(10);
+  $1.TranslateAnchor get pitchScale => $_getN(11);
   set pitchScale($1.TranslateAnchor v) { setField(12, v); }
-  $core.bool hasPitchScale() => $_has(10);
+  $core.bool hasPitchScale() => $_has(11);
   void clearPitchScale() => clearField(12);
 
-  $1.TranslateAnchor get pitchAlignment => $_getN(11);
+  $1.TranslateAnchor get pitchAlignment => $_getN(12);
   set pitchAlignment($1.TranslateAnchor v) { setField(13, v); }
-  $core.bool hasPitchAlignment() => $_has(11);
+  $core.bool hasPitchAlignment() => $_has(12);
   void clearPitchAlignment() => clearField(13);
 
-  $core.double get strokeWidth => $_getN(12);
-  set strokeWidth($core.double v) { $_setFloat(12, v); }
-  $core.bool hasStrokeWidth() => $_has(12);
+  $core.double get strokeWidth => $_getN(13);
+  set strokeWidth($core.double v) { $_setFloat(13, v); }
+  $core.bool hasStrokeWidth() => $_has(13);
   void clearStrokeWidth() => clearField(14);
 
-  $1.Color get strokeColor => $_getN(13);
+  $1.Color get strokeColor => $_getN(14);
   set strokeColor($1.Color v) { setField(15, v); }
-  $core.bool hasStrokeColor() => $_has(13);
+  $core.bool hasStrokeColor() => $_has(14);
   void clearStrokeColor() => clearField(15);
 
-  $1.TransitionOptions get radiusTransition => $_getN(14);
+  $core.double get strokeOpacity => $_getN(15);
+  set strokeOpacity($core.double v) { $_setFloat(15, v); }
+  $core.bool hasStrokeOpacity() => $_has(15);
+  void clearStrokeOpacity() => clearField(16);
+
+  $1.TransitionOptions get radiusTransition => $_getN(16);
   set radiusTransition($1.TransitionOptions v) { setField(17, v); }
-  $core.bool hasRadiusTransition() => $_has(14);
+  $core.bool hasRadiusTransition() => $_has(16);
   void clearRadiusTransition() => clearField(17);
 
-  $1.TransitionOptions get colorTransition => $_getN(15);
+  $1.TransitionOptions get colorTransition => $_getN(17);
   set colorTransition($1.TransitionOptions v) { setField(18, v); }
-  $core.bool hasColorTransition() => $_has(15);
+  $core.bool hasColorTransition() => $_has(17);
   void clearColorTransition() => clearField(18);
 
-  $1.TransitionOptions get blurTransition => $_getN(16);
+  $1.TransitionOptions get blurTransition => $_getN(18);
   set blurTransition($1.TransitionOptions v) { setField(19, v); }
-  $core.bool hasBlurTransition() => $_has(16);
+  $core.bool hasBlurTransition() => $_has(18);
   void clearBlurTransition() => clearField(19);
 
-  $1.TransitionOptions get opacityTransition => $_getN(17);
+  $1.TransitionOptions get opacityTransition => $_getN(19);
   set opacityTransition($1.TransitionOptions v) { setField(20, v); }
-  $core.bool hasOpacityTransition() => $_has(17);
+  $core.bool hasOpacityTransition() => $_has(19);
   void clearOpacityTransition() => clearField(20);
 
-  $1.TransitionOptions get translateTransition => $_getN(18);
+  $1.TransitionOptions get translateTransition => $_getN(20);
   set translateTransition($1.TransitionOptions v) { setField(21, v); }
-  $core.bool hasTranslateTransition() => $_has(18);
+  $core.bool hasTranslateTransition() => $_has(20);
   void clearTranslateTransition() => clearField(21);
 
-  $1.TransitionOptions get strokeWidthTransition => $_getN(19);
+  $1.TransitionOptions get strokeWidthTransition => $_getN(21);
   set strokeWidthTransition($1.TransitionOptions v) { setField(22, v); }
-  $core.bool hasStrokeWidthTransition() => $_has(19);
+  $core.bool hasStrokeWidthTransition() => $_has(21);
   void clearStrokeWidthTransition() => clearField(22);
 
-  $1.TransitionOptions get strokeColorTransition => $_getN(20);
+  $1.TransitionOptions get strokeColorTransition => $_getN(22);
   set strokeColorTransition($1.TransitionOptions v) { setField(23, v); }
-  $core.bool hasStrokeColorTransition() => $_has(20);
+  $core.bool hasStrokeColorTransition() => $_has(22);
   void clearStrokeColorTransition() => clearField(23);
 
-  $1.TransitionOptions get strokeOpacityTransition => $_getN(21);
+  $1.TransitionOptions get strokeOpacityTransition => $_getN(23);
   set strokeOpacityTransition($1.TransitionOptions v) { setField(24, v); }
-  $core.bool hasStrokeOpacityTransition() => $_has(21);
+  $core.bool hasStrokeOpacityTransition() => $_has(23);
   void clearStrokeOpacityTransition() => clearField(24);
 }
 
@@ -246,6 +264,7 @@ class Layer_FillExtrusion extends $pb.GeneratedMessage {
     ..aOB(3, 'visible')
     ..a<$core.double>(4, 'minZoom', $pb.PbFieldType.OF)
     ..a<$core.double>(5, 'maxZoom', $pb.PbFieldType.OF)
+    ..a<$core.double>(6, 'opacity', $pb.PbFieldType.OF)
     ..a<$1.Color>(7, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..p<$core.double>(8, 'translate', $pb.PbFieldType.PF)
     ..e<$1.TranslateAnchor>(9, 'translateAnchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
@@ -301,66 +320,71 @@ class Layer_FillExtrusion extends $pb.GeneratedMessage {
   $core.bool hasMaxZoom() => $_has(4);
   void clearMaxZoom() => clearField(5);
 
-  $1.Color get color => $_getN(5);
+  $core.double get opacity => $_getN(5);
+  set opacity($core.double v) { $_setFloat(5, v); }
+  $core.bool hasOpacity() => $_has(5);
+  void clearOpacity() => clearField(6);
+
+  $1.Color get color => $_getN(6);
   set color($1.Color v) { setField(7, v); }
-  $core.bool hasColor() => $_has(5);
+  $core.bool hasColor() => $_has(6);
   void clearColor() => clearField(7);
 
-  $core.List<$core.double> get translate => $_getList(6);
+  $core.List<$core.double> get translate => $_getList(7);
 
-  $1.TranslateAnchor get translateAnchor => $_getN(7);
+  $1.TranslateAnchor get translateAnchor => $_getN(8);
   set translateAnchor($1.TranslateAnchor v) { setField(9, v); }
-  $core.bool hasTranslateAnchor() => $_has(7);
+  $core.bool hasTranslateAnchor() => $_has(8);
   void clearTranslateAnchor() => clearField(9);
 
-  $core.String get pattern => $_getS(8, '');
-  set pattern($core.String v) { $_setString(8, v); }
-  $core.bool hasPattern() => $_has(8);
+  $core.String get pattern => $_getS(9, '');
+  set pattern($core.String v) { $_setString(9, v); }
+  $core.bool hasPattern() => $_has(9);
   void clearPattern() => clearField(10);
 
-  $core.double get height => $_getN(9);
-  set height($core.double v) { $_setFloat(9, v); }
-  $core.bool hasHeight() => $_has(9);
+  $core.double get height => $_getN(10);
+  set height($core.double v) { $_setFloat(10, v); }
+  $core.bool hasHeight() => $_has(10);
   void clearHeight() => clearField(11);
 
-  $core.double get base => $_getN(10);
-  set base($core.double v) { $_setFloat(10, v); }
-  $core.bool hasBase() => $_has(10);
+  $core.double get base => $_getN(11);
+  set base($core.double v) { $_setFloat(11, v); }
+  $core.bool hasBase() => $_has(11);
   void clearBase() => clearField(12);
 
-  $core.bool get verticalGradient => $_get(11, false);
-  set verticalGradient($core.bool v) { $_setBool(11, v); }
-  $core.bool hasVerticalGradient() => $_has(11);
+  $core.bool get verticalGradient => $_get(12, false);
+  set verticalGradient($core.bool v) { $_setBool(12, v); }
+  $core.bool hasVerticalGradient() => $_has(12);
   void clearVerticalGradient() => clearField(13);
 
-  $1.TransitionOptions get opacityTransition => $_getN(12);
+  $1.TransitionOptions get opacityTransition => $_getN(13);
   set opacityTransition($1.TransitionOptions v) { setField(14, v); }
-  $core.bool hasOpacityTransition() => $_has(12);
+  $core.bool hasOpacityTransition() => $_has(13);
   void clearOpacityTransition() => clearField(14);
 
-  $1.TransitionOptions get colorTransition => $_getN(13);
+  $1.TransitionOptions get colorTransition => $_getN(14);
   set colorTransition($1.TransitionOptions v) { setField(15, v); }
-  $core.bool hasColorTransition() => $_has(13);
+  $core.bool hasColorTransition() => $_has(14);
   void clearColorTransition() => clearField(15);
 
-  $1.TransitionOptions get translateTransition => $_getN(14);
+  $1.TransitionOptions get translateTransition => $_getN(15);
   set translateTransition($1.TransitionOptions v) { setField(16, v); }
-  $core.bool hasTranslateTransition() => $_has(14);
+  $core.bool hasTranslateTransition() => $_has(15);
   void clearTranslateTransition() => clearField(16);
 
-  $1.TransitionOptions get patternTransition => $_getN(15);
+  $1.TransitionOptions get patternTransition => $_getN(16);
   set patternTransition($1.TransitionOptions v) { setField(17, v); }
-  $core.bool hasPatternTransition() => $_has(15);
+  $core.bool hasPatternTransition() => $_has(16);
   void clearPatternTransition() => clearField(17);
 
-  $1.TransitionOptions get heightTransition => $_getN(16);
+  $1.TransitionOptions get heightTransition => $_getN(17);
   set heightTransition($1.TransitionOptions v) { setField(18, v); }
-  $core.bool hasHeightTransition() => $_has(16);
+  $core.bool hasHeightTransition() => $_has(17);
   void clearHeightTransition() => clearField(18);
 
-  $1.TransitionOptions get baseTransition => $_getN(17);
+  $1.TransitionOptions get baseTransition => $_getN(18);
   set baseTransition($1.TransitionOptions v) { setField(19, v); }
-  $core.bool hasBaseTransition() => $_has(17);
+  $core.bool hasBaseTransition() => $_has(18);
   void clearBaseTransition() => clearField(19);
 }
 
@@ -372,6 +396,7 @@ class Layer_Fill extends $pb.GeneratedMessage {
     ..a<$core.double>(4, 'minZoom', $pb.PbFieldType.OF)
     ..a<$core.double>(5, 'maxZoom', $pb.PbFieldType.OF)
     ..aOB(6, 'antialias')
+    ..a<$core.double>(7, 'opacity', $pb.PbFieldType.OF)
     ..a<$1.Color>(8, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..a<$1.Color>(9, 'outlineColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..p<$core.double>(10, 'translate', $pb.PbFieldType.PF)
@@ -429,51 +454,56 @@ class Layer_Fill extends $pb.GeneratedMessage {
   $core.bool hasAntialias() => $_has(5);
   void clearAntialias() => clearField(6);
 
-  $1.Color get color => $_getN(6);
+  $core.double get opacity => $_getN(6);
+  set opacity($core.double v) { $_setFloat(6, v); }
+  $core.bool hasOpacity() => $_has(6);
+  void clearOpacity() => clearField(7);
+
+  $1.Color get color => $_getN(7);
   set color($1.Color v) { setField(8, v); }
-  $core.bool hasColor() => $_has(6);
+  $core.bool hasColor() => $_has(7);
   void clearColor() => clearField(8);
 
-  $1.Color get outlineColor => $_getN(7);
+  $1.Color get outlineColor => $_getN(8);
   set outlineColor($1.Color v) { setField(9, v); }
-  $core.bool hasOutlineColor() => $_has(7);
+  $core.bool hasOutlineColor() => $_has(8);
   void clearOutlineColor() => clearField(9);
 
-  $core.List<$core.double> get translate => $_getList(8);
+  $core.List<$core.double> get translate => $_getList(9);
 
-  $1.TranslateAnchor get translateAnchor => $_getN(9);
+  $1.TranslateAnchor get translateAnchor => $_getN(10);
   set translateAnchor($1.TranslateAnchor v) { setField(11, v); }
-  $core.bool hasTranslateAnchor() => $_has(9);
+  $core.bool hasTranslateAnchor() => $_has(10);
   void clearTranslateAnchor() => clearField(11);
 
-  $core.String get pattern => $_getS(10, '');
-  set pattern($core.String v) { $_setString(10, v); }
-  $core.bool hasPattern() => $_has(10);
+  $core.String get pattern => $_getS(11, '');
+  set pattern($core.String v) { $_setString(11, v); }
+  $core.bool hasPattern() => $_has(11);
   void clearPattern() => clearField(12);
 
-  $1.TransitionOptions get opacityTransition => $_getN(11);
+  $1.TransitionOptions get opacityTransition => $_getN(12);
   set opacityTransition($1.TransitionOptions v) { setField(13, v); }
-  $core.bool hasOpacityTransition() => $_has(11);
+  $core.bool hasOpacityTransition() => $_has(12);
   void clearOpacityTransition() => clearField(13);
 
-  $1.TransitionOptions get colorTransition => $_getN(12);
+  $1.TransitionOptions get colorTransition => $_getN(13);
   set colorTransition($1.TransitionOptions v) { setField(14, v); }
-  $core.bool hasColorTransition() => $_has(12);
+  $core.bool hasColorTransition() => $_has(13);
   void clearColorTransition() => clearField(14);
 
-  $1.TransitionOptions get outlineColorTransition => $_getN(13);
+  $1.TransitionOptions get outlineColorTransition => $_getN(14);
   set outlineColorTransition($1.TransitionOptions v) { setField(15, v); }
-  $core.bool hasOutlineColorTransition() => $_has(13);
+  $core.bool hasOutlineColorTransition() => $_has(14);
   void clearOutlineColorTransition() => clearField(15);
 
-  $1.TransitionOptions get translateTransition => $_getN(14);
+  $1.TransitionOptions get translateTransition => $_getN(15);
   set translateTransition($1.TransitionOptions v) { setField(16, v); }
-  $core.bool hasTranslateTransition() => $_has(14);
+  $core.bool hasTranslateTransition() => $_has(15);
   void clearTranslateTransition() => clearField(16);
 
-  $1.TransitionOptions get patternTransition => $_getN(15);
+  $1.TransitionOptions get patternTransition => $_getN(16);
   set patternTransition($1.TransitionOptions v) { setField(17, v); }
-  $core.bool hasPatternTransition() => $_has(15);
+  $core.bool hasPatternTransition() => $_has(16);
   void clearPatternTransition() => clearField(17);
 }
 
@@ -488,6 +518,7 @@ class Layer_Heatmap extends $pb.GeneratedMessage {
     ..a<$core.double>(7, 'weight', $pb.PbFieldType.OF)
     ..a<$core.double>(8, 'intensity', $pb.PbFieldType.OF)
     ..a<$1.Color>(9, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
+    ..a<$core.double>(10, 'opacity', $pb.PbFieldType.OF)
     ..a<$1.TransitionOptions>(11, 'radiusTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<$1.TransitionOptions>(12, 'intensityTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<$1.TransitionOptions>(13, 'opacityTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
@@ -553,19 +584,24 @@ class Layer_Heatmap extends $pb.GeneratedMessage {
   $core.bool hasColor() => $_has(8);
   void clearColor() => clearField(9);
 
-  $1.TransitionOptions get radiusTransition => $_getN(9);
+  $core.double get opacity => $_getN(9);
+  set opacity($core.double v) { $_setFloat(9, v); }
+  $core.bool hasOpacity() => $_has(9);
+  void clearOpacity() => clearField(10);
+
+  $1.TransitionOptions get radiusTransition => $_getN(10);
   set radiusTransition($1.TransitionOptions v) { setField(11, v); }
-  $core.bool hasRadiusTransition() => $_has(9);
+  $core.bool hasRadiusTransition() => $_has(10);
   void clearRadiusTransition() => clearField(11);
 
-  $1.TransitionOptions get intensityTransition => $_getN(10);
+  $1.TransitionOptions get intensityTransition => $_getN(11);
   set intensityTransition($1.TransitionOptions v) { setField(12, v); }
-  $core.bool hasIntensityTransition() => $_has(10);
+  $core.bool hasIntensityTransition() => $_has(11);
   void clearIntensityTransition() => clearField(12);
 
-  $1.TransitionOptions get opacityTransition => $_getN(11);
+  $1.TransitionOptions get opacityTransition => $_getN(12);
   set opacityTransition($1.TransitionOptions v) { setField(13, v); }
-  $core.bool hasOpacityTransition() => $_has(11);
+  $core.bool hasOpacityTransition() => $_has(12);
   void clearOpacityTransition() => clearField(13);
 }
 
@@ -690,6 +726,7 @@ class Layer_Line extends $pb.GeneratedMessage {
     ..e<Layer_Line_Join>(7, 'join', $pb.PbFieldType.OE, Layer_Line_Join.JOIN_MITER, Layer_Line_Join.valueOf, Layer_Line_Join.values)
     ..a<$core.double>(8, 'miterLimit', $pb.PbFieldType.OF)
     ..a<$core.double>(9, 'roundLimit', $pb.PbFieldType.OF)
+    ..a<$core.double>(10, 'opacity', $pb.PbFieldType.OF)
     ..a<$1.Color>(11, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..p<$core.double>(12, 'translate', $pb.PbFieldType.PF)
     ..e<$1.TranslateAnchor>(13, 'translateAnchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
@@ -771,93 +808,98 @@ class Layer_Line extends $pb.GeneratedMessage {
   $core.bool hasRoundLimit() => $_has(8);
   void clearRoundLimit() => clearField(9);
 
-  $1.Color get color => $_getN(9);
+  $core.double get opacity => $_getN(9);
+  set opacity($core.double v) { $_setFloat(9, v); }
+  $core.bool hasOpacity() => $_has(9);
+  void clearOpacity() => clearField(10);
+
+  $1.Color get color => $_getN(10);
   set color($1.Color v) { setField(11, v); }
-  $core.bool hasColor() => $_has(9);
+  $core.bool hasColor() => $_has(10);
   void clearColor() => clearField(11);
 
-  $core.List<$core.double> get translate => $_getList(10);
+  $core.List<$core.double> get translate => $_getList(11);
 
-  $1.TranslateAnchor get translateAnchor => $_getN(11);
+  $1.TranslateAnchor get translateAnchor => $_getN(12);
   set translateAnchor($1.TranslateAnchor v) { setField(13, v); }
-  $core.bool hasTranslateAnchor() => $_has(11);
+  $core.bool hasTranslateAnchor() => $_has(12);
   void clearTranslateAnchor() => clearField(13);
 
-  $core.double get width => $_getN(12);
-  set width($core.double v) { $_setFloat(12, v); }
-  $core.bool hasWidth() => $_has(12);
+  $core.double get width => $_getN(13);
+  set width($core.double v) { $_setFloat(13, v); }
+  $core.bool hasWidth() => $_has(13);
   void clearWidth() => clearField(14);
 
-  $core.double get gapWidth => $_getN(13);
-  set gapWidth($core.double v) { $_setFloat(13, v); }
-  $core.bool hasGapWidth() => $_has(13);
+  $core.double get gapWidth => $_getN(14);
+  set gapWidth($core.double v) { $_setFloat(14, v); }
+  $core.bool hasGapWidth() => $_has(14);
   void clearGapWidth() => clearField(15);
 
-  $core.double get offset => $_getN(14);
-  set offset($core.double v) { $_setFloat(14, v); }
-  $core.bool hasOffset() => $_has(14);
+  $core.double get offset => $_getN(15);
+  set offset($core.double v) { $_setFloat(15, v); }
+  $core.bool hasOffset() => $_has(15);
   void clearOffset() => clearField(16);
 
-  $core.double get blur => $_getN(15);
-  set blur($core.double v) { $_setFloat(15, v); }
-  $core.bool hasBlur() => $_has(15);
+  $core.double get blur => $_getN(16);
+  set blur($core.double v) { $_setFloat(16, v); }
+  $core.bool hasBlur() => $_has(16);
   void clearBlur() => clearField(17);
 
-  $core.List<$core.double> get dasharray => $_getList(16);
+  $core.List<$core.double> get dasharray => $_getList(17);
 
-  $core.String get pattern => $_getS(17, '');
-  set pattern($core.String v) { $_setString(17, v); }
-  $core.bool hasPattern() => $_has(17);
+  $core.String get pattern => $_getS(18, '');
+  set pattern($core.String v) { $_setString(18, v); }
+  $core.bool hasPattern() => $_has(18);
   void clearPattern() => clearField(19);
 
-  $core.int get gradient => $_get(18, 0);
-  set gradient($core.int v) { $_setSignedInt32(18, v); }
-  $core.bool hasGradient() => $_has(18);
+  $core.int get gradient => $_get(19, 0);
+  set gradient($core.int v) { $_setSignedInt32(19, v); }
+  $core.bool hasGradient() => $_has(19);
   void clearGradient() => clearField(20);
 
-  $1.TransitionOptions get opacityTransition => $_getN(19);
+  $1.TransitionOptions get opacityTransition => $_getN(20);
   set opacityTransition($1.TransitionOptions v) { setField(21, v); }
-  $core.bool hasOpacityTransition() => $_has(19);
+  $core.bool hasOpacityTransition() => $_has(20);
   void clearOpacityTransition() => clearField(21);
 
-  $1.TransitionOptions get colorTransition => $_getN(20);
+  $1.TransitionOptions get colorTransition => $_getN(21);
   set colorTransition($1.TransitionOptions v) { setField(22, v); }
-  $core.bool hasColorTransition() => $_has(20);
+  $core.bool hasColorTransition() => $_has(21);
   void clearColorTransition() => clearField(22);
 
-  $1.TransitionOptions get translateTransition => $_getN(21);
+  $1.TransitionOptions get translateTransition => $_getN(22);
   set translateTransition($1.TransitionOptions v) { setField(23, v); }
-  $core.bool hasTranslateTransition() => $_has(21);
+  $core.bool hasTranslateTransition() => $_has(22);
   void clearTranslateTransition() => clearField(23);
 
-  $1.TransitionOptions get widthTransition => $_getN(22);
+  $1.TransitionOptions get widthTransition => $_getN(23);
   set widthTransition($1.TransitionOptions v) { setField(24, v); }
-  $core.bool hasWidthTransition() => $_has(22);
+  $core.bool hasWidthTransition() => $_has(23);
   void clearWidthTransition() => clearField(24);
 
-  $1.TransitionOptions get gapWidthTransition => $_getN(23);
+  $1.TransitionOptions get gapWidthTransition => $_getN(24);
   set gapWidthTransition($1.TransitionOptions v) { setField(25, v); }
-  $core.bool hasGapWidthTransition() => $_has(23);
+  $core.bool hasGapWidthTransition() => $_has(24);
   void clearGapWidthTransition() => clearField(25);
 
-  $1.TransitionOptions get offsetTransition => $_getN(24);
+  $1.TransitionOptions get offsetTransition => $_getN(25);
   set offsetTransition($1.TransitionOptions v) { setField(26, v); }
-  $core.bool hasOffsetTransition() => $_has(24);
+  $core.bool hasOffsetTransition() => $_has(25);
   void clearOffsetTransition() => clearField(26);
 
-  $1.TransitionOptions get blurTransition => $_getN(25);
+  $1.TransitionOptions get blurTransition => $_getN(26);
   set blurTransition($1.TransitionOptions v) { setField(27, v); }
-  $core.bool hasBlurTransition() => $_has(25);
+  $core.bool hasBlurTransition() => $_has(26);
   void clearBlurTransition() => clearField(27);
 
-  $1.TransitionOptions get dasharrayTransition => $_getN(26);
+  $1.TransitionOptions get dasharrayTransition => $_getN(27);
   set dasharrayTransition($1.TransitionOptions v) { setField(28, v); }
-  $core.bool hasDasharrayTransition() => $_has(26);
+  $core.bool hasDasharrayTransition() => $_has(27);
   void clearDasharrayTransition() => clearField(28);
 
-  $1.TransitionOptions get patternTransition => $_getN(27);
+  $1.TransitionOptions get patternTransition => $_getN(28);
   set patternTransition($1.TransitionOptions v) { setField(29, v); }
-  $core.bool hasPatternTransition() => $_has(27);
+  $core.bool hasPatternTransition() => $_has(28);
   void clearPatternTransition() => clearField(29);
 }
 
@@ -907,12 +949,14 @@ class Layer_Symbol extends $pb.GeneratedMessage {
     ..aOB(42, 'textAllowOverlap')
     ..aOB(43, 'textIgnorePlacement')
     ..aOB(44, 'textOptional')
+    ..a<$core.double>(45, 'iconOpacity', $pb.PbFieldType.OF)
     ..a<$1.Color>(46, 'iconColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..a<$1.Color>(47, 'iconHaloColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..a<$core.double>(48, 'iconHaloWidth', $pb.PbFieldType.OF)
     ..a<$core.double>(49, 'iconHaloBlur', $pb.PbFieldType.OF)
     ..p<$core.double>(50, 'iconTranslate', $pb.PbFieldType.PF)
     ..e<$1.TranslateAnchor>(51, 'iconTranslateAnchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
+    ..a<$core.double>(52, 'textOpacity', $pb.PbFieldType.OF)
     ..a<$1.Color>(53, 'textColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..a<$1.Color>(54, 'textHaloColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
     ..a<$core.double>(55, 'textHaloWidth', $pb.PbFieldType.OF)
@@ -1150,118 +1194,128 @@ class Layer_Symbol extends $pb.GeneratedMessage {
   $core.bool hasTextOptional() => $_has(43);
   void clearTextOptional() => clearField(44);
 
-  $1.Color get iconColor => $_getN(44);
+  $core.double get iconOpacity => $_getN(44);
+  set iconOpacity($core.double v) { $_setFloat(44, v); }
+  $core.bool hasIconOpacity() => $_has(44);
+  void clearIconOpacity() => clearField(45);
+
+  $1.Color get iconColor => $_getN(45);
   set iconColor($1.Color v) { setField(46, v); }
-  $core.bool hasIconColor() => $_has(44);
+  $core.bool hasIconColor() => $_has(45);
   void clearIconColor() => clearField(46);
 
-  $1.Color get iconHaloColor => $_getN(45);
+  $1.Color get iconHaloColor => $_getN(46);
   set iconHaloColor($1.Color v) { setField(47, v); }
-  $core.bool hasIconHaloColor() => $_has(45);
+  $core.bool hasIconHaloColor() => $_has(46);
   void clearIconHaloColor() => clearField(47);
 
-  $core.double get iconHaloWidth => $_getN(46);
-  set iconHaloWidth($core.double v) { $_setFloat(46, v); }
-  $core.bool hasIconHaloWidth() => $_has(46);
+  $core.double get iconHaloWidth => $_getN(47);
+  set iconHaloWidth($core.double v) { $_setFloat(47, v); }
+  $core.bool hasIconHaloWidth() => $_has(47);
   void clearIconHaloWidth() => clearField(48);
 
-  $core.double get iconHaloBlur => $_getN(47);
-  set iconHaloBlur($core.double v) { $_setFloat(47, v); }
-  $core.bool hasIconHaloBlur() => $_has(47);
+  $core.double get iconHaloBlur => $_getN(48);
+  set iconHaloBlur($core.double v) { $_setFloat(48, v); }
+  $core.bool hasIconHaloBlur() => $_has(48);
   void clearIconHaloBlur() => clearField(49);
 
-  $core.List<$core.double> get iconTranslate => $_getList(48);
+  $core.List<$core.double> get iconTranslate => $_getList(49);
 
-  $1.TranslateAnchor get iconTranslateAnchor => $_getN(49);
+  $1.TranslateAnchor get iconTranslateAnchor => $_getN(50);
   set iconTranslateAnchor($1.TranslateAnchor v) { setField(51, v); }
-  $core.bool hasIconTranslateAnchor() => $_has(49);
+  $core.bool hasIconTranslateAnchor() => $_has(50);
   void clearIconTranslateAnchor() => clearField(51);
 
-  $1.Color get textColor => $_getN(50);
+  $core.double get textOpacity => $_getN(51);
+  set textOpacity($core.double v) { $_setFloat(51, v); }
+  $core.bool hasTextOpacity() => $_has(51);
+  void clearTextOpacity() => clearField(52);
+
+  $1.Color get textColor => $_getN(52);
   set textColor($1.Color v) { setField(53, v); }
-  $core.bool hasTextColor() => $_has(50);
+  $core.bool hasTextColor() => $_has(52);
   void clearTextColor() => clearField(53);
 
-  $1.Color get textHaloColor => $_getN(51);
+  $1.Color get textHaloColor => $_getN(53);
   set textHaloColor($1.Color v) { setField(54, v); }
-  $core.bool hasTextHaloColor() => $_has(51);
+  $core.bool hasTextHaloColor() => $_has(53);
   void clearTextHaloColor() => clearField(54);
 
-  $core.double get textHaloWidth => $_getN(52);
-  set textHaloWidth($core.double v) { $_setFloat(52, v); }
-  $core.bool hasTextHaloWidth() => $_has(52);
+  $core.double get textHaloWidth => $_getN(54);
+  set textHaloWidth($core.double v) { $_setFloat(54, v); }
+  $core.bool hasTextHaloWidth() => $_has(54);
   void clearTextHaloWidth() => clearField(55);
 
-  $core.double get textHaloBlur => $_getN(53);
-  set textHaloBlur($core.double v) { $_setFloat(53, v); }
-  $core.bool hasTextHaloBlur() => $_has(53);
+  $core.double get textHaloBlur => $_getN(55);
+  set textHaloBlur($core.double v) { $_setFloat(55, v); }
+  $core.bool hasTextHaloBlur() => $_has(55);
   void clearTextHaloBlur() => clearField(56);
 
-  $core.List<$core.double> get textTranslate => $_getList(54);
+  $core.List<$core.double> get textTranslate => $_getList(56);
 
-  $1.TranslateAnchor get textTranslateAnchor => $_getN(55);
+  $1.TranslateAnchor get textTranslateAnchor => $_getN(57);
   set textTranslateAnchor($1.TranslateAnchor v) { setField(58, v); }
-  $core.bool hasTextTranslateAnchor() => $_has(55);
+  $core.bool hasTextTranslateAnchor() => $_has(57);
   void clearTextTranslateAnchor() => clearField(58);
 
-  $1.TransitionOptions get iconOpacityTransition => $_getN(56);
+  $1.TransitionOptions get iconOpacityTransition => $_getN(58);
   set iconOpacityTransition($1.TransitionOptions v) { setField(59, v); }
-  $core.bool hasIconOpacityTransition() => $_has(56);
+  $core.bool hasIconOpacityTransition() => $_has(58);
   void clearIconOpacityTransition() => clearField(59);
 
-  $1.TransitionOptions get iconColorTransition => $_getN(57);
+  $1.TransitionOptions get iconColorTransition => $_getN(59);
   set iconColorTransition($1.TransitionOptions v) { setField(60, v); }
-  $core.bool hasIconColorTransition() => $_has(57);
+  $core.bool hasIconColorTransition() => $_has(59);
   void clearIconColorTransition() => clearField(60);
 
-  $1.TransitionOptions get iconHaloColorTransition => $_getN(58);
+  $1.TransitionOptions get iconHaloColorTransition => $_getN(60);
   set iconHaloColorTransition($1.TransitionOptions v) { setField(61, v); }
-  $core.bool hasIconHaloColorTransition() => $_has(58);
+  $core.bool hasIconHaloColorTransition() => $_has(60);
   void clearIconHaloColorTransition() => clearField(61);
 
-  $1.TransitionOptions get iconHaloWidthTransition => $_getN(59);
+  $1.TransitionOptions get iconHaloWidthTransition => $_getN(61);
   set iconHaloWidthTransition($1.TransitionOptions v) { setField(62, v); }
-  $core.bool hasIconHaloWidthTransition() => $_has(59);
+  $core.bool hasIconHaloWidthTransition() => $_has(61);
   void clearIconHaloWidthTransition() => clearField(62);
 
-  $1.TransitionOptions get iconHaloBlurTransition => $_getN(60);
+  $1.TransitionOptions get iconHaloBlurTransition => $_getN(62);
   set iconHaloBlurTransition($1.TransitionOptions v) { setField(63, v); }
-  $core.bool hasIconHaloBlurTransition() => $_has(60);
+  $core.bool hasIconHaloBlurTransition() => $_has(62);
   void clearIconHaloBlurTransition() => clearField(63);
 
-  $1.TransitionOptions get iconTranslateTransition => $_getN(61);
+  $1.TransitionOptions get iconTranslateTransition => $_getN(63);
   set iconTranslateTransition($1.TransitionOptions v) { setField(64, v); }
-  $core.bool hasIconTranslateTransition() => $_has(61);
+  $core.bool hasIconTranslateTransition() => $_has(63);
   void clearIconTranslateTransition() => clearField(64);
 
-  $1.TransitionOptions get textOpacityTransition => $_getN(62);
+  $1.TransitionOptions get textOpacityTransition => $_getN(64);
   set textOpacityTransition($1.TransitionOptions v) { setField(65, v); }
-  $core.bool hasTextOpacityTransition() => $_has(62);
+  $core.bool hasTextOpacityTransition() => $_has(64);
   void clearTextOpacityTransition() => clearField(65);
 
-  $1.TransitionOptions get textColorTransition => $_getN(63);
+  $1.TransitionOptions get textColorTransition => $_getN(65);
   set textColorTransition($1.TransitionOptions v) { setField(66, v); }
-  $core.bool hasTextColorTransition() => $_has(63);
+  $core.bool hasTextColorTransition() => $_has(65);
   void clearTextColorTransition() => clearField(66);
 
-  $1.TransitionOptions get textHaloColorTransition => $_getN(64);
+  $1.TransitionOptions get textHaloColorTransition => $_getN(66);
   set textHaloColorTransition($1.TransitionOptions v) { setField(67, v); }
-  $core.bool hasTextHaloColorTransition() => $_has(64);
+  $core.bool hasTextHaloColorTransition() => $_has(66);
   void clearTextHaloColorTransition() => clearField(67);
 
-  $1.TransitionOptions get textHaloWidthTransition => $_getN(65);
+  $1.TransitionOptions get textHaloWidthTransition => $_getN(67);
   set textHaloWidthTransition($1.TransitionOptions v) { setField(68, v); }
-  $core.bool hasTextHaloWidthTransition() => $_has(65);
+  $core.bool hasTextHaloWidthTransition() => $_has(67);
   void clearTextHaloWidthTransition() => clearField(68);
 
-  $1.TransitionOptions get textHaloBlurTransition => $_getN(66);
+  $1.TransitionOptions get textHaloBlurTransition => $_getN(68);
   set textHaloBlurTransition($1.TransitionOptions v) { setField(69, v); }
-  $core.bool hasTextHaloBlurTransition() => $_has(66);
+  $core.bool hasTextHaloBlurTransition() => $_has(68);
   void clearTextHaloBlurTransition() => clearField(69);
 
-  $1.TransitionOptions get textTranslateTransition => $_getN(67);
+  $1.TransitionOptions get textTranslateTransition => $_getN(69);
   set textTranslateTransition($1.TransitionOptions v) { setField(70, v); }
-  $core.bool hasTextTranslateTransition() => $_has(67);
+  $core.bool hasTextTranslateTransition() => $_has(69);
   void clearTextTranslateTransition() => clearField(70);
 }
 

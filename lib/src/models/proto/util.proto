@@ -18,21 +18,11 @@ message TransitionOptions {
   bool enable_placement_transitions = 3;
 }
 
-enum Gravity {
-  GRAVITY_TOP = 0;
-  GRAVITY_BOTTOM = 1;
-  GRAVITY_LEFT = 2;
-  GRAVITY_RIGHT = 3;
-  GRAVITY_CENTER_VERTICAL = 4;
-  GRAVITY_FILL_VERTICAL = 5;
-  GRAVITY_CENTER_HORIZONTAL = 6;
-  GRAVITY_FILL_HORIZONTAL = 7;
-  GRAVITY_CENTER = 8;
-  GRAVITY_FILL = 9;
-  GRAVITY_CLIP_VERTICAL = 10;
-  GRAVITY_CLIP_HORIZONTAL = 11;
-  GRAVITY_START = 12;
-  GRAVITY_END = 13;
+enum OrnamentPosition {
+  TOP_LEFT = 0;
+  TOP_RIGHT = 1;
+  BOTTOM_LEFT = 2;
+  BOTTOM_RIGHT = 3;
 }
 
 enum TranslateAnchor {

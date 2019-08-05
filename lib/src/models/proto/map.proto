@@ -3,8 +3,9 @@ package com.tophap.mapbox_gl.proto;
 option java_package = "com.tophap.mapbox_gl.proto";
 
 import "util.proto";
+import "style.proto";
 
-// protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto
+// protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto && protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/**.proto
 message Map_ {
   message Options {
     string api_base_uri = 1;
@@ -20,14 +21,14 @@ message Map_ {
     bool double_tap_gestures = 11;
     bool quick_zoom_gestures = 12;
     bool compass = 13;
-    Gravity compass_gravity = 14;
+    OrnamentPosition compass_position = 14;
     repeated int32 compass_margin = 15;
     bool compass_fade_facing_north = 16;
     bool logo = 17;
-    Gravity logo_gravity = 18;
+    OrnamentPosition logo_position = 18;
     repeated int32 logo_margin = 19;
     bool attribution = 20;
-    Gravity attribution_gravity = 21;
+    OrnamentPosition attribution_position = 21;
     repeated int32 attribution_margin = 22;
     Color attribution_tint_color = 23;
     bool render_texture_mode = 24;
@@ -36,6 +37,12 @@ message Map_ {
     bool enable_z_media_overlay = 27;
     float pixel_ratio = 28;
     Color foreground_load_color = 29;
+
+    oneof style {
+      Style.DefaultMapboxStyle from_mapbox = 30;
+      string from_uri = 31;
+      string from_json = 32;
+    }
   }
 
   message CameraPosition {
@@ -58,6 +65,7 @@ message Map_ {
       double min_zoom = 3;
       double max_zoom = 4;
       CameraPosition camera = 5;
+      Style style = 6;
     }
 
     message CameraUpdate {

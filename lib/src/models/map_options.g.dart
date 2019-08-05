@@ -51,9 +51,9 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
       'compass',
       serializers.serialize(object.compass,
           specifiedType: const FullType(bool)),
-      'compassGravity',
-      serializers.serialize(object.compassGravity,
-          specifiedType: const FullType(Gravity)),
+      'compassPosition',
+      serializers.serialize(object.compassPosition,
+          specifiedType: const FullType(OrnamentPosition)),
       'compassMargin',
       serializers.serialize(object.compassMargin,
           specifiedType:
@@ -63,9 +63,9 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
           specifiedType: const FullType(bool)),
       'logo',
       serializers.serialize(object.logo, specifiedType: const FullType(bool)),
-      'logoGravity',
-      serializers.serialize(object.logoGravity,
-          specifiedType: const FullType(Gravity)),
+      'logoPosition',
+      serializers.serialize(object.logoPosition,
+          specifiedType: const FullType(OrnamentPosition)),
       'logoMargin',
       serializers.serialize(object.logoMargin,
           specifiedType:
@@ -73,9 +73,9 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
       'attribution',
       serializers.serialize(object.attribution,
           specifiedType: const FullType(bool)),
-      'attributionGravity',
-      serializers.serialize(object.attributionGravity,
-          specifiedType: const FullType(Gravity)),
+      'attributionPosition',
+      serializers.serialize(object.attributionPosition,
+          specifiedType: const FullType(OrnamentPosition)),
       'attributionMargin',
       serializers.serialize(object.attributionMargin,
           specifiedType:
@@ -103,6 +103,24 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
       result
         ..add('apiBaseUri')
         ..add(serializers.serialize(object.apiBaseUri,
+            specifiedType: const FullType(String)));
+    }
+    if (object.styleFromMapbox != null) {
+      result
+        ..add('styleFromMapbox')
+        ..add(serializers.serialize(object.styleFromMapbox,
+            specifiedType: const FullType(DefaultMapStyle)));
+    }
+    if (object.styleFromUri != null) {
+      result
+        ..add('styleFromUri')
+        ..add(serializers.serialize(object.styleFromUri,
+            specifiedType: const FullType(String)));
+    }
+    if (object.styleFromJson != null) {
+      result
+        ..add('styleFromJson')
+        ..add(serializers.serialize(object.styleFromJson,
             specifiedType: const FullType(String)));
     }
     if (object.localIdeographFontFamily != null) {
@@ -133,6 +151,19 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
       switch (key) {
         case 'apiBaseUri':
           result.apiBaseUri = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'styleFromMapbox':
+          result.styleFromMapbox = serializers.deserialize(value,
+                  specifiedType: const FullType(DefaultMapStyle))
+              as DefaultMapStyle;
+          break;
+        case 'styleFromUri':
+          result.styleFromUri = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'styleFromJson':
+          result.styleFromJson = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'localIdeographFontFamily':
@@ -183,9 +214,10 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
           result.compass = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
-        case 'compassGravity':
-          result.compassGravity = serializers.deserialize(value,
-              specifiedType: const FullType(Gravity)) as Gravity;
+        case 'compassPosition':
+          result.compassPosition = serializers.deserialize(value,
+                  specifiedType: const FullType(OrnamentPosition))
+              as OrnamentPosition;
           break;
         case 'compassMargin':
           result.compassMargin.replace(serializers.deserialize(value,
@@ -201,9 +233,10 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
           result.logo = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
-        case 'logoGravity':
-          result.logoGravity = serializers.deserialize(value,
-              specifiedType: const FullType(Gravity)) as Gravity;
+        case 'logoPosition':
+          result.logoPosition = serializers.deserialize(value,
+                  specifiedType: const FullType(OrnamentPosition))
+              as OrnamentPosition;
           break;
         case 'logoMargin':
           result.logoMargin.replace(serializers.deserialize(value,
@@ -215,9 +248,10 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
           result.attribution = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
-        case 'attributionGravity':
-          result.attributionGravity = serializers.deserialize(value,
-              specifiedType: const FullType(Gravity)) as Gravity;
+        case 'attributionPosition':
+          result.attributionPosition = serializers.deserialize(value,
+                  specifiedType: const FullType(OrnamentPosition))
+              as OrnamentPosition;
           break;
         case 'attributionMargin':
           result.attributionMargin.replace(serializers.deserialize(value,
@@ -264,6 +298,12 @@ class _$MapOptions extends MapOptions {
   @override
   final String apiBaseUri;
   @override
+  final DefaultMapStyle styleFromMapbox;
+  @override
+  final String styleFromUri;
+  @override
+  final String styleFromJson;
+  @override
   final String localIdeographFontFamily;
   @override
   final bool crossSourceCollisions;
@@ -288,7 +328,7 @@ class _$MapOptions extends MapOptions {
   @override
   final bool compass;
   @override
-  final Gravity compassGravity;
+  final OrnamentPosition compassPosition;
   @override
   final BuiltList<int> compassMargin;
   @override
@@ -296,13 +336,13 @@ class _$MapOptions extends MapOptions {
   @override
   final bool logo;
   @override
-  final Gravity logoGravity;
+  final OrnamentPosition logoPosition;
   @override
   final BuiltList<int> logoMargin;
   @override
   final bool attribution;
   @override
-  final Gravity attributionGravity;
+  final OrnamentPosition attributionPosition;
   @override
   final BuiltList<int> attributionMargin;
   @override
@@ -326,6 +366,9 @@ class _$MapOptions extends MapOptions {
 
   _$MapOptions._(
       {this.apiBaseUri,
+      this.styleFromMapbox,
+      this.styleFromUri,
+      this.styleFromJson,
       this.localIdeographFontFamily,
       this.crossSourceCollisions,
       this.cameraPosition,
@@ -338,14 +381,14 @@ class _$MapOptions extends MapOptions {
       this.doubleTapGestures,
       this.quickZoomGestures,
       this.compass,
-      this.compassGravity,
+      this.compassPosition,
       this.compassMargin,
       this.compassFadeFacingNorth,
       this.logo,
-      this.logoGravity,
+      this.logoPosition,
       this.logoMargin,
       this.attribution,
-      this.attributionGravity,
+      this.attributionPosition,
       this.attributionMargin,
       this.attributionTintColor,
       this.renderTextureMode,
@@ -388,8 +431,8 @@ class _$MapOptions extends MapOptions {
     if (compass == null) {
       throw new BuiltValueNullFieldError('MapOptions', 'compass');
     }
-    if (compassGravity == null) {
-      throw new BuiltValueNullFieldError('MapOptions', 'compassGravity');
+    if (compassPosition == null) {
+      throw new BuiltValueNullFieldError('MapOptions', 'compassPosition');
     }
     if (compassMargin == null) {
       throw new BuiltValueNullFieldError('MapOptions', 'compassMargin');
@@ -401,8 +444,8 @@ class _$MapOptions extends MapOptions {
     if (logo == null) {
       throw new BuiltValueNullFieldError('MapOptions', 'logo');
     }
-    if (logoGravity == null) {
-      throw new BuiltValueNullFieldError('MapOptions', 'logoGravity');
+    if (logoPosition == null) {
+      throw new BuiltValueNullFieldError('MapOptions', 'logoPosition');
     }
     if (logoMargin == null) {
       throw new BuiltValueNullFieldError('MapOptions', 'logoMargin');
@@ -410,8 +453,8 @@ class _$MapOptions extends MapOptions {
     if (attribution == null) {
       throw new BuiltValueNullFieldError('MapOptions', 'attribution');
     }
-    if (attributionGravity == null) {
-      throw new BuiltValueNullFieldError('MapOptions', 'attributionGravity');
+    if (attributionPosition == null) {
+      throw new BuiltValueNullFieldError('MapOptions', 'attributionPosition');
     }
     if (attributionMargin == null) {
       throw new BuiltValueNullFieldError('MapOptions', 'attributionMargin');
@@ -452,6 +495,9 @@ class _$MapOptions extends MapOptions {
     if (identical(other, this)) return true;
     return other is MapOptions &&
         apiBaseUri == other.apiBaseUri &&
+        styleFromMapbox == other.styleFromMapbox &&
+        styleFromUri == other.styleFromUri &&
+        styleFromJson == other.styleFromJson &&
         localIdeographFontFamily == other.localIdeographFontFamily &&
         crossSourceCollisions == other.crossSourceCollisions &&
         cameraPosition == other.cameraPosition &&
@@ -464,14 +510,14 @@ class _$MapOptions extends MapOptions {
         doubleTapGestures == other.doubleTapGestures &&
         quickZoomGestures == other.quickZoomGestures &&
         compass == other.compass &&
-        compassGravity == other.compassGravity &&
+        compassPosition == other.compassPosition &&
         compassMargin == other.compassMargin &&
         compassFadeFacingNorth == other.compassFadeFacingNorth &&
         logo == other.logo &&
-        logoGravity == other.logoGravity &&
+        logoPosition == other.logoPosition &&
         logoMargin == other.logoMargin &&
         attribution == other.attribution &&
-        attributionGravity == other.attributionGravity &&
+        attributionPosition == other.attributionPosition &&
         attributionMargin == other.attributionMargin &&
         attributionTintColor == other.attributionTintColor &&
         renderTextureMode == other.renderTextureMode &&
@@ -503,18 +549,18 @@ class _$MapOptions extends MapOptions {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, apiBaseUri.hashCode), localIdeographFontFamily.hashCode), crossSourceCollisions.hashCode), cameraPosition.hashCode), maxZoom.hashCode), minZoom.hashCode), zoomGestures.hashCode), scrollGestures.hashCode), rotateGestures.hashCode), tiltGestures.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, apiBaseUri.hashCode), styleFromMapbox.hashCode), styleFromUri.hashCode), styleFromJson.hashCode), localIdeographFontFamily.hashCode), crossSourceCollisions.hashCode), cameraPosition.hashCode), maxZoom.hashCode), minZoom.hashCode), zoomGestures.hashCode), scrollGestures.hashCode), rotateGestures.hashCode), tiltGestures.hashCode),
                                                                                 doubleTapGestures.hashCode),
                                                                             quickZoomGestures.hashCode),
                                                                         compass.hashCode),
-                                                                    compassGravity.hashCode),
+                                                                    compassPosition.hashCode),
                                                                 compassMargin.hashCode),
                                                             compassFadeFacingNorth.hashCode),
                                                         logo.hashCode),
-                                                    logoGravity.hashCode),
+                                                    logoPosition.hashCode),
                                                 logoMargin.hashCode),
                                             attribution.hashCode),
-                                        attributionGravity.hashCode),
+                                        attributionPosition.hashCode),
                                     attributionMargin.hashCode),
                                 attributionTintColor.hashCode),
                             renderTextureMode.hashCode),
@@ -529,6 +575,9 @@ class _$MapOptions extends MapOptions {
   String toString() {
     return (newBuiltValueToStringHelper('MapOptions')
           ..add('apiBaseUri', apiBaseUri)
+          ..add('styleFromMapbox', styleFromMapbox)
+          ..add('styleFromUri', styleFromUri)
+          ..add('styleFromJson', styleFromJson)
           ..add('localIdeographFontFamily', localIdeographFontFamily)
           ..add('crossSourceCollisions', crossSourceCollisions)
           ..add('cameraPosition', cameraPosition)
@@ -541,14 +590,14 @@ class _$MapOptions extends MapOptions {
           ..add('doubleTapGestures', doubleTapGestures)
           ..add('quickZoomGestures', quickZoomGestures)
           ..add('compass', compass)
-          ..add('compassGravity', compassGravity)
+          ..add('compassPosition', compassPosition)
           ..add('compassMargin', compassMargin)
           ..add('compassFadeFacingNorth', compassFadeFacingNorth)
           ..add('logo', logo)
-          ..add('logoGravity', logoGravity)
+          ..add('logoPosition', logoPosition)
           ..add('logoMargin', logoMargin)
           ..add('attribution', attribution)
-          ..add('attributionGravity', attributionGravity)
+          ..add('attributionPosition', attributionPosition)
           ..add('attributionMargin', attributionMargin)
           ..add('attributionTintColor', attributionTintColor)
           ..add('renderTextureMode', renderTextureMode)
@@ -568,6 +617,20 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   String _apiBaseUri;
   String get apiBaseUri => _$this._apiBaseUri;
   set apiBaseUri(String apiBaseUri) => _$this._apiBaseUri = apiBaseUri;
+
+  DefaultMapStyle _styleFromMapbox;
+  DefaultMapStyle get styleFromMapbox => _$this._styleFromMapbox;
+  set styleFromMapbox(DefaultMapStyle styleFromMapbox) =>
+      _$this._styleFromMapbox = styleFromMapbox;
+
+  String _styleFromUri;
+  String get styleFromUri => _$this._styleFromUri;
+  set styleFromUri(String styleFromUri) => _$this._styleFromUri = styleFromUri;
+
+  String _styleFromJson;
+  String get styleFromJson => _$this._styleFromJson;
+  set styleFromJson(String styleFromJson) =>
+      _$this._styleFromJson = styleFromJson;
 
   String _localIdeographFontFamily;
   String get localIdeographFontFamily => _$this._localIdeographFontFamily;
@@ -625,10 +688,10 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   bool get compass => _$this._compass;
   set compass(bool compass) => _$this._compass = compass;
 
-  Gravity _compassGravity;
-  Gravity get compassGravity => _$this._compassGravity;
-  set compassGravity(Gravity compassGravity) =>
-      _$this._compassGravity = compassGravity;
+  OrnamentPosition _compassPosition;
+  OrnamentPosition get compassPosition => _$this._compassPosition;
+  set compassPosition(OrnamentPosition compassPosition) =>
+      _$this._compassPosition = compassPosition;
 
   ListBuilder<int> _compassMargin;
   ListBuilder<int> get compassMargin =>
@@ -645,9 +708,10 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   bool get logo => _$this._logo;
   set logo(bool logo) => _$this._logo = logo;
 
-  Gravity _logoGravity;
-  Gravity get logoGravity => _$this._logoGravity;
-  set logoGravity(Gravity logoGravity) => _$this._logoGravity = logoGravity;
+  OrnamentPosition _logoPosition;
+  OrnamentPosition get logoPosition => _$this._logoPosition;
+  set logoPosition(OrnamentPosition logoPosition) =>
+      _$this._logoPosition = logoPosition;
 
   ListBuilder<int> _logoMargin;
   ListBuilder<int> get logoMargin =>
@@ -659,10 +723,10 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   bool get attribution => _$this._attribution;
   set attribution(bool attribution) => _$this._attribution = attribution;
 
-  Gravity _attributionGravity;
-  Gravity get attributionGravity => _$this._attributionGravity;
-  set attributionGravity(Gravity attributionGravity) =>
-      _$this._attributionGravity = attributionGravity;
+  OrnamentPosition _attributionPosition;
+  OrnamentPosition get attributionPosition => _$this._attributionPosition;
+  set attributionPosition(OrnamentPosition attributionPosition) =>
+      _$this._attributionPosition = attributionPosition;
 
   ListBuilder<int> _attributionMargin;
   ListBuilder<int> get attributionMargin =>
@@ -710,6 +774,9 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   MapOptionsBuilder get _$this {
     if (_$v != null) {
       _apiBaseUri = _$v.apiBaseUri;
+      _styleFromMapbox = _$v.styleFromMapbox;
+      _styleFromUri = _$v.styleFromUri;
+      _styleFromJson = _$v.styleFromJson;
       _localIdeographFontFamily = _$v.localIdeographFontFamily;
       _crossSourceCollisions = _$v.crossSourceCollisions;
       _cameraPosition = _$v.cameraPosition?.toBuilder();
@@ -722,14 +789,14 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
       _doubleTapGestures = _$v.doubleTapGestures;
       _quickZoomGestures = _$v.quickZoomGestures;
       _compass = _$v.compass;
-      _compassGravity = _$v.compassGravity;
+      _compassPosition = _$v.compassPosition;
       _compassMargin = _$v.compassMargin?.toBuilder();
       _compassFadeFacingNorth = _$v.compassFadeFacingNorth;
       _logo = _$v.logo;
-      _logoGravity = _$v.logoGravity;
+      _logoPosition = _$v.logoPosition;
       _logoMargin = _$v.logoMargin?.toBuilder();
       _attribution = _$v.attribution;
-      _attributionGravity = _$v.attributionGravity;
+      _attributionPosition = _$v.attributionPosition;
       _attributionMargin = _$v.attributionMargin?.toBuilder();
       _attributionTintColor = _$v.attributionTintColor;
       _renderTextureMode = _$v.renderTextureMode;
@@ -763,6 +830,9 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
       _$result = _$v ??
           new _$MapOptions._(
               apiBaseUri: apiBaseUri,
+              styleFromMapbox: styleFromMapbox,
+              styleFromUri: styleFromUri,
+              styleFromJson: styleFromJson,
               localIdeographFontFamily: localIdeographFontFamily,
               crossSourceCollisions: crossSourceCollisions,
               cameraPosition: cameraPosition.build(),
@@ -775,14 +845,14 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
               doubleTapGestures: doubleTapGestures,
               quickZoomGestures: quickZoomGestures,
               compass: compass,
-              compassGravity: compassGravity,
+              compassPosition: compassPosition,
               compassMargin: compassMargin.build(),
               compassFadeFacingNorth: compassFadeFacingNorth,
               logo: logo,
-              logoGravity: logoGravity,
+              logoPosition: logoPosition,
               logoMargin: logoMargin.build(),
               attribution: attribution,
-              attributionGravity: attributionGravity,
+              attributionPosition: attributionPosition,
               attributionMargin: attributionMargin.build(),
               attributionTintColor: attributionTintColor,
               renderTextureMode: renderTextureMode,
