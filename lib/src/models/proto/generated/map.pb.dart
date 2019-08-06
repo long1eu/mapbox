@@ -33,7 +33,7 @@ class Map__Options extends $pb.GeneratedMessage {
     32 : Map__Options_Style.fromJson_32,
     0 : Map__Options_Style.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Options', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Options', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..oo(0, [30, 31, 32])
     ..aOS(1, 'apiBaseUri')
     ..aOS(2, 'localIdeographFontFamily')
@@ -240,7 +240,7 @@ class Map__Options extends $pb.GeneratedMessage {
 }
 
 class Map__CameraPosition extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.CameraPosition', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.CameraPosition', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<$core.double>(1, 'bearing', $pb.PbFieldType.OD)
     ..a<$1.LatLng>(2, 'target', $pb.PbFieldType.OM, $1.LatLng.getDefault, $1.LatLng.create)
     ..a<$core.double>(3, 'tilt', $pb.PbFieldType.OD)
@@ -284,7 +284,7 @@ class Map__CameraPosition extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_Ready extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.Ready', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.Ready', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<$core.int>(1, 'viewId', $pb.PbFieldType.O3)
     ..aOB(2, 'prefetchesTiles')
     ..a<$core.double>(3, 'minZoom', $pb.PbFieldType.OD)
@@ -340,7 +340,7 @@ class Map__Operations_Ready extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_CameraUpdate extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.CameraUpdate', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.CameraUpdate', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<Map__CameraPosition>(1, 'cameraPosition', $pb.PbFieldType.OM, Map__CameraPosition.getDefault, Map__CameraPosition.create)
     ..a<$1.LatLng>(2, 'latLng', $pb.PbFieldType.OM, $1.LatLng.getDefault, $1.LatLng.create)
     ..a<$1.LatLngBounds>(3, 'bounds', $pb.PbFieldType.OM, $1.LatLngBounds.getDefault, $1.LatLngBounds.create)
@@ -423,7 +423,7 @@ class Map__Operations_CameraUpdate extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_EaseCamera extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.EaseCamera', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.EaseCamera', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<Map__Operations_CameraUpdate>(1, 'update', $pb.PbFieldType.OM, Map__Operations_CameraUpdate.getDefault, Map__Operations_CameraUpdate.create)
     ..a<$core.int>(2, 'duration', $pb.PbFieldType.O3)
     ..aOB(3, 'easingInterpolator')
@@ -461,7 +461,7 @@ class Map__Operations_EaseCamera extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_AnimateCamera extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.AnimateCamera', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.AnimateCamera', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<Map__Operations_CameraUpdate>(1, 'update', $pb.PbFieldType.OM, Map__Operations_CameraUpdate.getDefault, Map__Operations_CameraUpdate.create)
     ..a<$core.int>(2, 'duration', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
@@ -493,7 +493,7 @@ class Map__Operations_AnimateCamera extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_ScrollBy extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.ScrollBy', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.ScrollBy', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<$core.double>(1, 'x', $pb.PbFieldType.OF)
     ..a<$core.double>(2, 'y', $pb.PbFieldType.OF)
     ..aInt64(3, 'duration')
@@ -531,7 +531,7 @@ class Map__Operations_ScrollBy extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_SetFocalBearing extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.SetFocalBearing', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.SetFocalBearing', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<$core.double>(1, 'bearing', $pb.PbFieldType.OD)
     ..a<$core.double>(2, 'focalX', $pb.PbFieldType.OF)
     ..a<$core.double>(3, 'focalY', $pb.PbFieldType.OF)
@@ -575,7 +575,7 @@ class Map__Operations_SetFocalBearing extends $pb.GeneratedMessage {
 }
 
 class Map__Operations_GetCameraForLatLngBounds extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations.GetCameraForLatLngBounds', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.GetCameraForLatLngBounds', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..a<$1.LatLngBounds>(1, 'bounds', $pb.PbFieldType.OM, $1.LatLngBounds.getDefault, $1.LatLngBounds.create)
     ..p<$core.int>(2, 'padding', $pb.PbFieldType.P3)
     ..a<$core.double>(3, 'bearing', $pb.PbFieldType.OD)
@@ -616,7 +616,7 @@ class Map__Operations_GetCameraForLatLngBounds extends $pb.GeneratedMessage {
 }
 
 class Map__Operations extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_.Operations', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..hasRequiredFields = false
   ;
 
@@ -636,7 +636,7 @@ class Map__Operations extends $pb.GeneratedMessage {
 }
 
 class Map_ extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map_', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..hasRequiredFields = false
   ;
 

@@ -1,12 +1,13 @@
 syntax = "proto3";
 package com.tophap.mapbox_gl.proto;
 option java_package = "com.tophap.mapbox_gl.proto";
+option java_outer_classname = "Mapbox";
 
 import "util.proto";
 import "style.proto";
 
 // protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto && protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/**.proto
-message Map_ {
+message Map {
   message Options {
     string api_base_uri = 1;
     string local_ideograph_font_family = 2;

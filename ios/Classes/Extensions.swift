@@ -88,13 +88,15 @@ extension MGLTransition {
 
 extension NSExpression {
     func formatted() {
-        let data = mgl_jsonExpressionObject as! [Any]
+        /*let data = mgl_jsonExpressionObject as! [Any]
         let type = data[0] as! String
         assert(type == "format")
 
         let layer = MGLSymbolStyleLayer(identifier: "", source: <#T##MGLSource##Mapbox.MGLSource#>)
 
-        NSExpression(mglJSONObject: <#T##Any##Any#>)
+
+        NSPredicate(format: "%K == 'US-OH'", "ds")
+
 
         for i in stride(from: 1, through: data.count, by: 2) {
             let string = data[i]
@@ -103,7 +105,7 @@ extension NSExpression {
 
 
         }
-
+*/
         /*
        ["format",
          "foo", { "font-scale": 1.2 , "text-font": array<string>, "text-color": "argb()"},

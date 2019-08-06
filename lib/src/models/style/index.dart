@@ -4,6 +4,5 @@
 
 export 'default_map_style.dart';
 export 'light.dart';
-export '../layer/line_cap.dart';
 export 'position.dart';
 export 'style.dart';

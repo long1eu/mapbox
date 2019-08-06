@@ -81,13 +81,11 @@ const String kExponentialOperator = 'exponential';
 const String kCubicBezierOperator = 'cubic-bezier';
 
 abstract class _ValueExpression {
-  dynamic get value;
-
-  pb.Expression get data;
+  dynamic get _jsonValue;
 }
 
 class Expression {
-  const Expression._(String operator, [List<Expression> arguments])
+  Expression._(String operator, [List<Expression> arguments])
       : _operator = operator,
         _arguments = arguments;
 
@@ -128,33 +126,116 @@ class Expression {
           if (fieldName != null) _expression(string, fieldName, bool),
         ];
 
-  final String _operator;
-  final List<Expression> _arguments;
+  factory Expression._fromProtoString(pb.StringValue string) {
+    return string == null ? null : Expression.fromJson(jsonDecode(string.value));
+  }
 
-  pb.Expression get proto {
-    final pb.Expression expression = pb.Expression() //
-      ..operator = _operator;
-
-    if (_arguments != null) {
-      for (Expression arg in _arguments) {
-        if (arg is _ValueExpression) {
-          expression.arguments.add((arg as _ValueExpression).data);
-        } else {
-          expression.arguments.add(arg.proto);
-        }
+  factory Expression.fromJson(List<dynamic> list) {
+    Expression convertElement(dynamic value) {
+      if (value is List) {
+        return Expression.fromJson(value);
+      } else if (value is bool || value is num || value is String) {
+        return _ExpressionLiteral(value);
+      } else if (value == null) {
+        return _ExpressionLiteral('');
+      } else if (value is Map) {
+        final Map<dynamic, Expression> map =
+            value.map((dynamic key, dynamic value) => MapEntry(key, convertElement(value)));
+        return _ExpressionMap(Map<String, Expression>.from(map));
+      } else {
+        throw ArgumentError('Unssuported expression conversion for ${value.runtimeType}.');
       }
     }
 
-    return expression.freeze();
+    final String operator = list[0];
+    final List<Expression> arguments = <Expression>[];
+    for (int i = 1; i < list.length; i++) {
+      final dynamic item = list[i];
+      if (operator == 'literal' && item is List) {
+        final List nested = item;
+        final List<Expression> array = <Expression>[];
+        for (int j = 0; j < nested.length; j++) {
+          final dynamic element = nested[i];
+          assert(element is! List);
+          array[j] = literal(element);
+        }
+
+        arguments.add(_ExpressionLiteralList(array));
+      } else {
+        arguments.add(convertElement(item));
+      }
+    }
+
+    return Expression._(operator, arguments);
   }
 
-  List<Object> get json {
+  final String _operator;
+  final List<Expression> _arguments;
+
+  bool get isExpression => value is List;
+
+  bool get isValue => !isExpression;
+
+  dynamic get value => json;
+
+  Color get color {
+    assert(isValue && _arguments.every((it) => it is _ExpressionLiteral));
+
+    if (_operator == kRgbOperator) {
+      assert(_arguments.length == 3 && _arguments.every((it) => it is _ExpressionLiteral));
+
+      return Color.fromARGB(
+        0xFF,
+        _arguments[0].value,
+        _arguments[1].value,
+        _arguments[2].value,
+      );
+    } else if (_operator == kRgbaOperator) {
+      assert(_arguments.length == 4);
+
+      return Color.fromARGB(
+        _arguments[3].value,
+        _arguments[0].value,
+        _arguments[1].value,
+        _arguments[2].value,
+      );
+    }
+
+    return null;
+  }
+
+  Offset get offset {
+    assert(isValue && _arguments.every((it) => it is _ExpressionLiteral));
+
+    if (_operator == kArrayOperator && _arguments.length == 2) {
+      return Offset(_arguments[0].value, _arguments[1].value);
+    }
+
+    return null;
+  }
+
+  EdgeInsets get edgeInsets {
+    assert(isValue && _arguments.every((it) => it is _ExpressionLiteral));
+
+    if (_operator == kArrayOperator && _arguments.length == 4) {
+      return EdgeInsets.only(
+        top: _arguments[0].value,
+        right: _arguments[1].value,
+        bottom: _arguments[2].value,
+        left: _arguments[3].value,
+      );
+    }
+
+    return null;
+  }
+
+  List<dynamic> get json {
     List<dynamic> array = <dynamic>[];
     array.add(_operator);
     if (_arguments != null) {
       for (Expression arg in _arguments) {
         if (arg is _ValueExpression) {
-          array.add((arg as _ValueExpression).value);
+          array.add((arg as _ValueExpression)._jsonValue);
         } else {
           array.add(arg.json);
         }
@@ -163,6 +244,12 @@ class Expression {
 
     return array;
   }
+
+  pb.StringValue _jsonProto;
+
+  pb.StringValue get proto => _jsonProto ??= pb.StringValue()
+    ..value = jsonEncode(json)
+    ..freeze();
 
   @override
   String toString() {
@@ -173,58 +260,18 @@ class Expression {
   }
 }
 
-class Interpolator extends Expression {
-  Interpolator._(String operator, [List<Expression> arguments]) : super._(operator, arguments);
-
-  Interpolator._e1(String operator, Expression arg1) : super._e1(operator, arg1);
-
-  Interpolator._e2(String operator, Expression arg1, Expression arg2) : super._e2(operator, arg1, arg2);
-
-  Interpolator._e3(String operator, Expression arg1, Expression arg2, Expression arg3)
-      : super._e3(operator, arg1, arg2, arg3);
-
-  Interpolator._e4(String operator, Expression arg1, Expression arg2, Expression arg3, Expression arg4)
-      : super._e4(operator, arg1, arg2, arg3, arg4);
-}
-
-class ExpressionMap extends Expression implements _ValueExpression {
-  const ExpressionMap._(Map<String, Expression> map)
+class _ExpressionMap extends Expression implements _ValueExpression {
+  _ExpressionMap(Map<String, Expression> map)
       : _map = map,
         super._(null);
 
   final Map<String, Expression> _map;
 
-  @override
-  pb.Expression get data {
-    final pb.MapExpression map = pb.MapExpression();
-    for (String key in _map.keys) {
-      Expression exp = _map[key];
-      if (exp is _ValueExpression) {
-        map.map[key] = (exp as _ValueExpression).data;
-      } else {
-        map.map[key] = exp.proto;
-      }
-    }
-
-    return pb.Expression()
-      ..map = map
-      ..freeze();
-  }
+  dynamic get value => _jsonValue;
 
   @override
-  Object get value {
-    final Map<String, dynamic> unwrappedMap = <String, dynamic>{};
-    for (String key in _map.keys) {
-      Expression exp = _map[key];
-      if (exp is _ValueExpression) {
-        unwrappedMap[key] = (exp as _ValueExpression).value;
-      } else {
-        unwrappedMap[key] = exp.json;
-      }
-    }
-
-    return unwrappedMap;
-  }
+  Object get _jsonValue => _map.map((String key, Expression expression) =>
+      MapEntry(key, expression is _ValueExpression ? (expression as _ValueExpression)._jsonValue : expression.json));
 
   @override
   String toString() {
@@ -235,57 +282,40 @@ class ExpressionMap extends Expression implements _ValueExpression {
 }
 
 class _ExpressionLiteral extends Expression implements _ValueExpression {
-  const _ExpressionLiteral._(dynamic value)
+  _ExpressionLiteral(dynamic value)
       : _literal = value,
         super._(null);
 
   final dynamic _literal;
 
-  @override
-  Object get value => _literal is _ExpressionLiteral ? _literal.value : _literal;
-
-  pb.Expression get data {
-    final pb.Value _literal$ = pb.Value();
-
-    if (_literal is _ExpressionLiteral) {
-      return _literal.proto;
-    } else if (_literal is int) {
-      _literal$
-        ..intValue = _literal
-        ..freeze();
-    } else if (_literal is double) {
-      _literal$
-        ..doubleValue = _literal
-        ..freeze();
-    } else if (_literal is String) {
-      _literal$
-        ..stringValue = _literal
-        ..freeze();
-    } else if (_literal is bool) {
-      _literal$
-        ..boolValue = _literal
-        ..freeze();
-    } else if (_literal is List) {
-      _literal$
-        ..listValue = (pb.ListValue()
-          ..values.addAll(_literal.map((it) => (literal(it) as dynamic).data.literal).toList().cast<pb.Value>())
-          ..freeze())
-        ..freeze();
-    } else {
-      throw ArgumentError('Unknow type of literal $_literal ${_literal.runtimeType}');
-    }
-
-    return pb.Expression()
-      ..literal = _literal$
-      ..freeze();
-  }
+  dynamic get value => _jsonValue;
 
   @override
-  String toString() => '${_literal.runtimeType}:$value';
+  Object get _jsonValue => _literal is _ExpressionLiteral ? _literal.value : _literal;
+
+  @override
+  List<Object> get json => ['literal', _literal];
+
+  @override
+  String toString() => 'literal(${_literal.runtimeType}:$value)';
 }
 
 class _ExpressionLiteralList extends _ExpressionLiteral {
-  const _ExpressionLiteralList._(dynamic value) : super._(value);
+  _ExpressionLiteralList(dynamic value) : super(value);
+}
+
+class _Interpolator extends Expression {
+  _Interpolator(String operator, [List<Expression> arguments]) : super._(operator, arguments);
+
+  _Interpolator.e1(String operator, Expression arg1) : super._e1(operator, arg1);
+
+  _Interpolator.e2(String operator, Expression arg1, Expression arg2) : super._e2(operator, arg1, arg2);
+
+  _Interpolator.e3(String operator, Expression arg1, Expression arg2, Expression arg3)
+      : super._e3(operator, arg1, arg2, arg3);
+
+  _Interpolator.e4(String operator, Expression arg1, Expression arg2, Expression arg3, Expression arg4)
+      : super._e4(operator, arg1, arg2, arg3, arg4);
 }
 
 class _Stop {
@@ -328,8 +358,8 @@ class _Stop {
   }
 }
 
-class _FormatEntry {
-  const _FormatEntry(Expression text, List<_FormatOption> options)
+class FormatEntry {
+  const FormatEntry(Expression text, List<_FormatOption> options)
       : _text = text,
         _options = options;
 

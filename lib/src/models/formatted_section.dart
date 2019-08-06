@@ -67,4 +67,15 @@ abstract class FormattedSection implements Built<FormattedSection, FormattedSect
   Uint8List get data => proto.writeToBuffer();
 
   static Serializer<FormattedSection> get serializer => _$formattedSectionSerializer;
+
+  FormatEntry get expression {
+    return formatEntry(
+      text,
+      [
+        if (fontScale != null) formatFontScale(fontScale),
+        if (fontStack != null) formatFontStackExpresion(literalList(fontStack.toList())),
+        formatTextColor(textColor)
+      ],
+    );
+  }
 }

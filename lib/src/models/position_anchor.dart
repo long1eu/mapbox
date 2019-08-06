@@ -2,35 +2,50 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library position_anchor;
+import 'package:mapbox_gl/mapbox_gl.dart';
 
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+class PositionAnchor {
+  const PositionAnchor._(this._i, this.value);
 
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+  final int _i;
+  final String value;
 
-part 'position_anchor.g.dart';
+  static const PositionAnchor center = PositionAnchor._(0, 'center');
+  static const PositionAnchor left = PositionAnchor._(1, 'left');
+  static const PositionAnchor right = PositionAnchor._(2, 'right');
+  static const PositionAnchor top = PositionAnchor._(2, 'top');
+  static const PositionAnchor bottom = PositionAnchor._(2, 'bottom');
+  static const PositionAnchor topLeft = PositionAnchor._(2, 'top-left');
+  static const PositionAnchor topRight = PositionAnchor._(2, 'top-right');
+  static const PositionAnchor bottomLeft = PositionAnchor._(2, 'bottom-left');
+  static const PositionAnchor bottomRight = PositionAnchor._(2, 'bottom-right');
 
-class PositionAnchor extends EnumClass {
-  const PositionAnchor._(String name) : super(name);
-  static const PositionAnchor center = _$center;
-  static const PositionAnchor left = _$left;
-  static const PositionAnchor right = _$right;
-  static const PositionAnchor top = _$top;
-  static const PositionAnchor bottom = _$bottom;
-  static const PositionAnchor topLeft = _$topLeft;
-  static const PositionAnchor topRight = _$topRight;
-  static const PositionAnchor bottomLeft = _$bottomLeft;
-  static const PositionAnchor bottomRight = _$bottomRight;
+  static const List<PositionAnchor> values = <PositionAnchor>[
+    center,
+    left,
+    right,
+    top,
+    bottom,
+    topLeft,
+    topRight,
+    bottomLeft,
+    bottomRight,
+  ];
 
-  static BuiltSet<PositionAnchor> get values => _$values;
+  static const List<String> _names = <String>[
+    'center',
+    'left',
+    'right',
+    'top',
+    'bottom',
+    'topLeft',
+    'topRight',
+    'bottomLeft',
+    'bottomRight',
+  ];
 
-  pb.PositionAnchor get proto => pb.PositionAnchor.valueOf(values.toList().indexOf(this));
+  Expression get expression => literalString(value);
 
-  static PositionAnchor valueOf(String name) => _$valueOf(name);
-
-  static Serializer<PositionAnchor> get serializer => _$positionAnchorSerializer;
-
-  static PositionAnchor fromProto(pb.PositionAnchor proto) => values.elementAt(proto.value);
+  @override
+  String toString() => 'PositionAnchor.${_names[_i]}';
 }

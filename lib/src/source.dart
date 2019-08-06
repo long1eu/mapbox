@@ -14,6 +14,10 @@ abstract class Source {
       return GeoJsonSource._(sourceModel, channel);
     } else if (sourceModel is ImageSourceModel) {
       return ImageSource._(sourceModel, channel);
+    } else if (sourceModel is VectorSourceModel) {
+      return VectorSource._(sourceModel, channel);
+    } else if (sourceModel is UnknownSourceModel) {
+      return UnknownSource._(sourceModel, channel);
     }
 
     throw ArgumentError('Unkown source type $sourceModel');
@@ -40,6 +44,32 @@ class ImageSource extends Source {
         super._(sourceModel, channel);
 
   final ImageSourceModel _model;
+  final MethodChannel _channel;
+
+  @override
+  String get id => _model.id;
+}
+
+class VectorSource extends Source {
+  VectorSource._(VectorSourceModel sourceModel, MethodChannel channel)
+      : _model = sourceModel,
+        _channel = channel,
+        super._(sourceModel, channel);
+
+  final VectorSourceModel _model;
+  final MethodChannel _channel;
+
+  @override
+  String get id => _model.id;
+}
+
+class UnknownSource extends Source {
+  UnknownSource._(UnknownSourceModel sourceModel, MethodChannel channel)
+      : _model = sourceModel,
+        _channel = channel,
+        super._(sourceModel, channel);
+
+  final UnknownSourceModel _model;
   final MethodChannel _channel;
 
   @override

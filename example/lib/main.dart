@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
 
 import 'animate_camera.dart';
 import 'move_camera.dart';
@@ -41,35 +40,6 @@ class MapsDemo extends StatelessWidget {
   }
 }
 
-void main() {
-  print(rgba(255, 0, 0, 1.0));
-  print(literal(255));
-  Expression expression = format(
-    [
-      formatEntry$(
-        'text_1',
-        [
-          formatFontScale(2.0),
-          formatTextFont(
-            <String>[
-              "DIN Offc Pro Regular",
-              "Arial Unicode MS Regular",
-            ],
-          ),
-        ],
-      ),
-      formatEntry$(
-        ' 1',
-        [
-          formatFontScale(1.5),
-          formatTextColor(Colors.blue),
-        ],
-      ),
-    ],
-  );
-
-  print(expression);
-  print(expression.proto.writeToJson());
-
+void main() async {
   runApp(MaterialApp(home: MapsDemo()));
 }

@@ -6,27 +6,29 @@ part of mapbox_gl;
 
 Expression literalDouble(double value) {
   assert(value != null);
-  return _ExpressionLiteral._(value);
+  return _ExpressionLiteral(value);
 }
 
 Expression literalInt(int value) {
   assert(value != null);
-  return _ExpressionLiteral._(value);
+  return _ExpressionLiteral(value);
 }
 
 Expression literalString(String value) {
   assert(value != null);
-  return _ExpressionLiteral._(value);
+  return _ExpressionLiteral(value);
 }
 
 Expression literalBool(bool value) {
   assert(value != null);
-  return _ExpressionLiteral._(value);
+  return _ExpressionLiteral(value);
 }
 
 Expression literalList(List<dynamic> value) {
   assert(value != null);
-  return Expression._e1(kLiteralOperator, _ExpressionLiteralList._(value));
+  assert(value.every((it) => it is num || it is String || it is bool));
+
+  return Expression._e1(kLiteralOperator, _ExpressionLiteralList(value));
 }
 
 Expression literal(dynamic value) {
@@ -38,12 +40,14 @@ Expression literal(dynamic value) {
     return literalString(value);
   } else if (value is bool) {
     return literalBool(value);
+  } else if (value is List) {
+    return literalList(value);
   } else {
     throw ArgumentError('Unknown literal $value ${value.runtimeType}');
   }
 }
 
-Expression color(Color value, [bool _rgba = false]) {
+Expression color$(Color value, [bool _rgba = true]) {
   assert(value != null);
   assert(_rgba != null);
 
@@ -490,15 +494,15 @@ Expression collator(dynamic caseSensitive, dynamic diacriticSensitive, [dynamic 
     if (locale != null && locale is Locale) 'locale': literalString(locale.toLanguageTag()),
     if (locale != null && locale is Expression) 'locale': locale
   };
-  return Expression._e1(kCollatorOperator, ExpressionMap._(map));
+  return Expression._e1(kCollatorOperator, _ExpressionMap(map));
 }
 
-Expression format(List<_FormatEntry> formatEntries) {
+Expression format(List<FormatEntry> formatEntries) {
   // for each entry we are going to build an input and parameters
   List<Expression> mappedExpressions = List<Expression>(formatEntries.length * 2);
 
   int mappedIndex = 0;
-  for (_FormatEntry formatEntry in formatEntries) {
+  for (FormatEntry formatEntry in formatEntries) {
     // input
     mappedExpressions[mappedIndex++] = formatEntry._text;
 
@@ -510,14 +514,14 @@ Expression format(List<_FormatEntry> formatEntries) {
       }
     }
 
-    mappedExpressions[mappedIndex++] = new ExpressionMap._(map);
+    mappedExpressions[mappedIndex++] = new _ExpressionMap(map);
   }
 
   return new Expression._(kFormatOperator, mappedExpressions);
 }
 
-_FormatEntry formatEntry$(dynamic text, [List<_FormatOption> formatOptions]) {
-  return _FormatEntry(_expression(text, 'text', String), formatOptions);
+FormatEntry formatEntry(dynamic text, [List<_FormatOption> formatOptions]) {
+  return FormatEntry(_expression(text, 'text', String), formatOptions);
 }
 
 Expression object(Expression input) {
@@ -583,28 +587,28 @@ Expression step(dynamic input, dynamic defaultOutput, List<dynamic> stops) {
   );
 }
 
-Expression interpolate(Interpolator interpolation, Expression number, List<dynamic> stops) {
+Expression interpolate(_Interpolator interpolation, Expression number, List<dynamic> stops) {
   return new Expression._(
     kInterpolateOperator,
     _join([interpolation, number], stops),
   );
 }
 
-Interpolator linear() => Interpolator._(kLinearOperator);
+_Interpolator linear() => _Interpolator(kLinearOperator);
 
-Interpolator exponential(dynamic base) {
+_Interpolator exponential(dynamic base) {
   assert(base != null);
 
-  return Interpolator._e1(kExponentialOperator, _expression(base, 'base', num));
+  return _Interpolator.e1(kExponentialOperator, _expression(base, 'base', num));
 }
 
-Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
+_Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
   assert(x1 != null);
   assert(y1 != null);
   assert(x2 != null);
   assert(y2 != null);
 
-  return Interpolator._e4(
+  return _Interpolator.e4(
     kCubicBezierOperator,
     _expression(x1, 'x1', num),
     _expression(y1, 'y1', num),
@@ -636,5 +640,5 @@ _FormatOption formatTextColor(dynamic c) {
   assert(c is Expression || c is Color || c is int);
   if (c is int) c = Color(c);
 
-  return _FormatOption('font-color', c is Expression ? c : color(c, true));
+  return _FormatOption('text-color', c is Expression ? c : color$(c));
 }

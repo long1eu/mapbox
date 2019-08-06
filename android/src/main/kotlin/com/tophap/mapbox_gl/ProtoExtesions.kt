@@ -2,6 +2,7 @@ package com.tophap.mapbox_gl
 
 import android.graphics.BitmapFactory
 import android.view.Gravity
+import com.google.protobuf.StringValue
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdate
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -16,7 +17,6 @@ import com.mapbox.mapboxsdk.style.sources.*
 import com.mapbox.mapboxsdk.style.types.Formatted
 import com.mapbox.mapboxsdk.style.types.FormattedSection
 import com.tophap.mapbox_gl.proto.*
-import com.tophap.mapbox_gl.proto.Map
 import java.net.URI
 
 @Property.TEXT_TRANSFORM
@@ -202,7 +202,7 @@ fun MapboxUtil.FormattedSection.fieldValue(): FormattedSection =
         FormattedSection(text, if (hasFontScale()) fontScale.value else null, fontStackList.toTypedArray(), "#${textColor.toColorString()}")
 
 
-fun Map.Map_.Options.fieldValue(): MapboxMapOptions {
+fun Mapbox.Map.Options.fieldValue(): MapboxMapOptions {
     @Suppress("DEPRECATION") val mapboxMapOptions = MapboxMapOptions()
             .apiBaseUri(apiBaseUri)
             .localIdeographFontFamily(localIdeographFontFamily)
@@ -242,7 +242,7 @@ fun Map.Map_.Options.fieldValue(): MapboxMapOptions {
 }
 
 
-fun Map.Map_.CameraPosition.fieldValue(): CameraPosition {
+fun Mapbox.Map.CameraPosition.fieldValue(): CameraPosition {
     return CameraPosition.Builder()
             .target(target.fieldValue())
             .zoom(zoom)
@@ -253,19 +253,19 @@ fun Map.Map_.CameraPosition.fieldValue(): CameraPosition {
 
 fun MapboxUtil.LatLng.fieldValue(): LatLng = LatLng(latitude, longitude, altitude)
 
-fun Map.Map_.Operations.CameraUpdate.fieldValue(): CameraUpdate {
+fun Mapbox.Map.Operations.CameraUpdate.fieldValue(): CameraUpdate {
     return when (operation!!) {
-        Map.Map_.Operations.CameraUpdate.Type.NEW_CAMERA_POSITION -> CameraUpdateFactory.newCameraPosition(cameraPosition.fieldValue())
-        Map.Map_.Operations.CameraUpdate.Type.NEW_LAT_LNG -> CameraUpdateFactory.newLatLng(latLng.fieldValue())
-        Map.Map_.Operations.CameraUpdate.Type.NEW_LAT_LNG_BOUNDS -> CameraUpdateFactory.newLatLngBounds(bounds.fieldValue(), bearing, tilt, paddingList[0], paddingList[1], paddingList[2], paddingList[3])
-        Map.Map_.Operations.CameraUpdate.Type.NEW_LAT_LNG_ZOOM -> CameraUpdateFactory.newLatLngZoom(latLng.fieldValue(), zoom)
-        Map.Map_.Operations.CameraUpdate.Type.ZOOM_BY -> CameraUpdateFactory.zoomBy(amount, android.graphics.Point(focusX, focusY))
-        Map.Map_.Operations.CameraUpdate.Type.ZOOM_IN -> CameraUpdateFactory.zoomIn()
-        Map.Map_.Operations.CameraUpdate.Type.ZOOM_OUT -> CameraUpdateFactory.zoomOut()
-        Map.Map_.Operations.CameraUpdate.Type.ZOOM_TO -> CameraUpdateFactory.zoomTo(zoom)
-        Map.Map_.Operations.CameraUpdate.Type.BEARING_TO -> CameraUpdateFactory.bearingTo(bearing)
-        Map.Map_.Operations.CameraUpdate.Type.TILT_TO -> CameraUpdateFactory.bearingTo(tilt)
-        Map.Map_.Operations.CameraUpdate.Type.UNRECOGNIZED -> CameraUpdateFactory.zoomIn()
+        Mapbox.Map.Operations.CameraUpdate.Type.NEW_CAMERA_POSITION -> CameraUpdateFactory.newCameraPosition(cameraPosition.fieldValue())
+        Mapbox.Map.Operations.CameraUpdate.Type.NEW_LAT_LNG -> CameraUpdateFactory.newLatLng(latLng.fieldValue())
+        Mapbox.Map.Operations.CameraUpdate.Type.NEW_LAT_LNG_BOUNDS -> CameraUpdateFactory.newLatLngBounds(bounds.fieldValue(), bearing, tilt, paddingList[0], paddingList[1], paddingList[2], paddingList[3])
+        Mapbox.Map.Operations.CameraUpdate.Type.NEW_LAT_LNG_ZOOM -> CameraUpdateFactory.newLatLngZoom(latLng.fieldValue(), zoom)
+        Mapbox.Map.Operations.CameraUpdate.Type.ZOOM_BY -> CameraUpdateFactory.zoomBy(amount, android.graphics.Point(focusX, focusY))
+        Mapbox.Map.Operations.CameraUpdate.Type.ZOOM_IN -> CameraUpdateFactory.zoomIn()
+        Mapbox.Map.Operations.CameraUpdate.Type.ZOOM_OUT -> CameraUpdateFactory.zoomOut()
+        Mapbox.Map.Operations.CameraUpdate.Type.ZOOM_TO -> CameraUpdateFactory.zoomTo(zoom)
+        Mapbox.Map.Operations.CameraUpdate.Type.BEARING_TO -> CameraUpdateFactory.bearingTo(bearing)
+        Mapbox.Map.Operations.CameraUpdate.Type.TILT_TO -> CameraUpdateFactory.bearingTo(tilt)
+        Mapbox.Map.Operations.CameraUpdate.Type.UNRECOGNIZED -> CameraUpdateFactory.zoomIn()
     }
 }
 
@@ -307,11 +307,11 @@ fun Sources.Source.GeoJson.Options.fieldValue(): GeoJsonOptions = GeoJsonOptions
 
 fun Sources.Source.Image.fieldValue(): ImageSource {
     return when (sourceCase!!) {
-        Sources.Source.Image.SourceCase.URI -> ImageSource(id, coordinates.fieldValue(), URI(uri))
+        Sources.Source.Image.SourceCase.URI -> ImageSource(id, coordinates.toStringProto(), URI(uri))
         Sources.Source.Image.SourceCase.IMAGE -> {
             val bytes = image.toByteArray()
             val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-            ImageSource(id, coordinates.fieldValue(), bmp)
+            ImageSource(id, coordinates.toStringProto(), bmp)
         }
         Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> throw IllegalArgumentException("Unknown source $sourceCase")
     }
@@ -346,7 +346,7 @@ fun Sources.Source.TileSet.fieldValue(): TileSet {
     return set
 }
 
-fun MapboxUtil.LatLngQuad.fieldValue(): LatLngQuad = LatLngQuad(topLeft.fieldValue(), topRight.fieldValue(), bottomRight.fieldValue(), bottomLeft.fieldValue())
+fun MapboxUtil.LatLngQuad.toStringProto(): LatLngQuad = LatLngQuad(topLeft.fieldValue(), topRight.fieldValue(), bottomRight.fieldValue(), bottomLeft.fieldValue())
 
 fun Layers.Layer.fieldValue(): Layer {
     return when (typeCase!!) {
@@ -362,19 +362,19 @@ fun Layers.Layer.fieldValue(): Layer {
     }
 }
 
-
 fun Layers.Layer.Background.fieldValue(): BackgroundLayer {
     val layer = BackgroundLayer(id)
-
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.backgroundColor(color.toColorString()),
-            PropertyFactory.backgroundPattern(pattern),
-            PropertyFactory.backgroundOpacity(color.opacity)
-    )
-
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
+
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasColor()) expressions.add(PropertyFactory.backgroundColor(color.fieldValue()))
+    if (hasPattern()) expressions.add(PropertyFactory.backgroundPattern(pattern.fieldValue()))
+    if (hasColor()) expressions.add(PropertyFactory.backgroundOpacity(opacity.fieldValue()))
+
+    layer.setProperties(*expressions.toTypedArray())
+
     layer.backgroundColorTransition = colorTransition.fieldValue()
     layer.backgroundPatternTransition = patternTransition.fieldValue()
     layer.backgroundOpacityTransition = opacityTransition.fieldValue()
@@ -382,26 +382,25 @@ fun Layers.Layer.Background.fieldValue(): BackgroundLayer {
     return layer
 }
 
-
 fun Layers.Layer.Circle.fieldValue(): CircleLayer {
     val layer = CircleLayer(id, sourceId)
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.circleRadius(radius),
-            PropertyFactory.circleColor(color.toColorString()),
-            PropertyFactory.circleBlur(blur),
-            PropertyFactory.circleOpacity(color.opacity),
-            PropertyFactory.circleTranslate(translateList.toTypedArray()),
-            PropertyFactory.circleTranslateAnchor(translateAnchor.filedValue()),
-            PropertyFactory.circlePitchScale(pitchScale.filedValue()),
-            PropertyFactory.circlePitchAlignment(pitchAlignment.filedValue()),
-            PropertyFactory.circleStrokeWidth(strokeWidth),
-            PropertyFactory.circleStrokeColor(strokeColor.toColorString()),
-            PropertyFactory.circleStrokeOpacity(strokeColor.opacity)
-    )
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasRadius()) expressions.add(PropertyFactory.circleRadius(radius.fieldValue()))
+    if (hasColor()) expressions.add(PropertyFactory.circleColor(color.fieldValue()))
+    if (hasBlur()) expressions.add(PropertyFactory.circleBlur(blur.fieldValue()))
+    if (hasOpacity()) expressions.add(PropertyFactory.circleOpacity(opacity.fieldValue()))
+    if (hasTranslate()) expressions.add(PropertyFactory.circleTranslate(translate.fieldValue()))
+    if (hasTranslateAnchor()) expressions.add(PropertyFactory.circleTranslateAnchor(translateAnchor.fieldValue()))
+    if (hasPitchScale()) expressions.add(PropertyFactory.circlePitchScale(pitchScale.fieldValue()))
+    if (hasPitchAlignment()) expressions.add(PropertyFactory.circlePitchAlignment(pitchAlignment.fieldValue()))
+    if (hasStrokeWidth()) expressions.add(PropertyFactory.circleStrokeWidth(strokeWidth.fieldValue()))
+    if (hasStrokeColor()) expressions.add(PropertyFactory.circleStrokeColor(strokeColor.fieldValue()))
+    if (hasStrokeOpacity()) expressions.add(PropertyFactory.circleStrokeOpacity(strokeOpacity.fieldValue()))
+    layer.setProperties(*expressions.toTypedArray())
 
     layer.circleRadiusTransition = radiusTransition.fieldValue()
     layer.circleColorTransition = colorTransition.fieldValue()
@@ -420,21 +419,16 @@ fun Layers.Layer.Fill.fieldValue(): FillLayer {
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.fillColor(color.toColorString()),
-            PropertyFactory.fillAntialias(antialias),
-            PropertyFactory.fillOpacity(color.opacity),
-            PropertyFactory.fillTranslate(translateList.toTypedArray()),
-            PropertyFactory.fillTranslateAnchor(translateAnchor.filedValue())
-    )
-
-    if (outlineColor.hasColor) {
-        layer.setProperties(PropertyFactory.fillOutlineColor(outlineColor.toColorString()))
-    }
-    if (pattern.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.fillPattern(pattern))
-    }
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasAntialias()) expressions.add(PropertyFactory.fillAntialias(antialias.fieldValue()))
+    if (hasOpacity()) expressions.add(PropertyFactory.fillOpacity(opacity.fieldValue()))
+    if (hasColor()) expressions.add(PropertyFactory.fillColor(color.fieldValue()))
+    if (hasOutlineColor()) expressions.add(PropertyFactory.fillOutlineColor(outlineColor.fieldValue()))
+    if (hasTranslate()) expressions.add(PropertyFactory.fillTranslate(translate.fieldValue()))
+    if (hasTranslateAnchor()) expressions.add(PropertyFactory.fillTranslateAnchor(translateAnchor.fieldValue()))
+    if (hasPattern()) expressions.add(PropertyFactory.fillPattern(pattern.fieldValue()))
+    layer.setProperties(*expressions.toTypedArray())
 
     layer.fillOpacityTransition = opacityTransition.fieldValue()
     layer.fillColorTransition = colorTransition.fieldValue()
@@ -450,20 +444,17 @@ fun Layers.Layer.FillExtrusion.fieldValue(): FillExtrusionLayer {
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.fillExtrusionOpacity(color.opacity),
-            PropertyFactory.fillExtrusionColor(color.toColorString()),
-            PropertyFactory.fillExtrusionTranslate(translateList.toTypedArray()),
-            PropertyFactory.fillExtrusionTranslateAnchor(translateAnchor.filedValue()),
-            PropertyFactory.fillExtrusionHeight(height),
-            PropertyFactory.fillExtrusionBase(base),
-            PropertyFactory.fillExtrusionVerticalGradient(verticalGradient)
-    )
-
-    if (pattern.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.fillPattern(pattern))
-    }
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasOpacity()) expressions.add(PropertyFactory.fillExtrusionOpacity(opacity.fieldValue()))
+    if (hasColor()) expressions.add(PropertyFactory.fillExtrusionColor(color.fieldValue()))
+    if (hasTranslate()) expressions.add(PropertyFactory.fillExtrusionTranslate(translate.fieldValue()))
+    if (hasTranslateAnchor()) expressions.add(PropertyFactory.fillExtrusionTranslateAnchor(translateAnchor.fieldValue()))
+    if (hasPattern()) expressions.add(PropertyFactory.fillPattern(pattern.fieldValue()))
+    if (hasHeight()) expressions.add(PropertyFactory.fillExtrusionHeight(height.fieldValue()))
+    if (hasBase()) expressions.add(PropertyFactory.fillExtrusionBase(base.fieldValue()))
+    if (hasVerticalGradient()) expressions.add(PropertyFactory.fillExtrusionVerticalGradient(verticalGradient.fieldValue()))
+    layer.setProperties(*expressions.toTypedArray())
 
     layer.fillExtrusionOpacityTransition = opacityTransition.fieldValue()
     layer.fillExtrusionColorTransition = colorTransition.fieldValue()
@@ -480,31 +471,24 @@ fun Layers.Layer.Line.fieldValue(): LineLayer {
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.lineCap(cap.fieldValue()),
-            PropertyFactory.lineJoin(join.fieldValue()),
-            PropertyFactory.lineMiterLimit(miterLimit),
-            PropertyFactory.lineRoundLimit(roundLimit),
-            PropertyFactory.lineOpacity(color.opacity),
-            PropertyFactory.lineColor(color.toColorString()),
-            PropertyFactory.lineTranslate(translateList.toTypedArray()),
-            PropertyFactory.lineTranslateAnchor(translateAnchor.filedValue()),
-            PropertyFactory.lineWidth(width),
-            PropertyFactory.lineGapWidth(gapWidth),
-            PropertyFactory.lineOffset(offset),
-            PropertyFactory.lineBlur(blur)
-    )
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
 
-    if (dasharrayList.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.lineDasharray(dasharrayList.toTypedArray()))
-    }
-    if (pattern.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.linePattern(pattern))
-    }
-    if (gradient != 0) {
-        layer.setProperties(PropertyFactory.lineGradient(gradient))
-    }
+    if (hasCap()) expressions.add(PropertyFactory.lineCap(cap.fieldValue()))
+    if (hasJoin()) expressions.add(PropertyFactory.lineJoin(join.fieldValue()))
+    if (hasMiterLimit()) expressions.add(PropertyFactory.lineMiterLimit(miterLimit.fieldValue()))
+    if (hasRoundLimit()) expressions.add(PropertyFactory.lineRoundLimit(roundLimit.fieldValue()))
+    if (hasOpacity()) expressions.add(PropertyFactory.lineOpacity(opacity.fieldValue()))
+    if (hasColor()) expressions.add(PropertyFactory.lineColor(color.fieldValue()))
+    if (hasTranslate()) expressions.add(PropertyFactory.lineTranslate(translate.fieldValue()))
+    if (hasTranslateAnchor()) expressions.add(PropertyFactory.lineTranslateAnchor(translateAnchor.fieldValue()))
+    if (hasWidth()) expressions.add(PropertyFactory.lineWidth(width.fieldValue()))
+    if (hasGapWidth()) expressions.add(PropertyFactory.lineGapWidth(gapWidth.fieldValue()))
+    if (hasOffset()) expressions.add(PropertyFactory.lineOffset(offset.fieldValue()))
+    if (hasBlur()) expressions.add(PropertyFactory.lineBlur(blur.fieldValue()))
+    if (hasDasharray()) expressions.add(PropertyFactory.lineDasharray(dasharray.fieldValue()))
+    if (hasPattern()) expressions.add(PropertyFactory.linePattern(pattern.fieldValue()))
+    if (hasGradient()) expressions.add(PropertyFactory.lineGradient(gradient.fieldValue()))
 
     layer.lineOpacityTransition = opacityTransition.fieldValue()
     layer.lineColorTransition = colorTransition.fieldValue()
@@ -519,65 +503,66 @@ fun Layers.Layer.Line.fieldValue(): LineLayer {
     return layer
 }
 
-
 fun Layers.Layer.Symbol.fieldValue(): SymbolLayer {
     val layer = SymbolLayer(id, sourceId)
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.symbolPlacement(symbolPlacement.fieldValue()),
-            PropertyFactory.symbolSpacing(symbolSpacing),
-            PropertyFactory.symbolAvoidEdges(symbolAvoidEdges),
-            PropertyFactory.symbolZOrder(symbolZOrder.fieldValue()),
-            PropertyFactory.iconAllowOverlap(iconAllowOverlap),
-            PropertyFactory.iconIgnorePlacement(iconIgnorePlacement),
-            PropertyFactory.iconOptional(iconOptional),
-            PropertyFactory.iconRotationAlignment(iconRotationAlignment.iconRotationAlignment()),
-            PropertyFactory.iconSize(iconSize),
-            PropertyFactory.iconTextFit(iconTextFit.fieldValue()),
-            PropertyFactory.iconTextFitPadding(iconTextFitPaddingList.toTypedArray()),
-            PropertyFactory.iconRotate(iconRotate),
-            PropertyFactory.iconPadding(iconPadding),
-            PropertyFactory.iconKeepUpright(iconKeepUpright),
-            PropertyFactory.iconOffset(iconOffsetList.toTypedArray()),
-            PropertyFactory.iconAnchor(iconAnchor.iconAnchor()),
-            PropertyFactory.iconPitchAlignment(iconPitchAlignment.iconPitchAlignment()),
-            PropertyFactory.textPitchAlignment(textPitchAlignment.textPitchAlignment()),
-            PropertyFactory.textRotationAlignment(textRotationAlignment.textRotationAlignment()),
-            PropertyFactory.textFont(textFontList.toTypedArray()),
-            PropertyFactory.textSize(textSize),
-            PropertyFactory.textMaxWidth(textMaxWidth),
-            PropertyFactory.textLineHeight(textLineHeight),
-            PropertyFactory.textLetterSpacing(textLetterSpacing),
-            PropertyFactory.textJustify(textJustify.filedValue()),
-            PropertyFactory.textRadialOffset(textRadialOffset),
-            PropertyFactory.textAnchor(textAnchor.textAnchor()),
-            PropertyFactory.textMaxAngle(textMaxAngle),
-            PropertyFactory.textRotate(textRotate),
-            PropertyFactory.textPadding(textPadding),
-            PropertyFactory.textKeepUpright(textKeepUpright),
-            PropertyFactory.textTransform(textTransform.fieldValue()),
-            PropertyFactory.textOffset(textOffsetList.toTypedArray()),
-            PropertyFactory.textAllowOverlap(textAllowOverlap),
-            PropertyFactory.textIgnorePlacement(textIgnorePlacement),
-            PropertyFactory.textOptional(textOptional),
-            PropertyFactory.iconOpacity(iconColor.opacity),
-            PropertyFactory.iconColor(iconColor.toColorString()),
-            PropertyFactory.iconHaloColor(iconHaloColor.toColorString()),
-            PropertyFactory.iconHaloWidth(iconHaloWidth),
-            PropertyFactory.iconHaloBlur(iconHaloBlur),
-            PropertyFactory.iconTranslate(iconTranslateList.toTypedArray()),
-            PropertyFactory.iconTranslateAnchor(iconTranslateAnchor.filedValue()),
-            PropertyFactory.textOpacity(textColor.opacity),
-            PropertyFactory.textColor(textColor.toColorString()),
-            PropertyFactory.textHaloColor(textHaloColor.toColorString()),
-            PropertyFactory.textHaloWidth(textHaloWidth),
-            PropertyFactory.textHaloBlur(textHaloBlur),
-            PropertyFactory.textTranslate(textTranslateList.toTypedArray()),
-            PropertyFactory.textTranslateAnchor(textTranslateAnchor.filedValue())
-    )
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasSymbolPlacement()) expressions.add(PropertyFactory.symbolPlacement(symbolPlacement.fieldValue()))
+    if (hasSymbolSpacing()) expressions.add(PropertyFactory.symbolSpacing(symbolSpacing.fieldValue()))
+    if (hasSymbolAvoidEdges()) expressions.add(PropertyFactory.symbolAvoidEdges(symbolAvoidEdges.fieldValue()))
+    if (hasSymbolZOrder()) expressions.add(PropertyFactory.symbolZOrder(symbolZOrder.fieldValue()))
+    if (hasIconAllowOverlap()) expressions.add(PropertyFactory.iconAllowOverlap(iconAllowOverlap.fieldValue()))
+    if (hasIconIgnorePlacement()) expressions.add(PropertyFactory.iconIgnorePlacement(iconIgnorePlacement.fieldValue()))
+    if (hasIconOptional()) expressions.add(PropertyFactory.iconOptional(iconOptional.fieldValue()))
+    if (hasIconRotationAlignment()) expressions.add(PropertyFactory.iconRotationAlignment(iconRotationAlignment.fieldValue()))
+    if (hasIconSize()) expressions.add(PropertyFactory.iconSize(iconSize.fieldValue()))
+    if (hasIconTextFit()) expressions.add(PropertyFactory.iconTextFit(iconTextFit.fieldValue()))
+    if (hasIconTextFitPadding()) expressions.add(PropertyFactory.iconTextFitPadding(iconTextFitPadding.fieldValue()))
+    if (hasIconImage()) expressions.add(PropertyFactory.iconImage(iconImage.fieldValue()))
+    if (hasIconRotate()) expressions.add(PropertyFactory.iconRotate(iconRotate.fieldValue()))
+    if (hasIconPadding()) expressions.add(PropertyFactory.iconPadding(iconPadding.fieldValue()))
+    if (hasIconKeepUpright()) expressions.add(PropertyFactory.iconKeepUpright(iconKeepUpright.fieldValue()))
+    if (hasIconOffset()) expressions.add(PropertyFactory.iconOffset(iconOffset.fieldValue()))
+    if (hasIconPitchAlignment()) expressions.add(PropertyFactory.iconPitchAlignment(iconPitchAlignment.fieldValue()))
+    if (hasTextPitchAlignment()) expressions.add(PropertyFactory.textPitchAlignment(textPitchAlignment.fieldValue()))
+    if (hasTextRotationAlignment()) expressions.add(PropertyFactory.textRotationAlignment(textRotationAlignment.fieldValue()))
+    if (hasTextField()) expressions.add(PropertyFactory.textField(textField.fieldValue()))
+    if (hasTextFont()) expressions.add(PropertyFactory.textFont(textFont.fieldValue()))
+    if (hasTextSize()) expressions.add(PropertyFactory.textSize(textSize.fieldValue()))
+    if (hasTextMaxWidth()) expressions.add(PropertyFactory.textMaxWidth(textMaxWidth.fieldValue()))
+    if (hasTextLineHeight()) expressions.add(PropertyFactory.textLineHeight(textLineHeight.fieldValue()))
+    if (hasTextLetterSpacing()) expressions.add(PropertyFactory.textLetterSpacing(textLetterSpacing.fieldValue()))
+    if (hasTextJustify()) expressions.add(PropertyFactory.textJustify(textJustify.fieldValue()))
+    if (hasTextRadialOffset()) expressions.add(PropertyFactory.textRadialOffset(textRadialOffset.fieldValue()))
+    if (hasTextVariableAnchor()) expressions.add(PropertyFactory.textVariableAnchor(textVariableAnchor.fieldValue()))
+    if (hasTextAnchor()) expressions.add(PropertyFactory.textAnchor(textAnchor.fieldValue()))
+    if (hasTextMaxAngle()) expressions.add(PropertyFactory.textMaxAngle(textMaxAngle.fieldValue()))
+    if (hasTextRotate()) expressions.add(PropertyFactory.textRotate(textRotate.fieldValue()))
+    if (hasTextPadding()) expressions.add(PropertyFactory.textPadding(textPadding.fieldValue()))
+    if (hasTextKeepUpright()) expressions.add(PropertyFactory.textKeepUpright(textKeepUpright.fieldValue()))
+    if (hasTextTransform()) expressions.add(PropertyFactory.textTransform(textTransform.fieldValue()))
+    if (hasTextOffset()) expressions.add(PropertyFactory.textOffset(textOffset.fieldValue()))
+    if (hasTextAllowOverlap()) expressions.add(PropertyFactory.textAllowOverlap(textAllowOverlap.fieldValue()))
+    if (hasTextIgnorePlacement()) expressions.add(PropertyFactory.textIgnorePlacement(textIgnorePlacement.fieldValue()))
+    if (hasTextOptional()) expressions.add(PropertyFactory.textOptional(textOptional.fieldValue()))
+    if (hasIconOpacity()) expressions.add(PropertyFactory.iconOpacity(iconOpacity.fieldValue()))
+    if (hasIconColor()) expressions.add(PropertyFactory.iconColor(iconColor.fieldValue()))
+    if (hasIconHaloColor()) expressions.add(PropertyFactory.iconHaloColor(iconHaloColor.fieldValue()))
+    if (hasIconHaloWidth()) expressions.add(PropertyFactory.iconHaloWidth(iconHaloWidth.fieldValue()))
+    if (hasIconHaloBlur()) expressions.add(PropertyFactory.iconHaloBlur(iconHaloBlur.fieldValue()))
+    if (hasIconTranslate()) expressions.add(PropertyFactory.iconTranslate(iconTranslate.fieldValue()))
+    if (hasIconTranslateAnchor()) expressions.add(PropertyFactory.iconTranslateAnchor(iconTranslateAnchor.fieldValue()))
+    if (hasTextOpacity()) expressions.add(PropertyFactory.textOpacity(textOpacity.fieldValue()))
+    if (hasTextColor()) expressions.add(PropertyFactory.textColor(textColor.fieldValue()))
+    if (hasTextHaloColor()) expressions.add(PropertyFactory.textHaloColor(textHaloColor.fieldValue()))
+    if (hasTextHaloWidth()) expressions.add(PropertyFactory.textHaloWidth(textHaloWidth.fieldValue()))
+    if (hasTextHaloBlur()) expressions.add(PropertyFactory.textHaloBlur(textHaloBlur.fieldValue()))
+    if (hasTextTranslate()) expressions.add(PropertyFactory.textTranslate(textTranslate.fieldValue()))
+    if (hasTextTranslateAnchor()) expressions.add(PropertyFactory.textTranslateAnchor(textTranslateAnchor.fieldValue()))
+    layer.setProperties(*expressions.toTypedArray())
 
     layer.iconOpacityTransition = iconOpacityTransition.fieldValue()
     layer.iconColorTransition = iconColorTransition.fieldValue()
@@ -592,17 +577,6 @@ fun Layers.Layer.Symbol.fieldValue(): SymbolLayer {
     layer.textHaloBlurTransition = textHaloBlurTransition.fieldValue()
     layer.textTranslateTransition = textTranslateTransition.fieldValue()
 
-
-    if (iconImage.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.iconImage(iconImage))
-    }
-    if (textFieldList.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.textField(Formatted(*textFieldList.map { it.fieldValue() }.toTypedArray())))
-    }
-    if (textVariableAnchorList.isNotEmpty()) {
-        layer.setProperties(PropertyFactory.textVariableAnchor(textVariableAnchorList.map { it.textAnchor() }.toTypedArray()))
-    }
-
     return layer
 }
 
@@ -612,15 +586,15 @@ fun Layers.Layer.Hillshade.fieldValue(): HillshadeLayer {
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.hillshadeIlluminationDirection(illuminationDirection),
-            PropertyFactory.hillshadeIlluminationAnchor(illuminationAnchor.filedValue()),
-            PropertyFactory.hillshadeExaggeration(exaggeration),
-            PropertyFactory.hillshadeShadowColor(shadowColor.toColorString()),
-            PropertyFactory.hillshadeHighlightColor(highlightColor.toColorString()),
-            PropertyFactory.hillshadeAccentColor(accentColor.toColorString())
-    )
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasIlluminationDirection()) expressions.add(PropertyFactory.hillshadeIlluminationDirection(illuminationDirection.fieldValue()))
+    if (hasIlluminationAnchor()) expressions.add(PropertyFactory.hillshadeIlluminationAnchor(illuminationAnchor.fieldValue()))
+    if (hasExaggeration()) expressions.add(PropertyFactory.hillshadeExaggeration(exaggeration.fieldValue()))
+    if (hasShadowColor()) expressions.add(PropertyFactory.hillshadeShadowColor(shadowColor.fieldValue()))
+    if (hasHighlightColor()) expressions.add(PropertyFactory.hillshadeHighlightColor(highlightColor.fieldValue()))
+    if (hasAccentColor()) expressions.add(PropertyFactory.hillshadeAccentColor(accentColor.fieldValue()))
+    layer.setProperties(*expressions.toTypedArray())
 
     layer.hillshadeExaggerationTransition = exaggerationTransition.fieldValue()
     layer.hillshadeShadowColorTransition = shadowColorTransition.fieldValue()
@@ -635,14 +609,14 @@ fun Layers.Layer.Heatmap.fieldValue(): HeatmapLayer {
     layer.minZoom = minZoom
     layer.maxZoom = maxZoom
 
-    layer.setProperties(
-            PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE),
-            PropertyFactory.heatmapRadius(radius),
-            PropertyFactory.heatmapWeight(weight),
-            PropertyFactory.heatmapIntensity(intensity),
-            PropertyFactory.heatmapColor(color.toColorString()),
-            PropertyFactory.heatmapOpacity(color.opacity)
-    )
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE))
+    if (hasRadius()) expressions.add(PropertyFactory.heatmapRadius(radius.fieldValue()))
+    if (hasWeight()) expressions.add(PropertyFactory.heatmapWeight(weight.fieldValue()))
+    if (hasIntensity()) expressions.add(PropertyFactory.heatmapIntensity(intensity.fieldValue()))
+    if (hasColor()) expressions.add(PropertyFactory.heatmapColor(color.fieldValue()))
+    if (hasOpacity()) expressions.add(PropertyFactory.heatmapOpacity(opacity.fieldValue()))
+    layer.setProperties(*expressions.toTypedArray())
 
     layer.heatmapRadiusTransition = radiusTransition.fieldValue()
     layer.heatmapIntensityTransition = intensityTransition.fieldValue()
@@ -872,6 +846,7 @@ fun MapboxUtil.Color.toColorString(): String {
     return "rgba($red, $green, $blue, $a)"
 }
 
+/*
 
 fun Expressions.Expression.fieldValue(): Expression {
     val arguments = argumentsList.map { e ->
@@ -894,4 +869,9 @@ fun Expressions.Value.filedValue(): Expression {
         Expressions.Value.KindCase.LIST_VALUE -> Expression.literal(listValue.valuesList.map { (it.filedValue() as Expression.ExpressionLiteral).toValue() }.toTypedArray())
         else -> throw IllegalArgumentException("Unknown argument $kindCase")
     }
+}*/
+
+fun StringValue.fieldValue(): Expression {
+    assert(value.isNullOrBlank())
+    return Expression.Converter.convert(value)
 }

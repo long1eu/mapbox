@@ -4,17 +4,19 @@ option java_package = "com.tophap.mapbox_gl.proto";
 option java_outer_classname = "Layers";
 
 import "util.proto";
+import "google/protobuf/wrappers.proto";
 
 message Layer {
+  string id = 1;
   oneof type {
-    Background background_layer = 1;
-    Circle circle_layer = 2;
-    Fill fill_layer = 3;
-    FillExtrusion fill_extrusion_layer = 4;
-    Line line_layer = 5;
-    Symbol symbol_layer = 6;
-    Hillshade hillshade_layer = 7;
-    Heatmap heatmap_layer = 8;
+    Background background_layer = 2;
+    Circle circle_layer = 3;
+    Fill fill_layer = 4;
+    FillExtrusion fill_extrusion_layer = 5;
+    Line line_layer = 6;
+    Symbol symbol_layer = 7;
+    Hillshade hillshade_layer = 8;
+    Heatmap heatmap_layer = 9;
   }
 
   message Background {
@@ -22,9 +24,11 @@ message Layer {
     bool visible = 2;
     float min_zoom = 3;
     float max_zoom = 4;
-    Color color = 5;
-    string pattern = 6;
-    float opacity = 7;
+
+    google.protobuf.StringValue color = 5;
+    google.protobuf.StringValue pattern = 6;
+    google.protobuf.StringValue opacity = 7;
+
     TransitionOptions color_transition = 8;
     TransitionOptions pattern_transition = 9;
     TransitionOptions opacity_transition = 10;
@@ -36,17 +40,19 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    float radius = 6;
-    Color color = 7;
-    float blur = 8;
-    float opacity = 9;
-    repeated float translate = 10;
-    TranslateAnchor translate_anchor = 11;
-    TranslateAnchor pitch_scale = 12;
-    TranslateAnchor pitch_alignment = 13;
-    float stroke_width = 14;
-    Color stroke_color = 15;
-    float stroke_opacity = 16;
+
+    google.protobuf.StringValue radius = 6;
+    google.protobuf.StringValue color = 7;
+    google.protobuf.StringValue blur = 8;
+    google.protobuf.StringValue opacity = 9;
+    google.protobuf.StringValue translate = 10;
+    google.protobuf.StringValue translate_anchor = 11;
+    google.protobuf.StringValue pitch_scale = 12;
+    google.protobuf.StringValue pitch_alignment = 13;
+    google.protobuf.StringValue stroke_width = 14;
+    google.protobuf.StringValue stroke_color = 15;
+    google.protobuf.StringValue stroke_opacity = 16;
+
     TransitionOptions radius_transition = 17;
     TransitionOptions color_transition = 18;
     TransitionOptions blur_transition = 19;
@@ -63,14 +69,16 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    float opacity = 6;
-    Color color = 7;
-    repeated float translate = 8;
-    TranslateAnchor translate_anchor = 9;
-    string pattern = 10;
-    float height = 11;
-    float base = 12;
-    bool vertical_gradient = 13;
+
+    google.protobuf.StringValue opacity = 6;
+    google.protobuf.StringValue color = 7;
+    google.protobuf.StringValue translate = 8;
+    google.protobuf.StringValue translate_anchor = 9;
+    google.protobuf.StringValue pattern = 10;
+    google.protobuf.StringValue height = 11;
+    google.protobuf.StringValue base = 12;
+    google.protobuf.StringValue vertical_gradient = 13;
+
     TransitionOptions opacity_transition = 14;
     TransitionOptions color_transition = 15;
     TransitionOptions translate_transition = 16;
@@ -85,13 +93,15 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    bool antialias = 6;
-    float opacity = 7;
-    Color color = 8;
-    Color outline_color = 9;
-    repeated float translate = 10;
-    TranslateAnchor translate_anchor = 11;
-    string pattern = 12;
+
+    google.protobuf.StringValue antialias = 6;
+    google.protobuf.StringValue opacity = 7;
+    google.protobuf.StringValue color = 8;
+    google.protobuf.StringValue outline_color = 9;
+    google.protobuf.StringValue translate = 10;
+    google.protobuf.StringValue translate_anchor = 11;
+    google.protobuf.StringValue pattern = 12;
+
     TransitionOptions opacity_transition = 13;
     TransitionOptions color_transition = 14;
     TransitionOptions outline_color_transition = 15;
@@ -105,11 +115,13 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    float radius = 6;
-    float weight = 7;
-    float intensity = 8;
-    Color color = 9;
-    float opacity = 10;
+
+    google.protobuf.StringValue radius = 6;
+    google.protobuf.StringValue weight = 7;
+    google.protobuf.StringValue intensity = 8;
+    google.protobuf.StringValue color = 9;
+    google.protobuf.StringValue opacity = 10;
+
     TransitionOptions radius_transition = 11;
     TransitionOptions intensity_transition = 12;
     TransitionOptions opacity_transition = 13;
@@ -121,12 +133,14 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    float illumination_direction = 6;
-    TranslateAnchor illumination_anchor = 7;
-    float exaggeration = 8;
-    Color shadow_color = 9;
-    Color highlight_color = 10;
-    Color accent_color = 11;
+
+    google.protobuf.StringValue illumination_direction = 6;
+    google.protobuf.StringValue illumination_anchor = 7;
+    google.protobuf.StringValue exaggeration = 8;
+    google.protobuf.StringValue shadow_color = 9;
+    google.protobuf.StringValue highlight_color = 10;
+    google.protobuf.StringValue accent_color = 11;
+
     TransitionOptions exaggeration_transition = 12;
     TransitionOptions shadow_color_transition = 13;
     TransitionOptions highlight_color_transition = 14;
@@ -139,21 +153,23 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    Cap cap = 6;
-    Join join = 7;
-    float miter_limit = 8;
-    float round_limit = 9;
-    float opacity = 10;
-    Color color = 11;
-    repeated float translate = 12;
-    TranslateAnchor translate_anchor = 13;
-    float width = 14;
-    float gap_width = 15;
-    float offset = 16;
-    float blur = 17;
-    repeated float dasharray = 18;
-    string pattern = 19;
-    int32 gradient = 20;
+
+    google.protobuf.StringValue cap = 6;
+    google.protobuf.StringValue join = 7;
+    google.protobuf.StringValue miter_limit = 8;
+    google.protobuf.StringValue round_limit = 9;
+    google.protobuf.StringValue opacity = 10;
+    google.protobuf.StringValue color = 11;
+    google.protobuf.StringValue translate = 12;
+    google.protobuf.StringValue translate_anchor = 13;
+    google.protobuf.StringValue width = 14;
+    google.protobuf.StringValue gap_width = 15;
+    google.protobuf.StringValue offset = 16;
+    google.protobuf.StringValue blur = 17;
+    google.protobuf.StringValue dasharray = 18;
+    google.protobuf.StringValue pattern = 19;
+    google.protobuf.StringValue gradient = 20;
+
     TransitionOptions opacity_transition = 21;
     TransitionOptions color_transition = 22;
     TransitionOptions translate_transition = 23;
@@ -183,59 +199,61 @@ message Layer {
     bool visible = 3;
     float min_zoom = 4;
     float max_zoom = 5;
-    Placement symbol_placement = 6;
-    float symbol_spacing = 7;
-    bool symbol_avoid_edges = 8;
-    ZOrder symbol_z_order = 9;
-    bool icon_allow_overlap = 10;
-    bool icon_ignore_placement = 11;
-    bool icon_optional = 12;
-    Alignment icon_rotation_alignment = 13;
-    float icon_size = 14;
-    TextFit icon_text_fit = 15;
-    repeated float icon_text_fit_padding = 16;
-    string icon_image = 17;
-    float icon_rotate = 18;
-    float icon_padding = 19;
-    bool icon_keep_upright = 20;
-    repeated float icon_offset = 21;
-    PositionAnchor icon_anchor = 22;
-    Alignment icon_pitch_alignment = 23;
-    Alignment text_pitch_alignment = 24;
-    Alignment text_rotation_alignment = 25;
-    repeated FormattedSection text_field = 26;
-    repeated string text_font = 27;
-    float text_size = 28;
-    float text_max_width = 29;
-    float text_line_height = 30;
-    float text_letter_spacing = 31;
-    TextJustify text_justify = 32;
-    float text_radial_offset = 33;
-    repeated PositionAnchor text_variable_anchor = 34;
-    PositionAnchor text_anchor = 35;
-    float text_max_angle = 36;
-    float text_rotate = 37;
-    float text_padding = 38;
-    bool text_keep_upright = 39;
-    TextTransform text_transform = 40;
-    repeated float text_offset = 41;
-    bool text_allow_overlap = 42;
-    bool text_ignore_placement = 43;
-    bool text_optional = 44;
-    float icon_opacity = 45;
-    Color icon_color = 46;
-    Color icon_halo_color = 47;
-    float icon_halo_width = 48;
-    float icon_halo_blur = 49;
-    repeated float icon_translate = 50;
-    TranslateAnchor icon_translate_anchor = 51;
-    float text_opacity = 52;
-    Color text_color = 53;
-    Color text_halo_color = 54;
-    float text_halo_width = 55;
-    float text_halo_blur = 56;
-    repeated float text_translate = 57;
-    TranslateAnchor text_translate_anchor = 58;
+
+    google.protobuf.StringValue symbol_placement = 6;
+    google.protobuf.StringValue symbol_spacing = 7;
+    google.protobuf.StringValue symbol_avoid_edges = 8;
+    google.protobuf.StringValue symbol_z_order = 9;
+    google.protobuf.StringValue icon_allow_overlap = 10;
+    google.protobuf.StringValue icon_ignore_placement = 11;
+    google.protobuf.StringValue icon_optional = 12;
+    google.protobuf.StringValue icon_rotation_alignment = 13;
+    google.protobuf.StringValue icon_size = 14;
+    google.protobuf.StringValue icon_text_fit = 15;
+    google.protobuf.StringValue icon_text_fit_padding = 16;
+    google.protobuf.StringValue icon_image = 17;
+    google.protobuf.StringValue icon_rotate = 18;
+    google.protobuf.StringValue icon_padding = 19;
+    google.protobuf.StringValue icon_keep_upright = 20;
+    google.protobuf.StringValue icon_offset = 21;
+    google.protobuf.StringValue icon_anchor = 22;
+    google.protobuf.StringValue icon_pitch_alignment = 23;
+    google.protobuf.StringValue text_pitch_alignment = 24;
+    google.protobuf.StringValue text_rotation_alignment = 25;
+    google.protobuf.StringValue text_field = 26;
+    google.protobuf.StringValue text_font = 27;
+    google.protobuf.StringValue text_size = 28;
+    google.protobuf.StringValue text_max_width = 29;
+    google.protobuf.StringValue text_line_height = 30;
+    google.protobuf.StringValue text_letter_spacing = 31;
+    google.protobuf.StringValue text_justify = 32;
+    google.protobuf.StringValue text_radial_offset = 33;
+    google.protobuf.StringValue text_variable_anchor = 34;
+    google.protobuf.StringValue text_anchor = 35;
+    google.protobuf.StringValue text_max_angle = 36;
+    google.protobuf.StringValue text_rotate = 37;
+    google.protobuf.StringValue text_padding = 38;
+    google.protobuf.StringValue text_keep_upright = 39;
+    google.protobuf.StringValue text_transform = 40;
+    google.protobuf.StringValue text_offset = 41;
+    google.protobuf.StringValue text_allow_overlap = 42;
+    google.protobuf.StringValue text_ignore_placement = 43;
+    google.protobuf.StringValue text_optional = 44;
+    google.protobuf.StringValue icon_opacity = 45;
+    google.protobuf.StringValue icon_color = 46;
+    google.protobuf.StringValue icon_halo_color = 47;
+    google.protobuf.StringValue icon_halo_width = 48;
+    google.protobuf.StringValue icon_halo_blur = 49;
+    google.protobuf.StringValue icon_translate = 50;
+    google.protobuf.StringValue icon_translate_anchor = 51;
+    google.protobuf.StringValue text_opacity = 52;
+    google.protobuf.StringValue text_color = 53;
+    google.protobuf.StringValue text_halo_color = 54;
+    google.protobuf.StringValue text_halo_width = 55;
+    google.protobuf.StringValue text_halo_blur = 56;
+    google.protobuf.StringValue text_translate = 57;
+    google.protobuf.StringValue text_translate_anchor = 58;
+
     TransitionOptions icon_opacity_transition = 59;
     TransitionOptions icon_color_transition = 60;
     TransitionOptions icon_halo_color_transition = 61;

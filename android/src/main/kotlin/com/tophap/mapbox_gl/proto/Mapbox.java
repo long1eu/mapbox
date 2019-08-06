@@ -3,8 +3,8 @@
 
 package com.tophap.mapbox_gl.proto;
 
-public final class Map {
-  private Map() {}
+public final class Mapbox {
+  private Mapbox() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -14,8 +14,8 @@ public final class Map {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface Map_OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_)
+  public interface MapOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
@@ -23,18 +23,18 @@ public final class Map {
    * protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/&#42;*.proto lib/src/models/proto/google/protobuf/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/&#42;*.proto
    * </pre>
    *
-   * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_}
+   * Protobuf type {@code com.tophap.mapbox_gl.proto.Map}
    */
-  public  static final class Map_ extends
+  public  static final class Map extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_)
-      Map_OrBuilder {
+      // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map)
+      MapOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Map_.newBuilder() to construct.
-    private Map_(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Map.newBuilder() to construct.
+    private Map(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Map_() {
+    private Map() {
     }
 
     @java.lang.Override
@@ -42,7 +42,7 @@ public final class Map {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Map_(
+    private Map(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -81,19 +81,19 @@ public final class Map {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__descriptor;
+      return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__fieldAccessorTable
+      return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.tophap.mapbox_gl.proto.Map.Map_.class, com.tophap.mapbox_gl.proto.Map.Map_.Builder.class);
+              com.tophap.mapbox_gl.proto.Mapbox.Map.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Builder.class);
     }
 
     public interface OptionsOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Options)
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Options)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -122,17 +122,17 @@ public final class Map {
       boolean getCrossSourceCollisions();
 
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
        */
       boolean hasCameraPosition();
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
        */
-      com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCameraPosition();
+      com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCameraPosition();
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
        */
-      com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraPositionOrBuilder();
+      com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraPositionOrBuilder();
 
       /**
        * <code>double max_zoom = 5;</code>
@@ -340,14 +340,14 @@ public final class Map {
       com.google.protobuf.ByteString
           getFromJsonBytes();
 
-      public com.tophap.mapbox_gl.proto.Map.Map_.Options.StyleCase getStyleCase();
+      public com.tophap.mapbox_gl.proto.Mapbox.Map.Options.StyleCase getStyleCase();
     }
     /**
-     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Options}
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Options}
      */
     public  static final class Options extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Options)
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Options)
         OptionsOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use Options.newBuilder() to construct.
@@ -407,11 +407,11 @@ public final class Map {
                 break;
               }
               case 34: {
-                com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder subBuilder = null;
+                com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder subBuilder = null;
                 if (cameraPosition_ != null) {
                   subBuilder = cameraPosition_.toBuilder();
                 }
-                cameraPosition_ = input.readMessage(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.parser(), extensionRegistry);
+                cameraPosition_ = input.readMessage(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.parser(), extensionRegistry);
                 if (subBuilder != null) {
                   subBuilder.mergeFrom(cameraPosition_);
                   cameraPosition_ = subBuilder.buildPartial();
@@ -659,15 +659,15 @@ public final class Map {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor;
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Options_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Options_fieldAccessorTable
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Options_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.tophap.mapbox_gl.proto.Map.Map_.Options.class, com.tophap.mapbox_gl.proto.Map.Map_.Options.Builder.class);
+                com.tophap.mapbox_gl.proto.Mapbox.Map.Options.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Options.Builder.class);
       }
 
       private int bitField0_;
@@ -789,23 +789,23 @@ public final class Map {
       }
 
       public static final int CAMERA_POSITION_FIELD_NUMBER = 4;
-      private com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition cameraPosition_;
+      private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition cameraPosition_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
        */
       public boolean hasCameraPosition() {
         return cameraPosition_ != null;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
        */
-      public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCameraPosition() {
-        return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : cameraPosition_;
+      public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCameraPosition() {
+        return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : cameraPosition_;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
        */
-      public com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraPositionOrBuilder() {
+      public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraPositionOrBuilder() {
         return getCameraPosition();
       }
 
@@ -1529,10 +1529,10 @@ public final class Map {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Options)) {
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Options)) {
           return super.equals(obj);
         }
-        com.tophap.mapbox_gl.proto.Map.Map_.Options other = (com.tophap.mapbox_gl.proto.Map.Map_.Options) obj;
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Options other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Options) obj;
 
         if (!getApiBaseUri()
             .equals(other.getApiBaseUri())) return false;
@@ -1738,69 +1738,69 @@ public final class Map {
         return hash;
       }
 
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(byte[] data)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(java.io.InputStream input)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseDelimitedFrom(java.io.InputStream input)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseDelimitedFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1813,7 +1813,7 @@ public final class Map {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Options prototype) {
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Options prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -1829,26 +1829,26 @@ public final class Map {
         return builder;
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Options}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Options}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Options)
-          com.tophap.mapbox_gl.proto.Map.Map_.OptionsOrBuilder {
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Options)
+          com.tophap.mapbox_gl.proto.Mapbox.Map.OptionsOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Options_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Options_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Options_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Options.class, com.tophap.mapbox_gl.proto.Map.Map_.Options.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Options.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Options.Builder.class);
         }
 
-        // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Options.newBuilder()
+        // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Options.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -1944,17 +1944,17 @@ public final class Map {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Options_descriptor;
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Options getDefaultInstanceForType() {
-          return com.tophap.mapbox_gl.proto.Map.Map_.Options.getDefaultInstance();
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Options getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Mapbox.Map.Options.getDefaultInstance();
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Options build() {
-          com.tophap.mapbox_gl.proto.Map.Map_.Options result = buildPartial();
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Options build() {
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Options result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -1962,8 +1962,8 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Options buildPartial() {
-          com.tophap.mapbox_gl.proto.Map.Map_.Options result = new com.tophap.mapbox_gl.proto.Map.Map_.Options(this);
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Options buildPartial() {
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Options result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Options(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           result.apiBaseUri_ = apiBaseUri_;
@@ -2068,16 +2068,16 @@ public final class Map {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Options) {
-            return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Options)other);
+          if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Options) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Options)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Options other) {
-          if (other == com.tophap.mapbox_gl.proto.Map.Map_.Options.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Options other) {
+          if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Options.getDefaultInstance()) return this;
           if (!other.getApiBaseUri().isEmpty()) {
             apiBaseUri_ = other.apiBaseUri_;
             onChanged();
@@ -2224,11 +2224,11 @@ public final class Map {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.tophap.mapbox_gl.proto.Map.Map_.Options parsedMessage = null;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Options parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Options) e.getUnfinishedMessage();
+            parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Options) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -2418,29 +2418,29 @@ public final class Map {
           return this;
         }
 
-        private com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition cameraPosition_;
+        private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition cameraPosition_;
         private com.google.protobuf.SingleFieldBuilderV3<
-            com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder> cameraPositionBuilder_;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder> cameraPositionBuilder_;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
         public boolean hasCameraPosition() {
           return cameraPositionBuilder_ != null || cameraPosition_ != null;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCameraPosition() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCameraPosition() {
           if (cameraPositionBuilder_ == null) {
-            return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : cameraPosition_;
+            return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : cameraPosition_;
           } else {
             return cameraPositionBuilder_.getMessage();
           }
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
-        public Builder setCameraPosition(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition value) {
+        public Builder setCameraPosition(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition value) {
           if (cameraPositionBuilder_ == null) {
             if (value == null) {
               throw new NullPointerException();
@@ -2454,10 +2454,10 @@ public final class Map {
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
         public Builder setCameraPosition(
-            com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder builderForValue) {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder builderForValue) {
           if (cameraPositionBuilder_ == null) {
             cameraPosition_ = builderForValue.build();
             onChanged();
@@ -2468,13 +2468,13 @@ public final class Map {
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
-        public Builder mergeCameraPosition(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition value) {
+        public Builder mergeCameraPosition(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition value) {
           if (cameraPositionBuilder_ == null) {
             if (cameraPosition_ != null) {
               cameraPosition_ =
-                com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.newBuilder(cameraPosition_).mergeFrom(value).buildPartial();
+                com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.newBuilder(cameraPosition_).mergeFrom(value).buildPartial();
             } else {
               cameraPosition_ = value;
             }
@@ -2486,7 +2486,7 @@ public final class Map {
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
         public Builder clearCameraPosition() {
           if (cameraPositionBuilder_ == null) {
@@ -2500,33 +2500,33 @@ public final class Map {
           return this;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder getCameraPositionBuilder() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder getCameraPositionBuilder() {
           
           onChanged();
           return getCameraPositionFieldBuilder().getBuilder();
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraPositionOrBuilder() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraPositionOrBuilder() {
           if (cameraPositionBuilder_ != null) {
             return cameraPositionBuilder_.getMessageOrBuilder();
           } else {
             return cameraPosition_ == null ?
-                com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : cameraPosition_;
+                com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : cameraPosition_;
           }
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 4;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 4;</code>
          */
         private com.google.protobuf.SingleFieldBuilderV3<
-            com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder> 
+            com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder> 
             getCameraPositionFieldBuilder() {
           if (cameraPositionBuilder_ == null) {
             cameraPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder>(
+                com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder>(
                     getCameraPosition(),
                     getParentForChildren(),
                     isClean());
@@ -3773,16 +3773,16 @@ public final class Map {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Options)
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Options)
       }
 
-      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Options)
-      private static final com.tophap.mapbox_gl.proto.Map.Map_.Options DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Options)
+      private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Options DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Options();
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Options();
       }
 
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Options getDefaultInstance() {
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Options getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -3807,14 +3807,14 @@ public final class Map {
       }
 
       @java.lang.Override
-      public com.tophap.mapbox_gl.proto.Map.Map_.Options getDefaultInstanceForType() {
+      public com.tophap.mapbox_gl.proto.Mapbox.Map.Options getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public interface CameraPositionOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.CameraPosition)
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.CameraPosition)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -3846,11 +3846,11 @@ public final class Map {
       double getZoom();
     }
     /**
-     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.CameraPosition}
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.CameraPosition}
      */
     public  static final class CameraPosition extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.CameraPosition)
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.CameraPosition)
         CameraPositionOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use CameraPosition.newBuilder() to construct.
@@ -3933,19 +3933,19 @@ public final class Map {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor;
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_fieldAccessorTable
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.class, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder.class);
+                com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.class, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder.class);
       }
 
       /**
-       * Protobuf enum {@code com.tophap.mapbox_gl.proto.Map_.CameraPosition.MoveReason}
+       * Protobuf enum {@code com.tophap.mapbox_gl.proto.Map.CameraPosition.MoveReason}
        */
       public enum MoveReason
           implements com.google.protobuf.ProtocolMessageEnum {
@@ -4025,7 +4025,7 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.EnumDescriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDescriptor().getEnumTypes().get(0);
+          return com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDescriptor().getEnumTypes().get(0);
         }
 
         private static final MoveReason[] VALUES = values();
@@ -4048,7 +4048,7 @@ public final class Map {
           this.value = value;
         }
 
-        // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Map_.CameraPosition.MoveReason)
+        // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Map.CameraPosition.MoveReason)
       }
 
       public static final int BEARING_FIELD_NUMBER = 1;
@@ -4160,10 +4160,10 @@ public final class Map {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition)) {
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition)) {
           return super.equals(obj);
         }
-        com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition other = (com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition) obj;
+        com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition other = (com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition) obj;
 
         if (java.lang.Double.doubleToLongBits(getBearing())
             != java.lang.Double.doubleToLongBits(
@@ -4208,69 +4208,69 @@ public final class Map {
         return hash;
       }
 
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(byte[] data)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(java.io.InputStream input)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseDelimitedFrom(java.io.InputStream input)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseDelimitedFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -4283,7 +4283,7 @@ public final class Map {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition prototype) {
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -4299,26 +4299,26 @@ public final class Map {
         return builder;
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.CameraPosition}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.CameraPosition}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.CameraPosition)
-          com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder {
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.CameraPosition)
+          com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.class, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.class, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder.class);
         }
 
-        // Construct using com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.newBuilder()
+        // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -4354,17 +4354,17 @@ public final class Map {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_descriptor;
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getDefaultInstanceForType() {
-          return com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance();
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance();
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition build() {
-          com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition result = buildPartial();
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition build() {
+          com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -4372,8 +4372,8 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition buildPartial() {
-          com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition result = new com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition(this);
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition buildPartial() {
+          com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition result = new com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition(this);
           result.bearing_ = bearing_;
           if (targetBuilder_ == null) {
             result.target_ = target_;
@@ -4420,16 +4420,16 @@ public final class Map {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition) {
-            return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition)other);
+          if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition other) {
-          if (other == com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition other) {
+          if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance()) return this;
           if (other.getBearing() != 0D) {
             setBearing(other.getBearing());
           }
@@ -4457,11 +4457,11 @@ public final class Map {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition parsedMessage = null;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition) e.getUnfinishedMessage();
+            parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -4678,16 +4678,16 @@ public final class Map {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.CameraPosition)
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.CameraPosition)
       }
 
-      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.CameraPosition)
-      private static final com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.CameraPosition)
+      private static final com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition();
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition();
       }
 
-      public static com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getDefaultInstance() {
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -4712,22 +4712,22 @@ public final class Map {
       }
 
       @java.lang.Override
-      public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getDefaultInstanceForType() {
+      public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public interface OperationsOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations)
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations)
         com.google.protobuf.MessageOrBuilder {
     }
     /**
-     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations}
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations}
      */
     public  static final class Operations extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations)
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations)
         OperationsOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use Operations.newBuilder() to construct.
@@ -4781,19 +4781,19 @@ public final class Map {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor;
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_fieldAccessorTable
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.tophap.mapbox_gl.proto.Map.Map_.Operations.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.Builder.class);
+                com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Builder.class);
       }
 
       public interface ReadyOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.Ready)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.Ready)
           com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -4817,17 +4817,17 @@ public final class Map {
         double getMaxZoom();
 
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
          */
         boolean hasCamera();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCamera();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCamera();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraOrBuilder();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraOrBuilder();
 
         /**
          * <code>.com.tophap.mapbox_gl.proto.Style style = 6;</code>
@@ -4843,11 +4843,11 @@ public final class Map {
         com.tophap.mapbox_gl.proto.StyleOuterClass.StyleOrBuilder getStyleOrBuilder();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.Ready}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.Ready}
        */
       public  static final class Ready extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.Ready)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.Ready)
           ReadyOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use Ready.newBuilder() to construct.
@@ -4902,11 +4902,11 @@ public final class Map {
                   break;
                 }
                 case 42: {
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder subBuilder = null;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder subBuilder = null;
                   if (camera_ != null) {
                     subBuilder = camera_.toBuilder();
                   }
-                  camera_ = input.readMessage(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.parser(), extensionRegistry);
+                  camera_ = input.readMessage(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.parser(), extensionRegistry);
                   if (subBuilder != null) {
                     subBuilder.mergeFrom(camera_);
                     camera_ = subBuilder.buildPartial();
@@ -4948,15 +4948,15 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.Builder.class);
         }
 
         public static final int VIEW_ID_FIELD_NUMBER = 1;
@@ -4996,23 +4996,23 @@ public final class Map {
         }
 
         public static final int CAMERA_FIELD_NUMBER = 5;
-        private com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition camera_;
+        private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition camera_;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
          */
         public boolean hasCamera() {
           return camera_ != null;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCamera() {
-          return camera_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : camera_;
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCamera() {
+          return camera_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : camera_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraOrBuilder() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraOrBuilder() {
           return getCamera();
         }
 
@@ -5112,10 +5112,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready) obj;
 
           if (getViewId()
               != other.getViewId()) return false;
@@ -5172,69 +5172,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -5247,7 +5247,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -5263,26 +5263,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.Ready}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.Ready}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.Ready)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.ReadyOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.Ready)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ReadyOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -5326,17 +5326,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -5344,8 +5344,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready(this);
             result.viewId_ = viewId_;
             result.prefetchesTiles_ = prefetchesTiles_;
             result.minZoom_ = minZoom_;
@@ -5398,16 +5398,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.getDefaultInstance()) return this;
             if (other.getViewId() != 0) {
               setViewId(other.getViewId());
             }
@@ -5441,11 +5441,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -5559,29 +5559,29 @@ public final class Map {
             return this;
           }
 
-          private com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition camera_;
+          private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition camera_;
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder> cameraBuilder_;
+              com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder> cameraBuilder_;
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
           public boolean hasCamera() {
             return cameraBuilder_ != null || camera_ != null;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCamera() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCamera() {
             if (cameraBuilder_ == null) {
-              return camera_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : camera_;
+              return camera_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : camera_;
             } else {
               return cameraBuilder_.getMessage();
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
-          public Builder setCamera(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition value) {
+          public Builder setCamera(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition value) {
             if (cameraBuilder_ == null) {
               if (value == null) {
                 throw new NullPointerException();
@@ -5595,10 +5595,10 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
           public Builder setCamera(
-              com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder builderForValue) {
+              com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder builderForValue) {
             if (cameraBuilder_ == null) {
               camera_ = builderForValue.build();
               onChanged();
@@ -5609,13 +5609,13 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
-          public Builder mergeCamera(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition value) {
+          public Builder mergeCamera(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition value) {
             if (cameraBuilder_ == null) {
               if (camera_ != null) {
                 camera_ =
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.newBuilder(camera_).mergeFrom(value).buildPartial();
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.newBuilder(camera_).mergeFrom(value).buildPartial();
               } else {
                 camera_ = value;
               }
@@ -5627,7 +5627,7 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
           public Builder clearCamera() {
             if (cameraBuilder_ == null) {
@@ -5641,33 +5641,33 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder getCameraBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder getCameraBuilder() {
             
             onChanged();
             return getCameraFieldBuilder().getBuilder();
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraOrBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraOrBuilder() {
             if (cameraBuilder_ != null) {
               return cameraBuilder_.getMessageOrBuilder();
             } else {
               return camera_ == null ?
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : camera_;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : camera_;
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera = 5;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera = 5;</code>
            */
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder> 
+              com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder> 
               getCameraFieldBuilder() {
             if (cameraBuilder_ == null) {
               cameraBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder>(
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder>(
                       getCamera(),
                       getParentForChildren(),
                       isClean());
@@ -5805,16 +5805,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.Ready)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.Ready)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.Ready)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.Ready)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -5839,28 +5839,28 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.Ready getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
       }
 
       public interface CameraUpdateOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate)
           com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
          */
         boolean hasCameraPosition();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCameraPosition();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCameraPosition();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraPositionOrBuilder();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraPositionOrBuilder();
 
         /**
          * <code>.com.tophap.mapbox_gl.proto.LatLng lat_lng = 2;</code>
@@ -5932,20 +5932,20 @@ public final class Map {
         int getFocusY();
 
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
          */
         int getOperationValue();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type getOperation();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type getOperation();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate}
        */
       public  static final class CameraUpdate extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate)
           CameraUpdateOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use CameraUpdate.newBuilder() to construct.
@@ -5982,11 +5982,11 @@ public final class Map {
                   done = true;
                   break;
                 case 10: {
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder subBuilder = null;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder subBuilder = null;
                   if (cameraPosition_ != null) {
                     subBuilder = cameraPosition_.toBuilder();
                   }
-                  cameraPosition_ = input.readMessage(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.parser(), extensionRegistry);
+                  cameraPosition_ = input.readMessage(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.parser(), extensionRegistry);
                   if (subBuilder != null) {
                     subBuilder.mergeFrom(cameraPosition_);
                     cameraPosition_ = subBuilder.buildPartial();
@@ -6101,19 +6101,19 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder.class);
         }
 
         /**
-         * Protobuf enum {@code com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Result}
+         * Protobuf enum {@code com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Result}
          */
         public enum Result
             implements com.google.protobuf.ProtocolMessageEnum {
@@ -6184,7 +6184,7 @@ public final class Map {
           }
           public static final com.google.protobuf.Descriptors.EnumDescriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDescriptor().getEnumTypes().get(0);
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDescriptor().getEnumTypes().get(0);
           }
 
           private static final Result[] VALUES = values();
@@ -6207,11 +6207,11 @@ public final class Map {
             this.value = value;
           }
 
-          // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Result)
+          // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Result)
         }
 
         /**
-         * Protobuf enum {@code com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type}
+         * Protobuf enum {@code com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type}
          */
         public enum Type
             implements com.google.protobuf.ProtocolMessageEnum {
@@ -6354,7 +6354,7 @@ public final class Map {
           }
           public static final com.google.protobuf.Descriptors.EnumDescriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDescriptor().getEnumTypes().get(1);
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDescriptor().getEnumTypes().get(1);
           }
 
           private static final Type[] VALUES = values();
@@ -6377,28 +6377,28 @@ public final class Map {
             this.value = value;
           }
 
-          // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type)
+          // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type)
         }
 
         private int bitField0_;
         public static final int CAMERA_POSITION_FIELD_NUMBER = 1;
-        private com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition cameraPosition_;
+        private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition cameraPosition_;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
          */
         public boolean hasCameraPosition() {
           return cameraPosition_ != null;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCameraPosition() {
-          return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : cameraPosition_;
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCameraPosition() {
+          return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : cameraPosition_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraPositionOrBuilder() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraPositionOrBuilder() {
           return getCameraPosition();
         }
 
@@ -6524,18 +6524,18 @@ public final class Map {
         public static final int OPERATION_FIELD_NUMBER = 11;
         private int operation_;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
          */
         public int getOperationValue() {
           return operation_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type getOperation() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type getOperation() {
           @SuppressWarnings("deprecation")
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type result = com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type.valueOf(operation_);
-          return result == null ? com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type.UNRECOGNIZED : result;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type result = com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type.valueOf(operation_);
+          return result == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type.UNRECOGNIZED : result;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -6587,7 +6587,7 @@ public final class Map {
           if (focusY_ != 0) {
             output.writeInt32(10, focusY_);
           }
-          if (operation_ != com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type.NEW_CAMERA_POSITION.getNumber()) {
+          if (operation_ != com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type.NEW_CAMERA_POSITION.getNumber()) {
             output.writeEnum(11, operation_);
           }
           unknownFields.writeTo(output);
@@ -6649,7 +6649,7 @@ public final class Map {
             size += com.google.protobuf.CodedOutputStream
               .computeInt32Size(10, focusY_);
           }
-          if (operation_ != com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type.NEW_CAMERA_POSITION.getNumber()) {
+          if (operation_ != com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type.NEW_CAMERA_POSITION.getNumber()) {
             size += com.google.protobuf.CodedOutputStream
               .computeEnumSize(11, operation_);
           }
@@ -6663,10 +6663,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate) obj;
 
           if (hasCameraPosition() != other.hasCameraPosition()) return false;
           if (hasCameraPosition()) {
@@ -6752,69 +6752,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -6827,7 +6827,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -6843,26 +6843,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -6920,17 +6920,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -6938,8 +6938,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate(this);
             int from_bitField0_ = bitField0_;
             int to_bitField0_ = 0;
             if (cameraPositionBuilder_ == null) {
@@ -7008,16 +7008,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance()) return this;
             if (other.hasCameraPosition()) {
               mergeCameraPosition(other.getCameraPosition());
             }
@@ -7073,11 +7073,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -7088,29 +7088,29 @@ public final class Map {
           }
           private int bitField0_;
 
-          private com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition cameraPosition_;
+          private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition cameraPosition_;
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder> cameraPositionBuilder_;
+              com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder> cameraPositionBuilder_;
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
           public boolean hasCameraPosition() {
             return cameraPositionBuilder_ != null || cameraPosition_ != null;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition getCameraPosition() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition getCameraPosition() {
             if (cameraPositionBuilder_ == null) {
-              return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : cameraPosition_;
+              return cameraPosition_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : cameraPosition_;
             } else {
               return cameraPositionBuilder_.getMessage();
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
-          public Builder setCameraPosition(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition value) {
+          public Builder setCameraPosition(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition value) {
             if (cameraPositionBuilder_ == null) {
               if (value == null) {
                 throw new NullPointerException();
@@ -7124,10 +7124,10 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
           public Builder setCameraPosition(
-              com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder builderForValue) {
+              com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder builderForValue) {
             if (cameraPositionBuilder_ == null) {
               cameraPosition_ = builderForValue.build();
               onChanged();
@@ -7138,13 +7138,13 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
-          public Builder mergeCameraPosition(com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition value) {
+          public Builder mergeCameraPosition(com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition value) {
             if (cameraPositionBuilder_ == null) {
               if (cameraPosition_ != null) {
                 cameraPosition_ =
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.newBuilder(cameraPosition_).mergeFrom(value).buildPartial();
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.newBuilder(cameraPosition_).mergeFrom(value).buildPartial();
               } else {
                 cameraPosition_ = value;
               }
@@ -7156,7 +7156,7 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
           public Builder clearCameraPosition() {
             if (cameraPositionBuilder_ == null) {
@@ -7170,33 +7170,33 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder getCameraPositionBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder getCameraPositionBuilder() {
             
             onChanged();
             return getCameraPositionFieldBuilder().getBuilder();
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder getCameraPositionOrBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder getCameraPositionOrBuilder() {
             if (cameraPositionBuilder_ != null) {
               return cameraPositionBuilder_.getMessageOrBuilder();
             } else {
               return cameraPosition_ == null ?
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.getDefaultInstance() : cameraPosition_;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDefaultInstance() : cameraPosition_;
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.CameraPosition camera_position = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.CameraPosition camera_position = 1;</code>
            */
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder> 
+              com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder> 
               getCameraPositionFieldBuilder() {
             if (cameraPositionBuilder_ == null) {
               cameraPositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                  com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition, com.tophap.mapbox_gl.proto.Map.Map_.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Map.Map_.CameraPositionOrBuilder>(
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPositionOrBuilder>(
                       getCameraPosition(),
                       getParentForChildren(),
                       isClean());
@@ -7664,13 +7664,13 @@ public final class Map {
 
           private int operation_ = 0;
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
            */
           public int getOperationValue() {
             return operation_;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
            */
           public Builder setOperationValue(int value) {
             operation_ = value;
@@ -7678,17 +7678,17 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type getOperation() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type getOperation() {
             @SuppressWarnings("deprecation")
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type result = com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type.valueOf(operation_);
-            return result == null ? com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type.UNRECOGNIZED : result;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type result = com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type.valueOf(operation_);
+            return result == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type.UNRECOGNIZED : result;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
            */
-          public Builder setOperation(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Type value) {
+          public Builder setOperation(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Type value) {
             if (value == null) {
               throw new NullPointerException();
             }
@@ -7698,7 +7698,7 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type operation = 11;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type operation = 11;</code>
            */
           public Builder clearOperation() {
             
@@ -7719,16 +7719,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -7753,28 +7753,28 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
       }
 
       public interface EaseCameraOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera)
           com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
         boolean hasUpdate();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getUpdate();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getUpdate();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder getUpdateOrBuilder();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder getUpdateOrBuilder();
 
         /**
          * <code>int32 duration = 2;</code>
@@ -7787,11 +7787,11 @@ public final class Map {
         boolean getEasingInterpolator();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera}
        */
       public  static final class EaseCamera extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera)
           EaseCameraOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use EaseCamera.newBuilder() to construct.
@@ -7826,11 +7826,11 @@ public final class Map {
                   done = true;
                   break;
                 case 10: {
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder subBuilder = null;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder subBuilder = null;
                   if (update_ != null) {
                     subBuilder = update_.toBuilder();
                   }
-                  update_ = input.readMessage(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.parser(), extensionRegistry);
+                  update_ = input.readMessage(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.parser(), extensionRegistry);
                   if (subBuilder != null) {
                     subBuilder.mergeFrom(update_);
                     update_ = subBuilder.buildPartial();
@@ -7869,35 +7869,35 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.Builder.class);
         }
 
         public static final int UPDATE_FIELD_NUMBER = 1;
-        private com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate update_;
+        private com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate update_;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
         public boolean hasUpdate() {
           return update_ != null;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getUpdate() {
-          return update_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance() : update_;
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getUpdate() {
+          return update_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance() : update_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
           return getUpdate();
         }
 
@@ -7973,10 +7973,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera) obj;
 
           if (hasUpdate() != other.hasUpdate()) return false;
           if (hasUpdate()) {
@@ -8012,69 +8012,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -8087,7 +8087,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -8103,26 +8103,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCameraOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCameraOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -8156,17 +8156,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -8174,8 +8174,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera(this);
             if (updateBuilder_ == null) {
               result.update_ = update_;
             } else {
@@ -8221,16 +8221,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera.getDefaultInstance()) return this;
             if (other.hasUpdate()) {
               mergeUpdate(other.getUpdate());
             }
@@ -8255,11 +8255,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -8269,29 +8269,29 @@ public final class Map {
             return this;
           }
 
-          private com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate update_;
+          private com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate update_;
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder> updateBuilder_;
+              com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder> updateBuilder_;
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           public boolean hasUpdate() {
             return updateBuilder_ != null || update_ != null;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getUpdate() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getUpdate() {
             if (updateBuilder_ == null) {
-              return update_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance() : update_;
+              return update_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance() : update_;
             } else {
               return updateBuilder_.getMessage();
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public Builder setUpdate(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate value) {
+          public Builder setUpdate(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate value) {
             if (updateBuilder_ == null) {
               if (value == null) {
                 throw new NullPointerException();
@@ -8305,10 +8305,10 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           public Builder setUpdate(
-              com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder builderForValue) {
+              com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder builderForValue) {
             if (updateBuilder_ == null) {
               update_ = builderForValue.build();
               onChanged();
@@ -8319,13 +8319,13 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public Builder mergeUpdate(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate value) {
+          public Builder mergeUpdate(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate value) {
             if (updateBuilder_ == null) {
               if (update_ != null) {
                 update_ =
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.newBuilder(update_).mergeFrom(value).buildPartial();
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.newBuilder(update_).mergeFrom(value).buildPartial();
               } else {
                 update_ = value;
               }
@@ -8337,7 +8337,7 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           public Builder clearUpdate() {
             if (updateBuilder_ == null) {
@@ -8351,33 +8351,33 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder getUpdateBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder getUpdateBuilder() {
             
             onChanged();
             return getUpdateFieldBuilder().getBuilder();
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
             if (updateBuilder_ != null) {
               return updateBuilder_.getMessageOrBuilder();
             } else {
               return update_ == null ?
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance() : update_;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance() : update_;
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder> 
+              com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder> 
               getUpdateFieldBuilder() {
             if (updateBuilder_ == null) {
               updateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder>(
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder>(
                       getUpdate(),
                       getParentForChildren(),
                       isClean());
@@ -8450,16 +8450,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.EaseCamera)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.EaseCamera)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -8484,28 +8484,28 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.EaseCamera getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.EaseCamera getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
       }
 
       public interface AnimateCameraOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera)
           com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
         boolean hasUpdate();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getUpdate();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getUpdate();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder getUpdateOrBuilder();
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder getUpdateOrBuilder();
 
         /**
          * <code>int32 duration = 2;</code>
@@ -8513,11 +8513,11 @@ public final class Map {
         int getDuration();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera}
        */
       public  static final class AnimateCamera extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera)
           AnimateCameraOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use AnimateCamera.newBuilder() to construct.
@@ -8552,11 +8552,11 @@ public final class Map {
                   done = true;
                   break;
                 case 10: {
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder subBuilder = null;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder subBuilder = null;
                   if (update_ != null) {
                     subBuilder = update_.toBuilder();
                   }
-                  update_ = input.readMessage(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.parser(), extensionRegistry);
+                  update_ = input.readMessage(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.parser(), extensionRegistry);
                   if (subBuilder != null) {
                     subBuilder.mergeFrom(update_);
                     update_ = subBuilder.buildPartial();
@@ -8590,35 +8590,35 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.Builder.class);
         }
 
         public static final int UPDATE_FIELD_NUMBER = 1;
-        private com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate update_;
+        private com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate update_;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
         public boolean hasUpdate() {
           return update_ != null;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getUpdate() {
-          return update_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance() : update_;
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getUpdate() {
+          return update_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance() : update_;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
           return getUpdate();
         }
 
@@ -8678,10 +8678,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera) obj;
 
           if (hasUpdate() != other.hasUpdate()) return false;
           if (hasUpdate()) {
@@ -8712,69 +8712,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -8787,7 +8787,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -8803,26 +8803,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCameraOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCameraOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -8854,17 +8854,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -8872,8 +8872,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera(this);
             if (updateBuilder_ == null) {
               result.update_ = update_;
             } else {
@@ -8918,16 +8918,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera.getDefaultInstance()) return this;
             if (other.hasUpdate()) {
               mergeUpdate(other.getUpdate());
             }
@@ -8949,11 +8949,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -8963,29 +8963,29 @@ public final class Map {
             return this;
           }
 
-          private com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate update_;
+          private com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate update_;
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder> updateBuilder_;
+              com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder> updateBuilder_;
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           public boolean hasUpdate() {
             return updateBuilder_ != null || update_ != null;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate getUpdate() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate getUpdate() {
             if (updateBuilder_ == null) {
-              return update_ == null ? com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance() : update_;
+              return update_ == null ? com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance() : update_;
             } else {
               return updateBuilder_.getMessage();
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public Builder setUpdate(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate value) {
+          public Builder setUpdate(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate value) {
             if (updateBuilder_ == null) {
               if (value == null) {
                 throw new NullPointerException();
@@ -8999,10 +8999,10 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           public Builder setUpdate(
-              com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder builderForValue) {
+              com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder builderForValue) {
             if (updateBuilder_ == null) {
               update_ = builderForValue.build();
               onChanged();
@@ -9013,13 +9013,13 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public Builder mergeUpdate(com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate value) {
+          public Builder mergeUpdate(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate value) {
             if (updateBuilder_ == null) {
               if (update_ != null) {
                 update_ =
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.newBuilder(update_).mergeFrom(value).buildPartial();
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.newBuilder(update_).mergeFrom(value).buildPartial();
               } else {
                 update_ = value;
               }
@@ -9031,7 +9031,7 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           public Builder clearUpdate() {
             if (updateBuilder_ == null) {
@@ -9045,33 +9045,33 @@ public final class Map {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder getUpdateBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder getUpdateBuilder() {
             
             onChanged();
             return getUpdateFieldBuilder().getBuilder();
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder getUpdateOrBuilder() {
             if (updateBuilder_ != null) {
               return updateBuilder_.getMessageOrBuilder();
             } else {
               return update_ == null ?
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.getDefaultInstance() : update_;
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.getDefaultInstance() : update_;
             }
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate update = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate update = 1;</code>
            */
           private com.google.protobuf.SingleFieldBuilderV3<
-              com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder> 
+              com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder> 
               getUpdateFieldBuilder() {
             if (updateBuilder_ == null) {
               updateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Map.Map_.Operations.CameraUpdateOrBuilder>(
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate.Builder, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdateOrBuilder>(
                       getUpdate(),
                       getParentForChildren(),
                       isClean());
@@ -9118,16 +9118,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.AnimateCamera)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.AnimateCamera)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -9152,14 +9152,14 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.AnimateCamera getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.AnimateCamera getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
       }
 
       public interface ScrollByOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy)
           com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -9178,11 +9178,11 @@ public final class Map {
         long getDuration();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy}
        */
       public  static final class ScrollBy extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy)
           ScrollByOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use ScrollBy.newBuilder() to construct.
@@ -9252,15 +9252,15 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.Builder.class);
         }
 
         public static final int X_FIELD_NUMBER = 1;
@@ -9344,10 +9344,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy) obj;
 
           if (java.lang.Float.floatToIntBits(getX())
               != java.lang.Float.floatToIntBits(
@@ -9382,69 +9382,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -9457,7 +9457,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -9473,26 +9473,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollByOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollByOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -9522,17 +9522,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -9540,8 +9540,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy(this);
             result.x_ = x_;
             result.y_ = y_;
             result.duration_ = duration_;
@@ -9583,16 +9583,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy.getDefaultInstance()) return this;
             if (other.getX() != 0F) {
               setX(other.getX());
             }
@@ -9617,11 +9617,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -9721,16 +9721,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.ScrollBy)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.ScrollBy)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -9755,14 +9755,14 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.ScrollBy getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.ScrollBy getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
       }
 
       public interface SetFocalBearingOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing)
           com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -9786,11 +9786,11 @@ public final class Map {
         long getDuration();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing}
        */
       public  static final class SetFocalBearing extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing)
           SetFocalBearingOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use SetFocalBearing.newBuilder() to construct.
@@ -9865,15 +9865,15 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.Builder.class);
         }
 
         public static final int BEARING_FIELD_NUMBER = 1;
@@ -9973,10 +9973,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing) obj;
 
           if (java.lang.Double.doubleToLongBits(getBearing())
               != java.lang.Double.doubleToLongBits(
@@ -10017,69 +10017,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -10092,7 +10092,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -10108,26 +10108,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearingOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearingOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -10159,17 +10159,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -10177,8 +10177,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing(this);
             result.bearing_ = bearing_;
             result.focalX_ = focalX_;
             result.focalY_ = focalY_;
@@ -10221,16 +10221,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing.getDefaultInstance()) return this;
             if (other.getBearing() != 0D) {
               setBearing(other.getBearing());
             }
@@ -10258,11 +10258,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -10388,16 +10388,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.SetFocalBearing)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.SetFocalBearing)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -10422,14 +10422,14 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.SetFocalBearing getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.SetFocalBearing getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
       }
 
       public interface GetCameraForLatLngBoundsOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds)
+          // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds)
           com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -10469,11 +10469,11 @@ public final class Map {
         double getTilt();
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds}
        */
       public  static final class GetCameraForLatLngBounds extends
           com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds)
+          // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds)
           GetCameraForLatLngBoundsOrBuilder {
       private static final long serialVersionUID = 0L;
         // Use GetCameraForLatLngBounds.newBuilder() to construct.
@@ -10576,15 +10576,15 @@ public final class Map {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.Builder.class);
         }
 
         private int bitField0_;
@@ -10726,10 +10726,10 @@ public final class Map {
           if (obj == this) {
            return true;
           }
-          if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds)) {
+          if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds)) {
             return super.equals(obj);
           }
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds) obj;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds) obj;
 
           if (hasBounds() != other.hasBounds()) return false;
           if (hasBounds()) {
@@ -10774,69 +10774,69 @@ public final class Map {
           return hash;
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             java.nio.ByteBuffer data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             java.nio.ByteBuffer data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             com.google.protobuf.ByteString data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             com.google.protobuf.ByteString data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(byte[] data)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(byte[] data)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             byte[] data,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
           return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseDelimitedFrom(java.io.InputStream input)
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseDelimitedFrom(java.io.InputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseDelimitedFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseDelimitedFrom(
             java.io.InputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             com.google.protobuf.CodedInputStream input)
             throws java.io.IOException {
           return com.google.protobuf.GeneratedMessageV3
               .parseWithIOException(PARSER, input);
         }
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parseFrom(
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parseFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
@@ -10849,7 +10849,7 @@ public final class Map {
         public static Builder newBuilder() {
           return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds prototype) {
+        public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds prototype) {
           return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -10865,26 +10865,26 @@ public final class Map {
           return builder;
         }
         /**
-         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds}
+         * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds}
          */
         public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds)
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBoundsOrBuilder {
+            // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds)
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBoundsOrBuilder {
           public static final com.google.protobuf.Descriptors.Descriptor
               getDescriptor() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_descriptor;
           }
 
           @java.lang.Override
           protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
               internalGetFieldAccessorTable() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_fieldAccessorTable
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_fieldAccessorTable
                 .ensureFieldAccessorsInitialized(
-                    com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.Builder.class);
+                    com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.Builder.class);
           }
 
-          // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.newBuilder()
+          // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.newBuilder()
           private Builder() {
             maybeForceBuilderInitialization();
           }
@@ -10920,17 +10920,17 @@ public final class Map {
           @java.lang.Override
           public com.google.protobuf.Descriptors.Descriptor
               getDescriptorForType() {
-            return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor;
+            return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_descriptor;
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds getDefaultInstanceForType() {
-            return com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.getDefaultInstance();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds getDefaultInstanceForType() {
+            return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.getDefaultInstance();
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds build() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds result = buildPartial();
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds build() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds result = buildPartial();
             if (!result.isInitialized()) {
               throw newUninitializedMessageException(result);
             }
@@ -10938,8 +10938,8 @@ public final class Map {
           }
 
           @java.lang.Override
-          public com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds buildPartial() {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds(this);
+          public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds buildPartial() {
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds(this);
             int from_bitField0_ = bitField0_;
             int to_bitField0_ = 0;
             if (boundsBuilder_ == null) {
@@ -10993,16 +10993,16 @@ public final class Map {
           }
           @java.lang.Override
           public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds) {
-              return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds)other);
+            if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds) {
+              return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds)other);
             } else {
               super.mergeFrom(other);
               return this;
             }
           }
 
-          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds other) {
-            if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds.getDefaultInstance()) return this;
+          public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds other) {
+            if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.getDefaultInstance()) return this;
             if (other.hasBounds()) {
               mergeBounds(other.getBounds());
             }
@@ -11037,11 +11037,11 @@ public final class Map {
               com.google.protobuf.CodedInputStream input,
               com.google.protobuf.ExtensionRegistryLite extensionRegistry)
               throws java.io.IOException {
-            com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds parsedMessage = null;
+            com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds parsedMessage = null;
             try {
               parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds) e.getUnfinishedMessage();
+              parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds) e.getUnfinishedMessage();
               throw e.unwrapIOException();
             } finally {
               if (parsedMessage != null) {
@@ -11300,16 +11300,16 @@ public final class Map {
           }
 
 
-          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds)
+          // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds)
         }
 
-        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations.GetCameraForLatLngBounds)
-        private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations.GetCameraForLatLngBounds)
+        private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds DEFAULT_INSTANCE;
         static {
-          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds();
+          DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds();
         }
 
-        public static com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds getDefaultInstance() {
+        public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds getDefaultInstance() {
           return DEFAULT_INSTANCE;
         }
 
@@ -11334,7 +11334,7 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations.GetCameraForLatLngBounds getDefaultInstanceForType() {
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds getDefaultInstanceForType() {
           return DEFAULT_INSTANCE;
         }
 
@@ -11373,10 +11373,10 @@ public final class Map {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations)) {
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations)) {
           return super.equals(obj);
         }
-        com.tophap.mapbox_gl.proto.Map.Map_.Operations other = (com.tophap.mapbox_gl.proto.Map.Map_.Operations) obj;
+        com.tophap.mapbox_gl.proto.Mapbox.Map.Operations other = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations) obj;
 
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
@@ -11394,69 +11394,69 @@ public final class Map {
         return hash;
       }
 
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(byte[] data)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(java.io.InputStream input)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseDelimitedFrom(java.io.InputStream input)
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseDelimitedFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations parseFrom(
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -11469,7 +11469,7 @@ public final class Map {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_.Operations prototype) {
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -11485,26 +11485,26 @@ public final class Map {
         return builder;
       }
       /**
-       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_.Operations}
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Map.Operations}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_.Operations)
-          com.tophap.mapbox_gl.proto.Map.Map_.OperationsOrBuilder {
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map.Operations)
+          com.tophap.mapbox_gl.proto.Mapbox.Map.OperationsOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_fieldAccessorTable
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.tophap.mapbox_gl.proto.Map.Map_.Operations.class, com.tophap.mapbox_gl.proto.Map.Map_.Operations.Builder.class);
+                  com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Builder.class);
         }
 
-        // Construct using com.tophap.mapbox_gl.proto.Map.Map_.Operations.newBuilder()
+        // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -11528,17 +11528,17 @@ public final class Map {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor;
+          return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor;
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations getDefaultInstanceForType() {
-          return com.tophap.mapbox_gl.proto.Map.Map_.Operations.getDefaultInstance();
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.getDefaultInstance();
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations build() {
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations result = buildPartial();
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations build() {
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -11546,8 +11546,8 @@ public final class Map {
         }
 
         @java.lang.Override
-        public com.tophap.mapbox_gl.proto.Map.Map_.Operations buildPartial() {
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations result = new com.tophap.mapbox_gl.proto.Map.Map_.Operations(this);
+        public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations buildPartial() {
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations(this);
           onBuilt();
           return result;
         }
@@ -11586,16 +11586,16 @@ public final class Map {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_.Operations) {
-            return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_.Operations)other);
+          if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map.Operations) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map.Operations)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_.Operations other) {
-          if (other == com.tophap.mapbox_gl.proto.Map.Map_.Operations.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map.Operations other) {
+          if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.getDefaultInstance()) return this;
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
           return this;
@@ -11611,11 +11611,11 @@ public final class Map {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          com.tophap.mapbox_gl.proto.Map.Map_.Operations parsedMessage = null;
+          com.tophap.mapbox_gl.proto.Mapbox.Map.Operations parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_.Operations) e.getUnfinishedMessage();
+            parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map.Operations) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -11637,16 +11637,16 @@ public final class Map {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_.Operations)
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map.Operations)
       }
 
-      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_.Operations)
-      private static final com.tophap.mapbox_gl.proto.Map.Map_.Operations DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map.Operations)
+      private static final com.tophap.mapbox_gl.proto.Mapbox.Map.Operations DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_.Operations();
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations();
       }
 
-      public static com.tophap.mapbox_gl.proto.Map.Map_.Operations getDefaultInstance() {
+      public static com.tophap.mapbox_gl.proto.Mapbox.Map.Operations getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -11671,7 +11671,7 @@ public final class Map {
       }
 
       @java.lang.Override
-      public com.tophap.mapbox_gl.proto.Map.Map_.Operations getDefaultInstanceForType() {
+      public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -11710,10 +11710,10 @@ public final class Map {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.tophap.mapbox_gl.proto.Map.Map_)) {
+      if (!(obj instanceof com.tophap.mapbox_gl.proto.Mapbox.Map)) {
         return super.equals(obj);
       }
-      com.tophap.mapbox_gl.proto.Map.Map_ other = (com.tophap.mapbox_gl.proto.Map.Map_) obj;
+      com.tophap.mapbox_gl.proto.Mapbox.Map other = (com.tophap.mapbox_gl.proto.Mapbox.Map) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -11731,69 +11731,69 @@ public final class Map {
       return hash;
     }
 
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(byte[] data)
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(java.io.InputStream input)
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseDelimitedFrom(java.io.InputStream input)
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseDelimitedFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.tophap.mapbox_gl.proto.Map.Map_ parseFrom(
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -11806,7 +11806,7 @@ public final class Map {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.tophap.mapbox_gl.proto.Map.Map_ prototype) {
+    public static Builder newBuilder(com.tophap.mapbox_gl.proto.Mapbox.Map prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -11826,26 +11826,26 @@ public final class Map {
      * protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/&#42;*.proto lib/src/models/proto/google/protobuf/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/&#42;*.proto &amp;&amp; protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/&#42;*.proto
      * </pre>
      *
-     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map_}
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Map}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map_)
-        com.tophap.mapbox_gl.proto.Map.Map_OrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Map)
+        com.tophap.mapbox_gl.proto.Mapbox.MapOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__descriptor;
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__fieldAccessorTable
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.tophap.mapbox_gl.proto.Map.Map_.class, com.tophap.mapbox_gl.proto.Map.Map_.Builder.class);
+                com.tophap.mapbox_gl.proto.Mapbox.Map.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Builder.class);
       }
 
-      // Construct using com.tophap.mapbox_gl.proto.Map.Map_.newBuilder()
+      // Construct using com.tophap.mapbox_gl.proto.Mapbox.Map.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -11869,17 +11869,17 @@ public final class Map {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.tophap.mapbox_gl.proto.Map.internal_static_com_tophap_mapbox_gl_proto_Map__descriptor;
+        return com.tophap.mapbox_gl.proto.Mapbox.internal_static_com_tophap_mapbox_gl_proto_Map_descriptor;
       }
 
       @java.lang.Override
-      public com.tophap.mapbox_gl.proto.Map.Map_ getDefaultInstanceForType() {
-        return com.tophap.mapbox_gl.proto.Map.Map_.getDefaultInstance();
+      public com.tophap.mapbox_gl.proto.Mapbox.Map getDefaultInstanceForType() {
+        return com.tophap.mapbox_gl.proto.Mapbox.Map.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.tophap.mapbox_gl.proto.Map.Map_ build() {
-        com.tophap.mapbox_gl.proto.Map.Map_ result = buildPartial();
+      public com.tophap.mapbox_gl.proto.Mapbox.Map build() {
+        com.tophap.mapbox_gl.proto.Mapbox.Map result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -11887,8 +11887,8 @@ public final class Map {
       }
 
       @java.lang.Override
-      public com.tophap.mapbox_gl.proto.Map.Map_ buildPartial() {
-        com.tophap.mapbox_gl.proto.Map.Map_ result = new com.tophap.mapbox_gl.proto.Map.Map_(this);
+      public com.tophap.mapbox_gl.proto.Mapbox.Map buildPartial() {
+        com.tophap.mapbox_gl.proto.Mapbox.Map result = new com.tophap.mapbox_gl.proto.Mapbox.Map(this);
         onBuilt();
         return result;
       }
@@ -11927,16 +11927,16 @@ public final class Map {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.tophap.mapbox_gl.proto.Map.Map_) {
-          return mergeFrom((com.tophap.mapbox_gl.proto.Map.Map_)other);
+        if (other instanceof com.tophap.mapbox_gl.proto.Mapbox.Map) {
+          return mergeFrom((com.tophap.mapbox_gl.proto.Mapbox.Map)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.tophap.mapbox_gl.proto.Map.Map_ other) {
-        if (other == com.tophap.mapbox_gl.proto.Map.Map_.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.tophap.mapbox_gl.proto.Mapbox.Map other) {
+        if (other == com.tophap.mapbox_gl.proto.Mapbox.Map.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -11952,11 +11952,11 @@ public final class Map {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.tophap.mapbox_gl.proto.Map.Map_ parsedMessage = null;
+        com.tophap.mapbox_gl.proto.Mapbox.Map parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.tophap.mapbox_gl.proto.Map.Map_) e.getUnfinishedMessage();
+          parsedMessage = (com.tophap.mapbox_gl.proto.Mapbox.Map) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -11978,101 +11978,101 @@ public final class Map {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map_)
+      // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Map)
     }
 
-    // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map_)
-    private static final com.tophap.mapbox_gl.proto.Map.Map_ DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Map)
+    private static final com.tophap.mapbox_gl.proto.Mapbox.Map DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Map.Map_();
+      DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Mapbox.Map();
     }
 
-    public static com.tophap.mapbox_gl.proto.Map.Map_ getDefaultInstance() {
+    public static com.tophap.mapbox_gl.proto.Mapbox.Map getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Map_>
-        PARSER = new com.google.protobuf.AbstractParser<Map_>() {
+    private static final com.google.protobuf.Parser<Map>
+        PARSER = new com.google.protobuf.AbstractParser<Map>() {
       @java.lang.Override
-      public Map_ parsePartialFrom(
+      public Map parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Map_(input, extensionRegistry);
+        return new Map(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Map_> parser() {
+    public static com.google.protobuf.Parser<Map> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Map_> getParserForType() {
+    public com.google.protobuf.Parser<Map> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.tophap.mapbox_gl.proto.Map.Map_ getDefaultInstanceForType() {
+    public com.tophap.mapbox_gl.proto.Mapbox.Map getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Options_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Options_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Options_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor;
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_fieldAccessorTable;
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12083,76 +12083,76 @@ public final class Map {
   static {
     java.lang.String[] descriptorData = {
       "\n\tmap.proto\022\032com.tophap.mapbox_gl.proto\032" +
-      "\nutil.proto\032\013style.proto\"\226\025\n\004Map_\032\206\t\n\007Op" +
-      "tions\022\024\n\014api_base_uri\030\001 \001(\t\022#\n\033local_ide" +
-      "ograph_font_family\030\002 \001(\t\022\037\n\027cross_source" +
-      "_collisions\030\003 \001(\010\022H\n\017camera_position\030\004 \001" +
-      "(\0132/.com.tophap.mapbox_gl.proto.Map_.Cam" +
-      "eraPosition\022\020\n\010max_zoom\030\005 \001(\001\022\020\n\010min_zoo" +
-      "m\030\006 \001(\001\022\025\n\rzoom_gestures\030\007 \001(\010\022\027\n\017scroll" +
-      "_gestures\030\010 \001(\010\022\027\n\017rotate_gestures\030\t \001(\010" +
-      "\022\025\n\rtilt_gestures\030\n \001(\010\022\033\n\023double_tap_ge" +
-      "stures\030\013 \001(\010\022\033\n\023quick_zoom_gestures\030\014 \001(" +
-      "\010\022\017\n\007compass\030\r \001(\010\022F\n\020compass_position\030\016" +
-      " \001(\0162,.com.tophap.mapbox_gl.proto.Orname" +
-      "ntPosition\022\026\n\016compass_margin\030\017 \003(\005\022!\n\031co" +
-      "mpass_fade_facing_north\030\020 \001(\010\022\014\n\004logo\030\021 " +
-      "\001(\010\022C\n\rlogo_position\030\022 \001(\0162,.com.tophap." +
-      "mapbox_gl.proto.OrnamentPosition\022\023\n\013logo" +
-      "_margin\030\023 \003(\005\022\023\n\013attribution\030\024 \001(\010\022J\n\024at" +
-      "tribution_position\030\025 \001(\0162,.com.tophap.ma" +
-      "pbox_gl.proto.OrnamentPosition\022\032\n\022attrib" +
-      "ution_margin\030\026 \003(\005\022A\n\026attribution_tint_c" +
-      "olor\030\027 \001(\0132!.com.tophap.mapbox_gl.proto." +
-      "Color\022\033\n\023render_texture_mode\030\030 \001(\010\022*\n\"re" +
-      "nder_texture_translucent_surface\030\031 \001(\010\022\034" +
-      "\n\024enable_tile_prefetch\030\032 \001(\010\022\036\n\026enable_z" +
-      "_media_overlay\030\033 \001(\010\022\023\n\013pixel_ratio\030\034 \001(" +
-      "\002\022@\n\025foreground_load_color\030\035 \001(\0132!.com.t" +
-      "ophap.mapbox_gl.proto.Color\022K\n\013from_mapb" +
-      "ox\030\036 \001(\01624.com.tophap.mapbox_gl.proto.St" +
-      "yle.DefaultMapboxStyleH\000\022\022\n\010from_uri\030\037 \001" +
-      "(\tH\000\022\023\n\tfrom_json\030  \001(\tH\000B\007\n\005style\032\274\001\n\016C" +
-      "ameraPosition\022\017\n\007bearing\030\001 \001(\001\0222\n\006target" +
-      "\030\002 \001(\0132\".com.tophap.mapbox_gl.proto.LatL" +
-      "ng\022\014\n\004tilt\030\003 \001(\001\022\014\n\004zoom\030\004 \001(\001\"I\n\nMoveRe" +
-      "ason\022\017\n\013API_GESTURE\020\000\022\027\n\023DEVELOPER_ANIMA" +
-      "TION\020\001\022\021\n\rAPI_ANIMATION\020\002\032\305\n\n\nOperations" +
-      "\032\311\001\n\005Ready\022\017\n\007view_id\030\001 \001(\005\022\030\n\020prefetche" +
-      "s_tiles\030\002 \001(\010\022\020\n\010min_zoom\030\003 \001(\001\022\020\n\010max_z" +
-      "oom\030\004 \001(\001\022?\n\006camera\030\005 \001(\0132/.com.tophap.m" +
-      "apbox_gl.proto.Map_.CameraPosition\0220\n\005st" +
-      "yle\030\006 \001(\0132!.com.tophap.mapbox_gl.proto.S" +
-      "tyle\032\342\004\n\014CameraUpdate\022H\n\017camera_position" +
-      "\030\001 \001(\0132/.com.tophap.mapbox_gl.proto.Map_" +
-      ".CameraPosition\0223\n\007lat_lng\030\002 \001(\0132\".com.t" +
-      "ophap.mapbox_gl.proto.LatLng\0228\n\006bounds\030\003" +
-      " \001(\0132(.com.tophap.mapbox_gl.proto.LatLng" +
-      "Bounds\022\017\n\007bearing\030\004 \001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n" +
-      "\007padding\030\006 \003(\005\022\014\n\004zoom\030\007 \001(\001\022\016\n\006amount\030\010" +
-      " \001(\001\022\017\n\007focus_x\030\t \001(\005\022\017\n\007focus_y\030\n \001(\005\022P" +
-      "\n\toperation\030\013 \001(\0162=.com.tophap.mapbox_gl" +
-      ".proto.Map_.Operations.CameraUpdate.Type" +
-      "\"$\n\006Result\022\014\n\010FINISHED\020\000\022\014\n\010CANCELED\020\001\"\260" +
-      "\001\n\004Type\022\027\n\023NEW_CAMERA_POSITION\020\000\022\017\n\013NEW_" +
-      "LAT_LNG\020\001\022\026\n\022NEW_LAT_LNG_BOUNDS\020\002\022\024\n\020NEW" +
-      "_LAT_LNG_ZOOM\020\003\022\013\n\007ZOOM_BY\020\004\022\013\n\007ZOOM_IN\020" +
-      "\005\022\014\n\010ZOOM_OUT\020\006\022\013\n\007ZOOM_TO\020\007\022\016\n\nBEARING_" +
-      "TO\020\010\022\013\n\007TILT_TO\020\t\032\205\001\n\nEaseCamera\022H\n\006upda" +
-      "te\030\001 \001(\01328.com.tophap.mapbox_gl.proto.Ma" +
-      "p_.Operations.CameraUpdate\022\020\n\010duration\030\002" +
-      " \001(\005\022\033\n\023easing_interpolator\030\003 \001(\010\032k\n\rAni" +
-      "mateCamera\022H\n\006update\030\001 \001(\01328.com.tophap." +
-      "mapbox_gl.proto.Map_.Operations.CameraUp" +
-      "date\022\020\n\010duration\030\002 \001(\005\0322\n\010ScrollBy\022\t\n\001x\030" +
-      "\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\020\n\010duration\030\003 \001(\003\032V\n\017Se" +
-      "tFocalBearing\022\017\n\007bearing\030\001 \001(\001\022\017\n\007focal_" +
-      "x\030\002 \001(\002\022\017\n\007focal_y\030\003 \001(\002\022\020\n\010duration\030\004 \001" +
-      "(\003\032\204\001\n\030GetCameraForLatLngBounds\0228\n\006bound" +
-      "s\030\001 \001(\0132(.com.tophap.mapbox_gl.proto.Lat" +
-      "LngBounds\022\017\n\007padding\030\002 \003(\005\022\017\n\007bearing\030\003 " +
-      "\001(\001\022\014\n\004tilt\030\004 \001(\001B\034\n\032com.tophap.mapbox_g" +
-      "l.protob\006proto3"
+      "\nutil.proto\032\013style.proto\"\217\025\n\003Map\032\205\t\n\007Opt" +
+      "ions\022\024\n\014api_base_uri\030\001 \001(\t\022#\n\033local_ideo" +
+      "graph_font_family\030\002 \001(\t\022\037\n\027cross_source_" +
+      "collisions\030\003 \001(\010\022G\n\017camera_position\030\004 \001(" +
+      "\0132..com.tophap.mapbox_gl.proto.Map.Camer" +
+      "aPosition\022\020\n\010max_zoom\030\005 \001(\001\022\020\n\010min_zoom\030" +
+      "\006 \001(\001\022\025\n\rzoom_gestures\030\007 \001(\010\022\027\n\017scroll_g" +
+      "estures\030\010 \001(\010\022\027\n\017rotate_gestures\030\t \001(\010\022\025" +
+      "\n\rtilt_gestures\030\n \001(\010\022\033\n\023double_tap_gest" +
+      "ures\030\013 \001(\010\022\033\n\023quick_zoom_gestures\030\014 \001(\010\022" +
+      "\017\n\007compass\030\r \001(\010\022F\n\020compass_position\030\016 \001" +
+      "(\0162,.com.tophap.mapbox_gl.proto.Ornament" +
+      "Position\022\026\n\016compass_margin\030\017 \003(\005\022!\n\031comp" +
+      "ass_fade_facing_north\030\020 \001(\010\022\014\n\004logo\030\021 \001(" +
+      "\010\022C\n\rlogo_position\030\022 \001(\0162,.com.tophap.ma" +
+      "pbox_gl.proto.OrnamentPosition\022\023\n\013logo_m" +
+      "argin\030\023 \003(\005\022\023\n\013attribution\030\024 \001(\010\022J\n\024attr" +
+      "ibution_position\030\025 \001(\0162,.com.tophap.mapb" +
+      "ox_gl.proto.OrnamentPosition\022\032\n\022attribut" +
+      "ion_margin\030\026 \003(\005\022A\n\026attribution_tint_col" +
+      "or\030\027 \001(\0132!.com.tophap.mapbox_gl.proto.Co" +
+      "lor\022\033\n\023render_texture_mode\030\030 \001(\010\022*\n\"rend" +
+      "er_texture_translucent_surface\030\031 \001(\010\022\034\n\024" +
+      "enable_tile_prefetch\030\032 \001(\010\022\036\n\026enable_z_m" +
+      "edia_overlay\030\033 \001(\010\022\023\n\013pixel_ratio\030\034 \001(\002\022" +
+      "@\n\025foreground_load_color\030\035 \001(\0132!.com.top" +
+      "hap.mapbox_gl.proto.Color\022K\n\013from_mapbox" +
+      "\030\036 \001(\01624.com.tophap.mapbox_gl.proto.Styl" +
+      "e.DefaultMapboxStyleH\000\022\022\n\010from_uri\030\037 \001(\t" +
+      "H\000\022\023\n\tfrom_json\030  \001(\tH\000B\007\n\005style\032\274\001\n\016Cam" +
+      "eraPosition\022\017\n\007bearing\030\001 \001(\001\0222\n\006target\030\002" +
+      " \001(\0132\".com.tophap.mapbox_gl.proto.LatLng" +
+      "\022\014\n\004tilt\030\003 \001(\001\022\014\n\004zoom\030\004 \001(\001\"I\n\nMoveReas" +
+      "on\022\017\n\013API_GESTURE\020\000\022\027\n\023DEVELOPER_ANIMATI" +
+      "ON\020\001\022\021\n\rAPI_ANIMATION\020\002\032\300\n\n\nOperations\032\310" +
+      "\001\n\005Ready\022\017\n\007view_id\030\001 \001(\005\022\030\n\020prefetches_" +
+      "tiles\030\002 \001(\010\022\020\n\010min_zoom\030\003 \001(\001\022\020\n\010max_zoo" +
+      "m\030\004 \001(\001\022>\n\006camera\030\005 \001(\0132..com.tophap.map" +
+      "box_gl.proto.Map.CameraPosition\0220\n\005style" +
+      "\030\006 \001(\0132!.com.tophap.mapbox_gl.proto.Styl" +
+      "e\032\340\004\n\014CameraUpdate\022G\n\017camera_position\030\001 " +
+      "\001(\0132..com.tophap.mapbox_gl.proto.Map.Cam" +
+      "eraPosition\0223\n\007lat_lng\030\002 \001(\0132\".com.topha" +
+      "p.mapbox_gl.proto.LatLng\0228\n\006bounds\030\003 \001(\013" +
+      "2(.com.tophap.mapbox_gl.proto.LatLngBoun" +
+      "ds\022\017\n\007bearing\030\004 \001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n\007pad" +
+      "ding\030\006 \003(\005\022\014\n\004zoom\030\007 \001(\001\022\016\n\006amount\030\010 \001(\001" +
+      "\022\017\n\007focus_x\030\t \001(\005\022\017\n\007focus_y\030\n \001(\005\022O\n\top" +
+      "eration\030\013 \001(\0162<.com.tophap.mapbox_gl.pro" +
+      "to.Map.Operations.CameraUpdate.Type\"$\n\006R" +
+      "esult\022\014\n\010FINISHED\020\000\022\014\n\010CANCELED\020\001\"\260\001\n\004Ty" +
+      "pe\022\027\n\023NEW_CAMERA_POSITION\020\000\022\017\n\013NEW_LAT_L" +
+      "NG\020\001\022\026\n\022NEW_LAT_LNG_BOUNDS\020\002\022\024\n\020NEW_LAT_" +
+      "LNG_ZOOM\020\003\022\013\n\007ZOOM_BY\020\004\022\013\n\007ZOOM_IN\020\005\022\014\n\010" +
+      "ZOOM_OUT\020\006\022\013\n\007ZOOM_TO\020\007\022\016\n\nBEARING_TO\020\010\022" +
+      "\013\n\007TILT_TO\020\t\032\204\001\n\nEaseCamera\022G\n\006update\030\001 " +
+      "\001(\01327.com.tophap.mapbox_gl.proto.Map.Ope" +
+      "rations.CameraUpdate\022\020\n\010duration\030\002 \001(\005\022\033" +
+      "\n\023easing_interpolator\030\003 \001(\010\032j\n\rAnimateCa" +
+      "mera\022G\n\006update\030\001 \001(\01327.com.tophap.mapbox" +
+      "_gl.proto.Map.Operations.CameraUpdate\022\020\n" +
+      "\010duration\030\002 \001(\005\0322\n\010ScrollBy\022\t\n\001x\030\001 \001(\002\022\t" +
+      "\n\001y\030\002 \001(\002\022\020\n\010duration\030\003 \001(\003\032V\n\017SetFocalB" +
+      "earing\022\017\n\007bearing\030\001 \001(\001\022\017\n\007focal_x\030\002 \001(\002" +
+      "\022\017\n\007focal_y\030\003 \001(\002\022\020\n\010duration\030\004 \001(\003\032\204\001\n\030" +
+      "GetCameraForLatLngBounds\0228\n\006bounds\030\001 \001(\013" +
+      "2(.com.tophap.mapbox_gl.proto.LatLngBoun" +
+      "ds\022\017\n\007padding\030\002 \003(\005\022\017\n\007bearing\030\003 \001(\001\022\014\n\004" +
+      "tilt\030\004 \001(\001B$\n\032com.tophap.mapbox_gl.proto" +
+      "B\006Mapboxb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12168,71 +12168,71 @@ public final class Map {
           com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor(),
           com.tophap.mapbox_gl.proto.StyleOuterClass.getDescriptor(),
         }, assigner);
-    internal_static_com_tophap_mapbox_gl_proto_Map__descriptor =
+    internal_static_com_tophap_mapbox_gl_proto_Map_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_tophap_mapbox_gl_proto_Map__fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_descriptor,
         new java.lang.String[] { });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__descriptor.getNestedTypes().get(0);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Options_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Options_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_descriptor.getNestedTypes().get(0);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Options_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Options_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Options_descriptor,
         new java.lang.String[] { "ApiBaseUri", "LocalIdeographFontFamily", "CrossSourceCollisions", "CameraPosition", "MaxZoom", "MinZoom", "ZoomGestures", "ScrollGestures", "RotateGestures", "TiltGestures", "DoubleTapGestures", "QuickZoomGestures", "Compass", "CompassPosition", "CompassMargin", "CompassFadeFacingNorth", "Logo", "LogoPosition", "LogoMargin", "Attribution", "AttributionPosition", "AttributionMargin", "AttributionTintColor", "RenderTextureMode", "RenderTextureTranslucentSurface", "EnableTilePrefetch", "EnableZMediaOverlay", "PixelRatio", "ForegroundLoadColor", "FromMapbox", "FromUri", "FromJson", "Style", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__descriptor.getNestedTypes().get(1);
-    internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_descriptor.getNestedTypes().get(1);
+    internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__CameraPosition_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_CameraPosition_descriptor,
         new java.lang.String[] { "Bearing", "Target", "Tilt", "Zoom", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__descriptor.getNestedTypes().get(2);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_descriptor.getNestedTypes().get(2);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor,
         new java.lang.String[] { });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(0);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(0);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_Ready_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_Ready_descriptor,
         new java.lang.String[] { "ViewId", "PrefetchesTiles", "MinZoom", "MaxZoom", "Camera", "Style", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(1);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(1);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_CameraUpdate_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_CameraUpdate_descriptor,
         new java.lang.String[] { "CameraPosition", "LatLng", "Bounds", "Bearing", "Tilt", "Padding", "Zoom", "Amount", "FocusX", "FocusY", "Operation", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(2);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(2);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_EaseCamera_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_EaseCamera_descriptor,
         new java.lang.String[] { "Update", "Duration", "EasingInterpolator", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(3);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(3);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_AnimateCamera_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_AnimateCamera_descriptor,
         new java.lang.String[] { "Update", "Duration", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(4);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(4);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_ScrollBy_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_ScrollBy_descriptor,
         new java.lang.String[] { "X", "Y", "Duration", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(5);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(5);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_SetFocalBearing_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_SetFocalBearing_descriptor,
         new java.lang.String[] { "Bearing", "FocalX", "FocalY", "Duration", });
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Map__Operations_descriptor.getNestedTypes().get(6);
-    internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_fieldAccessorTable = new
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Map_Operations_descriptor.getNestedTypes().get(6);
+    internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_tophap_mapbox_gl_proto_Map__Operations_GetCameraForLatLngBounds_descriptor,
+        internal_static_com_tophap_mapbox_gl_proto_Map_Operations_GetCameraForLatLngBounds_descriptor,
         new java.lang.String[] { "Bounds", "Padding", "Bearing", "Tilt", });
     com.tophap.mapbox_gl.proto.MapboxUtil.getDescriptor();
     com.tophap.mapbox_gl.proto.StyleOuterClass.getDescriptor();

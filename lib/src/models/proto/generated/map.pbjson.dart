@@ -6,7 +6,7 @@
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
 const Map_$json = const {
-  '1': 'Map_',
+  '1': 'Map',
   '3': const [Map__Options$json, Map__CameraPosition$json, Map__Operations$json],
 };
 
@@ -16,7 +16,7 @@ const Map__Options$json = const {
     const {'1': 'api_base_uri', '3': 1, '4': 1, '5': 9, '10': 'apiBaseUri'},
     const {'1': 'local_ideograph_font_family', '3': 2, '4': 1, '5': 9, '10': 'localIdeographFontFamily'},
     const {'1': 'cross_source_collisions', '3': 3, '4': 1, '5': 8, '10': 'crossSourceCollisions'},
-    const {'1': 'camera_position', '3': 4, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map_.CameraPosition', '10': 'cameraPosition'},
+    const {'1': 'camera_position', '3': 4, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map.CameraPosition', '10': 'cameraPosition'},
     const {'1': 'max_zoom', '3': 5, '4': 1, '5': 1, '10': 'maxZoom'},
     const {'1': 'min_zoom', '3': 6, '4': 1, '5': 1, '10': 'minZoom'},
     const {'1': 'zoom_gestures', '3': 7, '4': 1, '5': 8, '10': 'zoomGestures'},
@@ -83,7 +83,7 @@ const Map__Operations_Ready$json = const {
     const {'1': 'prefetches_tiles', '3': 2, '4': 1, '5': 8, '10': 'prefetchesTiles'},
     const {'1': 'min_zoom', '3': 3, '4': 1, '5': 1, '10': 'minZoom'},
     const {'1': 'max_zoom', '3': 4, '4': 1, '5': 1, '10': 'maxZoom'},
-    const {'1': 'camera', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map_.CameraPosition', '10': 'camera'},
+    const {'1': 'camera', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map.CameraPosition', '10': 'camera'},
     const {'1': 'style', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Style', '10': 'style'},
   ],
 };
@@ -91,7 +91,7 @@ const Map__Operations_Ready$json = const {
 const Map__Operations_CameraUpdate$json = const {
   '1': 'CameraUpdate',
   '2': const [
-    const {'1': 'camera_position', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map_.CameraPosition', '10': 'cameraPosition'},
+    const {'1': 'camera_position', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map.CameraPosition', '10': 'cameraPosition'},
     const {'1': 'lat_lng', '3': 2, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.LatLng', '10': 'latLng'},
     const {'1': 'bounds', '3': 3, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.LatLngBounds', '10': 'bounds'},
     const {'1': 'bearing', '3': 4, '4': 1, '5': 1, '10': 'bearing'},
@@ -101,7 +101,7 @@ const Map__Operations_CameraUpdate$json = const {
     const {'1': 'amount', '3': 8, '4': 1, '5': 1, '10': 'amount'},
     const {'1': 'focus_x', '3': 9, '4': 1, '5': 5, '10': 'focusX'},
     const {'1': 'focus_y', '3': 10, '4': 1, '5': 5, '10': 'focusY'},
-    const {'1': 'operation', '3': 11, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate.Type', '10': 'operation'},
+    const {'1': 'operation', '3': 11, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate.Type', '10': 'operation'},
   ],
   '4': const [Map__Operations_CameraUpdate_Result$json, Map__Operations_CameraUpdate_Type$json],
 };
@@ -133,7 +133,7 @@ const Map__Operations_CameraUpdate_Type$json = const {
 const Map__Operations_EaseCamera$json = const {
   '1': 'EaseCamera',
   '2': const [
-    const {'1': 'update', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate', '10': 'update'},
+    const {'1': 'update', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate', '10': 'update'},
     const {'1': 'duration', '3': 2, '4': 1, '5': 5, '10': 'duration'},
     const {'1': 'easing_interpolator', '3': 3, '4': 1, '5': 8, '10': 'easingInterpolator'},
   ],
@@ -142,7 +142,7 @@ const Map__Operations_EaseCamera$json = const {
 const Map__Operations_AnimateCamera$json = const {
   '1': 'AnimateCamera',
   '2': const [
-    const {'1': 'update', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map_.Operations.CameraUpdate', '10': 'update'},
+    const {'1': 'update', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Map.Operations.CameraUpdate', '10': 'update'},
     const {'1': 'duration', '3': 2, '4': 1, '5': 5, '10': 'duration'},
   ],
 };

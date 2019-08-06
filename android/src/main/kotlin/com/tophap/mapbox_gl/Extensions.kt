@@ -1,20 +1,37 @@
 package com.tophap.mapbox_gl
 
-import android.graphics.Color
 import android.view.Gravity
-import com.google.protobuf.DoubleValue
+import com.google.gson.Gson
+import com.google.protobuf.StringValue
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.expressions.Expression.literal
 import com.mapbox.mapboxsdk.style.layers.*
 import com.mapbox.mapboxsdk.style.light.Light
 import com.mapbox.mapboxsdk.style.sources.*
-import com.mapbox.mapboxsdk.style.types.FormattedSection
+import com.mapbox.mapboxsdk.style.types.Formatted
 import com.mapbox.mapboxsdk.utils.ColorUtils
 import com.tophap.mapbox_gl.proto.*
-import com.tophap.mapbox_gl.proto.Map
+import java.lang.Error
+
+val gson = Gson()
+
+fun Long.color(): MapboxUtil.Color {
+    val a = this shr 24 and 0xff
+    val r = this shr 16 and 0xff
+    val g = this shr 8 and 0xff
+    val b = this and 0xff
+
+    val builder = MapboxUtil.Color.newBuilder()
+            .setAlpha(a.toInt())
+            .setRed(r.toInt())
+            .setGreen(g.toInt())
+            .setBlue(b.toInt())
+            .setOpacity(a / 255.0f)
+    return builder.build()
+}
 
 fun Int.color(): MapboxUtil.Color {
     val a = this shr 24 and 0xff
@@ -31,10 +48,20 @@ fun Int.color(): MapboxUtil.Color {
     return builder.build()
 }
 
-fun PropertyValue<String>.anchor(): MapboxUtil.TranslateAnchor {
+fun PropertyValue<String>.anchor(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.ANCHOR_VIEWPORT -> MapboxUtil.TranslateAnchor.VIEWPORT
-        Property.ANCHOR_MAP -> MapboxUtil.TranslateAnchor.MAP
+        Property.ANCHOR_VIEWPORT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ANCHOR_VIEWPORT).toArray()))
+                    .build()
+        }
+        Property.ANCHOR_MAP -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ANCHOR_MAP).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
@@ -47,148 +74,320 @@ fun String.anchor(): MapboxUtil.TranslateAnchor {
     }
 }
 
-fun PropertyValue<String>.lineCap(): Layers.Layer.Line.Cap {
+fun PropertyValue<String>.lineCap(): StringValue {
+    if (isExpression) return toStringProto()
+
+
     return when (value) {
-        Property.LINE_CAP_BUTT -> Layers.Layer.Line.Cap.CAP_BUTT
-        Property.LINE_CAP_ROUND -> Layers.Layer.Line.Cap.CAP_ROUND
-        Property.LINE_CAP_SQUARE -> Layers.Layer.Line.Cap.CAP_SQUARE
+        Property.LINE_CAP_BUTT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.LINE_CAP_BUTT).toArray()))
+                    .build()
+        }
+        Property.LINE_CAP_ROUND -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.LINE_CAP_ROUND).toArray()))
+                    .build()
+        }
+        Property.LINE_CAP_SQUARE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.LINE_CAP_SQUARE).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.lineJoin(): Layers.Layer.Line.Join {
+fun PropertyValue<String>.lineJoin(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.LINE_JOIN_BEVEL -> Layers.Layer.Line.Join.JOIN_BEVEL
-        Property.LINE_JOIN_ROUND -> Layers.Layer.Line.Join.JOIN_ROUND
-        Property.LINE_JOIN_MITER -> Layers.Layer.Line.Join.JOIN_MITER
+        Property.LINE_JOIN_BEVEL -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.LINE_JOIN_BEVEL).toArray()))
+                    .build()
+        }
+        Property.LINE_JOIN_ROUND -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.LINE_JOIN_ROUND).toArray()))
+                    .build()
+        }
+
+        Property.LINE_JOIN_MITER -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.LINE_JOIN_MITER).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.symbolPlacement(): Layers.Layer.Symbol.Placement {
+fun PropertyValue<String>.symbolPlacement(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.SYMBOL_PLACEMENT_POINT -> Layers.Layer.Symbol.Placement.PLACEMENT_POINT
-        Property.SYMBOL_PLACEMENT_LINE -> Layers.Layer.Symbol.Placement.PLACEMENT_LINE
-        Property.SYMBOL_PLACEMENT_LINE_CENTER -> Layers.Layer.Symbol.Placement.PLACEMENT_LINE_CENTER
+        Property.SYMBOL_PLACEMENT_POINT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.SYMBOL_PLACEMENT_POINT).toArray()))
+                    .build()
+        }
+        Property.SYMBOL_PLACEMENT_LINE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.SYMBOL_PLACEMENT_LINE).toArray()))
+                    .build()
+        }
+        Property.SYMBOL_PLACEMENT_LINE_CENTER -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.SYMBOL_PLACEMENT_LINE_CENTER).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.symbolZOrder(): Layers.Layer.Symbol.ZOrder {
+fun PropertyValue<String>.symbolZOrder(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.SYMBOL_Z_ORDER_AUTO -> Layers.Layer.Symbol.ZOrder.Z_ORDER_AUTO
-        Property.SYMBOL_Z_ORDER_VIEWPORT_Y -> Layers.Layer.Symbol.ZOrder.Z_ORDER_VIEWPORT_Y
-        Property.SYMBOL_Z_ORDER_SOURCE -> Layers.Layer.Symbol.ZOrder.Z_ORDER_SOURCE
+        Property.SYMBOL_Z_ORDER_AUTO -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.SYMBOL_Z_ORDER_AUTO).toArray()))
+                    .build()
+        }
+        Property.SYMBOL_Z_ORDER_VIEWPORT_Y -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.SYMBOL_Z_ORDER_VIEWPORT_Y).toArray()))
+                    .build()
+        }
+        Property.SYMBOL_Z_ORDER_SOURCE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.SYMBOL_Z_ORDER_SOURCE).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.iconRotationAlignment(): Layers.Layer.Symbol.Alignment {
+fun PropertyValue<String>.iconRotationAlignment(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.ICON_ROTATION_ALIGNMENT_MAP -> Layers.Layer.Symbol.Alignment.ALIGNMENT_MAP
-        Property.ICON_ROTATION_ALIGNMENT_VIEWPORT -> Layers.Layer.Symbol.Alignment.ALIGNMENT_VIEWPORT
-        Property.ICON_ROTATION_ALIGNMENT_AUTO -> Layers.Layer.Symbol.Alignment.ALIGNMENT_AUTO
+        Property.ICON_ROTATION_ALIGNMENT_MAP -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ROTATION_ALIGNMENT_MAP).toArray()))
+                    .build()
+        }
+        Property.ICON_ROTATION_ALIGNMENT_VIEWPORT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ROTATION_ALIGNMENT_VIEWPORT).toArray()))
+                    .build()
+        }
+        Property.ICON_ROTATION_ALIGNMENT_AUTO -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ROTATION_ALIGNMENT_AUTO).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.iconPitchAlignment(): Layers.Layer.Symbol.Alignment {
+fun PropertyValue<String>.iconPitchAlignment(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.ICON_PITCH_ALIGNMENT_MAP -> Layers.Layer.Symbol.Alignment.ALIGNMENT_MAP
-        Property.ICON_PITCH_ALIGNMENT_VIEWPORT -> Layers.Layer.Symbol.Alignment.ALIGNMENT_VIEWPORT
-        Property.ICON_PITCH_ALIGNMENT_AUTO -> Layers.Layer.Symbol.Alignment.ALIGNMENT_AUTO
+        Property.ICON_PITCH_ALIGNMENT_MAP -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_PITCH_ALIGNMENT_MAP).toArray()))
+                    .build()
+        }
+        Property.ICON_PITCH_ALIGNMENT_VIEWPORT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_PITCH_ALIGNMENT_VIEWPORT).toArray()))
+                    .build()
+        }
+        Property.ICON_PITCH_ALIGNMENT_AUTO -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_PITCH_ALIGNMENT_AUTO).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.textPitchAlignment(): Layers.Layer.Symbol.Alignment {
+fun PropertyValue<String>.textPitchAlignment(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.TEXT_PITCH_ALIGNMENT_MAP -> Layers.Layer.Symbol.Alignment.ALIGNMENT_MAP
-        Property.TEXT_PITCH_ALIGNMENT_VIEWPORT -> Layers.Layer.Symbol.Alignment.ALIGNMENT_VIEWPORT
-        Property.TEXT_PITCH_ALIGNMENT_AUTO -> Layers.Layer.Symbol.Alignment.ALIGNMENT_AUTO
+        Property.TEXT_PITCH_ALIGNMENT_MAP -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_PITCH_ALIGNMENT_MAP).toArray()))
+                    .build()
+        }
+        Property.TEXT_PITCH_ALIGNMENT_VIEWPORT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_PITCH_ALIGNMENT_VIEWPORT).toArray()))
+                    .build()
+        }
+        Property.TEXT_PITCH_ALIGNMENT_AUTO -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_PITCH_ALIGNMENT_AUTO).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.textRotationAlignment(): Layers.Layer.Symbol.Alignment {
+fun PropertyValue<String>.textRotationAlignment(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.TEXT_ROTATION_ALIGNMENT_MAP -> Layers.Layer.Symbol.Alignment.ALIGNMENT_MAP
-        Property.TEXT_ROTATION_ALIGNMENT_VIEWPORT -> Layers.Layer.Symbol.Alignment.ALIGNMENT_VIEWPORT
-        Property.TEXT_ROTATION_ALIGNMENT_AUTO -> Layers.Layer.Symbol.Alignment.ALIGNMENT_AUTO
+        Property.TEXT_ROTATION_ALIGNMENT_MAP -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_ROTATION_ALIGNMENT_MAP).toArray()))
+                    .build()
+        }
+        Property.TEXT_ROTATION_ALIGNMENT_VIEWPORT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_ROTATION_ALIGNMENT_VIEWPORT).toArray()))
+                    .build()
+        }
+        Property.TEXT_ROTATION_ALIGNMENT_AUTO -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_ROTATION_ALIGNMENT_AUTO).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.iconTextFit(): Layers.Layer.Symbol.TextFit {
+fun PropertyValue<String>.iconTextFit(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.ICON_TEXT_FIT_NONE -> Layers.Layer.Symbol.TextFit.TEXT_FIT_NONE
-        Property.ICON_TEXT_FIT_WIDTH -> Layers.Layer.Symbol.TextFit.TEXT_FIT_WIDTH
-        Property.ICON_TEXT_FIT_HEIGHT -> Layers.Layer.Symbol.TextFit.TEXT_FIT_HEIGHT
-        Property.ICON_TEXT_FIT_BOTH -> Layers.Layer.Symbol.TextFit.TEXT_FIT_BOTH
+        Property.ICON_TEXT_FIT_NONE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_TEXT_FIT_NONE).toArray()))
+                    .build()
+        }
+        Property.ICON_TEXT_FIT_WIDTH -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_TEXT_FIT_WIDTH).toArray()))
+                    .build()
+        }
+        Property.ICON_TEXT_FIT_HEIGHT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_TEXT_FIT_HEIGHT).toArray()))
+                    .build()
+        }
+        Property.ICON_TEXT_FIT_BOTH -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_TEXT_FIT_BOTH).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.iconAnchor(): MapboxUtil.PositionAnchor {
+fun PropertyValue<String>.iconAnchor(): StringValue {
+    if (isExpression) return toStringProto()
+
     return when (value) {
-        Property.ICON_ANCHOR_CENTER -> MapboxUtil.PositionAnchor.POSITION_CENTER
-        Property.ICON_ANCHOR_LEFT -> MapboxUtil.PositionAnchor.POSITION_LEFT
-        Property.ICON_ANCHOR_RIGHT -> MapboxUtil.PositionAnchor.POSITION_RIGHT
-        Property.ICON_ANCHOR_TOP -> MapboxUtil.PositionAnchor.POSITION_TOP
-        Property.ICON_ANCHOR_BOTTOM -> MapboxUtil.PositionAnchor.POSITION_BOTTOM
-        Property.ICON_ANCHOR_TOP_LEFT -> MapboxUtil.PositionAnchor.POSITION_TOP_LEFT
-        Property.ICON_ANCHOR_TOP_RIGHT -> MapboxUtil.PositionAnchor.POSITION_TOP_RIGHT
-        Property.ICON_ANCHOR_BOTTOM_LEFT -> MapboxUtil.PositionAnchor.POSITION_BOTTOM_LEFT
-        Property.ICON_ANCHOR_BOTTOM_RIGHT -> MapboxUtil.PositionAnchor.POSITION_BOTTOM_RIGHT
+        Property.ICON_ANCHOR_CENTER -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_CENTER).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_LEFT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_LEFT).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_RIGHT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_RIGHT).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_TOP -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_TOP).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_BOTTOM -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_BOTTOM).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_TOP_LEFT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_TOP_LEFT).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_TOP_RIGHT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_TOP_RIGHT).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_BOTTOM_LEFT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_BOTTOM_LEFT).toArray()))
+                    .build()
+        }
+        Property.ICON_ANCHOR_BOTTOM_RIGHT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.ICON_ANCHOR_BOTTOM_RIGHT).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun String.iconAnchor(): MapboxUtil.PositionAnchor {
-    return when (this) {
-        Property.ICON_ANCHOR_CENTER -> MapboxUtil.PositionAnchor.POSITION_CENTER
-        Property.ICON_ANCHOR_LEFT -> MapboxUtil.PositionAnchor.POSITION_LEFT
-        Property.ICON_ANCHOR_RIGHT -> MapboxUtil.PositionAnchor.POSITION_RIGHT
-        Property.ICON_ANCHOR_TOP -> MapboxUtil.PositionAnchor.POSITION_TOP
-        Property.ICON_ANCHOR_BOTTOM -> MapboxUtil.PositionAnchor.POSITION_BOTTOM
-        Property.ICON_ANCHOR_TOP_LEFT -> MapboxUtil.PositionAnchor.POSITION_TOP_LEFT
-        Property.ICON_ANCHOR_TOP_RIGHT -> MapboxUtil.PositionAnchor.POSITION_TOP_RIGHT
-        Property.ICON_ANCHOR_BOTTOM_LEFT -> MapboxUtil.PositionAnchor.POSITION_BOTTOM_LEFT
-        Property.ICON_ANCHOR_BOTTOM_RIGHT -> MapboxUtil.PositionAnchor.POSITION_BOTTOM_RIGHT
-        else -> throw IllegalArgumentException("Unknown value $this")
-    }
-}
+fun PropertyValue<String>.textJustify(): StringValue {
+    if (isExpression) return toStringProto()
 
-fun PropertyValue<String>.textJustify(): Layers.Layer.Symbol.TextJustify {
     return when (value) {
-        Property.TEXT_JUSTIFY_AUTO -> Layers.Layer.Symbol.TextJustify.JUSTIFY_AUTO
-        Property.TEXT_JUSTIFY_LEFT -> Layers.Layer.Symbol.TextJustify.JUSTIFY_LEFT
-        Property.TEXT_JUSTIFY_CENTER -> Layers.Layer.Symbol.TextJustify.JUSTIFY_CENTER
-        Property.TEXT_JUSTIFY_RIGHT -> Layers.Layer.Symbol.TextJustify.JUSTIFY_RIGHT
+        Property.TEXT_JUSTIFY_AUTO -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_JUSTIFY_AUTO).toArray()))
+                    .build()
+        }
+        Property.TEXT_JUSTIFY_LEFT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_JUSTIFY_LEFT).toArray()))
+                    .build()
+        }
+        Property.TEXT_JUSTIFY_CENTER -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_JUSTIFY_CENTER).toArray()))
+                    .build()
+        }
+        Property.TEXT_JUSTIFY_RIGHT -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_JUSTIFY_RIGHT).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
 
-fun PropertyValue<String>.textTransform(): Layers.Layer.Symbol.TextTransform {
-    return when (value) {
-        Property.TEXT_TRANSFORM_NONE -> Layers.Layer.Symbol.TextTransform.TRANSFORM_NONE
-        Property.TEXT_TRANSFORM_UPPERCASE -> Layers.Layer.Symbol.TextTransform.TRANSFORM_UPPERCASE
-        Property.TEXT_TRANSFORM_LOWERCASE -> Layers.Layer.Symbol.TextTransform.TRANSFORM_LOWERCASE
-        else -> throw IllegalArgumentException("Unknown value $value")
-    }
-}
+fun PropertyValue<String>.textTransform(): StringValue {
+    if (isExpression) return toStringProto()
 
-fun PropertyValue<String>.textAnchor(): MapboxUtil.PositionAnchor {
     return when (value) {
-        Property.TEXT_ANCHOR_CENTER -> MapboxUtil.PositionAnchor.POSITION_CENTER
-        Property.TEXT_ANCHOR_LEFT -> MapboxUtil.PositionAnchor.POSITION_LEFT
-        Property.TEXT_ANCHOR_RIGHT -> MapboxUtil.PositionAnchor.POSITION_RIGHT
-        Property.TEXT_ANCHOR_TOP -> MapboxUtil.PositionAnchor.POSITION_TOP
-        Property.TEXT_ANCHOR_BOTTOM -> MapboxUtil.PositionAnchor.POSITION_BOTTOM
-        Property.TEXT_ANCHOR_TOP_LEFT -> MapboxUtil.PositionAnchor.POSITION_TOP_LEFT
-        Property.TEXT_ANCHOR_TOP_RIGHT -> MapboxUtil.PositionAnchor.POSITION_TOP_RIGHT
-        Property.TEXT_ANCHOR_BOTTOM_LEFT -> MapboxUtil.PositionAnchor.POSITION_BOTTOM_LEFT
-        Property.TEXT_ANCHOR_BOTTOM_RIGHT -> MapboxUtil.PositionAnchor.POSITION_BOTTOM_RIGHT
+        Property.TEXT_TRANSFORM_NONE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_TRANSFORM_NONE).toArray()))
+                    .build()
+        }
+        Property.TEXT_TRANSFORM_UPPERCASE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_TRANSFORM_UPPERCASE).toArray()))
+                    .build()
+        }
+        Property.TEXT_TRANSFORM_LOWERCASE -> {
+            StringValue.newBuilder()
+                    .setValue(gson.toJson(literal(Property.TEXT_TRANSFORM_LOWERCASE).toArray()))
+                    .build()
+        }
         else -> throw IllegalArgumentException("Unknown value $value")
     }
 }
@@ -203,16 +402,16 @@ fun Int.position(): MapboxUtil.OrnamentPosition {
     }
 }
 
-fun Int.cameraMoveReason(): Map.Map_.CameraPosition.MoveReason {
+fun Int.cameraMoveReason(): Mapbox.Map.CameraPosition.MoveReason {
     return when (this) {
-        MapboxMap.OnCameraMoveStartedListener.REASON_API_GESTURE -> Map.Map_.CameraPosition.MoveReason.API_GESTURE
-        MapboxMap.OnCameraMoveStartedListener.REASON_DEVELOPER_ANIMATION -> Map.Map_.CameraPosition.MoveReason.DEVELOPER_ANIMATION
-        else -> Map.Map_.CameraPosition.MoveReason.API_ANIMATION
+        MapboxMap.OnCameraMoveStartedListener.REASON_API_GESTURE -> Mapbox.Map.CameraPosition.MoveReason.API_GESTURE
+        MapboxMap.OnCameraMoveStartedListener.REASON_DEVELOPER_ANIMATION -> Mapbox.Map.CameraPosition.MoveReason.DEVELOPER_ANIMATION
+        else -> Mapbox.Map.CameraPosition.MoveReason.API_ANIMATION
     }
 }
 
-fun CameraPosition.toProto(): Map.Map_.CameraPosition {
-    val builder = Map.Map_.CameraPosition.newBuilder()
+fun CameraPosition.toProto(): Mapbox.Map.CameraPosition {
+    val builder = Mapbox.Map.CameraPosition.newBuilder()
     builder.target = target.toProto()
     builder.zoom = zoom
     builder.tilt = tilt
@@ -236,29 +435,23 @@ fun TransitionOptions.toProto(): MapboxUtil.TransitionOptions {
     return builder.build()
 }
 
-private fun FormattedSection.toProto(): MapboxUtil.FormattedSection {
-    val builder = MapboxUtil.FormattedSection.newBuilder()
-    builder.text = text
-    fontScale?.let { builder.fontScale = DoubleValue.of(it.toDouble()) }
-    fontStack?.let { builder.fontStackList.addAll(it) }
-    builder.textColor = ColorUtils.rgbaToColor(textColor).color()
-    return builder.build()
-}
-
 fun BackgroundLayer.toProto(): Layers.Layer.Background {
     val builder = Layers.Layer.Background.newBuilder()
     builder.id = id
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (backgroundOpacity.isValue) builder.opacity = backgroundOpacity.value
-    if (backgroundColor.isValue) builder.color = backgroundColorAsInt.color()
-    if (backgroundPattern.value != null) builder.pattern = backgroundPattern.value
+
+    if (!backgroundOpacity.isNull) builder.opacity = backgroundOpacity.toStringProto<Float>()
+    if (!backgroundColor.isNull) builder.color = backgroundColor.toStringProto<String>()
+    if (!backgroundPattern.isNull) builder.pattern = backgroundPattern.toStringProto<String>()
+
     builder.colorTransition = backgroundColorTransition.toProto()
     builder.patternTransition = backgroundPatternTransition.toProto()
     builder.opacityTransition = backgroundOpacityTransition.toProto()
     return builder.build()
 }
+
 
 fun CircleLayer.toProto(): Layers.Layer.Circle {
     val builder = Layers.Layer.Circle.newBuilder()
@@ -266,17 +459,19 @@ fun CircleLayer.toProto(): Layers.Layer.Circle {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (circleRadius.value != null) builder.radius = circleRadius.value
-    if (circleOpacity.isValue) builder.opacity = circleOpacity.value
-    if (circleColor.isValue) builder.color = circleColorAsInt.color()
-    if (circleBlur.value != null) builder.blur = circleBlur.value
-    if (circleTranslate.value != null) builder.addAllTranslate(circleTranslate.value.toList())
-    if (circleTranslateAnchor.value != null) builder.translateAnchor = circleTranslateAnchor.anchor()
-    if (circlePitchScale.value != null) builder.pitchScale = circlePitchScale.anchor()
-    if (circlePitchAlignment.value != null) builder.pitchAlignment = circlePitchAlignment.anchor()
-    if (circleStrokeWidth.value != null) builder.strokeWidth = circleStrokeWidth.value
-    if (circleStrokeOpacity.isValue) builder.strokeOpacity = circleStrokeOpacity.value
-    if (circleStrokeColor.isValue) builder.strokeColor = circleStrokeColorAsInt.color()
+
+    if (!circleRadius.isNull) builder.radius = circleRadius.toStringProto<Float>()
+    if (!circleOpacity.isNull) builder.opacity = circleOpacity.toStringProto<Float>()
+    if (!circleColor.isNull) builder.color = circleColor.toStringProto<String>()
+    if (!circleBlur.isNull) builder.blur = circleBlur.toStringProto<Float>()
+    if (!circleTranslate.isNull) builder.translate = circleTranslate.toStringProto<Array<Float>>()
+    if (!circleTranslateAnchor.isNull) builder.translateAnchor = circleTranslateAnchor.anchor()
+    if (!circlePitchScale.isNull) builder.pitchScale = circlePitchScale.anchor()
+    if (!circlePitchAlignment.isNull) builder.pitchAlignment = circlePitchAlignment.anchor()
+    if (!circleStrokeWidth.isNull) builder.strokeWidth = circleStrokeWidth.toStringProto<Float>()
+    if (!circleStrokeOpacity.isNull) builder.strokeOpacity = circleStrokeOpacity.toStringProto<Float>()
+    if (!circleStrokeColor.isNull) builder.strokeColor = circleStrokeColor.toStringProto<String>()
+
     builder.radiusTransition = circleRadiusTransition.toProto()
     builder.colorTransition = circleColorTransition.toProto()
     builder.blurTransition = circleBlurTransition.toProto()
@@ -288,19 +483,22 @@ fun CircleLayer.toProto(): Layers.Layer.Circle {
     return builder.build()
 }
 
+
 fun FillLayer.toProto(): Layers.Layer.Fill {
     val builder = Layers.Layer.Fill.newBuilder()
     builder.id = id
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (fillAntialias.value != null) builder.antialias = fillAntialias.value
-    if (fillOpacity.isValue) builder.opacity = fillOpacity.value
-    if (fillColor.value != null && fillColor.isValue) builder.color = fillColorAsInt.color()
-    if (fillOutlineColor.isValue) builder.outlineColor = fillOutlineColorAsInt.color()
-    if (fillTranslate.value != null && fillTranslate.isValue) builder.addAllTranslate(fillTranslate.value.toList())
-    if (fillTranslateAnchor.value != null) builder.translateAnchor = fillTranslateAnchor.anchor()
-    if (fillPattern.value != null) builder.pattern = fillPattern.value
+
+    if (!fillAntialias.isNull) builder.antialias = fillAntialias.toStringProto<Boolean>()
+    if (!fillOpacity.isNull) builder.opacity = fillOpacity.toStringProto<Float>()
+    if (!fillColor.isNull) builder.color = fillColor.toStringProto<String>()
+    if (!fillOutlineColor.isNull) builder.outlineColor = fillOutlineColor.toStringProto<String>()
+    if (!fillTranslate.isNull && fillTranslate.isValue) builder.translate = fillTranslate.toStringProto<Array<Float>>()
+    if (!fillTranslateAnchor.isNull) builder.translateAnchor = fillTranslateAnchor.anchor()
+    if (!fillPattern.isNull) builder.pattern = fillPattern.toStringProto<String>()
+
     builder.opacityTransition = fillOpacityTransition.toProto()
     builder.colorTransition = fillColorTransition.toProto()
     builder.outlineColorTransition = fillOutlineColorTransition.toProto()
@@ -315,14 +513,16 @@ fun FillExtrusionLayer.toProto(): Layers.Layer.FillExtrusion {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (fillExtrusionOpacity.isValue) builder.opacity = fillExtrusionOpacity.value
-    if (fillExtrusionColor.isValue) builder.color = fillExtrusionColorAsInt.color()
-    if (fillExtrusionTranslate.value != null) builder.addAllTranslate(fillExtrusionTranslate.value.toList())
-    if (fillExtrusionTranslateAnchor.value != null) builder.translateAnchor = fillExtrusionTranslateAnchor.anchor()
-    if (fillExtrusionPattern.value != null) builder.pattern = fillExtrusionPattern.value
-    if (fillExtrusionHeight.value != null) builder.height = fillExtrusionHeight.value
-    if (fillExtrusionBase.value != null) builder.base = fillExtrusionBase.value
-    if (fillExtrusionVerticalGradient.value != null) builder.verticalGradient = fillExtrusionVerticalGradient.value
+
+    if (!fillExtrusionOpacity.isNull) builder.opacity = fillExtrusionOpacity.toStringProto<Float>()
+    if (!fillExtrusionColor.isNull) builder.color = fillExtrusionColor.toStringProto<String>()
+    if (!fillExtrusionTranslate.isNull) builder.translate = fillExtrusionTranslate.toStringProto<Array<Float>>()
+    if (!fillExtrusionTranslateAnchor.isNull) builder.translateAnchor = fillExtrusionTranslateAnchor.anchor()
+    if (!fillExtrusionPattern.isNull) builder.pattern = fillExtrusionPattern.toStringProto<String>()
+    if (!fillExtrusionHeight.isNull) builder.height = fillExtrusionHeight.toStringProto<Float>()
+    if (!fillExtrusionBase.isNull) builder.base = fillExtrusionBase.toStringProto<Float>()
+    if (!fillExtrusionVerticalGradient.isNull) builder.verticalGradient = fillExtrusionVerticalGradient.toStringProto<Boolean>()
+
     builder.opacityTransition = fillExtrusionOpacityTransition.toProto()
     builder.colorTransition = fillExtrusionColorTransition.toProto()
     builder.translateTransition = fillExtrusionTranslateTransition.toProto()
@@ -338,21 +538,23 @@ fun LineLayer.toProto(): Layers.Layer.Line {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (lineCap.value != null && lineCap.isValue) builder.cap = lineCap.lineCap()
-    if (lineJoin.value != null) builder.join = lineJoin.lineJoin()
-    if (lineMiterLimit.value != null) builder.miterLimit = lineMiterLimit.value
-    if (lineRoundLimit.value != null) builder.roundLimit = lineRoundLimit.value
-    if (lineOpacity.isValue) builder.opacity = lineOpacity.value
-    if (lineColor.isValue) builder.color = lineColorAsInt.color()
-    if (lineTranslate.value != null) builder.addAllTranslate(lineTranslate.value.toList())
-    if (lineTranslateAnchor.value != null) builder.translateAnchor = lineTranslateAnchor.anchor()
-    if (lineWidth.value != null) builder.width = lineWidth.value
-    if (lineGapWidth.value != null) builder.gapWidth = lineGapWidth.value
-    if (lineOffset.value != null) builder.offset = lineOffset.value
-    if (lineBlur.value != null) builder.blur = lineBlur.value
-    if (lineDasharray.value != null) builder.addAllDasharray(lineDasharray.value.toList())
-    if (linePattern.value != null) builder.pattern = linePattern.value
-    if (lineGradient.value != null && lineGradient.isValue) builder.gradient = lineGradientAsInt
+
+    if (!lineCap.isNull && lineCap.isValue) builder.cap = lineCap.lineCap()
+    if (!lineJoin.isNull) builder.join = lineJoin.lineJoin()
+    if (!lineMiterLimit.isNull) builder.miterLimit = lineMiterLimit.toStringProto<Float>()
+    if (!lineRoundLimit.isNull) builder.roundLimit = lineRoundLimit.toStringProto<Float>()
+    if (!lineOpacity.isNull) builder.opacity = lineOpacity.toStringProto<Float>()
+    if (!lineColor.isNull) builder.color = lineColor.toStringProto<String>()
+    if (!lineTranslate.isNull) builder.translate = lineTranslate.toStringProto<Array<Float>>()
+    if (!lineTranslateAnchor.isNull) builder.translateAnchor = lineTranslateAnchor.anchor()
+    if (!lineWidth.isNull) builder.width = lineWidth.toStringProto<Float>()
+    if (!lineGapWidth.isNull) builder.gapWidth = lineGapWidth.toStringProto<Float>()
+    if (!lineOffset.isNull) builder.offset = lineOffset.toStringProto<Float>()
+    if (!lineBlur.isNull) builder.blur = lineBlur.toStringProto<Float>()
+    if (!lineDasharray.isNull) builder.dasharray = lineDasharray.toStringProto<Array<Float>>()
+    if (!linePattern.isNull) builder.pattern = linePattern.toStringProto<String>()
+    if (!lineGradient.isNull && lineGradient.isValue) builder.gradient = lineGradient.toStringProto<String>()
+
     builder.opacityTransition = lineOpacityTransition.toProto()
     builder.colorTransition = lineColorTransition.toProto()
     builder.translateTransition = lineTranslateTransition.toProto()
@@ -371,59 +573,61 @@ fun SymbolLayer.toProto(): Layers.Layer.Symbol {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (symbolPlacement.value != null) builder.symbolPlacement = symbolPlacement.symbolPlacement()
-    if (symbolSpacing.value != null) builder.symbolSpacing = symbolSpacing.value
-    if (symbolAvoidEdges.value != null) builder.symbolAvoidEdges = symbolAvoidEdges.value
-    if (symbolZOrder.value != null) builder.symbolZOrder = symbolZOrder.symbolZOrder()
-    if (iconAllowOverlap.value != null) builder.iconAllowOverlap = iconAllowOverlap.value
-    if (iconIgnorePlacement.value != null) builder.iconIgnorePlacement = iconIgnorePlacement.value
-    if (iconOptional.value != null) builder.iconOptional = iconOptional.value
-    if (iconRotationAlignment.value != null) builder.iconRotationAlignment = iconRotationAlignment.iconRotationAlignment()
-    if (iconSize.value != null) builder.iconSize = iconSize.value
-    if (iconTextFit.value != null) builder.iconTextFit = iconTextFit.iconTextFit()
-    if (iconTextFitPadding.value != null) builder.addAllIconTextFitPadding(iconTextFitPadding.value.toList())
-    if (iconImage.value != null) builder.iconImage = iconImage.value
-    if (iconRotate.value != null) builder.iconRotate = iconRotate.value
-    if (iconPadding.value != null) builder.iconPadding = iconPadding.value
-    if (iconKeepUpright.value != null) builder.iconKeepUpright = iconKeepUpright.value
-    if (iconOffset.value != null) builder.addAllIconOffset(iconOffset.value.toList())
-    if (iconAnchor.value != null) builder.iconAnchor = iconAnchor.iconAnchor()
-    if (iconPitchAlignment.value != null) builder.iconPitchAlignment = iconPitchAlignment.iconPitchAlignment()
-    if (textPitchAlignment.value != null) builder.textPitchAlignment = textPitchAlignment.textPitchAlignment()
-    if (textRotationAlignment.value != null) builder.textRotationAlignment = textRotationAlignment.textRotationAlignment()
-    if (textField.value != null) builder.addAllTextField(textField.value.formattedSections.map { it.toProto() })
-    if (textFont.value != null) builder.addAllTextFont(textFont.value.toList())
-    if (textSize.value != null) builder.textSize = textSize.value
-    if (textMaxWidth.value != null) builder.textMaxWidth = textMaxWidth.value
-    if (textLineHeight.value != null) builder.textLineHeight = textLineHeight.value
-    if (textLetterSpacing.value != null) builder.textLetterSpacing = textLetterSpacing.value
-    if (textJustify.value != null) builder.textJustify = textJustify.textJustify()
-    if (textRadialOffset.value != null) builder.textRadialOffset = textRadialOffset.value
-    if (textVariableAnchor.value != null) builder.addAllTextVariableAnchor(textVariableAnchor.value.map { it.iconAnchor() })
-    if (textAnchor.value != null) builder.textAnchor = textAnchor.iconAnchor()
-    if (textMaxAngle.value != null) builder.textMaxAngle = textMaxAngle.value
-    if (textRotate.value != null) builder.textRotate = textRotate.value
-    if (textPadding.value != null) builder.textPadding = textPadding.value
-    if (textKeepUpright.value != null) builder.textKeepUpright = textKeepUpright.value
-    if (textTransform.value != null) builder.textTransform = textTransform.textTransform()
-    if (textOffset.value != null) builder.addAllTextOffset(textOffset.value.toList())
-    if (textAllowOverlap.value != null) builder.textAllowOverlap = textAllowOverlap.value
-    if (textIgnorePlacement.value != null) builder.textIgnorePlacement = textIgnorePlacement.value
-    if (textOptional.value != null) builder.textOptional = textOptional.value
-    if (iconOpacity.value != null && iconOpacity.isValue) builder.iconOpacity = iconOpacity.value
-    if (iconColor.value != null && iconColor.isValue) builder.iconColor = iconColorAsInt.color()
-    if (iconHaloColor.value != null) builder.iconHaloColor = iconHaloColorAsInt.color()
-    if (iconHaloWidth.value != null) builder.iconHaloWidth = iconHaloWidth.value
-    if (iconHaloBlur.value != null) builder.iconHaloBlur = iconHaloBlur.value
-    if (iconTranslate.value != null) builder.addAllIconTranslate(iconTranslate.value.toList())
-    if (iconTranslateAnchor.value != null) builder.iconTranslateAnchor = iconTranslateAnchor.anchor()
-    if (textOpacity.value != null && textOpacity.isValue) builder.textOpacity = textOpacity.value
-    if (textColor.value != null) if (textColor.isValue) builder.textColor = textColorAsInt.color()
-    if (textHaloColor.value != null) builder.textHaloColor = textHaloColorAsInt.color()
-    if (textHaloWidth.value != null) builder.textHaloWidth = textHaloWidth.value
-    if (textHaloBlur.value != null) builder.textHaloBlur = textHaloBlur.value
-    if (textTranslate.value != null) builder.addAllTextTranslate(textTranslate.value.toList())
-    if (textTranslateAnchor.value != null) builder.textTranslateAnchor = textTranslateAnchor.anchor()
+
+    if (!symbolPlacement.isNull) builder.symbolPlacement = symbolPlacement.symbolPlacement()
+    if (!symbolSpacing.isNull) builder.symbolSpacing = symbolSpacing.toStringProto<Float>()
+    if (!symbolAvoidEdges.isNull) builder.symbolAvoidEdges = symbolAvoidEdges.toStringProto<Boolean>()
+    if (!symbolZOrder.isNull) builder.symbolZOrder = symbolZOrder.symbolZOrder()
+    if (!iconAllowOverlap.isNull) builder.iconAllowOverlap = iconAllowOverlap.toStringProto<Boolean>()
+    if (!iconIgnorePlacement.isNull) builder.iconIgnorePlacement = iconIgnorePlacement.toStringProto<Boolean>()
+    if (!iconOptional.isNull) builder.iconOptional = iconOptional.toStringProto<Boolean>()
+    if (!iconRotationAlignment.isNull) builder.iconRotationAlignment = iconRotationAlignment.iconRotationAlignment()
+    if (!iconSize.isNull) builder.iconSize = iconSize.toStringProto<Float>()
+    if (!iconTextFit.isNull) builder.iconTextFit = iconTextFit.iconTextFit()
+    if (!iconTextFitPadding.isNull) builder.iconTextFitPadding = iconTextFitPadding.toStringProto<Array<Float>>()
+    if (!iconImage.isNull) builder.iconImage = iconImage.toStringProto<String>()
+    if (!iconRotate.isNull) builder.iconRotate = iconRotate.toStringProto<Float>()
+    if (!iconPadding.isNull) builder.iconPadding = iconPadding.toStringProto<Float>()
+    if (!iconKeepUpright.isNull) builder.iconKeepUpright = iconKeepUpright.toStringProto<Boolean>()
+    if (!iconOffset.isNull) builder.iconOffset = iconOffset.toStringProto<Array<Float>>()
+    if (!iconAnchor.isNull) builder.iconAnchor = iconAnchor.iconAnchor()
+    if (!iconPitchAlignment.isNull) builder.iconPitchAlignment = iconPitchAlignment.iconPitchAlignment()
+    if (!textPitchAlignment.isNull) builder.textPitchAlignment = textPitchAlignment.textPitchAlignment()
+    if (!textRotationAlignment.isNull) builder.textRotationAlignment = textRotationAlignment.textRotationAlignment()
+    if (!textField.isNull) builder.textField = textField.toStringProto<Formatted>()
+    if (!textFont.isNull) builder.textFont = textFont.toStringProto<Array<String>>()
+    if (!textSize.isNull) builder.textSize = textSize.toStringProto<Float>()
+    if (!textMaxWidth.isNull) builder.textMaxWidth = textMaxWidth.toStringProto<Float>()
+    if (!textLineHeight.isNull) builder.textLineHeight = textLineHeight.toStringProto<Float>()
+    if (!textLetterSpacing.isNull) builder.textLetterSpacing = textLetterSpacing.toStringProto<Float>()
+    if (!textJustify.isNull) builder.textJustify = textJustify.textJustify()
+    if (!textRadialOffset.isNull) builder.textRadialOffset = textRadialOffset.toStringProto<Float>()
+    if (!textVariableAnchor.isNull) builder.textVariableAnchor = textVariableAnchor.toStringProto<Array<String>>()
+    if (!textAnchor.isNull) builder.textAnchor = textAnchor.iconAnchor()
+    if (!textMaxAngle.isNull) builder.textMaxAngle = textMaxAngle.toStringProto<Float>()
+    if (!textRotate.isNull) builder.textRotate = textRotate.toStringProto<Float>()
+    if (!textPadding.isNull) builder.textPadding = textPadding.toStringProto<Float>()
+    if (!textKeepUpright.isNull) builder.textKeepUpright = textKeepUpright.toStringProto<Boolean>()
+    if (!textTransform.isNull) builder.textTransform = textTransform.textTransform()
+    if (!textOffset.isNull) builder.textOffset = textOffset.toStringProto<Array<Float>>()
+    if (!textAllowOverlap.isNull) builder.textAllowOverlap = textAllowOverlap.toStringProto<Boolean>()
+    if (!textIgnorePlacement.isNull) builder.textIgnorePlacement = textIgnorePlacement.toStringProto<Boolean>()
+    if (!textOptional.isNull) builder.textOptional = textOptional.toStringProto<Boolean>()
+    if (!iconOpacity.isNull && iconOpacity.isValue) builder.iconOpacity = iconOpacity.toStringProto<Float>()
+    if (!iconColor.isNull && iconColor.isValue) builder.iconColor = iconColor.toStringProto<String>()
+    if (!iconHaloColor.isNull) builder.iconHaloColor = iconHaloColor.toStringProto<String>()
+    if (!iconHaloWidth.isNull) builder.iconHaloWidth = iconHaloWidth.toStringProto<Float>()
+    if (!iconHaloBlur.isNull) builder.iconHaloBlur = iconHaloBlur.toStringProto<Float>()
+    if (!iconTranslate.isNull) builder.iconTranslate = iconTranslate.toStringProto<Array<Float>>()
+    if (!iconTranslateAnchor.isNull) builder.iconTranslateAnchor = iconTranslateAnchor.anchor()
+    if (!textOpacity.isNull && textOpacity.isValue) builder.textOpacity = textOpacity.toStringProto<Float>()
+    if (!textColor.isNull) if (textColor.isValue) builder.textColor = textColor.toStringProto<String>()
+    if (!textHaloColor.isNull) builder.textHaloColor = textHaloColor.toStringProto<String>()
+    if (!textHaloWidth.isNull) builder.textHaloWidth = textHaloWidth.toStringProto<Float>()
+    if (!textHaloBlur.isNull) builder.textHaloBlur = textHaloBlur.toStringProto<Float>()
+    if (!textTranslate.isNull) builder.textTranslate = textTranslate.toStringProto<Array<Float>>()
+    if (!textTranslateAnchor.isNull) builder.textTranslateAnchor = textTranslateAnchor.anchor()
+
     builder.iconOpacityTransition = iconOpacityTransition.toProto()
     builder.iconColorTransition = iconColorTransition.toProto()
     builder.iconHaloColorTransition = iconHaloColorTransition.toProto()
@@ -445,12 +649,14 @@ fun HillshadeLayer.toProto(): Layers.Layer.Hillshade {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (hillshadeIlluminationDirection.value != null) builder.illuminationDirection = hillshadeIlluminationDirection.value
-    if (hillshadeIlluminationAnchor.value != null) builder.illuminationAnchor = hillshadeIlluminationAnchor.anchor()
-    if (hillshadeExaggeration.value != null) builder.exaggeration = hillshadeExaggeration.value
-    if (hillshadeAccentColor.value != null) builder.shadowColor = hillshadeAccentColorAsInt.color()
-    if (hillshadeAccentColor.value != null) builder.highlightColor = hillshadeAccentColorAsInt.color()
-    if (hillshadeAccentColor.value != null) builder.accentColor = hillshadeAccentColorAsInt.color()
+
+    if (!hillshadeIlluminationDirection.isNull) builder.illuminationDirection = hillshadeIlluminationDirection.toStringProto<Float>()
+    if (!hillshadeIlluminationAnchor.isNull) builder.illuminationAnchor = hillshadeIlluminationAnchor.anchor()
+    if (!hillshadeExaggeration.isNull) builder.exaggeration = hillshadeExaggeration.toStringProto<Float>()
+    if (!hillshadeAccentColor.isNull) builder.shadowColor = hillshadeAccentColor.toStringProto<String>()
+    if (!hillshadeAccentColor.isNull) builder.highlightColor = hillshadeAccentColor.toStringProto<String>()
+    if (!hillshadeAccentColor.isNull) builder.accentColor = hillshadeAccentColor.toStringProto<String>()
+
     builder.exaggerationTransition = hillshadeExaggerationTransition.toProto()
     builder.shadowColorTransition = hillshadeShadowColorTransition.toProto()
     builder.highlightColorTransition = hillshadeHighlightColorTransition.toProto()
@@ -464,11 +670,13 @@ fun HeatmapLayer.toProto(): Layers.Layer.Heatmap {
     builder.visible = visibility.value != "none"
     builder.minZoom = minZoom
     builder.maxZoom = maxZoom
-    if (heatmapRadius.value != null) builder.radius = heatmapRadius.value
-    if (heatmapWeight.value != null) builder.weight = heatmapWeight.value
-    if (heatmapIntensity.value != null) builder.intensity = heatmapIntensity.value
-    if (heatmapOpacity.isValue) builder.opacity = heatmapOpacity.value
-    if (heatmapColor.isValue) builder.color = heatmapColorAsInt.color()
+
+    if (!heatmapRadius.isNull) builder.radius = heatmapRadius.toStringProto<Float>()
+    if (!heatmapWeight.isNull) builder.weight = heatmapWeight.toStringProto<Float>()
+    if (!heatmapIntensity.isNull) builder.intensity = heatmapIntensity.toStringProto<Float>()
+    if (!heatmapOpacity.isNull) builder.opacity = heatmapOpacity.toStringProto<Float>()
+    if (!heatmapColor.isNull) builder.color = heatmapColor.toStringProto<String>()
+
     builder.radiusTransition = heatmapRadiusTransition.toProto()
     builder.intensityTransition = heatmapIntensityTransition.toProto()
     builder.opacityTransition = heatmapOpacityTransition.toProto()
@@ -489,14 +697,30 @@ fun Style.toProto(): StyleOuterClass.Style {
 
 fun Light.toProto(): StyleOuterClass.Style.Light {
     val builder = StyleOuterClass.Style.Light.newBuilder()
+
     builder.anchor = anchor.anchor()
-    builder.color = ColorUtils.rgbaToColor(color).color()
-    builder.intensity = intensity
+    try {
+        builder.color = ColorUtils.rgbaToColor(color).color()
+    } catch (e: Error) {
+        e.printStackTrace()
+        builder.color = (0xFF000000).color()
+    }
+
+    try {
+
+        builder.intensity = intensity
+    } catch (e: Error) {
+        e.printStackTrace()
+        builder.intensity = 1.0f
+
+    }
+
     builder.positionTransition = positionTransition.toProto()
     builder.colorTransition = colorTransition.toProto()
     builder.intensityTransition = intensityTransition.toProto()
     return builder.build()
 }
+
 
 fun Source.toProto(): Sources.Source {
     val sourceBuilder = Sources.Source.newBuilder()
@@ -568,4 +792,39 @@ fun Layer.toProto(): Layers.Layer {
         }
     }
     return sourceBuilder.build()
+}
+
+
+fun <T> PropertyValue<T>.toStringProto(): StringValue {
+    val builder = StringValue.newBuilder()
+    if (isExpression) {
+        builder.value = gson.toJson(expression!!.toArray())
+    } else {
+        assert(isValue)
+
+        when {
+            String::class.java.isAssignableFrom(javaClass) -> {
+                builder.value = gson.toJson(literal(value as String))
+            }
+            Number::class.java.isAssignableFrom(javaClass) -> {
+                builder.value = gson.toJson(literal(value as Number))
+            }
+            Boolean::class.java.isAssignableFrom(javaClass) -> {
+                builder.value = gson.toJson(literal(value as Boolean))
+            }
+            Array<Float>::class.java.isAssignableFrom(javaClass) -> {
+                @Suppress("UNCHECKED_CAST")
+                builder.value = gson.toJson(literal(value as Array<Float>))
+            }
+            Array<String>::class.java.isAssignableFrom(javaClass) -> {
+                @Suppress("UNCHECKED_CAST")
+                builder.value = gson.toJson(literal(value as Array<String>))
+            }
+            Formatted::class.java.isAssignableFrom(javaClass) -> {
+                builder.value = gson.toJson((value as Formatted).toArray())
+            }
+        }
+    }
+
+    return builder.build()
 }

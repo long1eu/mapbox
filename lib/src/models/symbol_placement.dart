@@ -1,0 +1,33 @@
+// File created by
+// Lung Razvan <long1eu>
+// on 2019-08-01
+
+import 'package:mapbox_gl/mapbox_gl.dart';
+
+class SymbolPlacement {
+  const SymbolPlacement._(this._i, this._value);
+
+  final int _i;
+  final String _value;
+
+  static const SymbolPlacement point = SymbolPlacement._(0, 'point');
+  static const SymbolPlacement line = SymbolPlacement._(1, 'line');
+  static const SymbolPlacement lineCenter = SymbolPlacement._(2, 'line-center');
+
+  static const List<SymbolPlacement> values = <SymbolPlacement>[
+    point,
+    line,
+    lineCenter,
+  ];
+
+  static const List<String> _names = <String>[
+    'point',
+    'line',
+    'lineCenter',
+  ];
+
+  Expression get expression => literalString(_value);
+
+  @override
+  String toString() => 'SymbolPlacement.${_names[_i]}';
+}

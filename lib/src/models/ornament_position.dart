@@ -1,30 +1,41 @@
 // File created by
 // Lung Razvan <long1eu>
 // on 2019-08-01
-library ornament_position;
 
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
 
-part 'ornament_position.g.dart';
+class OrnamentPosition {
+  const OrnamentPosition._(this._i, this._value);
 
-class OrnamentPosition extends EnumClass {
-  const OrnamentPosition._(String name) : super(name);
+  final int _i;
+  final String _value;
 
-  static const OrnamentPosition topLeft = _$topLeft;
-  static const OrnamentPosition topRight = _$topRight;
-  static const OrnamentPosition bottomLeft = _$bottomLeft;
-  static const OrnamentPosition bottomRight = _$bottomRight;
+  static const OrnamentPosition topLeft = OrnamentPosition._(0, 'topLeft');
+  static const OrnamentPosition topRight = OrnamentPosition._(1, 'topRight');
+  static const OrnamentPosition bottomLeft = OrnamentPosition._(2, 'bottomLeft');
+  static const OrnamentPosition bottomRight = OrnamentPosition._(3, 'bottomRight');
 
-  static BuiltSet<OrnamentPosition> get values => _$values;
+  static const List<OrnamentPosition> values = <OrnamentPosition>[
+    topLeft,
+    topRight,
+    bottomLeft,
+    bottomRight,
+  ];
 
-  pb.OrnamentPosition get proto => pb.OrnamentPosition.valueOf(values.toList().indexOf(this));
+  static const List<String> _names = <String>[
+    'topLeft',
+    'topRight',
+    'bottomLeft',
+    'bottomRight',
+  ];
 
-  static OrnamentPosition valueOf(String name) => _$valueOf(name);
+  Expression get expression => literalString(_value);
 
-  static Serializer<OrnamentPosition> get serializer => _$ornamentPositionSerializer;
+  pb.OrnamentPosition get proto => pb.OrnamentPosition.valueOf(_i);
 
   static OrnamentPosition fromProto(pb.OrnamentPosition proto) => values.elementAt(proto.value);
+
+  @override
+  String toString() => 'OrnamentPosition.${_names[_i]}';
 }

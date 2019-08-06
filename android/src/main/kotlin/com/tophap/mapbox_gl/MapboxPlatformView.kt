@@ -20,15 +20,17 @@ import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.layers.*
-import com.tophap.mapbox_gl.proto.*
-import com.tophap.mapbox_gl.proto.Map
+import com.tophap.mapbox_gl.proto.LayersOperations
+import com.tophap.mapbox_gl.proto.Mapbox.Map.*
+import com.tophap.mapbox_gl.proto.MapboxUtil
+import com.tophap.mapbox_gl.proto.Sources
+import com.tophap.mapbox_gl.proto.StyleOuterClass
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 import java.io.ByteArrayOutputStream
 
-
-class MapboxPlatformView(private val context: Context, private val options: Map.Map_.Options, private val channel: MethodChannel, private val viewId: Int) :
+class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Int) :
         PlatformView,
         Application.ActivityLifecycleCallbacks,
         ComponentCallbacks,
@@ -57,7 +59,6 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
 
         val ai = context.packageManager.getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
         val token = ai.metaData.getString("com.tophap.mapbox_token")
-        println(token)
         Mapbox.getInstance(context, token)
     }
 
@@ -70,10 +71,10 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
         when (options.styleCase!!) {
-            Map.Map_.Options.StyleCase.FROM_MAPBOX -> mapboxMap.setStyle(options.fromMapbox.fieldValue()) { onStyleLoaded(it) }
-            Map.Map_.Options.StyleCase.FROM_URI -> mapboxMap.setStyle(Style.Builder().fromUri(options.fromUri)) { onStyleLoaded(it) }
-            Map.Map_.Options.StyleCase.FROM_JSON -> mapboxMap.setStyle(Style.Builder().fromJson(options.fromJson)) { onStyleLoaded(it) }
-            Map.Map_.Options.StyleCase.STYLE_NOT_SET -> throw IllegalArgumentException("Unknown source ${options.styleCase}")
+            Options.StyleCase.FROM_MAPBOX -> mapboxMap.setStyle(options.fromMapbox.fieldValue()) { onStyleLoaded(it) }
+            Options.StyleCase.FROM_URI -> mapboxMap.setStyle(Style.Builder().fromUri(options.fromUri)) { onStyleLoaded(it) }
+            Options.StyleCase.FROM_JSON -> mapboxMap.setStyle(Style.Builder().fromJson(options.fromJson)) { onStyleLoaded(it) }
+            Options.StyleCase.STYLE_NOT_SET -> throw IllegalArgumentException("Unknown source ${options.styleCase}")
         }
 
 
@@ -92,8 +93,8 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
         this.mapboxMap.addOnMapLongClickListener(this)
     }
 
-    private fun onStyleLoaded(style: Style): Unit {
-        val builder = Map.Map_.Operations.Ready.newBuilder()
+    private fun onStyleLoaded(style: Style) {
+        val builder = Operations.Ready.newBuilder()
         builder.viewId = viewId
         builder.prefetchesTiles = mapboxMap.prefetchesTiles
         builder.minZoom = mapboxMap.minZoomLevel
@@ -142,24 +143,24 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
                 result.success(mapboxMap.cameraPosition.toProto())
             }
             "map#setCameraPosition" -> {
-                val cameraPosition = Map.Map_.CameraPosition.parseFrom(call.arguments as ByteArray).fieldValue()
+                val cameraPosition = CameraPosition.parseFrom(call.arguments as ByteArray).fieldValue()
                 mapboxMap.cameraPosition = cameraPosition
                 result.success(null)
             }
             "map#moveCamera" -> {
-                val update = Map.Map_.Operations.CameraUpdate.parseFrom(call.arguments as ByteArray)
+                val update = Operations.CameraUpdate.parseFrom(call.arguments as ByteArray)
                 mapboxMap.moveCamera(update.fieldValue(), CameraOperationResolver(result))
             }
             "map#easeCamera" -> {
-                val easeCamera = Map.Map_.Operations.EaseCamera.parseFrom(call.arguments as ByteArray)
+                val easeCamera = Operations.EaseCamera.parseFrom(call.arguments as ByteArray)
                 mapboxMap.easeCamera(easeCamera.update.fieldValue(), easeCamera.duration, easeCamera.easingInterpolator, CameraOperationResolver(result))
             }
             "map#animateCamera" -> {
-                val animateCamera = Map.Map_.Operations.AnimateCamera.parseFrom(call.arguments as ByteArray)
+                val animateCamera = Operations.AnimateCamera.parseFrom(call.arguments as ByteArray)
                 mapboxMap.animateCamera(animateCamera.update.fieldValue(), animateCamera.duration, CameraOperationResolver(result))
             }
             "map#scrollBy" -> {
-                val scrollBy = Map.Map_.Operations.ScrollBy.parseFrom(call.arguments as ByteArray)
+                val scrollBy = Operations.ScrollBy.parseFrom(call.arguments as ByteArray)
                 mapboxMap.scrollBy(scrollBy.x, scrollBy.y, scrollBy.duration)
                 result.success(null)
             }
@@ -168,7 +169,7 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
                 result.success(null)
             }
             "map#setFocalBearing" -> {
-                val setFocalBearing = Map.Map_.Operations.SetFocalBearing.parseFrom(call.arguments as ByteArray)
+                val setFocalBearing = Operations.SetFocalBearing.parseFrom(call.arguments as ByteArray)
                 mapboxMap.setFocalBearing(setFocalBearing.bearing, setFocalBearing.focalX, setFocalBearing.focalY, setFocalBearing.duration)
                 result.success(null)
             }
@@ -180,7 +181,7 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
                 result.success(null)
             }
             "map#getCameraForLatLngBounds" -> {
-                val cameraForLatLngBounds = Map.Map_.Operations.GetCameraForLatLngBounds.parseFrom(call.arguments as ByteArray)
+                val cameraForLatLngBounds = Operations.GetCameraForLatLngBounds.parseFrom(call.arguments as ByteArray)
                 val camera = mapboxMap.getCameraForLatLngBounds(cameraForLatLngBounds.bounds.fieldValue(), cameraForLatLngBounds.paddingList.toIntArray(), cameraForLatLngBounds.bearing, cameraForLatLngBounds.tilt)
                 result.success(camera?.toProto()?.toByteArray())
             }
@@ -389,11 +390,11 @@ class MapboxPlatformView(private val context: Context, private val options: Map.
     companion object {
         class CameraOperationResolver(private val result: MethodChannel.Result) : MapboxMap.CancelableCallback {
             override fun onFinish() {
-                result.success(Map.Map_.Operations.CameraUpdate.Result.FINISHED.number)
+                result.success(Operations.CameraUpdate.Result.FINISHED.number)
             }
 
             override fun onCancel() {
-                result.success(Map.Map_.Operations.CameraUpdate.Result.CANCELED.number)
+                result.success(Operations.CameraUpdate.Result.CANCELED.number)
             }
         }
     }

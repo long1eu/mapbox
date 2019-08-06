@@ -4,6 +4,7 @@
 
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 
@@ -30,13 +31,7 @@ class AnimateCameraState extends State<AnimateCamera> {
 
   void _onMapReady(MapController controller) async {
     mapController = controller;
-    try {
-      print('s');
-      print(controller.style);
-      print('sb');
-    } catch (e) {
-      print(e);
-    }
+    debugPrintSynchronously(controller.style.toString());
   }
 
   @override

@@ -4,44 +4,70 @@
 
 part of mapbox_gl;
 
-abstract class _Layer {
-  _Layer._(Style style, LayerModel layer, MethodChannel channel)
-      : _style = style,
-        _layer = layer,
-        _channel = channel;
+abstract class Layer {
+  Layer(this._style, this.id, this.visible, this.minZoom, this.maxZoom);
 
   final Style _style;
-  final LayerModel _layer;
-  final MethodChannel _channel;
+  final String id;
+  final bool visible;
+  final double minZoom;
+  final double maxZoom;
 
-  String get id => _layer.id;
-
-  bool get visible => _layer.visible;
-
-  double get minZoom => _layer.minZoom;
-
-  double get maxZoom => _layer.maxZoom;
-
-  static _fromModel(Style style, LayerModel layer, MethodChannel channel) {}
+  static Layer fromProto(Style style, pb.Layer layer) {
+    switch (layer.whichType()) {
+      case pb.Layer_Type.backgroundLayer:
+        return BackgroundLayer._(style, layer.backgroundLayer);
+      case pb.Layer_Type.circleLayer:
+        return CircleLayer._(style, layer.circleLayer);
+      case pb.Layer_Type.fillLayer:
+        return FillLayer._(style, layer.fillLayer);
+      case pb.Layer_Type.fillExtrusionLayer:
+        return FillExtrusionLayer._(style, layer.fillExtrusionLayer);
+      case pb.Layer_Type.lineLayer:
+        return LineLayer._(style, layer.lineLayer);
+      case pb.Layer_Type.symbolLayer:
+        return SymbolLayer._(style, layer.symbolLayer);
+      case pb.Layer_Type.hillshadeLayer:
+        return HillshadeLayer._(style, layer.hillshadeLayer);
+      case pb.Layer_Type.heatmapLayer:
+        return HeatmapLayer._(style, layer.heatmapLayer);
+      default:
+        throw ArgumentError('Unknown layer type: ${layer.whichType()}');
+    }
+  }
 }
 
-class BackgroundLayer extends _Layer {
-  BackgroundLayer._(Style style, BackgroundLayerModel model, MethodChannel channel) : super._(style, model, channel);
+class BackgroundLayer extends Layer {
+  BackgroundLayer._(Style style, pb.Layer_Background model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  BackgroundLayerModel get _model => _layer;
+  final pb.Layer_Background _model;
 
-  double get opacity => _model.opacity;
+  /*double*/
+  Expression get opacity => _opacity ??= Expression._fromProtoString(_model.opacity);
+  Expression _opacity;
 
-  Color get color => Color(_model.color);
+  /*Color*/
+  Expression get color => _color ??= Expression._fromProtoString(_model.color);
+  Expression _color;
 
-  @nullable
-  String get pattern => _model.pattern;
+  /*String*/
+  Expression get pattern => _pattern ??= Expression._fromProtoString(_model.pattern);
+  Expression _pattern;
 
-  TransitionOptions get colorTransition => _model.colorTransition;
+  TransitionOptions get colorTransition => _colorTransition ??= TransitionOptions.fromProto(_model.colorTransition);
+  TransitionOptions _colorTransition;
 
-  TransitionOptions get patternTransition => _model.patternTransition;
+  TransitionOptions get patternTransition =>
+      _patternTransition ??= TransitionOptions.fromProto(_model.patternTransition);
+  TransitionOptions _patternTransition;
 
-  TransitionOptions get opacityTransition => _model.opacityTransition;
+  TransitionOptions get opacityTransition =>
+      _opacityTransition ??= TransitionOptions.fromProto(_model.opacityTransition);
+  TransitionOptions _opacityTransition;
 
   Future<BackgroundLayer> copyWith({
     bool visible,
@@ -76,51 +102,91 @@ class BackgroundLayer extends _Layer {
   }
 }
 
-class CircleLayer extends _Layer {
-  CircleLayer._(Style style, CircleLayerModel model, MethodChannel channel) : super._(style, model, channel);
+class CircleLayer extends Layer {
+  CircleLayer._(Style style, pb.Layer_Circle model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  CircleLayerModel get _model => _layer;
+  final pb.Layer_Circle _model;
+  final String sourceId;
 
-  String get sourceId => _model.sourceId;
+  /*double*/
+  Expression get radius => _radius ??= Expression._fromProtoString(_model.radius);
+  Expression _radius;
 
-  double get radius => _model.radius;
+  /*double*/
+  Expression get opacity => _opacity ??= Expression._fromProtoString(_model.opacity);
+  Expression _opacity;
 
-  double get opacity => _model.opacity;
+  /*Color*/
+  Expression get color => _color ??= Expression._fromProtoString(_model.color);
+  Expression _color;
 
-  Color get color => Color(_model.color);
+  /*double*/
+  Expression get blur => _blur ??= Expression._fromProtoString(_model.blur);
+  Expression _blur;
 
-  double get blur => _model.blur;
+  /*Offset*/
+  Expression get translate => _translate ??= Expression._fromProtoString(_model.translate);
+  Expression _translate;
 
-  Offset get translate => Offset(_model.translate[0], _model.translate[1]);
+  /*TranslateAnchor*/
+  Expression get translateAnchor => _translateAnchor ??= Expression._fromProtoString(_model.translateAnchor);
+  Expression _translateAnchor;
 
-  TranslateAnchor get translateAnchor => _model.translateAnchor;
+  /*TranslateAnchor*/
+  Expression get pitchScale => _pitchScale ??= Expression._fromProtoString(_model.pitchScale);
+  Expression _pitchScale;
 
-  TranslateAnchor get pitchScale => _model.pitchScale;
+  /*TranslateAnchor*/
+  Expression get pitchAlignment => _pitchAlignment ??= Expression._fromProtoString(_model.pitchAlignment);
+  Expression _pitchAlignment;
 
-  TranslateAnchor get pitchAlignment => _model.pitchAlignment;
+  /*double*/
+  Expression get strokeWidth => _strokeWidth ??= Expression._fromProtoString(_model.strokeWidth);
+  Expression _strokeWidth;
 
-  double get strokeWidth => _model.strokeWidth;
+  /*double*/
+  Expression get strokeOpacity => _strokeOpacity ??= Expression._fromProtoString(_model.strokeOpacity);
+  Expression _strokeOpacity;
 
-  double get strokeOpacity => _model.strokeOpacity;
+  /*Color*/
+  Expression get strokeColor => _strokeColor ??= Expression._fromProtoString(_model.strokeColor);
+  Expression _strokeColor;
 
-  Color get strokeColor => Color(_model.strokeColor);
+  TransitionOptions get radiusTransition => _radiusTransition ??= TransitionOptions.fromProto(_model.radiusTransition);
+  TransitionOptions _radiusTransition;
 
-  TransitionOptions get radiusTransition => _model.radiusTransition;
+  TransitionOptions get colorTransition => _colorTransition ??= TransitionOptions.fromProto(_model.colorTransition);
+  TransitionOptions _colorTransition;
 
-  TransitionOptions get colorTransition => _model.colorTransition;
+  TransitionOptions get blurTransition => _blurTransition ??= TransitionOptions.fromProto(_model.blurTransition);
+  TransitionOptions _blurTransition;
 
-  TransitionOptions get blurTransition => _model.blurTransition;
+  TransitionOptions get opacityTransition =>
+      _opacityTransition ??= TransitionOptions.fromProto(_model.opacityTransition);
+  TransitionOptions _opacityTransition;
 
-  TransitionOptions get opacityTransition => _model.opacityTransition;
+  TransitionOptions get translateTransition =>
+      _translateTransition ??= TransitionOptions.fromProto(_model.translateTransition);
+  TransitionOptions _translateTransition;
 
-  TransitionOptions get translateTransition => _model.translateTransition;
+  TransitionOptions get strokeWidthTransition =>
+      _strokeWidthTransition ??= TransitionOptions.fromProto(_model.strokeWidthTransition);
+  TransitionOptions _strokeWidthTransition;
 
-  TransitionOptions get strokeWidthTransition => _model.strokeWidthTransition;
+  TransitionOptions get strokeColorTransition =>
+      _strokeColorTransition ??= TransitionOptions.fromProto(_model.strokeColorTransition);
+  TransitionOptions _strokeColorTransition;
 
-  TransitionOptions get strokeColorTransition => _model.strokeColorTransition;
+  TransitionOptions get strokeOpacityTransition =>
+      _strokeOpacityTransition ??= TransitionOptions.fromProto(_model.strokeOpacityTransition);
+  TransitionOptions _strokeOpacityTransition;
 
-  TransitionOptions get strokeOpacityTransition => _model.strokeOpacityTransition;
-
+/*
   Future<CircleLayer> copyWith({
     bool visible,
     double minZoom,
@@ -190,45 +256,74 @@ class CircleLayer extends _Layer {
 
     return _style._updateLayer(updateOp);
   }
+*/
 }
 
-class FillExtrusionLayer extends _Layer {
-  FillExtrusionLayer._(Style style, FillExtrusionLayerModel model, MethodChannel channel)
-      : super._(style, model, channel);
+class FillExtrusionLayer extends Layer {
+  FillExtrusionLayer._(Style style, pb.Layer_FillExtrusion model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  FillExtrusionLayerModel get _model => _layer;
+  final pb.Layer_FillExtrusion _model;
+  final String sourceId;
 
-  String get sourceId => _model.sourceId;
+  /*double*/
+  Expression get opacity => _opacity ??= Expression._fromProtoString(_model.opacity);
+  Expression _opacity;
 
-  double get opacity => _model.opacity;
+  /*Color*/
+  Expression get color => _color ??= Expression._fromProtoString(_model.color);
+  Expression _color;
 
-  Color get color => Color(_model.color);
+  /*Offset*/
+  Expression get translate => _translate ??= Expression._fromProtoString(_model.translate);
+  Expression _translate;
 
-  Offset get translate => Offset(_model.translate[0], _model.translate[1]);
+  /*TranslateAnchor*/
+  Expression get translateAnchor => _translateAnchor ??= Expression._fromProtoString(_model.translateAnchor);
+  Expression _translateAnchor;
 
-  TranslateAnchor get translateAnchor => _model.translateAnchor;
+  /*String*/
+  Expression get pattern => _pattern ??= Expression._fromProtoString(_model.pattern);
+  Expression _pattern;
 
-  @nullable
-  String get pattern => _model.pattern;
+  /*double*/
+  Expression get height => _height ??= Expression._fromProtoString(_model.height);
+  Expression _height;
 
-  double get height => _model.height;
+  /*double*/
+  Expression get base => _base ??= Expression._fromProtoString(_model.base);
+  Expression _base;
 
-  double get base => _model.base;
+  /*bool*/
+  Expression get verticalGradient => _verticalGradient ??= Expression._fromProtoString(_model.verticalGradient);
+  Expression _verticalGradient;
 
-  bool get verticalGradient => _model.verticalGradient;
+  TransitionOptions get opacityTransition =>
+      _opacityTransition ??= TransitionOptions.fromProto(_model.opacityTransition);
+  TransitionOptions _opacityTransition;
 
-  TransitionOptions get opacityTransition => _model.opacityTransition;
+  TransitionOptions get colorTransition => _colorTransition ??= TransitionOptions.fromProto(_model.colorTransition);
+  TransitionOptions _colorTransition;
 
-  TransitionOptions get colorTransition => _model.colorTransition;
+  TransitionOptions get translateTransition =>
+      _translateTransition ??= TransitionOptions.fromProto(_model.translateTransition);
+  TransitionOptions _translateTransition;
 
-  TransitionOptions get translateTransition => _model.translateTransition;
+  TransitionOptions get patternTransition =>
+      _patternTransition ??= TransitionOptions.fromProto(_model.patternTransition);
+  TransitionOptions _patternTransition;
 
-  TransitionOptions get patternTransition => _model.patternTransition;
+  TransitionOptions get heightTransition => _heightTransition ??= TransitionOptions.fromProto(_model.heightTransition);
+  TransitionOptions _heightTransition;
 
-  TransitionOptions get heightTransition => _model.heightTransition;
+  TransitionOptions get baseTransition => _baseTransition ??= TransitionOptions.fromProto(_model.baseTransition);
+  TransitionOptions _baseTransition;
 
-  TransitionOptions get baseTransition => _model.baseTransition;
-
+/*
   Future<FillExtrusionLayer> copyWith({
     bool visible,
     double minZoom,
@@ -282,42 +377,68 @@ class FillExtrusionLayer extends _Layer {
 
     return _style._updateLayer(updateOp);
   }
+*/
 }
 
-class FillLayer extends _Layer {
-  FillLayer._(Style style, FillLayerModel model, MethodChannel channel) : super._(style, model, channel);
+class FillLayer extends Layer {
+  FillLayer._(Style style, pb.Layer_Fill model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  FillLayerModel get _model => _layer;
+  final pb.Layer_Fill _model;
+  final String sourceId;
 
-  String get sourceId => _model.sourceId;
+  /*bool*/
+  Expression get antialias => _antialias ??= Expression._fromProtoString(_model.antialias);
+  Expression _antialias;
 
-  bool get antialias => _model.antialias;
+  /*double*/
+  Expression get opacity => _opacity ??= Expression._fromProtoString(_model.opacity);
+  Expression _opacity;
 
-  double get opacity => _model.opacity;
+  /*Color*/
+  Expression get color => _color ??= Expression._fromProtoString(_model.color);
+  Expression _color;
 
-  Color get color => Color(_model.color);
+  /*Color*/
+  Expression get outlineColor => _outlineColor ??= Expression._fromProtoString(_model.outlineColor);
+  Expression _outlineColor;
 
-  Color get outlineColor => _model.outlineColor == null ? null : Color(_model.outlineColor);
+  /*Offset*/
+  Expression get translate => _translate ??= Expression._fromProtoString(_model.translate);
+  Expression _translate;
 
-  @nullable
-  Offset get translate => _model.translate != null ? Offset(_model.translate[0], _model.translate[1]) : null;
+  /*TranslateAnchor*/
+  Expression get translateAnchor => _translateAnchor ??= Expression._fromProtoString(_model.translateAnchor);
+  Expression _translateAnchor;
 
-  @nullable
-  TranslateAnchor get translateAnchor => _model.translateAnchor;
+  /*String*/
+  Expression get pattern => _pattern ??= Expression._fromProtoString(_model.pattern);
+  Expression _pattern;
 
-  @nullable
-  String get pattern => _model.pattern;
+  TransitionOptions get opacityTransition =>
+      _opacityTransition ??= TransitionOptions.fromProto(_model.opacityTransition);
+  TransitionOptions _opacityTransition;
 
-  TransitionOptions get opacityTransition => _model.opacityTransition;
+  TransitionOptions get colorTransition => _colorTransition ??= TransitionOptions.fromProto(_model.colorTransition);
+  TransitionOptions _colorTransition;
 
-  TransitionOptions get colorTransition => _model.colorTransition;
+  TransitionOptions get outlineColorTransition =>
+      _outlineColorTransition ??= TransitionOptions.fromProto(_model.outlineColorTransition);
+  TransitionOptions _outlineColorTransition;
 
-  TransitionOptions get outlineColorTransition => _model.outlineColorTransition;
+  TransitionOptions get translateTransition =>
+      _translateTransition ??= TransitionOptions.fromProto(_model.translateTransition);
+  TransitionOptions _translateTransition;
 
-  TransitionOptions get translateTransition => _model.translateTransition;
+  TransitionOptions get patternTransition =>
+      _patternTransition ??= TransitionOptions.fromProto(_model.patternTransition);
+  TransitionOptions _patternTransition;
 
-  TransitionOptions get patternTransition => _model.patternTransition;
-
+/*
   Future<FillLayer> copyWith({
     bool visible,
     double minZoom,
@@ -367,30 +488,51 @@ class FillLayer extends _Layer {
 
     return _style._updateLayer(updateOp);
   }
+*/
 }
 
-class HeatmapLayer extends _Layer {
-  HeatmapLayer._(Style style, HeatmapLayerModel model, MethodChannel channel) : super._(style, model, channel);
+class HeatmapLayer extends Layer {
+  HeatmapLayer._(Style style, pb.Layer_Heatmap model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  HeatmapLayerModel get _model => _layer;
+  final pb.Layer_Heatmap _model;
 
-  String get sourceId => _model.sourceId;
+  final String sourceId;
 
-  double get radius => _model.radius;
+  /*double*/
+  Expression get radius => _radius ??= Expression._fromProtoString(_model.radius);
+  Expression _radius;
 
-  double get weight => _model.weight;
+  /*double*/
+  Expression get weight => _weight ??= Expression._fromProtoString(_model.weight);
+  Expression _weight;
 
-  double get intensity => _model.intensity;
+  /*double*/
+  Expression get intensity => _intensity ??= Expression._fromProtoString(_model.intensity);
+  Expression _intensity;
 
-  Color get color => Color(_model.color);
+  /*Color*/
+  Expression get color => _color ??= Expression._fromProtoString(_model.color);
+  Expression _color;
 
-  double get opacity => _model.opacity;
+  /*double*/
+  Expression get opacity => _opacity ??= Expression._fromProtoString(_model.opacity);
+  Expression _opacity;
 
-  TransitionOptions get radiusTransition => _model.radiusTransition;
+  TransitionOptions get radiusTransition => _radiusTransition ??= TransitionOptions.fromProto(_model.radiusTransition);
+  TransitionOptions _radiusTransition;
 
-  TransitionOptions get intensityTransition => _model.intensityTransition;
+  TransitionOptions get intensityTransition =>
+      _intensityTransition ??= TransitionOptions.fromProto(_model.intensityTransition);
+  TransitionOptions _intensityTransition;
 
-  TransitionOptions get opacityTransition => _model.opacityTransition;
+  TransitionOptions get opacityTransition =>
+      _opacityTransition ??= TransitionOptions.fromProto(_model.opacityTransition);
+  TransitionOptions _opacityTransition;
 
   Future<HeatmapLayer> copyWith({
     bool visible,
@@ -429,33 +571,59 @@ class HeatmapLayer extends _Layer {
   }
 }
 
-class HillshadeLayer extends _Layer {
-  HillshadeLayer._(Style style, HillshadeLayerModel model, MethodChannel channel) : super._(style, model, channel);
+class HillshadeLayer extends Layer {
+  HillshadeLayer._(Style style, pb.Layer_Hillshade model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  HillshadeLayerModel get _model => _layer;
+  final pb.Layer_Hillshade _model;
+  final String sourceId;
 
-  String get sourceId => _model.sourceId;
+  /*double*/
+  Expression get illuminationDirection =>
+      _illuminationDirection ??= Expression._fromProtoString(_model.illuminationDirection);
+  Expression _illuminationDirection;
 
-  double get illuminationDirection => _model.illuminationDirection;
+  /*TranslateAnchor*/
+  Expression get illuminationAnchor => _illuminationAnchor ??= Expression._fromProtoString(_model.illuminationAnchor);
+  Expression _illuminationAnchor;
 
-  TranslateAnchor get illuminationAnchor => _model.illuminationAnchor;
+  /*double*/
+  Expression get exaggeration => _exaggeration ??= Expression._fromProtoString(_model.exaggeration);
+  Expression _exaggeration;
 
-  double get exaggeration => _model.exaggeration;
+  /*Color*/
+  Expression get shadowColor => _shadowColor ??= Expression._fromProtoString(_model.shadowColor);
+  Expression _shadowColor;
 
-  Color get shadowColor => Color(_model.shadowColor);
+  /*Color*/
+  Expression get highlightColor => _highlightColor ??= Expression._fromProtoString(_model.highlightColor);
+  Expression _highlightColor;
 
-  Color get highlightColor => Color(_model.highlightColor);
+  /*Color*/
+  Expression get accentColor => _accentColor ??= Expression._fromProtoString(_model.accentColor);
+  Expression _accentColor;
 
-  Color get accentColor => Color(_model.accentColor);
+  TransitionOptions get exaggerationTransition =>
+      _exaggerationTransition ??= TransitionOptions.fromProto(_model.exaggerationTransition);
+  TransitionOptions _exaggerationTransition;
 
-  TransitionOptions get exaggerationTransition => _model.exaggerationTransition;
+  TransitionOptions get shadowColorTransition =>
+      _shadowColorTransition ??= TransitionOptions.fromProto(_model.shadowColorTransition);
+  TransitionOptions _shadowColorTransition;
 
-  TransitionOptions get shadowColorTransition => _model.shadowColorTransition;
+  TransitionOptions get highlightColorTransition =>
+      _highlightColorTransition ??= TransitionOptions.fromProto(_model.highlightColorTransition);
+  TransitionOptions _highlightColorTransition;
 
-  TransitionOptions get highlightColorTransition => _model.highlightColorTransition;
+  TransitionOptions get accentColorTransition =>
+      _accentColorTransition ??= TransitionOptions.fromProto(_model.accentColorTransition);
+  TransitionOptions _accentColorTransition;
 
-  TransitionOptions get accentColorTransition => _model.accentColorTransition;
-
+/*
   Future<HillshadeLayer> copyWith({
     bool visible,
     double minZoom,
@@ -498,66 +666,113 @@ class HillshadeLayer extends _Layer {
 
     return _style._updateLayer(updateOp);
   }
+*/
 }
 
-class LineLayer extends _Layer {
-  LineLayer._(Style style, LineLayerModel model, MethodChannel channel) : super._(style, model, channel);
+class LineLayer extends Layer {
+  LineLayer._(Style style, pb.Layer_Line model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
 
-  LineLayerModel get _model => _layer;
+  final pb.Layer_Line _model;
+  final String sourceId;
 
-  String get sourceId => _model.sourceId;
+  /*LineCap*/
+  Expression get cap => _cap ??= Expression._fromProtoString(_model.cap);
+  Expression _cap;
 
-  LineCap get cap => _model.cap;
+  /*LineJoin*/
+  Expression get join => _join ??= Expression._fromProtoString(_model.join);
+  Expression _join;
 
-  LineJoin get join => _model.join;
+  /*double*/
+  Expression get miterLimit => _miterLimit ??= Expression._fromProtoString(_model.miterLimit);
+  Expression _miterLimit;
 
-  double get miterLimit => _model.miterLimit;
+  /*double*/
+  Expression get roundLimit => _roundLimit ??= Expression._fromProtoString(_model.roundLimit);
+  Expression _roundLimit;
 
-  double get roundLimit => _model.roundLimit;
+  /*double*/
+  Expression get opacity => _opacity ??= Expression._fromProtoString(_model.opacity);
+  Expression _opacity;
 
-  double get opacity => _model.opacity;
+  /*Color*/
+  Expression get color => _color ??= Expression._fromProtoString(_model.color);
+  Expression _color;
 
-  Color get color => Color(_model.color);
+  /*Offset*/
+  Expression get translate => _translate ??= Expression._fromProtoString(_model.translate);
+  Expression _translate;
 
-  Offset get translate => Offset(_model.translate[0], _model.translate[1]);
+  /*TranslateAnchor*/
+  Expression get translateAnchor => _translateAnchor ??= Expression._fromProtoString(_model.translateAnchor);
+  Expression _translateAnchor;
 
-  TranslateAnchor get translateAnchor => _model.translateAnchor;
+  /*double*/
+  Expression get width => _width ??= Expression._fromProtoString(_model.width);
+  Expression _width;
 
-  double get width => _model.width;
+  /*double*/
+  Expression get gapWidth => _gapWidth ??= Expression._fromProtoString(_model.gapWidth);
+  Expression _gapWidth;
 
-  double get gapWidth => _model.gapWidth;
+  /*double*/
+  Expression get offset => _offset ??= Expression._fromProtoString(_model.offset);
+  Expression _offset;
 
-  double get offset => _model.offset;
+  /*double*/
+  Expression get blur => _blur ??= Expression._fromProtoString(_model.blur);
+  Expression _blur;
 
-  double get blur => _model.blur;
+  /*List<double>*/
+  Expression get dasharray => _dasharray ??= Expression._fromProtoString(_model.dasharray);
+  Expression _dasharray;
 
-  @nullable
-  BuiltList<double> get dasharray => _model.dasharray;
+  /*String*/
+  Expression get pattern => _pattern ??= Expression._fromProtoString(_model.pattern);
+  Expression _pattern;
 
-  @nullable
-  String get pattern => _model.pattern;
+  /*Color*/
+  Expression get gradient => _gradient ??= Expression._fromProtoString(_model.gradient);
+  Expression _gradient;
 
-  @nullable
-  Color get gradient => _model.gradient != null ? Color(_model.gradient) : null;
+  TransitionOptions get opacityTransition =>
+      _opacityTransition ??= TransitionOptions.fromProto(_model.opacityTransition);
+  TransitionOptions _opacityTransition;
 
-  TransitionOptions get opacityTransition => _model.opacityTransition;
+  TransitionOptions get colorTransition => _colorTransition ??= TransitionOptions.fromProto(_model.colorTransition);
+  TransitionOptions _colorTransition;
 
-  TransitionOptions get colorTransition => _model.colorTransition;
+  TransitionOptions get translateTransition =>
+      _translateTransition ??= TransitionOptions.fromProto(_model.translateTransition);
+  TransitionOptions _translateTransition;
 
-  TransitionOptions get translateTransition => _model.translateTransition;
+  TransitionOptions get widthTransition => _widthTransition ??= TransitionOptions.fromProto(_model.widthTransition);
+  TransitionOptions _widthTransition;
 
-  TransitionOptions get widthTransition => _model.widthTransition;
+  TransitionOptions get gapWidthTransition =>
+      _gapWidthTransition ??= TransitionOptions.fromProto(_model.gapWidthTransition);
+  TransitionOptions _gapWidthTransition;
 
-  TransitionOptions get gapWidthTransition => _model.gapWidthTransition;
+  TransitionOptions get offsetTransition => _offsetTransition ??= TransitionOptions.fromProto(_model.offsetTransition);
+  TransitionOptions _offsetTransition;
 
-  TransitionOptions get offsetTransition => _model.offsetTransition;
+  TransitionOptions get blurTransition => _blurTransition ??= TransitionOptions.fromProto(_model.blurTransition);
+  TransitionOptions _blurTransition;
 
-  TransitionOptions get blurTransition => _model.blurTransition;
+  TransitionOptions get dasharrayTransition =>
+      _dasharrayTransition ??= TransitionOptions.fromProto(_model.dasharrayTransition);
+  TransitionOptions _dasharrayTransition;
 
-  TransitionOptions get dasharrayTransition => _model.dasharrayTransition;
+  TransitionOptions get patternTransition =>
+      _patternTransition ??= TransitionOptions.fromProto(_model.patternTransition);
+  TransitionOptions _patternTransition;
 
-  TransitionOptions get patternTransition => _model.patternTransition;
-
+/*
   Future<LineLayer> copyWith({
     bool visible,
     double minZoom,
@@ -640,155 +855,287 @@ class LineLayer extends _Layer {
 
     return _style._updateLayer(updateOp);
   }
+*/
 }
 
-class SymbolLayer extends _Layer {
-  SymbolLayer._(Style style, SymbolLayerModel model, MethodChannel channel) : super._(style, model, channel);
-
-  SymbolLayerModel get _model => _layer;
-
-  String get sourceId => _model.sourceId;
-
-  SymbolPlacement get symbolPlacement => _model.symbolPlacement;
-
-  double get symbolSpacing => _model.symbolSpacing;
-
-  bool get symbolAvoidEdges => _model.symbolAvoidEdges;
-
-  SymbolZOrder get symbolZOrder => _model.symbolZOrder;
-
-  bool get iconAllowOverlap => _model.iconAllowOverlap;
-
-  bool get iconIgnorePlacement => _model.iconIgnorePlacement;
-
-  bool get iconOptional => _model.iconOptional;
-
-  SymbolAlignment get iconRotationAlignment => _model.iconRotationAlignment;
-
-  double get iconSize => _model.iconSize;
-
-  SymbolTextFit get iconTextFit => _model.iconTextFit;
-
-  EdgeInsets get iconTextFitPadding {
-    return EdgeInsets.fromLTRB(
-      _model.iconTextFitPadding[3], // left
-      _model.iconTextFitPadding[0], // top
-      _model.iconTextFitPadding[1], // right
-      _model.iconTextFitPadding[2], // bottom
-    );
-  }
-
-  @nullable
-  String get iconImage => _model.iconImage;
-
-  double get iconRotate => _model.iconRotate;
-
-  double get iconPadding => _model.iconPadding;
-
-  bool get iconKeepUpright => _model.iconKeepUpright;
-
-  Offset get iconOffset => Offset(_model.iconOffset[0], _model.iconOffset[1]);
-
-  PositionAnchor get iconAnchor => _model.iconAnchor;
-
-  SymbolAlignment get iconPitchAlignment => _model.iconPitchAlignment;
-
-  SymbolAlignment get textPitchAlignment => _model.textPitchAlignment;
-
-  SymbolAlignment get textRotationAlignment => _model.textRotationAlignment;
-
-  @nullable
-  BuiltList<FormattedSection> get textField => _model.textField;
-
-  BuiltList<String> get textFont => _model.textFont;
-
-  double get textSize => _model.textSize;
-
-  double get textMaxWidth => _model.textMaxWidth;
-
-  double get textLineHeight => _model.textLineHeight;
-
-  double get textLetterSpacing => _model.textLetterSpacing;
-
-  SymbolTextJustify get textJustify => _model.textJustify;
-
-  double get textRadialOffset => _model.textRadialOffset;
-
-  @nullable
-  BuiltList<PositionAnchor> get textVariableAnchor => _model.textVariableAnchor;
-
-  PositionAnchor get textAnchor => _model.textAnchor;
-
-  double get textMaxAngle => _model.textMaxAngle;
-
-  double get textRotate => _model.textRotate;
-
-  double get textPadding => _model.textPadding;
-
-  bool get textKeepUpright => _model.textKeepUpright;
-
-  SymbolTextTransform get textTransform => _model.textTransform;
-
-  Offset get textOffset => Offset(_model.textOffset[0], _model.textOffset[1]);
-
-  bool get textAllowOverlap => _model.textAllowOverlap;
-
-  bool get textIgnorePlacement => _model.textIgnorePlacement;
-
-  bool get textOptional => _model.textOptional;
-
-  double get iconOpacity => _model.iconOpacity;
-
-  Color get iconColor => Color(_model.iconColor);
-
-  Color get iconHaloColor => Color(_model.iconHaloColor);
-
-  double get iconHaloWidth => _model.iconHaloWidth;
-
-  double get iconHaloBlur => _model.iconHaloBlur;
-
-  Offset get iconTranslate => Offset(_model.iconTranslate[0], _model.iconTranslate[1]);
-
-  TranslateAnchor get iconTranslateAnchor => _model.iconTranslateAnchor;
-
-  double get textOpacity => _model.textOpacity;
-
-  Color get textColor => Color(_model.textColor);
-
-  Color get textHaloColor => Color(_model.textHaloColor);
-
-  double get textHaloWidth => _model.textHaloWidth;
-
-  double get textHaloBlur => _model.textHaloBlur;
-
-  Offset get textTranslate => Offset(_model.textTranslate[0], _model.textTranslate[1]);
-
-  TranslateAnchor get textTranslateAnchor => _model.textTranslateAnchor;
-
-  TransitionOptions get iconOpacityTransition => _model.iconOpacityTransition;
-
-  TransitionOptions get iconColorTransition => _model.iconColorTransition;
-
-  TransitionOptions get iconHaloColorTransition => _model.iconHaloColorTransition;
-
-  TransitionOptions get iconHaloWidthTransition => _model.iconHaloWidthTransition;
-
-  TransitionOptions get iconHaloBlurTransition => _model.iconHaloBlurTransition;
-
-  TransitionOptions get iconTranslateTransition => _model.iconTranslateTransition;
-
-  TransitionOptions get textOpacityTransition => _model.textOpacityTransition;
-
-  TransitionOptions get textColorTransition => _model.textColorTransition;
-
-  TransitionOptions get textHaloColorTransition => _model.textHaloColorTransition;
-
-  TransitionOptions get textHaloWidthTransition => _model.textHaloWidthTransition;
-
-  TransitionOptions get textHaloBlurTransition => _model.textHaloBlurTransition;
-
-  TransitionOptions get textTranslateTransition => _model.textTranslateTransition;
-
+class SymbolLayer extends Layer {
+  SymbolLayer._(Style style, pb.Layer_Symbol model)
+      : assert(style != null),
+        assert(model != null),
+        _model = model,
+        sourceId = model.sourceId,
+        super(style, model.id, model.visible, model.minZoom, model.maxZoom);
+
+  final pb.Layer_Symbol _model;
+  final String sourceId;
+
+  /*SymbolPlacement*/
+  Expression get symbolPlacement => _symbolPlacement ??= Expression._fromProtoString(_model.symbolPlacement);
+  Expression _symbolPlacement;
+
+  /*double*/
+  Expression get symbolSpacing => _symbolSpacing ??= Expression._fromProtoString(_model.symbolSpacing);
+  Expression _symbolSpacing;
+
+  /*bool*/
+  Expression get symbolAvoidEdges => _symbolAvoidEdges ??= Expression._fromProtoString(_model.symbolAvoidEdges);
+  Expression _symbolAvoidEdges;
+
+  /*SymbolZOrder*/
+  Expression get symbolZOrder => _symbolZOrder ??= Expression._fromProtoString(_model.symbolZOrder);
+  Expression _symbolZOrder;
+
+  /*bool*/
+  Expression get iconAllowOverlap => _iconAllowOverlap ??= Expression._fromProtoString(_model.iconAllowOverlap);
+  Expression _iconAllowOverlap;
+
+  /*bool*/
+  Expression get iconIgnorePlacement =>
+      _iconIgnorePlacement ??= Expression._fromProtoString(_model.iconIgnorePlacement);
+  Expression _iconIgnorePlacement;
+
+  /*bool*/
+  Expression get iconOptional => _iconOptional ??= Expression._fromProtoString(_model.iconOptional);
+  Expression _iconOptional;
+
+  /*SymbolAlignment*/
+  Expression get iconRotationAlignment =>
+      _iconRotationAlignment ??= Expression._fromProtoString(_model.iconRotationAlignment);
+  Expression _iconRotationAlignment;
+
+  /*double*/
+  Expression get iconSize => _iconSize ??= Expression._fromProtoString(_model.iconSize);
+  Expression _iconSize;
+
+  /*SymbolTextFit*/
+  Expression get iconTextFit => _iconTextFit ??= Expression._fromProtoString(_model.iconTextFit);
+  Expression _iconTextFit;
+
+  /*EdgeInsets*/
+  Expression get iconTextFitPadding => _iconTextFitPadding ??= Expression._fromProtoString(_model.iconTextFitPadding);
+  Expression _iconTextFitPadding;
+
+  /*String*/
+  Expression get iconImage => _iconImage ??= Expression._fromProtoString(_model.iconImage);
+  Expression _iconImage;
+
+  /*double*/
+  Expression get iconRotate => _iconRotate ??= Expression._fromProtoString(_model.iconRotate);
+  Expression _iconRotate;
+
+  /*double*/
+  Expression get iconPadding => _iconPadding ??= Expression._fromProtoString(_model.iconPadding);
+  Expression _iconPadding;
+
+  /*bool*/
+  Expression get iconKeepUpright => _iconKeepUpright ??= Expression._fromProtoString(_model.iconKeepUpright);
+  Expression _iconKeepUpright;
+
+  /*Offset*/
+  Expression get iconOffset => _iconOffset ??= Expression._fromProtoString(_model.iconOffset);
+  Expression _iconOffset;
+
+  /*PositionAnchor*/
+  Expression get iconAnchor => _iconAnchor ??= Expression._fromProtoString(_model.iconAnchor);
+  Expression _iconAnchor;
+
+  /*SymbolAlignment*/
+  Expression get iconPitchAlignment => _iconPitchAlignment ??= Expression._fromProtoString(_model.iconPitchAlignment);
+  Expression _iconPitchAlignment;
+
+  /*SymbolAlignment*/
+  Expression get textPitchAlignment => _textPitchAlignment ??= Expression._fromProtoString(_model.textPitchAlignment);
+  Expression _textPitchAlignment;
+
+  /*SymbolAlignment*/
+  Expression get textRotationAlignment =>
+      _textRotationAlignment ??= Expression._fromProtoString(_model.textRotationAlignment);
+  Expression _textRotationAlignment;
+
+  /*List<FormattedSection>*/
+  Expression get textField => _textField ??= Expression._fromProtoString(_model.textField);
+  Expression _textField;
+
+  /*List<String>*/
+  Expression get textFont => _textFont ??= Expression._fromProtoString(_model.textFont);
+  Expression _textFont;
+
+  /*double*/
+  Expression get textSize => _textSize ??= Expression._fromProtoString(_model.textSize);
+  Expression _textSize;
+
+  /*double*/
+  Expression get textMaxWidth => _textMaxWidth ??= Expression._fromProtoString(_model.textMaxWidth);
+  Expression _textMaxWidth;
+
+  /*double*/
+  Expression get textLineHeight => _textLineHeight ??= Expression._fromProtoString(_model.textLineHeight);
+  Expression _textLineHeight;
+
+  /*double*/
+  Expression get textLetterSpacing => _textLetterSpacing ??= Expression._fromProtoString(_model.textLetterSpacing);
+  Expression _textLetterSpacing;
+
+  /*SymbolTextJustify*/
+  Expression get textJustify => _textJustify ??= Expression._fromProtoString(_model.textJustify);
+  Expression _textJustify;
+
+  /*double*/
+  Expression get textRadialOffset => _textRadialOffset ??= Expression._fromProtoString(_model.textRadialOffset);
+  Expression _textRadialOffset;
+
+  /*List<PositionAnchor>*/
+  Expression get textVariableAnchor => _textVariableAnchor ??= Expression._fromProtoString(_model.textVariableAnchor);
+  Expression _textVariableAnchor;
+
+  /*PositionAnchor*/
+  Expression get textAnchor => _textAnchor ??= Expression._fromProtoString(_model.textAnchor);
+  Expression _textAnchor;
+
+  /*double*/
+  Expression get textMaxAngle => _textMaxAngle ??= Expression._fromProtoString(_model.textMaxAngle);
+  Expression _textMaxAngle;
+
+  /*double*/
+  Expression get textRotate => _textRotate ??= Expression._fromProtoString(_model.textRotate);
+  Expression _textRotate;
+
+  /*double*/
+  Expression get textPadding => _textPadding ??= Expression._fromProtoString(_model.textPadding);
+  Expression _textPadding;
+
+  /*bool*/
+  Expression get textKeepUpright => _textKeepUpright ??= Expression._fromProtoString(_model.textKeepUpright);
+  Expression _textKeepUpright;
+
+  /*SymbolTextTransform*/
+  Expression get textTransform => _textTransform ??= Expression._fromProtoString(_model.textTransform);
+  Expression _textTransform;
+
+  /*Offset*/
+  Expression get textOffset => _textOffset ??= Expression._fromProtoString(_model.textOffset);
+  Expression _textOffset;
+
+  /*bool*/
+  Expression get textAllowOverlap => _textAllowOverlap ??= Expression._fromProtoString(_model.textAllowOverlap);
+  Expression _textAllowOverlap;
+
+  /*bool*/
+  Expression get textIgnorePlacement =>
+      _textIgnorePlacement ??= Expression._fromProtoString(_model.textIgnorePlacement);
+  Expression _textIgnorePlacement;
+
+  /*bool*/
+  Expression get textOptional => _textOptional ??= Expression._fromProtoString(_model.textOptional);
+  Expression _textOptional;
+
+  /*double*/
+  Expression get iconOpacity => _iconOpacity ??= Expression._fromProtoString(_model.iconOpacity);
+  Expression _iconOpacity;
+
+  /*Color*/
+  Expression get iconColor => _iconColor ??= Expression._fromProtoString(_model.iconColor);
+  Expression _iconColor;
+
+  /*Color*/
+  Expression get iconHaloColor => _iconHaloColor ??= Expression._fromProtoString(_model.iconHaloColor);
+  Expression _iconHaloColor;
+
+  /*double*/
+  Expression get iconHaloWidth => _iconHaloWidth ??= Expression._fromProtoString(_model.iconHaloWidth);
+  Expression _iconHaloWidth;
+
+  /*double*/
+  Expression get iconHaloBlur => _iconHaloBlur ??= Expression._fromProtoString(_model.iconHaloBlur);
+  Expression _iconHaloBlur;
+
+  /*Offset*/
+  Expression get iconTranslate => _iconTranslate ??= Expression._fromProtoString(_model.iconTranslate);
+  Expression _iconTranslate;
+
+  /*TranslateAnchor*/
+  Expression get iconTranslateAnchor =>
+      _iconTranslateAnchor ??= Expression._fromProtoString(_model.iconTranslateAnchor);
+  Expression _iconTranslateAnchor;
+
+  /*double*/
+  Expression get textOpacity => _textOpacity ??= Expression._fromProtoString(_model.textOpacity);
+  Expression _textOpacity;
+
+  /*Color*/
+  Expression get textColor => _textColor ??= Expression._fromProtoString(_model.textColor);
+  Expression _textColor;
+
+  /*Color*/
+  Expression get textHaloColor => _textHaloColor ??= Expression._fromProtoString(_model.textHaloColor);
+  Expression _textHaloColor;
+
+  /*double*/
+  Expression get textHaloWidth => _textHaloWidth ??= Expression._fromProtoString(_model.textHaloWidth);
+  Expression _textHaloWidth;
+
+  /*double*/
+  Expression get textHaloBlur => _textHaloBlur ??= Expression._fromProtoString(_model.textHaloBlur);
+  Expression _textHaloBlur;
+
+  /*Offset*/
+  Expression get textTranslate => _textTranslate ??= Expression._fromProtoString(_model.textTranslate);
+  Expression _textTranslate;
+
+  /*TranslateAnchor*/
+  Expression get textTranslateAnchor =>
+      _textTranslateAnchor ??= Expression._fromProtoString(_model.textTranslateAnchor);
+  Expression _textTranslateAnchor;
+
+  TransitionOptions get iconOpacityTransition =>
+      _iconOpacityTransition ??= TransitionOptions.fromProto(_model.iconOpacityTransition);
+  TransitionOptions _iconOpacityTransition;
+
+  TransitionOptions get iconColorTransition =>
+      _iconColorTransition ??= TransitionOptions.fromProto(_model.iconColorTransition);
+  TransitionOptions _iconColorTransition;
+
+  TransitionOptions get iconHaloColorTransition =>
+      _iconHaloColorTransition ??= TransitionOptions.fromProto(_model.iconHaloColorTransition);
+  TransitionOptions _iconHaloColorTransition;
+
+  TransitionOptions get iconHaloWidthTransition =>
+      _iconHaloWidthTransition ??= TransitionOptions.fromProto(_model.iconHaloWidthTransition);
+  TransitionOptions _iconHaloWidthTransition;
+
+  TransitionOptions get iconHaloBlurTransition =>
+      _iconHaloBlurTransition ??= TransitionOptions.fromProto(_model.iconHaloBlurTransition);
+  TransitionOptions _iconHaloBlurTransition;
+
+  TransitionOptions get iconTranslateTransition =>
+      _iconTranslateTransition ??= TransitionOptions.fromProto(_model.iconTranslateTransition);
+  TransitionOptions _iconTranslateTransition;
+
+  TransitionOptions get textOpacityTransition =>
+      _textOpacityTransition ??= TransitionOptions.fromProto(_model.textOpacityTransition);
+  TransitionOptions _textOpacityTransition;
+
+  TransitionOptions get textColorTransition =>
+      _textColorTransition ??= TransitionOptions.fromProto(_model.textColorTransition);
+  TransitionOptions _textColorTransition;
+
+  TransitionOptions get textHaloColorTransition =>
+      _textHaloColorTransition ??= TransitionOptions.fromProto(_model.textHaloColorTransition);
+  TransitionOptions _textHaloColorTransition;
+
+  TransitionOptions get textHaloWidthTransition =>
+      _textHaloWidthTransition ??= TransitionOptions.fromProto(_model.textHaloWidthTransition);
+  TransitionOptions _textHaloWidthTransition;
+
+  TransitionOptions get textHaloBlurTransition =>
+      _textHaloBlurTransition ??= TransitionOptions.fromProto(_model.textHaloBlurTransition);
+  TransitionOptions _textHaloBlurTransition;
+
+  TransitionOptions get textTranslateTransition =>
+      _textTranslateTransition ??= TransitionOptions.fromProto(_model.textTranslateTransition);
+  TransitionOptions _textTranslateTransition;
+
+/*
   Future<SymbolLayer> copyWith({
     bool visible,
     double minZoom,
@@ -1003,4 +1350,5 @@ class SymbolLayer extends _Layer {
 
     return _style._updateLayer(updateOp);
   }
+*/
 }

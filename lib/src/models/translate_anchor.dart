@@ -2,29 +2,27 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library translate_anchor;
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-
+import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
 
-part 'translate_anchor.g.dart';
+class TranslateAnchor {
+  const TranslateAnchor._(this._i, this._value);
 
-class TranslateAnchor extends EnumClass {
-  const TranslateAnchor._(String name) : super(name);
+  final int _i;
+  final String _value;
 
-  static const TranslateAnchor map = _$map;
-  static const TranslateAnchor viewport = _$viewport;
+  static const TranslateAnchor map = TranslateAnchor._(0, 'map');
+  static const TranslateAnchor viewport = TranslateAnchor._(1, 'viewport');
 
-  static BuiltSet<TranslateAnchor> get values => _$values;
+  static const List<TranslateAnchor> values = <TranslateAnchor>[map, viewport];
+  static const List<String> _names = <String>['map', 'viewport'];
 
-  pb.TranslateAnchor get proto => pb.TranslateAnchor.valueOf(values.toList().indexOf(this));
+  static TranslateAnchor fromProto(pb.TranslateAnchor proto) => values[proto.value];
 
-  static TranslateAnchor valueOf(String name) => _$valueOf(name);
+  pb.TranslateAnchor get proto => pb.TranslateAnchor.valueOf(_i);
 
-  static Serializer<TranslateAnchor> get serializer => _$translateAnchorSerializer;
+  Expression get expression => literalString(_value);
 
-  static TranslateAnchor fromProto(pb.TranslateAnchor proto) => values.elementAt(proto.value);
+  @override
+  String toString() => 'TranslateAnchor.${_names[_i]}';
 }

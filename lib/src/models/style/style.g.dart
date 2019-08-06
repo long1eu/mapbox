@@ -29,7 +29,7 @@ class _$StyleModelSerializer implements StructuredSerializer<StyleModel> {
       'layers',
       serializers.serialize(object.layers,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(LayerModel)])),
+              const FullType(BuiltList, const [const FullType(pb.Layer)])),
       'transition',
       serializers.serialize(object.transition,
           specifiedType: const FullType(TransitionOptions)),
@@ -71,7 +71,7 @@ class _$StyleModelSerializer implements StructuredSerializer<StyleModel> {
         case 'layers':
           result.layers.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(LayerModel)]))
+                      BuiltList, const [const FullType(pb.Layer)]))
               as BuiltList<dynamic>);
           break;
         case 'transition':
@@ -98,7 +98,7 @@ class _$StyleModel extends StyleModel {
   @override
   final BuiltList<SourceModel> sources;
   @override
-  final BuiltList<LayerModel> layers;
+  final BuiltList<pb.Layer> layers;
   @override
   final TransitionOptions transition;
   @override
@@ -194,10 +194,10 @@ class StyleModelBuilder implements Builder<StyleModel, StyleModelBuilder> {
       _$this._sources ??= new ListBuilder<SourceModel>();
   set sources(ListBuilder<SourceModel> sources) => _$this._sources = sources;
 
-  ListBuilder<LayerModel> _layers;
-  ListBuilder<LayerModel> get layers =>
-      _$this._layers ??= new ListBuilder<LayerModel>();
-  set layers(ListBuilder<LayerModel> layers) => _$this._layers = layers;
+  ListBuilder<pb.Layer> _layers;
+  ListBuilder<pb.Layer> get layers =>
+      _$this._layers ??= new ListBuilder<pb.Layer>();
+  set layers(ListBuilder<pb.Layer> layers) => _$this._layers = layers;
 
   TransitionOptionsBuilder _transition;
   TransitionOptionsBuilder get transition =>
