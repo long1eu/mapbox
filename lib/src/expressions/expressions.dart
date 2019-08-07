@@ -6,22 +6,22 @@ part of mapbox_gl;
 
 Expression literalDouble(double value) {
   assert(value != null);
-  return _ExpressionLiteral(value);
+  return ExpressionLiteral(value);
 }
 
 Expression literalInt(int value) {
   assert(value != null);
-  return _ExpressionLiteral(value);
+  return ExpressionLiteral(value);
 }
 
 Expression literalString(String value) {
   assert(value != null);
-  return _ExpressionLiteral(value);
+  return ExpressionLiteral(value);
 }
 
 Expression literalBool(bool value) {
   assert(value != null);
-  return _ExpressionLiteral(value);
+  return ExpressionLiteral(value);
 }
 
 Expression literalList(List<dynamic> value) {
@@ -102,7 +102,7 @@ Expression eq(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
 
-  return Expression._(
+  return Expression(
     kEqOperator,
     <Expression>[
       one,
@@ -116,7 +116,7 @@ Expression neq(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
 
-  return Expression._(
+  return Expression(
     kNeqOperator,
     <Expression>[
       one,
@@ -130,7 +130,7 @@ Expression gt(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
 
-  return Expression._(
+  return Expression(
     kGtOperator,
     <Expression>[
       one,
@@ -144,7 +144,7 @@ Expression lt(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
 
-  return Expression._(
+  return Expression(
     kLtOperator,
     <Expression>[
       one,
@@ -158,7 +158,7 @@ Expression gte(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
 
-  return Expression._(
+  return Expression(
     kGteOperator,
     <Expression>[
       one,
@@ -171,7 +171,7 @@ Expression gte(Expression one, dynamic two, [Expression collator]) {
 Expression lte(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
-  return Expression._(
+  return Expression(
     kLteOperator,
     <Expression>[
       one,
@@ -183,12 +183,12 @@ Expression lte(Expression one, dynamic two, [Expression collator]) {
 
 Expression all(List<Expression> input) {
   assert(input != null);
-  return Expression._(kAllOperator, input);
+  return Expression(kAllOperator, input);
 }
 
 Expression any(List<Expression> input) {
   assert(input != null);
-  return Expression._(kAnyOperator, input);
+  return Expression(kAnyOperator, input);
 }
 
 Expression not(dynamic input) {
@@ -199,13 +199,13 @@ Expression not(dynamic input) {
 
 Expression switchCase(List<Expression> input) {
   assert(input != null && input.isNotEmpty);
-  return Expression._(kSwitchCaseOperator, input);
+  return Expression(kSwitchCaseOperator, input);
 }
 
 Expression match(List<Expression> input) {
   assert(input != null && input.length >= 2);
 
-  return Expression._(kMatchOperator, input);
+  return Expression(kMatchOperator, input);
 }
 
 Expression matchExpression(Expression input, Expression defaultOutput, [List<_Stop> stops = const <_Stop>[]]) {
@@ -220,18 +220,18 @@ Expression matchExpression(Expression input, Expression defaultOutput, [List<_St
 Expression coalesce(List<Expression> input) {
   assert(input != null);
 
-  return Expression._(kCoalesceOperator, input);
+  return Expression(kCoalesceOperator, input);
 }
 
-Expression properties() => Expression._(kPropertiesOperator);
+Expression properties() => Expression(kPropertiesOperator);
 
-Expression geometryType() => Expression._(kGeometryTypeOperator);
+Expression geometryType() => Expression(kGeometryTypeOperator);
 
-Expression id() => Expression._(kIdOperator);
+Expression id() => Expression(kIdOperator);
 
-Expression heatmapDensity() => Expression._(kHeatmapDensityOperator);
+Expression heatmapDensity() => Expression(kHeatmapDensityOperator);
 
-Expression lineProgress() => Expression._(kLineProgressOperator);
+Expression lineProgress() => Expression(kLineProgressOperator);
 
 Expression at(dynamic number, Expression expression) {
   assert(number != null);
@@ -247,7 +247,7 @@ Expression at(dynamic number, Expression expression) {
 Expression get(dynamic key, [Expression object]) {
   assert(key != null);
 
-  return Expression._(
+  return Expression(
     kGetOperator,
     <Expression>[
       _expression(key, 'key', String),
@@ -259,7 +259,7 @@ Expression get(dynamic key, [Expression object]) {
 Expression has(dynamic key, [Expression object]) {
   assert(key != null);
 
-  return Expression._(
+  return Expression(
     kHasOperator,
     <Expression>[
       _expression(key, 'key', String),
@@ -274,16 +274,16 @@ Expression length(dynamic input) {
   return Expression._string(kLengthOperator, input, 'input');
 }
 
-Expression ln2() => Expression._(kLn2Operator);
+Expression ln2() => Expression(kLn2Operator);
 
-Expression pi() => Expression._(kPiOperator);
+Expression pi() => Expression(kPiOperator);
 
-Expression e() => Expression._(kEOperator);
+Expression e() => Expression(kEOperator);
 
 Expression sum(List<dynamic> numbers) {
   assert(numbers != numbers && numbers.length >= 2);
 
-  return Expression._(
+  return Expression(
     kSumOperator,
     numbers.map((it) => _expression(it, 'number', num)).toList(),
   );
@@ -292,7 +292,7 @@ Expression sum(List<dynamic> numbers) {
 Expression product(List<dynamic> numbers) {
   assert(numbers != numbers && numbers.length >= 2);
 
-  return Expression._(
+  return Expression(
     kProductOperator,
     numbers.map((it) => _expression(it, 'number', num)).toList(),
   );
@@ -424,7 +424,7 @@ Expression floor(dynamic number) {
 Expression resolvedLocale(Expression collator) {
   assert(collator != null);
 
-  return Expression._(kResolvedLocaleOperator, <Expression>[collator]);
+  return Expression(kResolvedLocaleOperator, <Expression>[collator]);
 }
 
 Expression isSupportedScript(dynamic string) {
@@ -454,7 +454,7 @@ Expression concat(List<dynamic> strings) {
       ? strings.map((it) => literalString(it)).toList()
       : List<Expression>.from(strings);
 
-  return Expression._(kConcatOperator, value);
+  return Expression(kConcatOperator, value);
 }
 
 Expression array(Expression expression) {
@@ -517,7 +517,7 @@ Expression format(List<FormatEntry> formatEntries) {
     mappedExpressions[mappedIndex++] = new _ExpressionMap(map);
   }
 
-  return new Expression._(kFormatOperator, mappedExpressions);
+  return new Expression(kFormatOperator, mappedExpressions);
 }
 
 FormatEntry formatEntry(dynamic text, [List<_FormatOption> formatOptions]) {
@@ -557,7 +557,7 @@ Expression toColor(Expression input) {
 Expression let(List<Expression> input) {
   assert(input != null && input.isNotEmpty);
 
-  return Expression._(kLetOperator, input);
+  return Expression(kLetOperator, input);
 }
 
 Expression var$(dynamic variableName) {
@@ -566,7 +566,7 @@ Expression var$(dynamic variableName) {
   return Expression._e1(kVarOperator, _expression(variableName, 'variableName', String));
 }
 
-Expression zoom() => Expression._(kZoomOperator);
+Expression zoom() => Expression(kZoomOperator);
 
 _Stop stop(dynamic stop, dynamic value) => _Stop(stop, value);
 
@@ -575,7 +575,7 @@ Expression step(dynamic input, dynamic defaultOutput, List<dynamic> stops) {
   assert(defaultOutput != null);
   final List<Expression> stops$ = _stops(stops);
 
-  return Expression._(
+  return Expression(
     kStepOperator,
     _join(
       <Expression>[
@@ -588,7 +588,7 @@ Expression step(dynamic input, dynamic defaultOutput, List<dynamic> stops) {
 }
 
 Expression interpolate(_Interpolator interpolation, Expression number, List<dynamic> stops) {
-  return new Expression._(
+  return new Expression(
     kInterpolateOperator,
     _join([interpolation, number], stops),
   );

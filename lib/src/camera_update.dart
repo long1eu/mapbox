@@ -39,10 +39,10 @@ class CameraUpdate {
       bearing: bearing,
       tilt: tilt,
       padding: <int>[
-        padding.left.toInt(),
-        padding.top.toInt(),
-        padding.right.toInt(),
-        padding.bottom.toInt(),
+        (padding.left * window.devicePixelRatio).toInt(),
+        (padding.top * window.devicePixelRatio).toInt(),
+        (padding.right * window.devicePixelRatio).toInt(),
+        (padding.bottom * window.devicePixelRatio).toInt(),
       ],
       operation: pb.Map__Operations_CameraUpdate_Type.NEW_LAT_LNG_BOUNDS,
     );

@@ -33,7 +33,7 @@ class MapController {
 
   Style get style => _style;
 
-  Future<void> setStyle({DefaultMapStyle fromMapbox, String fromUri, String fromJson}) async {
+  Future<void> setStyle({MapStyle fromMapbox, String fromUri, String fromJson}) async {
     assert(fromMapbox != null || fromUri != null || fromJson != null);
     final pb.Style_Operations_Build message = pb.Style_Operations_Build.create();
     if (fromMapbox != null) {

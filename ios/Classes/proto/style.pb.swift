@@ -64,7 +64,7 @@ struct Com_Tophap_MapboxGl_Proto_Style {
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum DefaultMapboxStyle: SwiftProtobuf.Enum {
+  enum MapboxStyle: SwiftProtobuf.Enum {
     typealias RawValue = Int
     case mapboxStreets // = 0
     case outdoors // = 1
@@ -207,7 +207,7 @@ struct Com_Tophap_MapboxGl_Proto_Style {
 
       var source: Com_Tophap_MapboxGl_Proto_Style.Operations.Build.OneOf_Source? = nil
 
-      var `default`: Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle {
+      var `default`: Com_Tophap_MapboxGl_Proto_Style.MapboxStyle {
         get {
           if case .default(let v)? = source {return v}
           return .mapboxStreets
@@ -234,7 +234,7 @@ struct Com_Tophap_MapboxGl_Proto_Style {
       var unknownFields = SwiftProtobuf.UnknownStorage()
 
       enum OneOf_Source: Equatable {
-        case `default`(Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle)
+        case `default`(Com_Tophap_MapboxGl_Proto_Style.MapboxStyle)
         case uri(String)
         case json(String)
 
@@ -263,9 +263,9 @@ struct Com_Tophap_MapboxGl_Proto_Style {
 
 #if swift(>=4.2)
 
-extension Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle: CaseIterable {
+extension Com_Tophap_MapboxGl_Proto_Style.MapboxStyle: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle] = [
+  static var allCases: [Com_Tophap_MapboxGl_Proto_Style.MapboxStyle] = [
     .mapboxStreets,
     .outdoors,
     .light,
@@ -384,7 +384,7 @@ extension Com_Tophap_MapboxGl_Proto_Style: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle: SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_MapboxGl_Proto_Style.MapboxStyle: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "MAPBOX_STREETS"),
     1: .same(proto: "OUTDOORS"),
@@ -579,7 +579,7 @@ extension Com_Tophap_MapboxGl_Proto_Style.Operations.Build: SwiftProtobuf.Messag
       switch fieldNumber {
       case 1:
         if self.source != nil {try decoder.handleConflictingOneOf()}
-        var v: Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle?
+        var v: Com_Tophap_MapboxGl_Proto_Style.MapboxStyle?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {self.source = .default(v)}
       case 2:

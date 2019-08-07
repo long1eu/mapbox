@@ -5,6 +5,7 @@
 library map_options;
 
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -12,13 +13,14 @@ import 'package:built_value/serializer.dart';
 import 'package:flutter/painting.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapbox_gl/src/models/style/map_style.dart';
 
 part 'map_options.g.dart';
 
 abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
   factory MapOptions({
     CameraPosition cameraPosition,
-    DefaultMapStyle styleFromMapbox = DefaultMapStyle.mapboxStreets,
+    MapStyle styleFromMapbox = MapStyle.mapboxStreets,
     String styleFromUri,
     String styleFromJson,
     String apiBaseUri,
@@ -61,26 +63,14 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(quickZoomGestures != null);
     assert(compass != null);
     assert(compassPosition != null);
-    assert(compassMargin != null &&
-        compassMargin.left != null &&
-        compassMargin.top != null &&
-        compassMargin.right != null &&
-        compassMargin.bottom != null);
+    assert(compassMargin != null && compassMargin.left != null && compassMargin.top != null && compassMargin.right != null && compassMargin.bottom != null);
     assert(compassFadeFacingNorth != null);
     assert(logo != null);
     assert(logoPosition != null);
-    assert(logoMargin != null &&
-        logoMargin.left != null &&
-        logoMargin.top != null &&
-        logoMargin.right != null &&
-        logoMargin.bottom != null);
+    assert(logoMargin != null && logoMargin.left != null && logoMargin.top != null && logoMargin.right != null && logoMargin.bottom != null);
     assert(attribution != null);
     assert(attributionPosition != null);
-    assert(attributionMargin != null &&
-        attributionMargin.left != null &&
-        attributionMargin.top != null &&
-        attributionMargin.right != null &&
-        attributionMargin.bottom != null);
+    assert(attributionMargin != null && attributionMargin.left != null && attributionMargin.top != null && attributionMargin.right != null && attributionMargin.bottom != null);
     assert(renderTextureMode != null);
     assert(renderTextureTranslucentSurface != null);
     assert(enableTilePrefetch != null);
@@ -88,8 +78,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(pixelRatio != null);
     assert(foregroundLoadColor != null && foregroundLoadColor.opacity == 1.0);
     cameraPosition ??= CameraPosition();
-    assert([styleFromMapbox, styleFromUri, styleFromJson].any((it) => it != null),
-        'You need to set at leat one style source.');
+    assert([styleFromMapbox, styleFromUri, styleFromJson].any((it) => it != null), 'You need to set at leat one style source.');
 
     if (attributionTintColor != null) {
       assert(attributionTintColor.opacity == 1.0);
@@ -115,27 +104,27 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
         ..compass = compass
         ..compassPosition = compassPosition
         ..compassMargin = ListBuilder<int>(<int>[
-          compassMargin.left.toInt(),
-          compassMargin.top.toInt(),
-          compassMargin.right.toInt(),
-          compassMargin.bottom.toInt(),
+          (compassMargin.left * window.devicePixelRatio).toInt(),
+          (compassMargin.top * window.devicePixelRatio).toInt(),
+          (compassMargin.right * window.devicePixelRatio).toInt(),
+          (compassMargin.bottom * window.devicePixelRatio).toInt(),
         ])
         ..compassFadeFacingNorth = compassFadeFacingNorth
         ..logo = logo
         ..logoPosition = logoPosition
         ..logoMargin = ListBuilder<int>(<int>[
-          logoMargin.left.toInt(),
-          logoMargin.top.toInt(),
-          logoMargin.right.toInt(),
-          logoMargin.bottom.toInt(),
+          (logoMargin.left * window.devicePixelRatio).toInt(),
+          (logoMargin.top * window.devicePixelRatio).toInt(),
+          (logoMargin.right * window.devicePixelRatio).toInt(),
+          (logoMargin.bottom * window.devicePixelRatio).toInt(),
         ])
         ..attribution = attribution
         ..attributionPosition = attributionPosition
         ..attributionMargin = ListBuilder<int>(<int>[
-          compassMargin.left.toInt(),
-          compassMargin.top.toInt(),
-          compassMargin.right.toInt(),
-          compassMargin.bottom.toInt(),
+          (attributionMargin.left * window.devicePixelRatio).toInt(),
+          (attributionMargin.top * window.devicePixelRatio).toInt(),
+          (attributionMargin.right * window.devicePixelRatio).toInt(),
+          (attributionMargin.bottom * window.devicePixelRatio).toInt(),
         ])
         ..attributionTintColor = attributionTintColor?.value
         ..renderTextureMode = renderTextureMode
@@ -155,7 +144,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     return _$MapOptions((MapOptionsBuilder b) {
       b
         ..apiBaseUri = proto.apiBaseUri
-        ..styleFromMapbox = proto.hasFromMapbox() ? DefaultMapStyle.fromProto(proto.fromMapbox) : null
+        ..styleFromMapbox = proto.hasFromMapbox() ? MapStyle.fromProto(proto.fromMapbox) : null
         ..styleFromUri = proto.hasFromUri() ? proto.fromUri : null
         ..styleFromJson = proto.hasFromJson_32() ? proto.fromJson_32 : null
         ..localIdeographFontFamily = proto.localIdeographFontFamily
@@ -195,7 +184,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
   String get apiBaseUri;
 
   @nullable
-  DefaultMapStyle get styleFromMapbox;
+  MapStyle get styleFromMapbox;
 
   @nullable
   String get styleFromUri;
@@ -234,10 +223,10 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   EdgeInsets get compassMarginValue {
     return EdgeInsets.only(
-      left: compassMargin[0].toDouble(),
-      top: compassMargin[1].toDouble(),
-      right: compassMargin[2].toDouble(),
-      bottom: compassMargin[3].toDouble(),
+      left: compassMargin[0] / window.devicePixelRatio,
+      top: compassMargin[1] / window.devicePixelRatio,
+      right: compassMargin[2] / window.devicePixelRatio,
+      bottom: compassMargin[3] / window.devicePixelRatio,
     );
   }
 
@@ -251,10 +240,10 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   EdgeInsets get logoMarginValue {
     return EdgeInsets.only(
-      left: logoMargin[0].toDouble(),
-      top: logoMargin[1].toDouble(),
-      right: logoMargin[2].toDouble(),
-      bottom: logoMargin[3].toDouble(),
+      left: logoMargin[0] / window.devicePixelRatio,
+      top: logoMargin[1] / window.devicePixelRatio,
+      right: logoMargin[2] / window.devicePixelRatio,
+      bottom: logoMargin[3] / window.devicePixelRatio,
     );
   }
 
@@ -266,10 +255,10 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   EdgeInsets get attributionMarginValue {
     return EdgeInsets.only(
-      left: attributionMargin[0].toDouble(),
-      top: attributionMargin[1].toDouble(),
-      right: attributionMargin[2].toDouble(),
-      bottom: attributionMargin[3].toDouble(),
+      left: attributionMargin[0] / window.devicePixelRatio,
+      top: attributionMargin[1] / window.devicePixelRatio,
+      right: attributionMargin[2] / window.devicePixelRatio,
+      bottom: attributionMargin[3] / window.devicePixelRatio,
     );
   }
 

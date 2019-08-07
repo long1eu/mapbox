@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class SymbolTextTransform {
-  const SymbolTextTransform._(this._i, this._value);
+class SymbolTextTransform extends ExpressionLiteral {
+  const SymbolTextTransform._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const SymbolTextTransform none = SymbolTextTransform._(0, 'none');
   static const SymbolTextTransform uppercase = SymbolTextTransform._(1, 'uppercase');
@@ -25,8 +24,6 @@ class SymbolTextTransform {
     'uppercase',
     'lowercase',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'SymbolTextTransform.${_names[_i]}';

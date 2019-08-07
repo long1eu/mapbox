@@ -19,12 +19,8 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.style.layers.*
-import com.tophap.mapbox_gl.proto.LayersOperations
+import com.tophap.mapbox_gl.proto.*
 import com.tophap.mapbox_gl.proto.Mapbox.Map.*
-import com.tophap.mapbox_gl.proto.MapboxUtil
-import com.tophap.mapbox_gl.proto.Sources
-import com.tophap.mapbox_gl.proto.StyleOuterClass
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -49,7 +45,7 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         MapboxMap.OnMapClickListener,
         MapboxMap.OnMapLongClickListener {
 
-    private lateinit var mapView: MapView
+    private var mapView: MapView
     private lateinit var mapboxMap: MapboxMap
 
     init {
@@ -60,13 +56,11 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         val ai = context.packageManager.getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
         val token = ai.metaData.getString("com.tophap.mapbox_token")
         Mapbox.getInstance(context, token)
+        mapView = MapView(context, options.fieldValue(context))
+        mapView.getMapAsync(this)
     }
 
-    override fun getView(): View {
-        mapView = MapView(context, options.fieldValue())
-        mapView.getMapAsync(this)
-        return mapView
-    }
+    override fun getView(): View = mapView
 
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
@@ -76,8 +70,6 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             Options.StyleCase.FROM_JSON -> mapboxMap.setStyle(Style.Builder().fromJson(options.fromJson)) { onStyleLoaded(it) }
             Options.StyleCase.STYLE_NOT_SET -> throw IllegalArgumentException("Unknown source ${options.styleCase}")
         }
-
-
 
         this.mapboxMap.addOnCameraIdleListener(this)
         this.mapboxMap.addOnCameraMoveCancelListener(this)
@@ -119,6 +111,7 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         mapboxMap.removeOnShoveListener(this)
         mapboxMap.removeOnMapClickListener(this)
         mapboxMap.removeOnMapLongClickListener(this)
+        mapView.onDestroy()
     }
 
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
@@ -219,16 +212,11 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                     result.success(it.toProto().toByteArray())
                 }
             }
-            "style#getSource" -> {
-                mapboxMap.getStyle {
-                    val source = it.getSource(call.arguments as String)
-                    result.success(source?.toProto()?.toByteArray())
-                }
-            }
             "style#addSource" -> {
                 mapboxMap.getStyle {
                     val protoSource = Sources.Source.parseFrom(call.arguments as ByteArray)
                     val source = protoSource.fieldValue()
+                    println("source added ${source.id}")
                     it.addSource(source)
                     result.success(it.getSource(source.id)?.toProto()?.toByteArray())
                 }
@@ -241,37 +229,37 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             }
             "style#addLayer" -> {
                 mapboxMap.getStyle {
-                    val operation = LayersOperations.Operations.Add.parseFrom(call.arguments as ByteArray)
+                    val operation = Layers.Operations.Add.parseFrom(call.arguments as ByteArray)
 
                     val layer = operation.layer.fieldValue()
                     when (operation.positionCase!!) {
-                        LayersOperations.Operations.Add.PositionCase.BELOW_ID -> it.addLayerBelow(layer, operation.belowId)
-                        LayersOperations.Operations.Add.PositionCase.ABOVE_ID -> it.addLayerAbove(layer, operation.aboveId)
-                        LayersOperations.Operations.Add.PositionCase.INDEX -> it.addLayerAt(layer, operation.index)
-                        LayersOperations.Operations.Add.PositionCase.POSITION_NOT_SET -> it.addLayer(layer)
+                        Layers.Operations.Add.PositionCase.BELOW_ID -> it.addLayerBelow(layer, operation.belowId)
+                        Layers.Operations.Add.PositionCase.ABOVE_ID -> it.addLayerAbove(layer, operation.aboveId)
+                        Layers.Operations.Add.PositionCase.INDEX -> it.addLayerAt(layer, operation.index)
+                        Layers.Operations.Add.PositionCase.POSITION_NOT_SET -> it.addLayer(layer)
                     }
 
-                    result.success(it.getLayer(layer.id)!!.toProto())
+                    result.success(it.getLayer(layer.id)!!.toProto().toByteArray())
                 }
             }
-            "style#updateLayer" -> {
+            "style#removeLayer" -> {
                 mapboxMap.getStyle {
-                    val operation = LayersOperations.Operations.Update.parseFrom(call.arguments as ByteArray)
-
-                    val layer = it.getLayer(operation.id)
-                    when {
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.BACKGROUND_LAYER && layer is BackgroundLayer -> layer.update(operation.backgroundLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.CIRCLE_LAYER && layer is CircleLayer -> layer.update(operation.circleLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.FILL_LAYER && layer is FillLayer -> layer.update(operation.fillLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.FILL_EXTRUSION_LAYER && layer is FillExtrusionLayer -> layer.update(operation.fillExtrusionLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.LINE_LAYER && layer is LineLayer -> layer.update(operation.lineLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.SYMBOL_LAYER && layer is SymbolLayer -> layer.update(operation.symbolLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.HILLSHADE_LAYER && layer is HillshadeLayer -> layer.update(operation.hillshadeLayer)
-                        operation.typeCase == LayersOperations.Operations.Update.TypeCase.HEATMAP_LAYER && layer is HeatmapLayer -> layer.update(operation.heatmapLayer)
-                        else -> throw IllegalArgumentException("Unknown case $this or layer is ${operation.typeCase} but the layer was $layer")
-                    }
-
-                    result.success(layer.toProto())
+                    it.removeLayer(call.arguments as String)
+                    result.success(null)
+                }
+            }
+            "source#update" -> {
+                mapboxMap.getStyle {
+                    val protoSource = Sources.Source.parseFrom(call.arguments as ByteArray)
+                    it.getSource(protoSource.id)!!.update(protoSource)
+                    result.success(it.getSource(protoSource.id)!!.toProto().toByteArray())
+                }
+            }
+            "layer#update" -> {
+                mapboxMap.getStyle {
+                    val protoLayer = Layers.Layer.parseFrom(call.arguments as ByteArray)
+                    it.getLayer(protoLayer.id)!!.update(protoLayer)
+                    result.success(it.getLayer(protoLayer.id)!!.toProto().toByteArray())
                 }
             }
             else -> result.notImplemented()
@@ -399,6 +387,8 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         }
     }
 }
+
+
 
 
 

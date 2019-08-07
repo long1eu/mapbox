@@ -4,25 +4,25 @@
 
 part of mapbox_gl;
 
-pb.Int32Value _int(int value) {
+pb.Int32Value int_(int value) {
   return pb.Int32Value()
     ..value = value
     ..freeze();
 }
 
-pb.StringValue _string(String value) {
+pb.StringValue string_(String value) {
   return pb.StringValue()
     ..value = value
     ..freeze();
 }
 
-pb.BoolValue _bool(bool value) {
+pb.BoolValue bool_(bool value) {
   return pb.BoolValue()
     ..value = value
     ..freeze();
 }
 
-pb.FloatValue _float(double value) {
+pb.FloatValue float_(double value) {
   return pb.FloatValue()
     ..value = value
     ..freeze();
@@ -42,4 +42,26 @@ pb.Color color_(int color) {
     ..opacity = c.opacity
     ..hasColor = true
     ..freeze();
+}
+
+mixin Channel {
+  Source rebuild(void Function(SourceBuilder) updates);
+
+  MethodChannel get channel;
+
+  pb.GeneratedMessage get proto;
+
+  pb.Source get source;
+
+  @memoized
+  Uint8List get data => proto.writeToBuffer();
+
+  @memoized
+  Uint8List get dataSource => source.writeToBuffer();
+
+  bool get isAttached => channel != null;
+
+  Future<T> _update<T extends Source>(T source) {
+    return channel.invokeMethod('source#update', source.dataSource).then((_) => source);
+  }
 }

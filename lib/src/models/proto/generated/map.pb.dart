@@ -64,7 +64,7 @@ class Map__Options extends $pb.GeneratedMessage {
     ..aOB(27, 'enableZMediaOverlay')
     ..a<$core.double>(28, 'pixelRatio', $pb.PbFieldType.OF)
     ..a<$1.Color>(29, 'foregroundLoadColor', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
-    ..e<$4.Style_DefaultMapboxStyle>(30, 'fromMapbox', $pb.PbFieldType.OE, $4.Style_DefaultMapboxStyle.MAPBOX_STREETS, $4.Style_DefaultMapboxStyle.valueOf, $4.Style_DefaultMapboxStyle.values)
+    ..e<$4.Style_MapboxStyle>(30, 'fromMapbox', $pb.PbFieldType.OE, $4.Style_MapboxStyle.MAPBOX_STREETS, $4.Style_MapboxStyle.valueOf, $4.Style_MapboxStyle.values)
     ..aOS(31, 'fromUri')
     ..aOS(32, 'fromJson_32')
     ..hasRequiredFields = false
@@ -223,8 +223,8 @@ class Map__Options extends $pb.GeneratedMessage {
   $core.bool hasForegroundLoadColor() => $_has(28);
   void clearForegroundLoadColor() => clearField(29);
 
-  $4.Style_DefaultMapboxStyle get fromMapbox => $_getN(29);
-  set fromMapbox($4.Style_DefaultMapboxStyle v) { setField(30, v); }
+  $4.Style_MapboxStyle get fromMapbox => $_getN(29);
+  set fromMapbox($4.Style_MapboxStyle v) { setField(30, v); }
   $core.bool hasFromMapbox() => $_has(29);
   void clearFromMapbox() => clearField(30);
 

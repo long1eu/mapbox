@@ -40,7 +40,7 @@ message Map {
     Color foreground_load_color = 29;
 
     oneof style {
-      Style.DefaultMapboxStyle from_mapbox = 30;
+      Style.MapboxStyle from_mapbox = 30;
       string from_uri = 31;
       string from_json = 32;
     }

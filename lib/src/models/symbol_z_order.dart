@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class SymbolZOrder {
-  const SymbolZOrder._(this._i, this._value);
+class SymbolZOrder extends ExpressionLiteral {
+  const SymbolZOrder._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const SymbolZOrder auto = SymbolZOrder._(0, 'auto');
   static const SymbolZOrder viewportY = SymbolZOrder._(1, 'viewport-y');
@@ -25,8 +24,6 @@ class SymbolZOrder {
     'viewportY',
     'source',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'SymbolZOrder.${_names[_i]}';

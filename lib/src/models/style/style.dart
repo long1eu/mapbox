@@ -9,8 +9,8 @@ import 'dart:typed_data';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:mapbox_gl/src/models/source/source.dart';
 import 'package:mapbox_gl/src/models/style/light.dart';
 import 'package:mapbox_gl/src/models/transition_options.dart';
 
@@ -28,8 +28,8 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
       b
         ..uri = proto.uri
         ..json = proto.json
-        ..sources = ListBuilder<SourceModel>(proto.sources.map((it) => SourceModel.fromProto(it)))
-        ..layers = ListBuilder<pb.Layer>(proto.layers..forEach((it) => it.freeze()))
+        ..sources = ListBuilder<Source>(proto.sources.map((it) => Source.fromProto(it)))
+        ..layers = ListBuilder<Layer>(proto.layers.map((it) => Layer.fromProto(it)))
         ..transition = TransitionOptions.fromProto(proto.transition).toBuilder()
         ..light = proto.hasLight() ? Light.fromProto(proto.light).toBuilder() : null;
     });
@@ -41,9 +41,9 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
 
   String get json;
 
-  BuiltList<SourceModel> get sources;
+  BuiltList<Source> get sources;
 
-  BuiltList<pb.Layer> get layers;
+  BuiltList<Layer> get layers;
 
   TransitionOptions get transition;
 
@@ -55,7 +55,7 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
       ..uri = uri
       ..json = json
       ..sources.addAll(sources.map((it) => it.proto))
-      ..layers.addAll(layers)
+      ..layers.addAll(layers.map((it) => it.proto))
       ..transition = transition.proto;
 
     if (light != null) {

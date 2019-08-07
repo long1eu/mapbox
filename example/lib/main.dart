@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 
-import 'animate_camera.dart';
-import 'move_camera.dart';
-import 'page.dart';
-import 'scrolling_map.dart';
+import 'src/page.dart';
+import 'src/pages/add_wms_source_page.dart';
+import 'src/pages/geojson_layer_in_stack_page.dart';
+import 'src/pages/hillshade_layer_page.dart';
+import 'src/pages/image_source_time_lapse_page.dart';
+import 'src/pages/move_camera.dart';
+import 'src/pages/scrolling_map.dart';
+import 'src/pages/vector_source.dart';
 
 final List<Page> _allPages = <Page>[
-  //MapUiPage(),
-  AnimateCameraPage(),
   MoveCameraPage(),
-  //PlaceSymbolPage(),
-  //LinePage(),
-  //PlaceCirclePage(),
   ScrollingMapPage(),
+  HillshadeLayerPage(),
+  GeoJsonLayerInStackPage(),
+  VectorSourcePage(),
+  AddWmsSourcePage(),
+  ImageSourceTimeLapsePage(),
 ];
 
 class MapsDemo extends StatelessWidget {
   void _pushPage(BuildContext context, Page page) {
-    Navigator.of(context).push(MaterialPageRoute<void>(
-        builder: (_) => Scaffold(
-              appBar: AppBar(title: Text(page.title)),
-              body: page,
-            )));
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) {
+          return Scaffold(
+            appBar: AppBar(title: Text(page.title)),
+            body: page,
+          );
+        },
+      ),
+    );
   }
 
   @override
@@ -30,11 +39,15 @@ class MapsDemo extends StatelessWidget {
       appBar: AppBar(title: const Text('MapboxMaps examples')),
       body: ListView.builder(
         itemCount: _allPages.length,
-        itemBuilder: (_, int index) => ListTile(
-          leading: _allPages[index].leading,
-          title: Text(_allPages[index].title),
-          onTap: () => _pushPage(context, _allPages[index]),
-        ),
+        itemBuilder: (_, int index) {
+          final Page page = _allPages[index];
+          return ListTile(
+            leading: page.leading,
+            title: Text(page.title),
+            subtitle: page.info.isNotEmpty ? Text(page.info) : null,
+            onTap: () => _pushPage(context, page),
+          );
+        },
       ),
     );
   }

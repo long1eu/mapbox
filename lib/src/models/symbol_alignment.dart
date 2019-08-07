@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class SymbolAlignment {
-  const SymbolAlignment._(this._i, this._value);
+class SymbolAlignment extends ExpressionLiteral {
+  const SymbolAlignment._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const SymbolAlignment auto = SymbolAlignment._(0, 'auto');
   static const SymbolAlignment map = SymbolAlignment._(1, 'map');
@@ -25,8 +24,6 @@ class SymbolAlignment {
     'map',
     'viewport',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'SymbolAlignment.${_names[_i]}';

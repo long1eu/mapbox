@@ -30,7 +30,7 @@ message Style {
     float polar_angle = 3;
   }
 
-  enum DefaultMapboxStyle {
+  enum MapboxStyle {
     MAPBOX_STREETS = 0;
     OUTDOORS = 1;
     LIGHT = 2;
@@ -44,7 +44,7 @@ message Style {
   message Operations {
     message Build {
       oneof source {
-        Style.DefaultMapboxStyle default = 1;
+        Style.MapboxStyle default = 1;
         string uri = 2;
         string json = 3;
       }

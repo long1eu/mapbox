@@ -5,11 +5,14 @@ option java_package = "com.tophap.mapbox_gl.proto";
 import "util.proto";
 
 message Source {
+  string id = 1;
   oneof type {
-    GeoJson geoJson = 1;
-    Image image = 2;
-    Vector vector = 3;
-    Unknown unknown = 4;
+    GeoJson geoJson = 2;
+    Image image = 3;
+    RasterDem raster_dem = 4;
+    Raster raster = 5;
+    Vector vector = 6;
+    Unknown unknown = 7;
   }
 
   message GeoJson {
@@ -42,6 +45,28 @@ message Source {
     oneof source {
       string uri = 4;
       bytes image = 5;
+    }
+  }
+
+  message RasterDem {
+    string id = 1;
+    string attribution = 2;
+    int32 tile_size = 3;
+
+    oneof source {
+      string uri = 4;
+      TileSet tile_set = 5;
+    }
+  }
+
+  message Raster {
+    string id = 1;
+    string attribution = 2;
+    int32 tile_size = 3;
+
+    oneof source {
+      string uri = 4;
+      TileSet tile_set = 5;
     }
   }
 

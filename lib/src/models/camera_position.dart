@@ -18,10 +18,10 @@ abstract class CameraPosition implements Built<CameraPosition, CameraPositionBui
   factory CameraPosition({double bearing, LatLng target, double tilt, double zoom}) {
     return _$CameraPosition((CameraPositionBuilder b) {
       b
-        ..bearing = 0
-        ..target = LatLng().toBuilder()
-        ..tilt = 0
-        ..zoom = 0;
+        ..bearing = bearing ?? 0
+        ..target = target?.toBuilder() ?? LatLng().toBuilder()
+        ..tilt = tilt ?? 0
+        ..zoom = zoom ?? 0;
     });
   }
 

@@ -194,7 +194,7 @@ struct Com_Tophap_MapboxGl_Proto_Map {
       set {_uniqueStorage()._style = newValue}
     }
 
-    var fromMapbox: Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle {
+    var fromMapbox: Com_Tophap_MapboxGl_Proto_Style.MapboxStyle {
       get {
         if case .fromMapbox(let v)? = _storage._style {return v}
         return .mapboxStreets
@@ -221,7 +221,7 @@ struct Com_Tophap_MapboxGl_Proto_Map {
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     enum OneOf_Style: Equatable {
-      case fromMapbox(Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle)
+      case fromMapbox(Com_Tophap_MapboxGl_Proto_Style.MapboxStyle)
       case fromUri(String)
       case fromJson(String)
 
@@ -831,7 +831,7 @@ extension Com_Tophap_MapboxGl_Proto_Map.Options: SwiftProtobuf.Message, SwiftPro
         case 29: try decoder.decodeSingularMessageField(value: &_storage._foregroundLoadColor)
         case 30:
           if _storage._style != nil {try decoder.handleConflictingOneOf()}
-          var v: Com_Tophap_MapboxGl_Proto_Style.DefaultMapboxStyle?
+          var v: Com_Tophap_MapboxGl_Proto_Style.MapboxStyle?
           try decoder.decodeSingularEnumField(value: &v)
           if let v = v {_storage._style = .fromMapbox(v)}
         case 31:

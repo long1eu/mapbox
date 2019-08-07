@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class PositionAnchor {
-  const PositionAnchor._(this._i, this.value);
+class PositionAnchor extends ExpressionLiteral {
+  const PositionAnchor._(this._i, String value) : super(value);
 
   final int _i;
-  final String value;
 
   static const PositionAnchor center = PositionAnchor._(0, 'center');
   static const PositionAnchor left = PositionAnchor._(1, 'left');
@@ -43,8 +42,6 @@ class PositionAnchor {
     'bottomLeft',
     'bottomRight',
   ];
-
-  Expression get expression => literalString(value);
 
   @override
   String toString() => 'PositionAnchor.${_names[_i]}';

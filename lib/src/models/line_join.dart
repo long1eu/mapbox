@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class LineJoin {
-  const LineJoin._(this._i, this._value);
+class LineJoin extends ExpressionLiteral {
+  const LineJoin._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const LineJoin miter = LineJoin._(0, 'miter');
   static const LineJoin bevel = LineJoin._(1, 'bevel');
@@ -25,8 +24,6 @@ class LineJoin {
     'bevel',
     'round',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'LineJoin.${_names[_i]}';

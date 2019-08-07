@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class LineCap {
-  const LineCap._(this._i, this._value);
+class LineCap extends ExpressionLiteral {
+  const LineCap._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const LineCap butt = LineCap._(0, 'butt');
   static const LineCap round = LineCap._(1, 'round');
@@ -25,8 +24,6 @@ class LineCap {
     'round',
     'square',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'LineCap.${_names[_i]}';

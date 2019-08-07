@@ -19,54 +19,90 @@ public final class Sources {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+     * <code>string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
      */
     boolean hasGeoJson();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.GeoJson getGeoJson();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.GeoJsonOrBuilder getGeoJsonOrBuilder();
 
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
      */
     boolean hasImage();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.Image getImage();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder getImageOrBuilder();
 
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+     */
+    boolean hasRasterDem();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.RasterDem getRasterDem();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder getRasterDemOrBuilder();
+
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+     */
+    boolean hasRaster();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.Raster getRaster();
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+     */
+    com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder getRasterOrBuilder();
+
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
      */
     boolean hasVector();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.Vector getVector();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder getVectorOrBuilder();
 
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
      */
     boolean hasUnknown();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.Unknown getUnknown();
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
      */
     com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder getUnknownOrBuilder();
 
@@ -85,6 +121,7 @@ public final class Sources {
       super(builder);
     }
     private Source() {
+      id_ = "";
     }
 
     @java.lang.Override
@@ -112,8 +149,14 @@ public final class Sources {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
               com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.Builder subBuilder = null;
-              if (typeCase_ == 1) {
+              if (typeCase_ == 2) {
                 subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_).toBuilder();
               }
               type_ =
@@ -122,12 +165,12 @@ public final class Sources {
                 subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_);
                 type_ = subBuilder.buildPartial();
               }
-              typeCase_ = 1;
+              typeCase_ = 2;
               break;
             }
-            case 18: {
+            case 26: {
               com.tophap.mapbox_gl.proto.Sources.Source.Image.Builder subBuilder = null;
-              if (typeCase_ == 2) {
+              if (typeCase_ == 3) {
                 subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.Image) type_).toBuilder();
               }
               type_ =
@@ -136,12 +179,40 @@ public final class Sources {
                 subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
                 type_ = subBuilder.buildPartial();
               }
-              typeCase_ = 2;
+              typeCase_ = 3;
               break;
             }
-            case 26: {
+            case 34: {
+              com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder subBuilder = null;
+              if (typeCase_ == 4) {
+                subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_).toBuilder();
+              }
+              type_ =
+                  input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_);
+                type_ = subBuilder.buildPartial();
+              }
+              typeCase_ = 4;
+              break;
+            }
+            case 42: {
+              com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder subBuilder = null;
+              if (typeCase_ == 5) {
+                subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_).toBuilder();
+              }
+              type_ =
+                  input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.Raster.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_);
+                type_ = subBuilder.buildPartial();
+              }
+              typeCase_ = 5;
+              break;
+            }
+            case 50: {
               com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder subBuilder = null;
-              if (typeCase_ == 3) {
+              if (typeCase_ == 6) {
                 subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_).toBuilder();
               }
               type_ =
@@ -150,12 +221,12 @@ public final class Sources {
                 subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
                 type_ = subBuilder.buildPartial();
               }
-              typeCase_ = 3;
+              typeCase_ = 6;
               break;
             }
-            case 34: {
+            case 58: {
               com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder subBuilder = null;
-              if (typeCase_ == 4) {
+              if (typeCase_ == 7) {
                 subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_).toBuilder();
               }
               type_ =
@@ -164,7 +235,7 @@ public final class Sources {
                 subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
                 type_ = subBuilder.buildPartial();
               }
-              typeCase_ = 4;
+              typeCase_ = 7;
               break;
             }
             default: {
@@ -3574,6 +3645,2400 @@ public final class Sources {
 
       @java.lang.Override
       public com.tophap.mapbox_gl.proto.Sources.Source.Image getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface RasterDemOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Source.RasterDem)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string id = 1;</code>
+       */
+      java.lang.String getId();
+      /**
+       * <code>string id = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getIdBytes();
+
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      java.lang.String getAttribution();
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getAttributionBytes();
+
+      /**
+       * <code>int32 tile_size = 3;</code>
+       */
+      int getTileSize();
+
+      /**
+       * <code>string uri = 4;</code>
+       */
+      java.lang.String getUri();
+      /**
+       * <code>string uri = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getUriBytes();
+
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      boolean hasTileSet();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder();
+
+      public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.SourceCase getSourceCase();
+    }
+    /**
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.RasterDem}
+     */
+    public  static final class RasterDem extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Source.RasterDem)
+        RasterDemOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use RasterDem.newBuilder() to construct.
+      private RasterDem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private RasterDem() {
+        id_ = "";
+        attribution_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private RasterDem(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                id_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                attribution_ = s;
+                break;
+              }
+              case 24: {
+
+                tileSize_ = input.readInt32();
+                break;
+              }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+                sourceCase_ = 4;
+                source_ = s;
+                break;
+              }
+              case 42: {
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder subBuilder = null;
+                if (sourceCase_ == 5) {
+                  subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_).toBuilder();
+                }
+                source_ =
+                    input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.TileSet.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+                  source_ = subBuilder.buildPartial();
+                }
+                sourceCase_ = 5;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.class, com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder.class);
+      }
+
+      private int sourceCase_ = 0;
+      private java.lang.Object source_;
+      public enum SourceCase
+          implements com.google.protobuf.Internal.EnumLite {
+        URI(4),
+        TILE_SET(5),
+        SOURCE_NOT_SET(0);
+        private final int value;
+        private SourceCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static SourceCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static SourceCase forNumber(int value) {
+          switch (value) {
+            case 4: return URI;
+            case 5: return TILE_SET;
+            case 0: return SOURCE_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public SourceCase
+      getSourceCase() {
+        return SourceCase.forNumber(
+            sourceCase_);
+      }
+
+      public static final int ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object id_;
+      /**
+       * <code>string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ATTRIBUTION_FIELD_NUMBER = 2;
+      private volatile java.lang.Object attribution_;
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public java.lang.String getAttribution() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          attribution_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAttributionBytes() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          attribution_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TILE_SIZE_FIELD_NUMBER = 3;
+      private int tileSize_;
+      /**
+       * <code>int32 tile_size = 3;</code>
+       */
+      public int getTileSize() {
+        return tileSize_;
+      }
+
+      public static final int URI_FIELD_NUMBER = 4;
+      /**
+       * <code>string uri = 4;</code>
+       */
+      public java.lang.String getUri() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 4) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (sourceCase_ == 4) {
+            source_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string uri = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUriBytes() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 4) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (sourceCase_ == 4) {
+            source_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TILE_SET_FIELD_NUMBER = 5;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      public boolean hasTileSet() {
+        return sourceCase_ == 5;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet() {
+        if (sourceCase_ == 5) {
+           return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder() {
+        if (sourceCase_ == 5) {
+           return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getIdBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, attribution_);
+        }
+        if (tileSize_ != 0) {
+          output.writeInt32(3, tileSize_);
+        }
+        if (sourceCase_ == 4) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, source_);
+        }
+        if (sourceCase_ == 5) {
+          output.writeMessage(5, (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getIdBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, attribution_);
+        }
+        if (tileSize_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(3, tileSize_);
+        }
+        if (sourceCase_ == 4) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, source_);
+        }
+        if (sourceCase_ == 5) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(5, (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Sources.Source.RasterDem)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Sources.Source.RasterDem other = (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) obj;
+
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (!getAttribution()
+            .equals(other.getAttribution())) return false;
+        if (getTileSize()
+            != other.getTileSize()) return false;
+        if (!getSourceCase().equals(other.getSourceCase())) return false;
+        switch (sourceCase_) {
+          case 4:
+            if (!getUri()
+                .equals(other.getUri())) return false;
+            break;
+          case 5:
+            if (!getTileSet()
+                .equals(other.getTileSet())) return false;
+            break;
+          case 0:
+          default:
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId().hashCode();
+        hash = (37 * hash) + ATTRIBUTION_FIELD_NUMBER;
+        hash = (53 * hash) + getAttribution().hashCode();
+        hash = (37 * hash) + TILE_SIZE_FIELD_NUMBER;
+        hash = (53 * hash) + getTileSize();
+        switch (sourceCase_) {
+          case 4:
+            hash = (37 * hash) + URI_FIELD_NUMBER;
+            hash = (53 * hash) + getUri().hashCode();
+            break;
+          case 5:
+            hash = (37 * hash) + TILE_SET_FIELD_NUMBER;
+            hash = (53 * hash) + getTileSet().hashCode();
+            break;
+          case 0:
+          default:
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Sources.Source.RasterDem prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.RasterDem}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Source.RasterDem)
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.class, com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = "";
+
+          attribution_ = "";
+
+          tileSize_ = 0;
+
+          sourceCase_ = 0;
+          source_ = null;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem build() {
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDem result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem buildPartial() {
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDem result = new com.tophap.mapbox_gl.proto.Sources.Source.RasterDem(this);
+          result.id_ = id_;
+          result.attribution_ = attribution_;
+          result.tileSize_ = tileSize_;
+          if (sourceCase_ == 4) {
+            result.source_ = source_;
+          }
+          if (sourceCase_ == 5) {
+            if (tileSetBuilder_ == null) {
+              result.source_ = source_;
+            } else {
+              result.source_ = tileSetBuilder_.build();
+            }
+          }
+          result.sourceCase_ = sourceCase_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.RasterDem)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Sources.Source.RasterDem other) {
+          if (other == com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance()) return this;
+          if (!other.getId().isEmpty()) {
+            id_ = other.id_;
+            onChanged();
+          }
+          if (!other.getAttribution().isEmpty()) {
+            attribution_ = other.attribution_;
+            onChanged();
+          }
+          if (other.getTileSize() != 0) {
+            setTileSize(other.getTileSize());
+          }
+          switch (other.getSourceCase()) {
+            case URI: {
+              sourceCase_ = 4;
+              source_ = other.source_;
+              onChanged();
+              break;
+            }
+            case TILE_SET: {
+              mergeTileSet(other.getTileSet());
+              break;
+            }
+            case SOURCE_NOT_SET: {
+              break;
+            }
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDem parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int sourceCase_ = 0;
+        private java.lang.Object source_;
+        public SourceCase
+            getSourceCase() {
+          return SourceCase.forNumber(
+              sourceCase_);
+        }
+
+        public Builder clearSource() {
+          sourceCase_ = 0;
+          source_ = null;
+          onChanged();
+          return this;
+        }
+
+
+        private java.lang.Object id_ = "";
+        /**
+         * <code>string id = 1;</code>
+         */
+        public java.lang.String getId() {
+          java.lang.Object ref = id_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            id_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIdBytes() {
+          java.lang.Object ref = id_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            id_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder clearId() {
+          
+          id_ = getDefaultInstance().getId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          id_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object attribution_ = "";
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public java.lang.String getAttribution() {
+          java.lang.Object ref = attribution_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            attribution_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAttributionBytes() {
+          java.lang.Object ref = attribution_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            attribution_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttribution(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder clearAttribution() {
+          
+          attribution_ = getDefaultInstance().getAttribution();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttributionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int tileSize_ ;
+        /**
+         * <code>int32 tile_size = 3;</code>
+         */
+        public int getTileSize() {
+          return tileSize_;
+        }
+        /**
+         * <code>int32 tile_size = 3;</code>
+         */
+        public Builder setTileSize(int value) {
+          
+          tileSize_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 tile_size = 3;</code>
+         */
+        public Builder clearTileSize() {
+          
+          tileSize_ = 0;
+          onChanged();
+          return this;
+        }
+
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public java.lang.String getUri() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 4) {
+            ref = source_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (sourceCase_ == 4) {
+              source_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getUriBytes() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 4) {
+            ref = source_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (sourceCase_ == 4) {
+              source_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public Builder setUri(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  sourceCase_ = 4;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public Builder clearUri() {
+          if (sourceCase_ == 4) {
+            sourceCase_ = 0;
+            source_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public Builder setUriBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          sourceCase_ = 4;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder> tileSetBuilder_;
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public boolean hasTileSet() {
+          return sourceCase_ == 5;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet() {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 5) {
+              return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          } else {
+            if (sourceCase_ == 5) {
+              return tileSetBuilder_.getMessage();
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder setTileSet(com.tophap.mapbox_gl.proto.Sources.Source.TileSet value) {
+          if (tileSetBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            source_ = value;
+            onChanged();
+          } else {
+            tileSetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 5;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder setTileSet(
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder builderForValue) {
+          if (tileSetBuilder_ == null) {
+            source_ = builderForValue.build();
+            onChanged();
+          } else {
+            tileSetBuilder_.setMessage(builderForValue.build());
+          }
+          sourceCase_ = 5;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder mergeTileSet(com.tophap.mapbox_gl.proto.Sources.Source.TileSet value) {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 5 &&
+                source_ != com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance()) {
+              source_ = com.tophap.mapbox_gl.proto.Sources.Source.TileSet.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_)
+                  .mergeFrom(value).buildPartial();
+            } else {
+              source_ = value;
+            }
+            onChanged();
+          } else {
+            if (sourceCase_ == 5) {
+              tileSetBuilder_.mergeFrom(value);
+            }
+            tileSetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 5;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder clearTileSet() {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 5) {
+              sourceCase_ = 0;
+              source_ = null;
+              onChanged();
+            }
+          } else {
+            if (sourceCase_ == 5) {
+              sourceCase_ = 0;
+              source_ = null;
+            }
+            tileSetBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder getTileSetBuilder() {
+          return getTileSetFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder() {
+          if ((sourceCase_ == 5) && (tileSetBuilder_ != null)) {
+            return tileSetBuilder_.getMessageOrBuilder();
+          } else {
+            if (sourceCase_ == 5) {
+              return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder> 
+            getTileSetFieldBuilder() {
+          if (tileSetBuilder_ == null) {
+            if (!(sourceCase_ == 5)) {
+              source_ = com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+            }
+            tileSetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder>(
+                    (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_,
+                    getParentForChildren(),
+                    isClean());
+            source_ = null;
+          }
+          sourceCase_ = 5;
+          onChanged();;
+          return tileSetBuilder_;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Source.RasterDem)
+      }
+
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Source.RasterDem)
+      private static final com.tophap.mapbox_gl.proto.Sources.Source.RasterDem DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Sources.Source.RasterDem();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.RasterDem getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<RasterDem>
+          PARSER = new com.google.protobuf.AbstractParser<RasterDem>() {
+        @java.lang.Override
+        public RasterDem parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new RasterDem(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<RasterDem> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<RasterDem> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface RasterOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:com.tophap.mapbox_gl.proto.Source.Raster)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string id = 1;</code>
+       */
+      java.lang.String getId();
+      /**
+       * <code>string id = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getIdBytes();
+
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      java.lang.String getAttribution();
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getAttributionBytes();
+
+      /**
+       * <code>int32 tile_size = 3;</code>
+       */
+      int getTileSize();
+
+      /**
+       * <code>string uri = 4;</code>
+       */
+      java.lang.String getUri();
+      /**
+       * <code>string uri = 4;</code>
+       */
+      com.google.protobuf.ByteString
+          getUriBytes();
+
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      boolean hasTileSet();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet();
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder();
+
+      public com.tophap.mapbox_gl.proto.Sources.Source.Raster.SourceCase getSourceCase();
+    }
+    /**
+     * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.Raster}
+     */
+    public  static final class Raster extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:com.tophap.mapbox_gl.proto.Source.Raster)
+        RasterOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Raster.newBuilder() to construct.
+      private Raster(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Raster() {
+        id_ = "";
+        attribution_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Raster(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                id_ = s;
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                attribution_ = s;
+                break;
+              }
+              case 24: {
+
+                tileSize_ = input.readInt32();
+                break;
+              }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+                sourceCase_ = 4;
+                source_ = s;
+                break;
+              }
+              case 42: {
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder subBuilder = null;
+                if (sourceCase_ == 5) {
+                  subBuilder = ((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_).toBuilder();
+                }
+                source_ =
+                    input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.TileSet.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+                  source_ = subBuilder.buildPartial();
+                }
+                sourceCase_ = 5;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Raster_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Raster_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Sources.Source.Raster.class, com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder.class);
+      }
+
+      private int sourceCase_ = 0;
+      private java.lang.Object source_;
+      public enum SourceCase
+          implements com.google.protobuf.Internal.EnumLite {
+        URI(4),
+        TILE_SET(5),
+        SOURCE_NOT_SET(0);
+        private final int value;
+        private SourceCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static SourceCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static SourceCase forNumber(int value) {
+          switch (value) {
+            case 4: return URI;
+            case 5: return TILE_SET;
+            case 0: return SOURCE_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public SourceCase
+      getSourceCase() {
+        return SourceCase.forNumber(
+            sourceCase_);
+      }
+
+      public static final int ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object id_;
+      /**
+       * <code>string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int ATTRIBUTION_FIELD_NUMBER = 2;
+      private volatile java.lang.Object attribution_;
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public java.lang.String getAttribution() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          attribution_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string attribution = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAttributionBytes() {
+        java.lang.Object ref = attribution_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          attribution_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TILE_SIZE_FIELD_NUMBER = 3;
+      private int tileSize_;
+      /**
+       * <code>int32 tile_size = 3;</code>
+       */
+      public int getTileSize() {
+        return tileSize_;
+      }
+
+      public static final int URI_FIELD_NUMBER = 4;
+      /**
+       * <code>string uri = 4;</code>
+       */
+      public java.lang.String getUri() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 4) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (sourceCase_ == 4) {
+            source_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string uri = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUriBytes() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 4) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (sourceCase_ == 4) {
+            source_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int TILE_SET_FIELD_NUMBER = 5;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      public boolean hasTileSet() {
+        return sourceCase_ == 5;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet() {
+        if (sourceCase_ == 5) {
+           return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder() {
+        if (sourceCase_ == 5) {
+           return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getIdBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, attribution_);
+        }
+        if (tileSize_ != 0) {
+          output.writeInt32(3, tileSize_);
+        }
+        if (sourceCase_ == 4) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, source_);
+        }
+        if (sourceCase_ == 5) {
+          output.writeMessage(5, (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getIdBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        }
+        if (!getAttributionBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, attribution_);
+        }
+        if (tileSize_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(3, tileSize_);
+        }
+        if (sourceCase_ == 4) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, source_);
+        }
+        if (sourceCase_ == 5) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(5, (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Sources.Source.Raster)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Sources.Source.Raster other = (com.tophap.mapbox_gl.proto.Sources.Source.Raster) obj;
+
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (!getAttribution()
+            .equals(other.getAttribution())) return false;
+        if (getTileSize()
+            != other.getTileSize()) return false;
+        if (!getSourceCase().equals(other.getSourceCase())) return false;
+        switch (sourceCase_) {
+          case 4:
+            if (!getUri()
+                .equals(other.getUri())) return false;
+            break;
+          case 5:
+            if (!getTileSet()
+                .equals(other.getTileSet())) return false;
+            break;
+          case 0:
+          default:
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId().hashCode();
+        hash = (37 * hash) + ATTRIBUTION_FIELD_NUMBER;
+        hash = (53 * hash) + getAttribution().hashCode();
+        hash = (37 * hash) + TILE_SIZE_FIELD_NUMBER;
+        hash = (53 * hash) + getTileSize();
+        switch (sourceCase_) {
+          case 4:
+            hash = (37 * hash) + URI_FIELD_NUMBER;
+            hash = (53 * hash) + getUri().hashCode();
+            break;
+          case 5:
+            hash = (37 * hash) + TILE_SET_FIELD_NUMBER;
+            hash = (53 * hash) + getTileSet().hashCode();
+            break;
+          case 0:
+          default:
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Sources.Source.Raster prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.tophap.mapbox_gl.proto.Source.Raster}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:com.tophap.mapbox_gl.proto.Source.Raster)
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Raster_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Raster_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Sources.Source.Raster.class, com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Sources.Source.Raster.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = "";
+
+          attribution_ = "";
+
+          tileSize_ = 0;
+
+          sourceCase_ = 0;
+          source_ = null;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Sources.internal_static_com_tophap_mapbox_gl_proto_Source_Raster_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Raster getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Raster build() {
+          com.tophap.mapbox_gl.proto.Sources.Source.Raster result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Sources.Source.Raster buildPartial() {
+          com.tophap.mapbox_gl.proto.Sources.Source.Raster result = new com.tophap.mapbox_gl.proto.Sources.Source.Raster(this);
+          result.id_ = id_;
+          result.attribution_ = attribution_;
+          result.tileSize_ = tileSize_;
+          if (sourceCase_ == 4) {
+            result.source_ = source_;
+          }
+          if (sourceCase_ == 5) {
+            if (tileSetBuilder_ == null) {
+              result.source_ = source_;
+            } else {
+              result.source_ = tileSetBuilder_.build();
+            }
+          }
+          result.sourceCase_ = sourceCase_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Sources.Source.Raster) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Sources.Source.Raster)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Sources.Source.Raster other) {
+          if (other == com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance()) return this;
+          if (!other.getId().isEmpty()) {
+            id_ = other.id_;
+            onChanged();
+          }
+          if (!other.getAttribution().isEmpty()) {
+            attribution_ = other.attribution_;
+            onChanged();
+          }
+          if (other.getTileSize() != 0) {
+            setTileSize(other.getTileSize());
+          }
+          switch (other.getSourceCase()) {
+            case URI: {
+              sourceCase_ = 4;
+              source_ = other.source_;
+              onChanged();
+              break;
+            }
+            case TILE_SET: {
+              mergeTileSet(other.getTileSet());
+              break;
+            }
+            case SOURCE_NOT_SET: {
+              break;
+            }
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Sources.Source.Raster parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Sources.Source.Raster) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int sourceCase_ = 0;
+        private java.lang.Object source_;
+        public SourceCase
+            getSourceCase() {
+          return SourceCase.forNumber(
+              sourceCase_);
+        }
+
+        public Builder clearSource() {
+          sourceCase_ = 0;
+          source_ = null;
+          onChanged();
+          return this;
+        }
+
+
+        private java.lang.Object id_ = "";
+        /**
+         * <code>string id = 1;</code>
+         */
+        public java.lang.String getId() {
+          java.lang.Object ref = id_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            id_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIdBytes() {
+          java.lang.Object ref = id_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            id_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder clearId() {
+          
+          id_ = getDefaultInstance().getId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          id_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object attribution_ = "";
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public java.lang.String getAttribution() {
+          java.lang.Object ref = attribution_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            attribution_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAttributionBytes() {
+          java.lang.Object ref = attribution_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            attribution_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttribution(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder clearAttribution() {
+          
+          attribution_ = getDefaultInstance().getAttribution();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string attribution = 2;</code>
+         */
+        public Builder setAttributionBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          attribution_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int tileSize_ ;
+        /**
+         * <code>int32 tile_size = 3;</code>
+         */
+        public int getTileSize() {
+          return tileSize_;
+        }
+        /**
+         * <code>int32 tile_size = 3;</code>
+         */
+        public Builder setTileSize(int value) {
+          
+          tileSize_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 tile_size = 3;</code>
+         */
+        public Builder clearTileSize() {
+          
+          tileSize_ = 0;
+          onChanged();
+          return this;
+        }
+
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public java.lang.String getUri() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 4) {
+            ref = source_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (sourceCase_ == 4) {
+              source_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+            getUriBytes() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 4) {
+            ref = source_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (sourceCase_ == 4) {
+              source_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public Builder setUri(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  sourceCase_ = 4;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public Builder clearUri() {
+          if (sourceCase_ == 4) {
+            sourceCase_ = 0;
+            source_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string uri = 4;</code>
+         */
+        public Builder setUriBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          sourceCase_ = 4;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder> tileSetBuilder_;
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public boolean hasTileSet() {
+          return sourceCase_ == 5;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet getTileSet() {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 5) {
+              return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          } else {
+            if (sourceCase_ == 5) {
+              return tileSetBuilder_.getMessage();
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder setTileSet(com.tophap.mapbox_gl.proto.Sources.Source.TileSet value) {
+          if (tileSetBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            source_ = value;
+            onChanged();
+          } else {
+            tileSetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 5;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder setTileSet(
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder builderForValue) {
+          if (tileSetBuilder_ == null) {
+            source_ = builderForValue.build();
+            onChanged();
+          } else {
+            tileSetBuilder_.setMessage(builderForValue.build());
+          }
+          sourceCase_ = 5;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder mergeTileSet(com.tophap.mapbox_gl.proto.Sources.Source.TileSet value) {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 5 &&
+                source_ != com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance()) {
+              source_ = com.tophap.mapbox_gl.proto.Sources.Source.TileSet.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_)
+                  .mergeFrom(value).buildPartial();
+            } else {
+              source_ = value;
+            }
+            onChanged();
+          } else {
+            if (sourceCase_ == 5) {
+              tileSetBuilder_.mergeFrom(value);
+            }
+            tileSetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 5;
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public Builder clearTileSet() {
+          if (tileSetBuilder_ == null) {
+            if (sourceCase_ == 5) {
+              sourceCase_ = 0;
+              source_ = null;
+              onChanged();
+            }
+          } else {
+            if (sourceCase_ == 5) {
+              sourceCase_ = 0;
+              source_ = null;
+            }
+            tileSetBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder getTileSetBuilder() {
+          return getTileSetFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder getTileSetOrBuilder() {
+          if ((sourceCase_ == 5) && (tileSetBuilder_ != null)) {
+            return tileSetBuilder_.getMessageOrBuilder();
+          } else {
+            if (sourceCase_ == 5) {
+              return (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.com.tophap.mapbox_gl.proto.Source.TileSet tile_set = 5;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder> 
+            getTileSetFieldBuilder() {
+          if (tileSetBuilder_ == null) {
+            if (!(sourceCase_ == 5)) {
+              source_ = com.tophap.mapbox_gl.proto.Sources.Source.TileSet.getDefaultInstance();
+            }
+            tileSetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.tophap.mapbox_gl.proto.Sources.Source.TileSet, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder, com.tophap.mapbox_gl.proto.Sources.Source.TileSetOrBuilder>(
+                    (com.tophap.mapbox_gl.proto.Sources.Source.TileSet) source_,
+                    getParentForChildren(),
+                    isClean());
+            source_ = null;
+          }
+          sourceCase_ = 5;
+          onChanged();;
+          return tileSetBuilder_;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:com.tophap.mapbox_gl.proto.Source.Raster)
+      }
+
+      // @@protoc_insertion_point(class_scope:com.tophap.mapbox_gl.proto.Source.Raster)
+      private static final com.tophap.mapbox_gl.proto.Sources.Source.Raster DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Sources.Source.Raster();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Sources.Source.Raster getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Raster>
+          PARSER = new com.google.protobuf.AbstractParser<Raster>() {
+        @java.lang.Override
+        public Raster parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Raster(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Raster> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Raster> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Sources.Source.Raster getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -8088,10 +10553,12 @@ public final class Sources {
     private java.lang.Object type_;
     public enum TypeCase
         implements com.google.protobuf.Internal.EnumLite {
-      GEOJSON(1),
-      IMAGE(2),
-      VECTOR(3),
-      UNKNOWN(4),
+      GEOJSON(2),
+      IMAGE(3),
+      RASTER_DEM(4),
+      RASTER(5),
+      VECTOR(6),
+      UNKNOWN(7),
       TYPE_NOT_SET(0);
       private final int value;
       private TypeCase(int value) {
@@ -8107,10 +10574,12 @@ public final class Sources {
 
       public static TypeCase forNumber(int value) {
         switch (value) {
-          case 1: return GEOJSON;
-          case 2: return IMAGE;
-          case 3: return VECTOR;
-          case 4: return UNKNOWN;
+          case 2: return GEOJSON;
+          case 3: return IMAGE;
+          case 4: return RASTER_DEM;
+          case 5: return RASTER;
+          case 6: return VECTOR;
+          case 7: return UNKNOWN;
           case 0: return TYPE_NOT_SET;
           default: return null;
         }
@@ -8126,105 +10595,191 @@ public final class Sources {
           typeCase_);
     }
 
-    public static final int GEOJSON_FIELD_NUMBER = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+     * <code>string id = 1;</code>
      */
-    public boolean hasGeoJson() {
-      return typeCase_ == 1;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+     * <code>string id = 1;</code>
      */
-    public com.tophap.mapbox_gl.proto.Sources.Source.GeoJson getGeoJson() {
-      if (typeCase_ == 1) {
-         return (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_;
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
-      return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
-    }
-    /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
-     */
-    public com.tophap.mapbox_gl.proto.Sources.Source.GeoJsonOrBuilder getGeoJsonOrBuilder() {
-      if (typeCase_ == 1) {
-         return (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_;
-      }
-      return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
     }
 
-    public static final int IMAGE_FIELD_NUMBER = 2;
+    public static final int GEOJSON_FIELD_NUMBER = 2;
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
      */
-    public boolean hasImage() {
+    public boolean hasGeoJson() {
       return typeCase_ == 2;
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
      */
-    public com.tophap.mapbox_gl.proto.Sources.Source.Image getImage() {
+    public com.tophap.mapbox_gl.proto.Sources.Source.GeoJson getGeoJson() {
       if (typeCase_ == 2) {
-         return (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_;
+         return (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_;
       }
-      return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
+      return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
      */
-    public com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder getImageOrBuilder() {
+    public com.tophap.mapbox_gl.proto.Sources.Source.GeoJsonOrBuilder getGeoJsonOrBuilder() {
       if (typeCase_ == 2) {
-         return (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_;
+         return (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_;
       }
-      return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
+      return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
     }
 
-    public static final int VECTOR_FIELD_NUMBER = 3;
+    public static final int IMAGE_FIELD_NUMBER = 3;
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
      */
-    public boolean hasVector() {
+    public boolean hasImage() {
       return typeCase_ == 3;
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.Image getImage() {
+      if (typeCase_ == 3) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder getImageOrBuilder() {
+      if (typeCase_ == 3) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
+    }
+
+    public static final int RASTER_DEM_FIELD_NUMBER = 4;
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+     */
+    public boolean hasRasterDem() {
+      return typeCase_ == 4;
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem getRasterDem() {
+      if (typeCase_ == 4) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder getRasterDemOrBuilder() {
+      if (typeCase_ == 4) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+    }
+
+    public static final int RASTER_FIELD_NUMBER = 5;
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+     */
+    public boolean hasRaster() {
+      return typeCase_ == 5;
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.Raster getRaster() {
+      if (typeCase_ == 5) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+     */
+    public com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder getRasterOrBuilder() {
+      if (typeCase_ == 5) {
+         return (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_;
+      }
+      return com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+    }
+
+    public static final int VECTOR_FIELD_NUMBER = 6;
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
+     */
+    public boolean hasVector() {
+      return typeCase_ == 6;
+    }
+    /**
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
      */
     public com.tophap.mapbox_gl.proto.Sources.Source.Vector getVector() {
-      if (typeCase_ == 3) {
+      if (typeCase_ == 6) {
          return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
       }
       return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
      */
     public com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder getVectorOrBuilder() {
-      if (typeCase_ == 3) {
+      if (typeCase_ == 6) {
          return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
       }
       return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
     }
 
-    public static final int UNKNOWN_FIELD_NUMBER = 4;
+    public static final int UNKNOWN_FIELD_NUMBER = 7;
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
      */
     public boolean hasUnknown() {
-      return typeCase_ == 4;
+      return typeCase_ == 7;
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
      */
     public com.tophap.mapbox_gl.proto.Sources.Source.Unknown getUnknown() {
-      if (typeCase_ == 4) {
+      if (typeCase_ == 7) {
          return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
       }
       return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
     }
     /**
-     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+     * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
      */
     public com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder getUnknownOrBuilder() {
-      if (typeCase_ == 4) {
+      if (typeCase_ == 7) {
          return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
       }
       return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
@@ -8244,17 +10799,26 @@ public final class Sources {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (typeCase_ == 1) {
-        output.writeMessage(1, (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_);
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       if (typeCase_ == 2) {
-        output.writeMessage(2, (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
+        output.writeMessage(2, (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_);
       }
       if (typeCase_ == 3) {
-        output.writeMessage(3, (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+        output.writeMessage(3, (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
       }
       if (typeCase_ == 4) {
-        output.writeMessage(4, (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
+        output.writeMessage(4, (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_);
+      }
+      if (typeCase_ == 5) {
+        output.writeMessage(5, (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_);
+      }
+      if (typeCase_ == 6) {
+        output.writeMessage(6, (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+      }
+      if (typeCase_ == 7) {
+        output.writeMessage(7, (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
       }
       unknownFields.writeTo(output);
     }
@@ -8265,21 +10829,32 @@ public final class Sources {
       if (size != -1) return size;
 
       size = 0;
-      if (typeCase_ == 1) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_);
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       if (typeCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
+          .computeMessageSize(2, (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_);
       }
       if (typeCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+          .computeMessageSize(3, (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_);
       }
       if (typeCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
+          .computeMessageSize(4, (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_);
+      }
+      if (typeCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_);
+      }
+      if (typeCase_ == 6) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_);
+      }
+      if (typeCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8296,21 +10871,31 @@ public final class Sources {
       }
       com.tophap.mapbox_gl.proto.Sources.Source other = (com.tophap.mapbox_gl.proto.Sources.Source) obj;
 
+      if (!getId()
+          .equals(other.getId())) return false;
       if (!getTypeCase().equals(other.getTypeCase())) return false;
       switch (typeCase_) {
-        case 1:
+        case 2:
           if (!getGeoJson()
               .equals(other.getGeoJson())) return false;
           break;
-        case 2:
+        case 3:
           if (!getImage()
               .equals(other.getImage())) return false;
           break;
-        case 3:
+        case 4:
+          if (!getRasterDem()
+              .equals(other.getRasterDem())) return false;
+          break;
+        case 5:
+          if (!getRaster()
+              .equals(other.getRaster())) return false;
+          break;
+        case 6:
           if (!getVector()
               .equals(other.getVector())) return false;
           break;
-        case 4:
+        case 7:
           if (!getUnknown()
               .equals(other.getUnknown())) return false;
           break;
@@ -8328,20 +10913,30 @@ public final class Sources {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
       switch (typeCase_) {
-        case 1:
+        case 2:
           hash = (37 * hash) + GEOJSON_FIELD_NUMBER;
           hash = (53 * hash) + getGeoJson().hashCode();
           break;
-        case 2:
+        case 3:
           hash = (37 * hash) + IMAGE_FIELD_NUMBER;
           hash = (53 * hash) + getImage().hashCode();
           break;
-        case 3:
+        case 4:
+          hash = (37 * hash) + RASTER_DEM_FIELD_NUMBER;
+          hash = (53 * hash) + getRasterDem().hashCode();
+          break;
+        case 5:
+          hash = (37 * hash) + RASTER_FIELD_NUMBER;
+          hash = (53 * hash) + getRaster().hashCode();
+          break;
+        case 6:
           hash = (37 * hash) + VECTOR_FIELD_NUMBER;
           hash = (53 * hash) + getVector().hashCode();
           break;
-        case 4:
+        case 7:
           hash = (37 * hash) + UNKNOWN_FIELD_NUMBER;
           hash = (53 * hash) + getUnknown().hashCode();
           break;
@@ -8481,6 +11076,8 @@ public final class Sources {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        id_ = "";
+
         typeCase_ = 0;
         type_ = null;
         return this;
@@ -8509,28 +11106,43 @@ public final class Sources {
       @java.lang.Override
       public com.tophap.mapbox_gl.proto.Sources.Source buildPartial() {
         com.tophap.mapbox_gl.proto.Sources.Source result = new com.tophap.mapbox_gl.proto.Sources.Source(this);
-        if (typeCase_ == 1) {
+        result.id_ = id_;
+        if (typeCase_ == 2) {
           if (geoJsonBuilder_ == null) {
             result.type_ = type_;
           } else {
             result.type_ = geoJsonBuilder_.build();
           }
         }
-        if (typeCase_ == 2) {
+        if (typeCase_ == 3) {
           if (imageBuilder_ == null) {
             result.type_ = type_;
           } else {
             result.type_ = imageBuilder_.build();
           }
         }
-        if (typeCase_ == 3) {
+        if (typeCase_ == 4) {
+          if (rasterDemBuilder_ == null) {
+            result.type_ = type_;
+          } else {
+            result.type_ = rasterDemBuilder_.build();
+          }
+        }
+        if (typeCase_ == 5) {
+          if (rasterBuilder_ == null) {
+            result.type_ = type_;
+          } else {
+            result.type_ = rasterBuilder_.build();
+          }
+        }
+        if (typeCase_ == 6) {
           if (vectorBuilder_ == null) {
             result.type_ = type_;
           } else {
             result.type_ = vectorBuilder_.build();
           }
         }
-        if (typeCase_ == 4) {
+        if (typeCase_ == 7) {
           if (unknownBuilder_ == null) {
             result.type_ = type_;
           } else {
@@ -8586,6 +11198,10 @@ public final class Sources {
 
       public Builder mergeFrom(com.tophap.mapbox_gl.proto.Sources.Source other) {
         if (other == com.tophap.mapbox_gl.proto.Sources.Source.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
         switch (other.getTypeCase()) {
           case GEOJSON: {
             mergeGeoJson(other.getGeoJson());
@@ -8593,6 +11209,14 @@ public final class Sources {
           }
           case IMAGE: {
             mergeImage(other.getImage());
+            break;
+          }
+          case RASTER_DEM: {
+            mergeRasterDem(other.getRasterDem());
+            break;
+          }
+          case RASTER: {
+            mergeRaster(other.getRaster());
             break;
           }
           case VECTOR: {
@@ -8651,32 +11275,101 @@ public final class Sources {
       }
 
 
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.GeoJson, com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.Builder, com.tophap.mapbox_gl.proto.Sources.Source.GeoJsonOrBuilder> geoJsonBuilder_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public boolean hasGeoJson() {
-        return typeCase_ == 1;
+        return typeCase_ == 2;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.GeoJson getGeoJson() {
         if (geoJsonBuilder_ == null) {
-          if (typeCase_ == 1) {
+          if (typeCase_ == 2) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
         } else {
-          if (typeCase_ == 1) {
+          if (typeCase_ == 2) {
             return geoJsonBuilder_.getMessage();
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public Builder setGeoJson(com.tophap.mapbox_gl.proto.Sources.Source.GeoJson value) {
         if (geoJsonBuilder_ == null) {
@@ -8688,11 +11381,11 @@ public final class Sources {
         } else {
           geoJsonBuilder_.setMessage(value);
         }
-        typeCase_ = 1;
+        typeCase_ = 2;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public Builder setGeoJson(
           com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.Builder builderForValue) {
@@ -8702,15 +11395,15 @@ public final class Sources {
         } else {
           geoJsonBuilder_.setMessage(builderForValue.build());
         }
-        typeCase_ = 1;
+        typeCase_ = 2;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public Builder mergeGeoJson(com.tophap.mapbox_gl.proto.Sources.Source.GeoJson value) {
         if (geoJsonBuilder_ == null) {
-          if (typeCase_ == 1 &&
+          if (typeCase_ == 2 &&
               type_ != com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance()) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_)
                 .mergeFrom(value).buildPartial();
@@ -8719,26 +11412,26 @@ public final class Sources {
           }
           onChanged();
         } else {
-          if (typeCase_ == 1) {
+          if (typeCase_ == 2) {
             geoJsonBuilder_.mergeFrom(value);
           }
           geoJsonBuilder_.setMessage(value);
         }
-        typeCase_ = 1;
+        typeCase_ = 2;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public Builder clearGeoJson() {
         if (geoJsonBuilder_ == null) {
-          if (typeCase_ == 1) {
+          if (typeCase_ == 2) {
             typeCase_ = 0;
             type_ = null;
             onChanged();
           }
         } else {
-          if (typeCase_ == 1) {
+          if (typeCase_ == 2) {
             typeCase_ = 0;
             type_ = null;
           }
@@ -8747,32 +11440,32 @@ public final class Sources {
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.Builder getGeoJsonBuilder() {
         return getGeoJsonFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.GeoJsonOrBuilder getGeoJsonOrBuilder() {
-        if ((typeCase_ == 1) && (geoJsonBuilder_ != null)) {
+        if ((typeCase_ == 2) && (geoJsonBuilder_ != null)) {
           return geoJsonBuilder_.getMessageOrBuilder();
         } else {
-          if (typeCase_ == 1) {
+          if (typeCase_ == 2) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.GeoJson) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 1;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.GeoJson geoJson = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.GeoJson, com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.Builder, com.tophap.mapbox_gl.proto.Sources.Source.GeoJsonOrBuilder> 
           getGeoJsonFieldBuilder() {
         if (geoJsonBuilder_ == null) {
-          if (!(typeCase_ == 1)) {
+          if (!(typeCase_ == 2)) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.GeoJson.getDefaultInstance();
           }
           geoJsonBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -8782,7 +11475,7 @@ public final class Sources {
                   isClean());
           type_ = null;
         }
-        typeCase_ = 1;
+        typeCase_ = 2;
         onChanged();;
         return geoJsonBuilder_;
       }
@@ -8790,29 +11483,29 @@ public final class Sources {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.Image, com.tophap.mapbox_gl.proto.Sources.Source.Image.Builder, com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder> imageBuilder_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public boolean hasImage() {
-        return typeCase_ == 2;
+        return typeCase_ == 3;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.Image getImage() {
         if (imageBuilder_ == null) {
-          if (typeCase_ == 2) {
+          if (typeCase_ == 3) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
         } else {
-          if (typeCase_ == 2) {
+          if (typeCase_ == 3) {
             return imageBuilder_.getMessage();
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public Builder setImage(com.tophap.mapbox_gl.proto.Sources.Source.Image value) {
         if (imageBuilder_ == null) {
@@ -8824,11 +11517,11 @@ public final class Sources {
         } else {
           imageBuilder_.setMessage(value);
         }
-        typeCase_ = 2;
+        typeCase_ = 3;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public Builder setImage(
           com.tophap.mapbox_gl.proto.Sources.Source.Image.Builder builderForValue) {
@@ -8838,15 +11531,15 @@ public final class Sources {
         } else {
           imageBuilder_.setMessage(builderForValue.build());
         }
-        typeCase_ = 2;
+        typeCase_ = 3;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public Builder mergeImage(com.tophap.mapbox_gl.proto.Sources.Source.Image value) {
         if (imageBuilder_ == null) {
-          if (typeCase_ == 2 &&
+          if (typeCase_ == 3 &&
               type_ != com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance()) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.Image.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.Image) type_)
                 .mergeFrom(value).buildPartial();
@@ -8855,26 +11548,26 @@ public final class Sources {
           }
           onChanged();
         } else {
-          if (typeCase_ == 2) {
+          if (typeCase_ == 3) {
             imageBuilder_.mergeFrom(value);
           }
           imageBuilder_.setMessage(value);
         }
-        typeCase_ = 2;
+        typeCase_ = 3;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public Builder clearImage() {
         if (imageBuilder_ == null) {
-          if (typeCase_ == 2) {
+          if (typeCase_ == 3) {
             typeCase_ = 0;
             type_ = null;
             onChanged();
           }
         } else {
-          if (typeCase_ == 2) {
+          if (typeCase_ == 3) {
             typeCase_ = 0;
             type_ = null;
           }
@@ -8883,32 +11576,32 @@ public final class Sources {
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.Image.Builder getImageBuilder() {
         return getImageFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder getImageOrBuilder() {
-        if ((typeCase_ == 2) && (imageBuilder_ != null)) {
+        if ((typeCase_ == 3) && (imageBuilder_ != null)) {
           return imageBuilder_.getMessageOrBuilder();
         } else {
-          if (typeCase_ == 2) {
+          if (typeCase_ == 3) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.Image) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 2;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Image image = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.Image, com.tophap.mapbox_gl.proto.Sources.Source.Image.Builder, com.tophap.mapbox_gl.proto.Sources.Source.ImageOrBuilder> 
           getImageFieldBuilder() {
         if (imageBuilder_ == null) {
-          if (!(typeCase_ == 2)) {
+          if (!(typeCase_ == 3)) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.Image.getDefaultInstance();
           }
           imageBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -8918,37 +11611,309 @@ public final class Sources {
                   isClean());
           type_ = null;
         }
-        typeCase_ = 2;
+        typeCase_ = 3;
         onChanged();;
         return imageBuilder_;
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.tophap.mapbox_gl.proto.Sources.Source.Vector, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder, com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder> vectorBuilder_;
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDem, com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder, com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder> rasterDemBuilder_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
        */
-      public boolean hasVector() {
-        return typeCase_ == 3;
+      public boolean hasRasterDem() {
+        return typeCase_ == 4;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem getRasterDem() {
+        if (rasterDemBuilder_ == null) {
+          if (typeCase_ == 4) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+        } else {
+          if (typeCase_ == 4) {
+            return rasterDemBuilder_.getMessage();
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public Builder setRasterDem(com.tophap.mapbox_gl.proto.Sources.Source.RasterDem value) {
+        if (rasterDemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          type_ = value;
+          onChanged();
+        } else {
+          rasterDemBuilder_.setMessage(value);
+        }
+        typeCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public Builder setRasterDem(
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder builderForValue) {
+        if (rasterDemBuilder_ == null) {
+          type_ = builderForValue.build();
+          onChanged();
+        } else {
+          rasterDemBuilder_.setMessage(builderForValue.build());
+        }
+        typeCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public Builder mergeRasterDem(com.tophap.mapbox_gl.proto.Sources.Source.RasterDem value) {
+        if (rasterDemBuilder_ == null) {
+          if (typeCase_ == 4 &&
+              type_ != com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance()) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            type_ = value;
+          }
+          onChanged();
+        } else {
+          if (typeCase_ == 4) {
+            rasterDemBuilder_.mergeFrom(value);
+          }
+          rasterDemBuilder_.setMessage(value);
+        }
+        typeCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public Builder clearRasterDem() {
+        if (rasterDemBuilder_ == null) {
+          if (typeCase_ == 4) {
+            typeCase_ = 0;
+            type_ = null;
+            onChanged();
+          }
+        } else {
+          if (typeCase_ == 4) {
+            typeCase_ = 0;
+            type_ = null;
+          }
+          rasterDemBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder getRasterDemBuilder() {
+        return getRasterDemFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder getRasterDemOrBuilder() {
+        if ((typeCase_ == 4) && (rasterDemBuilder_ != null)) {
+          return rasterDemBuilder_.getMessageOrBuilder();
+        } else {
+          if (typeCase_ == 4) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.RasterDem raster_dem = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.RasterDem, com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder, com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder> 
+          getRasterDemFieldBuilder() {
+        if (rasterDemBuilder_ == null) {
+          if (!(typeCase_ == 4)) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.getDefaultInstance();
+          }
+          rasterDemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.tophap.mapbox_gl.proto.Sources.Source.RasterDem, com.tophap.mapbox_gl.proto.Sources.Source.RasterDem.Builder, com.tophap.mapbox_gl.proto.Sources.Source.RasterDemOrBuilder>(
+                  (com.tophap.mapbox_gl.proto.Sources.Source.RasterDem) type_,
+                  getParentForChildren(),
+                  isClean());
+          type_ = null;
+        }
+        typeCase_ = 4;
+        onChanged();;
+        return rasterDemBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Raster, com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder, com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder> rasterBuilder_;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public boolean hasRaster() {
+        return typeCase_ == 5;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.Raster getRaster() {
+        if (rasterBuilder_ == null) {
+          if (typeCase_ == 5) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+        } else {
+          if (typeCase_ == 5) {
+            return rasterBuilder_.getMessage();
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public Builder setRaster(com.tophap.mapbox_gl.proto.Sources.Source.Raster value) {
+        if (rasterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          type_ = value;
+          onChanged();
+        } else {
+          rasterBuilder_.setMessage(value);
+        }
+        typeCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public Builder setRaster(
+          com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder builderForValue) {
+        if (rasterBuilder_ == null) {
+          type_ = builderForValue.build();
+          onChanged();
+        } else {
+          rasterBuilder_.setMessage(builderForValue.build());
+        }
+        typeCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public Builder mergeRaster(com.tophap.mapbox_gl.proto.Sources.Source.Raster value) {
+        if (rasterBuilder_ == null) {
+          if (typeCase_ == 5 &&
+              type_ != com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance()) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.Raster.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            type_ = value;
+          }
+          onChanged();
+        } else {
+          if (typeCase_ == 5) {
+            rasterBuilder_.mergeFrom(value);
+          }
+          rasterBuilder_.setMessage(value);
+        }
+        typeCase_ = 5;
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public Builder clearRaster() {
+        if (rasterBuilder_ == null) {
+          if (typeCase_ == 5) {
+            typeCase_ = 0;
+            type_ = null;
+            onChanged();
+          }
+        } else {
+          if (typeCase_ == 5) {
+            typeCase_ = 0;
+            type_ = null;
+          }
+          rasterBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder getRasterBuilder() {
+        return getRasterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder getRasterOrBuilder() {
+        if ((typeCase_ == 5) && (rasterBuilder_ != null)) {
+          return rasterBuilder_.getMessageOrBuilder();
+        } else {
+          if (typeCase_ == 5) {
+            return (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_;
+          }
+          return com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Raster raster = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Raster, com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder, com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder> 
+          getRasterFieldBuilder() {
+        if (rasterBuilder_ == null) {
+          if (!(typeCase_ == 5)) {
+            type_ = com.tophap.mapbox_gl.proto.Sources.Source.Raster.getDefaultInstance();
+          }
+          rasterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.tophap.mapbox_gl.proto.Sources.Source.Raster, com.tophap.mapbox_gl.proto.Sources.Source.Raster.Builder, com.tophap.mapbox_gl.proto.Sources.Source.RasterOrBuilder>(
+                  (com.tophap.mapbox_gl.proto.Sources.Source.Raster) type_,
+                  getParentForChildren(),
+                  isClean());
+          type_ = null;
+        }
+        typeCase_ = 5;
+        onChanged();;
+        return rasterBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.tophap.mapbox_gl.proto.Sources.Source.Vector, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder, com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder> vectorBuilder_;
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
+       */
+      public boolean hasVector() {
+        return typeCase_ == 6;
+      }
+      /**
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.Vector getVector() {
         if (vectorBuilder_ == null) {
-          if (typeCase_ == 3) {
+          if (typeCase_ == 6) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
         } else {
-          if (typeCase_ == 3) {
+          if (typeCase_ == 6) {
             return vectorBuilder_.getMessage();
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public Builder setVector(com.tophap.mapbox_gl.proto.Sources.Source.Vector value) {
         if (vectorBuilder_ == null) {
@@ -8960,11 +11925,11 @@ public final class Sources {
         } else {
           vectorBuilder_.setMessage(value);
         }
-        typeCase_ = 3;
+        typeCase_ = 6;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public Builder setVector(
           com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder builderForValue) {
@@ -8974,15 +11939,15 @@ public final class Sources {
         } else {
           vectorBuilder_.setMessage(builderForValue.build());
         }
-        typeCase_ = 3;
+        typeCase_ = 6;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public Builder mergeVector(com.tophap.mapbox_gl.proto.Sources.Source.Vector value) {
         if (vectorBuilder_ == null) {
-          if (typeCase_ == 3 &&
+          if (typeCase_ == 6 &&
               type_ != com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance()) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.Vector.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_)
                 .mergeFrom(value).buildPartial();
@@ -8991,26 +11956,26 @@ public final class Sources {
           }
           onChanged();
         } else {
-          if (typeCase_ == 3) {
+          if (typeCase_ == 6) {
             vectorBuilder_.mergeFrom(value);
           }
           vectorBuilder_.setMessage(value);
         }
-        typeCase_ = 3;
+        typeCase_ = 6;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public Builder clearVector() {
         if (vectorBuilder_ == null) {
-          if (typeCase_ == 3) {
+          if (typeCase_ == 6) {
             typeCase_ = 0;
             type_ = null;
             onChanged();
           }
         } else {
-          if (typeCase_ == 3) {
+          if (typeCase_ == 6) {
             typeCase_ = 0;
             type_ = null;
           }
@@ -9019,32 +11984,32 @@ public final class Sources {
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder getVectorBuilder() {
         return getVectorFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder getVectorOrBuilder() {
-        if ((typeCase_ == 3) && (vectorBuilder_ != null)) {
+        if ((typeCase_ == 6) && (vectorBuilder_ != null)) {
           return vectorBuilder_.getMessageOrBuilder();
         } else {
-          if (typeCase_ == 3) {
+          if (typeCase_ == 6) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.Vector) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 3;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Vector vector = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.Vector, com.tophap.mapbox_gl.proto.Sources.Source.Vector.Builder, com.tophap.mapbox_gl.proto.Sources.Source.VectorOrBuilder> 
           getVectorFieldBuilder() {
         if (vectorBuilder_ == null) {
-          if (!(typeCase_ == 3)) {
+          if (!(typeCase_ == 6)) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.Vector.getDefaultInstance();
           }
           vectorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -9054,7 +12019,7 @@ public final class Sources {
                   isClean());
           type_ = null;
         }
-        typeCase_ = 3;
+        typeCase_ = 6;
         onChanged();;
         return vectorBuilder_;
       }
@@ -9062,29 +12027,29 @@ public final class Sources {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.Unknown, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder, com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder> unknownBuilder_;
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public boolean hasUnknown() {
-        return typeCase_ == 4;
+        return typeCase_ == 7;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.Unknown getUnknown() {
         if (unknownBuilder_ == null) {
-          if (typeCase_ == 4) {
+          if (typeCase_ == 7) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
         } else {
-          if (typeCase_ == 4) {
+          if (typeCase_ == 7) {
             return unknownBuilder_.getMessage();
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public Builder setUnknown(com.tophap.mapbox_gl.proto.Sources.Source.Unknown value) {
         if (unknownBuilder_ == null) {
@@ -9096,11 +12061,11 @@ public final class Sources {
         } else {
           unknownBuilder_.setMessage(value);
         }
-        typeCase_ = 4;
+        typeCase_ = 7;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public Builder setUnknown(
           com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder builderForValue) {
@@ -9110,15 +12075,15 @@ public final class Sources {
         } else {
           unknownBuilder_.setMessage(builderForValue.build());
         }
-        typeCase_ = 4;
+        typeCase_ = 7;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public Builder mergeUnknown(com.tophap.mapbox_gl.proto.Sources.Source.Unknown value) {
         if (unknownBuilder_ == null) {
-          if (typeCase_ == 4 &&
+          if (typeCase_ == 7 &&
               type_ != com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance()) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.Unknown.newBuilder((com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_)
                 .mergeFrom(value).buildPartial();
@@ -9127,26 +12092,26 @@ public final class Sources {
           }
           onChanged();
         } else {
-          if (typeCase_ == 4) {
+          if (typeCase_ == 7) {
             unknownBuilder_.mergeFrom(value);
           }
           unknownBuilder_.setMessage(value);
         }
-        typeCase_ = 4;
+        typeCase_ = 7;
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public Builder clearUnknown() {
         if (unknownBuilder_ == null) {
-          if (typeCase_ == 4) {
+          if (typeCase_ == 7) {
             typeCase_ = 0;
             type_ = null;
             onChanged();
           }
         } else {
-          if (typeCase_ == 4) {
+          if (typeCase_ == 7) {
             typeCase_ = 0;
             type_ = null;
           }
@@ -9155,32 +12120,32 @@ public final class Sources {
         return this;
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder getUnknownBuilder() {
         return getUnknownFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       public com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder getUnknownOrBuilder() {
-        if ((typeCase_ == 4) && (unknownBuilder_ != null)) {
+        if ((typeCase_ == 7) && (unknownBuilder_ != null)) {
           return unknownBuilder_.getMessageOrBuilder();
         } else {
-          if (typeCase_ == 4) {
+          if (typeCase_ == 7) {
             return (com.tophap.mapbox_gl.proto.Sources.Source.Unknown) type_;
           }
           return com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
         }
       }
       /**
-       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 4;</code>
+       * <code>.com.tophap.mapbox_gl.proto.Source.Unknown unknown = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Sources.Source.Unknown, com.tophap.mapbox_gl.proto.Sources.Source.Unknown.Builder, com.tophap.mapbox_gl.proto.Sources.Source.UnknownOrBuilder> 
           getUnknownFieldBuilder() {
         if (unknownBuilder_ == null) {
-          if (!(typeCase_ == 4)) {
+          if (!(typeCase_ == 7)) {
             type_ = com.tophap.mapbox_gl.proto.Sources.Source.Unknown.getDefaultInstance();
           }
           unknownBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -9190,7 +12155,7 @@ public final class Sources {
                   isClean());
           type_ = null;
         }
-        typeCase_ = 4;
+        typeCase_ = 7;
         onChanged();;
         return unknownBuilder_;
       }
@@ -9268,6 +12233,16 @@ public final class Sources {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_tophap_mapbox_gl_proto_Source_Image_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_tophap_mapbox_gl_proto_Source_Raster_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_tophap_mapbox_gl_proto_Source_Raster_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -9292,38 +12267,49 @@ public final class Sources {
   static {
     java.lang.String[] descriptorData = {
       "\n\rsources.proto\022\032com.tophap.mapbox_gl.pr" +
-      "oto\032\nutil.proto\"\260\t\n\006Source\022=\n\007geoJson\030\001 " +
-      "\001(\0132*.com.tophap.mapbox_gl.proto.Source." +
-      "GeoJsonH\000\0229\n\005image\030\002 \001(\0132(.com.tophap.ma" +
-      "pbox_gl.proto.Source.ImageH\000\022;\n\006vector\030\003" +
+      "oto\032\nutil.proto\"\360\014\n\006Source\022\n\n\002id\030\001 \001(\t\022=" +
+      "\n\007geoJson\030\002 \001(\0132*.com.tophap.mapbox_gl.p" +
+      "roto.Source.GeoJsonH\000\0229\n\005image\030\003 \001(\0132(.c" +
+      "om.tophap.mapbox_gl.proto.Source.ImageH\000" +
+      "\022B\n\nraster_dem\030\004 \001(\0132,.com.tophap.mapbox" +
+      "_gl.proto.Source.RasterDemH\000\022;\n\006raster\030\005" +
       " \001(\0132).com.tophap.mapbox_gl.proto.Source" +
-      ".VectorH\000\022=\n\007unknown\030\004 \001(\0132*.com.tophap." +
-      "mapbox_gl.proto.Source.UnknownH\000\032\310\002\n\007Geo" +
-      "Json\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022C\n" +
-      "\007options\030\003 \001(\01322.com.tophap.mapbox_gl.pr" +
-      "oto.Source.GeoJson.Options\022\r\n\003uri\030\004 \001(\tH" +
-      "\000\022\022\n\010geo_json\030\005 \001(\tH\000\032\251\001\n\007Options\022\020\n\010min" +
-      "_zoom\030\001 \001(\005\022\020\n\010max_zoom\030\002 \001(\005\022\016\n\006buffer\030" +
-      "\003 \001(\005\022\024\n\014line_metrics\030\004 \001(\010\022\021\n\ttolerance" +
-      "\030\005 \001(\002\022\017\n\007cluster\030\006 \001(\010\022\030\n\020cluster_max_z" +
-      "oom\030\007 \001(\005\022\026\n\016cluster_radius\030\010 \001(\005B\010\n\006sou" +
-      "rce\032\217\001\n\005Image\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution" +
-      "\030\002 \001(\t\022;\n\013coordinates\030\003 \001(\0132&.com.tophap" +
-      ".mapbox_gl.proto.LatLngQuad\022\r\n\003uri\030\004 \001(\t" +
-      "H\000\022\017\n\005image\030\005 \001(\014H\000B\010\n\006source\032\202\001\n\006Vector" +
-      "\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022\r\n\003uri" +
-      "\030\003 \001(\tH\000\022>\n\010tile_set\030\004 \001(\0132*.com.tophap." +
-      "mapbox_gl.proto.Source.TileSetH\000B\010\n\006sour" +
-      "ce\032*\n\007Unknown\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution" +
-      "\030\002 \001(\t\032\231\002\n\007TileSet\022\021\n\ttile_json\030\001 \001(\t\022\014\n" +
-      "\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\017\n\007vers" +
-      "ion\030\004 \001(\t\022\023\n\013attribution\030\005 \001(\t\022\020\n\010templa" +
-      "te\030\006 \001(\t\022\016\n\006legend\030\007 \001(\t\022\016\n\006scheme\030\010 \001(\t" +
-      "\022\r\n\005tiles\030\t \003(\t\022\r\n\005grids\030\n \003(\t\022\014\n\004data\030\013" +
-      " \003(\t\022\020\n\010min_zoom\030\014 \001(\002\022\020\n\010max_zoom\030\r \001(\002" +
-      "\022\016\n\006bounds\030\016 \003(\002\022\016\n\006center\030\017 \003(\002\022\020\n\010enco" +
-      "ding\030\020 \001(\tB\006\n\004typeB\034\n\032com.tophap.mapbox_" +
-      "gl.protob\006proto3"
+      ".RasterH\000\022;\n\006vector\030\006 \001(\0132).com.tophap.m" +
+      "apbox_gl.proto.Source.VectorH\000\022=\n\007unknow" +
+      "n\030\007 \001(\0132*.com.tophap.mapbox_gl.proto.Sou" +
+      "rce.UnknownH\000\032\310\002\n\007GeoJson\022\n\n\002id\030\001 \001(\t\022\023\n" +
+      "\013attribution\030\002 \001(\t\022C\n\007options\030\003 \001(\01322.co" +
+      "m.tophap.mapbox_gl.proto.Source.GeoJson." +
+      "Options\022\r\n\003uri\030\004 \001(\tH\000\022\022\n\010geo_json\030\005 \001(\t" +
+      "H\000\032\251\001\n\007Options\022\020\n\010min_zoom\030\001 \001(\005\022\020\n\010max_" +
+      "zoom\030\002 \001(\005\022\016\n\006buffer\030\003 \001(\005\022\024\n\014line_metri" +
+      "cs\030\004 \001(\010\022\021\n\ttolerance\030\005 \001(\002\022\017\n\007cluster\030\006" +
+      " \001(\010\022\030\n\020cluster_max_zoom\030\007 \001(\005\022\026\n\016cluste" +
+      "r_radius\030\010 \001(\005B\010\n\006source\032\217\001\n\005Image\022\n\n\002id" +
+      "\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022;\n\013coordinat" +
+      "es\030\003 \001(\0132&.com.tophap.mapbox_gl.proto.La" +
+      "tLngQuad\022\r\n\003uri\030\004 \001(\tH\000\022\017\n\005image\030\005 \001(\014H\000" +
+      "B\010\n\006source\032\230\001\n\tRasterDem\022\n\n\002id\030\001 \001(\t\022\023\n\013" +
+      "attribution\030\002 \001(\t\022\021\n\ttile_size\030\003 \001(\005\022\r\n\003" +
+      "uri\030\004 \001(\tH\000\022>\n\010tile_set\030\005 \001(\0132*.com.toph" +
+      "ap.mapbox_gl.proto.Source.TileSetH\000B\010\n\006s" +
+      "ource\032\225\001\n\006Raster\022\n\n\002id\030\001 \001(\t\022\023\n\013attribut" +
+      "ion\030\002 \001(\t\022\021\n\ttile_size\030\003 \001(\005\022\r\n\003uri\030\004 \001(" +
+      "\tH\000\022>\n\010tile_set\030\005 \001(\0132*.com.tophap.mapbo" +
+      "x_gl.proto.Source.TileSetH\000B\010\n\006source\032\202\001" +
+      "\n\006Vector\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(" +
+      "\t\022\r\n\003uri\030\003 \001(\tH\000\022>\n\010tile_set\030\004 \001(\0132*.com" +
+      ".tophap.mapbox_gl.proto.Source.TileSetH\000" +
+      "B\010\n\006source\032*\n\007Unknown\022\n\n\002id\030\001 \001(\t\022\023\n\013att" +
+      "ribution\030\002 \001(\t\032\231\002\n\007TileSet\022\021\n\ttile_json\030" +
+      "\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t" +
+      "\022\017\n\007version\030\004 \001(\t\022\023\n\013attribution\030\005 \001(\t\022\020" +
+      "\n\010template\030\006 \001(\t\022\016\n\006legend\030\007 \001(\t\022\016\n\006sche" +
+      "me\030\010 \001(\t\022\r\n\005tiles\030\t \003(\t\022\r\n\005grids\030\n \003(\t\022\014" +
+      "\n\004data\030\013 \003(\t\022\020\n\010min_zoom\030\014 \001(\002\022\020\n\010max_zo" +
+      "om\030\r \001(\002\022\016\n\006bounds\030\016 \003(\002\022\016\n\006center\030\017 \003(\002" +
+      "\022\020\n\010encoding\030\020 \001(\tB\006\n\004typeB\034\n\032com.tophap" +
+      ".mapbox_gl.protob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9343,7 +12329,7 @@ public final class Sources {
     internal_static_com_tophap_mapbox_gl_proto_Source_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_descriptor,
-        new java.lang.String[] { "GeoJson", "Image", "Vector", "Unknown", "Type", });
+        new java.lang.String[] { "Id", "GeoJson", "Image", "RasterDem", "Raster", "Vector", "Unknown", "Type", });
     internal_static_com_tophap_mapbox_gl_proto_Source_GeoJson_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(0);
     internal_static_com_tophap_mapbox_gl_proto_Source_GeoJson_fieldAccessorTable = new
@@ -9362,20 +12348,32 @@ public final class Sources {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_Image_descriptor,
         new java.lang.String[] { "Id", "Attribution", "Coordinates", "Uri", "Image", "Source", });
-    internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor =
+    internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_descriptor =
       internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(2);
+    internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_tophap_mapbox_gl_proto_Source_RasterDem_descriptor,
+        new java.lang.String[] { "Id", "Attribution", "TileSize", "Uri", "TileSet", "Source", });
+    internal_static_com_tophap_mapbox_gl_proto_Source_Raster_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(3);
+    internal_static_com_tophap_mapbox_gl_proto_Source_Raster_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_tophap_mapbox_gl_proto_Source_Raster_descriptor,
+        new java.lang.String[] { "Id", "Attribution", "TileSize", "Uri", "TileSet", "Source", });
+    internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor =
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(4);
     internal_static_com_tophap_mapbox_gl_proto_Source_Vector_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_Vector_descriptor,
         new java.lang.String[] { "Id", "Attribution", "Uri", "TileSet", "Source", });
     internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(3);
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(5);
     internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_Unknown_descriptor,
         new java.lang.String[] { "Id", "Attribution", });
     internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor =
-      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(4);
+      internal_static_com_tophap_mapbox_gl_proto_Source_descriptor.getNestedTypes().get(6);
     internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_tophap_mapbox_gl_proto_Source_TileSet_descriptor,

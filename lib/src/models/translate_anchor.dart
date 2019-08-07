@@ -5,11 +5,10 @@
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
 
-class TranslateAnchor {
-  const TranslateAnchor._(this._i, this._value);
+class TranslateAnchor extends ExpressionLiteral {
+  const TranslateAnchor._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const TranslateAnchor map = TranslateAnchor._(0, 'map');
   static const TranslateAnchor viewport = TranslateAnchor._(1, 'viewport');
@@ -20,8 +19,6 @@ class TranslateAnchor {
   static TranslateAnchor fromProto(pb.TranslateAnchor proto) => values[proto.value];
 
   pb.TranslateAnchor get proto => pb.TranslateAnchor.valueOf(_i);
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'TranslateAnchor.${_names[_i]}';

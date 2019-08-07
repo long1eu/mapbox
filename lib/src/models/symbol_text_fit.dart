@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class SymbolTextFit {
-  const SymbolTextFit._(this._i, this._value);
+class SymbolTextFit extends ExpressionLiteral {
+  const SymbolTextFit._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const SymbolTextFit none = SymbolTextFit._(0, 'none');
   static const SymbolTextFit width = SymbolTextFit._(1, 'width');
@@ -28,8 +27,6 @@ class SymbolTextFit {
     'height',
     'both',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'SymbolTextFit.${_names[_i]}';

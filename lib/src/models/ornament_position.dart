@@ -5,11 +5,10 @@
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
 
-class OrnamentPosition {
-  const OrnamentPosition._(this._i, this._value);
+class OrnamentPosition extends ExpressionLiteral {
+  const OrnamentPosition._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const OrnamentPosition topLeft = OrnamentPosition._(0, 'topLeft');
   static const OrnamentPosition topRight = OrnamentPosition._(1, 'topRight');
@@ -29,8 +28,6 @@ class OrnamentPosition {
     'bottomLeft',
     'bottomRight',
   ];
-
-  Expression get expression => literalString(_value);
 
   pb.OrnamentPosition get proto => pb.OrnamentPosition.valueOf(_i);
 

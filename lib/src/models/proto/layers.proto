@@ -13,22 +13,21 @@ message Layer {
     Circle circle_layer = 3;
     Fill fill_layer = 4;
     FillExtrusion fill_extrusion_layer = 5;
-    Line line_layer = 6;
-    Symbol symbol_layer = 7;
-    Hillshade hillshade_layer = 8;
-    Heatmap heatmap_layer = 9;
+    Heatmap heatmap_layer = 6;
+    Hillshade hillshade_layer = 7;
+    Line line_layer = 8;
+    Raster raster_layer = 9;
+    Symbol symbol_layer = 10;
   }
 
   message Background {
     string id = 1;
-    bool visible = 2;
-    float min_zoom = 3;
-    float max_zoom = 4;
-
+    google.protobuf.BoolValue visible = 2;
+    google.protobuf.FloatValue min_zoom = 3;
+    google.protobuf.FloatValue max_zoom = 4;
     google.protobuf.StringValue color = 5;
     google.protobuf.StringValue pattern = 6;
     google.protobuf.StringValue opacity = 7;
-
     TransitionOptions color_transition = 8;
     TransitionOptions pattern_transition = 9;
     TransitionOptions opacity_transition = 10;
@@ -36,273 +35,256 @@ message Layer {
 
   message Circle {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
-
-    google.protobuf.StringValue radius = 6;
-    google.protobuf.StringValue color = 7;
-    google.protobuf.StringValue blur = 8;
-    google.protobuf.StringValue opacity = 9;
-    google.protobuf.StringValue translate = 10;
-    google.protobuf.StringValue translate_anchor = 11;
-    google.protobuf.StringValue pitch_scale = 12;
-    google.protobuf.StringValue pitch_alignment = 13;
-    google.protobuf.StringValue stroke_width = 14;
-    google.protobuf.StringValue stroke_color = 15;
-    google.protobuf.StringValue stroke_opacity = 16;
-
-    TransitionOptions radius_transition = 17;
-    TransitionOptions color_transition = 18;
-    TransitionOptions blur_transition = 19;
-    TransitionOptions opacity_transition = 20;
-    TransitionOptions translate_transition = 21;
-    TransitionOptions stroke_width_transition = 22;
-    TransitionOptions stroke_color_transition = 23;
-    TransitionOptions stroke_opacity_transition = 24;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue filter = 7;
+    google.protobuf.StringValue radius = 8;
+    google.protobuf.StringValue color = 9;
+    google.protobuf.StringValue blur = 10;
+    google.protobuf.StringValue opacity = 11;
+    google.protobuf.StringValue translate = 12;
+    google.protobuf.StringValue translate_anchor = 13;
+    google.protobuf.StringValue pitch_scale = 14;
+    google.protobuf.StringValue pitch_alignment = 15;
+    google.protobuf.StringValue stroke_width = 16;
+    google.protobuf.StringValue stroke_color = 17;
+    google.protobuf.StringValue stroke_opacity = 18;
+    TransitionOptions radius_transition = 19;
+    TransitionOptions color_transition = 20;
+    TransitionOptions blur_transition = 21;
+    TransitionOptions opacity_transition = 22;
+    TransitionOptions translate_transition = 23;
+    TransitionOptions stroke_width_transition = 24;
+    TransitionOptions stroke_color_transition = 25;
+    TransitionOptions stroke_opacity_transition = 26;
   }
 
   message FillExtrusion {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
-
-    google.protobuf.StringValue opacity = 6;
-    google.protobuf.StringValue color = 7;
-    google.protobuf.StringValue translate = 8;
-    google.protobuf.StringValue translate_anchor = 9;
-    google.protobuf.StringValue pattern = 10;
-    google.protobuf.StringValue height = 11;
-    google.protobuf.StringValue base = 12;
-    google.protobuf.StringValue vertical_gradient = 13;
-
-    TransitionOptions opacity_transition = 14;
-    TransitionOptions color_transition = 15;
-    TransitionOptions translate_transition = 16;
-    TransitionOptions pattern_transition = 17;
-    TransitionOptions height_transition = 18;
-    TransitionOptions base_transition = 19;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue filter = 7;
+    google.protobuf.StringValue opacity = 8;
+    google.protobuf.StringValue color = 9;
+    google.protobuf.StringValue translate = 10;
+    google.protobuf.StringValue translate_anchor = 11;
+    google.protobuf.StringValue pattern = 12;
+    google.protobuf.StringValue height = 13;
+    google.protobuf.StringValue base = 14;
+    google.protobuf.StringValue vertical_gradient = 15;
+    TransitionOptions opacity_transition = 16;
+    TransitionOptions color_transition = 17;
+    TransitionOptions translate_transition = 18;
+    TransitionOptions pattern_transition = 19;
+    TransitionOptions height_transition = 20;
+    TransitionOptions base_transition = 21;
   }
 
   message Fill {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
-
-    google.protobuf.StringValue antialias = 6;
-    google.protobuf.StringValue opacity = 7;
-    google.protobuf.StringValue color = 8;
-    google.protobuf.StringValue outline_color = 9;
-    google.protobuf.StringValue translate = 10;
-    google.protobuf.StringValue translate_anchor = 11;
-    google.protobuf.StringValue pattern = 12;
-
-    TransitionOptions opacity_transition = 13;
-    TransitionOptions color_transition = 14;
-    TransitionOptions outline_color_transition = 15;
-    TransitionOptions translate_transition = 16;
-    TransitionOptions pattern_transition = 17;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue filter = 7;
+    google.protobuf.StringValue antialias = 8;
+    google.protobuf.StringValue opacity = 9;
+    google.protobuf.StringValue color = 10;
+    google.protobuf.StringValue outline_color = 11;
+    google.protobuf.StringValue translate = 12;
+    google.protobuf.StringValue translate_anchor = 13;
+    google.protobuf.StringValue pattern = 14;
+    TransitionOptions opacity_transition = 15;
+    TransitionOptions color_transition = 16;
+    TransitionOptions outline_color_transition = 17;
+    TransitionOptions translate_transition = 18;
+    TransitionOptions pattern_transition = 19;
   }
 
   message Heatmap {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
-
-    google.protobuf.StringValue radius = 6;
-    google.protobuf.StringValue weight = 7;
-    google.protobuf.StringValue intensity = 8;
-    google.protobuf.StringValue color = 9;
-    google.protobuf.StringValue opacity = 10;
-
-    TransitionOptions radius_transition = 11;
-    TransitionOptions intensity_transition = 12;
-    TransitionOptions opacity_transition = 13;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue filter = 7;
+    google.protobuf.StringValue radius = 8;
+    google.protobuf.StringValue weight = 9;
+    google.protobuf.StringValue intensity = 10;
+    google.protobuf.StringValue color = 11;
+    google.protobuf.StringValue opacity = 12;
+    TransitionOptions radius_transition = 13;
+    TransitionOptions intensity_transition = 14;
+    TransitionOptions opacity_transition = 15;
   }
 
   message Hillshade {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
-
-    google.protobuf.StringValue illumination_direction = 6;
-    google.protobuf.StringValue illumination_anchor = 7;
-    google.protobuf.StringValue exaggeration = 8;
-    google.protobuf.StringValue shadow_color = 9;
-    google.protobuf.StringValue highlight_color = 10;
-    google.protobuf.StringValue accent_color = 11;
-
-    TransitionOptions exaggeration_transition = 12;
-    TransitionOptions shadow_color_transition = 13;
-    TransitionOptions highlight_color_transition = 14;
-    TransitionOptions accent_color_transition = 15;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue illumination_direction = 7;
+    google.protobuf.StringValue illumination_anchor = 8;
+    google.protobuf.StringValue exaggeration = 9;
+    google.protobuf.StringValue shadow_color = 10;
+    google.protobuf.StringValue highlight_color = 11;
+    google.protobuf.StringValue accent_color = 12;
+    TransitionOptions exaggeration_transition = 13;
+    TransitionOptions shadow_color_transition = 14;
+    TransitionOptions highlight_color_transition = 15;
+    TransitionOptions accent_color_transition = 16;
   }
 
   message Line {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue filter = 7;
+    google.protobuf.StringValue cap = 8;
+    google.protobuf.StringValue join = 9;
+    google.protobuf.StringValue miter_limit = 10;
+    google.protobuf.StringValue round_limit = 11;
+    google.protobuf.StringValue opacity = 12;
+    google.protobuf.StringValue color = 13;
+    google.protobuf.StringValue translate = 14;
+    google.protobuf.StringValue translate_anchor = 15;
+    google.protobuf.StringValue width = 16;
+    google.protobuf.StringValue gap_width = 17;
+    google.protobuf.StringValue offset = 18;
+    google.protobuf.StringValue blur = 19;
+    google.protobuf.StringValue dasharray = 20;
+    google.protobuf.StringValue pattern = 21;
+    google.protobuf.StringValue gradient = 22;
+    TransitionOptions opacity_transition = 23;
+    TransitionOptions color_transition = 24;
+    TransitionOptions translate_transition = 25;
+    TransitionOptions width_transition = 26;
+    TransitionOptions gap_width_transition = 27;
+    TransitionOptions offset_transition = 28;
+    TransitionOptions blur_transition = 29;
+    TransitionOptions dasharray_transition = 30;
+    TransitionOptions pattern_transition = 31;
+  }
 
-    google.protobuf.StringValue cap = 6;
-    google.protobuf.StringValue join = 7;
-    google.protobuf.StringValue miter_limit = 8;
-    google.protobuf.StringValue round_limit = 9;
-    google.protobuf.StringValue opacity = 10;
-    google.protobuf.StringValue color = 11;
-    google.protobuf.StringValue translate = 12;
-    google.protobuf.StringValue translate_anchor = 13;
-    google.protobuf.StringValue width = 14;
-    google.protobuf.StringValue gap_width = 15;
-    google.protobuf.StringValue offset = 16;
-    google.protobuf.StringValue blur = 17;
-    google.protobuf.StringValue dasharray = 18;
-    google.protobuf.StringValue pattern = 19;
-    google.protobuf.StringValue gradient = 20;
-
-    TransitionOptions opacity_transition = 21;
-    TransitionOptions color_transition = 22;
-    TransitionOptions translate_transition = 23;
-    TransitionOptions width_transition = 24;
-    TransitionOptions gap_width_transition = 25;
-    TransitionOptions offset_transition = 26;
-    TransitionOptions blur_transition = 27;
-    TransitionOptions dasharray_transition = 28;
-    TransitionOptions pattern_transition = 29;
-
-    enum Cap {
-      CAP_BUTT = 0;
-      CAP_ROUND = 1;
-      CAP_SQUARE = 3;
-    }
-
-    enum Join {
-      JOIN_MITER = 0;
-      JOIN_BEVEL = 1;
-      JOIN_ROUND = 2;
-    }
+  message Raster {
+    string id = 1;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue opacity = 7;
+    google.protobuf.StringValue hue_rotate = 8;
+    google.protobuf.StringValue brightness_min = 9;
+    google.protobuf.StringValue brightness_max = 10;
+    google.protobuf.StringValue saturation = 11;
+    google.protobuf.StringValue contrast = 12;
+    google.protobuf.StringValue resampling = 13;
+    google.protobuf.StringValue fade_duration = 14;
+    TransitionOptions opacity_transition = 15;
+    TransitionOptions hue_rotate_transition = 16;
+    TransitionOptions brightness_min_transition = 17;
+    TransitionOptions brightness_max_transition = 18;
+    TransitionOptions saturation_transition = 19;
+    TransitionOptions contrast_transition = 20;
   }
 
   message Symbol {
     string id = 1;
-    string source_id = 2;
-    bool visible = 3;
-    float min_zoom = 4;
-    float max_zoom = 5;
+    google.protobuf.StringValue source_id = 2;
+    google.protobuf.BoolValue visible = 3;
+    google.protobuf.FloatValue min_zoom = 4;
+    google.protobuf.FloatValue max_zoom = 5;
+    google.protobuf.StringValue source_layer = 6;
+    google.protobuf.StringValue filter = 7;
+    google.protobuf.StringValue symbol_placement = 8;
+    google.protobuf.StringValue symbol_spacing = 9;
+    google.protobuf.StringValue symbol_avoid_edges = 10;
+    google.protobuf.StringValue symbol_z_order = 11;
+    google.protobuf.StringValue icon_allow_overlap = 12;
+    google.protobuf.StringValue icon_ignore_placement = 13;
+    google.protobuf.StringValue icon_optional = 14;
+    google.protobuf.StringValue icon_rotation_alignment = 15;
+    google.protobuf.StringValue icon_size = 16;
+    google.protobuf.StringValue icon_text_fit = 17;
+    google.protobuf.StringValue icon_text_fit_padding = 18;
+    google.protobuf.StringValue icon_image = 19;
+    google.protobuf.StringValue icon_rotate = 20;
+    google.protobuf.StringValue icon_padding = 21;
+    google.protobuf.StringValue icon_keep_upright = 22;
+    google.protobuf.StringValue icon_offset = 23;
+    google.protobuf.StringValue icon_anchor = 24;
+    google.protobuf.StringValue icon_pitch_alignment = 25;
+    google.protobuf.StringValue text_pitch_alignment = 26;
+    google.protobuf.StringValue text_rotation_alignment = 27;
+    google.protobuf.StringValue text_field = 28;
+    google.protobuf.StringValue text_font = 29;
+    google.protobuf.StringValue text_size = 30;
+    google.protobuf.StringValue text_max_width = 31;
+    google.protobuf.StringValue text_line_height = 32;
+    google.protobuf.StringValue text_letter_spacing = 33;
+    google.protobuf.StringValue text_justify = 34;
+    google.protobuf.StringValue text_radial_offset = 35;
+    google.protobuf.StringValue text_variable_anchor = 36;
+    google.protobuf.StringValue text_anchor = 37;
+    google.protobuf.StringValue text_max_angle = 38;
+    google.protobuf.StringValue text_rotate = 39;
+    google.protobuf.StringValue text_padding = 40;
+    google.protobuf.StringValue text_keep_upright = 41;
+    google.protobuf.StringValue text_transform = 42;
+    google.protobuf.StringValue text_offset = 43;
+    google.protobuf.StringValue text_allow_overlap = 44;
+    google.protobuf.StringValue text_ignore_placement = 45;
+    google.protobuf.StringValue text_optional = 46;
+    google.protobuf.StringValue icon_opacity = 47;
+    google.protobuf.StringValue icon_color = 48;
+    google.protobuf.StringValue icon_halo_color = 49;
+    google.protobuf.StringValue icon_halo_width = 50;
+    google.protobuf.StringValue icon_halo_blur = 51;
+    google.protobuf.StringValue icon_translate = 52;
+    google.protobuf.StringValue icon_translate_anchor = 53;
+    google.protobuf.StringValue text_opacity = 54;
+    google.protobuf.StringValue text_color = 55;
+    google.protobuf.StringValue text_halo_color = 56;
+    google.protobuf.StringValue text_halo_width = 57;
+    google.protobuf.StringValue text_halo_blur = 58;
+    google.protobuf.StringValue text_translate = 59;
+    google.protobuf.StringValue text_translate_anchor = 60;
+    TransitionOptions icon_opacity_transition = 61;
+    TransitionOptions icon_color_transition = 62;
+    TransitionOptions icon_halo_color_transition = 63;
+    TransitionOptions icon_halo_width_transition = 64;
+    TransitionOptions icon_halo_blur_transition = 65;
+    TransitionOptions icon_translate_transition = 66;
+    TransitionOptions text_opacity_transition = 67;
+    TransitionOptions text_color_transition = 68;
+    TransitionOptions text_halo_color_transition = 69;
+    TransitionOptions text_halo_width_transition = 70;
+    TransitionOptions text_halo_blur_transition = 71;
+    TransitionOptions text_translate_transition = 72;
+  }
+}
 
-    google.protobuf.StringValue symbol_placement = 6;
-    google.protobuf.StringValue symbol_spacing = 7;
-    google.protobuf.StringValue symbol_avoid_edges = 8;
-    google.protobuf.StringValue symbol_z_order = 9;
-    google.protobuf.StringValue icon_allow_overlap = 10;
-    google.protobuf.StringValue icon_ignore_placement = 11;
-    google.protobuf.StringValue icon_optional = 12;
-    google.protobuf.StringValue icon_rotation_alignment = 13;
-    google.protobuf.StringValue icon_size = 14;
-    google.protobuf.StringValue icon_text_fit = 15;
-    google.protobuf.StringValue icon_text_fit_padding = 16;
-    google.protobuf.StringValue icon_image = 17;
-    google.protobuf.StringValue icon_rotate = 18;
-    google.protobuf.StringValue icon_padding = 19;
-    google.protobuf.StringValue icon_keep_upright = 20;
-    google.protobuf.StringValue icon_offset = 21;
-    google.protobuf.StringValue icon_anchor = 22;
-    google.protobuf.StringValue icon_pitch_alignment = 23;
-    google.protobuf.StringValue text_pitch_alignment = 24;
-    google.protobuf.StringValue text_rotation_alignment = 25;
-    google.protobuf.StringValue text_field = 26;
-    google.protobuf.StringValue text_font = 27;
-    google.protobuf.StringValue text_size = 28;
-    google.protobuf.StringValue text_max_width = 29;
-    google.protobuf.StringValue text_line_height = 30;
-    google.protobuf.StringValue text_letter_spacing = 31;
-    google.protobuf.StringValue text_justify = 32;
-    google.protobuf.StringValue text_radial_offset = 33;
-    google.protobuf.StringValue text_variable_anchor = 34;
-    google.protobuf.StringValue text_anchor = 35;
-    google.protobuf.StringValue text_max_angle = 36;
-    google.protobuf.StringValue text_rotate = 37;
-    google.protobuf.StringValue text_padding = 38;
-    google.protobuf.StringValue text_keep_upright = 39;
-    google.protobuf.StringValue text_transform = 40;
-    google.protobuf.StringValue text_offset = 41;
-    google.protobuf.StringValue text_allow_overlap = 42;
-    google.protobuf.StringValue text_ignore_placement = 43;
-    google.protobuf.StringValue text_optional = 44;
-    google.protobuf.StringValue icon_opacity = 45;
-    google.protobuf.StringValue icon_color = 46;
-    google.protobuf.StringValue icon_halo_color = 47;
-    google.protobuf.StringValue icon_halo_width = 48;
-    google.protobuf.StringValue icon_halo_blur = 49;
-    google.protobuf.StringValue icon_translate = 50;
-    google.protobuf.StringValue icon_translate_anchor = 51;
-    google.protobuf.StringValue text_opacity = 52;
-    google.protobuf.StringValue text_color = 53;
-    google.protobuf.StringValue text_halo_color = 54;
-    google.protobuf.StringValue text_halo_width = 55;
-    google.protobuf.StringValue text_halo_blur = 56;
-    google.protobuf.StringValue text_translate = 57;
-    google.protobuf.StringValue text_translate_anchor = 58;
-
-    TransitionOptions icon_opacity_transition = 59;
-    TransitionOptions icon_color_transition = 60;
-    TransitionOptions icon_halo_color_transition = 61;
-    TransitionOptions icon_halo_width_transition = 62;
-    TransitionOptions icon_halo_blur_transition = 63;
-    TransitionOptions icon_translate_transition = 64;
-    TransitionOptions text_opacity_transition = 65;
-    TransitionOptions text_color_transition = 66;
-    TransitionOptions text_halo_color_transition = 67;
-    TransitionOptions text_halo_width_transition = 68;
-    TransitionOptions text_halo_blur_transition = 69;
-    TransitionOptions text_translate_transition = 70;
-
-    enum Placement {
-      PLACEMENT_POINT = 0;
-      PLACEMENT_LINE = 1;
-      PLACEMENT_LINE_CENTER = 2;
-    }
-
-    enum ZOrder {
-      Z_ORDER_AUTO = 0;
-      Z_ORDER_VIEWPORT_Y = 1;
-      Z_ORDER_SOURCE = 2;
-    }
-
-    enum Alignment {
-      ALIGNMENT_AUTO = 0;
-      ALIGNMENT_MAP = 1;
-      ALIGNMENT_VIEWPORT = 2;
-    }
-
-    enum TextFit {
-      TEXT_FIT_NONE = 0;
-      TEXT_FIT_WIDTH = 1;
-      TEXT_FIT_HEIGHT = 2;
-      TEXT_FIT_BOTH = 3;
-    }
-
-    enum TextJustify {
-      JUSTIFY_AUTO = 0;
-      JUSTIFY_LEFT = 1;
-      JUSTIFY_CENTER = 2;
-      JUSTIFY_RIGHT = 3;
-    }
-
-    enum TextTransform {
-      TRANSFORM_NONE = 0;
-      TRANSFORM_UPPERCASE = 1;
-      TRANSFORM_LOWERCASE = 2;
+message Operations {
+  message Add {
+    Layer layer = 1;
+    oneof position {
+      string below_id = 2;
+      string above_id = 3;
+      int32 index = 4;
     }
   }
 }

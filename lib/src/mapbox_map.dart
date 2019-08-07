@@ -7,11 +7,13 @@ part of mapbox_gl;
 class MapboxMap extends StatefulWidget {
   const MapboxMap({
     Key key,
-    @required this.onMapReady,
+    this.onMapReady,
     this.gestureRecognizers,
     this.options,
     this.mapEvents,
     this.cameraEvents,
+    this.layers,
+    this.sources,
   }) : super(key: key);
 
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
@@ -19,6 +21,8 @@ class MapboxMap extends StatefulWidget {
   final MapEvents mapEvents;
   final CameraEvents cameraEvents;
   final ValueChanged<MapController> onMapReady;
+  final List<Layer> layers;
+  final List<Source> sources;
 
   @override
   _MapboxMapState createState() => _MapboxMapState();
@@ -51,6 +55,78 @@ class _MapboxMapState extends State<MapboxMap> {
       final pb.Map__Operations_Ready info = pb.Map__Operations_Ready.fromBuffer(data);
       _controller = MapController._(info: info, calls: _methodCall.stream);
       widget.onMapReady?.call(_controller);
+
+      Future.wait<dynamic>(<Future<dynamic>>[
+        if (widget.sources != null) ...widget.sources.map(_controller.style.addSource),
+        if (widget.layers != null) ...widget.layers.map(_controller.style.addLayer),
+      ]);
+    }
+  }
+
+  @override
+  void didUpdateWidget(MapboxMap oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (_controller == null) return;
+    updateAll(oldWidget);
+  }
+
+  Future<void> updateAll(MapboxMap oldWidget) async {
+    final List<Layer> oldLayers = oldWidget.layers ?? <Layer>[];
+    final List<Layer> newLayers = widget.layers ?? <Layer>[];
+    final List<Source> newSources = widget.sources ?? <Source>[];
+    final List<Source> oldSources = oldWidget.sources ?? <Source>[];
+
+    final bool sameLayers = const ListEquality<Layer>().equals(oldLayers, newLayers);
+    final bool sameSources = const ListEquality<Source>().equals(oldSources, newSources);
+    if (sameLayers && sameSources) return;
+
+    final List<Future<dynamic>> futures = <Future<dynamic>>[];
+    if (!sameLayers) {
+      final Map<String, Layer> oldIds = oldLayers.asMap().map((_, it) => MapEntry(it.id, it));
+      final Map<String, Layer> newIds = newLayers.asMap().map((_, it) => MapEntry(it.id, it));
+
+      final remove = oldIds.keys.where((id) => !newIds.keys.contains(id));
+      final update = newIds.keys.where((it) => oldIds.keys.contains(it));
+      final add = newIds.keys.where((it) => !oldIds.keys.contains(it)).map((id) => newIds[id]);
+
+      await Future.wait(remove.map(_controller.style.removeLayer));
+
+      for (String id in update) {
+        if (newIds[id] == oldIds[id]) continue;
+
+        futures.add(_controller.style.getLayer(id).update(newIds[id]));
+      }
+      await Future.wait(futures);
+      futures.clear();
+
+      await Future.wait(add.map(_controller.style.addLayer));
+    }
+
+    if (!sameSources) {
+      final Map<String, Source> oldIds = oldSources.asMap().map((_, it) => MapEntry(it.id, it));
+      final Map<String, Source> newIds = newSources.asMap().map((_, it) => MapEntry(it.id, it));
+
+      final remove = oldIds.keys.where((id) => !newIds.keys.contains(id));
+      final update = newIds.keys.where((it) => oldIds.keys.contains(it));
+      final add = newIds.keys.where((it) => !oldIds.keys.contains(it)).map((id) => newIds[id]);
+
+      await Future.wait(remove.map(_controller.style.removeSource));
+
+      for (String id in update) {
+        final Source source = newIds[id];
+        if (source == oldIds[id]) continue;
+        if (source is GeoJsonSource) {
+          final GeoJsonSource _source = _controller.style.getSource(id);
+          futures.add(_source.copyFrom(source));
+        } else if (source is ImageSource) {
+          final ImageSource _source = _controller.style.getSource(id);
+          futures.add(_source.copyFrom(source));
+        }
+      }
+      await Future.wait(futures);
+      futures.clear();
+
+      await Future.wait(add.map(_controller.style.addSource));
     }
   }
 

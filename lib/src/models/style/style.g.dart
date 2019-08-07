@@ -25,11 +25,11 @@ class _$StyleModelSerializer implements StructuredSerializer<StyleModel> {
       'sources',
       serializers.serialize(object.sources,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(SourceModel)])),
+              const FullType(BuiltList, const [const FullType(Source)])),
       'layers',
       serializers.serialize(object.layers,
           specifiedType:
-              const FullType(BuiltList, const [const FullType(pb.Layer)])),
+              const FullType(BuiltList, const [const FullType(Layer)])),
       'transition',
       serializers.serialize(object.transition,
           specifiedType: const FullType(TransitionOptions)),
@@ -64,14 +64,14 @@ class _$StyleModelSerializer implements StructuredSerializer<StyleModel> {
           break;
         case 'sources':
           result.sources.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(SourceModel)]))
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Source)]))
               as BuiltList<dynamic>);
           break;
         case 'layers':
           result.layers.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(pb.Layer)]))
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Layer)]))
               as BuiltList<dynamic>);
           break;
         case 'transition':
@@ -96,9 +96,9 @@ class _$StyleModel extends StyleModel {
   @override
   final String json;
   @override
-  final BuiltList<SourceModel> sources;
+  final BuiltList<Source> sources;
   @override
-  final BuiltList<pb.Layer> layers;
+  final BuiltList<Layer> layers;
   @override
   final TransitionOptions transition;
   @override
@@ -189,15 +189,14 @@ class StyleModelBuilder implements Builder<StyleModel, StyleModelBuilder> {
   String get json => _$this._json;
   set json(String json) => _$this._json = json;
 
-  ListBuilder<SourceModel> _sources;
-  ListBuilder<SourceModel> get sources =>
-      _$this._sources ??= new ListBuilder<SourceModel>();
-  set sources(ListBuilder<SourceModel> sources) => _$this._sources = sources;
+  ListBuilder<Source> _sources;
+  ListBuilder<Source> get sources =>
+      _$this._sources ??= new ListBuilder<Source>();
+  set sources(ListBuilder<Source> sources) => _$this._sources = sources;
 
-  ListBuilder<pb.Layer> _layers;
-  ListBuilder<pb.Layer> get layers =>
-      _$this._layers ??= new ListBuilder<pb.Layer>();
-  set layers(ListBuilder<pb.Layer> layers) => _$this._layers = layers;
+  ListBuilder<Layer> _layers;
+  ListBuilder<Layer> get layers => _$this._layers ??= new ListBuilder<Layer>();
+  set layers(ListBuilder<Layer> layers) => _$this._layers = layers;
 
   TransitionOptionsBuilder _transition;
   TransitionOptionsBuilder get transition =>

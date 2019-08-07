@@ -14,7 +14,20 @@ import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
 part 'latlng_quad.g.dart';
 
 abstract class LatLngQuad implements Built<LatLngQuad, LatLngQuadBuilder> {
-  factory LatLngQuad([void Function(LatLngQuadBuilder b) updates]) = _$LatLngQuad;
+  factory LatLngQuad({
+    LatLng topLeft,
+    LatLng topRight,
+    LatLng bottomRight,
+    LatLng bottomLeft,
+  }) {
+    return _$LatLngQuad((LatLngQuadBuilder b) {
+      b
+        ..topLeft = (topLeft ?? LatLng()).toBuilder()
+        ..topRight = (topRight ?? LatLng()).toBuilder()
+        ..bottomRight = (bottomRight ?? LatLng()).toBuilder()
+        ..bottomLeft = (bottomLeft ?? LatLng()).toBuilder();
+    });
+  }
 
   factory LatLngQuad.fromProtoData(Uint8List data) {
     return LatLngQuad.fromProto(pb.LatLngQuad.fromBuffer(data));

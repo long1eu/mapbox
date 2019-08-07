@@ -209,6 +209,136 @@ class Source_Image extends $pb.GeneratedMessage {
   void clearImage() => clearField(5);
 }
 
+enum Source_RasterDem_Source {
+  uri, 
+  tileSet, 
+  notSet
+}
+
+class Source_RasterDem extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, Source_RasterDem_Source> _Source_RasterDem_SourceByTag = {
+    4 : Source_RasterDem_Source.uri,
+    5 : Source_RasterDem_Source.tileSet,
+    0 : Source_RasterDem_Source.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.RasterDem', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+    ..oo(0, [4, 5])
+    ..aOS(1, 'id')
+    ..aOS(2, 'attribution')
+    ..a<$core.int>(3, 'tileSize', $pb.PbFieldType.O3)
+    ..aOS(4, 'uri')
+    ..a<Source_TileSet>(5, 'tileSet', $pb.PbFieldType.OM, Source_TileSet.getDefault, Source_TileSet.create)
+    ..hasRequiredFields = false
+  ;
+
+  Source_RasterDem._() : super();
+  factory Source_RasterDem() => create();
+  factory Source_RasterDem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source_RasterDem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Source_RasterDem clone() => Source_RasterDem()..mergeFromMessage(this);
+  Source_RasterDem copyWith(void Function(Source_RasterDem) updates) => super.copyWith((message) => updates(message as Source_RasterDem));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Source_RasterDem create() => Source_RasterDem._();
+  Source_RasterDem createEmptyInstance() => create();
+  static $pb.PbList<Source_RasterDem> createRepeated() => $pb.PbList<Source_RasterDem>();
+  static Source_RasterDem getDefault() => _defaultInstance ??= create()..freeze();
+  static Source_RasterDem _defaultInstance;
+
+  Source_RasterDem_Source whichSource() => _Source_RasterDem_SourceByTag[$_whichOneof(0)];
+  void clearSource() => clearField($_whichOneof(0));
+
+  $core.String get id => $_getS(0, '');
+  set id($core.String v) { $_setString(0, v); }
+  $core.bool hasId() => $_has(0);
+  void clearId() => clearField(1);
+
+  $core.String get attribution => $_getS(1, '');
+  set attribution($core.String v) { $_setString(1, v); }
+  $core.bool hasAttribution() => $_has(1);
+  void clearAttribution() => clearField(2);
+
+  $core.int get tileSize => $_get(2, 0);
+  set tileSize($core.int v) { $_setSignedInt32(2, v); }
+  $core.bool hasTileSize() => $_has(2);
+  void clearTileSize() => clearField(3);
+
+  $core.String get uri => $_getS(3, '');
+  set uri($core.String v) { $_setString(3, v); }
+  $core.bool hasUri() => $_has(3);
+  void clearUri() => clearField(4);
+
+  Source_TileSet get tileSet => $_getN(4);
+  set tileSet(Source_TileSet v) { setField(5, v); }
+  $core.bool hasTileSet() => $_has(4);
+  void clearTileSet() => clearField(5);
+}
+
+enum Source_Raster_Source {
+  uri, 
+  tileSet, 
+  notSet
+}
+
+class Source_Raster extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, Source_Raster_Source> _Source_Raster_SourceByTag = {
+    4 : Source_Raster_Source.uri,
+    5 : Source_Raster_Source.tileSet,
+    0 : Source_Raster_Source.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Raster', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+    ..oo(0, [4, 5])
+    ..aOS(1, 'id')
+    ..aOS(2, 'attribution')
+    ..a<$core.int>(3, 'tileSize', $pb.PbFieldType.O3)
+    ..aOS(4, 'uri')
+    ..a<Source_TileSet>(5, 'tileSet', $pb.PbFieldType.OM, Source_TileSet.getDefault, Source_TileSet.create)
+    ..hasRequiredFields = false
+  ;
+
+  Source_Raster._() : super();
+  factory Source_Raster() => create();
+  factory Source_Raster.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source_Raster.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Source_Raster clone() => Source_Raster()..mergeFromMessage(this);
+  Source_Raster copyWith(void Function(Source_Raster) updates) => super.copyWith((message) => updates(message as Source_Raster));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Source_Raster create() => Source_Raster._();
+  Source_Raster createEmptyInstance() => create();
+  static $pb.PbList<Source_Raster> createRepeated() => $pb.PbList<Source_Raster>();
+  static Source_Raster getDefault() => _defaultInstance ??= create()..freeze();
+  static Source_Raster _defaultInstance;
+
+  Source_Raster_Source whichSource() => _Source_Raster_SourceByTag[$_whichOneof(0)];
+  void clearSource() => clearField($_whichOneof(0));
+
+  $core.String get id => $_getS(0, '');
+  set id($core.String v) { $_setString(0, v); }
+  $core.bool hasId() => $_has(0);
+  void clearId() => clearField(1);
+
+  $core.String get attribution => $_getS(1, '');
+  set attribution($core.String v) { $_setString(1, v); }
+  $core.bool hasAttribution() => $_has(1);
+  void clearAttribution() => clearField(2);
+
+  $core.int get tileSize => $_get(2, 0);
+  set tileSize($core.int v) { $_setSignedInt32(2, v); }
+  $core.bool hasTileSize() => $_has(2);
+  void clearTileSize() => clearField(3);
+
+  $core.String get uri => $_getS(3, '');
+  set uri($core.String v) { $_setString(3, v); }
+  $core.bool hasUri() => $_has(3);
+  void clearUri() => clearField(4);
+
+  Source_TileSet get tileSet => $_getN(4);
+  set tileSet(Source_TileSet v) { setField(5, v); }
+  $core.bool hasTileSet() => $_has(4);
+  void clearTileSet() => clearField(5);
+}
+
 enum Source_Vector_Source {
   uri, 
   tileSet, 
@@ -404,6 +534,8 @@ class Source_TileSet extends $pb.GeneratedMessage {
 enum Source_Type {
   geoJson, 
   image, 
+  rasterDem, 
+  raster, 
   vector, 
   unknown, 
   notSet
@@ -411,18 +543,23 @@ enum Source_Type {
 
 class Source extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, Source_Type> _Source_TypeByTag = {
-    1 : Source_Type.geoJson,
-    2 : Source_Type.image,
-    3 : Source_Type.vector,
-    4 : Source_Type.unknown,
+    2 : Source_Type.geoJson,
+    3 : Source_Type.image,
+    4 : Source_Type.rasterDem,
+    5 : Source_Type.raster,
+    6 : Source_Type.vector,
+    7 : Source_Type.unknown,
     0 : Source_Type.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
-    ..oo(0, [1, 2, 3, 4])
-    ..a<Source_GeoJson>(1, 'geoJson', $pb.PbFieldType.OM, Source_GeoJson.getDefault, Source_GeoJson.create)
-    ..a<Source_Image>(2, 'image', $pb.PbFieldType.OM, Source_Image.getDefault, Source_Image.create)
-    ..a<Source_Vector>(3, 'vector', $pb.PbFieldType.OM, Source_Vector.getDefault, Source_Vector.create)
-    ..a<Source_Unknown>(4, 'unknown', $pb.PbFieldType.OM, Source_Unknown.getDefault, Source_Unknown.create)
+    ..oo(0, [2, 3, 4, 5, 6, 7])
+    ..aOS(1, 'id')
+    ..a<Source_GeoJson>(2, 'geoJson', $pb.PbFieldType.OM, Source_GeoJson.getDefault, Source_GeoJson.create)
+    ..a<Source_Image>(3, 'image', $pb.PbFieldType.OM, Source_Image.getDefault, Source_Image.create)
+    ..a<Source_RasterDem>(4, 'rasterDem', $pb.PbFieldType.OM, Source_RasterDem.getDefault, Source_RasterDem.create)
+    ..a<Source_Raster>(5, 'raster', $pb.PbFieldType.OM, Source_Raster.getDefault, Source_Raster.create)
+    ..a<Source_Vector>(6, 'vector', $pb.PbFieldType.OM, Source_Vector.getDefault, Source_Vector.create)
+    ..a<Source_Unknown>(7, 'unknown', $pb.PbFieldType.OM, Source_Unknown.getDefault, Source_Unknown.create)
     ..hasRequiredFields = false
   ;
 
@@ -443,24 +580,39 @@ class Source extends $pb.GeneratedMessage {
   Source_Type whichType() => _Source_TypeByTag[$_whichOneof(0)];
   void clearType() => clearField($_whichOneof(0));
 
-  Source_GeoJson get geoJson => $_getN(0);
-  set geoJson(Source_GeoJson v) { setField(1, v); }
-  $core.bool hasGeoJson() => $_has(0);
-  void clearGeoJson() => clearField(1);
+  $core.String get id => $_getS(0, '');
+  set id($core.String v) { $_setString(0, v); }
+  $core.bool hasId() => $_has(0);
+  void clearId() => clearField(1);
 
-  Source_Image get image => $_getN(1);
-  set image(Source_Image v) { setField(2, v); }
-  $core.bool hasImage() => $_has(1);
-  void clearImage() => clearField(2);
+  Source_GeoJson get geoJson => $_getN(1);
+  set geoJson(Source_GeoJson v) { setField(2, v); }
+  $core.bool hasGeoJson() => $_has(1);
+  void clearGeoJson() => clearField(2);
 
-  Source_Vector get vector => $_getN(2);
-  set vector(Source_Vector v) { setField(3, v); }
-  $core.bool hasVector() => $_has(2);
-  void clearVector() => clearField(3);
+  Source_Image get image => $_getN(2);
+  set image(Source_Image v) { setField(3, v); }
+  $core.bool hasImage() => $_has(2);
+  void clearImage() => clearField(3);
 
-  Source_Unknown get unknown => $_getN(3);
-  set unknown(Source_Unknown v) { setField(4, v); }
-  $core.bool hasUnknown() => $_has(3);
-  void clearUnknown() => clearField(4);
+  Source_RasterDem get rasterDem => $_getN(3);
+  set rasterDem(Source_RasterDem v) { setField(4, v); }
+  $core.bool hasRasterDem() => $_has(3);
+  void clearRasterDem() => clearField(4);
+
+  Source_Raster get raster => $_getN(4);
+  set raster(Source_Raster v) { setField(5, v); }
+  $core.bool hasRaster() => $_has(4);
+  void clearRaster() => clearField(5);
+
+  Source_Vector get vector => $_getN(5);
+  set vector(Source_Vector v) { setField(6, v); }
+  $core.bool hasVector() => $_has(5);
+  void clearVector() => clearField(6);
+
+  Source_Unknown get unknown => $_getN(6);
+  set unknown(Source_Unknown v) { setField(7, v); }
+  $core.bool hasUnknown() => $_has(6);
+  void clearUnknown() => clearField(7);
 }
 

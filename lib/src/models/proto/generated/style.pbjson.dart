@@ -16,7 +16,7 @@ const Style$json = const {
     const {'1': 'light', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Style.Light', '10': 'light'},
   ],
   '3': const [Style_Light$json, Style_Position$json, Style_Operations$json],
-  '4': const [Style_DefaultMapboxStyle$json],
+  '4': const [Style_MapboxStyle$json],
 };
 
 const Style_Light$json = const {
@@ -49,7 +49,7 @@ const Style_Operations$json = const {
 const Style_Operations_Build$json = const {
   '1': 'Build',
   '2': const [
-    const {'1': 'default', '3': 1, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle', '9': 0, '10': 'default'},
+    const {'1': 'default', '3': 1, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Style.MapboxStyle', '9': 0, '10': 'default'},
     const {'1': 'uri', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'uri'},
     const {'1': 'json', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'json'},
   ],
@@ -58,8 +58,8 @@ const Style_Operations_Build$json = const {
   ],
 };
 
-const Style_DefaultMapboxStyle$json = const {
-  '1': 'DefaultMapboxStyle',
+const Style_MapboxStyle$json = const {
+  '1': 'MapboxStyle',
   '2': const [
     const {'1': 'MAPBOX_STREETS', '2': 0},
     const {'1': 'OUTDOORS', '2': 1},

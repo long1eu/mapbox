@@ -250,9 +250,9 @@ public final class StyleOuterClass {
     }
 
     /**
-     * Protobuf enum {@code com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle}
+     * Protobuf enum {@code com.tophap.mapbox_gl.proto.Style.MapboxStyle}
      */
-    public enum DefaultMapboxStyle
+    public enum MapboxStyle
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <code>MAPBOX_STREETS = 0;</code>
@@ -335,11 +335,11 @@ public final class StyleOuterClass {
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
-      public static DefaultMapboxStyle valueOf(int value) {
+      public static MapboxStyle valueOf(int value) {
         return forNumber(value);
       }
 
-      public static DefaultMapboxStyle forNumber(int value) {
+      public static MapboxStyle forNumber(int value) {
         switch (value) {
           case 0: return MAPBOX_STREETS;
           case 1: return OUTDOORS;
@@ -353,15 +353,15 @@ public final class StyleOuterClass {
         }
       }
 
-      public static com.google.protobuf.Internal.EnumLiteMap<DefaultMapboxStyle>
+      public static com.google.protobuf.Internal.EnumLiteMap<MapboxStyle>
           internalGetValueMap() {
         return internalValueMap;
       }
       private static final com.google.protobuf.Internal.EnumLiteMap<
-          DefaultMapboxStyle> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<DefaultMapboxStyle>() {
-              public DefaultMapboxStyle findValueByNumber(int number) {
-                return DefaultMapboxStyle.forNumber(number);
+          MapboxStyle> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<MapboxStyle>() {
+              public MapboxStyle findValueByNumber(int number) {
+                return MapboxStyle.forNumber(number);
               }
             };
 
@@ -378,9 +378,9 @@ public final class StyleOuterClass {
         return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final DefaultMapboxStyle[] VALUES = values();
+      private static final MapboxStyle[] VALUES = values();
 
-      public static DefaultMapboxStyle valueOf(
+      public static MapboxStyle valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
@@ -394,11 +394,11 @@ public final class StyleOuterClass {
 
       private final int value;
 
-      private DefaultMapboxStyle(int value) {
+      private MapboxStyle(int value) {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle)
+      // @@protoc_insertion_point(enum_scope:com.tophap.mapbox_gl.proto.Style.MapboxStyle)
     }
 
     public interface LightOrBuilder extends
@@ -2624,13 +2624,13 @@ public final class StyleOuterClass {
           com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
          */
         int getDefaultValue();
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
          */
-        com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle getDefault();
+        com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle getDefault();
 
         /**
          * <code>string uri = 2;</code>
@@ -2785,7 +2785,7 @@ public final class StyleOuterClass {
 
         public static final int DEFAULT_FIELD_NUMBER = 1;
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
          */
         public int getDefaultValue() {
           if (sourceCase_ == 1) {
@@ -2794,16 +2794,16 @@ public final class StyleOuterClass {
           return 0;
         }
         /**
-         * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+         * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
          */
-        public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle getDefault() {
+        public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle getDefault() {
           if (sourceCase_ == 1) {
             @SuppressWarnings("deprecation")
-            com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle result = com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.valueOf(
+            com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle result = com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle.valueOf(
                 (java.lang.Integer) source_);
-            return result == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.UNRECOGNIZED : result;
+            return result == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle.UNRECOGNIZED : result;
           }
-          return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.MAPBOX_STREETS;
+          return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle.MAPBOX_STREETS;
         }
 
         public static final int URI_FIELD_NUMBER = 2;
@@ -3278,7 +3278,7 @@ public final class StyleOuterClass {
 
 
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
            */
           public int getDefaultValue() {
             if (sourceCase_ == 1) {
@@ -3287,7 +3287,7 @@ public final class StyleOuterClass {
             return 0;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
            */
           public Builder setDefaultValue(int value) {
             sourceCase_ = 1;
@@ -3296,21 +3296,21 @@ public final class StyleOuterClass {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
            */
-          public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle getDefault() {
+          public com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle getDefault() {
             if (sourceCase_ == 1) {
               @SuppressWarnings("deprecation")
-              com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle result = com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.valueOf(
+              com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle result = com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle.valueOf(
                   (java.lang.Integer) source_);
-              return result == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.UNRECOGNIZED : result;
+              return result == null ? com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle.UNRECOGNIZED : result;
             }
-            return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle.MAPBOX_STREETS;
+            return com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle.MAPBOX_STREETS;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
            */
-          public Builder setDefault(com.tophap.mapbox_gl.proto.StyleOuterClass.Style.DefaultMapboxStyle value) {
+          public Builder setDefault(com.tophap.mapbox_gl.proto.StyleOuterClass.Style.MapboxStyle value) {
             if (value == null) {
               throw new NullPointerException();
             }
@@ -3320,7 +3320,7 @@ public final class StyleOuterClass {
             return this;
           }
           /**
-           * <code>.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle default = 1;</code>
+           * <code>.com.tophap.mapbox_gl.proto.Style.MapboxStyle default = 1;</code>
            */
           public Builder clearDefault() {
             if (sourceCase_ == 1) {
@@ -5494,7 +5494,7 @@ public final class StyleOuterClass {
     java.lang.String[] descriptorData = {
       "\n\013style.proto\022\032com.tophap.mapbox_gl.prot" +
       "o\032\014layers.proto\032\rsources.proto\032\nutil.pro" +
-      "to\"\245\010\n\005Style\022\013\n\003uri\030\001 \001(\t\022\014\n\004json\030\002 \001(\t\022" +
+      "to\"\227\010\n\005Style\022\013\n\003uri\030\001 \001(\t\022\014\n\004json\030\002 \001(\t\022" +
       "3\n\007sources\030\003 \003(\0132\".com.tophap.mapbox_gl." +
       "proto.Source\0221\n\006layers\030\004 \003(\0132!.com.topha" +
       "p.mapbox_gl.proto.Layer\022A\n\ntransition\030\005 " +
@@ -5513,15 +5513,15 @@ public final class StyleOuterClass {
       " \001(\0132-.com.tophap.mapbox_gl.proto.Transi" +
       "tionOptions\032S\n\010Position\022\031\n\021radial_coordi" +
       "nate\030\001 \001(\002\022\027\n\017azimuthal_angle\030\002 \001(\002\022\023\n\013p" +
-      "olar_angle\030\003 \001(\002\032\207\001\n\nOperations\032y\n\005Build" +
-      "\022G\n\007default\030\001 \001(\01624.com.tophap.mapbox_gl" +
-      ".proto.Style.DefaultMapboxStyleH\000\022\r\n\003uri" +
-      "\030\002 \001(\tH\000\022\016\n\004json\030\003 \001(\tH\000B\010\n\006source\"\225\001\n\022D" +
-      "efaultMapboxStyle\022\022\n\016MAPBOX_STREETS\020\000\022\014\n" +
-      "\010OUTDOORS\020\001\022\t\n\005LIGHT\020\002\022\010\n\004DARK\020\003\022\r\n\tSATE" +
-      "LLITE\020\004\022\025\n\021SATELLITE_STREETS\020\005\022\017\n\013TRAFFI" +
-      "C_DAY\020\006\022\021\n\rTRAFFIC_NIGHT\020\007B\034\n\032com.tophap" +
-      ".mapbox_gl.protob\006proto3"
+      "olar_angle\030\003 \001(\002\032\200\001\n\nOperations\032r\n\005Build" +
+      "\022@\n\007default\030\001 \001(\0162-.com.tophap.mapbox_gl" +
+      ".proto.Style.MapboxStyleH\000\022\r\n\003uri\030\002 \001(\tH" +
+      "\000\022\016\n\004json\030\003 \001(\tH\000B\010\n\006source\"\216\001\n\013MapboxSt" +
+      "yle\022\022\n\016MAPBOX_STREETS\020\000\022\014\n\010OUTDOORS\020\001\022\t\n" +
+      "\005LIGHT\020\002\022\010\n\004DARK\020\003\022\r\n\tSATELLITE\020\004\022\025\n\021SAT" +
+      "ELLITE_STREETS\020\005\022\017\n\013TRAFFIC_DAY\020\006\022\021\n\rTRA" +
+      "FFIC_NIGHT\020\007B\034\n\032com.tophap.mapbox_gl.pro" +
+      "tob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

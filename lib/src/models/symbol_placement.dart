@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class SymbolPlacement {
-  const SymbolPlacement._(this._i, this._value);
+class SymbolPlacement extends ExpressionLiteral {
+  const SymbolPlacement._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const SymbolPlacement point = SymbolPlacement._(0, 'point');
   static const SymbolPlacement line = SymbolPlacement._(1, 'line');
@@ -25,8 +24,6 @@ class SymbolPlacement {
     'line',
     'lineCenter',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'SymbolPlacement.${_names[_i]}';

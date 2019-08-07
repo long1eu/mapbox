@@ -109,7 +109,7 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
       result
         ..add('styleFromMapbox')
         ..add(serializers.serialize(object.styleFromMapbox,
-            specifiedType: const FullType(DefaultMapStyle)));
+            specifiedType: const FullType(MapStyle)));
     }
     if (object.styleFromUri != null) {
       result
@@ -155,8 +155,7 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
           break;
         case 'styleFromMapbox':
           result.styleFromMapbox = serializers.deserialize(value,
-                  specifiedType: const FullType(DefaultMapStyle))
-              as DefaultMapStyle;
+              specifiedType: const FullType(MapStyle)) as MapStyle;
           break;
         case 'styleFromUri':
           result.styleFromUri = serializers.deserialize(value,
@@ -298,7 +297,7 @@ class _$MapOptions extends MapOptions {
   @override
   final String apiBaseUri;
   @override
-  final DefaultMapStyle styleFromMapbox;
+  final MapStyle styleFromMapbox;
   @override
   final String styleFromUri;
   @override
@@ -618,9 +617,9 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   String get apiBaseUri => _$this._apiBaseUri;
   set apiBaseUri(String apiBaseUri) => _$this._apiBaseUri = apiBaseUri;
 
-  DefaultMapStyle _styleFromMapbox;
-  DefaultMapStyle get styleFromMapbox => _$this._styleFromMapbox;
-  set styleFromMapbox(DefaultMapStyle styleFromMapbox) =>
+  MapStyle _styleFromMapbox;
+  MapStyle get styleFromMapbox => _$this._styleFromMapbox;
+  set styleFromMapbox(MapStyle styleFromMapbox) =>
       _$this._styleFromMapbox = styleFromMapbox;
 
   String _styleFromUri;

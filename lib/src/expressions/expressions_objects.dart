@@ -85,7 +85,7 @@ abstract class _ValueExpression {
 }
 
 class Expression {
-  Expression._(String operator, [List<Expression> arguments])
+  const Expression(String operator, [List<Expression> arguments])
       : _operator = operator,
         _arguments = arguments;
 
@@ -126,7 +126,7 @@ class Expression {
           if (fieldName != null) _expression(string, fieldName, bool),
         ];
 
-  factory Expression._fromProtoString(pb.StringValue string) {
+  factory Expression.fromProtoString(pb.StringValue string) {
     return string == null ? null : Expression.fromJson(jsonDecode(string.value));
   }
 
@@ -135,9 +135,9 @@ class Expression {
       if (value is List) {
         return Expression.fromJson(value);
       } else if (value is bool || value is num || value is String) {
-        return _ExpressionLiteral(value);
+        return ExpressionLiteral(value);
       } else if (value == null) {
-        return _ExpressionLiteral('');
+        return ExpressionLiteral('');
       } else if (value is Map) {
         final Map<dynamic, Expression> map =
             value.map((dynamic key, dynamic value) => MapEntry(key, convertElement(value)));
@@ -153,9 +153,9 @@ class Expression {
       final dynamic item = list[i];
       if (operator == 'literal' && item is List) {
         final List nested = item;
-        final List<Expression> array = <Expression>[];
+        final List<Expression> array = List<Expression>(nested.length);
         for (int j = 0; j < nested.length; j++) {
-          final dynamic element = nested[i];
+          final dynamic element = nested[j];
           assert(element is! List);
           array[j] = literal(element);
         }
@@ -166,7 +166,7 @@ class Expression {
       }
     }
 
-    return Expression._(operator, arguments);
+    return Expression(operator, arguments);
   }
 
   final String _operator;
@@ -179,10 +179,10 @@ class Expression {
   dynamic get value => json;
 
   Color get color {
-    assert(isValue && _arguments.every((it) => it is _ExpressionLiteral));
+    assert(isValue && _arguments.every((it) => it is ExpressionLiteral));
 
     if (_operator == kRgbOperator) {
-      assert(_arguments.length == 3 && _arguments.every((it) => it is _ExpressionLiteral));
+      assert(_arguments.length == 3 && _arguments.every((it) => it is ExpressionLiteral));
 
       return Color.fromARGB(
         0xFF,
@@ -205,7 +205,7 @@ class Expression {
   }
 
   Offset get offset {
-    assert(isValue && _arguments.every((it) => it is _ExpressionLiteral));
+    assert(isValue && _arguments.every((it) => it is ExpressionLiteral));
 
     if (_operator == kArrayOperator && _arguments.length == 2) {
       return Offset(_arguments[0].value, _arguments[1].value);
@@ -215,14 +215,14 @@ class Expression {
   }
 
   EdgeInsets get edgeInsets {
-    assert(isValue && _arguments.every((it) => it is _ExpressionLiteral));
+    assert(isValue && _arguments.every((it) => it is ExpressionLiteral));
 
     if (_operator == kArrayOperator && _arguments.length == 4) {
       return EdgeInsets.only(
-        top: _arguments[0].value,
-        right: _arguments[1].value,
-        bottom: _arguments[2].value,
-        left: _arguments[3].value,
+        top: _arguments[0].value / window.devicePixelRatio,
+        right: _arguments[1].value / window.devicePixelRatio,
+        bottom: _arguments[2].value / window.devicePixelRatio,
+        left: _arguments[3].value / window.devicePixelRatio,
       );
     }
 
@@ -245,9 +245,7 @@ class Expression {
     return array;
   }
 
-  pb.StringValue _jsonProto;
-
-  pb.StringValue get proto => _jsonProto ??= pb.StringValue()
+  pb.StringValue get protoString => pb.StringValue()
     ..value = jsonEncode(json)
     ..freeze();
 
@@ -258,12 +256,25 @@ class Expression {
           ..add('arguments', _arguments))
         .toString();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Expression &&
+          runtimeType == other.runtimeType &&
+          _operator == other._operator &&
+          const ListEquality<Expression>().equals(_arguments, other._arguments);
+
+  @override
+  int get hashCode {
+    return _operator.hashCode ^ const ListEquality<Expression>().hash(_arguments);
+  }
 }
 
 class _ExpressionMap extends Expression implements _ValueExpression {
   _ExpressionMap(Map<String, Expression> map)
       : _map = map,
-        super._(null);
+        super(null);
 
   final Map<String, Expression> _map;
 
@@ -279,33 +290,66 @@ class _ExpressionMap extends Expression implements _ValueExpression {
           ..add('map', _map))
         .toString();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      super == other &&
+          other is _ExpressionMap &&
+          runtimeType == other.runtimeType &&
+          const MapEquality<String, Expression>().equals(_map, other._map);
+
+  @override
+  int get hashCode => super.hashCode ^ const MapEquality<String, Expression>().hash(_map);
 }
 
-class _ExpressionLiteral extends Expression implements _ValueExpression {
-  _ExpressionLiteral(dynamic value)
+class ExpressionLiteral extends Expression implements _ValueExpression {
+  const ExpressionLiteral(dynamic value)
       : _literal = value,
-        super._(null);
+        super(null);
 
   final dynamic _literal;
 
   dynamic get value => _jsonValue;
 
   @override
-  Object get _jsonValue => _literal is _ExpressionLiteral ? _literal.value : _literal;
+  Object get _jsonValue => _literal is ExpressionLiteral ? _literal.value : _literal;
 
   @override
   List<Object> get json => ['literal', _literal];
 
   @override
   String toString() => 'literal(${_literal.runtimeType}:$value)';
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      super == other &&
+          other is ExpressionLiteral &&
+          runtimeType == other.runtimeType &&
+          _jsonValue == other._jsonValue;
+
+  @override
+  int get hashCode => super.hashCode ^ _jsonValue.hashCode;
 }
 
-class _ExpressionLiteralList extends _ExpressionLiteral {
+class _ExpressionLiteralList extends ExpressionLiteral {
   _ExpressionLiteralList(dynamic value) : super(value);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      super == other &&
+          other is _ExpressionLiteralList &&
+          runtimeType == other.runtimeType &&
+          const ListEquality<dynamic>().equals(_literal, other._literal);
+
+  @override
+  int get hashCode => super.hashCode ^ const ListEquality<dynamic>().hash(_literal);
 }
 
 class _Interpolator extends Expression {
-  _Interpolator(String operator, [List<Expression> arguments]) : super._(operator, arguments);
+  _Interpolator(String operator, [List<Expression> arguments]) : super(operator, arguments);
 
   _Interpolator.e1(String operator, Expression arg1) : super._e1(operator, arg1);
 

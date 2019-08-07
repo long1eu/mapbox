@@ -9,8 +9,8 @@ import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, overr
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'sources.pb.dart' as $3;
-import 'layers.pb.dart' as $2;
+import 'sources.pb.dart' as $2;
+import 'layers.pb.dart' as $3;
 import 'util.pb.dart' as $1;
 
 import 'util.pbenum.dart' as $1;
@@ -134,7 +134,7 @@ class Style_Operations_Build extends $pb.GeneratedMessage {
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations.Build', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..oo(0, [1, 2, 3])
-    ..e<Style_DefaultMapboxStyle>(1, 'default_1', $pb.PbFieldType.OE, Style_DefaultMapboxStyle.MAPBOX_STREETS, Style_DefaultMapboxStyle.valueOf, Style_DefaultMapboxStyle.values)
+    ..e<Style_MapboxStyle>(1, 'default_1', $pb.PbFieldType.OE, Style_MapboxStyle.MAPBOX_STREETS, Style_MapboxStyle.valueOf, Style_MapboxStyle.values)
     ..aOS(2, 'uri')
     ..aOS(3, 'json')
     ..hasRequiredFields = false
@@ -157,8 +157,8 @@ class Style_Operations_Build extends $pb.GeneratedMessage {
   Style_Operations_Build_Source whichSource() => _Style_Operations_Build_SourceByTag[$_whichOneof(0)];
   void clearSource() => clearField($_whichOneof(0));
 
-  Style_DefaultMapboxStyle get default_1 => $_getN(0);
-  set default_1(Style_DefaultMapboxStyle v) { setField(1, v); }
+  Style_MapboxStyle get default_1 => $_getN(0);
+  set default_1(Style_MapboxStyle v) { setField(1, v); }
   $core.bool hasDefault_1() => $_has(0);
   void clearDefault_1() => clearField(1);
 
@@ -197,8 +197,8 @@ class Style extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
     ..aOS(1, 'uri')
     ..aOS(2, 'json')
-    ..pc<$3.Source>(3, 'sources', $pb.PbFieldType.PM,$3.Source.create)
-    ..pc<$2.Layer>(4, 'layers', $pb.PbFieldType.PM,$2.Layer.create)
+    ..pc<$2.Source>(3, 'sources', $pb.PbFieldType.PM,$2.Source.create)
+    ..pc<$3.Layer>(4, 'layers', $pb.PbFieldType.PM,$3.Layer.create)
     ..a<$1.TransitionOptions>(5, 'transition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
     ..a<Style_Light>(6, 'light', $pb.PbFieldType.OM, Style_Light.getDefault, Style_Light.create)
     ..hasRequiredFields = false
@@ -228,9 +228,9 @@ class Style extends $pb.GeneratedMessage {
   $core.bool hasJson() => $_has(1);
   void clearJson() => clearField(2);
 
-  $core.List<$3.Source> get sources => $_getList(2);
+  $core.List<$2.Source> get sources => $_getList(2);
 
-  $core.List<$2.Layer> get layers => $_getList(3);
+  $core.List<$3.Layer> get layers => $_getList(3);
 
   $1.TransitionOptions get transition => $_getN(4);
   set transition($1.TransitionOptions v) { setField(5, v); }

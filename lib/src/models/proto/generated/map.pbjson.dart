@@ -42,7 +42,7 @@ const Map__Options$json = const {
     const {'1': 'enable_z_media_overlay', '3': 27, '4': 1, '5': 8, '10': 'enableZMediaOverlay'},
     const {'1': 'pixel_ratio', '3': 28, '4': 1, '5': 2, '10': 'pixelRatio'},
     const {'1': 'foreground_load_color', '3': 29, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Color', '10': 'foregroundLoadColor'},
-    const {'1': 'from_mapbox', '3': 30, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Style.DefaultMapboxStyle', '9': 0, '10': 'fromMapbox'},
+    const {'1': 'from_mapbox', '3': 30, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Style.MapboxStyle', '9': 0, '10': 'fromMapbox'},
     const {'1': 'from_uri', '3': 31, '4': 1, '5': 9, '9': 0, '10': 'fromUri'},
     const {'1': 'from_json', '3': 32, '4': 1, '5': 9, '9': 0, '10': 'fromJson'},
   ],

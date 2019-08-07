@@ -4,11 +4,10 @@
 
 import 'package:mapbox_gl/mapbox_gl.dart';
 
-class SymbolTextJustify {
-  const SymbolTextJustify._(this._i, this._value);
+class SymbolTextJustify extends ExpressionLiteral {
+  const SymbolTextJustify._(this._i, String value) : super(value);
 
   final int _i;
-  final String _value;
 
   static const SymbolTextJustify auto = SymbolTextJustify._(0, 'auto');
   static const SymbolTextJustify left = SymbolTextJustify._(1, 'left');
@@ -28,8 +27,6 @@ class SymbolTextJustify {
     'left',
     'right',
   ];
-
-  Expression get expression => literalString(_value);
 
   @override
   String toString() => 'SymbolTextJustify.${_names[_i]}';

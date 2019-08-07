@@ -66,20 +66,12 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
     set {_uniqueStorage()._type = .fillExtrusionLayer(newValue)}
   }
 
-  var lineLayer: Com_Tophap_MapboxGl_Proto_Layer.Line {
+  var heatmapLayer: Com_Tophap_MapboxGl_Proto_Layer.Heatmap {
     get {
-      if case .lineLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Layer.Line()
+      if case .heatmapLayer(let v)? = _storage._type {return v}
+      return Com_Tophap_MapboxGl_Proto_Layer.Heatmap()
     }
-    set {_uniqueStorage()._type = .lineLayer(newValue)}
-  }
-
-  var symbolLayer: Com_Tophap_MapboxGl_Proto_Layer.Symbol {
-    get {
-      if case .symbolLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Layer.Symbol()
-    }
-    set {_uniqueStorage()._type = .symbolLayer(newValue)}
+    set {_uniqueStorage()._type = .heatmapLayer(newValue)}
   }
 
   var hillshadeLayer: Com_Tophap_MapboxGl_Proto_Layer.Hillshade {
@@ -90,12 +82,28 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
     set {_uniqueStorage()._type = .hillshadeLayer(newValue)}
   }
 
-  var heatmapLayer: Com_Tophap_MapboxGl_Proto_Layer.Heatmap {
+  var lineLayer: Com_Tophap_MapboxGl_Proto_Layer.Line {
     get {
-      if case .heatmapLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Layer.Heatmap()
+      if case .lineLayer(let v)? = _storage._type {return v}
+      return Com_Tophap_MapboxGl_Proto_Layer.Line()
     }
-    set {_uniqueStorage()._type = .heatmapLayer(newValue)}
+    set {_uniqueStorage()._type = .lineLayer(newValue)}
+  }
+
+  var rasterLayer: Com_Tophap_MapboxGl_Proto_Layer.Raster {
+    get {
+      if case .rasterLayer(let v)? = _storage._type {return v}
+      return Com_Tophap_MapboxGl_Proto_Layer.Raster()
+    }
+    set {_uniqueStorage()._type = .rasterLayer(newValue)}
+  }
+
+  var symbolLayer: Com_Tophap_MapboxGl_Proto_Layer.Symbol {
+    get {
+      if case .symbolLayer(let v)? = _storage._type {return v}
+      return Com_Tophap_MapboxGl_Proto_Layer.Symbol()
+    }
+    set {_uniqueStorage()._type = .symbolLayer(newValue)}
   }
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -105,10 +113,11 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
     case circleLayer(Com_Tophap_MapboxGl_Proto_Layer.Circle)
     case fillLayer(Com_Tophap_MapboxGl_Proto_Layer.Fill)
     case fillExtrusionLayer(Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion)
-    case lineLayer(Com_Tophap_MapboxGl_Proto_Layer.Line)
-    case symbolLayer(Com_Tophap_MapboxGl_Proto_Layer.Symbol)
-    case hillshadeLayer(Com_Tophap_MapboxGl_Proto_Layer.Hillshade)
     case heatmapLayer(Com_Tophap_MapboxGl_Proto_Layer.Heatmap)
+    case hillshadeLayer(Com_Tophap_MapboxGl_Proto_Layer.Hillshade)
+    case lineLayer(Com_Tophap_MapboxGl_Proto_Layer.Line)
+    case rasterLayer(Com_Tophap_MapboxGl_Proto_Layer.Raster)
+    case symbolLayer(Com_Tophap_MapboxGl_Proto_Layer.Symbol)
 
   #if !swift(>=4.1)
     static func ==(lhs: Com_Tophap_MapboxGl_Proto_Layer.OneOf_Type, rhs: Com_Tophap_MapboxGl_Proto_Layer.OneOf_Type) -> Bool {
@@ -117,10 +126,11 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       case (.circleLayer(let l), .circleLayer(let r)): return l == r
       case (.fillLayer(let l), .fillLayer(let r)): return l == r
       case (.fillExtrusionLayer(let l), .fillExtrusionLayer(let r)): return l == r
-      case (.lineLayer(let l), .lineLayer(let r)): return l == r
-      case (.symbolLayer(let l), .symbolLayer(let r)): return l == r
-      case (.hillshadeLayer(let l), .hillshadeLayer(let r)): return l == r
       case (.heatmapLayer(let l), .heatmapLayer(let r)): return l == r
+      case (.hillshadeLayer(let l), .hillshadeLayer(let r)): return l == r
+      case (.lineLayer(let l), .lineLayer(let r)): return l == r
+      case (.rasterLayer(let l), .rasterLayer(let r)): return l == r
+      case (.symbolLayer(let l), .symbolLayer(let r)): return l == r
       default: return false
       }
     }
@@ -137,20 +147,32 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
 
     var color: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._color ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -223,25 +245,59 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var filter: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._filter ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._filter = newValue}
+    }
+    /// Returns true if `filter` has been explicitly set.
+    var hasFilter: Bool {return _storage._filter != nil}
+    /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+    mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
     var radius: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._radius ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -431,25 +487,59 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var filter: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._filter ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._filter = newValue}
+    }
+    /// Returns true if `filter` has been explicitly set.
+    var hasFilter: Bool {return _storage._filter != nil}
+    /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+    mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
     var opacity: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._opacity ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -594,25 +684,59 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var filter: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._filter ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._filter = newValue}
+    }
+    /// Returns true if `filter` has been explicitly set.
+    var hasFilter: Bool {return _storage._filter != nil}
+    /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+    mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
     var antialias: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._antialias ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -739,25 +863,59 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var filter: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._filter ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._filter = newValue}
+    }
+    /// Returns true if `filter` has been explicitly set.
+    var hasFilter: Bool {return _storage._filter != nil}
+    /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+    mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
     var radius: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._radius ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -848,25 +1006,50 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
 
     var illuminationDirection: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._illuminationDirection ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -975,25 +1158,59 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var filter: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._filter ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._filter = newValue}
+    }
+    /// Returns true if `filter` has been explicitly set.
+    var hasFilter: Bool {return _storage._filter != nil}
+    /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+    mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
     var cap: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._cap ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -1213,67 +1430,193 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    enum Cap: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case butt // = 0
-      case round // = 1
-      case square // = 3
-      case UNRECOGNIZED(Int)
+    init() {}
 
-      init() {
-        self = .butt
-      }
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
 
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .butt
-        case 1: self = .round
-        case 3: self = .square
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
+  struct Raster {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
 
-      var rawValue: Int {
-        switch self {
-        case .butt: return 0
-        case .round: return 1
-        case .square: return 3
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
+    var id: String {
+      get {return _storage._id}
+      set {_uniqueStorage()._id = newValue}
     }
 
-    enum Join: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case miter // = 0
-      case bevel // = 1
-      case round // = 2
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .miter
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .miter
-        case 1: self = .bevel
-        case 2: self = .round
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .miter: return 0
-        case .bevel: return 1
-        case .round: return 2
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
+
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
+      set {_uniqueStorage()._visible = newValue}
+    }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
+
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+      set {_uniqueStorage()._minZoom = newValue}
+    }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
+
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
+      set {_uniqueStorage()._maxZoom = newValue}
+    }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var opacity: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._opacity ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._opacity = newValue}
+    }
+    /// Returns true if `opacity` has been explicitly set.
+    var hasOpacity: Bool {return _storage._opacity != nil}
+    /// Clears the value of `opacity`. Subsequent reads from it will return its default value.
+    mutating func clearOpacity() {_uniqueStorage()._opacity = nil}
+
+    var hueRotate: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._hueRotate ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._hueRotate = newValue}
+    }
+    /// Returns true if `hueRotate` has been explicitly set.
+    var hasHueRotate: Bool {return _storage._hueRotate != nil}
+    /// Clears the value of `hueRotate`. Subsequent reads from it will return its default value.
+    mutating func clearHueRotate() {_uniqueStorage()._hueRotate = nil}
+
+    var brightnessMin: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._brightnessMin ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._brightnessMin = newValue}
+    }
+    /// Returns true if `brightnessMin` has been explicitly set.
+    var hasBrightnessMin: Bool {return _storage._brightnessMin != nil}
+    /// Clears the value of `brightnessMin`. Subsequent reads from it will return its default value.
+    mutating func clearBrightnessMin() {_uniqueStorage()._brightnessMin = nil}
+
+    var brightnessMax: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._brightnessMax ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._brightnessMax = newValue}
+    }
+    /// Returns true if `brightnessMax` has been explicitly set.
+    var hasBrightnessMax: Bool {return _storage._brightnessMax != nil}
+    /// Clears the value of `brightnessMax`. Subsequent reads from it will return its default value.
+    mutating func clearBrightnessMax() {_uniqueStorage()._brightnessMax = nil}
+
+    var saturation: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._saturation ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._saturation = newValue}
+    }
+    /// Returns true if `saturation` has been explicitly set.
+    var hasSaturation: Bool {return _storage._saturation != nil}
+    /// Clears the value of `saturation`. Subsequent reads from it will return its default value.
+    mutating func clearSaturation() {_uniqueStorage()._saturation = nil}
+
+    var contrast: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._contrast ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._contrast = newValue}
+    }
+    /// Returns true if `contrast` has been explicitly set.
+    var hasContrast: Bool {return _storage._contrast != nil}
+    /// Clears the value of `contrast`. Subsequent reads from it will return its default value.
+    mutating func clearContrast() {_uniqueStorage()._contrast = nil}
+
+    var resampling: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._resampling ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._resampling = newValue}
+    }
+    /// Returns true if `resampling` has been explicitly set.
+    var hasResampling: Bool {return _storage._resampling != nil}
+    /// Clears the value of `resampling`. Subsequent reads from it will return its default value.
+    mutating func clearResampling() {_uniqueStorage()._resampling = nil}
+
+    var fadeDuration: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._fadeDuration ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._fadeDuration = newValue}
+    }
+    /// Returns true if `fadeDuration` has been explicitly set.
+    var hasFadeDuration: Bool {return _storage._fadeDuration != nil}
+    /// Clears the value of `fadeDuration`. Subsequent reads from it will return its default value.
+    mutating func clearFadeDuration() {_uniqueStorage()._fadeDuration = nil}
+
+    var opacityTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
+      get {return _storage._opacityTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+      set {_uniqueStorage()._opacityTransition = newValue}
+    }
+    /// Returns true if `opacityTransition` has been explicitly set.
+    var hasOpacityTransition: Bool {return _storage._opacityTransition != nil}
+    /// Clears the value of `opacityTransition`. Subsequent reads from it will return its default value.
+    mutating func clearOpacityTransition() {_uniqueStorage()._opacityTransition = nil}
+
+    var hueRotateTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
+      get {return _storage._hueRotateTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+      set {_uniqueStorage()._hueRotateTransition = newValue}
+    }
+    /// Returns true if `hueRotateTransition` has been explicitly set.
+    var hasHueRotateTransition: Bool {return _storage._hueRotateTransition != nil}
+    /// Clears the value of `hueRotateTransition`. Subsequent reads from it will return its default value.
+    mutating func clearHueRotateTransition() {_uniqueStorage()._hueRotateTransition = nil}
+
+    var brightnessMinTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
+      get {return _storage._brightnessMinTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+      set {_uniqueStorage()._brightnessMinTransition = newValue}
+    }
+    /// Returns true if `brightnessMinTransition` has been explicitly set.
+    var hasBrightnessMinTransition: Bool {return _storage._brightnessMinTransition != nil}
+    /// Clears the value of `brightnessMinTransition`. Subsequent reads from it will return its default value.
+    mutating func clearBrightnessMinTransition() {_uniqueStorage()._brightnessMinTransition = nil}
+
+    var brightnessMaxTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
+      get {return _storage._brightnessMaxTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+      set {_uniqueStorage()._brightnessMaxTransition = newValue}
+    }
+    /// Returns true if `brightnessMaxTransition` has been explicitly set.
+    var hasBrightnessMaxTransition: Bool {return _storage._brightnessMaxTransition != nil}
+    /// Clears the value of `brightnessMaxTransition`. Subsequent reads from it will return its default value.
+    mutating func clearBrightnessMaxTransition() {_uniqueStorage()._brightnessMaxTransition = nil}
+
+    var saturationTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
+      get {return _storage._saturationTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+      set {_uniqueStorage()._saturationTransition = newValue}
+    }
+    /// Returns true if `saturationTransition` has been explicitly set.
+    var hasSaturationTransition: Bool {return _storage._saturationTransition != nil}
+    /// Clears the value of `saturationTransition`. Subsequent reads from it will return its default value.
+    mutating func clearSaturationTransition() {_uniqueStorage()._saturationTransition = nil}
+
+    var contrastTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
+      get {return _storage._contrastTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+      set {_uniqueStorage()._contrastTransition = newValue}
+    }
+    /// Returns true if `contrastTransition` has been explicitly set.
+    var hasContrastTransition: Bool {return _storage._contrastTransition != nil}
+    /// Clears the value of `contrastTransition`. Subsequent reads from it will return its default value.
+    mutating func clearContrastTransition() {_uniqueStorage()._contrastTransition = nil}
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
 
@@ -1290,25 +1633,59 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
       set {_uniqueStorage()._id = newValue}
     }
 
-    var sourceID: String {
-      get {return _storage._sourceID}
+    var sourceID: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
       set {_uniqueStorage()._sourceID = newValue}
     }
+    /// Returns true if `sourceID` has been explicitly set.
+    var hasSourceID: Bool {return _storage._sourceID != nil}
+    /// Clears the value of `sourceID`. Subsequent reads from it will return its default value.
+    mutating func clearSourceID() {_uniqueStorage()._sourceID = nil}
 
-    var visible: Bool {
-      get {return _storage._visible}
+    var visible: SwiftProtobuf.Google_Protobuf_BoolValue {
+      get {return _storage._visible ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
       set {_uniqueStorage()._visible = newValue}
     }
+    /// Returns true if `visible` has been explicitly set.
+    var hasVisible: Bool {return _storage._visible != nil}
+    /// Clears the value of `visible`. Subsequent reads from it will return its default value.
+    mutating func clearVisible() {_uniqueStorage()._visible = nil}
 
-    var minZoom: Float {
-      get {return _storage._minZoom}
+    var minZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._minZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._minZoom = newValue}
     }
+    /// Returns true if `minZoom` has been explicitly set.
+    var hasMinZoom: Bool {return _storage._minZoom != nil}
+    /// Clears the value of `minZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMinZoom() {_uniqueStorage()._minZoom = nil}
 
-    var maxZoom: Float {
-      get {return _storage._maxZoom}
+    var maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue {
+      get {return _storage._maxZoom ?? SwiftProtobuf.Google_Protobuf_FloatValue()}
       set {_uniqueStorage()._maxZoom = newValue}
     }
+    /// Returns true if `maxZoom` has been explicitly set.
+    var hasMaxZoom: Bool {return _storage._maxZoom != nil}
+    /// Clears the value of `maxZoom`. Subsequent reads from it will return its default value.
+    mutating func clearMaxZoom() {_uniqueStorage()._maxZoom = nil}
+
+    var sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._sourceLayer ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._sourceLayer = newValue}
+    }
+    /// Returns true if `sourceLayer` has been explicitly set.
+    var hasSourceLayer: Bool {return _storage._sourceLayer != nil}
+    /// Clears the value of `sourceLayer`. Subsequent reads from it will return its default value.
+    mutating func clearSourceLayer() {_uniqueStorage()._sourceLayer = nil}
+
+    var filter: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._filter ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._filter = newValue}
+    }
+    /// Returns true if `filter` has been explicitly set.
+    var hasFilter: Bool {return _storage._filter != nil}
+    /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+    mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
     var symbolPlacement: SwiftProtobuf.Google_Protobuf_StringValue {
       get {return _storage._symbolPlacement ?? SwiftProtobuf.Google_Protobuf_StringValue()}
@@ -1897,198 +2274,6 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
 
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    enum Placement: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case point // = 0
-      case line // = 1
-      case lineCenter // = 2
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .point
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .point
-        case 1: self = .line
-        case 2: self = .lineCenter
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .point: return 0
-        case .line: return 1
-        case .lineCenter: return 2
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
-    }
-
-    enum ZOrder: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case auto // = 0
-      case viewportY // = 1
-      case source // = 2
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .auto
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .auto
-        case 1: self = .viewportY
-        case 2: self = .source
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .auto: return 0
-        case .viewportY: return 1
-        case .source: return 2
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
-    }
-
-    enum Alignment: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case auto // = 0
-      case map // = 1
-      case viewport // = 2
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .auto
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .auto
-        case 1: self = .map
-        case 2: self = .viewport
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .auto: return 0
-        case .map: return 1
-        case .viewport: return 2
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
-    }
-
-    enum TextFit: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case none // = 0
-      case width // = 1
-      case height // = 2
-      case both // = 3
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .none
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .none
-        case 1: self = .width
-        case 2: self = .height
-        case 3: self = .both
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .none: return 0
-        case .width: return 1
-        case .height: return 2
-        case .both: return 3
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
-    }
-
-    enum TextJustify: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case justifyAuto // = 0
-      case justifyLeft // = 1
-      case justifyCenter // = 2
-      case justifyRight // = 3
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .justifyAuto
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .justifyAuto
-        case 1: self = .justifyLeft
-        case 2: self = .justifyCenter
-        case 3: self = .justifyRight
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .justifyAuto: return 0
-        case .justifyLeft: return 1
-        case .justifyCenter: return 2
-        case .justifyRight: return 3
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
-    }
-
-    enum TextTransform: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case transformNone // = 0
-      case transformUppercase // = 1
-      case transformLowercase // = 2
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .transformNone
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .transformNone
-        case 1: self = .transformUppercase
-        case 2: self = .transformLowercase
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .transformNone: return 0
-        case .transformUppercase: return 1
-        case .transformLowercase: return 2
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
-    }
-
     init() {}
 
     fileprivate var _storage = _StorageClass.defaultInstance
@@ -2097,6 +2282,83 @@ struct Com_Tophap_MapboxGl_Proto_Layer {
   init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+struct Com_Tophap_MapboxGl_Proto_Operations {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  struct Add {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var layer: Com_Tophap_MapboxGl_Proto_Layer {
+      get {return _storage._layer ?? Com_Tophap_MapboxGl_Proto_Layer()}
+      set {_uniqueStorage()._layer = newValue}
+    }
+    /// Returns true if `layer` has been explicitly set.
+    var hasLayer: Bool {return _storage._layer != nil}
+    /// Clears the value of `layer`. Subsequent reads from it will return its default value.
+    mutating func clearLayer() {_uniqueStorage()._layer = nil}
+
+    var position: OneOf_Position? {
+      get {return _storage._position}
+      set {_uniqueStorage()._position = newValue}
+    }
+
+    var belowID: String {
+      get {
+        if case .belowID(let v)? = _storage._position {return v}
+        return String()
+      }
+      set {_uniqueStorage()._position = .belowID(newValue)}
+    }
+
+    var aboveID: String {
+      get {
+        if case .aboveID(let v)? = _storage._position {return v}
+        return String()
+      }
+      set {_uniqueStorage()._position = .aboveID(newValue)}
+    }
+
+    var index: Int32 {
+      get {
+        if case .index(let v)? = _storage._position {return v}
+        return 0
+      }
+      set {_uniqueStorage()._position = .index(newValue)}
+    }
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum OneOf_Position: Equatable {
+      case belowID(String)
+      case aboveID(String)
+      case index(Int32)
+
+    #if !swift(>=4.1)
+      static func ==(lhs: Com_Tophap_MapboxGl_Proto_Operations.Add.OneOf_Position, rhs: Com_Tophap_MapboxGl_Proto_Operations.Add.OneOf_Position) -> Bool {
+        switch (lhs, rhs) {
+        case (.belowID(let l), .belowID(let r)): return l == r
+        case (.aboveID(let l), .aboveID(let r)): return l == r
+        case (.index(let l), .index(let r)): return l == r
+        default: return false
+        }
+      }
+    #endif
+    }
+
+    init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
+
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -2111,10 +2373,11 @@ extension Com_Tophap_MapboxGl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
     3: .standard(proto: "circle_layer"),
     4: .standard(proto: "fill_layer"),
     5: .standard(proto: "fill_extrusion_layer"),
-    6: .standard(proto: "line_layer"),
-    7: .standard(proto: "symbol_layer"),
-    8: .standard(proto: "hillshade_layer"),
-    9: .standard(proto: "heatmap_layer"),
+    6: .standard(proto: "heatmap_layer"),
+    7: .standard(proto: "hillshade_layer"),
+    8: .standard(proto: "line_layer"),
+    9: .standard(proto: "raster_layer"),
+    10: .standard(proto: "symbol_layer"),
   ]
 
   fileprivate class _StorageClass {
@@ -2177,30 +2440,6 @@ extension Com_Tophap_MapboxGl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .fillExtrusionLayer(v)}
         case 6:
-          var v: Com_Tophap_MapboxGl_Proto_Layer.Line?
-          if let current = _storage._type {
-            try decoder.handleConflictingOneOf()
-            if case .lineLayer(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {_storage._type = .lineLayer(v)}
-        case 7:
-          var v: Com_Tophap_MapboxGl_Proto_Layer.Symbol?
-          if let current = _storage._type {
-            try decoder.handleConflictingOneOf()
-            if case .symbolLayer(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {_storage._type = .symbolLayer(v)}
-        case 8:
-          var v: Com_Tophap_MapboxGl_Proto_Layer.Hillshade?
-          if let current = _storage._type {
-            try decoder.handleConflictingOneOf()
-            if case .hillshadeLayer(let m) = current {v = m}
-          }
-          try decoder.decodeSingularMessageField(value: &v)
-          if let v = v {_storage._type = .hillshadeLayer(v)}
-        case 9:
           var v: Com_Tophap_MapboxGl_Proto_Layer.Heatmap?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
@@ -2208,6 +2447,38 @@ extension Com_Tophap_MapboxGl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           }
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .heatmapLayer(v)}
+        case 7:
+          var v: Com_Tophap_MapboxGl_Proto_Layer.Hillshade?
+          if let current = _storage._type {
+            try decoder.handleConflictingOneOf()
+            if case .hillshadeLayer(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._type = .hillshadeLayer(v)}
+        case 8:
+          var v: Com_Tophap_MapboxGl_Proto_Layer.Line?
+          if let current = _storage._type {
+            try decoder.handleConflictingOneOf()
+            if case .lineLayer(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._type = .lineLayer(v)}
+        case 9:
+          var v: Com_Tophap_MapboxGl_Proto_Layer.Raster?
+          if let current = _storage._type {
+            try decoder.handleConflictingOneOf()
+            if case .rasterLayer(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._type = .rasterLayer(v)}
+        case 10:
+          var v: Com_Tophap_MapboxGl_Proto_Layer.Symbol?
+          if let current = _storage._type {
+            try decoder.handleConflictingOneOf()
+            if case .symbolLayer(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._type = .symbolLayer(v)}
         default: break
         }
       }
@@ -2228,14 +2499,16 @@ extension Com_Tophap_MapboxGl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
         try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       case .fillExtrusionLayer(let v)?:
         try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-      case .lineLayer(let v)?:
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-      case .symbolLayer(let v)?:
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
-      case .hillshadeLayer(let v)?:
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       case .heatmapLayer(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      case .hillshadeLayer(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      case .lineLayer(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      case .rasterLayer(let v)?:
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      case .symbolLayer(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       case nil: break
       }
     }
@@ -2275,9 +2548,9 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Background: SwiftProtobuf.Message, Swi
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
     var _color: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _pattern: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _opacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -2316,9 +2589,9 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Background: SwiftProtobuf.Message, Swi
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 3: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
         case 5: try decoder.decodeSingularMessageField(value: &_storage._color)
         case 6: try decoder.decodeSingularMessageField(value: &_storage._pattern)
         case 7: try decoder.decodeSingularMessageField(value: &_storage._opacity)
@@ -2336,14 +2609,14 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Background: SwiftProtobuf.Message, Swi
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 2)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 3)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 4)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
       if let v = _storage._color {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
@@ -2399,33 +2672,37 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .same(proto: "radius"),
-    7: .same(proto: "color"),
-    8: .same(proto: "blur"),
-    9: .same(proto: "opacity"),
-    10: .same(proto: "translate"),
-    11: .standard(proto: "translate_anchor"),
-    12: .standard(proto: "pitch_scale"),
-    13: .standard(proto: "pitch_alignment"),
-    14: .standard(proto: "stroke_width"),
-    15: .standard(proto: "stroke_color"),
-    16: .standard(proto: "stroke_opacity"),
-    17: .standard(proto: "radius_transition"),
-    18: .standard(proto: "color_transition"),
-    19: .standard(proto: "blur_transition"),
-    20: .standard(proto: "opacity_transition"),
-    21: .standard(proto: "translate_transition"),
-    22: .standard(proto: "stroke_width_transition"),
-    23: .standard(proto: "stroke_color_transition"),
-    24: .standard(proto: "stroke_opacity_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "filter"),
+    8: .same(proto: "radius"),
+    9: .same(proto: "color"),
+    10: .same(proto: "blur"),
+    11: .same(proto: "opacity"),
+    12: .same(proto: "translate"),
+    13: .standard(proto: "translate_anchor"),
+    14: .standard(proto: "pitch_scale"),
+    15: .standard(proto: "pitch_alignment"),
+    16: .standard(proto: "stroke_width"),
+    17: .standard(proto: "stroke_color"),
+    18: .standard(proto: "stroke_opacity"),
+    19: .standard(proto: "radius_transition"),
+    20: .standard(proto: "color_transition"),
+    21: .standard(proto: "blur_transition"),
+    22: .standard(proto: "opacity_transition"),
+    23: .standard(proto: "translate_transition"),
+    24: .standard(proto: "stroke_width_transition"),
+    25: .standard(proto: "stroke_color_transition"),
+    26: .standard(proto: "stroke_opacity_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _filter: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _radius: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _color: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _blur: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -2456,6 +2733,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _filter = source._filter
       _radius = source._radius
       _color = source._color
       _blur = source._blur
@@ -2491,29 +2770,31 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._radius)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._color)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._blur)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._opacity)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._translate)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._pitchScale)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._pitchAlignment)
-        case 14: try decoder.decodeSingularMessageField(value: &_storage._strokeWidth)
-        case 15: try decoder.decodeSingularMessageField(value: &_storage._strokeColor)
-        case 16: try decoder.decodeSingularMessageField(value: &_storage._strokeOpacity)
-        case 17: try decoder.decodeSingularMessageField(value: &_storage._radiusTransition)
-        case 18: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
-        case 19: try decoder.decodeSingularMessageField(value: &_storage._blurTransition)
-        case 20: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
-        case 21: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
-        case 22: try decoder.decodeSingularMessageField(value: &_storage._strokeWidthTransition)
-        case 23: try decoder.decodeSingularMessageField(value: &_storage._strokeColorTransition)
-        case 24: try decoder.decodeSingularMessageField(value: &_storage._strokeOpacityTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._filter)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._radius)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._color)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._blur)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._opacity)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._translate)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._pitchScale)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._pitchAlignment)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._strokeWidth)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._strokeColor)
+        case 18: try decoder.decodeSingularMessageField(value: &_storage._strokeOpacity)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._radiusTransition)
+        case 20: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
+        case 21: try decoder.decodeSingularMessageField(value: &_storage._blurTransition)
+        case 22: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
+        case 23: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
+        case 24: try decoder.decodeSingularMessageField(value: &_storage._strokeWidthTransition)
+        case 25: try decoder.decodeSingularMessageField(value: &_storage._strokeColorTransition)
+        case 26: try decoder.decodeSingularMessageField(value: &_storage._strokeOpacityTransition)
         default: break
         }
       }
@@ -2525,74 +2806,80 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._radius {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._color {
+      if let v = _storage._filter {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._blur {
+      if let v = _storage._radius {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._opacity {
+      if let v = _storage._color {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._translate {
+      if let v = _storage._blur {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._translateAnchor {
+      if let v = _storage._opacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._pitchScale {
+      if let v = _storage._translate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._pitchAlignment {
+      if let v = _storage._translateAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
       }
-      if let v = _storage._strokeWidth {
+      if let v = _storage._pitchScale {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
       }
-      if let v = _storage._strokeColor {
+      if let v = _storage._pitchAlignment {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }
-      if let v = _storage._strokeOpacity {
+      if let v = _storage._strokeWidth {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
       }
-      if let v = _storage._radiusTransition {
+      if let v = _storage._strokeColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
       }
-      if let v = _storage._colorTransition {
+      if let v = _storage._strokeOpacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
       }
-      if let v = _storage._blurTransition {
+      if let v = _storage._radiusTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
       }
-      if let v = _storage._opacityTransition {
+      if let v = _storage._colorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
       }
-      if let v = _storage._translateTransition {
+      if let v = _storage._blurTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 21)
       }
-      if let v = _storage._strokeWidthTransition {
+      if let v = _storage._opacityTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 22)
       }
-      if let v = _storage._strokeColorTransition {
+      if let v = _storage._translateTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 23)
       }
-      if let v = _storage._strokeOpacityTransition {
+      if let v = _storage._strokeWidthTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 24)
+      }
+      if let v = _storage._strokeColorTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 25)
+      }
+      if let v = _storage._strokeOpacityTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 26)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -2608,6 +2895,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._filter != rhs_storage._filter {return false}
         if _storage._radius != rhs_storage._radius {return false}
         if _storage._color != rhs_storage._color {return false}
         if _storage._blur != rhs_storage._blur {return false}
@@ -2644,28 +2933,32 @@ extension Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .same(proto: "opacity"),
-    7: .same(proto: "color"),
-    8: .same(proto: "translate"),
-    9: .standard(proto: "translate_anchor"),
-    10: .same(proto: "pattern"),
-    11: .same(proto: "height"),
-    12: .same(proto: "base"),
-    13: .standard(proto: "vertical_gradient"),
-    14: .standard(proto: "opacity_transition"),
-    15: .standard(proto: "color_transition"),
-    16: .standard(proto: "translate_transition"),
-    17: .standard(proto: "pattern_transition"),
-    18: .standard(proto: "height_transition"),
-    19: .standard(proto: "base_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "filter"),
+    8: .same(proto: "opacity"),
+    9: .same(proto: "color"),
+    10: .same(proto: "translate"),
+    11: .standard(proto: "translate_anchor"),
+    12: .same(proto: "pattern"),
+    13: .same(proto: "height"),
+    14: .same(proto: "base"),
+    15: .standard(proto: "vertical_gradient"),
+    16: .standard(proto: "opacity_transition"),
+    17: .standard(proto: "color_transition"),
+    18: .standard(proto: "translate_transition"),
+    19: .standard(proto: "pattern_transition"),
+    20: .standard(proto: "height_transition"),
+    21: .standard(proto: "base_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _filter: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _opacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _color: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _translate: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -2691,6 +2984,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _filter = source._filter
       _opacity = source._opacity
       _color = source._color
       _translate = source._translate
@@ -2721,24 +3016,26 @@ extension Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._opacity)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._color)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._translate)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._pattern)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._height)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._base)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._verticalGradient)
-        case 14: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
-        case 15: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
-        case 16: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
-        case 17: try decoder.decodeSingularMessageField(value: &_storage._patternTransition)
-        case 18: try decoder.decodeSingularMessageField(value: &_storage._heightTransition)
-        case 19: try decoder.decodeSingularMessageField(value: &_storage._baseTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._filter)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._opacity)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._color)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._translate)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._pattern)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._height)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._base)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._verticalGradient)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
+        case 18: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._patternTransition)
+        case 20: try decoder.decodeSingularMessageField(value: &_storage._heightTransition)
+        case 21: try decoder.decodeSingularMessageField(value: &_storage._baseTransition)
         default: break
         }
       }
@@ -2750,59 +3047,65 @@ extension Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._opacity {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._color {
+      if let v = _storage._filter {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._translate {
+      if let v = _storage._opacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._translateAnchor {
+      if let v = _storage._color {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._pattern {
+      if let v = _storage._translate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._height {
+      if let v = _storage._translateAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._base {
+      if let v = _storage._pattern {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._verticalGradient {
+      if let v = _storage._height {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
       }
-      if let v = _storage._opacityTransition {
+      if let v = _storage._base {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
       }
-      if let v = _storage._colorTransition {
+      if let v = _storage._verticalGradient {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }
-      if let v = _storage._translateTransition {
+      if let v = _storage._opacityTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
       }
-      if let v = _storage._patternTransition {
+      if let v = _storage._colorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
       }
-      if let v = _storage._heightTransition {
+      if let v = _storage._translateTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
       }
-      if let v = _storage._baseTransition {
+      if let v = _storage._patternTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
+      }
+      if let v = _storage._heightTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
+      }
+      if let v = _storage._baseTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 21)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -2818,6 +3121,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._filter != rhs_storage._filter {return false}
         if _storage._opacity != rhs_storage._opacity {return false}
         if _storage._color != rhs_storage._color {return false}
         if _storage._translate != rhs_storage._translate {return false}
@@ -2849,26 +3154,30 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .same(proto: "antialias"),
-    7: .same(proto: "opacity"),
-    8: .same(proto: "color"),
-    9: .standard(proto: "outline_color"),
-    10: .same(proto: "translate"),
-    11: .standard(proto: "translate_anchor"),
-    12: .same(proto: "pattern"),
-    13: .standard(proto: "opacity_transition"),
-    14: .standard(proto: "color_transition"),
-    15: .standard(proto: "outline_color_transition"),
-    16: .standard(proto: "translate_transition"),
-    17: .standard(proto: "pattern_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "filter"),
+    8: .same(proto: "antialias"),
+    9: .same(proto: "opacity"),
+    10: .same(proto: "color"),
+    11: .standard(proto: "outline_color"),
+    12: .same(proto: "translate"),
+    13: .standard(proto: "translate_anchor"),
+    14: .same(proto: "pattern"),
+    15: .standard(proto: "opacity_transition"),
+    16: .standard(proto: "color_transition"),
+    17: .standard(proto: "outline_color_transition"),
+    18: .standard(proto: "translate_transition"),
+    19: .standard(proto: "pattern_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _filter: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _antialias: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _opacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _color: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -2892,6 +3201,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _filter = source._filter
       _antialias = source._antialias
       _opacity = source._opacity
       _color = source._color
@@ -2920,22 +3231,24 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._antialias)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._opacity)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._color)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._outlineColor)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._translate)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._pattern)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
-        case 14: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
-        case 15: try decoder.decodeSingularMessageField(value: &_storage._outlineColorTransition)
-        case 16: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
-        case 17: try decoder.decodeSingularMessageField(value: &_storage._patternTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._filter)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._antialias)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._opacity)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._color)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._outlineColor)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._translate)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._pattern)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._outlineColorTransition)
+        case 18: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._patternTransition)
         default: break
         }
       }
@@ -2947,53 +3260,59 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._antialias {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._opacity {
+      if let v = _storage._filter {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._color {
+      if let v = _storage._antialias {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._outlineColor {
+      if let v = _storage._opacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._translate {
+      if let v = _storage._color {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._translateAnchor {
+      if let v = _storage._outlineColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._pattern {
+      if let v = _storage._translate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._opacityTransition {
+      if let v = _storage._translateAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
       }
-      if let v = _storage._colorTransition {
+      if let v = _storage._pattern {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
       }
-      if let v = _storage._outlineColorTransition {
+      if let v = _storage._opacityTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }
-      if let v = _storage._translateTransition {
+      if let v = _storage._colorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
       }
-      if let v = _storage._patternTransition {
+      if let v = _storage._outlineColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
+      }
+      if let v = _storage._translateTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
+      }
+      if let v = _storage._patternTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -3009,6 +3328,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._filter != rhs_storage._filter {return false}
         if _storage._antialias != rhs_storage._antialias {return false}
         if _storage._opacity != rhs_storage._opacity {return false}
         if _storage._color != rhs_storage._color {return false}
@@ -3038,22 +3359,26 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .same(proto: "radius"),
-    7: .same(proto: "weight"),
-    8: .same(proto: "intensity"),
-    9: .same(proto: "color"),
-    10: .same(proto: "opacity"),
-    11: .standard(proto: "radius_transition"),
-    12: .standard(proto: "intensity_transition"),
-    13: .standard(proto: "opacity_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "filter"),
+    8: .same(proto: "radius"),
+    9: .same(proto: "weight"),
+    10: .same(proto: "intensity"),
+    11: .same(proto: "color"),
+    12: .same(proto: "opacity"),
+    13: .standard(proto: "radius_transition"),
+    14: .standard(proto: "intensity_transition"),
+    15: .standard(proto: "opacity_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _filter: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _radius: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _weight: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _intensity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -3073,6 +3398,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _filter = source._filter
       _radius = source._radius
       _weight = source._weight
       _intensity = source._intensity
@@ -3097,18 +3424,20 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._radius)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._weight)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._intensity)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._color)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._opacity)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._radiusTransition)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._intensityTransition)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._filter)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._radius)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._weight)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._intensity)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._color)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._opacity)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._radiusTransition)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._intensityTransition)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
         default: break
         }
       }
@@ -3120,41 +3449,47 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._radius {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._weight {
+      if let v = _storage._filter {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._intensity {
+      if let v = _storage._radius {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._color {
+      if let v = _storage._weight {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._opacity {
+      if let v = _storage._intensity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._radiusTransition {
+      if let v = _storage._color {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._intensityTransition {
+      if let v = _storage._opacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._opacityTransition {
+      if let v = _storage._radiusTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      }
+      if let v = _storage._intensityTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
+      }
+      if let v = _storage._opacityTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -3170,6 +3505,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._filter != rhs_storage._filter {return false}
         if _storage._radius != rhs_storage._radius {return false}
         if _storage._weight != rhs_storage._weight {return false}
         if _storage._intensity != rhs_storage._intensity {return false}
@@ -3195,24 +3532,26 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .standard(proto: "illumination_direction"),
-    7: .standard(proto: "illumination_anchor"),
-    8: .same(proto: "exaggeration"),
-    9: .standard(proto: "shadow_color"),
-    10: .standard(proto: "highlight_color"),
-    11: .standard(proto: "accent_color"),
-    12: .standard(proto: "exaggeration_transition"),
-    13: .standard(proto: "shadow_color_transition"),
-    14: .standard(proto: "highlight_color_transition"),
-    15: .standard(proto: "accent_color_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .standard(proto: "illumination_direction"),
+    8: .standard(proto: "illumination_anchor"),
+    9: .same(proto: "exaggeration"),
+    10: .standard(proto: "shadow_color"),
+    11: .standard(proto: "highlight_color"),
+    12: .standard(proto: "accent_color"),
+    13: .standard(proto: "exaggeration_transition"),
+    14: .standard(proto: "shadow_color_transition"),
+    15: .standard(proto: "highlight_color_transition"),
+    16: .standard(proto: "accent_color_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _illuminationDirection: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _illuminationAnchor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _exaggeration: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -3234,6 +3573,7 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
       _illuminationDirection = source._illuminationDirection
       _illuminationAnchor = source._illuminationAnchor
       _exaggeration = source._exaggeration
@@ -3260,20 +3600,21 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._illuminationDirection)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._illuminationAnchor)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._exaggeration)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._shadowColor)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._highlightColor)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._accentColor)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._exaggerationTransition)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._shadowColorTransition)
-        case 14: try decoder.decodeSingularMessageField(value: &_storage._highlightColorTransition)
-        case 15: try decoder.decodeSingularMessageField(value: &_storage._accentColorTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._illuminationDirection)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._illuminationAnchor)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._exaggeration)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._shadowColor)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._highlightColor)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._accentColor)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._exaggerationTransition)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._shadowColorTransition)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._highlightColorTransition)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._accentColorTransition)
         default: break
         }
       }
@@ -3285,47 +3626,50 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._illuminationDirection {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._illuminationAnchor {
+      if let v = _storage._illuminationDirection {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._exaggeration {
+      if let v = _storage._illuminationAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._shadowColor {
+      if let v = _storage._exaggeration {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._highlightColor {
+      if let v = _storage._shadowColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._accentColor {
+      if let v = _storage._highlightColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._exaggerationTransition {
+      if let v = _storage._accentColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._shadowColorTransition {
+      if let v = _storage._exaggerationTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
       }
-      if let v = _storage._highlightColorTransition {
+      if let v = _storage._shadowColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
       }
-      if let v = _storage._accentColorTransition {
+      if let v = _storage._highlightColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
+      }
+      if let v = _storage._accentColorTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -3341,6 +3685,7 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
         if _storage._illuminationDirection != rhs_storage._illuminationDirection {return false}
         if _storage._illuminationAnchor != rhs_storage._illuminationAnchor {return false}
         if _storage._exaggeration != rhs_storage._exaggeration {return false}
@@ -3368,38 +3713,42 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .same(proto: "cap"),
-    7: .same(proto: "join"),
-    8: .standard(proto: "miter_limit"),
-    9: .standard(proto: "round_limit"),
-    10: .same(proto: "opacity"),
-    11: .same(proto: "color"),
-    12: .same(proto: "translate"),
-    13: .standard(proto: "translate_anchor"),
-    14: .same(proto: "width"),
-    15: .standard(proto: "gap_width"),
-    16: .same(proto: "offset"),
-    17: .same(proto: "blur"),
-    18: .same(proto: "dasharray"),
-    19: .same(proto: "pattern"),
-    20: .same(proto: "gradient"),
-    21: .standard(proto: "opacity_transition"),
-    22: .standard(proto: "color_transition"),
-    23: .standard(proto: "translate_transition"),
-    24: .standard(proto: "width_transition"),
-    25: .standard(proto: "gap_width_transition"),
-    26: .standard(proto: "offset_transition"),
-    27: .standard(proto: "blur_transition"),
-    28: .standard(proto: "dasharray_transition"),
-    29: .standard(proto: "pattern_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "filter"),
+    8: .same(proto: "cap"),
+    9: .same(proto: "join"),
+    10: .standard(proto: "miter_limit"),
+    11: .standard(proto: "round_limit"),
+    12: .same(proto: "opacity"),
+    13: .same(proto: "color"),
+    14: .same(proto: "translate"),
+    15: .standard(proto: "translate_anchor"),
+    16: .same(proto: "width"),
+    17: .standard(proto: "gap_width"),
+    18: .same(proto: "offset"),
+    19: .same(proto: "blur"),
+    20: .same(proto: "dasharray"),
+    21: .same(proto: "pattern"),
+    22: .same(proto: "gradient"),
+    23: .standard(proto: "opacity_transition"),
+    24: .standard(proto: "color_transition"),
+    25: .standard(proto: "translate_transition"),
+    26: .standard(proto: "width_transition"),
+    27: .standard(proto: "gap_width_transition"),
+    28: .standard(proto: "offset_transition"),
+    29: .standard(proto: "blur_transition"),
+    30: .standard(proto: "dasharray_transition"),
+    31: .standard(proto: "pattern_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _filter: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _cap: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _join: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _miterLimit: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -3435,6 +3784,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _filter = source._filter
       _cap = source._cap
       _join = source._join
       _miterLimit = source._miterLimit
@@ -3475,34 +3826,36 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._cap)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._join)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._miterLimit)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._roundLimit)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._opacity)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._color)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._translate)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
-        case 14: try decoder.decodeSingularMessageField(value: &_storage._width)
-        case 15: try decoder.decodeSingularMessageField(value: &_storage._gapWidth)
-        case 16: try decoder.decodeSingularMessageField(value: &_storage._offset)
-        case 17: try decoder.decodeSingularMessageField(value: &_storage._blur)
-        case 18: try decoder.decodeSingularMessageField(value: &_storage._dasharray)
-        case 19: try decoder.decodeSingularMessageField(value: &_storage._pattern)
-        case 20: try decoder.decodeSingularMessageField(value: &_storage._gradient)
-        case 21: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
-        case 22: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
-        case 23: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
-        case 24: try decoder.decodeSingularMessageField(value: &_storage._widthTransition)
-        case 25: try decoder.decodeSingularMessageField(value: &_storage._gapWidthTransition)
-        case 26: try decoder.decodeSingularMessageField(value: &_storage._offsetTransition)
-        case 27: try decoder.decodeSingularMessageField(value: &_storage._blurTransition)
-        case 28: try decoder.decodeSingularMessageField(value: &_storage._dasharrayTransition)
-        case 29: try decoder.decodeSingularMessageField(value: &_storage._patternTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._filter)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._cap)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._join)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._miterLimit)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._roundLimit)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._opacity)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._color)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._translate)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._translateAnchor)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._width)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._gapWidth)
+        case 18: try decoder.decodeSingularMessageField(value: &_storage._offset)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._blur)
+        case 20: try decoder.decodeSingularMessageField(value: &_storage._dasharray)
+        case 21: try decoder.decodeSingularMessageField(value: &_storage._pattern)
+        case 22: try decoder.decodeSingularMessageField(value: &_storage._gradient)
+        case 23: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
+        case 24: try decoder.decodeSingularMessageField(value: &_storage._colorTransition)
+        case 25: try decoder.decodeSingularMessageField(value: &_storage._translateTransition)
+        case 26: try decoder.decodeSingularMessageField(value: &_storage._widthTransition)
+        case 27: try decoder.decodeSingularMessageField(value: &_storage._gapWidthTransition)
+        case 28: try decoder.decodeSingularMessageField(value: &_storage._offsetTransition)
+        case 29: try decoder.decodeSingularMessageField(value: &_storage._blurTransition)
+        case 30: try decoder.decodeSingularMessageField(value: &_storage._dasharrayTransition)
+        case 31: try decoder.decodeSingularMessageField(value: &_storage._patternTransition)
         default: break
         }
       }
@@ -3514,89 +3867,95 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._cap {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._join {
+      if let v = _storage._filter {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._miterLimit {
+      if let v = _storage._cap {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._roundLimit {
+      if let v = _storage._join {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._opacity {
+      if let v = _storage._miterLimit {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._color {
+      if let v = _storage._roundLimit {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._translate {
+      if let v = _storage._opacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._translateAnchor {
+      if let v = _storage._color {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
       }
-      if let v = _storage._width {
+      if let v = _storage._translate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
       }
-      if let v = _storage._gapWidth {
+      if let v = _storage._translateAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }
-      if let v = _storage._offset {
+      if let v = _storage._width {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
       }
-      if let v = _storage._blur {
+      if let v = _storage._gapWidth {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
       }
-      if let v = _storage._dasharray {
+      if let v = _storage._offset {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
       }
-      if let v = _storage._pattern {
+      if let v = _storage._blur {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
       }
-      if let v = _storage._gradient {
+      if let v = _storage._dasharray {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
       }
-      if let v = _storage._opacityTransition {
+      if let v = _storage._pattern {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 21)
       }
-      if let v = _storage._colorTransition {
+      if let v = _storage._gradient {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 22)
       }
-      if let v = _storage._translateTransition {
+      if let v = _storage._opacityTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 23)
       }
-      if let v = _storage._widthTransition {
+      if let v = _storage._colorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 24)
       }
-      if let v = _storage._gapWidthTransition {
+      if let v = _storage._translateTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 25)
       }
-      if let v = _storage._offsetTransition {
+      if let v = _storage._widthTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 26)
       }
-      if let v = _storage._blurTransition {
+      if let v = _storage._gapWidthTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 27)
       }
-      if let v = _storage._dasharrayTransition {
+      if let v = _storage._offsetTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 28)
       }
-      if let v = _storage._patternTransition {
+      if let v = _storage._blurTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 29)
+      }
+      if let v = _storage._dasharrayTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 30)
+      }
+      if let v = _storage._patternTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 31)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -3612,6 +3971,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._filter != rhs_storage._filter {return false}
         if _storage._cap != rhs_storage._cap {return false}
         if _storage._join != rhs_storage._join {return false}
         if _storage._miterLimit != rhs_storage._miterLimit {return false}
@@ -3645,20 +4006,217 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Line.Cap: SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_MapboxGl_Proto_Layer.Raster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Layer.protoMessageName + ".Raster"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "CAP_BUTT"),
-    1: .same(proto: "CAP_ROUND"),
-    3: .same(proto: "CAP_SQUARE"),
+    1: .same(proto: "id"),
+    2: .standard(proto: "source_id"),
+    3: .same(proto: "visible"),
+    4: .standard(proto: "min_zoom"),
+    5: .standard(proto: "max_zoom"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "opacity"),
+    8: .standard(proto: "hue_rotate"),
+    9: .standard(proto: "brightness_min"),
+    10: .standard(proto: "brightness_max"),
+    11: .same(proto: "saturation"),
+    12: .same(proto: "contrast"),
+    13: .same(proto: "resampling"),
+    14: .standard(proto: "fade_duration"),
+    15: .standard(proto: "opacity_transition"),
+    16: .standard(proto: "hue_rotate_transition"),
+    17: .standard(proto: "brightness_min_transition"),
+    18: .standard(proto: "brightness_max_transition"),
+    19: .standard(proto: "saturation_transition"),
+    20: .standard(proto: "contrast_transition"),
   ]
-}
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Line.Join: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "JOIN_MITER"),
-    1: .same(proto: "JOIN_BEVEL"),
-    2: .same(proto: "JOIN_ROUND"),
-  ]
+  fileprivate class _StorageClass {
+    var _id: String = String()
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _opacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _hueRotate: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _brightnessMin: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _brightnessMax: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _saturation: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _contrast: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _resampling: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _fadeDuration: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _opacityTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+    var _hueRotateTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+    var _brightnessMinTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+    var _brightnessMaxTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+    var _saturationTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+    var _contrastTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _sourceID = source._sourceID
+      _visible = source._visible
+      _minZoom = source._minZoom
+      _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _opacity = source._opacity
+      _hueRotate = source._hueRotate
+      _brightnessMin = source._brightnessMin
+      _brightnessMax = source._brightnessMax
+      _saturation = source._saturation
+      _contrast = source._contrast
+      _resampling = source._resampling
+      _fadeDuration = source._fadeDuration
+      _opacityTransition = source._opacityTransition
+      _hueRotateTransition = source._hueRotateTransition
+      _brightnessMinTransition = source._brightnessMinTransition
+      _brightnessMaxTransition = source._brightnessMaxTransition
+      _saturationTransition = source._saturationTransition
+      _contrastTransition = source._contrastTransition
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._opacity)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._hueRotate)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._brightnessMin)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._brightnessMax)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._saturation)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._contrast)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._resampling)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._fadeDuration)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._opacityTransition)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._hueRotateTransition)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._brightnessMinTransition)
+        case 18: try decoder.decodeSingularMessageField(value: &_storage._brightnessMaxTransition)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._saturationTransition)
+        case 20: try decoder.decodeSingularMessageField(value: &_storage._contrastTransition)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._id.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
+      }
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      }
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      }
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+      }
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      }
+      if let v = _storage._sourceLayer {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      }
+      if let v = _storage._opacity {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      }
+      if let v = _storage._hueRotate {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      }
+      if let v = _storage._brightnessMin {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      }
+      if let v = _storage._brightnessMax {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+      }
+      if let v = _storage._saturation {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+      }
+      if let v = _storage._contrast {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
+      }
+      if let v = _storage._resampling {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      }
+      if let v = _storage._fadeDuration {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
+      }
+      if let v = _storage._opacityTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
+      }
+      if let v = _storage._hueRotateTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
+      }
+      if let v = _storage._brightnessMinTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
+      }
+      if let v = _storage._brightnessMaxTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
+      }
+      if let v = _storage._saturationTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
+      }
+      if let v = _storage._contrastTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Layer.Raster, rhs: Com_Tophap_MapboxGl_Proto_Layer.Raster) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id {return false}
+        if _storage._sourceID != rhs_storage._sourceID {return false}
+        if _storage._visible != rhs_storage._visible {return false}
+        if _storage._minZoom != rhs_storage._minZoom {return false}
+        if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._opacity != rhs_storage._opacity {return false}
+        if _storage._hueRotate != rhs_storage._hueRotate {return false}
+        if _storage._brightnessMin != rhs_storage._brightnessMin {return false}
+        if _storage._brightnessMax != rhs_storage._brightnessMax {return false}
+        if _storage._saturation != rhs_storage._saturation {return false}
+        if _storage._contrast != rhs_storage._contrast {return false}
+        if _storage._resampling != rhs_storage._resampling {return false}
+        if _storage._fadeDuration != rhs_storage._fadeDuration {return false}
+        if _storage._opacityTransition != rhs_storage._opacityTransition {return false}
+        if _storage._hueRotateTransition != rhs_storage._hueRotateTransition {return false}
+        if _storage._brightnessMinTransition != rhs_storage._brightnessMinTransition {return false}
+        if _storage._brightnessMaxTransition != rhs_storage._brightnessMaxTransition {return false}
+        if _storage._saturationTransition != rhs_storage._saturationTransition {return false}
+        if _storage._contrastTransition != rhs_storage._contrastTransition {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }
 
 extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -3669,79 +4227,83 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
     3: .same(proto: "visible"),
     4: .standard(proto: "min_zoom"),
     5: .standard(proto: "max_zoom"),
-    6: .standard(proto: "symbol_placement"),
-    7: .standard(proto: "symbol_spacing"),
-    8: .standard(proto: "symbol_avoid_edges"),
-    9: .standard(proto: "symbol_z_order"),
-    10: .standard(proto: "icon_allow_overlap"),
-    11: .standard(proto: "icon_ignore_placement"),
-    12: .standard(proto: "icon_optional"),
-    13: .standard(proto: "icon_rotation_alignment"),
-    14: .standard(proto: "icon_size"),
-    15: .standard(proto: "icon_text_fit"),
-    16: .standard(proto: "icon_text_fit_padding"),
-    17: .standard(proto: "icon_image"),
-    18: .standard(proto: "icon_rotate"),
-    19: .standard(proto: "icon_padding"),
-    20: .standard(proto: "icon_keep_upright"),
-    21: .standard(proto: "icon_offset"),
-    22: .standard(proto: "icon_anchor"),
-    23: .standard(proto: "icon_pitch_alignment"),
-    24: .standard(proto: "text_pitch_alignment"),
-    25: .standard(proto: "text_rotation_alignment"),
-    26: .standard(proto: "text_field"),
-    27: .standard(proto: "text_font"),
-    28: .standard(proto: "text_size"),
-    29: .standard(proto: "text_max_width"),
-    30: .standard(proto: "text_line_height"),
-    31: .standard(proto: "text_letter_spacing"),
-    32: .standard(proto: "text_justify"),
-    33: .standard(proto: "text_radial_offset"),
-    34: .standard(proto: "text_variable_anchor"),
-    35: .standard(proto: "text_anchor"),
-    36: .standard(proto: "text_max_angle"),
-    37: .standard(proto: "text_rotate"),
-    38: .standard(proto: "text_padding"),
-    39: .standard(proto: "text_keep_upright"),
-    40: .standard(proto: "text_transform"),
-    41: .standard(proto: "text_offset"),
-    42: .standard(proto: "text_allow_overlap"),
-    43: .standard(proto: "text_ignore_placement"),
-    44: .standard(proto: "text_optional"),
-    45: .standard(proto: "icon_opacity"),
-    46: .standard(proto: "icon_color"),
-    47: .standard(proto: "icon_halo_color"),
-    48: .standard(proto: "icon_halo_width"),
-    49: .standard(proto: "icon_halo_blur"),
-    50: .standard(proto: "icon_translate"),
-    51: .standard(proto: "icon_translate_anchor"),
-    52: .standard(proto: "text_opacity"),
-    53: .standard(proto: "text_color"),
-    54: .standard(proto: "text_halo_color"),
-    55: .standard(proto: "text_halo_width"),
-    56: .standard(proto: "text_halo_blur"),
-    57: .standard(proto: "text_translate"),
-    58: .standard(proto: "text_translate_anchor"),
-    59: .standard(proto: "icon_opacity_transition"),
-    60: .standard(proto: "icon_color_transition"),
-    61: .standard(proto: "icon_halo_color_transition"),
-    62: .standard(proto: "icon_halo_width_transition"),
-    63: .standard(proto: "icon_halo_blur_transition"),
-    64: .standard(proto: "icon_translate_transition"),
-    65: .standard(proto: "text_opacity_transition"),
-    66: .standard(proto: "text_color_transition"),
-    67: .standard(proto: "text_halo_color_transition"),
-    68: .standard(proto: "text_halo_width_transition"),
-    69: .standard(proto: "text_halo_blur_transition"),
-    70: .standard(proto: "text_translate_transition"),
+    6: .standard(proto: "source_layer"),
+    7: .same(proto: "filter"),
+    8: .standard(proto: "symbol_placement"),
+    9: .standard(proto: "symbol_spacing"),
+    10: .standard(proto: "symbol_avoid_edges"),
+    11: .standard(proto: "symbol_z_order"),
+    12: .standard(proto: "icon_allow_overlap"),
+    13: .standard(proto: "icon_ignore_placement"),
+    14: .standard(proto: "icon_optional"),
+    15: .standard(proto: "icon_rotation_alignment"),
+    16: .standard(proto: "icon_size"),
+    17: .standard(proto: "icon_text_fit"),
+    18: .standard(proto: "icon_text_fit_padding"),
+    19: .standard(proto: "icon_image"),
+    20: .standard(proto: "icon_rotate"),
+    21: .standard(proto: "icon_padding"),
+    22: .standard(proto: "icon_keep_upright"),
+    23: .standard(proto: "icon_offset"),
+    24: .standard(proto: "icon_anchor"),
+    25: .standard(proto: "icon_pitch_alignment"),
+    26: .standard(proto: "text_pitch_alignment"),
+    27: .standard(proto: "text_rotation_alignment"),
+    28: .standard(proto: "text_field"),
+    29: .standard(proto: "text_font"),
+    30: .standard(proto: "text_size"),
+    31: .standard(proto: "text_max_width"),
+    32: .standard(proto: "text_line_height"),
+    33: .standard(proto: "text_letter_spacing"),
+    34: .standard(proto: "text_justify"),
+    35: .standard(proto: "text_radial_offset"),
+    36: .standard(proto: "text_variable_anchor"),
+    37: .standard(proto: "text_anchor"),
+    38: .standard(proto: "text_max_angle"),
+    39: .standard(proto: "text_rotate"),
+    40: .standard(proto: "text_padding"),
+    41: .standard(proto: "text_keep_upright"),
+    42: .standard(proto: "text_transform"),
+    43: .standard(proto: "text_offset"),
+    44: .standard(proto: "text_allow_overlap"),
+    45: .standard(proto: "text_ignore_placement"),
+    46: .standard(proto: "text_optional"),
+    47: .standard(proto: "icon_opacity"),
+    48: .standard(proto: "icon_color"),
+    49: .standard(proto: "icon_halo_color"),
+    50: .standard(proto: "icon_halo_width"),
+    51: .standard(proto: "icon_halo_blur"),
+    52: .standard(proto: "icon_translate"),
+    53: .standard(proto: "icon_translate_anchor"),
+    54: .standard(proto: "text_opacity"),
+    55: .standard(proto: "text_color"),
+    56: .standard(proto: "text_halo_color"),
+    57: .standard(proto: "text_halo_width"),
+    58: .standard(proto: "text_halo_blur"),
+    59: .standard(proto: "text_translate"),
+    60: .standard(proto: "text_translate_anchor"),
+    61: .standard(proto: "icon_opacity_transition"),
+    62: .standard(proto: "icon_color_transition"),
+    63: .standard(proto: "icon_halo_color_transition"),
+    64: .standard(proto: "icon_halo_width_transition"),
+    65: .standard(proto: "icon_halo_blur_transition"),
+    66: .standard(proto: "icon_translate_transition"),
+    67: .standard(proto: "text_opacity_transition"),
+    68: .standard(proto: "text_color_transition"),
+    69: .standard(proto: "text_halo_color_transition"),
+    70: .standard(proto: "text_halo_width_transition"),
+    71: .standard(proto: "text_halo_blur_transition"),
+    72: .standard(proto: "text_translate_transition"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _sourceID: String = String()
-    var _visible: Bool = false
-    var _minZoom: Float = 0
-    var _maxZoom: Float = 0
+    var _sourceID: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _visible: SwiftProtobuf.Google_Protobuf_BoolValue? = nil
+    var _minZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _maxZoom: SwiftProtobuf.Google_Protobuf_FloatValue? = nil
+    var _sourceLayer: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+    var _filter: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _symbolPlacement: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _symbolSpacing: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _symbolAvoidEdges: SwiftProtobuf.Google_Protobuf_StringValue? = nil
@@ -3818,6 +4380,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
       _visible = source._visible
       _minZoom = source._minZoom
       _maxZoom = source._maxZoom
+      _sourceLayer = source._sourceLayer
+      _filter = source._filter
       _symbolPlacement = source._symbolPlacement
       _symbolSpacing = source._symbolSpacing
       _symbolAvoidEdges = source._symbolAvoidEdges
@@ -3899,75 +4463,77 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._sourceID)
-        case 3: try decoder.decodeSingularBoolField(value: &_storage._visible)
-        case 4: try decoder.decodeSingularFloatField(value: &_storage._minZoom)
-        case 5: try decoder.decodeSingularFloatField(value: &_storage._maxZoom)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._symbolPlacement)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._symbolSpacing)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._symbolAvoidEdges)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._symbolZOrder)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._iconAllowOverlap)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._iconIgnorePlacement)
-        case 12: try decoder.decodeSingularMessageField(value: &_storage._iconOptional)
-        case 13: try decoder.decodeSingularMessageField(value: &_storage._iconRotationAlignment)
-        case 14: try decoder.decodeSingularMessageField(value: &_storage._iconSize)
-        case 15: try decoder.decodeSingularMessageField(value: &_storage._iconTextFit)
-        case 16: try decoder.decodeSingularMessageField(value: &_storage._iconTextFitPadding)
-        case 17: try decoder.decodeSingularMessageField(value: &_storage._iconImage)
-        case 18: try decoder.decodeSingularMessageField(value: &_storage._iconRotate)
-        case 19: try decoder.decodeSingularMessageField(value: &_storage._iconPadding)
-        case 20: try decoder.decodeSingularMessageField(value: &_storage._iconKeepUpright)
-        case 21: try decoder.decodeSingularMessageField(value: &_storage._iconOffset)
-        case 22: try decoder.decodeSingularMessageField(value: &_storage._iconAnchor)
-        case 23: try decoder.decodeSingularMessageField(value: &_storage._iconPitchAlignment)
-        case 24: try decoder.decodeSingularMessageField(value: &_storage._textPitchAlignment)
-        case 25: try decoder.decodeSingularMessageField(value: &_storage._textRotationAlignment)
-        case 26: try decoder.decodeSingularMessageField(value: &_storage._textField)
-        case 27: try decoder.decodeSingularMessageField(value: &_storage._textFont)
-        case 28: try decoder.decodeSingularMessageField(value: &_storage._textSize)
-        case 29: try decoder.decodeSingularMessageField(value: &_storage._textMaxWidth)
-        case 30: try decoder.decodeSingularMessageField(value: &_storage._textLineHeight)
-        case 31: try decoder.decodeSingularMessageField(value: &_storage._textLetterSpacing)
-        case 32: try decoder.decodeSingularMessageField(value: &_storage._textJustify)
-        case 33: try decoder.decodeSingularMessageField(value: &_storage._textRadialOffset)
-        case 34: try decoder.decodeSingularMessageField(value: &_storage._textVariableAnchor)
-        case 35: try decoder.decodeSingularMessageField(value: &_storage._textAnchor)
-        case 36: try decoder.decodeSingularMessageField(value: &_storage._textMaxAngle)
-        case 37: try decoder.decodeSingularMessageField(value: &_storage._textRotate)
-        case 38: try decoder.decodeSingularMessageField(value: &_storage._textPadding)
-        case 39: try decoder.decodeSingularMessageField(value: &_storage._textKeepUpright)
-        case 40: try decoder.decodeSingularMessageField(value: &_storage._textTransform)
-        case 41: try decoder.decodeSingularMessageField(value: &_storage._textOffset)
-        case 42: try decoder.decodeSingularMessageField(value: &_storage._textAllowOverlap)
-        case 43: try decoder.decodeSingularMessageField(value: &_storage._textIgnorePlacement)
-        case 44: try decoder.decodeSingularMessageField(value: &_storage._textOptional)
-        case 45: try decoder.decodeSingularMessageField(value: &_storage._iconOpacity)
-        case 46: try decoder.decodeSingularMessageField(value: &_storage._iconColor)
-        case 47: try decoder.decodeSingularMessageField(value: &_storage._iconHaloColor)
-        case 48: try decoder.decodeSingularMessageField(value: &_storage._iconHaloWidth)
-        case 49: try decoder.decodeSingularMessageField(value: &_storage._iconHaloBlur)
-        case 50: try decoder.decodeSingularMessageField(value: &_storage._iconTranslate)
-        case 51: try decoder.decodeSingularMessageField(value: &_storage._iconTranslateAnchor)
-        case 52: try decoder.decodeSingularMessageField(value: &_storage._textOpacity)
-        case 53: try decoder.decodeSingularMessageField(value: &_storage._textColor)
-        case 54: try decoder.decodeSingularMessageField(value: &_storage._textHaloColor)
-        case 55: try decoder.decodeSingularMessageField(value: &_storage._textHaloWidth)
-        case 56: try decoder.decodeSingularMessageField(value: &_storage._textHaloBlur)
-        case 57: try decoder.decodeSingularMessageField(value: &_storage._textTranslate)
-        case 58: try decoder.decodeSingularMessageField(value: &_storage._textTranslateAnchor)
-        case 59: try decoder.decodeSingularMessageField(value: &_storage._iconOpacityTransition)
-        case 60: try decoder.decodeSingularMessageField(value: &_storage._iconColorTransition)
-        case 61: try decoder.decodeSingularMessageField(value: &_storage._iconHaloColorTransition)
-        case 62: try decoder.decodeSingularMessageField(value: &_storage._iconHaloWidthTransition)
-        case 63: try decoder.decodeSingularMessageField(value: &_storage._iconHaloBlurTransition)
-        case 64: try decoder.decodeSingularMessageField(value: &_storage._iconTranslateTransition)
-        case 65: try decoder.decodeSingularMessageField(value: &_storage._textOpacityTransition)
-        case 66: try decoder.decodeSingularMessageField(value: &_storage._textColorTransition)
-        case 67: try decoder.decodeSingularMessageField(value: &_storage._textHaloColorTransition)
-        case 68: try decoder.decodeSingularMessageField(value: &_storage._textHaloWidthTransition)
-        case 69: try decoder.decodeSingularMessageField(value: &_storage._textHaloBlurTransition)
-        case 70: try decoder.decodeSingularMessageField(value: &_storage._textTranslateTransition)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._sourceID)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._visible)
+        case 4: try decoder.decodeSingularMessageField(value: &_storage._minZoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._maxZoom)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._sourceLayer)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._filter)
+        case 8: try decoder.decodeSingularMessageField(value: &_storage._symbolPlacement)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._symbolSpacing)
+        case 10: try decoder.decodeSingularMessageField(value: &_storage._symbolAvoidEdges)
+        case 11: try decoder.decodeSingularMessageField(value: &_storage._symbolZOrder)
+        case 12: try decoder.decodeSingularMessageField(value: &_storage._iconAllowOverlap)
+        case 13: try decoder.decodeSingularMessageField(value: &_storage._iconIgnorePlacement)
+        case 14: try decoder.decodeSingularMessageField(value: &_storage._iconOptional)
+        case 15: try decoder.decodeSingularMessageField(value: &_storage._iconRotationAlignment)
+        case 16: try decoder.decodeSingularMessageField(value: &_storage._iconSize)
+        case 17: try decoder.decodeSingularMessageField(value: &_storage._iconTextFit)
+        case 18: try decoder.decodeSingularMessageField(value: &_storage._iconTextFitPadding)
+        case 19: try decoder.decodeSingularMessageField(value: &_storage._iconImage)
+        case 20: try decoder.decodeSingularMessageField(value: &_storage._iconRotate)
+        case 21: try decoder.decodeSingularMessageField(value: &_storage._iconPadding)
+        case 22: try decoder.decodeSingularMessageField(value: &_storage._iconKeepUpright)
+        case 23: try decoder.decodeSingularMessageField(value: &_storage._iconOffset)
+        case 24: try decoder.decodeSingularMessageField(value: &_storage._iconAnchor)
+        case 25: try decoder.decodeSingularMessageField(value: &_storage._iconPitchAlignment)
+        case 26: try decoder.decodeSingularMessageField(value: &_storage._textPitchAlignment)
+        case 27: try decoder.decodeSingularMessageField(value: &_storage._textRotationAlignment)
+        case 28: try decoder.decodeSingularMessageField(value: &_storage._textField)
+        case 29: try decoder.decodeSingularMessageField(value: &_storage._textFont)
+        case 30: try decoder.decodeSingularMessageField(value: &_storage._textSize)
+        case 31: try decoder.decodeSingularMessageField(value: &_storage._textMaxWidth)
+        case 32: try decoder.decodeSingularMessageField(value: &_storage._textLineHeight)
+        case 33: try decoder.decodeSingularMessageField(value: &_storage._textLetterSpacing)
+        case 34: try decoder.decodeSingularMessageField(value: &_storage._textJustify)
+        case 35: try decoder.decodeSingularMessageField(value: &_storage._textRadialOffset)
+        case 36: try decoder.decodeSingularMessageField(value: &_storage._textVariableAnchor)
+        case 37: try decoder.decodeSingularMessageField(value: &_storage._textAnchor)
+        case 38: try decoder.decodeSingularMessageField(value: &_storage._textMaxAngle)
+        case 39: try decoder.decodeSingularMessageField(value: &_storage._textRotate)
+        case 40: try decoder.decodeSingularMessageField(value: &_storage._textPadding)
+        case 41: try decoder.decodeSingularMessageField(value: &_storage._textKeepUpright)
+        case 42: try decoder.decodeSingularMessageField(value: &_storage._textTransform)
+        case 43: try decoder.decodeSingularMessageField(value: &_storage._textOffset)
+        case 44: try decoder.decodeSingularMessageField(value: &_storage._textAllowOverlap)
+        case 45: try decoder.decodeSingularMessageField(value: &_storage._textIgnorePlacement)
+        case 46: try decoder.decodeSingularMessageField(value: &_storage._textOptional)
+        case 47: try decoder.decodeSingularMessageField(value: &_storage._iconOpacity)
+        case 48: try decoder.decodeSingularMessageField(value: &_storage._iconColor)
+        case 49: try decoder.decodeSingularMessageField(value: &_storage._iconHaloColor)
+        case 50: try decoder.decodeSingularMessageField(value: &_storage._iconHaloWidth)
+        case 51: try decoder.decodeSingularMessageField(value: &_storage._iconHaloBlur)
+        case 52: try decoder.decodeSingularMessageField(value: &_storage._iconTranslate)
+        case 53: try decoder.decodeSingularMessageField(value: &_storage._iconTranslateAnchor)
+        case 54: try decoder.decodeSingularMessageField(value: &_storage._textOpacity)
+        case 55: try decoder.decodeSingularMessageField(value: &_storage._textColor)
+        case 56: try decoder.decodeSingularMessageField(value: &_storage._textHaloColor)
+        case 57: try decoder.decodeSingularMessageField(value: &_storage._textHaloWidth)
+        case 58: try decoder.decodeSingularMessageField(value: &_storage._textHaloBlur)
+        case 59: try decoder.decodeSingularMessageField(value: &_storage._textTranslate)
+        case 60: try decoder.decodeSingularMessageField(value: &_storage._textTranslateAnchor)
+        case 61: try decoder.decodeSingularMessageField(value: &_storage._iconOpacityTransition)
+        case 62: try decoder.decodeSingularMessageField(value: &_storage._iconColorTransition)
+        case 63: try decoder.decodeSingularMessageField(value: &_storage._iconHaloColorTransition)
+        case 64: try decoder.decodeSingularMessageField(value: &_storage._iconHaloWidthTransition)
+        case 65: try decoder.decodeSingularMessageField(value: &_storage._iconHaloBlurTransition)
+        case 66: try decoder.decodeSingularMessageField(value: &_storage._iconTranslateTransition)
+        case 67: try decoder.decodeSingularMessageField(value: &_storage._textOpacityTransition)
+        case 68: try decoder.decodeSingularMessageField(value: &_storage._textColorTransition)
+        case 69: try decoder.decodeSingularMessageField(value: &_storage._textHaloColorTransition)
+        case 70: try decoder.decodeSingularMessageField(value: &_storage._textHaloWidthTransition)
+        case 71: try decoder.decodeSingularMessageField(value: &_storage._textHaloBlurTransition)
+        case 72: try decoder.decodeSingularMessageField(value: &_storage._textTranslateTransition)
         default: break
         }
       }
@@ -3979,212 +4545,218 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._sourceID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._sourceID, fieldNumber: 2)
+      if let v = _storage._sourceID {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
-      if _storage._visible != false {
-        try visitor.visitSingularBoolField(value: _storage._visible, fieldNumber: 3)
+      if let v = _storage._visible {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
-      if _storage._minZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._minZoom, fieldNumber: 4)
+      if let v = _storage._minZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
       }
-      if _storage._maxZoom != 0 {
-        try visitor.visitSingularFloatField(value: _storage._maxZoom, fieldNumber: 5)
+      if let v = _storage._maxZoom {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
-      if let v = _storage._symbolPlacement {
+      if let v = _storage._sourceLayer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._symbolSpacing {
+      if let v = _storage._filter {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
-      if let v = _storage._symbolAvoidEdges {
+      if let v = _storage._symbolPlacement {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
       }
-      if let v = _storage._symbolZOrder {
+      if let v = _storage._symbolSpacing {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
-      if let v = _storage._iconAllowOverlap {
+      if let v = _storage._symbolAvoidEdges {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
       }
-      if let v = _storage._iconIgnorePlacement {
+      if let v = _storage._symbolZOrder {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
       }
-      if let v = _storage._iconOptional {
+      if let v = _storage._iconAllowOverlap {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
       }
-      if let v = _storage._iconRotationAlignment {
+      if let v = _storage._iconIgnorePlacement {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
       }
-      if let v = _storage._iconSize {
+      if let v = _storage._iconOptional {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 14)
       }
-      if let v = _storage._iconTextFit {
+      if let v = _storage._iconRotationAlignment {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 15)
       }
-      if let v = _storage._iconTextFitPadding {
+      if let v = _storage._iconSize {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 16)
       }
-      if let v = _storage._iconImage {
+      if let v = _storage._iconTextFit {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 17)
       }
-      if let v = _storage._iconRotate {
+      if let v = _storage._iconTextFitPadding {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 18)
       }
-      if let v = _storage._iconPadding {
+      if let v = _storage._iconImage {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 19)
       }
-      if let v = _storage._iconKeepUpright {
+      if let v = _storage._iconRotate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 20)
       }
-      if let v = _storage._iconOffset {
+      if let v = _storage._iconPadding {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 21)
       }
-      if let v = _storage._iconAnchor {
+      if let v = _storage._iconKeepUpright {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 22)
       }
-      if let v = _storage._iconPitchAlignment {
+      if let v = _storage._iconOffset {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 23)
       }
-      if let v = _storage._textPitchAlignment {
+      if let v = _storage._iconAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 24)
       }
-      if let v = _storage._textRotationAlignment {
+      if let v = _storage._iconPitchAlignment {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 25)
       }
-      if let v = _storage._textField {
+      if let v = _storage._textPitchAlignment {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 26)
       }
-      if let v = _storage._textFont {
+      if let v = _storage._textRotationAlignment {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 27)
       }
-      if let v = _storage._textSize {
+      if let v = _storage._textField {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 28)
       }
-      if let v = _storage._textMaxWidth {
+      if let v = _storage._textFont {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 29)
       }
-      if let v = _storage._textLineHeight {
+      if let v = _storage._textSize {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 30)
       }
-      if let v = _storage._textLetterSpacing {
+      if let v = _storage._textMaxWidth {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 31)
       }
-      if let v = _storage._textJustify {
+      if let v = _storage._textLineHeight {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 32)
       }
-      if let v = _storage._textRadialOffset {
+      if let v = _storage._textLetterSpacing {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 33)
       }
-      if let v = _storage._textVariableAnchor {
+      if let v = _storage._textJustify {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 34)
       }
-      if let v = _storage._textAnchor {
+      if let v = _storage._textRadialOffset {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 35)
       }
-      if let v = _storage._textMaxAngle {
+      if let v = _storage._textVariableAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 36)
       }
-      if let v = _storage._textRotate {
+      if let v = _storage._textAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 37)
       }
-      if let v = _storage._textPadding {
+      if let v = _storage._textMaxAngle {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 38)
       }
-      if let v = _storage._textKeepUpright {
+      if let v = _storage._textRotate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 39)
       }
-      if let v = _storage._textTransform {
+      if let v = _storage._textPadding {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 40)
       }
-      if let v = _storage._textOffset {
+      if let v = _storage._textKeepUpright {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 41)
       }
-      if let v = _storage._textAllowOverlap {
+      if let v = _storage._textTransform {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 42)
       }
-      if let v = _storage._textIgnorePlacement {
+      if let v = _storage._textOffset {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 43)
       }
-      if let v = _storage._textOptional {
+      if let v = _storage._textAllowOverlap {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 44)
       }
-      if let v = _storage._iconOpacity {
+      if let v = _storage._textIgnorePlacement {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 45)
       }
-      if let v = _storage._iconColor {
+      if let v = _storage._textOptional {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 46)
       }
-      if let v = _storage._iconHaloColor {
+      if let v = _storage._iconOpacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 47)
       }
-      if let v = _storage._iconHaloWidth {
+      if let v = _storage._iconColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 48)
       }
-      if let v = _storage._iconHaloBlur {
+      if let v = _storage._iconHaloColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 49)
       }
-      if let v = _storage._iconTranslate {
+      if let v = _storage._iconHaloWidth {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 50)
       }
-      if let v = _storage._iconTranslateAnchor {
+      if let v = _storage._iconHaloBlur {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 51)
       }
-      if let v = _storage._textOpacity {
+      if let v = _storage._iconTranslate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 52)
       }
-      if let v = _storage._textColor {
+      if let v = _storage._iconTranslateAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 53)
       }
-      if let v = _storage._textHaloColor {
+      if let v = _storage._textOpacity {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 54)
       }
-      if let v = _storage._textHaloWidth {
+      if let v = _storage._textColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 55)
       }
-      if let v = _storage._textHaloBlur {
+      if let v = _storage._textHaloColor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 56)
       }
-      if let v = _storage._textTranslate {
+      if let v = _storage._textHaloWidth {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 57)
       }
-      if let v = _storage._textTranslateAnchor {
+      if let v = _storage._textHaloBlur {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 58)
       }
-      if let v = _storage._iconOpacityTransition {
+      if let v = _storage._textTranslate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 59)
       }
-      if let v = _storage._iconColorTransition {
+      if let v = _storage._textTranslateAnchor {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 60)
       }
-      if let v = _storage._iconHaloColorTransition {
+      if let v = _storage._iconOpacityTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 61)
       }
-      if let v = _storage._iconHaloWidthTransition {
+      if let v = _storage._iconColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 62)
       }
-      if let v = _storage._iconHaloBlurTransition {
+      if let v = _storage._iconHaloColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 63)
       }
-      if let v = _storage._iconTranslateTransition {
+      if let v = _storage._iconHaloWidthTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 64)
       }
-      if let v = _storage._textOpacityTransition {
+      if let v = _storage._iconHaloBlurTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 65)
       }
-      if let v = _storage._textColorTransition {
+      if let v = _storage._iconTranslateTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 66)
       }
-      if let v = _storage._textHaloColorTransition {
+      if let v = _storage._textOpacityTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 67)
       }
-      if let v = _storage._textHaloWidthTransition {
+      if let v = _storage._textColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 68)
       }
-      if let v = _storage._textHaloBlurTransition {
+      if let v = _storage._textHaloColorTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 69)
       }
-      if let v = _storage._textTranslateTransition {
+      if let v = _storage._textHaloWidthTransition {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 70)
+      }
+      if let v = _storage._textHaloBlurTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 71)
+      }
+      if let v = _storage._textTranslateTransition {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 72)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -4200,6 +4772,8 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
         if _storage._visible != rhs_storage._visible {return false}
         if _storage._minZoom != rhs_storage._minZoom {return false}
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
+        if _storage._sourceLayer != rhs_storage._sourceLayer {return false}
+        if _storage._filter != rhs_storage._filter {return false}
         if _storage._symbolPlacement != rhs_storage._symbolPlacement {return false}
         if _storage._symbolSpacing != rhs_storage._symbolSpacing {return false}
         if _storage._symbolAvoidEdges != rhs_storage._symbolAvoidEdges {return false}
@@ -4274,52 +4848,112 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol.Placement: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "PLACEMENT_POINT"),
-    1: .same(proto: "PLACEMENT_LINE"),
-    2: .same(proto: "PLACEMENT_LINE_CENTER"),
-  ]
+extension Com_Tophap_MapboxGl_Proto_Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".Operations"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Operations, rhs: Com_Tophap_MapboxGl_Proto_Operations) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol.ZOrder: SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_MapboxGl_Proto_Operations.Add: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Operations.protoMessageName + ".Add"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "Z_ORDER_AUTO"),
-    1: .same(proto: "Z_ORDER_VIEWPORT_Y"),
-    2: .same(proto: "Z_ORDER_SOURCE"),
+    1: .same(proto: "layer"),
+    2: .standard(proto: "below_id"),
+    3: .standard(proto: "above_id"),
+    4: .same(proto: "index"),
   ]
-}
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol.Alignment: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "ALIGNMENT_AUTO"),
-    1: .same(proto: "ALIGNMENT_MAP"),
-    2: .same(proto: "ALIGNMENT_VIEWPORT"),
-  ]
-}
+  fileprivate class _StorageClass {
+    var _layer: Com_Tophap_MapboxGl_Proto_Layer? = nil
+    var _position: Com_Tophap_MapboxGl_Proto_Operations.Add.OneOf_Position?
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol.TextFit: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "TEXT_FIT_NONE"),
-    1: .same(proto: "TEXT_FIT_WIDTH"),
-    2: .same(proto: "TEXT_FIT_HEIGHT"),
-    3: .same(proto: "TEXT_FIT_BOTH"),
-  ]
-}
+    static let defaultInstance = _StorageClass()
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol.TextJustify: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "JUSTIFY_AUTO"),
-    1: .same(proto: "JUSTIFY_LEFT"),
-    2: .same(proto: "JUSTIFY_CENTER"),
-    3: .same(proto: "JUSTIFY_RIGHT"),
-  ]
-}
+    private init() {}
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol.TextTransform: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "TRANSFORM_NONE"),
-    1: .same(proto: "TRANSFORM_UPPERCASE"),
-    2: .same(proto: "TRANSFORM_LOWERCASE"),
-  ]
+    init(copying source: _StorageClass) {
+      _layer = source._layer
+      _position = source._position
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._layer)
+        case 2:
+          if _storage._position != nil {try decoder.handleConflictingOneOf()}
+          var v: String?
+          try decoder.decodeSingularStringField(value: &v)
+          if let v = v {_storage._position = .belowID(v)}
+        case 3:
+          if _storage._position != nil {try decoder.handleConflictingOneOf()}
+          var v: String?
+          try decoder.decodeSingularStringField(value: &v)
+          if let v = v {_storage._position = .aboveID(v)}
+        case 4:
+          if _storage._position != nil {try decoder.handleConflictingOneOf()}
+          var v: Int32?
+          try decoder.decodeSingularInt32Field(value: &v)
+          if let v = v {_storage._position = .index(v)}
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._layer {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+      switch _storage._position {
+      case .belowID(let v)?:
+        try visitor.visitSingularStringField(value: v, fieldNumber: 2)
+      case .aboveID(let v)?:
+        try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+      case .index(let v)?:
+        try visitor.visitSingularInt32Field(value: v, fieldNumber: 4)
+      case nil: break
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Operations.Add, rhs: Com_Tophap_MapboxGl_Proto_Operations.Add) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._layer != rhs_storage._layer {return false}
+        if _storage._position != rhs_storage._position {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }
