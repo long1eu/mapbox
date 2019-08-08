@@ -10,8 +10,8 @@ import 'dart:ui';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapboxgl/mapboxgl.dart';
+import 'package:mapboxgl/src/models/proto/index.dart' as pb;
 
 part 'formatted_section.g.dart';
 
@@ -71,11 +71,7 @@ abstract class FormattedSection implements Built<FormattedSection, FormattedSect
   FormatEntry get expression {
     return formatEntry(
       text,
-      [
-        if (fontScale != null) formatFontScale(fontScale),
-        if (fontStack != null) formatFontStackExpresion(literalList(fontStack.toList())),
-        formatTextColor(textColor)
-      ],
+      [if (fontScale != null) formatFontScale(fontScale), if (fontStack != null) formatFontStackExpresion(literalList(fontStack.toList())), formatTextColor(textColor)],
     );
   }
 }

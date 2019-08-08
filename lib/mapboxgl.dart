@@ -1,4 +1,4 @@
-library mapbox_gl;
+library mapboxgl;
 
 import 'dart:async';
 import 'dart:convert';
@@ -14,14 +14,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
-import 'package:mapbox_gl/src/models/index.dart';
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapboxgl/mapboxgl.dart';
+import 'package:mapboxgl/src/models/index.dart';
+import 'package:mapboxgl/src/models/proto/index.dart' as pb;
 import 'package:protobuf/protobuf.dart' as pb;
 
-export 'package:mapbox_gl/src/layer/layer.dart';
-export 'package:mapbox_gl/src/models/index.dart';
-export 'package:mapbox_gl/src/source/source.dart';
+export 'package:mapboxgl/src/layer/layer.dart';
+export 'package:mapboxgl/src/models/index.dart';
+export 'package:mapboxgl/src/source/source.dart';
 
 part 'src/camera_update.dart';
 

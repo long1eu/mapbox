@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Com_Tophap_MapboxGl_Proto_Style {
+struct Com_Tophap_Mapboxgl_Proto_Style {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -34,18 +34,18 @@ struct Com_Tophap_MapboxGl_Proto_Style {
     set {_uniqueStorage()._json = newValue}
   }
 
-  var sources: [Com_Tophap_MapboxGl_Proto_Source] {
+  var sources: [Com_Tophap_Mapboxgl_Proto_Source] {
     get {return _storage._sources}
     set {_uniqueStorage()._sources = newValue}
   }
 
-  var layers: [Com_Tophap_MapboxGl_Proto_Layer] {
+  var layers: [Com_Tophap_Mapboxgl_Proto_Layer] {
     get {return _storage._layers}
     set {_uniqueStorage()._layers = newValue}
   }
 
-  var transition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
-    get {return _storage._transition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+  var transition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
+    get {return _storage._transition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
     set {_uniqueStorage()._transition = newValue}
   }
   /// Returns true if `transition` has been explicitly set.
@@ -53,8 +53,8 @@ struct Com_Tophap_MapboxGl_Proto_Style {
   /// Clears the value of `transition`. Subsequent reads from it will return its default value.
   mutating func clearTransition() {_uniqueStorage()._transition = nil}
 
-  var light: Com_Tophap_MapboxGl_Proto_Style.Light {
-    get {return _storage._light ?? Com_Tophap_MapboxGl_Proto_Style.Light()}
+  var light: Com_Tophap_Mapboxgl_Proto_Style.Light {
+    get {return _storage._light ?? Com_Tophap_Mapboxgl_Proto_Style.Light()}
     set {_uniqueStorage()._light = newValue}
   }
   /// Returns true if `light` has been explicitly set.
@@ -115,13 +115,13 @@ struct Com_Tophap_MapboxGl_Proto_Style {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    var anchor: Com_Tophap_MapboxGl_Proto_TranslateAnchor {
+    var anchor: Com_Tophap_Mapboxgl_Proto_TranslateAnchor {
       get {return _storage._anchor}
       set {_uniqueStorage()._anchor = newValue}
     }
 
-    var position: Com_Tophap_MapboxGl_Proto_Style.Position {
-      get {return _storage._position ?? Com_Tophap_MapboxGl_Proto_Style.Position()}
+    var position: Com_Tophap_Mapboxgl_Proto_Style.Position {
+      get {return _storage._position ?? Com_Tophap_Mapboxgl_Proto_Style.Position()}
       set {_uniqueStorage()._position = newValue}
     }
     /// Returns true if `position` has been explicitly set.
@@ -129,8 +129,8 @@ struct Com_Tophap_MapboxGl_Proto_Style {
     /// Clears the value of `position`. Subsequent reads from it will return its default value.
     mutating func clearPosition() {_uniqueStorage()._position = nil}
 
-    var color: Com_Tophap_MapboxGl_Proto_Color {
-      get {return _storage._color ?? Com_Tophap_MapboxGl_Proto_Color()}
+    var color: Com_Tophap_Mapboxgl_Proto_Color {
+      get {return _storage._color ?? Com_Tophap_Mapboxgl_Proto_Color()}
       set {_uniqueStorage()._color = newValue}
     }
     /// Returns true if `color` has been explicitly set.
@@ -143,8 +143,8 @@ struct Com_Tophap_MapboxGl_Proto_Style {
       set {_uniqueStorage()._intensity = newValue}
     }
 
-    var positionTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
-      get {return _storage._positionTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+    var positionTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
+      get {return _storage._positionTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
       set {_uniqueStorage()._positionTransition = newValue}
     }
     /// Returns true if `positionTransition` has been explicitly set.
@@ -152,8 +152,8 @@ struct Com_Tophap_MapboxGl_Proto_Style {
     /// Clears the value of `positionTransition`. Subsequent reads from it will return its default value.
     mutating func clearPositionTransition() {_uniqueStorage()._positionTransition = nil}
 
-    var colorTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
-      get {return _storage._colorTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+    var colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
+      get {return _storage._colorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
       set {_uniqueStorage()._colorTransition = newValue}
     }
     /// Returns true if `colorTransition` has been explicitly set.
@@ -161,8 +161,8 @@ struct Com_Tophap_MapboxGl_Proto_Style {
     /// Clears the value of `colorTransition`. Subsequent reads from it will return its default value.
     mutating func clearColorTransition() {_uniqueStorage()._colorTransition = nil}
 
-    var intensityTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions {
-      get {return _storage._intensityTransition ?? Com_Tophap_MapboxGl_Proto_TransitionOptions()}
+    var intensityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
+      get {return _storage._intensityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
       set {_uniqueStorage()._intensityTransition = newValue}
     }
     /// Returns true if `intensityTransition` has been explicitly set.
@@ -205,9 +205,9 @@ struct Com_Tophap_MapboxGl_Proto_Style {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      var source: Com_Tophap_MapboxGl_Proto_Style.Operations.Build.OneOf_Source? = nil
+      var source: Com_Tophap_Mapboxgl_Proto_Style.Operations.Build.OneOf_Source? = nil
 
-      var `default`: Com_Tophap_MapboxGl_Proto_Style.MapboxStyle {
+      var `default`: Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle {
         get {
           if case .default(let v)? = source {return v}
           return .mapboxStreets
@@ -234,12 +234,12 @@ struct Com_Tophap_MapboxGl_Proto_Style {
       var unknownFields = SwiftProtobuf.UnknownStorage()
 
       enum OneOf_Source: Equatable {
-        case `default`(Com_Tophap_MapboxGl_Proto_Style.MapboxStyle)
+        case `default`(Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle)
         case uri(String)
         case json(String)
 
       #if !swift(>=4.1)
-        static func ==(lhs: Com_Tophap_MapboxGl_Proto_Style.Operations.Build.OneOf_Source, rhs: Com_Tophap_MapboxGl_Proto_Style.Operations.Build.OneOf_Source) -> Bool {
+        static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Style.Operations.Build.OneOf_Source, rhs: Com_Tophap_Mapboxgl_Proto_Style.Operations.Build.OneOf_Source) -> Bool {
           switch (lhs, rhs) {
           case (.default(let l), .default(let r)): return l == r
           case (.uri(let l), .uri(let r)): return l == r
@@ -263,9 +263,9 @@ struct Com_Tophap_MapboxGl_Proto_Style {
 
 #if swift(>=4.2)
 
-extension Com_Tophap_MapboxGl_Proto_Style.MapboxStyle: CaseIterable {
+extension Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Com_Tophap_MapboxGl_Proto_Style.MapboxStyle] = [
+  static var allCases: [Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle] = [
     .mapboxStreets,
     .outdoors,
     .light,
@@ -281,9 +281,9 @@ extension Com_Tophap_MapboxGl_Proto_Style.MapboxStyle: CaseIterable {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "com.tophap.mapbox_gl.proto"
+fileprivate let _protobuf_package = "com.tophap.mapboxgl.proto"
 
-extension Com_Tophap_MapboxGl_Proto_Style: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_Style: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Style"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "uri"),
@@ -297,10 +297,10 @@ extension Com_Tophap_MapboxGl_Proto_Style: SwiftProtobuf.Message, SwiftProtobuf.
   fileprivate class _StorageClass {
     var _uri: String = String()
     var _json: String = String()
-    var _sources: [Com_Tophap_MapboxGl_Proto_Source] = []
-    var _layers: [Com_Tophap_MapboxGl_Proto_Layer] = []
-    var _transition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
-    var _light: Com_Tophap_MapboxGl_Proto_Style.Light? = nil
+    var _sources: [Com_Tophap_Mapboxgl_Proto_Source] = []
+    var _layers: [Com_Tophap_Mapboxgl_Proto_Layer] = []
+    var _transition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _light: Com_Tophap_Mapboxgl_Proto_Style.Light? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -364,7 +364,7 @@ extension Com_Tophap_MapboxGl_Proto_Style: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Style, rhs: Com_Tophap_MapboxGl_Proto_Style) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Style, rhs: Com_Tophap_Mapboxgl_Proto_Style) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -384,7 +384,7 @@ extension Com_Tophap_MapboxGl_Proto_Style: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Style.MapboxStyle: SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "MAPBOX_STREETS"),
     1: .same(proto: "OUTDOORS"),
@@ -397,8 +397,8 @@ extension Com_Tophap_MapboxGl_Proto_Style.MapboxStyle: SwiftProtobuf._ProtoNameP
   ]
 }
 
-extension Com_Tophap_MapboxGl_Proto_Style.Light: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Style.protoMessageName + ".Light"
+extension Com_Tophap_Mapboxgl_Proto_Style.Light: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Style.protoMessageName + ".Light"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "anchor"),
     2: .same(proto: "position"),
@@ -410,13 +410,13 @@ extension Com_Tophap_MapboxGl_Proto_Style.Light: SwiftProtobuf.Message, SwiftPro
   ]
 
   fileprivate class _StorageClass {
-    var _anchor: Com_Tophap_MapboxGl_Proto_TranslateAnchor = .map
-    var _position: Com_Tophap_MapboxGl_Proto_Style.Position? = nil
-    var _color: Com_Tophap_MapboxGl_Proto_Color? = nil
+    var _anchor: Com_Tophap_Mapboxgl_Proto_TranslateAnchor = .map
+    var _position: Com_Tophap_Mapboxgl_Proto_Style.Position? = nil
+    var _color: Com_Tophap_Mapboxgl_Proto_Color? = nil
     var _intensity: Float = 0
-    var _positionTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
-    var _colorTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
-    var _intensityTransition: Com_Tophap_MapboxGl_Proto_TransitionOptions? = nil
+    var _positionTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _intensityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -485,7 +485,7 @@ extension Com_Tophap_MapboxGl_Proto_Style.Light: SwiftProtobuf.Message, SwiftPro
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Style.Light, rhs: Com_Tophap_MapboxGl_Proto_Style.Light) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Style.Light, rhs: Com_Tophap_Mapboxgl_Proto_Style.Light) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -506,8 +506,8 @@ extension Com_Tophap_MapboxGl_Proto_Style.Light: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Style.Position: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Style.protoMessageName + ".Position"
+extension Com_Tophap_Mapboxgl_Proto_Style.Position: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Style.protoMessageName + ".Position"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "radial_coordinate"),
     2: .standard(proto: "azimuthal_angle"),
@@ -538,7 +538,7 @@ extension Com_Tophap_MapboxGl_Proto_Style.Position: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Style.Position, rhs: Com_Tophap_MapboxGl_Proto_Style.Position) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Style.Position, rhs: Com_Tophap_Mapboxgl_Proto_Style.Position) -> Bool {
     if lhs.radialCoordinate != rhs.radialCoordinate {return false}
     if lhs.azimuthalAngle != rhs.azimuthalAngle {return false}
     if lhs.polarAngle != rhs.polarAngle {return false}
@@ -547,8 +547,8 @@ extension Com_Tophap_MapboxGl_Proto_Style.Position: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Style.Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Style.protoMessageName + ".Operations"
+extension Com_Tophap_Mapboxgl_Proto_Style.Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Style.protoMessageName + ".Operations"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -560,14 +560,14 @@ extension Com_Tophap_MapboxGl_Proto_Style.Operations: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Style.Operations, rhs: Com_Tophap_MapboxGl_Proto_Style.Operations) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Style.Operations, rhs: Com_Tophap_Mapboxgl_Proto_Style.Operations) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Style.Operations.Build: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Style.Operations.protoMessageName + ".Build"
+extension Com_Tophap_Mapboxgl_Proto_Style.Operations.Build: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Style.Operations.protoMessageName + ".Build"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "default"),
     2: .same(proto: "uri"),
@@ -579,7 +579,7 @@ extension Com_Tophap_MapboxGl_Proto_Style.Operations.Build: SwiftProtobuf.Messag
       switch fieldNumber {
       case 1:
         if self.source != nil {try decoder.handleConflictingOneOf()}
-        var v: Com_Tophap_MapboxGl_Proto_Style.MapboxStyle?
+        var v: Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle?
         try decoder.decodeSingularEnumField(value: &v)
         if let v = v {self.source = .default(v)}
       case 2:
@@ -610,7 +610,7 @@ extension Com_Tophap_MapboxGl_Proto_Style.Operations.Build: SwiftProtobuf.Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Style.Operations.Build, rhs: Com_Tophap_MapboxGl_Proto_Style.Operations.Build) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Style.Operations.Build, rhs: Com_Tophap_Mapboxgl_Proto_Style.Operations.Build) -> Bool {
     if lhs.source != rhs.source {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

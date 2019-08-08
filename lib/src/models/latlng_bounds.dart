@@ -8,7 +8,7 @@ import 'dart:typed_data';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapboxgl/src/models/proto/index.dart' as pb;
 
 part 'latlng_bounds.g.dart';
 
@@ -25,10 +25,8 @@ abstract class LatLngBounds implements Built<LatLngBounds, LatLngBoundsBuilder> 
     assert(!longitudeWest.isNaN && longitudeWest.isFinite);
     assert(latitudeNorth >= -90 && latitudeNorth <= 90);
     assert(latitudeSouth >= -90 && latitudeSouth <= 90);
-    assert(latitudeNorth > latitudeSouth,
-        "latitudeNorth($latitudeNorth) cannot be less than latitudeSouth($latitudeSouth)");
-    assert(longitudeEast > longitudeWest,
-        "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
+    assert(latitudeNorth > latitudeSouth, "latitudeNorth($latitudeNorth) cannot be less than latitudeSouth($latitudeSouth)");
+    assert(longitudeEast > longitudeWest, "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
 
     return _$LatLngBounds((b) {
       b

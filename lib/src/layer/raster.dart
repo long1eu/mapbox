@@ -133,7 +133,7 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
   @nullable
   Expression get contrast;
 
-  /*String*/
+  /*Resampling*/
   @nullable
   Expression get resampling;
 

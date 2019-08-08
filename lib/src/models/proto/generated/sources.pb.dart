@@ -12,7 +12,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'util.pb.dart' as $1;
 
 class Source_GeoJson_Options extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson.Options', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson.Options', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..a<$core.int>(1, 'minZoom', $pb.PbFieldType.O3)
     ..a<$core.int>(2, 'maxZoom', $pb.PbFieldType.O3)
     ..a<$core.int>(3, 'buffer', $pb.PbFieldType.O3)
@@ -91,7 +91,7 @@ class Source_GeoJson extends $pb.GeneratedMessage {
     5 : Source_GeoJson_Source.geoJson,
     0 : Source_GeoJson_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
@@ -156,7 +156,7 @@ class Source_Image extends $pb.GeneratedMessage {
     5 : Source_Image_Source.image,
     0 : Source_Image_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Image', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Image', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
@@ -221,7 +221,7 @@ class Source_RasterDem extends $pb.GeneratedMessage {
     5 : Source_RasterDem_Source.tileSet,
     0 : Source_RasterDem_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.RasterDem', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.RasterDem', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
@@ -286,7 +286,7 @@ class Source_Raster extends $pb.GeneratedMessage {
     5 : Source_Raster_Source.tileSet,
     0 : Source_Raster_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Raster', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Raster', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
@@ -351,7 +351,7 @@ class Source_Vector extends $pb.GeneratedMessage {
     4 : Source_Vector_Source.tileSet,
     0 : Source_Vector_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Vector', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Vector', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..oo(0, [3, 4])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
@@ -399,7 +399,7 @@ class Source_Vector extends $pb.GeneratedMessage {
 }
 
 class Source_Unknown extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Unknown', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Unknown', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
     ..hasRequiredFields = false
@@ -431,7 +431,7 @@ class Source_Unknown extends $pb.GeneratedMessage {
 }
 
 class Source_TileSet extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.TileSet', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.TileSet', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..aOS(1, 'tileJson')
     ..aOS(2, 'name')
     ..aOS(3, 'description')
@@ -551,7 +551,7 @@ class Source extends $pb.GeneratedMessage {
     7 : Source_Type.unknown,
     0 : Source_Type.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source', package: const $pb.PackageName('com.tophap.mapbox_gl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
     ..oo(0, [2, 3, 4, 5, 6, 7])
     ..aOS(1, 'id')
     ..a<Source_GeoJson>(2, 'geoJson', $pb.PbFieldType.OM, Source_GeoJson.getDefault, Source_GeoJson.create)

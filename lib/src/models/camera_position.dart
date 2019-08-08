@@ -9,8 +9,8 @@ import 'dart:typed_data';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mapbox_gl/src/models/latlng.dart';
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapboxgl/src/models/latlng.dart';
+import 'package:mapboxgl/src/models/proto/index.dart' as pb;
 
 part 'camera_position.g.dart';
 
@@ -73,8 +73,7 @@ class CameraMoveStartedReason extends EnumClass {
 
   static BuiltSet<CameraMoveStartedReason> get values => _$values;
 
-  pb.Map__CameraPosition_MoveReason get proto =>
-      pb.Map__CameraPosition_MoveReason.valueOf(values.toList().indexOf(this));
+  pb.Map__CameraPosition_MoveReason get proto => pb.Map__CameraPosition_MoveReason.valueOf(values.toList().indexOf(this));
 
   static CameraMoveStartedReason valueOf(String name) => _$valueOf(name);
 

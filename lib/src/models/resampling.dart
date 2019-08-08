@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:mapboxgl/mapboxgl.dart';
 
 class Resampling extends ExpressionLiteral {
   const Resampling._(this._i, String value) : super(value);

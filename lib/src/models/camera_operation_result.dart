@@ -7,7 +7,7 @@ library camera_operation_result;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapboxgl/src/models/proto/index.dart' as pb;
 
 part 'camera_operation_result.g.dart';
 
@@ -19,8 +19,7 @@ class CameraOperationResult extends EnumClass {
 
   static BuiltSet<CameraOperationResult> get values => _$values;
 
-  pb.Map__Operations_CameraUpdate_Result get proto =>
-      pb.Map__Operations_CameraUpdate_Result.valueOf(values.toList().indexOf(this));
+  pb.Map__Operations_CameraUpdate_Result get proto => pb.Map__Operations_CameraUpdate_Result.valueOf(values.toList().indexOf(this));
 
   static CameraOperationResult valueOf(String name) => _$valueOf(name);
 

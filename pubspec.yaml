@@ -1,8 +1,8 @@
-name: mapbox_gl
+name: mapboxgl
 description: A new Flutter project.
-version: 0.0.1
-author:
-homepage:
+version: 0.0.4
+author: Razvan Lung <lung.razvan@gmail.com>
+homepage: https://www.tophap.com
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -10,11 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  strings: any
-  protobuf: any
-  built_value: any
-  built_collection: any
-  pub_semver: any
+  strings: ^0.1.0
+  protobuf: ^0.13.15
+  built_value: ^6.7.0
+  built_collection: ^4.2.2
+  pub_semver: ^1.4.2
+  meta: ^1.1.6
+  path: ^1.6.2
+  fixnum: ^0.10.9
+  collection: ^1.14.11
 
 dev_dependencies:
   flutter_test:

@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Com_Tophap_MapboxGl_Proto_Source {
+struct Com_Tophap_Mapboxgl_Proto_Source {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -34,50 +34,50 @@ struct Com_Tophap_MapboxGl_Proto_Source {
     set {_uniqueStorage()._type = newValue}
   }
 
-  var geoJson: Com_Tophap_MapboxGl_Proto_Source.GeoJson {
+  var geoJson: Com_Tophap_Mapboxgl_Proto_Source.GeoJson {
     get {
       if case .geoJson(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Source.GeoJson()
+      return Com_Tophap_Mapboxgl_Proto_Source.GeoJson()
     }
     set {_uniqueStorage()._type = .geoJson(newValue)}
   }
 
-  var image: Com_Tophap_MapboxGl_Proto_Source.Image {
+  var image: Com_Tophap_Mapboxgl_Proto_Source.Image {
     get {
       if case .image(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Source.Image()
+      return Com_Tophap_Mapboxgl_Proto_Source.Image()
     }
     set {_uniqueStorage()._type = .image(newValue)}
   }
 
-  var rasterDem: Com_Tophap_MapboxGl_Proto_Source.RasterDem {
+  var rasterDem: Com_Tophap_Mapboxgl_Proto_Source.RasterDem {
     get {
       if case .rasterDem(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Source.RasterDem()
+      return Com_Tophap_Mapboxgl_Proto_Source.RasterDem()
     }
     set {_uniqueStorage()._type = .rasterDem(newValue)}
   }
 
-  var raster: Com_Tophap_MapboxGl_Proto_Source.Raster {
+  var raster: Com_Tophap_Mapboxgl_Proto_Source.Raster {
     get {
       if case .raster(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Source.Raster()
+      return Com_Tophap_Mapboxgl_Proto_Source.Raster()
     }
     set {_uniqueStorage()._type = .raster(newValue)}
   }
 
-  var vector: Com_Tophap_MapboxGl_Proto_Source.Vector {
+  var vector: Com_Tophap_Mapboxgl_Proto_Source.Vector {
     get {
       if case .vector(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Source.Vector()
+      return Com_Tophap_Mapboxgl_Proto_Source.Vector()
     }
     set {_uniqueStorage()._type = .vector(newValue)}
   }
 
-  var unknown: Com_Tophap_MapboxGl_Proto_Source.Unknown {
+  var unknown: Com_Tophap_Mapboxgl_Proto_Source.Unknown {
     get {
       if case .unknown(let v)? = _storage._type {return v}
-      return Com_Tophap_MapboxGl_Proto_Source.Unknown()
+      return Com_Tophap_Mapboxgl_Proto_Source.Unknown()
     }
     set {_uniqueStorage()._type = .unknown(newValue)}
   }
@@ -85,15 +85,15 @@ struct Com_Tophap_MapboxGl_Proto_Source {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_Type: Equatable {
-    case geoJson(Com_Tophap_MapboxGl_Proto_Source.GeoJson)
-    case image(Com_Tophap_MapboxGl_Proto_Source.Image)
-    case rasterDem(Com_Tophap_MapboxGl_Proto_Source.RasterDem)
-    case raster(Com_Tophap_MapboxGl_Proto_Source.Raster)
-    case vector(Com_Tophap_MapboxGl_Proto_Source.Vector)
-    case unknown(Com_Tophap_MapboxGl_Proto_Source.Unknown)
+    case geoJson(Com_Tophap_Mapboxgl_Proto_Source.GeoJson)
+    case image(Com_Tophap_Mapboxgl_Proto_Source.Image)
+    case rasterDem(Com_Tophap_Mapboxgl_Proto_Source.RasterDem)
+    case raster(Com_Tophap_Mapboxgl_Proto_Source.Raster)
+    case vector(Com_Tophap_Mapboxgl_Proto_Source.Vector)
+    case unknown(Com_Tophap_Mapboxgl_Proto_Source.Unknown)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.OneOf_Type, rhs: Com_Tophap_MapboxGl_Proto_Source.OneOf_Type) -> Bool {
+    static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.OneOf_Type, rhs: Com_Tophap_Mapboxgl_Proto_Source.OneOf_Type) -> Bool {
       switch (lhs, rhs) {
       case (.geoJson(let l), .geoJson(let r)): return l == r
       case (.image(let l), .image(let r)): return l == r
@@ -122,8 +122,8 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       set {_uniqueStorage()._attribution = newValue}
     }
 
-    var options: Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options {
-      get {return _storage._options ?? Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options()}
+    var options: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options {
+      get {return _storage._options ?? Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options()}
       set {_uniqueStorage()._options = newValue}
     }
     /// Returns true if `options` has been explicitly set.
@@ -159,7 +159,7 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       case geoJson(String)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.GeoJson.OneOf_Source, rhs: Com_Tophap_MapboxGl_Proto_Source.GeoJson.OneOf_Source) -> Bool {
+      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.OneOf_Source, rhs: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.geoJson(let l), .geoJson(let r)): return l == r
@@ -215,8 +215,8 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       set {_uniqueStorage()._attribution = newValue}
     }
 
-    var coordinates: Com_Tophap_MapboxGl_Proto_LatLngQuad {
-      get {return _storage._coordinates ?? Com_Tophap_MapboxGl_Proto_LatLngQuad()}
+    var coordinates: Com_Tophap_Mapboxgl_Proto_LatLngQuad {
+      get {return _storage._coordinates ?? Com_Tophap_Mapboxgl_Proto_LatLngQuad()}
       set {_uniqueStorage()._coordinates = newValue}
     }
     /// Returns true if `coordinates` has been explicitly set.
@@ -252,7 +252,7 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       case image(Data)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Image.OneOf_Source, rhs: Com_Tophap_MapboxGl_Proto_Source.Image.OneOf_Source) -> Bool {
+      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Image.OneOf_Source, rhs: Com_Tophap_Mapboxgl_Proto_Source.Image.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.image(let l), .image(let r)): return l == r
@@ -300,10 +300,10 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       set {_uniqueStorage()._source = .uri(newValue)}
     }
 
-    var tileSet: Com_Tophap_MapboxGl_Proto_Source.TileSet {
+    var tileSet: Com_Tophap_Mapboxgl_Proto_Source.TileSet {
       get {
         if case .tileSet(let v)? = _storage._source {return v}
-        return Com_Tophap_MapboxGl_Proto_Source.TileSet()
+        return Com_Tophap_Mapboxgl_Proto_Source.TileSet()
       }
       set {_uniqueStorage()._source = .tileSet(newValue)}
     }
@@ -312,10 +312,10 @@ struct Com_Tophap_MapboxGl_Proto_Source {
 
     enum OneOf_Source: Equatable {
       case uri(String)
-      case tileSet(Com_Tophap_MapboxGl_Proto_Source.TileSet)
+      case tileSet(Com_Tophap_Mapboxgl_Proto_Source.TileSet)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.RasterDem.OneOf_Source, rhs: Com_Tophap_MapboxGl_Proto_Source.RasterDem.OneOf_Source) -> Bool {
+      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.RasterDem.OneOf_Source, rhs: Com_Tophap_Mapboxgl_Proto_Source.RasterDem.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.tileSet(let l), .tileSet(let r)): return l == r
@@ -363,10 +363,10 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       set {_uniqueStorage()._source = .uri(newValue)}
     }
 
-    var tileSet: Com_Tophap_MapboxGl_Proto_Source.TileSet {
+    var tileSet: Com_Tophap_Mapboxgl_Proto_Source.TileSet {
       get {
         if case .tileSet(let v)? = _storage._source {return v}
-        return Com_Tophap_MapboxGl_Proto_Source.TileSet()
+        return Com_Tophap_Mapboxgl_Proto_Source.TileSet()
       }
       set {_uniqueStorage()._source = .tileSet(newValue)}
     }
@@ -375,10 +375,10 @@ struct Com_Tophap_MapboxGl_Proto_Source {
 
     enum OneOf_Source: Equatable {
       case uri(String)
-      case tileSet(Com_Tophap_MapboxGl_Proto_Source.TileSet)
+      case tileSet(Com_Tophap_Mapboxgl_Proto_Source.TileSet)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Raster.OneOf_Source, rhs: Com_Tophap_MapboxGl_Proto_Source.Raster.OneOf_Source) -> Bool {
+      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Raster.OneOf_Source, rhs: Com_Tophap_Mapboxgl_Proto_Source.Raster.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.tileSet(let l), .tileSet(let r)): return l == r
@@ -421,10 +421,10 @@ struct Com_Tophap_MapboxGl_Proto_Source {
       set {_uniqueStorage()._source = .uri(newValue)}
     }
 
-    var tileSet: Com_Tophap_MapboxGl_Proto_Source.TileSet {
+    var tileSet: Com_Tophap_Mapboxgl_Proto_Source.TileSet {
       get {
         if case .tileSet(let v)? = _storage._source {return v}
-        return Com_Tophap_MapboxGl_Proto_Source.TileSet()
+        return Com_Tophap_Mapboxgl_Proto_Source.TileSet()
       }
       set {_uniqueStorage()._source = .tileSet(newValue)}
     }
@@ -433,10 +433,10 @@ struct Com_Tophap_MapboxGl_Proto_Source {
 
     enum OneOf_Source: Equatable {
       case uri(String)
-      case tileSet(Com_Tophap_MapboxGl_Proto_Source.TileSet)
+      case tileSet(Com_Tophap_Mapboxgl_Proto_Source.TileSet)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Vector.OneOf_Source, rhs: Com_Tophap_MapboxGl_Proto_Source.Vector.OneOf_Source) -> Bool {
+      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Vector.OneOf_Source, rhs: Com_Tophap_Mapboxgl_Proto_Source.Vector.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.tileSet(let l), .tileSet(let r)): return l == r
@@ -514,9 +514,9 @@ struct Com_Tophap_MapboxGl_Proto_Source {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "com.tophap.mapbox_gl.proto"
+fileprivate let _protobuf_package = "com.tophap.mapboxgl.proto"
 
-extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Source"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -530,7 +530,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _type: Com_Tophap_MapboxGl_Proto_Source.OneOf_Type?
+    var _type: Com_Tophap_Mapboxgl_Proto_Source.OneOf_Type?
 
     static let defaultInstance = _StorageClass()
 
@@ -556,7 +556,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
         case 2:
-          var v: Com_Tophap_MapboxGl_Proto_Source.GeoJson?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.GeoJson?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .geoJson(let m) = current {v = m}
@@ -564,7 +564,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .geoJson(v)}
         case 3:
-          var v: Com_Tophap_MapboxGl_Proto_Source.Image?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.Image?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .image(let m) = current {v = m}
@@ -572,7 +572,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .image(v)}
         case 4:
-          var v: Com_Tophap_MapboxGl_Proto_Source.RasterDem?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.RasterDem?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .rasterDem(let m) = current {v = m}
@@ -580,7 +580,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .rasterDem(v)}
         case 5:
-          var v: Com_Tophap_MapboxGl_Proto_Source.Raster?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.Raster?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .raster(let m) = current {v = m}
@@ -588,7 +588,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .raster(v)}
         case 6:
-          var v: Com_Tophap_MapboxGl_Proto_Source.Vector?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.Vector?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .vector(let m) = current {v = m}
@@ -596,7 +596,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .vector(v)}
         case 7:
-          var v: Com_Tophap_MapboxGl_Proto_Source.Unknown?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.Unknown?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .unknown(let m) = current {v = m}
@@ -633,7 +633,7 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source, rhs: Com_Tophap_MapboxGl_Proto_Source) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source, rhs: Com_Tophap_Mapboxgl_Proto_Source) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -649,8 +649,8 @@ extension Com_Tophap_MapboxGl_Proto_Source: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.GeoJson: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".GeoJson"
+extension Com_Tophap_Mapboxgl_Proto_Source.GeoJson: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".GeoJson"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "attribution"),
@@ -662,8 +662,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.GeoJson: SwiftProtobuf.Message, Swift
   fileprivate class _StorageClass {
     var _id: String = String()
     var _attribution: String = String()
-    var _options: Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options? = nil
-    var _source: Com_Tophap_MapboxGl_Proto_Source.GeoJson.OneOf_Source?
+    var _options: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options? = nil
+    var _source: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.OneOf_Source?
 
     static let defaultInstance = _StorageClass()
 
@@ -730,7 +730,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.GeoJson: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.GeoJson, rhs: Com_Tophap_MapboxGl_Proto_Source.GeoJson) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.GeoJson, rhs: Com_Tophap_Mapboxgl_Proto_Source.GeoJson) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -748,8 +748,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.GeoJson: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.GeoJson.protoMessageName + ".Options"
+extension Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.GeoJson.protoMessageName + ".Options"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "min_zoom"),
     2: .standard(proto: "max_zoom"),
@@ -805,7 +805,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options: SwiftProtobuf.Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options, rhs: Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options, rhs: Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options) -> Bool {
     if lhs.minZoom != rhs.minZoom {return false}
     if lhs.maxZoom != rhs.maxZoom {return false}
     if lhs.buffer != rhs.buffer {return false}
@@ -819,8 +819,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.GeoJson.Options: SwiftProtobuf.Messag
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.Image: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".Image"
+extension Com_Tophap_Mapboxgl_Proto_Source.Image: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".Image"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "attribution"),
@@ -832,8 +832,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.Image: SwiftProtobuf.Message, SwiftPr
   fileprivate class _StorageClass {
     var _id: String = String()
     var _attribution: String = String()
-    var _coordinates: Com_Tophap_MapboxGl_Proto_LatLngQuad? = nil
-    var _source: Com_Tophap_MapboxGl_Proto_Source.Image.OneOf_Source?
+    var _coordinates: Com_Tophap_Mapboxgl_Proto_LatLngQuad? = nil
+    var _source: Com_Tophap_Mapboxgl_Proto_Source.Image.OneOf_Source?
 
     static let defaultInstance = _StorageClass()
 
@@ -900,7 +900,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Image: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Image, rhs: Com_Tophap_MapboxGl_Proto_Source.Image) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Image, rhs: Com_Tophap_Mapboxgl_Proto_Source.Image) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -918,8 +918,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.Image: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.RasterDem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".RasterDem"
+extension Com_Tophap_Mapboxgl_Proto_Source.RasterDem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".RasterDem"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "attribution"),
@@ -932,7 +932,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.RasterDem: SwiftProtobuf.Message, Swi
     var _id: String = String()
     var _attribution: String = String()
     var _tileSize: Int32 = 0
-    var _source: Com_Tophap_MapboxGl_Proto_Source.RasterDem.OneOf_Source?
+    var _source: Com_Tophap_Mapboxgl_Proto_Source.RasterDem.OneOf_Source?
 
     static let defaultInstance = _StorageClass()
 
@@ -967,7 +967,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.RasterDem: SwiftProtobuf.Message, Swi
           try decoder.decodeSingularStringField(value: &v)
           if let v = v {_storage._source = .uri(v)}
         case 5:
-          var v: Com_Tophap_MapboxGl_Proto_Source.TileSet?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.TileSet?
           if let current = _storage._source {
             try decoder.handleConflictingOneOf()
             if case .tileSet(let m) = current {v = m}
@@ -1002,7 +1002,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.RasterDem: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.RasterDem, rhs: Com_Tophap_MapboxGl_Proto_Source.RasterDem) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.RasterDem, rhs: Com_Tophap_Mapboxgl_Proto_Source.RasterDem) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1020,8 +1020,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.RasterDem: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.Raster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".Raster"
+extension Com_Tophap_Mapboxgl_Proto_Source.Raster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".Raster"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "attribution"),
@@ -1034,7 +1034,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Raster: SwiftProtobuf.Message, SwiftP
     var _id: String = String()
     var _attribution: String = String()
     var _tileSize: Int32 = 0
-    var _source: Com_Tophap_MapboxGl_Proto_Source.Raster.OneOf_Source?
+    var _source: Com_Tophap_Mapboxgl_Proto_Source.Raster.OneOf_Source?
 
     static let defaultInstance = _StorageClass()
 
@@ -1069,7 +1069,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Raster: SwiftProtobuf.Message, SwiftP
           try decoder.decodeSingularStringField(value: &v)
           if let v = v {_storage._source = .uri(v)}
         case 5:
-          var v: Com_Tophap_MapboxGl_Proto_Source.TileSet?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.TileSet?
           if let current = _storage._source {
             try decoder.handleConflictingOneOf()
             if case .tileSet(let m) = current {v = m}
@@ -1104,7 +1104,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Raster: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Raster, rhs: Com_Tophap_MapboxGl_Proto_Source.Raster) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Raster, rhs: Com_Tophap_Mapboxgl_Proto_Source.Raster) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1122,8 +1122,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.Raster: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.Vector: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".Vector"
+extension Com_Tophap_Mapboxgl_Proto_Source.Vector: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".Vector"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "attribution"),
@@ -1134,7 +1134,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Vector: SwiftProtobuf.Message, SwiftP
   fileprivate class _StorageClass {
     var _id: String = String()
     var _attribution: String = String()
-    var _source: Com_Tophap_MapboxGl_Proto_Source.Vector.OneOf_Source?
+    var _source: Com_Tophap_Mapboxgl_Proto_Source.Vector.OneOf_Source?
 
     static let defaultInstance = _StorageClass()
 
@@ -1167,7 +1167,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Vector: SwiftProtobuf.Message, SwiftP
           try decoder.decodeSingularStringField(value: &v)
           if let v = v {_storage._source = .uri(v)}
         case 4:
-          var v: Com_Tophap_MapboxGl_Proto_Source.TileSet?
+          var v: Com_Tophap_Mapboxgl_Proto_Source.TileSet?
           if let current = _storage._source {
             try decoder.handleConflictingOneOf()
             if case .tileSet(let m) = current {v = m}
@@ -1199,7 +1199,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Vector: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Vector, rhs: Com_Tophap_MapboxGl_Proto_Source.Vector) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Vector, rhs: Com_Tophap_Mapboxgl_Proto_Source.Vector) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1216,8 +1216,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.Vector: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.Unknown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".Unknown"
+extension Com_Tophap_Mapboxgl_Proto_Source.Unknown: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".Unknown"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "attribution"),
@@ -1243,7 +1243,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.Unknown: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.Unknown, rhs: Com_Tophap_MapboxGl_Proto_Source.Unknown) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.Unknown, rhs: Com_Tophap_Mapboxgl_Proto_Source.Unknown) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.attribution != rhs.attribution {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -1251,8 +1251,8 @@ extension Com_Tophap_MapboxGl_Proto_Source.Unknown: SwiftProtobuf.Message, Swift
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Source.TileSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_MapboxGl_Proto_Source.protoMessageName + ".TileSet"
+extension Com_Tophap_Mapboxgl_Proto_Source.TileSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Source.protoMessageName + ".TileSet"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "tile_json"),
     2: .same(proto: "name"),
@@ -1348,7 +1348,7 @@ extension Com_Tophap_MapboxGl_Proto_Source.TileSet: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Source.TileSet, rhs: Com_Tophap_MapboxGl_Proto_Source.TileSet) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Source.TileSet, rhs: Com_Tophap_Mapboxgl_Proto_Source.TileSet) -> Bool {
     if lhs.tileJson != rhs.tileJson {return false}
     if lhs.name != rhs.name {return false}
     if lhs.description_p != rhs.description_p {return false}

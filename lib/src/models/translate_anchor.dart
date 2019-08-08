@@ -2,8 +2,8 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-import 'package:mapbox_gl/mapbox_gl.dart';
-import 'package:mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:mapboxgl/mapboxgl.dart';
+import 'package:mapboxgl/src/models/proto/index.dart' as pb;
 
 class TranslateAnchor extends ExpressionLiteral {
   const TranslateAnchor._(this._i, String value) : super(value);

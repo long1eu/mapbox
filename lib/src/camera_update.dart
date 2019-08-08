@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-part of mapbox_gl;
+part of mapboxgl;
 
 /// Factory for creating CameraUpdate objects.
 class CameraUpdate {

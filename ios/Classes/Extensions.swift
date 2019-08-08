@@ -3,6 +3,66 @@
 //
 
 import Mapbox
+import SwiftProtobuf
+
+extension NSExpression {
+    var proto: SwiftProtobuf.Google_Protobuf_StringValue {
+        return SwiftProtobuf.Google_Protobuf_StringValue.with {
+            let data = try! JSONSerialization.data(withJSONObject: mgl_jsonExpressionObject)
+            $0.value = String(data: data, encoding: .utf8)!
+        }
+    }
+}
+
+extension NSPredicate {
+    var proto: SwiftProtobuf.Google_Protobuf_StringValue {
+        return SwiftProtobuf.Google_Protobuf_StringValue.with {
+            let data = try! JSONSerialization.data(withJSONObject: mgl_jsonExpressionObject)
+            $0.value = String(data: data, encoding: .utf8)!
+        }
+    }
+}
+
+extension String {
+    var uri: URL {
+        return URL(string: self)!
+    }
+
+    var proto: SwiftProtobuf.Google_Protobuf_StringValue {
+        return SwiftProtobuf.Google_Protobuf_StringValue.with {
+            $0.value = self
+        }
+    }
+}
+
+extension Int32 {
+    var cgFloat: CGFloat {
+        return CGFloat(self)
+    }
+}
+
+extension Bool {
+    var proto: SwiftProtobuf.Google_Protobuf_BoolValue {
+        return SwiftProtobuf.Google_Protobuf_BoolValue.with {
+            $0.value = self
+        }
+    }
+}
+
+extension Float {
+    var proto: SwiftProtobuf.Google_Protobuf_FloatValue {
+        return SwiftProtobuf.Google_Protobuf_FloatValue.with {
+            $0.value = self
+        }
+    }
+}
+
+extension SwiftProtobuf.Google_Protobuf_StringValue {
+    var expression: NSExpression {
+        let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
+        return NSExpression(mglJSONObject: array)
+    }
+}
 
 extension MGLIconAnchor {
     func proto() -> Com_Tophap_MapboxGl_Proto_PositionAnchor {
@@ -76,11 +136,11 @@ extension CLLocationCoordinate2D {
 
 extension MGLTransition {
     // get it from style
-    func proto(performsPlacementTransitions: Bool) -> Com_Tophap_MapboxGl_Proto_TransitionOptions {
+    var proto: Com_Tophap_MapboxGl_Proto_TransitionOptions {
         return Com_Tophap_MapboxGl_Proto_TransitionOptions.with {
             $0.duration = Int64(duration * 1000)
             $0.delay = Int64(delay * 1000)
-            $0.enablePlacementTransitions = performsPlacementTransitions
+            $0.enablePlacementTransitions = true
         }
     }
 }

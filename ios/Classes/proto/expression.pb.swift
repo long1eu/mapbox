@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Com_Tophap_MapboxGl_Proto_Expression {
+struct Com_Tophap_Mapboxgl_Proto_Expression {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,7 +29,7 @@ struct Com_Tophap_MapboxGl_Proto_Expression {
     set {_uniqueStorage()._operator = newValue}
   }
 
-  var arguments: [Com_Tophap_MapboxGl_Proto_Expression] {
+  var arguments: [Com_Tophap_Mapboxgl_Proto_Expression] {
     get {return _storage._arguments}
     set {_uniqueStorage()._arguments = newValue}
   }
@@ -39,18 +39,18 @@ struct Com_Tophap_MapboxGl_Proto_Expression {
     set {_uniqueStorage()._data = newValue}
   }
 
-  var map: Com_Tophap_MapboxGl_Proto_MapExpression {
+  var map: Com_Tophap_Mapboxgl_Proto_MapExpression {
     get {
       if case .map(let v)? = _storage._data {return v}
-      return Com_Tophap_MapboxGl_Proto_MapExpression()
+      return Com_Tophap_Mapboxgl_Proto_MapExpression()
     }
     set {_uniqueStorage()._data = .map(newValue)}
   }
 
-  var literal: Com_Tophap_MapboxGl_Proto_Value {
+  var literal: Com_Tophap_Mapboxgl_Proto_Value {
     get {
       if case .literal(let v)? = _storage._data {return v}
-      return Com_Tophap_MapboxGl_Proto_Value()
+      return Com_Tophap_Mapboxgl_Proto_Value()
     }
     set {_uniqueStorage()._data = .literal(newValue)}
   }
@@ -58,11 +58,11 @@ struct Com_Tophap_MapboxGl_Proto_Expression {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_Data: Equatable {
-    case map(Com_Tophap_MapboxGl_Proto_MapExpression)
-    case literal(Com_Tophap_MapboxGl_Proto_Value)
+    case map(Com_Tophap_Mapboxgl_Proto_MapExpression)
+    case literal(Com_Tophap_Mapboxgl_Proto_Value)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Com_Tophap_MapboxGl_Proto_Expression.OneOf_Data, rhs: Com_Tophap_MapboxGl_Proto_Expression.OneOf_Data) -> Bool {
+    static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Expression.OneOf_Data, rhs: Com_Tophap_Mapboxgl_Proto_Expression.OneOf_Data) -> Bool {
       switch (lhs, rhs) {
       case (.map(let l), .map(let r)): return l == r
       case (.literal(let l), .literal(let r)): return l == r
@@ -77,7 +77,7 @@ struct Com_Tophap_MapboxGl_Proto_Expression {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct Com_Tophap_MapboxGl_Proto_Value {
+struct Com_Tophap_Mapboxgl_Proto_Value {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -119,10 +119,10 @@ struct Com_Tophap_MapboxGl_Proto_Value {
     set {_uniqueStorage()._kind = .boolValue(newValue)}
   }
 
-  var listValue: Com_Tophap_MapboxGl_Proto_ListValue {
+  var listValue: Com_Tophap_Mapboxgl_Proto_ListValue {
     get {
       if case .listValue(let v)? = _storage._kind {return v}
-      return Com_Tophap_MapboxGl_Proto_ListValue()
+      return Com_Tophap_Mapboxgl_Proto_ListValue()
     }
     set {_uniqueStorage()._kind = .listValue(newValue)}
   }
@@ -134,10 +134,10 @@ struct Com_Tophap_MapboxGl_Proto_Value {
     case doubleValue(Double)
     case stringValue(String)
     case boolValue(Bool)
-    case listValue(Com_Tophap_MapboxGl_Proto_ListValue)
+    case listValue(Com_Tophap_Mapboxgl_Proto_ListValue)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Com_Tophap_MapboxGl_Proto_Value.OneOf_Kind, rhs: Com_Tophap_MapboxGl_Proto_Value.OneOf_Kind) -> Bool {
+    static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Value.OneOf_Kind, rhs: Com_Tophap_Mapboxgl_Proto_Value.OneOf_Kind) -> Bool {
       switch (lhs, rhs) {
       case (.intValue(let l), .intValue(let r)): return l == r
       case (.doubleValue(let l), .doubleValue(let r)): return l == r
@@ -155,24 +155,24 @@ struct Com_Tophap_MapboxGl_Proto_Value {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct Com_Tophap_MapboxGl_Proto_ListValue {
+struct Com_Tophap_Mapboxgl_Proto_ListValue {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var values: [Com_Tophap_MapboxGl_Proto_Value] = []
+  var values: [Com_Tophap_Mapboxgl_Proto_Value] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct Com_Tophap_MapboxGl_Proto_MapExpression {
+struct Com_Tophap_Mapboxgl_Proto_MapExpression {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var map: Dictionary<String,Com_Tophap_MapboxGl_Proto_Expression> = [:]
+  var map: Dictionary<String,Com_Tophap_Mapboxgl_Proto_Expression> = [:]
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -181,9 +181,9 @@ struct Com_Tophap_MapboxGl_Proto_MapExpression {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "com.tophap.mapbox_gl.proto"
+fileprivate let _protobuf_package = "com.tophap.mapboxgl.proto"
 
-extension Com_Tophap_MapboxGl_Proto_Expression: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_Expression: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Expression"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "operator"),
@@ -194,8 +194,8 @@ extension Com_Tophap_MapboxGl_Proto_Expression: SwiftProtobuf.Message, SwiftProt
 
   fileprivate class _StorageClass {
     var _operator: String = String()
-    var _arguments: [Com_Tophap_MapboxGl_Proto_Expression] = []
-    var _data: Com_Tophap_MapboxGl_Proto_Expression.OneOf_Data?
+    var _arguments: [Com_Tophap_Mapboxgl_Proto_Expression] = []
+    var _data: Com_Tophap_Mapboxgl_Proto_Expression.OneOf_Data?
 
     static let defaultInstance = _StorageClass()
 
@@ -223,7 +223,7 @@ extension Com_Tophap_MapboxGl_Proto_Expression: SwiftProtobuf.Message, SwiftProt
         case 1: try decoder.decodeSingularStringField(value: &_storage._operator)
         case 2: try decoder.decodeRepeatedMessageField(value: &_storage._arguments)
         case 3:
-          var v: Com_Tophap_MapboxGl_Proto_MapExpression?
+          var v: Com_Tophap_Mapboxgl_Proto_MapExpression?
           if let current = _storage._data {
             try decoder.handleConflictingOneOf()
             if case .map(let m) = current {v = m}
@@ -231,7 +231,7 @@ extension Com_Tophap_MapboxGl_Proto_Expression: SwiftProtobuf.Message, SwiftProt
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._data = .map(v)}
         case 4:
-          var v: Com_Tophap_MapboxGl_Proto_Value?
+          var v: Com_Tophap_Mapboxgl_Proto_Value?
           if let current = _storage._data {
             try decoder.handleConflictingOneOf()
             if case .literal(let m) = current {v = m}
@@ -263,7 +263,7 @@ extension Com_Tophap_MapboxGl_Proto_Expression: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Expression, rhs: Com_Tophap_MapboxGl_Proto_Expression) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Expression, rhs: Com_Tophap_Mapboxgl_Proto_Expression) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -280,7 +280,7 @@ extension Com_Tophap_MapboxGl_Proto_Expression: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Value: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_Value: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Value"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "int_value"),
@@ -291,7 +291,7 @@ extension Com_Tophap_MapboxGl_Proto_Value: SwiftProtobuf.Message, SwiftProtobuf.
   ]
 
   fileprivate class _StorageClass {
-    var _kind: Com_Tophap_MapboxGl_Proto_Value.OneOf_Kind?
+    var _kind: Com_Tophap_Mapboxgl_Proto_Value.OneOf_Kind?
 
     static let defaultInstance = _StorageClass()
 
@@ -335,7 +335,7 @@ extension Com_Tophap_MapboxGl_Proto_Value: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularBoolField(value: &v)
           if let v = v {_storage._kind = .boolValue(v)}
         case 5:
-          var v: Com_Tophap_MapboxGl_Proto_ListValue?
+          var v: Com_Tophap_Mapboxgl_Proto_ListValue?
           if let current = _storage._kind {
             try decoder.handleConflictingOneOf()
             if case .listValue(let m) = current {v = m}
@@ -367,7 +367,7 @@ extension Com_Tophap_MapboxGl_Proto_Value: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_Value, rhs: Com_Tophap_MapboxGl_Proto_Value) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Value, rhs: Com_Tophap_Mapboxgl_Proto_Value) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -382,7 +382,7 @@ extension Com_Tophap_MapboxGl_Proto_Value: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_ListValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_ListValue: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ListValue"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "values"),
@@ -404,14 +404,14 @@ extension Com_Tophap_MapboxGl_Proto_ListValue: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_ListValue, rhs: Com_Tophap_MapboxGl_Proto_ListValue) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_ListValue, rhs: Com_Tophap_Mapboxgl_Proto_ListValue) -> Bool {
     if lhs.values != rhs.values {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Com_Tophap_MapboxGl_Proto_MapExpression: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Com_Tophap_Mapboxgl_Proto_MapExpression: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".MapExpression"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "map"),
@@ -420,7 +420,7 @@ extension Com_Tophap_MapboxGl_Proto_MapExpression: SwiftProtobuf.Message, SwiftP
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
-      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,Com_Tophap_MapboxGl_Proto_Expression>.self, value: &self.map)
+      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,Com_Tophap_Mapboxgl_Proto_Expression>.self, value: &self.map)
       default: break
       }
     }
@@ -428,12 +428,12 @@ extension Com_Tophap_MapboxGl_Proto_MapExpression: SwiftProtobuf.Message, SwiftP
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.map.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,Com_Tophap_MapboxGl_Proto_Expression>.self, value: self.map, fieldNumber: 1)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,Com_Tophap_Mapboxgl_Proto_Expression>.self, value: self.map, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_MapboxGl_Proto_MapExpression, rhs: Com_Tophap_MapboxGl_Proto_MapExpression) -> Bool {
+  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_MapExpression, rhs: Com_Tophap_Mapboxgl_Proto_MapExpression) -> Bool {
     if lhs.map != rhs.map {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

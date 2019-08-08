@@ -10,10 +10,10 @@ const Style$json = const {
   '2': const [
     const {'1': 'uri', '3': 1, '4': 1, '5': 9, '10': 'uri'},
     const {'1': 'json', '3': 2, '4': 1, '5': 9, '10': 'json'},
-    const {'1': 'sources', '3': 3, '4': 3, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Source', '10': 'sources'},
-    const {'1': 'layers', '3': 4, '4': 3, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Layer', '10': 'layers'},
-    const {'1': 'transition', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.TransitionOptions', '10': 'transition'},
-    const {'1': 'light', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Style.Light', '10': 'light'},
+    const {'1': 'sources', '3': 3, '4': 3, '5': 11, '6': '.com.tophap.mapboxgl.proto.Source', '10': 'sources'},
+    const {'1': 'layers', '3': 4, '4': 3, '5': 11, '6': '.com.tophap.mapboxgl.proto.Layer', '10': 'layers'},
+    const {'1': 'transition', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.TransitionOptions', '10': 'transition'},
+    const {'1': 'light', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.Style.Light', '10': 'light'},
   ],
   '3': const [Style_Light$json, Style_Position$json, Style_Operations$json],
   '4': const [Style_MapboxStyle$json],
@@ -22,13 +22,13 @@ const Style$json = const {
 const Style_Light$json = const {
   '1': 'Light',
   '2': const [
-    const {'1': 'anchor', '3': 1, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.TranslateAnchor', '10': 'anchor'},
-    const {'1': 'position', '3': 2, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Style.Position', '10': 'position'},
-    const {'1': 'color', '3': 3, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.Color', '10': 'color'},
+    const {'1': 'anchor', '3': 1, '4': 1, '5': 14, '6': '.com.tophap.mapboxgl.proto.TranslateAnchor', '10': 'anchor'},
+    const {'1': 'position', '3': 2, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.Style.Position', '10': 'position'},
+    const {'1': 'color', '3': 3, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.Color', '10': 'color'},
     const {'1': 'intensity', '3': 4, '4': 1, '5': 2, '10': 'intensity'},
-    const {'1': 'positionTransition', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.TransitionOptions', '10': 'positionTransition'},
-    const {'1': 'colorTransition', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.TransitionOptions', '10': 'colorTransition'},
-    const {'1': 'intensityTransition', '3': 7, '4': 1, '5': 11, '6': '.com.tophap.mapbox_gl.proto.TransitionOptions', '10': 'intensityTransition'},
+    const {'1': 'positionTransition', '3': 5, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.TransitionOptions', '10': 'positionTransition'},
+    const {'1': 'colorTransition', '3': 6, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.TransitionOptions', '10': 'colorTransition'},
+    const {'1': 'intensityTransition', '3': 7, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.TransitionOptions', '10': 'intensityTransition'},
   ],
 };
 
@@ -49,7 +49,7 @@ const Style_Operations$json = const {
 const Style_Operations_Build$json = const {
   '1': 'Build',
   '2': const [
-    const {'1': 'default', '3': 1, '4': 1, '5': 14, '6': '.com.tophap.mapbox_gl.proto.Style.MapboxStyle', '9': 0, '10': 'default'},
+    const {'1': 'default', '3': 1, '4': 1, '5': 14, '6': '.com.tophap.mapboxgl.proto.Style.MapboxStyle', '9': 0, '10': 'default'},
     const {'1': 'uri', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'uri'},
     const {'1': 'json', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'json'},
   ],

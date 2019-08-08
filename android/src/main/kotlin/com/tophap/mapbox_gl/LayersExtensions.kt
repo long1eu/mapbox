@@ -6,6 +6,7 @@ import com.tophap.mapbox_gl.proto.Layers
 
 fun Layer.toProto(): Layers.Layer {
     val sourceBuilder = Layers.Layer.newBuilder()
+    sourceBuilder.id = id
     when {
         this is BackgroundLayer -> sourceBuilder.backgroundLayer = toProto()
         this is CircleLayer -> sourceBuilder.circleLayer = toProto()

@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-part of mapbox_gl;
+part of mapboxgl;
 
 class MapController {
   MapController._({@required final pb.Map__Operations_Ready info, Stream<MethodCall> calls})
@@ -10,7 +10,7 @@ class MapController {
         assert(calls != null),
         _calls = calls,
         _viewId = info.viewId,
-        _channel = MethodChannel('com.tophap/mapbox_gl_factory_${info.viewId}'),
+        _channel = MethodChannel('com.tophap/mapboxgl_factory_${info.viewId}'),
         _prefetchesTiles = info.prefetchesTiles,
         _minZoom = info.minZoom,
         _maxZoom = info.maxZoom,

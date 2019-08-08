@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:mapboxgl/mapboxgl.dart';
 
 class SymbolTextTransform extends ExpressionLiteral {
   const SymbolTextTransform._(this._i, String value) : super(value);

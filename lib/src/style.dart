@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-part of mapbox_gl;
+part of mapboxgl;
 
 class Style {
   Style._({@required MethodChannel channel, @required StyleModel style})

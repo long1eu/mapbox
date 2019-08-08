@@ -4,7 +4,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:mapboxgl/mapboxgl.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 import '../page.dart';
