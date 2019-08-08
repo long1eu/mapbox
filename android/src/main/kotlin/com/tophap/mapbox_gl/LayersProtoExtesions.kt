@@ -177,33 +177,6 @@ fun Layers.Layer.Hillshade.fieldValue(): HillshadeLayer {
     return layer
 }
 
-fun Layers.Layer.Raster.fieldValue(): RasterLayer {
-    val layer = RasterLayer(id, sourceId.value)
-    layer.minZoom = minZoom.value
-    layer.maxZoom = maxZoom.value
-
-    val expressions = mutableListOf<PropertyValue<out Any>>()
-    expressions.add(PropertyFactory.visibility(if (visible.value) Property.VISIBLE else Property.NONE))
-    if (hasSourceLayer()) layer.setSourceLayer(sourceLayer.value)
-    if (hasOpacity()) expressions.add(PropertyFactory.rasterOpacity(opacity.fieldValue()))
-    if (hasHueRotate()) expressions.add(PropertyFactory.rasterHueRotate(hueRotate.fieldValue()))
-    if (hasBrightnessMin()) expressions.add(PropertyFactory.rasterBrightnessMin(brightnessMin.fieldValue()))
-    if (hasBrightnessMax()) expressions.add(PropertyFactory.rasterBrightnessMax(brightnessMax.fieldValue()))
-    if (hasSaturation()) expressions.add(PropertyFactory.rasterSaturation(saturation.fieldValue()))
-    if (hasContrast()) expressions.add(PropertyFactory.rasterContrast(contrast.fieldValue()))
-    if (hasResampling()) expressions.add(PropertyFactory.rasterResampling(resampling.fieldValue()))
-    if (hasFadeDuration()) expressions.add(PropertyFactory.rasterFadeDuration(fadeDuration.fieldValue()))
-
-    layer.rasterOpacityTransition = opacityTransition.fieldValue()
-    layer.rasterHueRotateTransition = hueRotateTransition.fieldValue()
-    layer.rasterBrightnessMinTransition = brightnessMinTransition.fieldValue()
-    layer.rasterBrightnessMaxTransition = brightnessMaxTransition.fieldValue()
-    layer.rasterSaturationTransition = saturationTransition.fieldValue()
-    layer.rasterContrastTransition = contrastTransition.fieldValue()
-
-    return layer
-}
-
 fun Layers.Layer.Line.fieldValue(): LineLayer {
     val layer = LineLayer(id, sourceId.value)
     layer.minZoom = minZoom.value
@@ -238,6 +211,33 @@ fun Layers.Layer.Line.fieldValue(): LineLayer {
     layer.lineBlurTransition = blurTransition.fieldValue()
     layer.lineDasharrayTransition = dasharrayTransition.fieldValue()
     layer.linePatternTransition = patternTransition.fieldValue()
+
+    return layer
+}
+
+fun Layers.Layer.Raster.fieldValue(): RasterLayer {
+    val layer = RasterLayer(id, sourceId.value)
+    layer.minZoom = minZoom.value
+    layer.maxZoom = maxZoom.value
+
+    val expressions = mutableListOf<PropertyValue<out Any>>()
+    expressions.add(PropertyFactory.visibility(if (visible.value) Property.VISIBLE else Property.NONE))
+    if (hasSourceLayer()) layer.setSourceLayer(sourceLayer.value)
+    if (hasOpacity()) expressions.add(PropertyFactory.rasterOpacity(opacity.fieldValue()))
+    if (hasHueRotate()) expressions.add(PropertyFactory.rasterHueRotate(hueRotate.fieldValue()))
+    if (hasBrightnessMin()) expressions.add(PropertyFactory.rasterBrightnessMin(brightnessMin.fieldValue()))
+    if (hasBrightnessMax()) expressions.add(PropertyFactory.rasterBrightnessMax(brightnessMax.fieldValue()))
+    if (hasSaturation()) expressions.add(PropertyFactory.rasterSaturation(saturation.fieldValue()))
+    if (hasContrast()) expressions.add(PropertyFactory.rasterContrast(contrast.fieldValue()))
+    if (hasResampling()) expressions.add(PropertyFactory.rasterResampling(resampling.fieldValue()))
+    if (hasFadeDuration()) expressions.add(PropertyFactory.rasterFadeDuration(fadeDuration.fieldValue()))
+
+    layer.rasterOpacityTransition = opacityTransition.fieldValue()
+    layer.rasterHueRotateTransition = hueRotateTransition.fieldValue()
+    layer.rasterBrightnessMinTransition = brightnessMinTransition.fieldValue()
+    layer.rasterBrightnessMaxTransition = brightnessMaxTransition.fieldValue()
+    layer.rasterSaturationTransition = saturationTransition.fieldValue()
+    layer.rasterContrastTransition = contrastTransition.fieldValue()
 
     return layer
 }
@@ -320,254 +320,4 @@ fun Layers.Layer.Symbol.fieldValue(): SymbolLayer {
     layer.textTranslateTransition = textTranslateTransition.fieldValue()
 
     return layer
-}
-
-fun Layer.update(layer: Layers.Layer) {
-    when {
-        this is BackgroundLayer -> update(layer.backgroundLayer)
-        this is CircleLayer -> update(layer.circleLayer)
-        this is FillLayer -> update(layer.fillLayer)
-        this is FillExtrusionLayer -> update(layer.fillExtrusionLayer)
-        this is HeatmapLayer -> update(layer.heatmapLayer)
-        this is HillshadeLayer -> update(layer.hillshadeLayer)
-        this is LineLayer -> update(layer.lineLayer)
-        this is RasterLayer -> update(layer.rasterLayer)
-        this is SymbolLayer -> update(layer.symbolLayer)
-        else -> throw IllegalArgumentException("Unknown layer type $this")
-    }
-}
-
-
-fun BackgroundLayer.update(layer: Layers.Layer.Background) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.maxZoom.value
-    if (layer.hasColor()) setProperties(PropertyFactory.backgroundColor(layer.color.fieldValue()))
-    if (layer.hasPattern()) setProperties(PropertyFactory.backgroundPattern(layer.pattern.fieldValue()))
-    if (layer.hasOpacity()) setProperties(PropertyFactory.backgroundOpacity(layer.opacity.fieldValue()))
-    if (layer.hasColorTransition()) backgroundColorTransition = layer.colorTransition.fieldValue()
-    if (layer.hasPatternTransition()) backgroundPatternTransition = layer.patternTransition.fieldValue()
-    if (layer.hasOpacityTransition()) backgroundOpacityTransition = layer.opacityTransition.fieldValue()
-
-}
-
-fun CircleLayer.update(layer: Layers.Layer.Circle) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) sourceLayer = layer.sourceLayer.value
-    if (layer.hasRadius()) setProperties(PropertyFactory.circleRadius(layer.radius.fieldValue()))
-    if (layer.hasColor()) setProperties(PropertyFactory.circleColor(layer.color.fieldValue()))
-    if (layer.hasBlur()) setProperties(PropertyFactory.circleBlur(layer.blur.fieldValue()))
-    if (layer.hasOpacity()) setProperties(PropertyFactory.circleOpacity(layer.opacity.fieldValue()))
-    if (layer.hasTranslate()) setProperties(PropertyFactory.circleTranslate(layer.translate.fieldValue()))
-    if (layer.hasTranslateAnchor()) setProperties(PropertyFactory.circleTranslateAnchor(layer.translateAnchor.fieldValue()))
-    if (layer.hasPitchScale()) setProperties(PropertyFactory.circlePitchScale(layer.pitchScale.fieldValue()))
-    if (layer.hasPitchAlignment()) setProperties(PropertyFactory.circlePitchAlignment(layer.pitchAlignment.fieldValue()))
-    if (layer.hasStrokeWidth()) setProperties(PropertyFactory.circleStrokeWidth(layer.strokeWidth.fieldValue()))
-    if (layer.hasStrokeColor()) setProperties(PropertyFactory.circleStrokeColor(layer.strokeColor.fieldValue()))
-    if (layer.hasStrokeOpacity()) setProperties(PropertyFactory.circleStrokeOpacity(layer.strokeOpacity.fieldValue()))
-    if (layer.hasRadiusTransition()) circleRadiusTransition = layer.radiusTransition.fieldValue()
-    if (layer.hasColorTransition()) circleColorTransition = layer.colorTransition.fieldValue()
-    if (layer.hasBlurTransition()) circleBlurTransition = layer.blurTransition.fieldValue()
-    if (layer.hasOpacityTransition()) circleOpacityTransition = layer.opacityTransition.fieldValue()
-    if (layer.hasTranslateTransition()) circleTranslateTransition = layer.translateTransition.fieldValue()
-    if (layer.hasStrokeWidthTransition()) circleStrokeWidthTransition = layer.strokeWidthTransition.fieldValue()
-    if (layer.hasStrokeColorTransition()) circleStrokeColorTransition = layer.strokeColorTransition.fieldValue()
-    if (layer.hasStrokeOpacityTransition()) circleStrokeOpacityTransition = layer.strokeOpacityTransition.fieldValue()
-}
-
-fun FillLayer.update(layer: Layers.Layer.Fill) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) sourceLayer = layer.sourceLayer.value
-    if (layer.hasAntialias()) setProperties(PropertyFactory.fillAntialias(layer.antialias.fieldValue()))
-    if (layer.hasOpacity()) setProperties(PropertyFactory.fillOpacity(layer.opacity.fieldValue()))
-    if (layer.hasColor()) setProperties(PropertyFactory.fillColor(layer.color.fieldValue()))
-    if (layer.hasOutlineColor()) setProperties(PropertyFactory.fillOutlineColor(layer.outlineColor.fieldValue()))
-    if (layer.hasTranslate()) setProperties(PropertyFactory.fillTranslate(layer.translate.fieldValue()))
-    if (layer.hasTranslateAnchor()) setProperties(PropertyFactory.fillTranslateAnchor(layer.translateAnchor.fieldValue()))
-    if (layer.hasPattern()) setProperties(PropertyFactory.fillPattern(layer.pattern.fieldValue()))
-    if (layer.hasOpacityTransition()) fillOpacityTransition = layer.opacityTransition.fieldValue()
-    if (layer.hasColorTransition()) fillColorTransition = layer.colorTransition.fieldValue()
-    if (layer.hasOutlineColorTransition()) fillOutlineColorTransition = layer.outlineColorTransition.fieldValue()
-    if (layer.hasTranslateTransition()) fillTranslateTransition = layer.translateTransition.fieldValue()
-    if (layer.hasPatternTransition()) fillPatternTransition = layer.patternTransition.fieldValue()
-}
-
-fun HeatmapLayer.update(layer: Layers.Layer.Heatmap) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) sourceLayer = layer.sourceLayer.value
-    if (layer.hasRadius()) setProperties(PropertyFactory.heatmapRadius(layer.radius.fieldValue()))
-    if (layer.hasWeight()) setProperties(PropertyFactory.heatmapWeight(layer.weight.fieldValue()))
-    if (layer.hasIntensity()) setProperties(PropertyFactory.heatmapIntensity(layer.intensity.fieldValue()))
-    if (layer.hasColor()) setProperties(PropertyFactory.heatmapColor(layer.color.fieldValue()))
-    if (layer.hasOpacity()) setProperties(PropertyFactory.heatmapOpacity(layer.opacity.fieldValue()))
-    if (layer.hasRadiusTransition()) heatmapRadiusTransition = layer.radiusTransition.fieldValue()
-    if (layer.hasIntensityTransition()) heatmapIntensityTransition = layer.intensityTransition.fieldValue()
-    if (layer.hasOpacityTransition()) heatmapOpacityTransition = layer.opacityTransition.fieldValue()
-}
-
-fun HillshadeLayer.update(layer: Layers.Layer.Hillshade) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) setSourceLayer(layer.sourceLayer.value)
-    if (layer.hasIlluminationDirection()) setProperties(PropertyFactory.hillshadeIlluminationDirection(layer.illuminationDirection.fieldValue()))
-    if (layer.hasIlluminationAnchor()) setProperties(PropertyFactory.hillshadeIlluminationAnchor(layer.illuminationAnchor.fieldValue()))
-    if (layer.hasExaggeration()) setProperties(PropertyFactory.hillshadeExaggeration(layer.exaggeration.fieldValue()))
-    if (layer.hasShadowColor()) setProperties(PropertyFactory.hillshadeShadowColor(layer.shadowColor.fieldValue()))
-    if (layer.hasHighlightColor()) setProperties(PropertyFactory.hillshadeHighlightColor(layer.highlightColor.fieldValue()))
-    if (layer.hasAccentColor()) setProperties(PropertyFactory.hillshadeAccentColor(layer.accentColor.fieldValue()))
-    if (layer.hasExaggerationTransition()) hillshadeExaggerationTransition = layer.exaggerationTransition.fieldValue()
-    if (layer.hasShadowColorTransition()) hillshadeShadowColorTransition = layer.shadowColorTransition.fieldValue()
-    if (layer.hasHighlightColorTransition()) hillshadeHighlightColorTransition = layer.highlightColorTransition.fieldValue()
-    if (layer.hasAccentColorTransition()) hillshadeAccentColorTransition = layer.accentColorTransition.fieldValue()
-}
-
-fun FillExtrusionLayer.update(layer: Layers.Layer.FillExtrusion) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) sourceLayer = layer.sourceLayer.value
-    if (layer.hasOpacity()) setProperties(PropertyFactory.fillExtrusionOpacity(layer.opacity.fieldValue()))
-    if (layer.hasColor()) setProperties(PropertyFactory.fillExtrusionColor(layer.color.fieldValue()))
-    if (layer.hasTranslate()) setProperties(PropertyFactory.fillExtrusionTranslate(layer.translate.fieldValue()))
-    if (layer.hasTranslateAnchor()) setProperties(PropertyFactory.fillExtrusionTranslateAnchor(layer.translateAnchor.fieldValue()))
-    if (layer.hasPattern()) setProperties(PropertyFactory.fillPattern(layer.pattern.fieldValue()))
-    if (layer.hasHeight()) setProperties(PropertyFactory.fillExtrusionHeight(layer.height.fieldValue()))
-    if (layer.hasBase()) setProperties(PropertyFactory.fillExtrusionBase(layer.base.fieldValue()))
-    if (layer.hasVerticalGradient()) setProperties(PropertyFactory.fillExtrusionVerticalGradient(layer.verticalGradient.fieldValue()))
-    if (layer.hasOpacityTransition()) fillExtrusionOpacityTransition = layer.opacityTransition.fieldValue()
-    if (layer.hasColorTransition()) fillExtrusionColorTransition = layer.colorTransition.fieldValue()
-    if (layer.hasTranslateTransition()) fillExtrusionTranslateTransition = layer.translateTransition.fieldValue()
-    if (layer.hasPatternTransition()) fillExtrusionPatternTransition = layer.patternTransition.fieldValue()
-    if (layer.hasHeightTransition()) fillExtrusionHeightTransition = layer.heightTransition.fieldValue()
-    if (layer.hasBaseTransition()) fillExtrusionBaseTransition = layer.baseTransition.fieldValue()
-}
-
-fun LineLayer.update(layer: Layers.Layer.Line) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) sourceLayer = layer.sourceLayer.value
-    if (layer.hasCap()) setProperties(PropertyFactory.lineCap(layer.cap.fieldValue()))
-    if (layer.hasJoin()) setProperties(PropertyFactory.lineJoin(layer.join.fieldValue()))
-    if (layer.hasMiterLimit()) setProperties(PropertyFactory.lineMiterLimit(layer.miterLimit.fieldValue()))
-    if (layer.hasRoundLimit()) setProperties(PropertyFactory.lineRoundLimit(layer.roundLimit.fieldValue()))
-    if (layer.hasOpacity()) setProperties(PropertyFactory.lineOpacity(layer.opacity.fieldValue()))
-    if (layer.hasColor()) setProperties(PropertyFactory.lineColor(layer.color.fieldValue()))
-    if (layer.hasTranslate()) setProperties(PropertyFactory.lineTranslate(layer.translate.fieldValue()))
-    if (layer.hasTranslateAnchor()) setProperties(PropertyFactory.lineTranslateAnchor(layer.translateAnchor.fieldValue()))
-    if (layer.hasWidth()) setProperties(PropertyFactory.lineWidth(layer.width.fieldValue()))
-    if (layer.hasGapWidth()) setProperties(PropertyFactory.lineGapWidth(layer.gapWidth.fieldValue()))
-    if (layer.hasOffset()) setProperties(PropertyFactory.lineOffset(layer.offset.fieldValue()))
-    if (layer.hasBlur()) setProperties(PropertyFactory.lineBlur(layer.blur.fieldValue()))
-    if (layer.hasDasharray()) setProperties(PropertyFactory.lineDasharray(layer.dasharray.fieldValue()))
-    if (layer.hasPattern()) setProperties(PropertyFactory.linePattern(layer.pattern.fieldValue()))
-    if (layer.hasGradient()) setProperties(PropertyFactory.lineGradient(layer.gradient.fieldValue()))
-    if (layer.hasOpacityTransition()) lineOpacityTransition = layer.opacityTransition.fieldValue()
-    if (layer.hasColorTransition()) lineColorTransition = layer.colorTransition.fieldValue()
-    if (layer.hasTranslateTransition()) lineTranslateTransition = layer.translateTransition.fieldValue()
-    if (layer.hasWidthTransition()) lineWidthTransition = layer.widthTransition.fieldValue()
-    if (layer.hasGapWidthTransition()) lineGapWidthTransition = layer.gapWidthTransition.fieldValue()
-    if (layer.hasOffsetTransition()) lineOffsetTransition = layer.offsetTransition.fieldValue()
-    if (layer.hasBlurTransition()) lineBlurTransition = layer.blurTransition.fieldValue()
-    if (layer.hasDasharrayTransition()) lineDasharrayTransition = layer.dasharrayTransition.fieldValue()
-    if (layer.hasPatternTransition()) linePatternTransition = layer.patternTransition.fieldValue()
-}
-
-fun RasterLayer.update(layer: Layers.Layer.Raster) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) setSourceLayer(layer.sourceLayer.value)
-    if (layer.hasOpacity()) setProperties(PropertyFactory.rasterOpacity(layer.opacity.fieldValue()))
-    if (layer.hasHueRotate()) setProperties(PropertyFactory.rasterHueRotate(layer.hueRotate.fieldValue()))
-    if (layer.hasBrightnessMin()) setProperties(PropertyFactory.rasterBrightnessMin(layer.brightnessMin.fieldValue()))
-    if (layer.hasBrightnessMax()) setProperties(PropertyFactory.rasterBrightnessMax(layer.brightnessMax.fieldValue()))
-    if (layer.hasSaturation()) setProperties(PropertyFactory.rasterSaturation(layer.saturation.fieldValue()))
-    if (layer.hasContrast()) setProperties(PropertyFactory.rasterContrast(layer.contrast.fieldValue()))
-    if (layer.hasResampling()) setProperties(PropertyFactory.rasterResampling(layer.resampling.fieldValue()))
-    if (layer.hasFadeDuration()) setProperties(PropertyFactory.rasterFadeDuration(layer.fadeDuration.fieldValue()))
-    if (layer.hasOpacityTransition()) rasterOpacityTransition = layer.opacityTransition.fieldValue()
-    if (layer.hasHueRotateTransition()) rasterHueRotateTransition = layer.hueRotateTransition.fieldValue()
-    if (layer.hasBrightnessMinTransition()) rasterBrightnessMinTransition = layer.brightnessMinTransition.fieldValue()
-    if (layer.hasBrightnessMaxTransition()) rasterBrightnessMaxTransition = layer.brightnessMaxTransition.fieldValue()
-    if (layer.hasSaturationTransition()) rasterSaturationTransition = layer.saturationTransition.fieldValue()
-    if (layer.hasContrastTransition()) rasterContrastTransition = layer.contrastTransition.fieldValue()
-}
-
-fun SymbolLayer.update(layer: Layers.Layer.Symbol) {
-    if (layer.hasVisible()) setProperties(PropertyFactory.visibility(if (layer.visible.value) Property.VISIBLE else Property.NONE))
-    if (layer.hasMinZoom()) minZoom = layer.minZoom.value
-    if (layer.hasMaxZoom()) maxZoom = layer.minZoom.value
-    if (layer.hasSourceLayer()) sourceLayer = layer.sourceLayer.value
-    if (layer.hasSymbolPlacement()) setProperties(PropertyFactory.symbolPlacement(layer.symbolPlacement.fieldValue()))
-    if (layer.hasSymbolSpacing()) setProperties(PropertyFactory.symbolSpacing(layer.symbolSpacing.fieldValue()))
-    if (layer.hasSymbolAvoidEdges()) setProperties(PropertyFactory.symbolAvoidEdges(layer.symbolAvoidEdges.fieldValue()))
-    if (layer.hasSymbolZOrder()) setProperties(PropertyFactory.symbolZOrder(layer.symbolZOrder.fieldValue()))
-    if (layer.hasIconAllowOverlap()) setProperties(PropertyFactory.iconAllowOverlap(layer.iconAllowOverlap.fieldValue()))
-    if (layer.hasIconIgnorePlacement()) setProperties(PropertyFactory.iconIgnorePlacement(layer.iconIgnorePlacement.fieldValue()))
-    if (layer.hasIconOptional()) setProperties(PropertyFactory.iconOptional(layer.iconOptional.fieldValue()))
-    if (layer.hasIconRotationAlignment()) setProperties(PropertyFactory.iconRotationAlignment(layer.iconRotationAlignment.fieldValue()))
-    if (layer.hasIconSize()) setProperties(PropertyFactory.iconSize(layer.iconSize.fieldValue()))
-    if (layer.hasIconTextFit()) setProperties(PropertyFactory.iconTextFit(layer.iconTextFit.fieldValue()))
-    if (layer.hasIconTextFitPadding()) setProperties(PropertyFactory.iconTextFitPadding(layer.iconTextFitPadding.fieldValue()))
-    if (layer.hasIconImage()) setProperties(PropertyFactory.iconImage(layer.iconImage.fieldValue()))
-    if (layer.hasIconRotate()) setProperties(PropertyFactory.iconRotate(layer.iconRotate.fieldValue()))
-    if (layer.hasIconPadding()) setProperties(PropertyFactory.iconPadding(layer.iconPadding.fieldValue()))
-    if (layer.hasIconKeepUpright()) setProperties(PropertyFactory.iconKeepUpright(layer.iconKeepUpright.fieldValue()))
-    if (layer.hasIconOffset()) setProperties(PropertyFactory.iconOffset(layer.iconOffset.fieldValue()))
-    if (layer.hasIconPitchAlignment()) setProperties(PropertyFactory.iconPitchAlignment(layer.iconPitchAlignment.fieldValue()))
-    if (layer.hasTextPitchAlignment()) setProperties(PropertyFactory.textPitchAlignment(layer.textPitchAlignment.fieldValue()))
-    if (layer.hasTextRotationAlignment()) setProperties(PropertyFactory.textRotationAlignment(layer.textRotationAlignment.fieldValue()))
-    if (layer.hasTextField()) setProperties(PropertyFactory.textField(layer.textField.fieldValue()))
-    if (layer.hasTextFont()) setProperties(PropertyFactory.textFont(layer.textFont.fieldValue()))
-    if (layer.hasTextSize()) setProperties(PropertyFactory.textSize(layer.textSize.fieldValue()))
-    if (layer.hasTextMaxWidth()) setProperties(PropertyFactory.textMaxWidth(layer.textMaxWidth.fieldValue()))
-    if (layer.hasTextLineHeight()) setProperties(PropertyFactory.textLineHeight(layer.textLineHeight.fieldValue()))
-    if (layer.hasTextLetterSpacing()) setProperties(PropertyFactory.textLetterSpacing(layer.textLetterSpacing.fieldValue()))
-    if (layer.hasTextJustify()) setProperties(PropertyFactory.textJustify(layer.textJustify.fieldValue()))
-    if (layer.hasTextRadialOffset()) setProperties(PropertyFactory.textRadialOffset(layer.textRadialOffset.fieldValue()))
-    if (layer.hasTextVariableAnchor()) setProperties(PropertyFactory.textVariableAnchor(layer.textVariableAnchor.fieldValue()))
-    if (layer.hasTextAnchor()) setProperties(PropertyFactory.textAnchor(layer.textAnchor.fieldValue()))
-    if (layer.hasTextMaxAngle()) setProperties(PropertyFactory.textMaxAngle(layer.textMaxAngle.fieldValue()))
-    if (layer.hasTextRotate()) setProperties(PropertyFactory.textRotate(layer.textRotate.fieldValue()))
-    if (layer.hasTextPadding()) setProperties(PropertyFactory.textPadding(layer.textPadding.fieldValue()))
-    if (layer.hasTextKeepUpright()) setProperties(PropertyFactory.textKeepUpright(layer.textKeepUpright.fieldValue()))
-    if (layer.hasTextTransform()) setProperties(PropertyFactory.textTransform(layer.textTransform.fieldValue()))
-    if (layer.hasTextOffset()) setProperties(PropertyFactory.textOffset(layer.textOffset.fieldValue()))
-    if (layer.hasTextAllowOverlap()) setProperties(PropertyFactory.textAllowOverlap(layer.textAllowOverlap.fieldValue()))
-    if (layer.hasTextIgnorePlacement()) setProperties(PropertyFactory.textIgnorePlacement(layer.textIgnorePlacement.fieldValue()))
-    if (layer.hasTextOptional()) setProperties(PropertyFactory.textOptional(layer.textOptional.fieldValue()))
-    if (layer.hasIconOpacity()) setProperties(PropertyFactory.iconOpacity(layer.iconOpacity.fieldValue()))
-    if (layer.hasIconColor()) setProperties(PropertyFactory.iconColor(layer.iconColor.fieldValue()))
-    if (layer.hasIconHaloColor()) setProperties(PropertyFactory.iconHaloColor(layer.iconHaloColor.fieldValue()))
-    if (layer.hasIconHaloWidth()) setProperties(PropertyFactory.iconHaloWidth(layer.iconHaloWidth.fieldValue()))
-    if (layer.hasIconHaloBlur()) setProperties(PropertyFactory.iconHaloBlur(layer.iconHaloBlur.fieldValue()))
-    if (layer.hasIconTranslate()) setProperties(PropertyFactory.iconTranslate(layer.iconTranslate.fieldValue()))
-    if (layer.hasIconTranslateAnchor()) setProperties(PropertyFactory.iconTranslateAnchor(layer.iconTranslateAnchor.fieldValue()))
-    if (layer.hasTextOpacity()) setProperties(PropertyFactory.textOpacity(layer.textOpacity.fieldValue()))
-    if (layer.hasTextColor()) setProperties(PropertyFactory.textColor(layer.textColor.fieldValue()))
-    if (layer.hasTextHaloColor()) setProperties(PropertyFactory.textHaloColor(layer.textHaloColor.fieldValue()))
-    if (layer.hasTextHaloWidth()) setProperties(PropertyFactory.textHaloWidth(layer.textHaloWidth.fieldValue()))
-    if (layer.hasTextHaloBlur()) setProperties(PropertyFactory.textHaloBlur(layer.textHaloBlur.fieldValue()))
-    if (layer.hasTextTranslate()) setProperties(PropertyFactory.textTranslate(layer.textTranslate.fieldValue()))
-    if (layer.hasTextTranslateAnchor()) setProperties(PropertyFactory.textTranslateAnchor(layer.textTranslateAnchor.fieldValue()))
-    if (layer.hasIconOpacityTransition()) iconOpacityTransition = layer.iconOpacityTransition.fieldValue()
-    if (layer.hasIconColorTransition()) iconColorTransition = layer.iconColorTransition.fieldValue()
-    if (layer.hasIconHaloColorTransition()) iconHaloColorTransition = layer.iconHaloColorTransition.fieldValue()
-    if (layer.hasIconHaloWidthTransition()) iconHaloWidthTransition = layer.iconHaloWidthTransition.fieldValue()
-    if (layer.hasIconHaloBlurTransition()) iconHaloBlurTransition = layer.iconHaloBlurTransition.fieldValue()
-    if (layer.hasIconTranslateTransition()) iconTranslateTransition = layer.iconTranslateTransition.fieldValue()
-    if (layer.hasTextOpacityTransition()) textOpacityTransition = layer.textOpacityTransition.fieldValue()
-    if (layer.hasTextColorTransition()) textColorTransition = layer.textColorTransition.fieldValue()
-    if (layer.hasTextHaloColorTransition()) textHaloColorTransition = layer.textHaloColorTransition.fieldValue()
-    if (layer.hasTextHaloWidthTransition()) textHaloWidthTransition = layer.textHaloWidthTransition.fieldValue()
-    if (layer.hasTextHaloBlurTransition()) textHaloBlurTransition = layer.textHaloBlurTransition.fieldValue()
-    if (layer.hasTextTranslateTransition()) textTranslateTransition = layer.textTranslateTransition.fieldValue()
 }
