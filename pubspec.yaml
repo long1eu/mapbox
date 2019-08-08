@@ -1,6 +1,6 @@
-name: mapboxgl
+name: flutter_mapbox_gl
 description: A new Flutter project.
-version: 0.0.4
+version: 0.0.1
 author: Razvan Lung <lung.razvan@gmail.com>
 homepage: https://www.tophap.com
 

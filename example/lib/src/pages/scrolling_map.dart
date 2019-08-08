@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mapboxgl/mapboxgl.dart';
+import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
 import '../page.dart';
 

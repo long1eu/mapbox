@@ -11,9 +11,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter/painting.dart';
-import 'package:mapboxgl/mapboxgl.dart';
-import 'package:mapboxgl/src/models/proto/index.dart' as pb;
-import 'package:mapboxgl/src/models/style/map_style.dart';
+import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:flutter_mapbox_gl/src/models/style/map_style.dart';
 
 part 'map_options.g.dart';
 

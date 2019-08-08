@@ -10,8 +10,8 @@ import 'dart:typed_data';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter/services.dart';
-import 'package:mapboxgl/src/models/index.dart';
-import 'package:mapboxgl/src/models/proto/index.dart' as pb;
+import 'package:flutter_mapbox_gl/src/models/index.dart';
+import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
 import 'package:meta/meta.dart';
 import 'package:protobuf/protobuf.dart' as pb;
 

@@ -50,7 +50,7 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle {
         let layer = MGLCircleStyleLayer(identifier: id, source: MGLSource(identifier: sourceID.value))
 
         MGLCircleStyleLayer.Type
-        
+
         layer.sourceIdentifier = sourceID.value
         layer.minimumZoomLevel = minZoom.value
         layer.maximumZoomLevel = maxZoom.value

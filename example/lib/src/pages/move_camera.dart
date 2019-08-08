@@ -5,7 +5,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mapboxgl/mapboxgl.dart';
+import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
 import '../page.dart';
 

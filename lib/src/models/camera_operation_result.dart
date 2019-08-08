@@ -7,7 +7,7 @@ library camera_operation_result;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:mapboxgl/src/models/proto/index.dart' as pb;
+import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
 
 part 'camera_operation_result.g.dart';
 
