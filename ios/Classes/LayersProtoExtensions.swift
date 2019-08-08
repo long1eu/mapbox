@@ -5,7 +5,7 @@
 import Foundation
 import Mapbox
 
-extension Com_Tophap_MapboxGl_Proto_Layer {
+extension Com_Tophap_Mapboxgl_Proto_Layer {
     var value: MGLStyleLayer {
         switch (type!) {
         case .backgroundLayer(_): return backgroundLayer.value
@@ -21,7 +21,7 @@ extension Com_Tophap_MapboxGl_Proto_Layer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Background {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Background {
     var value: MGLBackgroundStyleLayer {
         let layer = MGLBackgroundStyleLayer(identifier: id)
         layer.minimumZoomLevel = minZoom.value
@@ -45,7 +45,7 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Background {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Circle {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Circle {
     var value: MGLCircleStyleLayer {
         let layer = MGLCircleStyleLayer(identifier: id, source: MGLSource(identifier: sourceID.value))
 
@@ -61,37 +61,37 @@ extension Com_Tophap_MapboxGl_Proto_Layer.Circle {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Fill {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Fill {
     var value: MGLFillStyleLayer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion {
+extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion {
     var value: MGLFillExtrusionStyleLayer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Heatmap {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap {
     var value: MGLHeatmapStyleLayer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Hillshade {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade {
     var value: MGLHillshadeStyleLayer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Line {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Line {
     var value: MGLLineStyleLayer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Raster {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Raster {
     var value: MGLRasterStyleLayer {
     }
 }
 
-extension Com_Tophap_MapboxGl_Proto_Layer.Symbol {
+extension Com_Tophap_Mapboxgl_Proto_Layer.Symbol {
     var value: MGLSymbolStyleLayer {
     }
 }

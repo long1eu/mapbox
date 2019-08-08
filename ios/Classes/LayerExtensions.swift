@@ -6,8 +6,8 @@ import Foundation
 import Mapbox
 
 extension MGLStyleLayer {
-    func toProto() -> Com_Tophap_MapboxGl_Proto_Layer {
-        return Com_Tophap_MapboxGl_Proto_Layer.with { layer in
+    func toProto() -> Com_Tophap_Mapboxgl_Proto_Layer {
+        return Com_Tophap_Mapboxgl_Proto_Layer.with { layer in
             layer.id = identifier
             if let me = self as? MGLBackgroundStyleLayer {
                 layer.backgroundLayer = me.proto
@@ -35,8 +35,8 @@ extension MGLStyleLayer {
 }
 
 extension MGLBackgroundStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Background {
-        return Com_Tophap_MapboxGl_Proto_Layer.Background.with { background in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Background {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Background.with { background in
             background.id = identifier
             background.visible = isVisible.proto
             background.minZoom = minimumZoomLevel.proto
@@ -52,8 +52,8 @@ extension MGLBackgroundStyleLayer {
 }
 
 extension MGLCircleStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Circle {
-        return Com_Tophap_MapboxGl_Proto_Layer.Circle.with { circle in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Circle {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Circle.with { circle in
             circle.id = identifier
             circle.visible = isVisible.proto
             circle.minZoom = minimumZoomLevel.proto
@@ -89,8 +89,8 @@ extension MGLCircleStyleLayer {
 }
 
 extension MGLFillStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Fill {
-        return Com_Tophap_MapboxGl_Proto_Layer.Fill.with { fill in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Fill {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Fill.with { fill in
             fill.id = identifier
             fill.visible = isVisible.proto
             fill.minZoom = minimumZoomLevel.proto
@@ -119,8 +119,8 @@ extension MGLFillStyleLayer {
 }
 
 extension MGLFillExtrusionStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion {
-        return Com_Tophap_MapboxGl_Proto_Layer.FillExtrusion.with { extrusion in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion {
+        return Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion.with { extrusion in
             extrusion.id = identifier
             extrusion.visible = isVisible.proto
             extrusion.minZoom = minimumZoomLevel.proto
@@ -151,8 +151,8 @@ extension MGLFillExtrusionStyleLayer {
 }
 
 extension MGLHeatmapStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Heatmap {
-        return Com_Tophap_MapboxGl_Proto_Layer.Heatmap.with { heatmap in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Heatmap.with { heatmap in
             heatmap.id = identifier
             heatmap.visible = isVisible.proto
             heatmap.minZoom = minimumZoomLevel.proto
@@ -177,8 +177,8 @@ extension MGLHeatmapStyleLayer {
 }
 
 extension MGLHillshadeStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Hillshade {
-        return Com_Tophap_MapboxGl_Proto_Layer.Hillshade.with { hillshade in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Hillshade.with { hillshade in
             hillshade.id = identifier
             hillshade.visible = isVisible.proto
             hillshade.minZoom = minimumZoomLevel.proto
@@ -205,8 +205,8 @@ extension MGLHillshadeStyleLayer {
 }
 
 extension MGLLineStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Line {
-        return Com_Tophap_MapboxGl_Proto_Layer.Line.with { line in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Line {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Line.with { line in
             line.id = identifier
             line.visible = isVisible.proto
             line.minZoom = minimumZoomLevel.proto
@@ -247,8 +247,8 @@ extension MGLLineStyleLayer {
 }
 
 extension MGLRasterStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Raster {
-        return Com_Tophap_MapboxGl_Proto_Layer.Raster.with { raster in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Raster {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Raster.with { raster in
             raster.id = identifier
             raster.visible = isVisible.proto
             raster.minZoom = minimumZoomLevel.proto
@@ -279,8 +279,8 @@ extension MGLRasterStyleLayer {
 }
 
 extension MGLSymbolStyleLayer {
-    var proto: Com_Tophap_MapboxGl_Proto_Layer.Symbol {
-        return Com_Tophap_MapboxGl_Proto_Layer.Symbol.with { symbol in
+    var proto: Com_Tophap_Mapboxgl_Proto_Layer.Symbol {
+        return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.with { symbol in
             symbol.id = identifier
             symbol.visible = isVisible.proto
             symbol.minZoom = minimumZoomLevel.proto
