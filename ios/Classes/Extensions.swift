@@ -62,6 +62,11 @@ extension SwiftProtobuf.Google_Protobuf_StringValue {
         let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
         return NSExpression(mglJSONObject: array)
     }
+
+    var predicate: NSPredicate {
+        let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
+        return NSPredicate(mglJSONObject: array)
+    }
 }
 
 extension MGLIconAnchor {
