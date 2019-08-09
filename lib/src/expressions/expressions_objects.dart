@@ -180,32 +180,33 @@ class Expression {
   final String _operator;
   final List<Expression> _arguments;
 
-  bool get isExpression => value is List;
+  bool get isExpression => !isValue;
 
-  bool get isValue => !isExpression;
+  bool get isValue => _arguments.every((it) => it is ExpressionLiteral);
 
   dynamic get value => json;
 
   Color get color {
-    assert(isValue && _arguments.every((it) => it is ExpressionLiteral));
+    assert(isValue);
+    assert(_arguments.every((it) => it is ExpressionLiteral));
 
     if (_operator == kRgbOperator) {
       assert(_arguments.length == 3 && _arguments.every((it) => it is ExpressionLiteral));
 
       return Color.fromARGB(
         0xFF,
-        _arguments[0].value,
-        _arguments[1].value,
-        _arguments[2].value,
+        _arguments[0].value.toInt(),
+        _arguments[1].value.toInt(),
+        _arguments[2].value.toInt(),
       );
     } else if (_operator == kRgbaOperator) {
       assert(_arguments.length == 4);
 
       return Color.fromARGB(
-        _arguments[3].value,
-        _arguments[0].value,
-        _arguments[1].value,
-        _arguments[2].value,
+        _arguments[3].value.toInt(),
+        _arguments[0].value.toInt(),
+        _arguments[1].value.toInt(),
+        _arguments[2].value.toInt(),
       );
     }
 

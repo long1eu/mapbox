@@ -14,6 +14,7 @@ class MapboxMap extends StatefulWidget {
     this.mapTaps,
     this.layers,
     this.sources,
+    this.images,
   }) : super(key: key);
 
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
@@ -23,6 +24,7 @@ class MapboxMap extends StatefulWidget {
   final ValueChanged<MapController> onMapReady;
   final List<Layer> layers;
   final List<Source> sources;
+  final Map<String, Uint8List> images;
 
   @override
   _MapboxMapState createState() => _MapboxMapState();
@@ -60,6 +62,8 @@ class _MapboxMapState extends State<MapboxMap> {
       Future.wait<dynamic>(<Future<dynamic>>[
         if (widget.sources != null) ...widget.sources.map(_controller.style.addSource),
         if (widget.layers != null) ...widget.layers.map(_controller.style.addLayer),
+        if (widget.images != null)
+          ...widget.images.keys.map((String name) => _controller.style.addImage(name, widget.images[name])),
       ]);
     }
   }
@@ -76,10 +80,13 @@ class _MapboxMapState extends State<MapboxMap> {
     final List<Layer> newLayers = widget.layers ?? <Layer>[];
     final List<Source> newSources = widget.sources ?? <Source>[];
     final List<Source> oldSources = oldWidget.sources ?? <Source>[];
+    final Map<String, Uint8List> newImages = widget.images ?? <String, Uint8List>{};
+    final Map<String, Uint8List> oldImages = oldWidget.images ?? <String, Uint8List>{};
 
     final bool sameLayers = const ListEquality<Layer>().equals(oldLayers, newLayers);
     final bool sameSources = const ListEquality<Source>().equals(oldSources, newSources);
-    if (sameLayers && sameSources) return;
+    final bool sameImages = const MapEquality<String, Uint8List>().equals(oldImages, newImages);
+    if (sameLayers && sameSources && sameImages) return;
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
     if (!sameLayers) {
@@ -94,8 +101,12 @@ class _MapboxMapState extends State<MapboxMap> {
 
       for (String id in update) {
         if (newIds[id] == oldIds[id]) continue;
-
-        futures.add(_controller.style.getLayer(id).update(newIds[id]));
+        final Layer layer = _controller.style.getLayer(id);
+        if (layer == null) {
+          // not yet ready?
+          continue;
+        }
+        futures.add(layer.update(newIds[id]));
       }
       await Future.wait(futures);
       futures.clear();
@@ -128,6 +139,20 @@ class _MapboxMapState extends State<MapboxMap> {
       futures.clear();
 
       await Future.wait(add.map(_controller.style.addSource));
+    }
+
+    if (!sameImages) {
+      final Map<String, Uint8List> oldIds = oldImages.map((name, it) => MapEntry(name, it));
+      final Map<String, Uint8List> newIds = newImages.map((name, it) => MapEntry(name, it));
+
+      final remove = oldIds.keys.where((id) => !newIds.keys.contains(id));
+      final add = newIds.keys.where((it) => !oldIds.keys.contains(it));
+
+      await Future.wait(remove.map(_controller.style.removeImage));
+      await Future.wait(futures);
+      futures.clear();
+
+      await Future.wait(add.map((String name) => _controller.style.addImage(name, newImages[name])));
     }
   }
 

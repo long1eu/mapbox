@@ -189,6 +189,7 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
         ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()
         ..patternTransition = (patternTransition ?? this.patternTransition).toBuilder();
     });
+    print('isAttached: $isAttached');
     if (!isAttached || this == layer) return layer;
     return _update(layer);
   }

@@ -59,7 +59,7 @@ extension Tophap_MapboxGl_Layer.Circle {
     if hasColor { layer.circleColor = color.expression }
     if hasBlur { layer.circleBlur = blur.expression }
     if hasOpacity { layer.circleOpacity = opacity.expression }
-    if hasTranslate { layer.circleTranslation = translate.expression }
+    // todo if hasTranslate { layer.circleTranslation = translate.expression }
     if hasTranslateAnchor { layer.circleTranslationAnchor = translateAnchor.expression }
     if hasPitchScale { layer.circlePitchAlignment = pitchScale.expression }
     if hasPitchAlignment { layer.circlePitchAlignment = pitchAlignment.expression }
@@ -98,7 +98,7 @@ extension Tophap_MapboxGl_Layer.Fill {
     if hasOpacity { layer.fillOpacity = opacity.expression }
     if hasColor { layer.fillColor = color.expression }
     if hasOutlineColor { layer.fillOutlineColor = outlineColor.expression }
-    if hasTranslate { layer.fillTranslation = translate.expression }
+    // todo if hasTranslate { layer.fillTranslation = translate.expression }
     if hasTranslateAnchor { layer.fillTranslationAnchor = translateAnchor.expression }
     if hasPattern { layer.fillPattern = pattern.expression }
     // @formatter:on
@@ -128,7 +128,7 @@ extension Tophap_MapboxGl_Layer.FillExtrusion {
     if hasFilter {layer.predicate = filter.predicate }
     if hasOpacity { layer.fillExtrusionOpacity = opacity.expression }
     if hasColor { layer.fillExtrusionColor = color.expression }
-    if hasTranslate { layer.fillExtrusionTranslation = translate.expression }
+    // todo if hasTranslate { layer.fillExtrusionTranslation = translate.expression }
     if hasTranslateAnchor { layer.fillExtrusionTranslationAnchor = translateAnchor.expression }
     if hasPattern { layer.fillExtrusionPattern = pattern.expression }
     if hasHeight { layer.fillExtrusionHeight = height.expression }
@@ -204,50 +204,6 @@ extension Tophap_MapboxGl_Layer.Hillshade {
   }
 }
 
-extension Tophap_MapboxGl_Layer.Line {
-  var value: MGLLineStyleLayer {
-    // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
-    let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
-    let layer = MGLLineStyleLayer(identifier: id, source: fakeSource)
-
-    layer.minimumZoomLevel = minZoom.value
-    layer.maximumZoomLevel = maxZoom.value
-    layer.isVisible = visible.value
-
-    // @formatter:off
-    if hasSourceLayer { layer.sourceLayerIdentifier = sourceLayer.value }
-    if hasFilter {layer.predicate = filter.predicate }
-    if hasCap { layer.lineCap = cap.expression }
-    if hasJoin { layer.lineJoin = join.expression }
-    if hasMiterLimit { layer.lineMiterLimit = miterLimit.expression }
-    if hasRoundLimit { layer.lineRoundLimit = roundLimit.expression }
-    if hasOpacity { layer.lineOpacity = opacity.expression }
-    if hasColor { layer.lineColor = color.expression }
-    // todo if hasTranslate { layer.lineTranslation = translate.expression }
-    if hasTranslateAnchor { layer.lineTranslationAnchor = translateAnchor.expression }
-    if hasWidth { layer.lineWidth = width.expression }
-    if hasGapWidth { layer.lineGapWidth = gapWidth.expression }
-    if hasOffset { layer.lineOffset = offset.expression }
-    if hasBlur { layer.lineBlur = blur.expression }
-    if hasDasharray { layer.lineDashPattern = dasharray.expression }
-    if hasPattern { layer.linePattern = pattern.expression }
-    if hasGradient { layer.lineGradient = gradient.expression }
-    // @formatter:on
-
-    layer.lineOpacityTransition = opacityTransition.value
-    layer.lineColorTransition = colorTransition.value
-    layer.lineTranslationTransition = translateTransition.value
-    layer.lineWidthTransition = widthTransition.value
-    layer.lineGapWidthTransition = gapWidthTransition.value
-    layer.lineOffsetTransition = offsetTransition.value
-    layer.lineBlurTransition = blurTransition.value
-    layer.lineDashPatternTransition = dasharrayTransition.value
-    layer.linePatternTransition = patternTransition.value
-
-    return layer
-  }
-}
-
 extension Tophap_MapboxGl_Layer.Raster {
   var value: MGLRasterStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
@@ -281,6 +237,50 @@ extension Tophap_MapboxGl_Layer.Raster {
   }
 }
 
+extension Tophap_MapboxGl_Layer.Line {
+  var value: MGLLineStyleLayer {
+    // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
+    let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
+    let layer = MGLLineStyleLayer(identifier: id, source: fakeSource)
+
+    layer.minimumZoomLevel = minZoom.value
+    layer.maximumZoomLevel = maxZoom.value
+    layer.isVisible = visible.value
+
+    // @formatter:off
+    if hasSourceLayer { layer.sourceLayerIdentifier = sourceLayer.value }
+    if hasFilter {layer.predicate = filter.predicate }
+    if hasCap { layer.lineCap = cap.expression }
+    if hasJoin { layer.lineJoin = join.expression }
+    if hasMiterLimit { layer.lineMiterLimit = miterLimit.expression }
+    if hasRoundLimit { layer.lineRoundLimit = roundLimit.expression }
+    if hasOpacity { layer.lineOpacity = opacity.expression }
+    if hasColor { layer.lineColor = color.expression }
+    // todo if hasTranslate { layer.lineTranslation = translate.expression }
+    if hasTranslateAnchor { layer.lineTranslationAnchor = translateAnchor.expression }
+    if hasWidth { layer.lineWidth = width.expression }
+    if hasGapWidth { layer.lineGapWidth = gapWidth.expression }
+    if hasOffset { layer.lineOffset = offset.expression }
+    if hasBlur { layer.lineBlur = blur.expression }
+    // todo if hasDasharray { layer.lineDashPattern = dasharray.expression }
+    if hasPattern { layer.linePattern = pattern.expression }
+    if hasGradient { layer.lineGradient = gradient.expression }
+    // @formatter:on
+
+    layer.lineOpacityTransition = opacityTransition.value
+    layer.lineColorTransition = colorTransition.value
+    layer.lineTranslationTransition = translateTransition.value
+    layer.lineWidthTransition = widthTransition.value
+    layer.lineGapWidthTransition = gapWidthTransition.value
+    layer.lineOffsetTransition = offsetTransition.value
+    layer.lineBlurTransition = blurTransition.value
+    layer.lineDashPatternTransition = dasharrayTransition.value
+    layer.linePatternTransition = patternTransition.value
+
+    return layer
+  }
+}
+
 extension Tophap_MapboxGl_Layer.Symbol {
   var value: MGLSymbolStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
@@ -304,12 +304,12 @@ extension Tophap_MapboxGl_Layer.Symbol {
     if hasIconRotationAlignment { layer.iconRotationAlignment = iconRotationAlignment.expression }
     if hasIconSize { layer.iconScale = iconSize.expression }
     if hasIconTextFit { layer.iconTextFit = iconTextFit.expression }
-    if hasIconTextFitPadding { layer.iconTextFitPadding = iconTextFitPadding.expression }
+    // todo if hasIconTextFitPadding { layer.iconTextFitPadding = iconTextFitPadding.expression }
     if hasIconImage { layer.iconImageName = iconImage.expression }
     if hasIconRotate { layer.iconRotation = iconRotate.expression }
     if hasIconPadding { layer.iconPadding = iconPadding.expression }
     if hasIconKeepUpright { layer.keepsIconUpright = iconKeepUpright.expression }
-    if hasIconOffset { layer.iconOffset = iconOffset.expression }
+    // todo if hasIconOffset { layer.iconOffset = iconOffset.expression }
     if hasIconPitchAlignment { layer.iconPitchAlignment = iconPitchAlignment.expression }
     if hasTextPitchAlignment { layer.textPitchAlignment = textPitchAlignment.expression }
     if hasTextRotationAlignment { layer.textRotationAlignment = textRotationAlignment.expression }
@@ -328,7 +328,7 @@ extension Tophap_MapboxGl_Layer.Symbol {
     if hasTextPadding { layer.textPadding = textPadding.expression }
     if hasTextKeepUpright { layer.keepsTextUpright = textKeepUpright.expression }
     if hasTextTransform { layer.textTransform = textTransform.expression }
-    if hasTextOffset { layer.textOffset = textOffset.expression }
+    // todo if hasTextOffset { layer.textOffset = textOffset.expression }
     if hasTextAllowOverlap { layer.textAllowsOverlap = textAllowOverlap.expression }
     if hasTextIgnorePlacement { layer.textIgnoresPlacement = textIgnorePlacement.expression }
     if hasTextOptional { layer.textOptional = textOptional.expression }
@@ -337,14 +337,14 @@ extension Tophap_MapboxGl_Layer.Symbol {
     if hasIconHaloColor { layer.iconHaloColor = iconHaloColor.expression }
     if hasIconHaloWidth { layer.iconHaloWidth = iconHaloWidth.expression }
     if hasIconHaloBlur { layer.iconHaloBlur = iconHaloBlur.expression }
-    if hasIconTranslate { layer.iconTranslation = iconTranslate.expression }
+    // todo if hasIconTranslate { layer.iconTranslation = iconTranslate.expression }
     if hasIconTranslateAnchor { layer.iconTranslationAnchor = iconTranslateAnchor.expression }
     if hasTextOpacity { layer.textOpacity = textOpacity.expression }
     if hasTextColor { layer.textColor = textColor.expression }
     if hasTextHaloColor { layer.textHaloColor = textHaloColor.expression }
     if hasTextHaloWidth { layer.textHaloWidth = textHaloWidth.expression }
     if hasTextHaloBlur { layer.textHaloBlur = textHaloBlur.expression }
-    if hasTextTranslate { layer.textTranslation = textTranslate.expression }
+    // todo if hasTextTranslate { layer.textTranslation = textTranslate.expression }
     if hasTextTranslateAnchor { layer.textTranslationAnchor = textTranslateAnchor.expression }
     // @formatter:on
 

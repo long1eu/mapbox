@@ -94,7 +94,7 @@ abstract class Layer extends Object with _Channel {
       case pb.Layer_Type.fillExtrusionLayer:
         return FillExtrusionLayer.fromProto(proto.fillExtrusionLayer);
       case pb.Layer_Type.heatmapLayer:
-        return SymbolLayer.fromProto(proto.symbolLayer);
+        return HeatmapLayer.fromProto(proto.heatmapLayer);
       case pb.Layer_Type.hillshadeLayer:
         return HillshadeLayer.fromProto(proto.hillshadeLayer);
       case pb.Layer_Type.lineLayer:
@@ -102,7 +102,7 @@ abstract class Layer extends Object with _Channel {
       case pb.Layer_Type.rasterLayer:
         return RasterLayer.fromProto(proto.rasterLayer);
       case pb.Layer_Type.symbolLayer:
-        return HeatmapLayer.fromProto(proto.heatmapLayer);
+        return SymbolLayer.fromProto(proto.symbolLayer);
       default:
         throw ArgumentError('Unknown layer type ${proto.whichType()}.');
     }

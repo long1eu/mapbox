@@ -353,12 +353,42 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       mapView = nil
       result(nil)
       break;
+    case "getImage":
+      if let style = mapView!.style {
+        let id = call.arguments as! String
+        result(style.image(forName: id)?.pngData())
+      } else {
+        Swift.fatalError("Could not get the style.")
+      }
+      break;
+    case "addImage":
+      if let style = mapView!.style {
+        let args = call.arguments as! [Any]
+        let id = args[0] as! String
+        let data = (args[1] as! FlutterStandardTypedData).data
+
+        if let image = UIImage(data: data) {
+          style.setImage(image, forName: id)
+        } else {
+          fatalError("Failed to parse image.")
+        }
+        result(nil)
+      } else {
+        fatalError("Could not get the style.")
+      }
+      break;
+    case "removeImage":
+      if let style = mapView!.style {
+        let id = call.arguments as! String
+        result(style.removeImage(forName: id))
+      } else {
+        Swift.fatalError("Could not get the style.")
+      }
+      break;
     default:
       result(FlutterMethodNotImplemented)
     }
-
   }
-
 
   var cacheDir: String {
     return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]

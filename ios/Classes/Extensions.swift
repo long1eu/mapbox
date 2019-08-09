@@ -11,6 +11,23 @@ extension NSExpression {
       let object = mgl_jsonExpressionObject
       let valid = JSONSerialization.isValidJSONObject(object)
       if (valid) {
+        /*switch (expressionType) {
+        case .constantValue: print("\(object) is -> constantValue");
+        case .evaluatedObject: print("\(object) is -> evaluatedObject");
+        case .variable: print("\(object) is -> variable");
+        case .keyPath: print("\(object) is -> keyPath");
+        case .function: print("\(object) is -> function");
+        case .unionSet: print("\(object) is -> unionSet");
+        case .intersectSet: print("\(object) is -> intersectSet");
+        case .minusSet: print("\(object) is -> minusSet");
+        case .subquery: print("\(object) is -> subquery");
+        case .aggregate: print("\(object) is -> aggregate");
+        case .anyKey: print("\(object) is -> anyKey");
+        case .block: print("\(object) is -> block");
+        case .conditional: print("\(object) is -> conditional");
+        }*/
+
+
         let data = try! JSONSerialization.data(withJSONObject: object)
         $0.value = String(data: data, encoding: .utf8)!
       } else {

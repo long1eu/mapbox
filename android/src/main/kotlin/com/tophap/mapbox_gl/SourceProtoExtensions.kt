@@ -1,8 +1,10 @@
 package com.tophap.mapbox_gl
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.mapbox.mapboxsdk.style.sources.*
 import com.tophap.mapbox_gl.proto.Sources
+import java.io.ByteArrayOutputStream
 import java.net.URI
 
 
@@ -112,11 +114,7 @@ fun Source.update(source: Sources.Source) {
             if (source.image.hasCoordinates()) setCoordinates(source.image.coordinates.fieldValue())
             when (source.image.sourceCase!!) {
                 Sources.Source.Image.SourceCase.URI -> uri = source.image.uri
-                Sources.Source.Image.SourceCase.IMAGE -> {
-                    val bytes = source.image.image.toByteArray()
-                    val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    setImage(bmp)
-                }
+                Sources.Source.Image.SourceCase.IMAGE -> setImage(source.image.image.toByteArray().bitmap())
                 Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> {
                 }
             }
@@ -126,3 +124,14 @@ fun Source.update(source: Sources.Source) {
         else -> throw IllegalArgumentException("Unknown source type $this")
     }
 }
+
+
+fun Bitmap.data(): ByteArray {
+    val stream = ByteArrayOutputStream()
+    compress(Bitmap.CompressFormat.PNG, 100, stream)
+    val byteArray = stream.toByteArray()
+    recycle()
+    return byteArray
+}
+
+fun ByteArray.bitmap(): Bitmap = BitmapFactory.decodeByteArray(this, 0, size)

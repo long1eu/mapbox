@@ -10,14 +10,17 @@ class Style {
         assert(style != null),
         _style = style,
         _channel = channel,
-        _sources = style.sources.asMap().map((_, Source element) => MapEntry<String, Source>(element.id, element)),
-        _layers = style.layers.asMap().map((_, Layer element) => MapEntry<String, Layer>(element.id, element));
+        _sources = style.sources
+            .asMap()
+            .map((_, Source element) => MapEntry<String, Source>(element.id, element.markAsAttached(channel, element))),
+        _layers = style.layers
+            .asMap()
+            .map((_, Layer element) => MapEntry<String, Layer>(element.id, element.markAsAttached(channel, element)));
 
   final StyleModel _style;
   final MethodChannel _channel;
-
   final Map<String, Source> _sources;
-  Map<String, Layer> _layers;
+  final Map<String, Layer> _layers;
 
   String get uri => _style.uri;
 
@@ -61,6 +64,7 @@ class Style {
     String aboveId,
     int index,
   }) async {
+    print('addLayer: ${layer.id}');
     assert(getLayer(layer.id) == null, 'You already have a Layer with this id. Try getLayer(id)');
     final pb.Operations_Add op = pb.Operations_Add.create()..layer = layer.source;
 
@@ -78,6 +82,7 @@ class Style {
     final T platformLayer = Layer.fromProto(proto);
     layer = layer.markAsAttached(_channel, platformLayer);
     _layers[layer.id] = layer;
+    print('addLayer: ${layer.id} finished');
     return layer;
   }
 
@@ -88,11 +93,21 @@ class Style {
     return layer;
   }
 
-  Future<Uint8List> getImage(String name) {}
+  Future<Uint8List> getImage(String id) {
+    assert(id != null && id.isNotEmpty);
+    return invokeMethod('getImage', id);
+  }
 
-  Future<void> addImage(String name, Uint8List image) {}
+  Future<void> addImage(String id, Uint8List image) {
+    assert(id != null && id.isNotEmpty);
+    assert(image != null && image.isNotEmpty);
+    return invokeMethod('addImage', [id, image]);
+  }
 
-  Future<void> removeImage(String name) {}
+  Future<void> removeImage(String id) {
+    assert(id != null && id.isNotEmpty);
+    return invokeMethod('removeImage', id);
+  }
 
   Future<void> setTransition(TransitionOptions transitionOptions) {
     assert(transitionOptions != null);

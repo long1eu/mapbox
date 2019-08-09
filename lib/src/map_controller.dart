@@ -4,7 +4,7 @@
 
 part of flutter_mapbox_gl;
 
-class MapController {
+class MapController extends ValueNotifier<CameraPosition> {
   MapController._({@required final pb.Map__Operations_Ready info, Stream<MethodCall> calls})
       : assert(info != null),
         assert(calls != null),
@@ -14,7 +14,8 @@ class MapController {
         _prefetchesTiles = info.prefetchesTiles,
         _minZoom = info.minZoom,
         _maxZoom = info.maxZoom,
-        _cameraPosition = CameraPosition.fromProto(info.camera) {
+        _cameraPosition = CameraPosition.fromProto(info.camera),
+        super(CameraPosition.fromProto(info.camera)) {
     sub = _calls.where((it) => it.method.startsWith('mapEvent#')).listen(_cameraPositionChanged);
     _style = Style._(channel: _channel, style: StyleModel.fromProto(info.style));
   }
@@ -205,7 +206,14 @@ class MapController {
 
   Future<Uint8List> snapshot() => _channel.invokeListMethod<int>('map#snapshot');
 
-  void dispose() => sub.cancel();
+  @override
+  void dispose() {
+    super.dispose();
+    sub.cancel();
+  }
 
-  void _cameraPositionChanged(MethodCall event) => _cameraPosition = CameraPosition.fromProtoData(event.arguments);
+  void _cameraPositionChanged(MethodCall event) {
+    _cameraPosition = CameraPosition.fromProtoData(event.arguments);
+    notifyListeners();
+  }
 }

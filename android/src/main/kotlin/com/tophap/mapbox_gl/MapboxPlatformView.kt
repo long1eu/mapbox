@@ -6,7 +6,6 @@ import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import com.mapbox.android.gestures.MoveGestureDetector
@@ -21,13 +20,12 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import com.tophap.mapbox_gl.proto.Layers
 import com.tophap.mapbox_gl.proto.Mapbox.Map.*
-import com.tophap.mapbox_gl.proto.Util
 import com.tophap.mapbox_gl.proto.Sources
 import com.tophap.mapbox_gl.proto.Styles
+import com.tophap.mapbox_gl.proto.Util
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
-import java.io.ByteArrayOutputStream
 
 class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Long) :
         PlatformView,
@@ -174,11 +172,7 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             "map#getPadding" -> result.success(mapboxMap.padding)
             "map#snapshot" -> {
                 mapboxMap.snapshot {
-                    val stream = ByteArrayOutputStream()
-                    it.compress(Bitmap.CompressFormat.PNG, 100, stream)
-                    val byteArray = stream.toByteArray()
-                    it.recycle()
-                    result.success(byteArray)
+                    result.success(it.data())
                 }
             }
             "style#set" -> {
@@ -249,6 +243,28 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                     val protoLayer = Layers.Layer.parseFrom(call.arguments as ByteArray)
                     it.getLayer(protoLayer.id)!!.update(protoLayer)
                     result.success(it.getLayer(protoLayer.id)!!.toProto().toByteArray())
+                }
+            }
+            "getImage" -> {
+                mapboxMap.getStyle {
+                    val id = call.arguments as String
+                    result.success(it.getImage(id)?.data())
+                }
+            }
+            "addImage" -> {
+                mapboxMap.getStyle {
+                    val args = call.arguments as List<*>
+                    val id: String = args[0] as String
+                    val image: ByteArray = args[1] as ByteArray
+
+                    it.addImage(id, image.bitmap())
+                    result.success(null)
+                }
+            }
+            "removeImage" -> {
+                mapboxMap.getStyle {
+                    val id = call.arguments as String
+                    result.success(it.removeImage(id))
                 }
             }
             "dispose" -> {

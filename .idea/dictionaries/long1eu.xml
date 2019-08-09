@@ -6,6 +6,7 @@
       <w>geojson</w>
       <w>heatmap</w>
       <w>hillshade</w>
+      <w>lerp</w>
       <w>mapbox</w>
       <w>mapboxgl</w>
       <w>prefetches</w>

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-
-import 'src/page.dart';
-import 'src/pages/add_wms_source_page.dart';
-import 'src/pages/adjust_layer_opacity.dart';
-import 'src/pages/geojson_layer_in_stack_page.dart';
-import 'src/pages/hillshade_layer_page.dart';
-import 'src/pages/image_source_time_lapse_page.dart';
-import 'src/pages/move_camera.dart';
-import 'src/pages/scrolling_map.dart';
-import 'src/pages/style_from_file_page.dart';
-import 'src/pages/vector_source.dart';
+import 'package:mapbox_gl_example/src/page.dart';
+import 'package:mapbox_gl_example/src/pages/add_wms_source_page.dart';
+import 'package:mapbox_gl_example/src/pages/adjust_layer_opacity.dart';
+import 'package:mapbox_gl_example/src/pages/animated_marker.dart';
+import 'package:mapbox_gl_example/src/pages/color_switcher.dart';
+import 'package:mapbox_gl_example/src/pages/geojson_layer_in_stack_page.dart';
+import 'package:mapbox_gl_example/src/pages/hillshade_layer_page.dart';
+import 'package:mapbox_gl_example/src/pages/image_source_time_lapse_page.dart';
+import 'package:mapbox_gl_example/src/pages/move_camera.dart';
+import 'package:mapbox_gl_example/src/pages/scrolling_map.dart';
+import 'package:mapbox_gl_example/src/pages/space_station_location.dart';
+import 'package:mapbox_gl_example/src/pages/style_from_file_page.dart';
+import 'package:mapbox_gl_example/src/pages/vector_source.dart';
 
 final List<Page> _allPages = <Page>[
-  MoveCameraPage(),
-  ScrollingMapPage(),
   StyleFromFilePage(),
   HillshadeLayerPage(),
   GeoJsonLayerInStackPage(),
@@ -21,6 +21,11 @@ final List<Page> _allPages = <Page>[
   AddWmsSourcePage(),
   ImageSourceTimeLapsePage(),
   AdjustLayerOpacityPage(),
+  AnimatedMarkerPage(),
+  SpaceStationLocation(),
+  //ColorSwitcher(),
+  MoveCameraPage(),
+  ScrollingMapPage(),
 ];
 
 class MapsDemo extends StatelessWidget {

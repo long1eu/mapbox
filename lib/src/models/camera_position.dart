@@ -49,6 +49,21 @@ abstract class CameraPosition implements Built<CameraPosition, CameraPositionBui
 
   double get zoom;
 
+  CameraPosition copyWith({
+    double bearing,
+    LatLng target,
+    double tilt,
+    double zoom,
+  }) {
+    return _$CameraPosition((CameraPositionBuilder b) {
+      b
+        ..bearing = bearing ?? this.bearing
+        ..target = (target ?? this.target).toBuilder()
+        ..tilt = tilt ?? this.tilt
+        ..zoom = zoom ?? this.zoom;
+    });
+  }
+
   pb.Map__CameraPosition get proto {
     return pb.Map__CameraPosition.create()
       ..bearing = bearing
@@ -73,7 +88,8 @@ class CameraMoveStartedReason extends EnumClass {
 
   static BuiltSet<CameraMoveStartedReason> get values => _$values;
 
-  pb.Map__CameraPosition_MoveReason get proto => pb.Map__CameraPosition_MoveReason.valueOf(values.toList().indexOf(this));
+  pb.Map__CameraPosition_MoveReason get proto =>
+      pb.Map__CameraPosition_MoveReason.valueOf(values.toList().indexOf(this));
 
   static CameraMoveStartedReason valueOf(String name) => _$valueOf(name);
 
