@@ -10,7 +10,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   private let options: Com_Tophap_Mapboxgl_Proto_Map.Options
   private let channel: FlutterMethodChannel
   private let viewId: Int64
-  @IBOutlet weak var mapView: MGLMapView?
+  weak var mapView: MGLMapView?
   private var result: FlutterResult?;
   private var initialLoad: Bool = false;
 
@@ -129,18 +129,20 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     // @formatter:on
   }
 
-  @IBAction func handleOnTap(sender: UITapGestureRecognizer) {
+  func handleOnTap(sender: UITapGestureRecognizer) {
     let mapView = self.mapView!
     let tapPoint: CGPoint = sender.location(in: mapView)
     let tapCoordinate = mapView.convert(tapPoint, toCoordinateFrom: nil)
     try! channel.invokeMethod("mapTap#onTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
   }
 
-  @IBAction func handleOnLongTap(sender: UILongPressGestureRecognizer) {
-    let mapView = self.mapView!
-    let tapPoint: CGPoint = sender.location(in: mapView)
-    let tapCoordinate = mapView.convert(tapPoint, toCoordinateFrom: nil)
-    try! channel.invokeMethod("mapTap#onLongTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
+  func handleOnLongTap(sender: UILongPressGestureRecognizer) {
+    if sender.state == .began {
+      let mapView = self.mapView!
+      let tapPoint: CGPoint = sender.location(in: mapView)
+      let tapCoordinate = mapView.convert(tapPoint, toCoordinateFrom: nil)
+      try! channel.invokeMethod("mapTap#onLongTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
+    }
   }
 
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {

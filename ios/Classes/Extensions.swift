@@ -278,8 +278,15 @@ extension UIView {
   }
 }
 
-class OnTapGestureRecognizer: UITapGestureRecognizer {
+class OnTapGestureRecognizer: UITapGestureRecognizer, UIGestureRecognizerDelegate {
+  override init(target: Any?, action: Selector?) {
+    super.init(target: target, action: action)
+    self.delegate = self
+  }
+
   var action: ((_ sender: UITapGestureRecognizer) -> Void)? = nil
+
+
 }
 
 class OnLongPressGestureRecognizer: UILongPressGestureRecognizer {
