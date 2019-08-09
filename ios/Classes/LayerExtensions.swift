@@ -6,8 +6,8 @@ import Foundation
 import Mapbox
 
 extension MGLStyleLayer {
-  func toProto() -> Com_Tophap_Mapboxgl_Proto_Layer {
-    return Com_Tophap_Mapboxgl_Proto_Layer.with { layer in
+  func toProto() -> Tophap_MapboxGl_Layer {
+    return Tophap_MapboxGl_Layer.with { layer in
       layer.id = identifier
       if let me = self as? MGLBackgroundStyleLayer {
         layer.backgroundLayer = me.proto
@@ -33,7 +33,7 @@ extension MGLStyleLayer {
     }
   }
 
-  func updateFrom(layer: Com_Tophap_Mapboxgl_Proto_Layer) {
+  func updateFrom(layer: Tophap_MapboxGl_Layer) {
     if let me = self as? MGLBackgroundStyleLayer {
       me.update(layer: layer.backgroundLayer)
     } else if let me = self as? MGLCircleStyleLayer {
@@ -59,8 +59,8 @@ extension MGLStyleLayer {
 }
 
 extension MGLBackgroundStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Background {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Background.with { background in
+  var proto: Tophap_MapboxGl_Layer.Background {
+    return Tophap_MapboxGl_Layer.Background.with { background in
       background.id = identifier
       background.visible = isVisible.proto
       background.minZoom = minimumZoomLevel.proto
@@ -74,7 +74,7 @@ extension MGLBackgroundStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Background) {
+  func update(layer: Tophap_MapboxGl_Layer.Background) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -90,8 +90,8 @@ extension MGLBackgroundStyleLayer {
 }
 
 extension MGLCircleStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Circle {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Circle.with { circle in
+  var proto: Tophap_MapboxGl_Layer.Circle {
+    return Tophap_MapboxGl_Layer.Circle.with { circle in
       circle.id = identifier
       circle.visible = isVisible.proto
       circle.minZoom = minimumZoomLevel.proto
@@ -125,7 +125,7 @@ extension MGLCircleStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Circle) {
+  func update(layer: Tophap_MapboxGl_Layer.Circle) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -156,8 +156,8 @@ extension MGLCircleStyleLayer {
 }
 
 extension MGLFillStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Fill {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Fill.with { fill in
+  var proto: Tophap_MapboxGl_Layer.Fill {
+    return Tophap_MapboxGl_Layer.Fill.with { fill in
       fill.id = identifier
       fill.visible = isVisible.proto
       fill.minZoom = minimumZoomLevel.proto
@@ -184,7 +184,7 @@ extension MGLFillStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Fill) {
+  func update(layer: Tophap_MapboxGl_Layer.Fill) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -208,8 +208,8 @@ extension MGLFillStyleLayer {
 }
 
 extension MGLFillExtrusionStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion {
-    return Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion.with { extrusion in
+  var proto: Tophap_MapboxGl_Layer.FillExtrusion {
+    return Tophap_MapboxGl_Layer.FillExtrusion.with { extrusion in
       extrusion.id = identifier
       extrusion.visible = isVisible.proto
       extrusion.minZoom = minimumZoomLevel.proto
@@ -238,7 +238,7 @@ extension MGLFillExtrusionStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion) {
+  func update(layer: Tophap_MapboxGl_Layer.FillExtrusion) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -264,8 +264,8 @@ extension MGLFillExtrusionStyleLayer {
 }
 
 extension MGLHeatmapStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Heatmap.with { heatmap in
+  var proto: Tophap_MapboxGl_Layer.Heatmap {
+    return Tophap_MapboxGl_Layer.Heatmap.with { heatmap in
       heatmap.id = identifier
       heatmap.visible = isVisible.proto
       heatmap.minZoom = minimumZoomLevel.proto
@@ -288,7 +288,7 @@ extension MGLHeatmapStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap) {
+  func update(layer: Tophap_MapboxGl_Layer.Heatmap) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -308,8 +308,8 @@ extension MGLHeatmapStyleLayer {
 }
 
 extension MGLHillshadeStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Hillshade.with { hillshade in
+  var proto: Tophap_MapboxGl_Layer.Hillshade {
+    return Tophap_MapboxGl_Layer.Hillshade.with { hillshade in
       hillshade.id = identifier
       hillshade.visible = isVisible.proto
       hillshade.minZoom = minimumZoomLevel.proto
@@ -329,7 +329,7 @@ extension MGLHillshadeStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade) {
+  func update(layer: Tophap_MapboxGl_Layer.Hillshade) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -350,8 +350,8 @@ extension MGLHillshadeStyleLayer {
 }
 
 extension MGLLineStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Line {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Line.with { line in
+  var proto: Tophap_MapboxGl_Layer.Line {
+    return Tophap_MapboxGl_Layer.Line.with { line in
       line.id = identifier
       line.visible = isVisible.proto
       line.minZoom = minimumZoomLevel.proto
@@ -390,7 +390,7 @@ extension MGLLineStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Line) {
+  func update(layer: Tophap_MapboxGl_Layer.Line) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -426,8 +426,8 @@ extension MGLLineStyleLayer {
 }
 
 extension MGLRasterStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Raster {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Raster.with { raster in
+  var proto: Tophap_MapboxGl_Layer.Raster {
+    return Tophap_MapboxGl_Layer.Raster.with { raster in
       raster.id = identifier
       raster.visible = isVisible.proto
       raster.minZoom = minimumZoomLevel.proto
@@ -451,7 +451,7 @@ extension MGLRasterStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Raster) {
+  func update(layer: Tophap_MapboxGl_Layer.Raster) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }
@@ -476,8 +476,8 @@ extension MGLRasterStyleLayer {
 }
 
 extension MGLSymbolStyleLayer {
-  var proto: Com_Tophap_Mapboxgl_Proto_Layer.Symbol {
-    return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.with { symbol in
+  var proto: Tophap_MapboxGl_Layer.Symbol {
+    return Tophap_MapboxGl_Layer.Symbol.with { symbol in
       symbol.id = identifier
       symbol.visible = isVisible.proto
       symbol.minZoom = minimumZoomLevel.proto
@@ -557,7 +557,7 @@ extension MGLSymbolStyleLayer {
     }
   }
 
-  func update(layer: Com_Tophap_Mapboxgl_Proto_Layer.Symbol) {
+  func update(layer: Tophap_MapboxGl_Layer.Symbol) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
     if layer.hasMinZoom { minimumZoomLevel = layer.minZoom.value }

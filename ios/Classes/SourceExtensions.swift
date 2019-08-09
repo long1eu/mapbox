@@ -6,12 +6,12 @@ import Foundation
 import Mapbox
 
 extension MGLSource {
-  var proto: Com_Tophap_Mapboxgl_Proto_Source {
-    return Com_Tophap_Mapboxgl_Proto_Source.with { source in
+  var proto: Tophap_MapboxGl_Source {
+    return Tophap_MapboxGl_Source.with { source in
       source.id = identifier
 
       if let me = self as? MGLShapeSource {
-        source.geoJson = Com_Tophap_Mapboxgl_Proto_Source.GeoJson.with { geoJson in
+        source.geoJson = Tophap_MapboxGl_Source.GeoJson.with { geoJson in
           geoJson.id = identifier
           // todo geoJson.attribution = attribution
 
@@ -20,7 +20,7 @@ extension MGLSource {
           }
         }
       } else if let me = self as? MGLImageSource {
-        source.image = Com_Tophap_Mapboxgl_Proto_Source.Image.with { image in
+        source.image = Tophap_MapboxGl_Source.Image.with { image in
           image.id = identifier
           image.coordinates = me.coordinates.proto
           // todo geoJson.attribution = attribution
@@ -35,7 +35,7 @@ extension MGLSource {
           }
         }
       } else if let me = self as? MGLVectorTileSource {
-        source.vector = Com_Tophap_Mapboxgl_Proto_Source.Vector.with { vector in
+        source.vector = Tophap_MapboxGl_Source.Vector.with { vector in
           vector.id = identifier
           // todo vector.attribution = attribution
           // todo add open var attributionInfos: [MGLAttributionInfo] { get }
@@ -44,7 +44,7 @@ extension MGLSource {
           }
         }
       } else if let me = self as? MGLRasterDEMSource {
-        source.rasterDem = Com_Tophap_Mapboxgl_Proto_Source.RasterDem.with { rasterDem in
+        source.rasterDem = Tophap_MapboxGl_Source.RasterDem.with { rasterDem in
           rasterDem.id = identifier
           // todo vector.attribution = attribution
           // todo add open var attributionInfos: [MGLAttributionInfo] { get }
@@ -53,7 +53,7 @@ extension MGLSource {
           }
         }
       } else if let me = self as? MGLRasterTileSource {
-        source.raster = Com_Tophap_Mapboxgl_Proto_Source.Raster.with { raster in
+        source.raster = Tophap_MapboxGl_Source.Raster.with { raster in
           raster.id = identifier
           // todo vector.attribution = attribution
           // todo add open var attributionInfos: [MGLAttributionInfo] { get }
@@ -62,14 +62,14 @@ extension MGLSource {
           }
         }
       } else {
-        source.unknown = Com_Tophap_Mapboxgl_Proto_Source.Unknown.with { unknown in
+        source.unknown = Tophap_MapboxGl_Source.Unknown.with { unknown in
           unknown.id = identifier
         }
       }
     }
   }
 
-  func update(source: Com_Tophap_Mapboxgl_Proto_Source) {
+  func update(source: Tophap_MapboxGl_Source) {
     if let me = self as? MGLShapeSource {
       switch (source.geoJson.source!) {
       case .uri(_): me.url = source.geoJson.uri.uri

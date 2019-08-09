@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-part of mapboxgl;
+part of flutter_mapbox_gl;
 
 /// Factory for creating CameraUpdate objects.
 class CameraUpdate {

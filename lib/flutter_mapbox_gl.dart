@@ -1,4 +1,4 @@
-library mapboxgl;
+library flutter_mapbox_gl;
 
 import 'dart:async';
 import 'dart:convert';

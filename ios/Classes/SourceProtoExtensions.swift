@@ -5,7 +5,7 @@
 import Foundation
 import Mapbox
 
-extension Com_Tophap_Mapboxgl_Proto_Source {
+extension Tophap_MapboxGl_Source {
   func fieldValue() -> MGLSource {
     switch (type!) {
     case .geoJson(_): return geoJson.fieldValue()
@@ -18,7 +18,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.GeoJson {
+extension Tophap_MapboxGl_Source.GeoJson {
   func fieldValue() -> MGLShapeSource {
     let _options: [MGLShapeSourceOption: Any]? = hasOptions ? options.fieldValue() : nil
     switch (source!) {
@@ -30,7 +30,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source.GeoJson {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options {
+extension Tophap_MapboxGl_Source.GeoJson.Options {
   func fieldValue() -> [MGLShapeSourceOption: Any] {
     return [
       MGLShapeSourceOption.minimumZoomLevel: Int(minZoom),
@@ -45,7 +45,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source.GeoJson.Options {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.Image {
+extension Tophap_MapboxGl_Source.Image {
   func fieldValue() -> MGLImageSource {
     switch (source!) {
     case .uri(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, url: uri.uri)
@@ -54,7 +54,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source.Image {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.Vector {
+extension Tophap_MapboxGl_Source.Vector {
   func fieldValue() -> MGLVectorTileSource {
     switch (source!) {
     case .uri(_): return MGLVectorTileSource(identifier: id, configurationURL: uri.uri)
@@ -63,7 +63,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source.Vector {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.RasterDem {
+extension Tophap_MapboxGl_Source.RasterDem {
   func fieldValue() -> MGLRasterDEMSource {
     switch (source!) {
     case .uri(_): return MGLRasterDEMSource(identifier: id, configurationURL: uri.uri, tileSize: tileSize.cgFloat)
@@ -72,7 +72,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source.RasterDem {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.Raster {
+extension Tophap_MapboxGl_Source.Raster {
   func fieldValue() -> MGLRasterTileSource {
     switch (source!) {
     case .uri(_): return MGLRasterTileSource(identifier: id, configurationURL: uri.uri, tileSize: tileSize.cgFloat)
@@ -81,7 +81,7 @@ extension Com_Tophap_Mapboxgl_Proto_Source.Raster {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Source.TileSet {
+extension Tophap_MapboxGl_Source.TileSet {
   func options() -> [MGLTileSourceOption: Any] {
     return [
       MGLTileSourceOption.minimumZoomLevel: minZoom,

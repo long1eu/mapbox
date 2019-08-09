@@ -15,7 +15,7 @@ import 'google/protobuf/wrappers.pb.dart' as $0;
 export 'util.pbenum.dart';
 
 class FormattedSection extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FormattedSection', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FormattedSection', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'text')
     ..a<$0.DoubleValue>(2, 'fontScale', $pb.PbFieldType.OM, $0.DoubleValue.getDefault, $0.DoubleValue.create)
     ..pPS(3, 'fontStack')
@@ -56,7 +56,7 @@ class FormattedSection extends $pb.GeneratedMessage {
 }
 
 class TransitionOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TransitionOptions', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TransitionOptions', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aInt64(1, 'duration')
     ..aInt64(2, 'delay')
     ..aOB(3, 'enablePlacementTransitions')
@@ -94,7 +94,7 @@ class TransitionOptions extends $pb.GeneratedMessage {
 }
 
 class LatLng extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLng', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLng', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..a<$core.double>(1, 'latitude', $pb.PbFieldType.OD)
     ..a<$core.double>(2, 'longitude', $pb.PbFieldType.OD)
     ..a<$core.double>(3, 'altitude', $pb.PbFieldType.OD)
@@ -132,7 +132,7 @@ class LatLng extends $pb.GeneratedMessage {
 }
 
 class LatLngQuad extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngQuad', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngQuad', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..a<LatLng>(1, 'topLeft', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
     ..a<LatLng>(2, 'topRight', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
     ..a<LatLng>(3, 'bottomRight', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
@@ -176,7 +176,7 @@ class LatLngQuad extends $pb.GeneratedMessage {
 }
 
 class LatLngBounds extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngBounds', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngBounds', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..a<$core.double>(1, 'latitudeNorth', $pb.PbFieldType.OD)
     ..a<$core.double>(2, 'latitudeSouth', $pb.PbFieldType.OD)
     ..a<$core.double>(3, 'longitudeEast', $pb.PbFieldType.OD)
@@ -220,7 +220,7 @@ class LatLngBounds extends $pb.GeneratedMessage {
 }
 
 class Color extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Color', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Color', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..a<$core.int>(1, 'red', $pb.PbFieldType.O3)
     ..a<$core.int>(2, 'green', $pb.PbFieldType.O3)
     ..a<$core.int>(3, 'blue', $pb.PbFieldType.O3)

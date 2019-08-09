@@ -21,7 +21,7 @@ class Expression extends $pb.GeneratedMessage {
     4 : Expression_Data.literal,
     0 : Expression_Data.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Expression', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Expression', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..oo(0, [3, 4])
     ..aOS(1, 'operator')
     ..pc<Expression>(2, 'arguments', $pb.PbFieldType.PM,Expression.create)
@@ -83,7 +83,7 @@ class Value extends $pb.GeneratedMessage {
     5 : Value_Kind.listValue,
     0 : Value_Kind.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Value', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Value', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..oo(0, [1, 2, 3, 4, 5])
     ..a<$core.int>(1, 'intValue', $pb.PbFieldType.O3)
     ..a<$core.double>(2, 'doubleValue', $pb.PbFieldType.OD)
@@ -137,7 +137,7 @@ class Value extends $pb.GeneratedMessage {
 }
 
 class ListValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ListValue', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ListValue', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..pc<Value>(1, 'values', $pb.PbFieldType.PM,Value.create)
     ..hasRequiredFields = false
   ;
@@ -160,8 +160,8 @@ class ListValue extends $pb.GeneratedMessage {
 }
 
 class MapExpression extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MapExpression', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
-    ..m<$core.String, Expression>(1, 'map', 'MapExpression.MapEntry',$pb.PbFieldType.OS, $pb.PbFieldType.OM, Expression.create, null, null , const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MapExpression', package: const $pb.PackageName('tophap.mapbox_gl'))
+    ..m<$core.String, Expression>(1, 'map', 'MapExpression.MapEntry',$pb.PbFieldType.OS, $pb.PbFieldType.OM, Expression.create, null, null , const $pb.PackageName('tophap.mapbox_gl'))
     ..hasRequiredFields = false
   ;
 

@@ -14,9 +14,9 @@ class MapboxMapFactory: NSObject, FlutterPlatformViewFactory {
 
   func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
     let data = (args as! FlutterStandardTypedData).data
-    let proto = try! Com_Tophap_Mapboxgl_Proto_Map.Options(serializedData: data)
+    let proto = try! Tophap_MapboxGl_Map.Options(serializedData: data)
 
-    let platformViewChannel = FlutterMethodChannel(name: "com.tophap/mapboxgl_factory_\(viewId)", binaryMessenger: registrar.messenger())
+    let platformViewChannel = FlutterMethodChannel(name: "com.tophap/mapbox_gl_factory_\(viewId)", binaryMessenger: registrar.messenger())
     return MapboxPlatformView(withFrame: frame, options: proto, channel: platformViewChannel, viewId: viewId)
   }
 

@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Com_Tophap_Mapboxgl_Proto_Map {
+struct Tophap_MapboxGl_Map {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -46,8 +46,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._crossSourceCollisions = newValue}
     }
 
-    var cameraPosition: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
-      get {return _storage._cameraPosition ?? Com_Tophap_Mapboxgl_Proto_Map.CameraPosition()}
+    var cameraPosition: Tophap_MapboxGl_Map.CameraPosition {
+      get {return _storage._cameraPosition ?? Tophap_MapboxGl_Map.CameraPosition()}
       set {_uniqueStorage()._cameraPosition = newValue}
     }
     /// Returns true if `cameraPosition` has been explicitly set.
@@ -100,7 +100,7 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._compass = newValue}
     }
 
-    var compassPosition: Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
+    var compassPosition: Tophap_MapboxGl_OrnamentPosition {
       get {return _storage._compassPosition}
       set {_uniqueStorage()._compassPosition = newValue}
     }
@@ -120,7 +120,7 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._logo = newValue}
     }
 
-    var logoPosition: Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
+    var logoPosition: Tophap_MapboxGl_OrnamentPosition {
       get {return _storage._logoPosition}
       set {_uniqueStorage()._logoPosition = newValue}
     }
@@ -135,7 +135,7 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._attribution = newValue}
     }
 
-    var attributionPosition: Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
+    var attributionPosition: Tophap_MapboxGl_OrnamentPosition {
       get {return _storage._attributionPosition}
       set {_uniqueStorage()._attributionPosition = newValue}
     }
@@ -145,8 +145,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._attributionMargin = newValue}
     }
 
-    var attributionTintColor: Com_Tophap_Mapboxgl_Proto_Color {
-      get {return _storage._attributionTintColor ?? Com_Tophap_Mapboxgl_Proto_Color()}
+    var attributionTintColor: Tophap_MapboxGl_Color {
+      get {return _storage._attributionTintColor ?? Tophap_MapboxGl_Color()}
       set {_uniqueStorage()._attributionTintColor = newValue}
     }
     /// Returns true if `attributionTintColor` has been explicitly set.
@@ -179,8 +179,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._pixelRatio = newValue}
     }
 
-    var foregroundLoadColor: Com_Tophap_Mapboxgl_Proto_Color {
-      get {return _storage._foregroundLoadColor ?? Com_Tophap_Mapboxgl_Proto_Color()}
+    var foregroundLoadColor: Tophap_MapboxGl_Color {
+      get {return _storage._foregroundLoadColor ?? Tophap_MapboxGl_Color()}
       set {_uniqueStorage()._foregroundLoadColor = newValue}
     }
     /// Returns true if `foregroundLoadColor` has been explicitly set.
@@ -193,7 +193,7 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._style = newValue}
     }
 
-    var fromMapbox: Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle {
+    var fromMapbox: Tophap_MapboxGl_Style.MapboxStyle {
       get {
         if case .fromMapbox(let v)? = _storage._style {return v}
         return .mapboxStreets
@@ -220,12 +220,12 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     enum OneOf_Style: Equatable {
-      case fromMapbox(Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle)
+      case fromMapbox(Tophap_MapboxGl_Style.MapboxStyle)
       case fromUri(String)
       case fromJson(String)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Options.OneOf_Style, rhs: Com_Tophap_Mapboxgl_Proto_Map.Options.OneOf_Style) -> Bool {
+      static func ==(lhs: Tophap_MapboxGl_Map.Options.OneOf_Style, rhs: Tophap_MapboxGl_Map.Options.OneOf_Style) -> Bool {
         switch (lhs, rhs) {
         case (.fromMapbox(let l), .fromMapbox(let r)): return l == r
         case (.fromUri(let l), .fromUri(let r)): return l == r
@@ -251,8 +251,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       set {_uniqueStorage()._bearing = newValue}
     }
 
-    var target: Com_Tophap_Mapboxgl_Proto_LatLng {
-      get {return _storage._target ?? Com_Tophap_Mapboxgl_Proto_LatLng()}
+    var target: Tophap_MapboxGl_LatLng {
+      get {return _storage._target ?? Tophap_MapboxGl_LatLng()}
       set {_uniqueStorage()._target = newValue}
     }
     /// Returns true if `target` has been explicitly set.
@@ -340,8 +340,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
         set {_uniqueStorage()._maxZoom = newValue}
       }
 
-      var camera: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
-        get {return _storage._camera ?? Com_Tophap_Mapboxgl_Proto_Map.CameraPosition()}
+      var camera: Tophap_MapboxGl_Map.CameraPosition {
+        get {return _storage._camera ?? Tophap_MapboxGl_Map.CameraPosition()}
         set {_uniqueStorage()._camera = newValue}
       }
       /// Returns true if `camera` has been explicitly set.
@@ -349,8 +349,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       /// Clears the value of `camera`. Subsequent reads from it will return its default value.
       mutating func clearCamera() {_uniqueStorage()._camera = nil}
 
-      var style: Com_Tophap_Mapboxgl_Proto_Style {
-        get {return _storage._style ?? Com_Tophap_Mapboxgl_Proto_Style()}
+      var style: Tophap_MapboxGl_Style {
+        get {return _storage._style ?? Tophap_MapboxGl_Style()}
         set {_uniqueStorage()._style = newValue}
       }
       /// Returns true if `style` has been explicitly set.
@@ -370,8 +370,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      var cameraPosition: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
-        get {return _storage._cameraPosition ?? Com_Tophap_Mapboxgl_Proto_Map.CameraPosition()}
+      var cameraPosition: Tophap_MapboxGl_Map.CameraPosition {
+        get {return _storage._cameraPosition ?? Tophap_MapboxGl_Map.CameraPosition()}
         set {_uniqueStorage()._cameraPosition = newValue}
       }
       /// Returns true if `cameraPosition` has been explicitly set.
@@ -379,8 +379,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       /// Clears the value of `cameraPosition`. Subsequent reads from it will return its default value.
       mutating func clearCameraPosition() {_uniqueStorage()._cameraPosition = nil}
 
-      var latLng: Com_Tophap_Mapboxgl_Proto_LatLng {
-        get {return _storage._latLng ?? Com_Tophap_Mapboxgl_Proto_LatLng()}
+      var latLng: Tophap_MapboxGl_LatLng {
+        get {return _storage._latLng ?? Tophap_MapboxGl_LatLng()}
         set {_uniqueStorage()._latLng = newValue}
       }
       /// Returns true if `latLng` has been explicitly set.
@@ -388,8 +388,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       /// Clears the value of `latLng`. Subsequent reads from it will return its default value.
       mutating func clearLatLng() {_uniqueStorage()._latLng = nil}
 
-      var bounds: Com_Tophap_Mapboxgl_Proto_LatLngBounds {
-        get {return _storage._bounds ?? Com_Tophap_Mapboxgl_Proto_LatLngBounds()}
+      var bounds: Tophap_MapboxGl_LatLngBounds {
+        get {return _storage._bounds ?? Tophap_MapboxGl_LatLngBounds()}
         set {_uniqueStorage()._bounds = newValue}
       }
       /// Returns true if `bounds` has been explicitly set.
@@ -432,7 +432,7 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
         set {_uniqueStorage()._focusY = newValue}
       }
 
-      var operation: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate.TypeEnum {
+      var operation: Tophap_MapboxGl_Map.Operations.CameraUpdate.TypeEnum {
         get {return _storage._operation}
         set {_uniqueStorage()._operation = newValue}
       }
@@ -529,8 +529,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      var update: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate {
-        get {return _storage._update ?? Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate()}
+      var update: Tophap_MapboxGl_Map.Operations.CameraUpdate {
+        get {return _storage._update ?? Tophap_MapboxGl_Map.Operations.CameraUpdate()}
         set {_uniqueStorage()._update = newValue}
       }
       /// Returns true if `update` has been explicitly set.
@@ -560,8 +560,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      var update: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate {
-        get {return _storage._update ?? Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate()}
+      var update: Tophap_MapboxGl_Map.Operations.CameraUpdate {
+        get {return _storage._update ?? Tophap_MapboxGl_Map.Operations.CameraUpdate()}
         set {_uniqueStorage()._update = newValue}
       }
       /// Returns true if `update` has been explicitly set.
@@ -620,8 +620,8 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      var bounds: Com_Tophap_Mapboxgl_Proto_LatLngBounds {
-        get {return _storage._bounds ?? Com_Tophap_Mapboxgl_Proto_LatLngBounds()}
+      var bounds: Tophap_MapboxGl_LatLngBounds {
+        get {return _storage._bounds ?? Tophap_MapboxGl_LatLngBounds()}
         set {_uniqueStorage()._bounds = newValue}
       }
       /// Returns true if `bounds` has been explicitly set.
@@ -659,9 +659,9 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "com.tophap.mapboxgl.proto"
+fileprivate let _protobuf_package = "tophap.mapbox_gl"
 
-extension Com_Tophap_Mapboxgl_Proto_Map: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Tophap_MapboxGl_Map: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Map"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -674,14 +674,14 @@ extension Com_Tophap_Mapboxgl_Proto_Map: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map, rhs: Com_Tophap_Mapboxgl_Proto_Map) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map, rhs: Tophap_MapboxGl_Map) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.protoMessageName + ".Options"
+extension Tophap_MapboxGl_Map.Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.protoMessageName + ".Options"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "api_base_uri"),
     2: .standard(proto: "local_ideograph_font_family"),
@@ -721,7 +721,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Options: SwiftProtobuf.Message, SwiftPro
     var _apiBaseUri: String = String()
     var _localIdeographFontFamily: String = String()
     var _crossSourceCollisions: Bool = false
-    var _cameraPosition: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition? = nil
+    var _cameraPosition: Tophap_MapboxGl_Map.CameraPosition? = nil
     var _maxZoom: Double = 0
     var _minZoom: Double = 0
     var _zoomGestures: Bool = false
@@ -731,23 +731,23 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Options: SwiftProtobuf.Message, SwiftPro
     var _doubleTapGestures: Bool = false
     var _quickZoomGestures: Bool = false
     var _compass: Bool = false
-    var _compassPosition: Com_Tophap_Mapboxgl_Proto_OrnamentPosition = .topLeft
+    var _compassPosition: Tophap_MapboxGl_OrnamentPosition = .topLeft
     var _compassMargin: [Int32] = []
     var _compassFadeFacingNorth: Bool = false
     var _logo: Bool = false
-    var _logoPosition: Com_Tophap_Mapboxgl_Proto_OrnamentPosition = .topLeft
+    var _logoPosition: Tophap_MapboxGl_OrnamentPosition = .topLeft
     var _logoMargin: [Int32] = []
     var _attribution: Bool = false
-    var _attributionPosition: Com_Tophap_Mapboxgl_Proto_OrnamentPosition = .topLeft
+    var _attributionPosition: Tophap_MapboxGl_OrnamentPosition = .topLeft
     var _attributionMargin: [Int32] = []
-    var _attributionTintColor: Com_Tophap_Mapboxgl_Proto_Color? = nil
+    var _attributionTintColor: Tophap_MapboxGl_Color? = nil
     var _renderTextureMode: Bool = false
     var _renderTextureTranslucentSurface: Bool = false
     var _enableTilePrefetch: Bool = false
     var _enableZMediaOverlay: Bool = false
     var _pixelRatio: Float = 0
-    var _foregroundLoadColor: Com_Tophap_Mapboxgl_Proto_Color? = nil
-    var _style: Com_Tophap_Mapboxgl_Proto_Map.Options.OneOf_Style?
+    var _foregroundLoadColor: Tophap_MapboxGl_Color? = nil
+    var _style: Tophap_MapboxGl_Map.Options.OneOf_Style?
 
     static let defaultInstance = _StorageClass()
 
@@ -830,7 +830,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Options: SwiftProtobuf.Message, SwiftPro
         case 29: try decoder.decodeSingularMessageField(value: &_storage._foregroundLoadColor)
         case 30:
           if _storage._style != nil {try decoder.handleConflictingOneOf()}
-          var v: Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle?
+          var v: Tophap_MapboxGl_Style.MapboxStyle?
           try decoder.decodeSingularEnumField(value: &v)
           if let v = v {_storage._style = .fromMapbox(v)}
         case 31:
@@ -951,7 +951,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Options: SwiftProtobuf.Message, SwiftPro
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Options, rhs: Com_Tophap_Mapboxgl_Proto_Map.Options) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Options, rhs: Tophap_MapboxGl_Map.Options) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -995,8 +995,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Options: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.protoMessageName + ".CameraPosition"
+extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.protoMessageName + ".CameraPosition"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "bearing"),
     2: .same(proto: "target"),
@@ -1006,7 +1006,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition: SwiftProtobuf.Message, S
 
   fileprivate class _StorageClass {
     var _bearing: Double = 0
-    var _target: Com_Tophap_Mapboxgl_Proto_LatLng? = nil
+    var _target: Tophap_MapboxGl_LatLng? = nil
     var _tilt: Double = 0
     var _zoom: Double = 0
 
@@ -1062,7 +1062,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition: SwiftProtobuf.Message, S
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition, rhs: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.CameraPosition, rhs: Tophap_MapboxGl_Map.CameraPosition) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1080,7 +1080,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition: SwiftProtobuf.Message, S
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition.MoveReason: SwiftProtobuf._ProtoNameProviding {
+extension Tophap_MapboxGl_Map.CameraPosition.MoveReason: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "API_GESTURE"),
     1: .same(proto: "DEVELOPER_ANIMATION"),
@@ -1088,8 +1088,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition.MoveReason: SwiftProtobuf
   ]
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.protoMessageName + ".Operations"
+extension Tophap_MapboxGl_Map.Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.protoMessageName + ".Operations"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1101,14 +1101,14 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations, rhs: Tophap_MapboxGl_Map.Operations) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".Ready"
+extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".Ready"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "view_id"),
     2: .standard(proto: "prefetches_tiles"),
@@ -1123,8 +1123,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message,
     var _prefetchesTiles: Bool = false
     var _minZoom: Double = 0
     var _maxZoom: Double = 0
-    var _camera: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition? = nil
-    var _style: Com_Tophap_Mapboxgl_Proto_Style? = nil
+    var _camera: Tophap_MapboxGl_Map.CameraPosition? = nil
+    var _style: Tophap_MapboxGl_Style? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -1188,7 +1188,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message,
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.Ready, rhs: Tophap_MapboxGl_Map.Operations.Ready) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1208,8 +1208,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message,
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".CameraUpdate"
+extension Tophap_MapboxGl_Map.Operations.CameraUpdate: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".CameraUpdate"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "camera_position"),
     2: .standard(proto: "lat_lng"),
@@ -1225,9 +1225,9 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate: SwiftProtobuf.M
   ]
 
   fileprivate class _StorageClass {
-    var _cameraPosition: Com_Tophap_Mapboxgl_Proto_Map.CameraPosition? = nil
-    var _latLng: Com_Tophap_Mapboxgl_Proto_LatLng? = nil
-    var _bounds: Com_Tophap_Mapboxgl_Proto_LatLngBounds? = nil
+    var _cameraPosition: Tophap_MapboxGl_Map.CameraPosition? = nil
+    var _latLng: Tophap_MapboxGl_LatLng? = nil
+    var _bounds: Tophap_MapboxGl_LatLngBounds? = nil
     var _bearing: Double = 0
     var _tilt: Double = 0
     var _padding: [Int32] = []
@@ -1235,7 +1235,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate: SwiftProtobuf.M
     var _amount: Double = 0
     var _focusX: Int32 = 0
     var _focusY: Int32 = 0
-    var _operation: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate.TypeEnum = .newCameraPosition
+    var _operation: Tophap_MapboxGl_Map.Operations.CameraUpdate.TypeEnum = .newCameraPosition
 
     static let defaultInstance = _StorageClass()
 
@@ -1324,7 +1324,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate: SwiftProtobuf.M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.CameraUpdate, rhs: Tophap_MapboxGl_Map.Operations.CameraUpdate) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1349,14 +1349,14 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate: SwiftProtobuf.M
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate.Result: SwiftProtobuf._ProtoNameProviding {
+extension Tophap_MapboxGl_Map.Operations.CameraUpdate.Result: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "FINISHED"),
     1: .same(proto: "CANCELED"),
   ]
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension Tophap_MapboxGl_Map.Operations.CameraUpdate.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "NEW_CAMERA_POSITION"),
     1: .same(proto: "NEW_LAT_LNG"),
@@ -1371,8 +1371,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate.TypeEnum: SwiftP
   ]
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".EaseCamera"
+extension Tophap_MapboxGl_Map.Operations.EaseCamera: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".EaseCamera"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "update"),
     2: .same(proto: "duration"),
@@ -1380,7 +1380,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera: SwiftProtobuf.Mes
   ]
 
   fileprivate class _StorageClass {
-    var _update: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate? = nil
+    var _update: Tophap_MapboxGl_Map.Operations.CameraUpdate? = nil
     var _duration: Int32 = 0
     var _easingInterpolator: Bool = false
 
@@ -1431,7 +1431,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera: SwiftProtobuf.Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.EaseCamera, rhs: Tophap_MapboxGl_Map.Operations.EaseCamera) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1448,15 +1448,15 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera: SwiftProtobuf.Mes
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.AnimateCamera: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".AnimateCamera"
+extension Tophap_MapboxGl_Map.Operations.AnimateCamera: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".AnimateCamera"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "update"),
     2: .same(proto: "duration"),
   ]
 
   fileprivate class _StorageClass {
-    var _update: Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate? = nil
+    var _update: Tophap_MapboxGl_Map.Operations.CameraUpdate? = nil
     var _duration: Int32 = 0
 
     static let defaultInstance = _StorageClass()
@@ -1501,7 +1501,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.AnimateCamera: SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.AnimateCamera, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.AnimateCamera) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.AnimateCamera, rhs: Tophap_MapboxGl_Map.Operations.AnimateCamera) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -1517,8 +1517,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.AnimateCamera: SwiftProtobuf.
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.ScrollBy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".ScrollBy"
+extension Tophap_MapboxGl_Map.Operations.ScrollBy: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".ScrollBy"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "x"),
     2: .same(proto: "y"),
@@ -1549,7 +1549,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.ScrollBy: SwiftProtobuf.Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.ScrollBy, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.ScrollBy) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.ScrollBy, rhs: Tophap_MapboxGl_Map.Operations.ScrollBy) -> Bool {
     if lhs.x != rhs.x {return false}
     if lhs.y != rhs.y {return false}
     if lhs.duration != rhs.duration {return false}
@@ -1558,8 +1558,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.ScrollBy: SwiftProtobuf.Messa
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.SetFocalBearing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".SetFocalBearing"
+extension Tophap_MapboxGl_Map.Operations.SetFocalBearing: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".SetFocalBearing"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "bearing"),
     2: .standard(proto: "focal_x"),
@@ -1595,7 +1595,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.SetFocalBearing: SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.SetFocalBearing, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.SetFocalBearing) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.SetFocalBearing, rhs: Tophap_MapboxGl_Map.Operations.SetFocalBearing) -> Bool {
     if lhs.bearing != rhs.bearing {return false}
     if lhs.focalX != rhs.focalX {return false}
     if lhs.focalY != rhs.focalY {return false}
@@ -1605,8 +1605,8 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.SetFocalBearing: SwiftProtobu
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.GetCameraForLatLngBounds: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Map.Operations.protoMessageName + ".GetCameraForLatLngBounds"
+extension Tophap_MapboxGl_Map.Operations.GetCameraForLatLngBounds: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Map.Operations.protoMessageName + ".GetCameraForLatLngBounds"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "bounds"),
     2: .same(proto: "padding"),
@@ -1615,7 +1615,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.GetCameraForLatLngBounds: Swi
   ]
 
   fileprivate class _StorageClass {
-    var _bounds: Com_Tophap_Mapboxgl_Proto_LatLngBounds? = nil
+    var _bounds: Tophap_MapboxGl_LatLngBounds? = nil
     var _padding: [Int32] = []
     var _bearing: Double = 0
     var _tilt: Double = 0
@@ -1672,7 +1672,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.GetCameraForLatLngBounds: Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.GetCameraForLatLngBounds, rhs: Com_Tophap_Mapboxgl_Proto_Map.Operations.GetCameraForLatLngBounds) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Map.Operations.GetCameraForLatLngBounds, rhs: Tophap_MapboxGl_Map.Operations.GetCameraForLatLngBounds) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0

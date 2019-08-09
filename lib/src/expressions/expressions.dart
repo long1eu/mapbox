@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-05
 
-part of mapboxgl;
+part of flutter_mapbox_gl;
 
 Expression literalDouble(double value) {
   assert(value != null);
@@ -447,7 +447,8 @@ Expression donwcase(dynamic string) {
 
 Expression concat(List<dynamic> strings) {
   assert(strings != null && strings.isNotEmpty);
-  assert(strings.every((it) => it is String) || strings.every((it) => it is Expression), 'YOu must provide eather a list of Strings or a list of Expressions');
+  assert(strings.every((it) => it is String) || strings.every((it) => it is Expression),
+      'YOu must provide eather a list of Strings or a list of Expressions');
 
   final List<Expression> value = strings.first is String //
       ? strings.map((it) => literalString(it)).toList()
@@ -487,7 +488,12 @@ Expression bool$(Expression expression) {
 }
 
 Expression collator(dynamic caseSensitive, dynamic diacriticSensitive, [dynamic locale]) {
-  final Map<String, Expression> map = <String, Expression>{'case-sensitive': _expression(caseSensitive, 'caseSensitive', bool), 'diacritic-sensitive': _expression(diacriticSensitive, 'diacriticSensitive', bool), if (locale != null && locale is Locale) 'locale': literalString(locale.toLanguageTag()), if (locale != null && locale is Expression) 'locale': locale};
+  final Map<String, Expression> map = <String, Expression>{
+    'case-sensitive': _expression(caseSensitive, 'caseSensitive', bool),
+    'diacritic-sensitive': _expression(diacriticSensitive, 'diacriticSensitive', bool),
+    if (locale != null && locale is Locale) 'locale': literalString(locale.toLanguageTag()),
+    if (locale != null && locale is Expression) 'locale': locale
+  };
   return Expression._e1(kCollatorOperator, _ExpressionMap(map));
 }
 

@@ -2,7 +2,7 @@ package com.tophap.mapbox_gl
 
 import android.graphics.BitmapFactory
 import com.mapbox.mapboxsdk.style.sources.*
-import com.tophap.mapboxgl.proto.Sources
+import com.tophap.mapbox_gl.proto.Sources
 import java.net.URI
 
 

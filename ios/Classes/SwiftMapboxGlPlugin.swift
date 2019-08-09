@@ -3,8 +3,8 @@ import UIKit
 
 public class SwiftMapboxGlPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "com.tophap/mapboxgl", binaryMessenger: registrar.messenger())
-    registrar.register(MapboxMapFactory(registrar: registrar), withId: "com.tophap/mapboxgl_factory")
+    let channel = FlutterMethodChannel(name: "com.tophap/mapbox_gl", binaryMessenger: registrar.messenger())
+    registrar.register(MapboxMapFactory(registrar: registrar), withId: "com.tophap/mapbox_gl_factory")
 
     let instance = SwiftMapboxGlPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)

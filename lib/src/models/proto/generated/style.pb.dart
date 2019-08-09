@@ -19,7 +19,7 @@ import 'style.pbenum.dart';
 export 'style.pbenum.dart';
 
 class Style_Light extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Light', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Light', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..e<$1.TranslateAnchor>(1, 'anchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
     ..a<Style_Position>(2, 'position', $pb.PbFieldType.OM, Style_Position.getDefault, Style_Position.create)
     ..a<$1.Color>(3, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
@@ -81,7 +81,7 @@ class Style_Light extends $pb.GeneratedMessage {
 }
 
 class Style_Position extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Position', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Position', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..a<$core.double>(1, 'radialCoordinate', $pb.PbFieldType.OF)
     ..a<$core.double>(2, 'azimuthalAngle', $pb.PbFieldType.OF)
     ..a<$core.double>(3, 'polarAngle', $pb.PbFieldType.OF)
@@ -132,7 +132,7 @@ class Style_Operations_Build extends $pb.GeneratedMessage {
     3 : Style_Operations_Build_Source.json,
     0 : Style_Operations_Build_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations.Build', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations.Build', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..oo(0, [1, 2, 3])
     ..e<Style_MapboxStyle>(1, 'default_1', $pb.PbFieldType.OE, Style_MapboxStyle.MAPBOX_STREETS, Style_MapboxStyle.valueOf, Style_MapboxStyle.values)
     ..aOS(2, 'uri')
@@ -174,7 +174,7 @@ class Style_Operations_Build extends $pb.GeneratedMessage {
 }
 
 class Style_Operations extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..hasRequiredFields = false
   ;
 
@@ -194,7 +194,7 @@ class Style_Operations extends $pb.GeneratedMessage {
 }
 
 class Style extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'uri')
     ..aOS(2, 'json')
     ..pc<$2.Source>(3, 'sources', $pb.PbFieldType.PM,$2.Source.create)

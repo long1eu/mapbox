@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/mapboxgl.iml" filepath="$PROJECT_DIR$/mapboxgl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flutter_mapbox_gl.iml" filepath="$PROJECT_DIR$/flutter_mapbox_gl.iml" />
     </modules>
   </component>
 </project>

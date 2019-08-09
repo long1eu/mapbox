@@ -14,32 +14,32 @@ import com.mapbox.mapboxsdk.maps.MapboxMapOptions
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
-import com.tophap.mapboxgl.proto.Mapbox
-import com.tophap.mapboxgl.proto.MapboxUtil
-import com.tophap.mapboxgl.proto.StyleOuterClass
+import com.tophap.mapbox_gl.proto.Mapbox
+import com.tophap.mapbox_gl.proto.Util
+import com.tophap.mapbox_gl.proto.Styles
 
 
 @Style.StyleUrl
-fun StyleOuterClass.Style.MapboxStyle.fieldValue(): String {
+fun Styles.Style.MapboxStyle.fieldValue(): String {
     return when (this) {
-        StyleOuterClass.Style.MapboxStyle.MAPBOX_STREETS -> Style.MAPBOX_STREETS
-        StyleOuterClass.Style.MapboxStyle.OUTDOORS -> Style.OUTDOORS
-        StyleOuterClass.Style.MapboxStyle.LIGHT -> Style.LIGHT
-        StyleOuterClass.Style.MapboxStyle.DARK -> Style.DARK
-        StyleOuterClass.Style.MapboxStyle.SATELLITE -> Style.SATELLITE
-        StyleOuterClass.Style.MapboxStyle.SATELLITE_STREETS -> Style.SATELLITE_STREETS
-        StyleOuterClass.Style.MapboxStyle.TRAFFIC_DAY -> Style.TRAFFIC_DAY
-        StyleOuterClass.Style.MapboxStyle.TRAFFIC_NIGHT -> Style.TRAFFIC_NIGHT
+        Styles.Style.MapboxStyle.MAPBOX_STREETS -> Style.MAPBOX_STREETS
+        Styles.Style.MapboxStyle.OUTDOORS -> Style.OUTDOORS
+        Styles.Style.MapboxStyle.LIGHT -> Style.LIGHT
+        Styles.Style.MapboxStyle.DARK -> Style.DARK
+        Styles.Style.MapboxStyle.SATELLITE -> Style.SATELLITE
+        Styles.Style.MapboxStyle.SATELLITE_STREETS -> Style.SATELLITE_STREETS
+        Styles.Style.MapboxStyle.TRAFFIC_DAY -> Style.TRAFFIC_DAY
+        Styles.Style.MapboxStyle.TRAFFIC_NIGHT -> Style.TRAFFIC_NIGHT
         else -> throw IllegalArgumentException("Unknown style $this")
     }
 }
 
-private fun MapboxUtil.OrnamentPosition.fieldValue(): Int {
+private fun Util.OrnamentPosition.fieldValue(): Int {
     return when (this) {
-        MapboxUtil.OrnamentPosition.TOP_LEFT -> Gravity.TOP or Gravity.LEFT
-        MapboxUtil.OrnamentPosition.TOP_RIGHT -> Gravity.TOP or Gravity.RIGHT
-        MapboxUtil.OrnamentPosition.BOTTOM_LEFT -> Gravity.BOTTOM or Gravity.LEFT
-        MapboxUtil.OrnamentPosition.BOTTOM_RIGHT -> Gravity.BOTTOM or Gravity.RIGHT
+        Util.OrnamentPosition.TOP_LEFT -> Gravity.TOP or Gravity.LEFT
+        Util.OrnamentPosition.TOP_RIGHT -> Gravity.TOP or Gravity.RIGHT
+        Util.OrnamentPosition.BOTTOM_LEFT -> Gravity.BOTTOM or Gravity.LEFT
+        Util.OrnamentPosition.BOTTOM_RIGHT -> Gravity.BOTTOM or Gravity.RIGHT
         else -> throw IllegalArgumentException("Unknown value $this")
     }
 }
@@ -93,7 +93,7 @@ fun Mapbox.Map.CameraPosition.fieldValue(): CameraPosition {
             .build()
 }
 
-fun MapboxUtil.LatLng.fieldValue(): LatLng = LatLng(latitude, longitude, altitude)
+fun Util.LatLng.fieldValue(): LatLng = LatLng(latitude, longitude, altitude)
 
 fun Mapbox.Map.Operations.CameraUpdate.fieldValue(): CameraUpdate {
     return when (operation!!) {
@@ -111,17 +111,17 @@ fun Mapbox.Map.Operations.CameraUpdate.fieldValue(): CameraUpdate {
     }
 }
 
-fun MapboxUtil.LatLngBounds.fieldValue(): LatLngBounds =
+fun Util.LatLngBounds.fieldValue(): LatLngBounds =
         LatLngBounds.from(latitudeNorth, longitudeEast, latitudeSouth, longitudeWest)
 
 
-fun MapboxUtil.LatLngQuad.fieldValue(): LatLngQuad = LatLngQuad(topLeft.fieldValue(), topRight.fieldValue(), bottomRight.fieldValue(), bottomLeft.fieldValue())
+fun Util.LatLngQuad.fieldValue(): LatLngQuad = LatLngQuad(topLeft.fieldValue(), topRight.fieldValue(), bottomRight.fieldValue(), bottomLeft.fieldValue())
 
-fun MapboxUtil.TransitionOptions.fieldValue(): TransitionOptions =
+fun Util.TransitionOptions.fieldValue(): TransitionOptions =
         TransitionOptions(duration, delay, enablePlacementTransitions)
 
 
-fun MapboxUtil.Color.toColorInt(): Int {
+fun Util.Color.toColorInt(): Int {
     return ((red * 255.0f + 0.5f).toInt() shl 16) or
             ((green * 255.0f + 0.5f).toInt() shl 8) or
             (blue * 255.0f + 0.5f).toInt()

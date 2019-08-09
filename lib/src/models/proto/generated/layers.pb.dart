@@ -13,7 +13,7 @@ import 'google/protobuf/wrappers.pb.dart' as $0;
 import 'util.pb.dart' as $1;
 
 class Layer_Background extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Background', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Background', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.BoolValue>(2, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
     ..a<$0.FloatValue>(3, 'minZoom', $pb.PbFieldType.OM, $0.FloatValue.getDefault, $0.FloatValue.create)
@@ -93,7 +93,7 @@ class Layer_Background extends $pb.GeneratedMessage {
 }
 
 class Layer_Circle extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Circle', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Circle', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -269,7 +269,7 @@ class Layer_Circle extends $pb.GeneratedMessage {
 }
 
 class Layer_FillExtrusion extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.FillExtrusion', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.FillExtrusion', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -415,7 +415,7 @@ class Layer_FillExtrusion extends $pb.GeneratedMessage {
 }
 
 class Layer_Fill extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Fill', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Fill', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -549,7 +549,7 @@ class Layer_Fill extends $pb.GeneratedMessage {
 }
 
 class Layer_Heatmap extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Heatmap', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Heatmap', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -659,7 +659,7 @@ class Layer_Heatmap extends $pb.GeneratedMessage {
 }
 
 class Layer_Hillshade extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Hillshade', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Hillshade', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -775,7 +775,7 @@ class Layer_Hillshade extends $pb.GeneratedMessage {
 }
 
 class Layer_Line extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Line', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Line', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -981,7 +981,7 @@ class Layer_Line extends $pb.GeneratedMessage {
 }
 
 class Layer_Raster extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Raster', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Raster', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -1121,7 +1121,7 @@ class Layer_Raster extends $pb.GeneratedMessage {
 }
 
 class Layer_Symbol extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Symbol', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Symbol', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')
     ..a<$0.StringValue>(2, 'sourceId', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
     ..a<$0.BoolValue>(3, 'visible', $pb.PbFieldType.OM, $0.BoolValue.getDefault, $0.BoolValue.create)
@@ -1598,7 +1598,7 @@ class Layer extends $pb.GeneratedMessage {
     10 : Layer_Type.symbolLayer,
     0 : Layer_Type.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..oo(0, [2, 3, 4, 5, 6, 7, 8, 9, 10])
     ..aOS(1, 'id')
     ..a<Layer_Background>(2, 'backgroundLayer', $pb.PbFieldType.OM, Layer_Background.getDefault, Layer_Background.create)
@@ -1695,7 +1695,7 @@ class Operations_Add extends $pb.GeneratedMessage {
     4 : Operations_Add_Position.index_,
     0 : Operations_Add_Position.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Operations.Add', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Operations.Add', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..oo(0, [2, 3, 4])
     ..a<Layer>(1, 'layer', $pb.PbFieldType.OM, Layer.getDefault, Layer.create)
     ..aOS(2, 'belowId')
@@ -1743,7 +1743,7 @@ class Operations_Add extends $pb.GeneratedMessage {
 }
 
 class Operations extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Operations', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Operations', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..hasRequiredFields = false
   ;
 

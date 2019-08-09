@@ -19,11 +19,11 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.tophap.mapboxgl.proto.Layers
-import com.tophap.mapboxgl.proto.Mapbox.Map.*
-import com.tophap.mapboxgl.proto.MapboxUtil
-import com.tophap.mapboxgl.proto.Sources
-import com.tophap.mapboxgl.proto.StyleOuterClass
+import com.tophap.mapbox_gl.proto.Layers
+import com.tophap.mapbox_gl.proto.Mapbox.Map.*
+import com.tophap.mapbox_gl.proto.Util
+import com.tophap.mapbox_gl.proto.Sources
+import com.tophap.mapbox_gl.proto.Styles
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -162,7 +162,7 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             "map#getHeight" -> result.success(mapboxMap.height)
             "map#getWidth" -> result.success(mapboxMap.width)
             "map#setLatLngBoundsForCameraTarget" -> {
-                val bounds = MapboxUtil.LatLngBounds.parseFrom(call.arguments as ByteArray)
+                val bounds = Util.LatLngBounds.parseFrom(call.arguments as ByteArray)
                 mapboxMap.setLatLngBoundsForCameraTarget(bounds.fieldValue())
                 result.success(null)
             }
@@ -182,17 +182,17 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                 }
             }
             "style#set" -> {
-                val data = StyleOuterClass.Style.Operations.Build.parseFrom(call.arguments as ByteArray)
+                val data = Styles.Style.Operations.Build.parseFrom(call.arguments as ByteArray)
                 val builder = Style.Builder()
                 when (data.sourceCase!!) {
-                    StyleOuterClass.Style.Operations.Build.SourceCase.SOURCE_NOT_SET,
-                    StyleOuterClass.Style.Operations.Build.SourceCase.DEFAULT -> {
+                    Styles.Style.Operations.Build.SourceCase.SOURCE_NOT_SET,
+                    Styles.Style.Operations.Build.SourceCase.DEFAULT -> {
                         builder.fromUri(data.default.fieldValue())
                     }
-                    StyleOuterClass.Style.Operations.Build.SourceCase.URI -> {
+                    Styles.Style.Operations.Build.SourceCase.URI -> {
                         builder.fromUri(data.uri)
                     }
-                    StyleOuterClass.Style.Operations.Build.SourceCase.JSON -> {
+                    Styles.Style.Operations.Build.SourceCase.JSON -> {
                         builder.fromJson(data.json)
                     }
                 }

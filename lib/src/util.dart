@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-04
 
-part of mapboxgl;
+part of flutter_mapbox_gl;
 
 pb.Int32Value int_(int value) {
   return pb.Int32Value()

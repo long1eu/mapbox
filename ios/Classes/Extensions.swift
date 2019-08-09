@@ -8,12 +8,7 @@ import SwiftProtobuf
 extension NSExpression {
   var proto: SwiftProtobuf.Google_Protobuf_StringValue {
     return SwiftProtobuf.Google_Protobuf_StringValue.with {
-      var object = mgl_jsonExpressionObject
-
-      if (object is Array<String> || object is Array<Float>) {
-        print(object)
-      }
-
+      let object = mgl_jsonExpressionObject
       let valid = JSONSerialization.isValidJSONObject(object)
       if (valid) {
         let data = try! JSONSerialization.data(withJSONObject: object)
@@ -94,36 +89,36 @@ extension SwiftProtobuf.Google_Protobuf_StringValue {
 }
 
 extension MGLIconAnchor {
-  func proto() -> Com_Tophap_Mapboxgl_Proto_PositionAnchor {
+  func proto() -> Tophap_MapboxGl_PositionAnchor {
     switch (self) {
-    case .center: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionCenter
-    case .left: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionLeft
-    case .right: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionRight
-    case .top: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionTop
-    case .bottom: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionBottom
-    case .topLeft: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionTopLeft
-    case .topRight: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionTopRight
-    case .bottomLeft: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionBottomLeft
-    case .bottomRight: return Com_Tophap_Mapboxgl_Proto_PositionAnchor.positionBottomRight
+    case .center: return Tophap_MapboxGl_PositionAnchor.positionCenter
+    case .left: return Tophap_MapboxGl_PositionAnchor.positionLeft
+    case .right: return Tophap_MapboxGl_PositionAnchor.positionRight
+    case .top: return Tophap_MapboxGl_PositionAnchor.positionTop
+    case .bottom: return Tophap_MapboxGl_PositionAnchor.positionBottom
+    case .topLeft: return Tophap_MapboxGl_PositionAnchor.positionTopLeft
+    case .topRight: return Tophap_MapboxGl_PositionAnchor.positionTopRight
+    case .bottomLeft: return Tophap_MapboxGl_PositionAnchor.positionBottomLeft
+    case .bottomRight: return Tophap_MapboxGl_PositionAnchor.positionBottomRight
     }
   }
 }
 
 extension MGLOrnamentPosition {
-  func proto() -> Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
+  func proto() -> Tophap_MapboxGl_OrnamentPosition {
     switch (self) {
-    case .topLeft: return Com_Tophap_Mapboxgl_Proto_OrnamentPosition.topLeft
-    case .topRight: return Com_Tophap_Mapboxgl_Proto_OrnamentPosition.topRight
-    case .bottomLeft: return Com_Tophap_Mapboxgl_Proto_OrnamentPosition.bottomLeft
-    case .bottomRight: return Com_Tophap_Mapboxgl_Proto_OrnamentPosition.bottomRight
+    case .topLeft: return Tophap_MapboxGl_OrnamentPosition.topLeft
+    case .topRight: return Tophap_MapboxGl_OrnamentPosition.topRight
+    case .bottomLeft: return Tophap_MapboxGl_OrnamentPosition.bottomLeft
+    case .bottomRight: return Tophap_MapboxGl_OrnamentPosition.bottomRight
     }
   }
 }
 
 extension MGLMapCamera {
-  func proto(mapView: MGLMapView) -> Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
+  func proto(mapView: MGLMapView) -> Tophap_MapboxGl_Map.CameraPosition {
     let zoom = MGLZoomLevelForAltitude(self.altitude, self.pitch, self.centerCoordinate.latitude, mapView.frame.size)
-    return Com_Tophap_Mapboxgl_Proto_Map.CameraPosition.with {
+    return Tophap_MapboxGl_Map.CameraPosition.with {
       $0.target = centerCoordinate.proto(altitude: altitude)
       $0.zoom = zoom
       $0.tilt = Double(pitch)
@@ -133,8 +128,8 @@ extension MGLMapCamera {
 }
 
 extension CLLocationCoordinate2D {
-  func proto(altitude: Double) -> Com_Tophap_Mapboxgl_Proto_LatLng {
-    return Com_Tophap_Mapboxgl_Proto_LatLng.with {
+  func proto(altitude: Double) -> Tophap_MapboxGl_LatLng {
+    return Tophap_MapboxGl_LatLng.with {
       $0.latitude = latitude
       $0.longitude = longitude
       $0.altitude = altitude
@@ -144,8 +139,8 @@ extension CLLocationCoordinate2D {
 
 extension MGLTransition {
   // get it from style
-  var proto: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-    return Com_Tophap_Mapboxgl_Proto_TransitionOptions.with {
+  var proto: Tophap_MapboxGl_TransitionOptions {
+    return Tophap_MapboxGl_TransitionOptions.with {
       $0.duration = Int64(duration * 1000)
       $0.delay = Int64(delay * 1000)
       $0.enablePlacementTransitions = true
@@ -154,8 +149,8 @@ extension MGLTransition {
 }
 
 extension MGLCoordinateQuad {
-  var proto: Com_Tophap_Mapboxgl_Proto_LatLngQuad {
-    return Com_Tophap_Mapboxgl_Proto_LatLngQuad.with { quad in
+  var proto: Tophap_MapboxGl_LatLngQuad {
+    return Tophap_MapboxGl_LatLngQuad.with { quad in
       quad.topLeft = topLeft.proto(altitude: 0)
       quad.bottomLeft = bottomLeft.proto(altitude: 0)
       quad.bottomRight = bottomRight.proto(altitude: 0)
@@ -182,14 +177,14 @@ extension UIEdgeInsets {
 }
 
 extension MGLStyle {
-  var proto: Com_Tophap_Mapboxgl_Proto_Style {
-    return Com_Tophap_Mapboxgl_Proto_Style.with { style in
+  var proto: Tophap_MapboxGl_Style {
+    return Tophap_MapboxGl_Style.with { style in
       // todo style.uri = uri
       // todo style.json = json
-      style.sources = sources.map { (source: MGLSource) -> Com_Tophap_Mapboxgl_Proto_Source in
+      style.sources = sources.map { (source: MGLSource) -> Tophap_MapboxGl_Source in
         source.proto
       }
-      style.layers = layers.map { (layer: MGLStyleLayer) -> Com_Tophap_Mapboxgl_Proto_Layer in
+      style.layers = layers.map { (layer: MGLStyleLayer) -> Tophap_MapboxGl_Layer in
         layer.toProto()
       }
       style.transition = transition.proto
@@ -199,8 +194,8 @@ extension MGLStyle {
 }
 
 extension MGLLight {
-  var proto: Com_Tophap_Mapboxgl_Proto_Style.Light {
-    return Com_Tophap_Mapboxgl_Proto_Style.Light.with { light in
+  var proto: Tophap_MapboxGl_Style.Light {
+    return Tophap_MapboxGl_Style.Light.with { light in
       // todo light.anchor = anchor.proto           make them expressions
       // todo light.color = color.proto             make them expressions
       // todo light.position = position.proto       make them expressions

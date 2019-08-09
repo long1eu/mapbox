@@ -5,13 +5,13 @@
 import Foundation
 import Mapbox
 
-extension Com_Tophap_Mapboxgl_Proto_Color {
+extension Tophap_MapboxGl_Color {
   var value: UIColor {
     return UIColor(red: red.cgFloat / 255.0, green: green.cgFloat / 255.0, blue: blue.cgFloat / 255.0, alpha: CGFloat(opacity))
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle {
+extension Tophap_MapboxGl_Style.MapboxStyle {
   var value: URL {
     switch (self) {
     case .mapboxStreets: return MGLStyle.streetsStyleURL
@@ -27,7 +27,7 @@ extension Com_Tophap_Mapboxgl_Proto_Style.MapboxStyle {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
+extension Tophap_MapboxGl_OrnamentPosition {
   var value: MGLOrnamentPosition {
     switch (self) {
     case .topLeft: return .topLeft
@@ -39,7 +39,7 @@ extension Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
+extension Tophap_MapboxGl_Map.CameraPosition {
   func value(mapView: MGLMapView) -> MGLMapCamera {
     let location = target.value
     let altitude = MGLAltitudeForZoomLevel(zoom, tilt.cgFloat, location.latitude, mapView.frame.size)
@@ -47,25 +47,25 @@ extension Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_LatLngQuad {
+extension Tophap_MapboxGl_LatLngQuad {
   var value: MGLCoordinateQuad {
     return MGLCoordinateQuad(topLeft: topLeft.value, bottomLeft: bottomLeft.value, bottomRight: bottomRight.value, topRight: topRight.value)
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_LatLng {
+extension Tophap_MapboxGl_LatLng {
   var value: CLLocationCoordinate2D {
     return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_TransitionOptions {
+extension Tophap_MapboxGl_TransitionOptions {
   var value: MGLTransition {
     return MGLTransition(duration: Double(duration) / 1000, delay: Double(delay) / 1000)
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_LatLngBounds {
+extension Tophap_MapboxGl_LatLngBounds {
   var value: MGLCoordinateBounds {
     return MGLCoordinateBounds(
         sw: CLLocationCoordinate2D(latitude: latitudeSouth, longitude: longitudeWest),
@@ -73,7 +73,7 @@ extension Com_Tophap_Mapboxgl_Proto_LatLngBounds {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate {
+extension Tophap_MapboxGl_Map.Operations.CameraUpdate {
   func camera(mapView: MGLMapView) -> MGLMapCamera {
     let camera = mapView.camera
 

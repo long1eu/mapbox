@@ -44,7 +44,7 @@ const FormattedSection$json = const {
     const {'1': 'text', '3': 1, '4': 1, '5': 9, '10': 'text'},
     const {'1': 'font_scale', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.DoubleValue', '10': 'fontScale'},
     const {'1': 'font_stack', '3': 3, '4': 3, '5': 9, '10': 'fontStack'},
-    const {'1': 'text_color', '3': 4, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.Color', '10': 'textColor'},
+    const {'1': 'text_color', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Color', '10': 'textColor'},
   ],
 };
 
@@ -69,10 +69,10 @@ const LatLng$json = const {
 const LatLngQuad$json = const {
   '1': 'LatLngQuad',
   '2': const [
-    const {'1': 'topLeft', '3': 1, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.LatLng', '10': 'topLeft'},
-    const {'1': 'topRight', '3': 2, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.LatLng', '10': 'topRight'},
-    const {'1': 'bottomRight', '3': 3, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.LatLng', '10': 'bottomRight'},
-    const {'1': 'bottomLeft', '3': 4, '4': 1, '5': 11, '6': '.com.tophap.mapboxgl.proto.LatLng', '10': 'bottomLeft'},
+    const {'1': 'topLeft', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topLeft'},
+    const {'1': 'topRight', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topRight'},
+    const {'1': 'bottomRight', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomRight'},
+    const {'1': 'bottomLeft', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomLeft'},
   ],
 };
 

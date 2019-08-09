@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-part of mapboxgl;
+part of flutter_mapbox_gl;
 
 class MapboxMap extends StatefulWidget {
   const MapboxMap({
@@ -42,7 +42,7 @@ class _MapboxMapState extends State<MapboxMap> {
   }
 
   void onPlatformViewCreated(int id) {
-    channel = MethodChannel('com.tophap/mapboxgl_factory_$id');
+    channel = MethodChannel('com.tophap/mapbox_gl_factory_$id');
     channel.setMethodCallHandler((event) async => _methodCall.add(event));
   }
 
@@ -146,7 +146,7 @@ class _MapboxMapState extends State<MapboxMap> {
 
     if (Platform.isAndroid) {
       return AndroidView(
-        viewType: 'com.tophap/mapboxgl_factory',
+        viewType: 'com.tophap/mapbox_gl_factory',
         onPlatformViewCreated: onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: options.data,
@@ -154,7 +154,7 @@ class _MapboxMapState extends State<MapboxMap> {
       );
     } else if (Platform.isIOS) {
       return UiKitView(
-        viewType: 'com.tophap/mapboxgl_factory',
+        viewType: 'com.tophap/mapbox_gl_factory',
         onPlatformViewCreated: onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: options.data,

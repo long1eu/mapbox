@@ -5,7 +5,7 @@
 import Foundation
 import Mapbox
 
-extension Com_Tophap_Mapboxgl_Proto_Layer {
+extension Tophap_MapboxGl_Layer {
   var value: MGLStyleLayer {
     switch (type!) {
     case .backgroundLayer(_): return backgroundLayer.value
@@ -21,7 +21,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Background {
+extension Tophap_MapboxGl_Layer.Background {
   var value: MGLBackgroundStyleLayer {
     let layer = MGLBackgroundStyleLayer(identifier: id)
     layer.minimumZoomLevel = minZoom.value
@@ -42,7 +42,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Background {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Circle {
+extension Tophap_MapboxGl_Layer.Circle {
   var value: MGLCircleStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -81,7 +81,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Circle {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Fill {
+extension Tophap_MapboxGl_Layer.Fill {
   var value: MGLFillStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -113,7 +113,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Fill {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion {
+extension Tophap_MapboxGl_Layer.FillExtrusion {
   var value: MGLFillExtrusionStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -147,7 +147,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap {
+extension Tophap_MapboxGl_Layer.Heatmap {
   var value: MGLHeatmapStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -175,7 +175,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade {
+extension Tophap_MapboxGl_Layer.Hillshade {
   var value: MGLHillshadeStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -204,7 +204,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Line {
+extension Tophap_MapboxGl_Layer.Line {
   var value: MGLLineStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -248,7 +248,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Line {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Raster {
+extension Tophap_MapboxGl_Layer.Raster {
   var value: MGLRasterStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)
@@ -281,7 +281,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Raster {
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Symbol {
+extension Tophap_MapboxGl_Layer.Symbol {
   var value: MGLSymbolStyleLayer {
     // todo: remove once this is fixed https://github.com/mapbox/mapbox-gl-native/issues/15338
     let fakeSource = MGLShapeSource(identifier: sourceID.value, shape: nil, options: nil)

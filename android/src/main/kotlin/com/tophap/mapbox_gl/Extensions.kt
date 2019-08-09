@@ -17,20 +17,20 @@ import com.mapbox.mapboxsdk.style.light.Light
 import com.mapbox.mapboxsdk.style.sources.*
 import com.mapbox.mapboxsdk.style.types.Formatted
 import com.mapbox.mapboxsdk.utils.ColorUtils
-import com.tophap.mapboxgl.proto.Mapbox
-import com.tophap.mapboxgl.proto.MapboxUtil
-import com.tophap.mapboxgl.proto.Sources
-import com.tophap.mapboxgl.proto.StyleOuterClass
+import com.tophap.mapbox_gl.proto.Util
+import com.tophap.mapbox_gl.proto.Mapbox
+import com.tophap.mapbox_gl.proto.Sources
+import com.tophap.mapbox_gl.proto.Styles
 
 val gson = Gson()
 
-fun Long.color(): MapboxUtil.Color {
+fun Long.color(): Util.Color {
     val a = this shr 24 and 0xff
     val r = this shr 16 and 0xff
     val g = this shr 8 and 0xff
     val b = this and 0xff
 
-    val builder = MapboxUtil.Color.newBuilder()
+    val builder = Util.Color.newBuilder()
             .setAlpha(a.toInt())
             .setRed(r.toInt())
             .setGreen(g.toInt())
@@ -39,13 +39,13 @@ fun Long.color(): MapboxUtil.Color {
     return builder.build()
 }
 
-fun Int.color(): MapboxUtil.Color {
+fun Int.color(): Util.Color {
     val a = this shr 24 and 0xff
     val r = this shr 16 and 0xff
     val g = this shr 8 and 0xff
     val b = this and 0xff
 
-    val builder = MapboxUtil.Color.newBuilder()
+    val builder = Util.Color.newBuilder()
             .setAlpha(a)
             .setRed(r)
             .setGreen(g)
@@ -72,10 +72,10 @@ fun PropertyValue<String>.anchor(): StringValue {
     }
 }
 
-fun String.anchor(): MapboxUtil.TranslateAnchor {
+fun String.anchor(): Util.TranslateAnchor {
     return when (this) {
-        Property.ANCHOR_VIEWPORT -> MapboxUtil.TranslateAnchor.VIEWPORT
-        Property.ANCHOR_MAP -> MapboxUtil.TranslateAnchor.MAP
+        Property.ANCHOR_VIEWPORT -> Util.TranslateAnchor.VIEWPORT
+        Property.ANCHOR_MAP -> Util.TranslateAnchor.MAP
         else -> throw IllegalArgumentException("Unknown value $this")
     }
 }
@@ -398,13 +398,13 @@ fun PropertyValue<String>.textTransform(): StringValue {
     }
 }
 
-fun Int.position(): MapboxUtil.OrnamentPosition {
+fun Int.position(): Util.OrnamentPosition {
     return when (this) {
-        Gravity.TOP or Gravity.LEFT -> MapboxUtil.OrnamentPosition.TOP_LEFT
-        Gravity.TOP or Gravity.RIGHT -> MapboxUtil.OrnamentPosition.TOP_RIGHT
-        Gravity.BOTTOM or Gravity.LEFT -> MapboxUtil.OrnamentPosition.BOTTOM_LEFT
-        Gravity.BOTTOM or Gravity.RIGHT -> MapboxUtil.OrnamentPosition.BOTTOM_RIGHT
-        else -> MapboxUtil.OrnamentPosition.UNRECOGNIZED
+        Gravity.TOP or Gravity.LEFT -> Util.OrnamentPosition.TOP_LEFT
+        Gravity.TOP or Gravity.RIGHT -> Util.OrnamentPosition.TOP_RIGHT
+        Gravity.BOTTOM or Gravity.LEFT -> Util.OrnamentPosition.BOTTOM_LEFT
+        Gravity.BOTTOM or Gravity.RIGHT -> Util.OrnamentPosition.BOTTOM_RIGHT
+        else -> Util.OrnamentPosition.UNRECOGNIZED
     }
 }
 
@@ -425,24 +425,24 @@ fun CameraPosition.toProto(): Mapbox.Map.CameraPosition {
     return builder.build()
 }
 
-fun LatLng.toProto(): MapboxUtil.LatLng {
-    val builder = MapboxUtil.LatLng.newBuilder()
+fun LatLng.toProto(): Util.LatLng {
+    val builder = Util.LatLng.newBuilder()
     builder.latitude = latitude
     builder.longitude = longitude
     builder.altitude = altitude
     return builder.build()
 }
 
-fun TransitionOptions.toProto(): MapboxUtil.TransitionOptions {
-    val builder = MapboxUtil.TransitionOptions.newBuilder()
+fun TransitionOptions.toProto(): Util.TransitionOptions {
+    val builder = Util.TransitionOptions.newBuilder()
     builder.duration = duration
     builder.delay = delay
     builder.enablePlacementTransitions = isEnablePlacementTransitions
     return builder.build()
 }
 
-fun Style.toProto(): StyleOuterClass.Style {
-    val builder = StyleOuterClass.Style.newBuilder()
+fun Style.toProto(): Styles.Style {
+    val builder = Styles.Style.newBuilder()
     builder.uri = uri
     builder.json = json
     builder.addAllSources(sources.map { it.toProto() })
@@ -453,8 +453,8 @@ fun Style.toProto(): StyleOuterClass.Style {
 }
 
 
-fun Light.toProto(): StyleOuterClass.Style.Light {
-    val builder = StyleOuterClass.Style.Light.newBuilder()
+fun Light.toProto(): Styles.Style.Light {
+    val builder = Styles.Style.Light.newBuilder()
 
     builder.anchor = anchor.anchor()
     // todo builder.position = position.proto()

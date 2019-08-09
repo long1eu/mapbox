@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-part of mapboxgl;
+part of flutter_mapbox_gl;
 
 class Style {
   Style._({@required MethodChannel channel, @required StyleModel style})
@@ -100,12 +100,19 @@ class Style {
 
   Future<T> invokeMethod<T>(String method, [dynamic arguments]) => _channel.invokeMethod(method, arguments);
 
-  Future<List<T>> invokeListMethod<T>(String method, [dynamic arguments]) => _channel.invokeListMethod<T>(method, arguments);
+  Future<List<T>> invokeListMethod<T>(String method, [dynamic arguments]) =>
+      _channel.invokeListMethod<T>(method, arguments);
 
-  Future<Map<K, V>> invokeMapMethod<K, V>(String method, [dynamic arguments]) => _channel.invokeMapMethod<K, V>(method, arguments);
+  Future<Map<K, V>> invokeMapMethod<K, V>(String method, [dynamic arguments]) =>
+      _channel.invokeMapMethod<K, V>(method, arguments);
 
   @override
   String toString() {
-    return (IndentingBuiltValueToStringHelper('Style')..add('style', _style)..add('channel', _channel)..add('sources', _sources)..add('layers', _layers)).toString();
+    return (IndentingBuiltValueToStringHelper('Style')
+          ..add('style', _style)
+          ..add('channel', _channel)
+          ..add('sources', _sources)
+          ..add('layers', _layers))
+        .toString();
   }
 }

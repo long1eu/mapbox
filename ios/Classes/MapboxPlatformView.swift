@@ -7,7 +7,7 @@ import Mapbox
 
 class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
 
-  private let options: Com_Tophap_Mapboxgl_Proto_Map.Options
+  private let options: Tophap_MapboxGl_Map.Options
   private let channel: FlutterMethodChannel
   private let viewId: Int64
   weak var mapView: MGLMapView?
@@ -18,7 +18,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   // todo add mapView!.isHapticFeedbackEnabled
   // todo add mapView!.decelerationRate
   // todo add mapView!.resetPosition
-  init(withFrame frame: CGRect, options: Com_Tophap_Mapboxgl_Proto_Map.Options, channel: FlutterMethodChannel, viewId: Int64) {
+  init(withFrame frame: CGRect, options: Tophap_MapboxGl_Map.Options, channel: FlutterMethodChannel, viewId: Int64) {
     self.options = options
     self.channel = channel
     self.viewId = viewId
@@ -129,7 +129,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       camera.pitch = options.cameraPosition.tilt.cgFloat
       mapView.setCamera(camera, animated: false)
 
-      let operation = Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready.with { ready in
+      let operation = Tophap_MapboxGl_Map.Operations.Ready.with { ready in
         ready.viewID = viewId
         ready.prefetchesTiles = mapView.prefetchesTiles
         ready.minZoom = mapView.minimumZoomLevel
@@ -163,19 +163,19 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "map#setCameraPosition":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let camera = try! Com_Tophap_Mapboxgl_Proto_Map.CameraPosition(serializedData: data)
+      let camera = try! Tophap_MapboxGl_Map.CameraPosition(serializedData: data)
       mapView!.camera = camera.value(mapView: mapView!)
       result(nil)
       break;
     case "map#moveCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let update = try! Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate(serializedData: data)
+      let update = try! Tophap_MapboxGl_Map.Operations.CameraUpdate(serializedData: data)
       mapView!.setCamera(update.camera(mapView: mapView!), animated: false)
       result(nil)
       break;
     case "map#easeCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let easeCamera = try! Com_Tophap_Mapboxgl_Proto_Map.Operations.EaseCamera(serializedData: data)
+      let easeCamera = try! Tophap_MapboxGl_Map.Operations.EaseCamera(serializedData: data)
       let interpolator: CAMediaTimingFunctionName = easeCamera.easingInterpolator ? .easeInEaseOut : .linear
       mapView!.setCamera(easeCamera.update.camera(mapView: mapView!), withDuration: Double(easeCamera.duration) / 1000,
           animationTimingFunction: CAMediaTimingFunction(name: interpolator))
@@ -183,13 +183,13 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "map#animateCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let animate = try! Com_Tophap_Mapboxgl_Proto_Map.Operations.AnimateCamera(serializedData: data)
+      let animate = try! Tophap_MapboxGl_Map.Operations.AnimateCamera(serializedData: data)
       mapView!.setCamera(animate.update.camera(mapView: mapView!), animated: true)
       result(nil)
       break;
     case "map#scrollBy":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let scrollBy = try! Com_Tophap_Mapboxgl_Proto_Map.Operations.ScrollBy(serializedData: data)
+      let scrollBy = try! Tophap_MapboxGl_Map.Operations.ScrollBy(serializedData: data)
       let camera = mapView!.camera
       let mapPoint = mapView!.convert(camera.centerCoordinate, toPointTo: mapView!)
       let movedPoint = CGPoint(x: mapPoint.x + CGFloat(scrollBy.x), y: mapPoint.y + CGFloat(scrollBy.y))
@@ -213,7 +213,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "map#setFocalBearing":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let setFocalBearing = try! Com_Tophap_Mapboxgl_Proto_Map.Operations.SetFocalBearing(serializedData: data)
+      let setFocalBearing = try! Tophap_MapboxGl_Map.Operations.SetFocalBearing(serializedData: data)
 
       let movedPoint = CGPoint(x: CGFloat(setFocalBearing.focalX), y: CGFloat(setFocalBearing.focalY))
       let mglMapCamera = MGLMapCamera(
@@ -234,13 +234,13 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "map#setLatLngBoundsForCameraTarget":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let bounds = try! Com_Tophap_Mapboxgl_Proto_LatLngBounds(serializedData: data)
+      let bounds = try! Tophap_MapboxGl_LatLngBounds(serializedData: data)
       mapView!.setVisibleCoordinateBounds(bounds.value, animated: true)
       result(nil)
       break;
     case "map#getCameraForLatLngBounds":
       let data = (call.arguments as! FlutterStandardTypedData).data
-      let cameraForLatLngBounds = try! Com_Tophap_Mapboxgl_Proto_Map.Operations.GetCameraForLatLngBounds(serializedData: data)
+      let cameraForLatLngBounds = try! Tophap_MapboxGl_Map.Operations.GetCameraForLatLngBounds(serializedData: data)
       let camera = mapView!.cameraThatFitsCoordinateBounds(cameraForLatLngBounds.bounds.value, edgePadding: cameraForLatLngBounds.padding.edgePadding)
       try! result(camera.proto(mapView: mapView!).serializedData())
       break;
@@ -252,7 +252,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "style#set":
       let _data = (call.arguments as! FlutterStandardTypedData).data
-      let data = try! Com_Tophap_Mapboxgl_Proto_Style.Operations.Build(serializedData: _data)
+      let data = try! Tophap_MapboxGl_Style.Operations.Build(serializedData: _data)
 
       switch (data.source!) {
       case .default(_): mapView!.styleURL = data.default.value
@@ -265,7 +265,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "style#addSource":
       if let style = mapView!.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
-        let protoSource = try! Com_Tophap_Mapboxgl_Proto_Source(serializedData: data)
+        let protoSource = try! Tophap_MapboxGl_Source(serializedData: data)
         let source = protoSource.fieldValue()
         style.addSource(source)
         print("source added \(source.identifier)")
@@ -286,7 +286,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "style#addLayer":
       if let style = mapView!.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
-        let operation = try! Com_Tophap_Mapboxgl_Proto_Operations.Add(serializedData: data)
+        let operation = try! Tophap_MapboxGl_Operations.Add(serializedData: data)
         let layer = operation.layer.value
 
         if let position = operation.position {
@@ -322,7 +322,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "source#update":
       if let style = mapView!.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
-        let protoSource = try! Com_Tophap_Mapboxgl_Proto_Source(serializedData: data)
+        let protoSource = try! Tophap_MapboxGl_Source(serializedData: data)
         style.source(withIdentifier: protoSource.id)!.update(source: protoSource)
         try! result(style.source(withIdentifier: protoSource.id)!.proto.serializedData())
       } else {
@@ -332,7 +332,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "layer#update":
       if let style = mapView!.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
-        let protoLayer = try! Com_Tophap_Mapboxgl_Proto_Layer(serializedData: data)
+        let protoLayer = try! Tophap_MapboxGl_Layer(serializedData: data)
         style.layer(withIdentifier: protoLayer.id)!.updateFrom(layer: protoLayer)
         try! result(style.layer(withIdentifier: protoLayer.id)!.toProto().serializedData())
       } else {

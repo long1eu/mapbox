@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Com_Tophap_Mapboxgl_Proto_Layer {
+struct Tophap_MapboxGl_Layer {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -34,74 +34,74 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     set {_uniqueStorage()._type = newValue}
   }
 
-  var backgroundLayer: Com_Tophap_Mapboxgl_Proto_Layer.Background {
+  var backgroundLayer: Tophap_MapboxGl_Layer.Background {
     get {
       if case .backgroundLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Background()
+      return Tophap_MapboxGl_Layer.Background()
     }
     set {_uniqueStorage()._type = .backgroundLayer(newValue)}
   }
 
-  var circleLayer: Com_Tophap_Mapboxgl_Proto_Layer.Circle {
+  var circleLayer: Tophap_MapboxGl_Layer.Circle {
     get {
       if case .circleLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Circle()
+      return Tophap_MapboxGl_Layer.Circle()
     }
     set {_uniqueStorage()._type = .circleLayer(newValue)}
   }
 
-  var fillLayer: Com_Tophap_Mapboxgl_Proto_Layer.Fill {
+  var fillLayer: Tophap_MapboxGl_Layer.Fill {
     get {
       if case .fillLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Fill()
+      return Tophap_MapboxGl_Layer.Fill()
     }
     set {_uniqueStorage()._type = .fillLayer(newValue)}
   }
 
-  var fillExtrusionLayer: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion {
+  var fillExtrusionLayer: Tophap_MapboxGl_Layer.FillExtrusion {
     get {
       if case .fillExtrusionLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion()
+      return Tophap_MapboxGl_Layer.FillExtrusion()
     }
     set {_uniqueStorage()._type = .fillExtrusionLayer(newValue)}
   }
 
-  var heatmapLayer: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap {
+  var heatmapLayer: Tophap_MapboxGl_Layer.Heatmap {
     get {
       if case .heatmapLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Heatmap()
+      return Tophap_MapboxGl_Layer.Heatmap()
     }
     set {_uniqueStorage()._type = .heatmapLayer(newValue)}
   }
 
-  var hillshadeLayer: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade {
+  var hillshadeLayer: Tophap_MapboxGl_Layer.Hillshade {
     get {
       if case .hillshadeLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Hillshade()
+      return Tophap_MapboxGl_Layer.Hillshade()
     }
     set {_uniqueStorage()._type = .hillshadeLayer(newValue)}
   }
 
-  var lineLayer: Com_Tophap_Mapboxgl_Proto_Layer.Line {
+  var lineLayer: Tophap_MapboxGl_Layer.Line {
     get {
       if case .lineLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Line()
+      return Tophap_MapboxGl_Layer.Line()
     }
     set {_uniqueStorage()._type = .lineLayer(newValue)}
   }
 
-  var rasterLayer: Com_Tophap_Mapboxgl_Proto_Layer.Raster {
+  var rasterLayer: Tophap_MapboxGl_Layer.Raster {
     get {
       if case .rasterLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Raster()
+      return Tophap_MapboxGl_Layer.Raster()
     }
     set {_uniqueStorage()._type = .rasterLayer(newValue)}
   }
 
-  var symbolLayer: Com_Tophap_Mapboxgl_Proto_Layer.Symbol {
+  var symbolLayer: Tophap_MapboxGl_Layer.Symbol {
     get {
       if case .symbolLayer(let v)? = _storage._type {return v}
-      return Com_Tophap_Mapboxgl_Proto_Layer.Symbol()
+      return Tophap_MapboxGl_Layer.Symbol()
     }
     set {_uniqueStorage()._type = .symbolLayer(newValue)}
   }
@@ -109,18 +109,18 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   enum OneOf_Type: Equatable {
-    case backgroundLayer(Com_Tophap_Mapboxgl_Proto_Layer.Background)
-    case circleLayer(Com_Tophap_Mapboxgl_Proto_Layer.Circle)
-    case fillLayer(Com_Tophap_Mapboxgl_Proto_Layer.Fill)
-    case fillExtrusionLayer(Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion)
-    case heatmapLayer(Com_Tophap_Mapboxgl_Proto_Layer.Heatmap)
-    case hillshadeLayer(Com_Tophap_Mapboxgl_Proto_Layer.Hillshade)
-    case lineLayer(Com_Tophap_Mapboxgl_Proto_Layer.Line)
-    case rasterLayer(Com_Tophap_Mapboxgl_Proto_Layer.Raster)
-    case symbolLayer(Com_Tophap_Mapboxgl_Proto_Layer.Symbol)
+    case backgroundLayer(Tophap_MapboxGl_Layer.Background)
+    case circleLayer(Tophap_MapboxGl_Layer.Circle)
+    case fillLayer(Tophap_MapboxGl_Layer.Fill)
+    case fillExtrusionLayer(Tophap_MapboxGl_Layer.FillExtrusion)
+    case heatmapLayer(Tophap_MapboxGl_Layer.Heatmap)
+    case hillshadeLayer(Tophap_MapboxGl_Layer.Hillshade)
+    case lineLayer(Tophap_MapboxGl_Layer.Line)
+    case rasterLayer(Tophap_MapboxGl_Layer.Raster)
+    case symbolLayer(Tophap_MapboxGl_Layer.Symbol)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.OneOf_Type, rhs: Com_Tophap_Mapboxgl_Proto_Layer.OneOf_Type) -> Bool {
+    static func ==(lhs: Tophap_MapboxGl_Layer.OneOf_Type, rhs: Tophap_MapboxGl_Layer.OneOf_Type) -> Bool {
       switch (lhs, rhs) {
       case (.backgroundLayer(let l), .backgroundLayer(let r)): return l == r
       case (.circleLayer(let l), .circleLayer(let r)): return l == r
@@ -201,8 +201,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacity`. Subsequent reads from it will return its default value.
     mutating func clearOpacity() {_uniqueStorage()._opacity = nil}
 
-    var colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._colorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var colorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._colorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._colorTransition = newValue}
     }
     /// Returns true if `colorTransition` has been explicitly set.
@@ -210,8 +210,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `colorTransition`. Subsequent reads from it will return its default value.
     mutating func clearColorTransition() {_uniqueStorage()._colorTransition = nil}
 
-    var patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._patternTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var patternTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._patternTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._patternTransition = newValue}
     }
     /// Returns true if `patternTransition` has been explicitly set.
@@ -219,8 +219,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `patternTransition`. Subsequent reads from it will return its default value.
     mutating func clearPatternTransition() {_uniqueStorage()._patternTransition = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -398,8 +398,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `strokeOpacity`. Subsequent reads from it will return its default value.
     mutating func clearStrokeOpacity() {_uniqueStorage()._strokeOpacity = nil}
 
-    var radiusTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._radiusTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var radiusTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._radiusTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._radiusTransition = newValue}
     }
     /// Returns true if `radiusTransition` has been explicitly set.
@@ -407,8 +407,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `radiusTransition`. Subsequent reads from it will return its default value.
     mutating func clearRadiusTransition() {_uniqueStorage()._radiusTransition = nil}
 
-    var colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._colorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var colorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._colorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._colorTransition = newValue}
     }
     /// Returns true if `colorTransition` has been explicitly set.
@@ -416,8 +416,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `colorTransition`. Subsequent reads from it will return its default value.
     mutating func clearColorTransition() {_uniqueStorage()._colorTransition = nil}
 
-    var blurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._blurTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var blurTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._blurTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._blurTransition = newValue}
     }
     /// Returns true if `blurTransition` has been explicitly set.
@@ -425,8 +425,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `blurTransition`. Subsequent reads from it will return its default value.
     mutating func clearBlurTransition() {_uniqueStorage()._blurTransition = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -434,8 +434,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearOpacityTransition() {_uniqueStorage()._opacityTransition = nil}
 
-    var translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._translateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var translateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._translateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._translateTransition = newValue}
     }
     /// Returns true if `translateTransition` has been explicitly set.
@@ -443,8 +443,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `translateTransition`. Subsequent reads from it will return its default value.
     mutating func clearTranslateTransition() {_uniqueStorage()._translateTransition = nil}
 
-    var strokeWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._strokeWidthTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var strokeWidthTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._strokeWidthTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._strokeWidthTransition = newValue}
     }
     /// Returns true if `strokeWidthTransition` has been explicitly set.
@@ -452,8 +452,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `strokeWidthTransition`. Subsequent reads from it will return its default value.
     mutating func clearStrokeWidthTransition() {_uniqueStorage()._strokeWidthTransition = nil}
 
-    var strokeColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._strokeColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var strokeColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._strokeColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._strokeColorTransition = newValue}
     }
     /// Returns true if `strokeColorTransition` has been explicitly set.
@@ -461,8 +461,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `strokeColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearStrokeColorTransition() {_uniqueStorage()._strokeColorTransition = nil}
 
-    var strokeOpacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._strokeOpacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var strokeOpacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._strokeOpacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._strokeOpacityTransition = newValue}
     }
     /// Returns true if `strokeOpacityTransition` has been explicitly set.
@@ -613,8 +613,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `verticalGradient`. Subsequent reads from it will return its default value.
     mutating func clearVerticalGradient() {_uniqueStorage()._verticalGradient = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -622,8 +622,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearOpacityTransition() {_uniqueStorage()._opacityTransition = nil}
 
-    var colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._colorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var colorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._colorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._colorTransition = newValue}
     }
     /// Returns true if `colorTransition` has been explicitly set.
@@ -631,8 +631,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `colorTransition`. Subsequent reads from it will return its default value.
     mutating func clearColorTransition() {_uniqueStorage()._colorTransition = nil}
 
-    var translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._translateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var translateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._translateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._translateTransition = newValue}
     }
     /// Returns true if `translateTransition` has been explicitly set.
@@ -640,8 +640,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `translateTransition`. Subsequent reads from it will return its default value.
     mutating func clearTranslateTransition() {_uniqueStorage()._translateTransition = nil}
 
-    var patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._patternTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var patternTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._patternTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._patternTransition = newValue}
     }
     /// Returns true if `patternTransition` has been explicitly set.
@@ -649,8 +649,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `patternTransition`. Subsequent reads from it will return its default value.
     mutating func clearPatternTransition() {_uniqueStorage()._patternTransition = nil}
 
-    var heightTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._heightTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var heightTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._heightTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._heightTransition = newValue}
     }
     /// Returns true if `heightTransition` has been explicitly set.
@@ -658,8 +658,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `heightTransition`. Subsequent reads from it will return its default value.
     mutating func clearHeightTransition() {_uniqueStorage()._heightTransition = nil}
 
-    var baseTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._baseTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var baseTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._baseTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._baseTransition = newValue}
     }
     /// Returns true if `baseTransition` has been explicitly set.
@@ -801,8 +801,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `pattern`. Subsequent reads from it will return its default value.
     mutating func clearPattern() {_uniqueStorage()._pattern = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -810,8 +810,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearOpacityTransition() {_uniqueStorage()._opacityTransition = nil}
 
-    var colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._colorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var colorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._colorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._colorTransition = newValue}
     }
     /// Returns true if `colorTransition` has been explicitly set.
@@ -819,8 +819,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `colorTransition`. Subsequent reads from it will return its default value.
     mutating func clearColorTransition() {_uniqueStorage()._colorTransition = nil}
 
-    var outlineColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._outlineColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var outlineColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._outlineColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._outlineColorTransition = newValue}
     }
     /// Returns true if `outlineColorTransition` has been explicitly set.
@@ -828,8 +828,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `outlineColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearOutlineColorTransition() {_uniqueStorage()._outlineColorTransition = nil}
 
-    var translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._translateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var translateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._translateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._translateTransition = newValue}
     }
     /// Returns true if `translateTransition` has been explicitly set.
@@ -837,8 +837,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `translateTransition`. Subsequent reads from it will return its default value.
     mutating func clearTranslateTransition() {_uniqueStorage()._translateTransition = nil}
 
-    var patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._patternTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var patternTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._patternTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._patternTransition = newValue}
     }
     /// Returns true if `patternTransition` has been explicitly set.
@@ -962,8 +962,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacity`. Subsequent reads from it will return its default value.
     mutating func clearOpacity() {_uniqueStorage()._opacity = nil}
 
-    var radiusTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._radiusTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var radiusTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._radiusTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._radiusTransition = newValue}
     }
     /// Returns true if `radiusTransition` has been explicitly set.
@@ -971,8 +971,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `radiusTransition`. Subsequent reads from it will return its default value.
     mutating func clearRadiusTransition() {_uniqueStorage()._radiusTransition = nil}
 
-    var intensityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._intensityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var intensityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._intensityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._intensityTransition = newValue}
     }
     /// Returns true if `intensityTransition` has been explicitly set.
@@ -980,8 +980,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `intensityTransition`. Subsequent reads from it will return its default value.
     mutating func clearIntensityTransition() {_uniqueStorage()._intensityTransition = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -1105,8 +1105,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `accentColor`. Subsequent reads from it will return its default value.
     mutating func clearAccentColor() {_uniqueStorage()._accentColor = nil}
 
-    var exaggerationTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._exaggerationTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var exaggerationTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._exaggerationTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._exaggerationTransition = newValue}
     }
     /// Returns true if `exaggerationTransition` has been explicitly set.
@@ -1114,8 +1114,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `exaggerationTransition`. Subsequent reads from it will return its default value.
     mutating func clearExaggerationTransition() {_uniqueStorage()._exaggerationTransition = nil}
 
-    var shadowColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._shadowColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var shadowColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._shadowColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._shadowColorTransition = newValue}
     }
     /// Returns true if `shadowColorTransition` has been explicitly set.
@@ -1123,8 +1123,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `shadowColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearShadowColorTransition() {_uniqueStorage()._shadowColorTransition = nil}
 
-    var highlightColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._highlightColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var highlightColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._highlightColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._highlightColorTransition = newValue}
     }
     /// Returns true if `highlightColorTransition` has been explicitly set.
@@ -1132,8 +1132,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `highlightColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearHighlightColorTransition() {_uniqueStorage()._highlightColorTransition = nil}
 
-    var accentColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._accentColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var accentColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._accentColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._accentColorTransition = newValue}
     }
     /// Returns true if `accentColorTransition` has been explicitly set.
@@ -1347,8 +1347,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `gradient`. Subsequent reads from it will return its default value.
     mutating func clearGradient() {_uniqueStorage()._gradient = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -1356,8 +1356,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearOpacityTransition() {_uniqueStorage()._opacityTransition = nil}
 
-    var colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._colorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var colorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._colorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._colorTransition = newValue}
     }
     /// Returns true if `colorTransition` has been explicitly set.
@@ -1365,8 +1365,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `colorTransition`. Subsequent reads from it will return its default value.
     mutating func clearColorTransition() {_uniqueStorage()._colorTransition = nil}
 
-    var translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._translateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var translateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._translateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._translateTransition = newValue}
     }
     /// Returns true if `translateTransition` has been explicitly set.
@@ -1374,8 +1374,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `translateTransition`. Subsequent reads from it will return its default value.
     mutating func clearTranslateTransition() {_uniqueStorage()._translateTransition = nil}
 
-    var widthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._widthTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var widthTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._widthTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._widthTransition = newValue}
     }
     /// Returns true if `widthTransition` has been explicitly set.
@@ -1383,8 +1383,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `widthTransition`. Subsequent reads from it will return its default value.
     mutating func clearWidthTransition() {_uniqueStorage()._widthTransition = nil}
 
-    var gapWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._gapWidthTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var gapWidthTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._gapWidthTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._gapWidthTransition = newValue}
     }
     /// Returns true if `gapWidthTransition` has been explicitly set.
@@ -1392,8 +1392,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `gapWidthTransition`. Subsequent reads from it will return its default value.
     mutating func clearGapWidthTransition() {_uniqueStorage()._gapWidthTransition = nil}
 
-    var offsetTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._offsetTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var offsetTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._offsetTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._offsetTransition = newValue}
     }
     /// Returns true if `offsetTransition` has been explicitly set.
@@ -1401,8 +1401,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `offsetTransition`. Subsequent reads from it will return its default value.
     mutating func clearOffsetTransition() {_uniqueStorage()._offsetTransition = nil}
 
-    var blurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._blurTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var blurTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._blurTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._blurTransition = newValue}
     }
     /// Returns true if `blurTransition` has been explicitly set.
@@ -1410,8 +1410,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `blurTransition`. Subsequent reads from it will return its default value.
     mutating func clearBlurTransition() {_uniqueStorage()._blurTransition = nil}
 
-    var dasharrayTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._dasharrayTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var dasharrayTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._dasharrayTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._dasharrayTransition = newValue}
     }
     /// Returns true if `dasharrayTransition` has been explicitly set.
@@ -1419,8 +1419,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `dasharrayTransition`. Subsequent reads from it will return its default value.
     mutating func clearDasharrayTransition() {_uniqueStorage()._dasharrayTransition = nil}
 
-    var patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._patternTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var patternTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._patternTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._patternTransition = newValue}
     }
     /// Returns true if `patternTransition` has been explicitly set.
@@ -1562,8 +1562,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `fadeDuration`. Subsequent reads from it will return its default value.
     mutating func clearFadeDuration() {_uniqueStorage()._fadeDuration = nil}
 
-    var opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._opacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var opacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._opacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._opacityTransition = newValue}
     }
     /// Returns true if `opacityTransition` has been explicitly set.
@@ -1571,8 +1571,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `opacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearOpacityTransition() {_uniqueStorage()._opacityTransition = nil}
 
-    var hueRotateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._hueRotateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var hueRotateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._hueRotateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._hueRotateTransition = newValue}
     }
     /// Returns true if `hueRotateTransition` has been explicitly set.
@@ -1580,8 +1580,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `hueRotateTransition`. Subsequent reads from it will return its default value.
     mutating func clearHueRotateTransition() {_uniqueStorage()._hueRotateTransition = nil}
 
-    var brightnessMinTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._brightnessMinTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var brightnessMinTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._brightnessMinTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._brightnessMinTransition = newValue}
     }
     /// Returns true if `brightnessMinTransition` has been explicitly set.
@@ -1589,8 +1589,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `brightnessMinTransition`. Subsequent reads from it will return its default value.
     mutating func clearBrightnessMinTransition() {_uniqueStorage()._brightnessMinTransition = nil}
 
-    var brightnessMaxTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._brightnessMaxTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var brightnessMaxTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._brightnessMaxTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._brightnessMaxTransition = newValue}
     }
     /// Returns true if `brightnessMaxTransition` has been explicitly set.
@@ -1598,8 +1598,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `brightnessMaxTransition`. Subsequent reads from it will return its default value.
     mutating func clearBrightnessMaxTransition() {_uniqueStorage()._brightnessMaxTransition = nil}
 
-    var saturationTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._saturationTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var saturationTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._saturationTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._saturationTransition = newValue}
     }
     /// Returns true if `saturationTransition` has been explicitly set.
@@ -1607,8 +1607,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `saturationTransition`. Subsequent reads from it will return its default value.
     mutating func clearSaturationTransition() {_uniqueStorage()._saturationTransition = nil}
 
-    var contrastTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._contrastTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var contrastTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._contrastTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._contrastTransition = newValue}
     }
     /// Returns true if `contrastTransition` has been explicitly set.
@@ -2164,8 +2164,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `textTranslateAnchor`. Subsequent reads from it will return its default value.
     mutating func clearTextTranslateAnchor() {_uniqueStorage()._textTranslateAnchor = nil}
 
-    var iconOpacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._iconOpacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var iconOpacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._iconOpacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._iconOpacityTransition = newValue}
     }
     /// Returns true if `iconOpacityTransition` has been explicitly set.
@@ -2173,8 +2173,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `iconOpacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearIconOpacityTransition() {_uniqueStorage()._iconOpacityTransition = nil}
 
-    var iconColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._iconColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var iconColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._iconColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._iconColorTransition = newValue}
     }
     /// Returns true if `iconColorTransition` has been explicitly set.
@@ -2182,8 +2182,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `iconColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearIconColorTransition() {_uniqueStorage()._iconColorTransition = nil}
 
-    var iconHaloColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._iconHaloColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var iconHaloColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._iconHaloColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._iconHaloColorTransition = newValue}
     }
     /// Returns true if `iconHaloColorTransition` has been explicitly set.
@@ -2191,8 +2191,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `iconHaloColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearIconHaloColorTransition() {_uniqueStorage()._iconHaloColorTransition = nil}
 
-    var iconHaloWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._iconHaloWidthTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var iconHaloWidthTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._iconHaloWidthTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._iconHaloWidthTransition = newValue}
     }
     /// Returns true if `iconHaloWidthTransition` has been explicitly set.
@@ -2200,8 +2200,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `iconHaloWidthTransition`. Subsequent reads from it will return its default value.
     mutating func clearIconHaloWidthTransition() {_uniqueStorage()._iconHaloWidthTransition = nil}
 
-    var iconHaloBlurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._iconHaloBlurTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var iconHaloBlurTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._iconHaloBlurTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._iconHaloBlurTransition = newValue}
     }
     /// Returns true if `iconHaloBlurTransition` has been explicitly set.
@@ -2209,8 +2209,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `iconHaloBlurTransition`. Subsequent reads from it will return its default value.
     mutating func clearIconHaloBlurTransition() {_uniqueStorage()._iconHaloBlurTransition = nil}
 
-    var iconTranslateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._iconTranslateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var iconTranslateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._iconTranslateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._iconTranslateTransition = newValue}
     }
     /// Returns true if `iconTranslateTransition` has been explicitly set.
@@ -2218,8 +2218,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `iconTranslateTransition`. Subsequent reads from it will return its default value.
     mutating func clearIconTranslateTransition() {_uniqueStorage()._iconTranslateTransition = nil}
 
-    var textOpacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._textOpacityTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var textOpacityTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._textOpacityTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._textOpacityTransition = newValue}
     }
     /// Returns true if `textOpacityTransition` has been explicitly set.
@@ -2227,8 +2227,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `textOpacityTransition`. Subsequent reads from it will return its default value.
     mutating func clearTextOpacityTransition() {_uniqueStorage()._textOpacityTransition = nil}
 
-    var textColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._textColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var textColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._textColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._textColorTransition = newValue}
     }
     /// Returns true if `textColorTransition` has been explicitly set.
@@ -2236,8 +2236,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `textColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearTextColorTransition() {_uniqueStorage()._textColorTransition = nil}
 
-    var textHaloColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._textHaloColorTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var textHaloColorTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._textHaloColorTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._textHaloColorTransition = newValue}
     }
     /// Returns true if `textHaloColorTransition` has been explicitly set.
@@ -2245,8 +2245,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `textHaloColorTransition`. Subsequent reads from it will return its default value.
     mutating func clearTextHaloColorTransition() {_uniqueStorage()._textHaloColorTransition = nil}
 
-    var textHaloWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._textHaloWidthTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var textHaloWidthTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._textHaloWidthTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._textHaloWidthTransition = newValue}
     }
     /// Returns true if `textHaloWidthTransition` has been explicitly set.
@@ -2254,8 +2254,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `textHaloWidthTransition`. Subsequent reads from it will return its default value.
     mutating func clearTextHaloWidthTransition() {_uniqueStorage()._textHaloWidthTransition = nil}
 
-    var textHaloBlurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._textHaloBlurTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var textHaloBlurTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._textHaloBlurTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._textHaloBlurTransition = newValue}
     }
     /// Returns true if `textHaloBlurTransition` has been explicitly set.
@@ -2263,8 +2263,8 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
     /// Clears the value of `textHaloBlurTransition`. Subsequent reads from it will return its default value.
     mutating func clearTextHaloBlurTransition() {_uniqueStorage()._textHaloBlurTransition = nil}
 
-    var textTranslateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions {
-      get {return _storage._textTranslateTransition ?? Com_Tophap_Mapboxgl_Proto_TransitionOptions()}
+    var textTranslateTransition: Tophap_MapboxGl_TransitionOptions {
+      get {return _storage._textTranslateTransition ?? Tophap_MapboxGl_TransitionOptions()}
       set {_uniqueStorage()._textTranslateTransition = newValue}
     }
     /// Returns true if `textTranslateTransition` has been explicitly set.
@@ -2284,7 +2284,7 @@ struct Com_Tophap_Mapboxgl_Proto_Layer {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-struct Com_Tophap_Mapboxgl_Proto_Operations {
+struct Tophap_MapboxGl_Operations {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2296,8 +2296,8 @@ struct Com_Tophap_Mapboxgl_Proto_Operations {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    var layer: Com_Tophap_Mapboxgl_Proto_Layer {
-      get {return _storage._layer ?? Com_Tophap_Mapboxgl_Proto_Layer()}
+    var layer: Tophap_MapboxGl_Layer {
+      get {return _storage._layer ?? Tophap_MapboxGl_Layer()}
       set {_uniqueStorage()._layer = newValue}
     }
     /// Returns true if `layer` has been explicitly set.
@@ -2342,7 +2342,7 @@ struct Com_Tophap_Mapboxgl_Proto_Operations {
       case index(Int32)
 
     #if !swift(>=4.1)
-      static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Operations.Add.OneOf_Position, rhs: Com_Tophap_Mapboxgl_Proto_Operations.Add.OneOf_Position) -> Bool {
+      static func ==(lhs: Tophap_MapboxGl_Operations.Add.OneOf_Position, rhs: Tophap_MapboxGl_Operations.Add.OneOf_Position) -> Bool {
         switch (lhs, rhs) {
         case (.belowID(let l), .belowID(let r)): return l == r
         case (.aboveID(let l), .aboveID(let r)): return l == r
@@ -2363,9 +2363,9 @@ struct Com_Tophap_Mapboxgl_Proto_Operations {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "com.tophap.mapboxgl.proto"
+fileprivate let _protobuf_package = "tophap.mapbox_gl"
 
-extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Tophap_MapboxGl_Layer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Layer"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -2382,7 +2382,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _type: Com_Tophap_Mapboxgl_Proto_Layer.OneOf_Type?
+    var _type: Tophap_MapboxGl_Layer.OneOf_Type?
 
     static let defaultInstance = _StorageClass()
 
@@ -2408,7 +2408,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
         case 2:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Background?
+          var v: Tophap_MapboxGl_Layer.Background?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .backgroundLayer(let m) = current {v = m}
@@ -2416,7 +2416,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .backgroundLayer(v)}
         case 3:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Circle?
+          var v: Tophap_MapboxGl_Layer.Circle?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .circleLayer(let m) = current {v = m}
@@ -2424,7 +2424,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .circleLayer(v)}
         case 4:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Fill?
+          var v: Tophap_MapboxGl_Layer.Fill?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .fillLayer(let m) = current {v = m}
@@ -2432,7 +2432,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .fillLayer(v)}
         case 5:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion?
+          var v: Tophap_MapboxGl_Layer.FillExtrusion?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .fillExtrusionLayer(let m) = current {v = m}
@@ -2440,7 +2440,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .fillExtrusionLayer(v)}
         case 6:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap?
+          var v: Tophap_MapboxGl_Layer.Heatmap?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .heatmapLayer(let m) = current {v = m}
@@ -2448,7 +2448,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .heatmapLayer(v)}
         case 7:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade?
+          var v: Tophap_MapboxGl_Layer.Hillshade?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .hillshadeLayer(let m) = current {v = m}
@@ -2456,7 +2456,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .hillshadeLayer(v)}
         case 8:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Line?
+          var v: Tophap_MapboxGl_Layer.Line?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .lineLayer(let m) = current {v = m}
@@ -2464,7 +2464,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .lineLayer(v)}
         case 9:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Raster?
+          var v: Tophap_MapboxGl_Layer.Raster?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .rasterLayer(let m) = current {v = m}
@@ -2472,7 +2472,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._type = .rasterLayer(v)}
         case 10:
-          var v: Com_Tophap_Mapboxgl_Proto_Layer.Symbol?
+          var v: Tophap_MapboxGl_Layer.Symbol?
           if let current = _storage._type {
             try decoder.handleConflictingOneOf()
             if case .symbolLayer(let m) = current {v = m}
@@ -2515,7 +2515,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer, rhs: Com_Tophap_Mapboxgl_Proto_Layer) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer, rhs: Tophap_MapboxGl_Layer) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2531,8 +2531,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Background: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Background"
+extension Tophap_MapboxGl_Layer.Background: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Background"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "visible"),
@@ -2554,9 +2554,9 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Background: SwiftProtobuf.Message, Swi
     var _color: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _pattern: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _opacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _colorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _patternTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -2640,7 +2640,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Background: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Background, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Background) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Background, rhs: Tophap_MapboxGl_Layer.Background) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2664,8 +2664,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Background: SwiftProtobuf.Message, Swi
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Circle"
+extension Tophap_MapboxGl_Layer.Circle: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Circle"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -2714,14 +2714,14 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
     var _strokeWidth: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _strokeColor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _strokeOpacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _radiusTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _blurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _strokeWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _strokeColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _strokeOpacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _radiusTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _colorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _blurTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _translateTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _strokeWidthTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _strokeColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _strokeOpacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -2885,7 +2885,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Circle, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Circle) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Circle, rhs: Tophap_MapboxGl_Layer.Circle) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -2925,8 +2925,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Circle: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".FillExtrusion"
+extension Tophap_MapboxGl_Layer.FillExtrusion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".FillExtrusion"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -2967,12 +2967,12 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
     var _height: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _base: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _verticalGradient: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _heightTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _baseTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _colorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _translateTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _patternTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _heightTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _baseTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -3111,7 +3111,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion, rhs: Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.FillExtrusion, rhs: Tophap_MapboxGl_Layer.FillExtrusion) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -3146,8 +3146,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.FillExtrusion: SwiftProtobuf.Message, 
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Fill"
+extension Tophap_MapboxGl_Layer.Fill: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Fill"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -3185,11 +3185,11 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
     var _translate: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _translateAnchor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _pattern: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _outlineColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _colorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _outlineColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _translateTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _patternTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -3318,7 +3318,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Fill, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Fill) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Fill, rhs: Tophap_MapboxGl_Layer.Fill) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -3351,8 +3351,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Fill: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Heatmap"
+extension Tophap_MapboxGl_Layer.Heatmap: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Heatmap"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -3384,9 +3384,9 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
     var _intensity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _color: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _opacity: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _radiusTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _intensityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _radiusTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _intensityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -3495,7 +3495,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Heatmap) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Heatmap, rhs: Tophap_MapboxGl_Layer.Heatmap) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -3524,8 +3524,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Heatmap: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Hillshade"
+extension Tophap_MapboxGl_Layer.Hillshade: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Hillshade"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -3558,10 +3558,10 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
     var _shadowColor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _highlightColor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _accentColor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _exaggerationTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _shadowColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _highlightColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _accentColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _exaggerationTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _shadowColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _highlightColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _accentColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -3675,7 +3675,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Hillshade) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Hillshade, rhs: Tophap_MapboxGl_Layer.Hillshade) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -3705,8 +3705,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Hillshade: SwiftProtobuf.Message, Swif
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Line"
+extension Tophap_MapboxGl_Layer.Line: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Line"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -3764,15 +3764,15 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
     var _dasharray: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _pattern: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _gradient: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _colorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _translateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _widthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _gapWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _offsetTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _blurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _dasharrayTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _patternTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _colorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _translateTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _widthTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _gapWidthTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _offsetTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _blurTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _dasharrayTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _patternTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -3961,7 +3961,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Line, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Line) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Line, rhs: Tophap_MapboxGl_Layer.Line) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -4006,8 +4006,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Line: SwiftProtobuf.Message, SwiftProt
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Raster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Raster"
+extension Tophap_MapboxGl_Layer.Raster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Raster"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -4046,12 +4046,12 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Raster: SwiftProtobuf.Message, SwiftPr
     var _contrast: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _resampling: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _fadeDuration: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _opacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _hueRotateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _brightnessMinTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _brightnessMaxTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _saturationTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _contrastTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _opacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _hueRotateTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _brightnessMinTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _brightnessMaxTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _saturationTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _contrastTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -4185,7 +4185,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Raster: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Raster, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Raster) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Raster, rhs: Tophap_MapboxGl_Layer.Raster) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -4219,8 +4219,8 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Raster: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Layer.protoMessageName + ".Symbol"
+extension Tophap_MapboxGl_Layer.Symbol: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Layer.protoMessageName + ".Symbol"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "source_id"),
@@ -4357,18 +4357,18 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
     var _textHaloBlur: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _textTranslate: SwiftProtobuf.Google_Protobuf_StringValue? = nil
     var _textTranslateAnchor: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _iconOpacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _iconColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _iconHaloColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _iconHaloWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _iconHaloBlurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _iconTranslateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _textOpacityTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _textColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _textHaloColorTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _textHaloWidthTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _textHaloBlurTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
-    var _textTranslateTransition: Com_Tophap_Mapboxgl_Proto_TransitionOptions? = nil
+    var _iconOpacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _iconColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _iconHaloColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _iconHaloWidthTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _iconHaloBlurTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _iconTranslateTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _textOpacityTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _textColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _textHaloColorTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _textHaloWidthTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _textHaloBlurTransition: Tophap_MapboxGl_TransitionOptions? = nil
+    var _textTranslateTransition: Tophap_MapboxGl_TransitionOptions? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -4762,7 +4762,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Layer.Symbol, rhs: Com_Tophap_Mapboxgl_Proto_Layer.Symbol) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Layer.Symbol, rhs: Tophap_MapboxGl_Layer.Symbol) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -4848,7 +4848,7 @@ extension Com_Tophap_Mapboxgl_Proto_Layer.Symbol: SwiftProtobuf.Message, SwiftPr
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Tophap_MapboxGl_Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".Operations"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -4861,14 +4861,14 @@ extension Com_Tophap_Mapboxgl_Proto_Operations: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Operations, rhs: Com_Tophap_Mapboxgl_Proto_Operations) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Operations, rhs: Tophap_MapboxGl_Operations) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Com_Tophap_Mapboxgl_Proto_Operations.Add: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Com_Tophap_Mapboxgl_Proto_Operations.protoMessageName + ".Add"
+extension Tophap_MapboxGl_Operations.Add: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Operations.protoMessageName + ".Add"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "layer"),
     2: .standard(proto: "below_id"),
@@ -4877,8 +4877,8 @@ extension Com_Tophap_Mapboxgl_Proto_Operations.Add: SwiftProtobuf.Message, Swift
   ]
 
   fileprivate class _StorageClass {
-    var _layer: Com_Tophap_Mapboxgl_Proto_Layer? = nil
-    var _position: Com_Tophap_Mapboxgl_Proto_Operations.Add.OneOf_Position?
+    var _layer: Tophap_MapboxGl_Layer? = nil
+    var _position: Tophap_MapboxGl_Operations.Add.OneOf_Position?
 
     static let defaultInstance = _StorageClass()
 
@@ -4942,7 +4942,7 @@ extension Com_Tophap_Mapboxgl_Proto_Operations.Add: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Com_Tophap_Mapboxgl_Proto_Operations.Add, rhs: Com_Tophap_Mapboxgl_Proto_Operations.Add) -> Bool {
+  static func ==(lhs: Tophap_MapboxGl_Operations.Add, rhs: Tophap_MapboxGl_Operations.Add) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
