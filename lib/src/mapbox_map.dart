@@ -11,7 +11,6 @@ class MapboxMap extends StatefulWidget {
     this.gestureRecognizers,
     this.options,
     this.mapEvents,
-    this.cameraEvents,
     this.layers,
     this.sources,
   }) : super(key: key);
@@ -19,7 +18,6 @@ class MapboxMap extends StatefulWidget {
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
   final MapOptions options;
   final MapEvents mapEvents;
-  final CameraEvents cameraEvents;
   final ValueChanged<MapController> onMapReady;
   final List<Layer> layers;
   final List<Source> sources;
@@ -49,8 +47,6 @@ class _MapboxMapState extends State<MapboxMap> {
   void _onMapEvent(MethodCall event) {
     if (event.method.startsWith('mapEvent#')) {
       widget.mapEvents?.handleEvent(event);
-    } else if (event.method.startsWith('cameraEvent#')) {
-      widget.cameraEvents?.handleEvent(event);
     } else if (event.method == 'mapReady') {
       final Uint8List data = event.arguments;
       final pb.Map__Operations_Ready info = pb.Map__Operations_Ready.fromBuffer(data);
@@ -168,8 +164,7 @@ class _MapboxMapState extends State<MapboxMap> {
 
 class MapEvents {
   const MapEvents({
-    this.onFpsChanged,
-    this.onFling,
+    this.onApiMove,
     this.onMove,
     this.onRotate,
     this.onScale,
@@ -178,8 +173,7 @@ class MapEvents {
     this.onMapLongClick,
   });
 
-  final ValueChanged<double> onFpsChanged;
-  final VoidCallback onFling;
+  final VoidCallback onApiMove;
   final VoidCallback onMove;
   final VoidCallback onRotate;
   final VoidCallback onScale;
@@ -189,10 +183,8 @@ class MapEvents {
 
   void handleEvent(MethodCall event) {
     switch (event.method) {
-      case 'mapEvent#onFpsChanged':
-        return onFpsChanged?.call(event.arguments);
-      case 'mapEvent#onFling':
-        return onFling?.call();
+      case 'mapEvent#onApiMove':
+        return onApiMove?.call();
       case 'mapEvent#onMove':
         return onMove?.call();
       case 'mapEvent#onRotate':
@@ -205,33 +197,6 @@ class MapEvents {
         return onMapClick?.call(LatLng.fromProtoData(event.arguments));
       case 'mapEvent#onMapLongClick':
         return onMapLongClick?.call(LatLng.fromProtoData(event.arguments));
-    }
-  }
-}
-
-class CameraEvents {
-  CameraEvents({
-    this.onCameraIdle,
-    this.onCameraMoveCanceled,
-    this.onCameraMoveStarted,
-    this.onCameraMove,
-  });
-
-  final ValueChanged<CameraPosition> onCameraIdle;
-  final ValueChanged<CameraPosition> onCameraMoveCanceled;
-  final ValueChanged<CameraMoveStartedReason> onCameraMoveStarted;
-  final ValueChanged<CameraPosition> onCameraMove;
-
-  void handleEvent(MethodCall event) {
-    switch (event.method) {
-      case 'cameraEvent#onCameraIdle':
-        return onCameraIdle?.call(CameraPosition.fromProtoData(event.arguments));
-      case 'cameraEvent#onCameraMoveCanceled':
-        return onCameraMoveCanceled?.call(CameraPosition.fromProtoData(event.arguments));
-      case 'cameraEvent#onCameraMoveStarted':
-        return onCameraMoveStarted?.call(CameraMoveStartedReason.fromProtoData(event.arguments));
-      case 'cameraEvent#onCameraMove':
-        return onCameraMove?.call(CameraPosition.fromProtoData(event.arguments));
     }
   }
 }

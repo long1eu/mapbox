@@ -15,7 +15,7 @@ class MapController {
         _minZoom = info.minZoom,
         _maxZoom = info.maxZoom,
         _cameraPosition = CameraPosition.fromProto(info.camera) {
-    sub = _calls.where((it) => it.method == 'cameraEvent#onCameraMove').listen(_cameraPositionChanged);
+    sub = _calls.where((it) => it.method.startsWith('mapEvent#')).listen(_cameraPositionChanged);
     _style = Style._(channel: _channel, style: StyleModel.fromProto(info.style));
   }
 
@@ -73,8 +73,6 @@ class MapController {
  todo public Projection getProjection()
 */
 
-  Future<void> cancelTransitions() => _channel.invokeMethod('map#cancelTransitions');
-
   CameraPosition get cameraPosition => _cameraPosition;
 
   Future<CameraPosition> getCameraPositionAsync() async {
@@ -87,13 +85,12 @@ class MapController {
     _channel.invokeMethod('map#setCameraPosition', cameraPosition.data).then((_) => _cameraPosition = cameraPosition);
   }
 
-  Future<CameraOperationResult> moveCamera(CameraUpdate update) async {
+  Future<void> moveCamera(CameraUpdate update) async {
     assert(update != null);
-    final int index = await _channel.invokeMethod('map#moveCamera', update.data);
-    //return CameraOperationResult.values.elementAt(index);
+    await _channel.invokeMethod('map#moveCamera', update.data);
   }
 
-  Future<CameraOperationResult> easeCamera(
+  Future<void> easeCamera(
     CameraUpdate update, {
     Duration duration = const Duration(milliseconds: 300),
     bool easingInterpolator = true,
@@ -108,11 +105,10 @@ class MapController {
       ..easingInterpolator = easingInterpolator
       ..freeze();
 
-    final int index = await _channel.invokeMethod('map#easeCamera', message.writeToBuffer());
-    return CameraOperationResult.values.elementAt(index);
+    await _channel.invokeMethod('map#easeCamera', message.writeToBuffer());
   }
 
-  Future<CameraOperationResult> animateCamera(
+  Future<void> animateCamera(
     CameraUpdate update, {
     Duration duration = const Duration(milliseconds: 300),
   }) async {
@@ -124,8 +120,7 @@ class MapController {
       ..duration = duration.inMilliseconds
       ..freeze();
 
-    final int index = await _channel.invokeMethod('map#animateCamera', message.writeToBuffer());
-    return CameraOperationResult.values.elementAt(index);
+    await _channel.invokeMethod('map#animateCamera', message.writeToBuffer());
   }
 
   Future<void> scrollBy(double x, double y, {Duration duration}) async {
@@ -207,8 +202,6 @@ class MapController {
   }
 
   Future<List<int>> get padding => _channel.invokeListMethod<int>('map#getPadding');
-
-  Future<void> cancelAllVelocityAnimations() => _channel.invokeListMethod<int>('map#cancelAllVelocityAnimations');
 
   Future<Uint8List> snapshot() => _channel.invokeListMethod<int>('map#snapshot');
 

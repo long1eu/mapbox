@@ -141,7 +141,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.CameraUpdate {
           pitch: tilt.cgFloat,
           heading: camera.heading
       )
-    default: Swift.fatalError("Unknown update operation \(operation).")
+    default: fatalError("Unknown update operation \(operation).")
     }
   }
 }

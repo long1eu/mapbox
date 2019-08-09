@@ -45,6 +45,13 @@ class MoveCameraState extends State<MoveCamera> {
             height: 200.0,
             child: MapboxMap(
               onMapReady: _onMapReady,
+              mapEvents: MapEvents(
+                onApiMove: () => print('onApiMove'),
+                onMove: () => print('onMove'),
+                onRotate: () => print('onRotate'),
+                onScale: () => print('onScale'),
+                onShove: () => print('onShove'),
+              ),
             ),
           ),
         ),

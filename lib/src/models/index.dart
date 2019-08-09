@@ -2,7 +2,6 @@
 // Lung Razvan <long1eu>
 // on 2019-08-02
 
-export 'camera_operation_result.dart';
 export 'camera_position.dart';
 export 'formatted_section.dart';
 export 'latlng.dart';

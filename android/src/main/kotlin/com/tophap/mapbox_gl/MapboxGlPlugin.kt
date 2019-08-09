@@ -10,9 +10,9 @@ class MapboxGlPlugin : MethodCallHandler {
     companion object {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
-            val channel = MethodChannel(registrar.messenger(), "com.tophap/mapbox_gl")
+            val channel = MethodChannel(registrar.messenger(), "com.tophap/mapboxgl")
             registrar.platformViewRegistry()
-                    .registerViewFactory("com.tophap/mapbox_gl_factory", MapboxMapFactory(registrar))
+                    .registerViewFactory("com.tophap/mapboxgl_factory", MapboxMapFactory(registrar))
 
             channel.setMethodCallHandler(MapboxGlPlugin())
         }

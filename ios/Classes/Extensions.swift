@@ -229,3 +229,24 @@ extension MGLMapView {
     return image?.pngData()
   }
 }
+
+extension MGLCameraChangeReason {
+  var value: String {
+    // @formatter:off
+    var values: [String] = []
+    if contains(.programmatic) { values.append("programmatic") } // CAMERA MOVE WITH REASON 3
+    if contains(.resetNorth) { values.append("resetNorth") }
+    if contains(.gesturePan) { values.append("gesturePan") } // MOVE
+    if contains(.gesturePinch) { values.append("gesturePinch") } // PITCH
+    if contains(.gestureRotate) { values.append("gestureRotate") } // ROTATE
+    if contains(.gestureZoomIn) { values.append("gestureZoomIn") }
+    if contains(.gestureZoomOut) { values.append("gestureZoomOut") }
+    if contains(.gestureOneFingerZoom) { values.append("gestureOneFingerZoom") }
+    if contains(.gestureTilt) { values.append("gestureTilt") } // SHOVE
+    if contains(.transitionCancelled) { values.append("transitionCancelled") }
+    // @formatter:on
+
+    let data = try! JSONSerialization.data(withJSONObject: values)
+    return String(data: data, encoding: .utf8)!
+  }
+}

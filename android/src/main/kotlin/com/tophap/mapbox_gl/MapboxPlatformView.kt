@@ -19,8 +19,11 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.tophap.mapboxgl.proto.*
+import com.tophap.mapboxgl.proto.Layers
 import com.tophap.mapboxgl.proto.Mapbox.Map.*
+import com.tophap.mapboxgl.proto.MapboxUtil
+import com.tophap.mapboxgl.proto.Sources
+import com.tophap.mapboxgl.proto.StyleOuterClass
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
@@ -33,11 +36,7 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         OnMapReadyCallback,
         MethodChannel.MethodCallHandler,
         MapboxMap.OnCameraIdleListener,
-        MapboxMap.OnCameraMoveCanceledListener,
         MapboxMap.OnCameraMoveStartedListener,
-        MapboxMap.OnCameraMoveListener,
-        MapboxMap.OnFpsChangedListener,
-        MapboxMap.OnFlingListener,
         MapboxMap.OnMoveListener,
         MapboxMap.OnRotateListener,
         MapboxMap.OnScaleListener,
@@ -71,18 +70,14 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             Options.StyleCase.STYLE_NOT_SET -> throw IllegalArgumentException("Unknown source ${options.styleCase}")
         }
 
-        this.mapboxMap.addOnCameraIdleListener(this)
-        this.mapboxMap.addOnCameraMoveCancelListener(this)
-        this.mapboxMap.addOnCameraMoveStartedListener(this)
-        this.mapboxMap.addOnCameraMoveListener(this)
-        this.mapboxMap.setOnFpsChangedListener(this)
-        this.mapboxMap.addOnFlingListener(this)
-        this.mapboxMap.addOnMoveListener(this)
-        this.mapboxMap.addOnRotateListener(this)
-        this.mapboxMap.addOnScaleListener(this)
-        this.mapboxMap.addOnShoveListener(this)
-        this.mapboxMap.addOnMapClickListener(this)
-        this.mapboxMap.addOnMapLongClickListener(this)
+        mapboxMap.addOnCameraIdleListener(this)
+        mapboxMap.addOnCameraMoveStartedListener(this)
+        mapboxMap.addOnMoveListener(this)
+        mapboxMap.addOnRotateListener(this)
+        mapboxMap.addOnScaleListener(this)
+        mapboxMap.addOnShoveListener(this)
+        mapboxMap.addOnMapClickListener(this)
+        mapboxMap.addOnMapLongClickListener(this)
     }
 
     private fun onStyleLoaded(style: Style) {
@@ -101,10 +96,7 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         (context as Application).unregisterActivityLifecycleCallbacks(this)
         context.unregisterComponentCallbacks(this)
         mapboxMap.removeOnCameraIdleListener(this)
-        mapboxMap.removeOnCameraMoveCancelListener(this)
         mapboxMap.removeOnCameraMoveStartedListener(this)
-        mapboxMap.removeOnCameraMoveListener(this)
-        mapboxMap.removeOnFlingListener(this)
         mapboxMap.removeOnMoveListener(this)
         mapboxMap.removeOnRotateListener(this)
         mapboxMap.removeOnScaleListener(this)
@@ -128,10 +120,6 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                 mapboxMap.setMaxZoomPreference(call.arguments as Double)
                 result.success(null)
             }
-            "map#cancelTransitions" -> {
-                mapboxMap.cancelTransitions()
-                result.success(null)
-            }
             "map#getCameraPosition" -> {
                 result.success(mapboxMap.cameraPosition.toProto())
             }
@@ -143,21 +131,23 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             "map#moveCamera" -> {
                 val update = Operations.CameraUpdate.parseFrom(call.arguments as ByteArray)
                 mapboxMap.moveCamera(update.fieldValue(), CameraOperationResolver(result))
-                result.success(null)
             }
             "map#easeCamera" -> {
                 val easeCamera = Operations.EaseCamera.parseFrom(call.arguments as ByteArray)
                 mapboxMap.easeCamera(easeCamera.update.fieldValue(), easeCamera.duration, easeCamera.easingInterpolator, CameraOperationResolver(result))
-                result.success(null)
             }
             "map#animateCamera" -> {
                 val animateCamera = Operations.AnimateCamera.parseFrom(call.arguments as ByteArray)
                 mapboxMap.animateCamera(animateCamera.update.fieldValue(), animateCamera.duration, CameraOperationResolver(result))
-                result.success(null)
             }
             "map#scrollBy" -> {
                 val scrollBy = Operations.ScrollBy.parseFrom(call.arguments as ByteArray)
                 mapboxMap.scrollBy(scrollBy.x, scrollBy.y, scrollBy.duration)
+
+                // We simulate the start and end of the scrollBy animation
+                channel.invokeMethod("mapEvent#onApiMove", mapboxMap.cameraData())
+                mapView.postDelayed({ channel.invokeMethod("mapEvent#onApiMove", mapboxMap.cameraData()) }, scrollBy.duration)
+
                 result.success(null)
             }
             "map#resetNorth" -> {
@@ -182,10 +172,6 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                 result.success(camera?.toProto()?.toByteArray())
             }
             "map#getPadding" -> result.success(mapboxMap.padding)
-            "map#cancelAllVelocityAnimations" -> {
-                mapboxMap.cancelAllVelocityAnimations()
-                result.success(null)
-            }
             "map#snapshot" -> {
                 mapboxMap.snapshot {
                     val stream = ByteArrayOutputStream()
@@ -265,6 +251,10 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                     result.success(it.getLayer(protoLayer.id)!!.toProto().toByteArray())
                 }
             }
+            "dispose" -> {
+                // no-op | only for iOS
+                result.success(null)
+            }
             else -> result.notImplemented()
         }
     }
@@ -304,69 +294,82 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
 
     override fun onConfigurationChanged(newConfig: Configuration?) {}
 
-    override fun onCameraIdle() {
-        channel.invokeMethod("cameraEvent#onCameraIdle", mapboxMap.cameraPosition.toProto().toByteArray())
-    }
 
-    override fun onCameraMoveCanceled() {
-        channel.invokeMethod("cameraEvent#onCameraMoveCanceled", mapboxMap.cameraPosition.toProto().toByteArray())
-    }
+    // onApiMove
+    var reason: Int = -1
+
 
     override fun onCameraMoveStarted(reason: Int) {
-        channel.invokeMethod("cameraEvent#onCameraMoveStarted", reason.cameraMoveReason().number)
+        println("MapboxPlatformView.onCameraMoveStarted: $reason")
+        if (reason == 3) {
+            this.reason = 3
+            channel.invokeMethod("mapEvent#onApiMove", mapboxMap.cameraData())
+        }
     }
 
-    override fun onCameraMove() {
-        channel.invokeMethod("cameraEvent#onCameraMove", mapboxMap.cameraPosition.toProto().toByteArray())
+    override fun onCameraIdle() {
+        if (reason == 3) {
+            reason = -1
+            channel.invokeMethod("mapEvent#onApiMove", mapboxMap.cameraData())
+        }
     }
 
-    override fun onFpsChanged(fps: Double) {
-        channel.invokeMethod("mapEvent#onFpsChanged", fps)
-    }
 
-    override fun onFling() {
-        channel.invokeMethod("mapEvent#onFling", null)
-    }
-
+    // onMove
     override fun onMoveBegin(detector: MoveGestureDetector) {
+        channel.invokeMethod("mapEvent#onMove", mapboxMap.cameraData())
     }
 
     override fun onMove(detector: MoveGestureDetector) {
-        channel.invokeMethod("mapEvent#onMove", null)
+        channel.invokeMethod("mapEvent#onMove", mapboxMap.cameraData())
     }
 
-    override fun onMoveEnd(detector: MoveGestureDetector) {
+    // This event comes a bit later (1-2 seconds later) then the last move event,
+    // we assume it's safe not to send this event, since it's not expected as a
+    // onMove event
+    override fun onMoveEnd(detector: MoveGestureDetector) {}
+
+    // onRotate
+    override fun onRotateBegin(detector: RotateGestureDetector) {
+        channel.invokeMethod("mapEvent#onRotate", mapboxMap.cameraData())
     }
 
     override fun onRotate(detector: RotateGestureDetector) {
-        channel.invokeMethod("mapEvent#onRotate", null)
+        channel.invokeMethod("mapEvent#onRotate", mapboxMap.cameraData())
     }
 
-    override fun onRotateEnd(detector: RotateGestureDetector) {
-    }
+    // This event comes a bit later (1-2 seconds later) then the last rotate event,
+    // we assume it's safe not to send this event, since it's not expected as a
+    // onRotate event
+    override fun onRotateEnd(detector: RotateGestureDetector) {}
 
-    override fun onRotateBegin(detector: RotateGestureDetector) {
+    // onScale
+    override fun onScale(detector: StandardScaleGestureDetector) {
+        channel.invokeMethod("mapEvent#onScale", mapboxMap.cameraData())
     }
 
     override fun onScaleBegin(detector: StandardScaleGestureDetector) {
+        channel.invokeMethod("mapEvent#onScale", mapboxMap.cameraData())
     }
 
-    override fun onScaleEnd(detector: StandardScaleGestureDetector) {
-    }
+    // This event comes a bit later (1-2 seconds later) then the last scale event,
+    // we assume it's safe not to send this event, since it's not expected as a
+    // onScale event
+    override fun onScaleEnd(detector: StandardScaleGestureDetector) {}
 
-    override fun onScale(detector: StandardScaleGestureDetector) {
-        channel.invokeMethod("mapEvent#onScale", null)
-    }
-
+    // onShove
     override fun onShove(detector: ShoveGestureDetector) {
-        channel.invokeMethod("mapEvent#onShove", null)
+        channel.invokeMethod("mapEvent#onShove", mapboxMap.cameraData())
     }
 
     override fun onShoveBegin(detector: ShoveGestureDetector) {
+        channel.invokeMethod("mapEvent#onShove", mapboxMap.cameraData())
     }
 
-    override fun onShoveEnd(detector: ShoveGestureDetector) {
-    }
+    // This event comes a bit later (1-2 seconds later) then the last shove event,
+    // we assume it's safe not to send this event, since it's not expected as a
+    // onShave event
+    override fun onShoveEnd(detector: ShoveGestureDetector) {}
 
     override fun onMapClick(point: LatLng): Boolean {
         channel.invokeMethod("mapEvent#onMapClick", point.toProto().toByteArray())

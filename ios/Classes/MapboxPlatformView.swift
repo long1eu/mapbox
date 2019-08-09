@@ -88,8 +88,40 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     channel.setMethodCallHandler(onMethodCall)
   }
 
-  func view() -> UIView {
-    return mapView!
+  // @formatter:off
+  func view() -> UIView { return mapView! }
+  // @formatter:on
+
+  func mapView(_ mapView: MGLMapView, regionWillChangeWith reason: MGLCameraChangeReason, animated: Bool) {
+    let cameraData: Data = try! mapView.camera.proto(mapView: mapView).serializedData()
+    // @formatter:off
+    if reason.contains(.programmatic) { channel.invokeMethod("mapEvent#onApiMove", arguments: cameraData) }
+    if reason.contains(.gesturePan) { channel.invokeMethod("mapEvent#onMove", arguments: cameraData) }
+    if reason.contains(.gestureRotate) { channel.invokeMethod("mapEvent#onRotate", arguments: cameraData) }
+    if reason.contains(.gesturePinch) { channel.invokeMethod("mapEvent#onScale", arguments: cameraData) }
+    if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
+    // @formatter:on
+  }
+
+  func mapView(_ mapView: MGLMapView, regionIsChangingWith reason: MGLCameraChangeReason) {
+    let cameraData: Data = try! mapView.camera.proto(mapView: mapView).serializedData()
+    // @formatter:off
+    if reason.contains(.gesturePan) { channel.invokeMethod("mapEvent#onMove", arguments: cameraData) }
+    if reason.contains(.gestureRotate) { channel.invokeMethod("mapEvent#onRotate", arguments: cameraData) }
+    if reason.contains(.gesturePinch) { channel.invokeMethod("mapEvent#onScale", arguments: cameraData) }
+    if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
+    // @formatter:on
+  }
+
+  func mapView(_ mapView: MGLMapView, regionDidChangeWith reason: MGLCameraChangeReason, animated: Bool) {
+    let cameraData: Data = try! mapView.camera.proto(mapView: mapView).serializedData()
+    // @formatter:off
+    if reason.contains(.programmatic) { channel.invokeMethod("mapEvent#onApiMove", arguments: cameraData) }
+    if reason.contains(.gesturePan) { channel.invokeMethod("mapEvent#onMove", arguments: cameraData) }
+    if reason.contains(.gestureRotate) { channel.invokeMethod("mapEvent#onRotate", arguments: cameraData) }
+    if reason.contains(.gesturePinch) { channel.invokeMethod("mapEvent#onScale", arguments: cameraData) }
+    if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
+    // @formatter:on
   }
 
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
@@ -126,10 +158,6 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "map#setMaxZoom":
       mapView!.maximumZoomLevel = call.arguments as! Double
-      result(nil)
-      break;
-    case "map#cancelTransitions":
-      // todo - no op
       result(nil)
       break;
     case "map#getCameraPosition":
@@ -220,10 +248,6 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       break;
     case "map#getPadding":
       result(mapView!.contentInset.proto)
-      break;
-    case "map#cancelAllVelocityAnimations":
-      // todo - no op
-      result(nil)
       break;
     case "map#snapshot":
       result(mapView!.image)

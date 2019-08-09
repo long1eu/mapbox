@@ -9,6 +9,7 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.geometry.LatLngQuad
+import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
@@ -132,3 +133,4 @@ fun StringValue.fieldValue(): Expression {
 }
 
 
+fun MapboxMap.cameraData(): ByteArray = cameraPosition.toProto().toByteArray()
