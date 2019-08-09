@@ -9,7 +9,7 @@ import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import '../page.dart';
 
 class EmptyPage extends Page {
-  EmptyPage() : super(const Icon(Icons.map), 'Add a new layer below labels', '');
+  EmptyPage() : super(const Icon(Icons.map), 'Add a new layer below labels', '', '');
 
   @override
   Widget build(BuildContext context) => const _EmptyPageState();

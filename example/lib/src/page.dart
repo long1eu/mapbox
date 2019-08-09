@@ -5,9 +5,10 @@
 import 'package:flutter/material.dart';
 
 abstract class Page extends StatelessWidget {
-  const Page(this.leading, this.title, this.info);
+  const Page(this.leading, this.title, this.info, this.category);
 
   final Widget leading;
   final String title;
   final String info;
+  final String category;
 }

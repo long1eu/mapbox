@@ -76,20 +76,27 @@ extension Tophap_MapboxGl_Source.Raster {
   func fieldValue() -> MGLRasterTileSource {
     switch (source!) {
     case .uri(_): return MGLRasterTileSource(identifier: id, configurationURL: uri.uri, tileSize: tileSize.cgFloat)
-    case .tileSet(_): return MGLRasterTileSource(identifier: id, tileURLTemplates: tileSet.tiles, options: tileSet.options())
+    case .tileSet(_):
+      let tiles = tileSet.tiles.first!
+      return MGLRasterTileSource(identifier: id, tileURLTemplates: [tiles], options: tileSet.options())
     }
   }
 }
 
 extension Tophap_MapboxGl_Source.TileSet {
   func options() -> [MGLTileSourceOption: Any] {
-    return [
+    var result: [MGLTileSourceOption: Any] = [
       MGLTileSourceOption.minimumZoomLevel: minZoom,
       MGLTileSourceOption.maximumZoomLevel: maxZoom,
-      MGLTileSourceOption.coordinateBounds: bounds,
+      MGLTileSourceOption.coordinateBounds: NSValue(mglCoordinateBounds: bounds.bounds),
       MGLTileSourceOption.attributionHTMLString: attribution,
-      MGLTileSourceOption.tileCoordinateSystem: scheme,
     ]
+
+    if scheme.count != 0 {
+      result[MGLTileSourceOption.tileCoordinateSystem] = scheme != "xyz" ? MGLTileCoordinateSystem.TMS.rawValue : MGLTileCoordinateSystem.XYZ.rawValue
+    }
+
+    return result
   }
 }
 

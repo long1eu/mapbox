@@ -237,6 +237,8 @@ class Expression {
     return null;
   }
 
+  Object toJson() => json;
+
   List<dynamic> get json {
     List<dynamic> array = <dynamic>[];
     array.add(_operator);

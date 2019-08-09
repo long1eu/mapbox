@@ -11,7 +11,7 @@ import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import '../page.dart';
 
 class StyleFromFilePage extends Page {
-  StyleFromFilePage() : super(const Icon(Icons.map), 'Add style from asset file', '');
+  StyleFromFilePage() : super(const Icon(Icons.map), 'Add style from asset file', '', 'Getting started');
 
   @override
   Widget build(BuildContext context) => const _StyleFromFilePageState();

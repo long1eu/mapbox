@@ -292,10 +292,18 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         if let position = operation.position {
           switch (position) {
           case .belowID(_):
-            style.insertLayer(layer, below: style.layer(withIdentifier: operation.belowID)!)
+            if let below = style.layer(withIdentifier: operation.belowID) {
+              style.insertLayer(layer, below: below)
+            } else {
+              print("layer belowID:\(operation.belowID) not found")
+            }
             break;
           case .aboveID(_):
-            style.insertLayer(layer, above: style.layer(withIdentifier: operation.belowID)!)
+            if let above = style.layer(withIdentifier: operation.aboveID) {
+              style.insertLayer(layer, above: above)
+            } else {
+              print("layer aboveID:\(operation.aboveID) not found")
+            }
             break;
           case .index(_):
             style.insertLayer(layer, at: UInt(operation.index))

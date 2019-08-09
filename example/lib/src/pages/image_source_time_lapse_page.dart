@@ -18,6 +18,7 @@ class ImageSourceTimeLapsePage extends Page {
           const Icon(Icons.map),
           'Add an image source with time lapse',
           'Use an image source and a runnable to show data changes over time.',
+          'Dynamic styling',
         );
 
   @override

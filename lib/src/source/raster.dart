@@ -58,7 +58,7 @@ abstract class RasterSource with _Channel implements Source, Built<RasterSource,
           ..channel = channel
           ..attribution = source.attribution ?? attribution
           ..uri = source.uri ?? uri
-          ..tileSet = (source.tileSet ?? tileSet).toBuilder()
+          ..tileSet = (source.tileSet ?? tileSet)?.toBuilder()
           ..tileSize = source.tileSize ?? tileSize;
       });
     } else {

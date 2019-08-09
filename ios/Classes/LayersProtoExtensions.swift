@@ -223,7 +223,7 @@ extension Tophap_MapboxGl_Layer.Line {
     if hasRoundLimit { layer.lineRoundLimit = roundLimit.expression }
     if hasOpacity { layer.lineOpacity = opacity.expression }
     if hasColor { layer.lineColor = color.expression }
-    if hasTranslate { layer.lineTranslation = translate.expression }
+    // todo if hasTranslate { layer.lineTranslation = translate.expression }
     if hasTranslateAnchor { layer.lineTranslationAnchor = translateAnchor.expression }
     if hasWidth { layer.lineWidth = width.expression }
     if hasGapWidth { layer.lineGapWidth = gapWidth.expression }

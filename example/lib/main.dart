@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'src/page.dart';
 import 'src/pages/add_wms_source_page.dart';
+import 'src/pages/adjust_layer_opacity.dart';
 import 'src/pages/geojson_layer_in_stack_page.dart';
 import 'src/pages/hillshade_layer_page.dart';
 import 'src/pages/image_source_time_lapse_page.dart';
@@ -19,6 +20,7 @@ final List<Page> _allPages = <Page>[
   VectorSourcePage(),
   AddWmsSourcePage(),
   ImageSourceTimeLapsePage(),
+  AdjustLayerOpacityPage(),
 ];
 
 class MapsDemo extends StatelessWidget {

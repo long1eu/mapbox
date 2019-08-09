@@ -19,7 +19,7 @@ extension NSExpression {
         } else if (object is Double || object is Float || object is Int || object is Bool) {
           $0.value = "[\"literal\", \(object)]"
         } else {
-          Swift.fatalError("Unknown type \(object).")
+          fatalError("Unknown type \(object).")
         }
       }
     }
@@ -162,6 +162,15 @@ extension MGLCoordinateQuad {
 extension Array where Iterator.Element == Int32 {
   var edgePadding: UIEdgeInsets {
     return UIEdgeInsets(top: self[0].cgFloat, left: self[1].cgFloat, bottom: self[2].cgFloat, right: self[3].cgFloat)
+  }
+}
+
+extension Array where Iterator.Element == Float {
+  var bounds: MGLCoordinateBounds {
+    return MGLCoordinateBounds(
+        sw: CLLocationCoordinate2D(latitude: Double(self[1]), longitude: Double(self[0])),
+        ne: CLLocationCoordinate2D(latitude: Double(self[3]), longitude: Double(self[2]))
+    )
   }
 }
 

@@ -26,7 +26,7 @@ Expression literalBool(bool value) {
 
 Expression literalList(List<dynamic> value) {
   assert(value != null);
-  assert(value.every((it) => it is num || it is String || it is bool));
+  assert(value.every((it) => it is num || it is String || it is bool || it is Expression));
 
   return Expression._e1(kLiteralOperator, _ExpressionLiteralList(value));
 }

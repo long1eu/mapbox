@@ -14,6 +14,7 @@ class GeoJsonLayerInStackPage extends Page {
           const Icon(Icons.map),
           'Add a new layer below labels',
           'Using argument belowId, you can be more precise where your layer ends up in the map stack.',
+          'Dynamic styling',
         );
 
   @override

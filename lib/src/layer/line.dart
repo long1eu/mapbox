@@ -25,7 +25,7 @@ abstract class LineLayer with _Channel implements Layer, Built<LineLayer, LineLa
     Expression opacityEx,
     Color color = const Color(0xFF000000),
     Expression colorEx,
-    Offset translate = Offset.zero,
+    Offset translate = const Offset(1.0, 1.0),
     Expression translateEx,
     TranslateAnchor translateAnchor = TranslateAnchor.map,
     Expression translateAnchorEx,

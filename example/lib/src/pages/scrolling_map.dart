@@ -11,7 +11,7 @@ import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import '../page.dart';
 
 class ScrollingMapPage extends Page {
-  ScrollingMapPage() : super(const Icon(Icons.map), 'Scrolling map', '');
+  ScrollingMapPage() : super(const Icon(Icons.map), 'Scrolling map', '', 'Getting started');
 
   @override
   Widget build(BuildContext context) => ScrollingMapBody();

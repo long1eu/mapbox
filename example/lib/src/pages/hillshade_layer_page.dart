@@ -14,6 +14,7 @@ class HillshadeLayerPage extends Page {
           const Icon(Icons.map),
           'Add a hillshade layer',
           'Use elevation data to show and customize hills and mountains.',
+          'Dynamic styling',
         );
 
   @override

@@ -14,6 +14,7 @@ class VectorSourcePage extends Page {
           const Icon(Icons.map),
           'Add a vector tile source',
           'Add a vector source to a map and display it as a layer.',
+          'Dynamic styling',
         );
 
   @override

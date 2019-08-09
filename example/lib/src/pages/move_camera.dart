@@ -10,7 +10,7 @@ import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import '../page.dart';
 
 class MoveCameraPage extends Page {
-  MoveCameraPage() : super(const Icon(Icons.map), 'Camera control', '');
+  MoveCameraPage() : super(const Icon(Icons.map), 'Camera control', '', 'Getting started');
 
   @override
   Widget build(BuildContext context) {

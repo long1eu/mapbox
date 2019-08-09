@@ -15,6 +15,7 @@ class AddWmsSourcePage extends Page {
           const Icon(Icons.map),
           'Add a WMS source',
           'Adding an external Web Map Service layer to the map.',
+          'Dynamic styling',
         );
 
   @override
@@ -44,7 +45,8 @@ class _AddWmsSourcePageStateState extends State<_AddWmsSourcePageState> {
     return MapboxMap(
       onMapReady: onMapReady,
       options: MapOptions(
-        styleFromMapbox: MapStyle.light,
+        // styleFromMapbox: MapStyle.light,
+        styleFromUri: 'mapbox://styles/mapbox/light-v9',
         cameraPosition: CameraPosition(
           target: LatLng(
             latitude: 40.6892,
@@ -60,7 +62,7 @@ class _AddWmsSourcePageStateState extends State<_AddWmsSourcePageState> {
             tileJson: Version(0, 0, 1),
             name: 'tileset',
             tiles: <String>[
-              'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015',
+              'https://img.nj.gov/imagerywms/Natural2017?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2017',
             ],
           ),
           tileSize: 256,
