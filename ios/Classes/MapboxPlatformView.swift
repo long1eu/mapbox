@@ -17,7 +17,6 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   // todo add mapView!.compassView.compassVisibility
   // todo add mapView!.isHapticFeedbackEnabled
   // todo add mapView!.decelerationRate
-  // todo add mapView!.resetNorth
   // todo add mapView!.resetPosition
   init(withFrame frame: CGRect, options: Com_Tophap_Mapboxgl_Proto_Map.Options, channel: FlutterMethodChannel, viewId: Int64) {
     self.options = options
@@ -28,61 +27,39 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     switch (options.style!) {
     case .fromMapbox(_): mapView = MGLMapView(frame: frame, styleURL: options.fromMapbox.value)
     case .fromUri(_): mapView = MGLMapView(frame: frame, styleURL: options.fromUri.uri)
-    case .fromJson(_):
-      // todo save the json to a file then load it here
-      print("Not yet supported.")
-      mapView = MGLMapView(frame: frame, styleURL: nil)
+    case .fromJson(_): mapView = MGLMapView(frame: frame, styleURL: getUrlForStyleJson(json: options.fromJson))
     }
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-    // apiBaseUri -> ?
-    // localIdeographFontFamily -> MGLRendererConfiguration
-    // crossSourceCollisions -> MGLRendererConfiguration
-    // cameraPosition -> set when the style is loaded
+    // todo apiBaseUri -> ?
+    // todo localIdeographFontFamily -> MGLRendererConfiguration
+    // todo crossSourceCollisions -> MGLRendererConfiguration
     let cameraPosition = options.cameraPosition
     mapView.setCenter(cameraPosition.target.value, zoomLevel: cameraPosition.zoom, direction: cameraPosition.bearing, animated: false)
-    // maxZoom
     mapView.maximumZoomLevel = options.maxZoom
-    // minZoom
     mapView.minimumZoomLevel = options.minZoom
-    // zoomGestures
     mapView.allowsZooming = options.zoomGestures
-    // scrollGestures
     mapView.allowsScrolling = options.scrollGestures
-    // rotateGestures
     mapView.allowsRotating = options.rotateGestures
-    // tiltGestures
     mapView.allowsTilting = options.tiltGestures
-    // doubleTapGestures -> ?
-    // quickZoomGestures -> ?
-    // compass
+    // todo doubleTapGestures -> ?
+    // todo quickZoomGestures -> ?
     mapView.compassView.isHidden = options.compass
-    // compassPosition
     mapView.compassViewPosition = options.compassPosition.value
-    // compassMarginList
-    // todo mapView!.compassViewMargins = options.compassMargin.value, thia has only two points
+    // todo compassMarginList mapView!.compassViewMargins = options.compassMargin.value, thia has only two points
     // compassFadeFacingNorth -> mapView!.compassView.compassVisibility, not applies?
-    // logo
     mapView.logoView.isHidden = options.logo
-    // logoPosition
     mapView.logoViewPosition = options.logoPosition.value
-    // logoMarginList
-    // todo mapView!.logoViewMargins = options.logoMargin
-    // attribution
+    // todo logoMarginList mapView!.logoViewMargins = options.logoMargin
     mapView.attributionButton.isHidden = options.attribution
-    // attributionPosition
     mapView.attributionButtonPosition = options.attributionPosition.value
-    // attributionMarginList
-    // todo mapView!.attributionButtonMargins = options.attributionMargin
-    // renderTextureMode -> ?
-    // renderTextureTranslucentSurface -> ?
-    // enableTilePrefetch
+    // todo attributionMarginList mapView!.attributionButtonMargins = options.attributionMargin
+    // todo renderTextureMode -> ?
+    // todo renderTextureTranslucentSurface -> ?
     mapView.prefetchesTiles = options.enableTilePrefetch
-    // pixelRatio -> MGLRendererConfiguration
-    // foregroundLoadColor
+    // todo pixelRatio -> MGLRendererConfiguration
     mapView.backgroundColor = options.foregroundLoadColor.value
-    // enableZMediaOverlay
-    // attributionTintColor
+    // todo enableZMediaOverlay
     mapView.attributionButton.tintColor = options.attributionTintColor.value
     super.init()
 
@@ -276,14 +253,11 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "style#set":
       let _data = (call.arguments as! FlutterStandardTypedData).data
       let data = try! Com_Tophap_Mapboxgl_Proto_Style.Operations.Build(serializedData: _data)
+
       switch (data.source!) {
-      case .default(_):
-        mapView!.styleURL = data.default.value
-      case .uri(_):
-        mapView!.styleURL = data.uri.uri
-      case .json(_):
-        // todo save this to a file and then pass it as a file URL
-        Swift.fatalError("Json format in not supported on iOS.")
+      case .default(_): mapView!.styleURL = data.default.value
+      case .uri(_): mapView!.styleURL = data.uri.uri
+      case .json(_): mapView!.styleURL = getUrlForStyleJson(json: data.json)
       }
 
       self.result = result
@@ -297,7 +271,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         print("source added \(source.identifier)")
         try! result(style.source(withIdentifier: source.identifier)!.proto.serializedData())
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
     case "style#removeSource":
@@ -376,4 +350,17 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     }
 
   }
+
+
+  var cacheDir: String {
+    return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+  }
+}
+
+private func getUrlForStyleJson(json: String) -> URL {
+  let tmp = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
+  try! FileManager.default.createDirectory(at: tmp, withIntermediateDirectories: true, attributes: nil)
+  let file = tmp.appendingPathComponent("style-\(UUID().uuidString).json")
+  try! json.write(to: file, atomically: false, encoding: .utf8)
+  return file
 }

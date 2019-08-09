@@ -7,11 +7,13 @@ import 'src/pages/hillshade_layer_page.dart';
 import 'src/pages/image_source_time_lapse_page.dart';
 import 'src/pages/move_camera.dart';
 import 'src/pages/scrolling_map.dart';
+import 'src/pages/style_from_file_page.dart';
 import 'src/pages/vector_source.dart';
 
 final List<Page> _allPages = <Page>[
   MoveCameraPage(),
   ScrollingMapPage(),
+  StyleFromFilePage(),
   HillshadeLayerPage(),
   GeoJsonLayerInStackPage(),
   VectorSourcePage(),
