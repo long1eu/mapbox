@@ -372,12 +372,12 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
     override fun onShoveEnd(detector: ShoveGestureDetector) {}
 
     override fun onMapClick(point: LatLng): Boolean {
-        channel.invokeMethod("mapEvent#onMapClick", point.toProto().toByteArray())
+        channel.invokeMethod("mapTap#onTap", point.toProto().toByteArray())
         return true
     }
 
     override fun onMapLongClick(point: LatLng): Boolean {
-        channel.invokeMethod("mapEvent#onMapLongClick", point.toProto().toByteArray())
+        channel.invokeMethod("mapTap#onLongTap", point.toProto().toByteArray())
         return true
     }
 

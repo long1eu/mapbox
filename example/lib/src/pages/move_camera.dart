@@ -52,6 +52,10 @@ class MoveCameraState extends State<MoveCamera> {
                 onScale: () => print('onScale'),
                 onShove: () => print('onShove'),
               ),
+              mapTaps: MapTaps(
+                onTap: (LatLng point) => print('onTap $point'),
+                onLongTap: (LatLng point) => print('onLongTap $point'),
+              ),
             ),
           ),
         ),

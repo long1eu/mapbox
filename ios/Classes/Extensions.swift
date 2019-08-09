@@ -250,3 +250,38 @@ extension MGLCameraChangeReason {
     return String(data: data, encoding: .utf8)!
   }
 }
+
+
+extension UIView {
+  func addOnTapGesture(action: @escaping (_ sender: UITapGestureRecognizer) -> Void) {
+    let tap = OnTapGestureRecognizer(target: self, action: #selector(self.handleOnTap(_:)))
+    tap.action = action
+
+    self.addGestureRecognizer(tap)
+    self.isUserInteractionEnabled = true
+  }
+
+  func addOnLongTapGesture(action: @escaping (_ sender: UILongPressGestureRecognizer) -> Void) {
+    let tap = OnLongPressGestureRecognizer(target: self, action: #selector(self.handleOnLongTap(_:)))
+    tap.action = action
+
+    self.addGestureRecognizer(tap)
+    self.isUserInteractionEnabled = true
+  }
+
+  @objc func handleOnTap(_ sender: OnTapGestureRecognizer) {
+    sender.action!(sender)
+  }
+
+  @objc func handleOnLongTap(_ sender: OnLongPressGestureRecognizer) {
+    sender.action!(sender)
+  }
+}
+
+class OnTapGestureRecognizer: UITapGestureRecognizer {
+  var action: ((_ sender: UITapGestureRecognizer) -> Void)? = nil
+}
+
+class OnLongPressGestureRecognizer: UILongPressGestureRecognizer {
+  var action: ((_ sender: UILongPressGestureRecognizer) -> Void)? = nil
+}

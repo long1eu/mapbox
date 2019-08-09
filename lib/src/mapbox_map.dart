@@ -11,6 +11,7 @@ class MapboxMap extends StatefulWidget {
     this.gestureRecognizers,
     this.options,
     this.mapEvents,
+    this.mapTaps,
     this.layers,
     this.sources,
   }) : super(key: key);
@@ -18,6 +19,7 @@ class MapboxMap extends StatefulWidget {
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
   final MapOptions options;
   final MapEvents mapEvents;
+  final MapTaps mapTaps;
   final ValueChanged<MapController> onMapReady;
   final List<Layer> layers;
   final List<Source> sources;
@@ -47,6 +49,8 @@ class _MapboxMapState extends State<MapboxMap> {
   void _onMapEvent(MethodCall event) {
     if (event.method.startsWith('mapEvent#')) {
       widget.mapEvents?.handleEvent(event);
+    } else if (event.method.startsWith('mapTap#')) {
+      widget.mapTaps?.handleEvent(event);
     } else if (event.method == 'mapReady') {
       final Uint8List data = event.arguments;
       final pb.Map__Operations_Ready info = pb.Map__Operations_Ready.fromBuffer(data);
@@ -169,8 +173,6 @@ class MapEvents {
     this.onRotate,
     this.onScale,
     this.onShove,
-    this.onMapClick,
-    this.onMapLongClick,
   });
 
   final VoidCallback onApiMove;
@@ -178,8 +180,6 @@ class MapEvents {
   final VoidCallback onRotate;
   final VoidCallback onScale;
   final VoidCallback onShove;
-  final ValueChanged<LatLng> onMapClick;
-  final ValueChanged<LatLng> onMapLongClick;
 
   void handleEvent(MethodCall event) {
     switch (event.method) {
@@ -193,10 +193,25 @@ class MapEvents {
         return onScale?.call();
       case 'mapEvent#onShove':
         return onShove?.call();
-      case 'mapEvent#onMapClick':
-        return onMapClick?.call(LatLng.fromProtoData(event.arguments));
-      case 'mapEvent#onMapLongClick':
-        return onMapLongClick?.call(LatLng.fromProtoData(event.arguments));
+    }
+  }
+}
+
+class MapTaps {
+  MapTaps({
+    this.onTap,
+    this.onLongTap,
+  });
+
+  final ValueChanged<LatLng> onTap;
+  final ValueChanged<LatLng> onLongTap;
+
+  void handleEvent(MethodCall event) {
+    switch (event.method) {
+      case 'mapTap#onTap':
+        return onTap?.call(LatLng.fromProtoData(event.arguments));
+      case 'mapTap#onLongTap':
+        return onLongTap?.call(LatLng.fromProtoData(event.arguments));
     }
   }
 }

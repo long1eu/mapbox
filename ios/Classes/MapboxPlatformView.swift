@@ -10,7 +10,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   private let options: Com_Tophap_Mapboxgl_Proto_Map.Options
   private let channel: FlutterMethodChannel
   private let viewId: Int64
-  private var mapView: MGLMapView?
+  @IBOutlet weak var mapView: MGLMapView?
   private var result: FlutterResult?;
   private var initialLoad: Bool = false;
 
@@ -24,6 +24,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     self.channel = channel
     self.viewId = viewId
 
+    var mapView: MGLMapView
     switch (options.style!) {
     case .fromMapbox(_): mapView = MGLMapView(frame: frame, styleURL: options.fromMapbox.value)
     case .fromUri(_): mapView = MGLMapView(frame: frame, styleURL: options.fromUri.uri)
@@ -32,60 +33,64 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       print("Not yet supported.")
       mapView = MGLMapView(frame: frame, styleURL: nil)
     }
+    mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
     // apiBaseUri -> ?
     // localIdeographFontFamily -> MGLRendererConfiguration
     // crossSourceCollisions -> MGLRendererConfiguration
     // cameraPosition -> set when the style is loaded
+    let cameraPosition = options.cameraPosition
+    mapView.setCenter(cameraPosition.target.value, zoomLevel: cameraPosition.zoom, direction: cameraPosition.bearing, animated: false)
     // maxZoom
-    mapView!.maximumZoomLevel = options.maxZoom
+    mapView.maximumZoomLevel = options.maxZoom
     // minZoom
-    mapView!.minimumZoomLevel = options.minZoom
+    mapView.minimumZoomLevel = options.minZoom
     // zoomGestures
-    mapView!.allowsZooming = options.zoomGestures
+    mapView.allowsZooming = options.zoomGestures
     // scrollGestures
-    mapView!.allowsScrolling = options.scrollGestures
+    mapView.allowsScrolling = options.scrollGestures
     // rotateGestures
-    mapView!.allowsRotating = options.rotateGestures
+    mapView.allowsRotating = options.rotateGestures
     // tiltGestures
-    mapView!.allowsTilting = options.tiltGestures
+    mapView.allowsTilting = options.tiltGestures
     // doubleTapGestures -> ?
     // quickZoomGestures -> ?
     // compass
-    mapView!.compassView.isHidden = options.compass
+    mapView.compassView.isHidden = options.compass
     // compassPosition
-    mapView!.compassViewPosition = options.compassPosition.value
+    mapView.compassViewPosition = options.compassPosition.value
     // compassMarginList
     // todo mapView!.compassViewMargins = options.compassMargin.value, thia has only two points
     // compassFadeFacingNorth -> mapView!.compassView.compassVisibility, not applies?
     // logo
-    mapView!.logoView.isHidden = options.logo
+    mapView.logoView.isHidden = options.logo
     // logoPosition
-    mapView!.logoViewPosition = options.logoPosition.value
+    mapView.logoViewPosition = options.logoPosition.value
     // logoMarginList
     // todo mapView!.logoViewMargins = options.logoMargin
     // attribution
-    mapView!.attributionButton.isHidden = options.attribution
+    mapView.attributionButton.isHidden = options.attribution
     // attributionPosition
-    mapView!.attributionButtonPosition = options.attributionPosition.value
+    mapView.attributionButtonPosition = options.attributionPosition.value
     // attributionMarginList
     // todo mapView!.attributionButtonMargins = options.attributionMargin
     // renderTextureMode -> ?
     // renderTextureTranslucentSurface -> ?
     // enableTilePrefetch
-    mapView!.prefetchesTiles = options.enableTilePrefetch
+    mapView.prefetchesTiles = options.enableTilePrefetch
     // pixelRatio -> MGLRendererConfiguration
     // foregroundLoadColor
-    mapView!.backgroundColor = options.foregroundLoadColor.value
+    mapView.backgroundColor = options.foregroundLoadColor.value
     // enableZMediaOverlay
     // attributionTintColor
-    mapView!.attributionButton.tintColor = options.attributionTintColor.value
+    mapView.attributionButton.tintColor = options.attributionTintColor.value
     super.init()
 
-    let cameraPosition = options.cameraPosition
-    mapView!.setCenter(cameraPosition.target.value, zoomLevel: cameraPosition.zoom, direction: cameraPosition.bearing, animated: false)
-    mapView!.delegate = self
+    mapView.delegate = self
+    self.mapView = mapView
     channel.setMethodCallHandler(onMethodCall)
+    mapView.addOnTapGesture(action: self.handleOnTap(sender:))
+    mapView.addOnLongTapGesture(action: self.handleOnLongTap(sender:))
   }
 
   // @formatter:off
@@ -122,6 +127,20 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     if reason.contains(.gesturePinch) { channel.invokeMethod("mapEvent#onScale", arguments: cameraData) }
     if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
     // @formatter:on
+  }
+
+  @IBAction func handleOnTap(sender: UITapGestureRecognizer) {
+    let mapView = self.mapView!
+    let tapPoint: CGPoint = sender.location(in: mapView)
+    let tapCoordinate = mapView.convert(tapPoint, toCoordinateFrom: nil)
+    try! channel.invokeMethod("mapTap#onTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
+  }
+
+  @IBAction func handleOnLongTap(sender: UILongPressGestureRecognizer) {
+    let mapView = self.mapView!
+    let tapPoint: CGPoint = sender.location(in: mapView)
+    let tapCoordinate = mapView.convert(tapPoint, toCoordinateFrom: nil)
+    try! channel.invokeMethod("mapTap#onLongTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
   }
 
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
