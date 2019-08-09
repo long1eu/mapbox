@@ -74,10 +74,11 @@ class ScrollingMapBody extends StatelessWidget {
                     child: MapboxMap(
                       onMapReady: onMapReady,
                       options: MapOptions(
-                          cameraPosition: CameraPosition(
-                        target: center,
-                        zoom: 11.0,
-                      )),
+                        cameraPosition: CameraPosition(
+                          target: center,
+                          zoom: 11.0,
+                        ),
+                      ),
                       gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
                         Factory<OneSequenceGestureRecognizer>(
                           () => ScaleGestureRecognizer(),

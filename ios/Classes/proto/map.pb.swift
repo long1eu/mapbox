@@ -19,7 +19,6 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-/// protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto && protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/**.proto
 struct Com_Tophap_Mapboxgl_Proto_Map {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -321,7 +320,7 @@ struct Com_Tophap_Mapboxgl_Proto_Map {
       // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
       // methods supported on all messages.
 
-      var viewID: Int32 {
+      var viewID: Int64 {
         get {return _storage._viewID}
         set {_uniqueStorage()._viewID = newValue}
       }
@@ -1120,7 +1119,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message,
   ]
 
   fileprivate class _StorageClass {
-    var _viewID: Int32 = 0
+    var _viewID: Int64 = 0
     var _prefetchesTiles: Bool = false
     var _minZoom: Double = 0
     var _maxZoom: Double = 0
@@ -1153,7 +1152,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message,
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
-        case 1: try decoder.decodeSingularInt32Field(value: &_storage._viewID)
+        case 1: try decoder.decodeSingularInt64Field(value: &_storage._viewID)
         case 2: try decoder.decodeSingularBoolField(value: &_storage._prefetchesTiles)
         case 3: try decoder.decodeSingularDoubleField(value: &_storage._minZoom)
         case 4: try decoder.decodeSingularDoubleField(value: &_storage._maxZoom)
@@ -1168,7 +1167,7 @@ extension Com_Tophap_Mapboxgl_Proto_Map.Operations.Ready: SwiftProtobuf.Message,
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if _storage._viewID != 0 {
-        try visitor.visitSingularInt32Field(value: _storage._viewID, fieldNumber: 1)
+        try visitor.visitSingularInt64Field(value: _storage._viewID, fieldNumber: 1)
       }
       if _storage._prefetchesTiles != false {
         try visitor.visitSingularBoolField(value: _storage._prefetchesTiles, fieldNumber: 2)

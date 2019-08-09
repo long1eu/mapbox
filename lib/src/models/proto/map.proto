@@ -7,6 +7,7 @@ import "util.proto";
 import "style.proto";
 
 // protoc --proto_path=lib/src/models/proto --dart_out=lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto && protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/**.proto
+
 message Map {
   message Options {
     string api_base_uri = 1;
@@ -61,7 +62,7 @@ message Map {
 
   message Operations {
     message Ready {
-      int32 view_id = 1;
+      int64 view_id = 1;
       bool prefetches_tiles = 2;
       double min_zoom = 3;
       double max_zoom = 4;

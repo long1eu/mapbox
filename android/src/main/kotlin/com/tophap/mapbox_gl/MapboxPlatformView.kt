@@ -19,14 +19,14 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.tophap.mapbox_gl.proto.*
-import com.tophap.mapbox_gl.proto.Mapbox.Map.*
+import com.tophap.mapboxgl.proto.*
+import com.tophap.mapboxgl.proto.Mapbox.Map.*
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 import java.io.ByteArrayOutputStream
 
-class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Int) :
+class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Long) :
         PlatformView,
         Application.ActivityLifecycleCallbacks,
         ComponentCallbacks,
@@ -143,14 +143,17 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             "map#moveCamera" -> {
                 val update = Operations.CameraUpdate.parseFrom(call.arguments as ByteArray)
                 mapboxMap.moveCamera(update.fieldValue(), CameraOperationResolver(result))
+                result.success(null)
             }
             "map#easeCamera" -> {
                 val easeCamera = Operations.EaseCamera.parseFrom(call.arguments as ByteArray)
                 mapboxMap.easeCamera(easeCamera.update.fieldValue(), easeCamera.duration, easeCamera.easingInterpolator, CameraOperationResolver(result))
+                result.success(null)
             }
             "map#animateCamera" -> {
                 val animateCamera = Operations.AnimateCamera.parseFrom(call.arguments as ByteArray)
                 mapboxMap.animateCamera(animateCamera.update.fieldValue(), animateCamera.duration, CameraOperationResolver(result))
+                result.success(null)
             }
             "map#scrollBy" -> {
                 val scrollBy = Operations.ScrollBy.parseFrom(call.arguments as ByteArray)

@@ -1,7 +1,7 @@
 package com.tophap.mapbox_gl
 
 import com.mapbox.mapboxsdk.style.layers.*
-import com.tophap.mapbox_gl.proto.Layers
+import com.tophap.mapboxgl.proto.Layers
 
 fun Layers.Layer.fieldValue(): Layer {
     return when (typeCase!!) {

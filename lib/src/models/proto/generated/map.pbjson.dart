@@ -79,7 +79,7 @@ const Map__Operations$json = const {
 const Map__Operations_Ready$json = const {
   '1': 'Ready',
   '2': const [
-    const {'1': 'view_id', '3': 1, '4': 1, '5': 5, '10': 'viewId'},
+    const {'1': 'view_id', '3': 1, '4': 1, '5': 3, '10': 'viewId'},
     const {'1': 'prefetches_tiles', '3': 2, '4': 1, '5': 8, '10': 'prefetchesTiles'},
     const {'1': 'min_zoom', '3': 3, '4': 1, '5': 1, '10': 'minZoom'},
     const {'1': 'max_zoom', '3': 4, '4': 1, '5': 1, '10': 'maxZoom'},

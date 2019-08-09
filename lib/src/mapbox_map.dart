@@ -32,6 +32,7 @@ class _MapboxMapState extends State<MapboxMap> {
   MapController _controller;
   StreamController<MethodCall> _methodCall;
   StreamSubscription<MethodCall> _sub;
+  MethodChannel channel;
 
   @override
   void initState() {
@@ -41,7 +42,7 @@ class _MapboxMapState extends State<MapboxMap> {
   }
 
   void onPlatformViewCreated(int id) {
-    final MethodChannel channel = MethodChannel('com.tophap/mapboxgl_factory_$id');
+    channel = MethodChannel('com.tophap/mapboxgl_factory_$id');
     channel.setMethodCallHandler((event) async => _methodCall.add(event));
   }
 
@@ -135,6 +136,7 @@ class _MapboxMapState extends State<MapboxMap> {
     _controller.dispose();
     _sub.cancel();
     _methodCall.close();
+    channel.invokeMethod('dispose');
     super.dispose();
   }
 

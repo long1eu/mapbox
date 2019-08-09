@@ -285,7 +285,7 @@ class Map__CameraPosition extends $pb.GeneratedMessage {
 
 class Map__Operations_Ready extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Operations.Ready', package: const $pb.PackageName('com.tophap.mapboxgl.proto'))
-    ..a<$core.int>(1, 'viewId', $pb.PbFieldType.O3)
+    ..aInt64(1, 'viewId')
     ..aOB(2, 'prefetchesTiles')
     ..a<$core.double>(3, 'minZoom', $pb.PbFieldType.OD)
     ..a<$core.double>(4, 'maxZoom', $pb.PbFieldType.OD)
@@ -308,8 +308,8 @@ class Map__Operations_Ready extends $pb.GeneratedMessage {
   static Map__Operations_Ready getDefault() => _defaultInstance ??= create()..freeze();
   static Map__Operations_Ready _defaultInstance;
 
-  $core.int get viewId => $_get(0, 0);
-  set viewId($core.int v) { $_setSignedInt32(0, v); }
+  Int64 get viewId => $_getI64(0);
+  set viewId(Int64 v) { $_setInt64(0, v); }
   $core.bool hasViewId() => $_has(0);
   void clearViewId() => clearField(1);
 

@@ -2,7 +2,7 @@ package com.tophap.mapbox_gl
 
 import com.mapbox.mapboxsdk.style.layers.*
 import com.mapbox.mapboxsdk.style.types.Formatted
-import com.tophap.mapbox_gl.proto.Layers
+import com.tophap.mapboxgl.proto.Layers
 
 fun Layer.toProto(): Layers.Layer {
     val sourceBuilder = Layers.Layer.newBuilder()

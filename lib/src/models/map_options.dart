@@ -136,48 +136,6 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     });
   }
 
-  factory MapOptions.fromProtoData(Uint8List data) {
-    return MapOptions.fromProto(pb.Map__Options.fromBuffer(data));
-  }
-
-  factory MapOptions.fromProto(pb.Map__Options proto) {
-    return _$MapOptions((MapOptionsBuilder b) {
-      b
-        ..apiBaseUri = proto.apiBaseUri
-        ..styleFromMapbox = proto.hasFromMapbox() ? MapStyle.fromProto(proto.fromMapbox) : null
-        ..styleFromUri = proto.hasFromUri() ? proto.fromUri : null
-        ..styleFromJson = proto.hasFromJson_32() ? proto.fromJson_32 : null
-        ..localIdeographFontFamily = proto.localIdeographFontFamily
-        ..crossSourceCollisions = proto.crossSourceCollisions
-        ..cameraPosition = CameraPosition.fromProto(proto.cameraPosition).toBuilder()
-        ..maxZoom = proto.maxZoom
-        ..minZoom = proto.minZoom
-        ..zoomGestures = proto.zoomGestures
-        ..scrollGestures = proto.scrollGestures
-        ..rotateGestures = proto.rotateGestures
-        ..tiltGestures = proto.tiltGestures
-        ..doubleTapGestures = proto.doubleTapGestures
-        ..quickZoomGestures = proto.quickZoomGestures
-        ..compass = proto.compass
-        ..compassPosition = OrnamentPosition.fromProto(proto.compassPosition)
-        ..compassMargin = ListBuilder<int>(proto.compassMargin)
-        ..compassFadeFacingNorth = proto.compassFadeFacingNorth
-        ..logo = proto.logo
-        ..logoPosition = OrnamentPosition.fromProto(proto.logoPosition)
-        ..logoMargin = ListBuilder<int>(proto.logoMargin)
-        ..attribution = proto.attribution
-        ..attributionPosition = OrnamentPosition.fromProto(proto.attributionPosition)
-        ..attributionMargin = ListBuilder<int>(proto.attributionMargin)
-        ..attributionTintColor = proto.hasAttributionTintColor() ? colorValue_(proto.attributionTintColor) : null
-        ..renderTextureMode = proto.renderTextureMode
-        ..renderTextureTranslucentSurface = proto.renderTextureTranslucentSurface
-        ..enableTilePrefetch = proto.enableTilePrefetch
-        ..enableZMediaOverlay = proto.enableZMediaOverlay
-        ..pixelRatio = proto.pixelRatio
-        ..foregroundLoadColor = colorValue_(proto.foregroundLoadColor);
-    });
-  }
-
   MapOptions._();
 
   @nullable

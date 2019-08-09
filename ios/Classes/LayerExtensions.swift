@@ -377,7 +377,7 @@ extension MGLLineStyleLayer {
       line.blur = lineBlur.proto
       line.dasharray = lineDashPattern.proto
       line.pattern = linePattern.proto
-      line.gradient = lineGradient.proto
+      if let _lineGradient = lineGradient { line.gradient = _lineGradient.proto }
       line.opacityTransition = lineOpacityTransition.proto
       line.colorTransition = lineColorTransition.proto
       line.translateTransition = lineTranslationTransition.proto

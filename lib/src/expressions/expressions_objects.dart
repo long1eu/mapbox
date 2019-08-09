@@ -146,6 +146,14 @@ class Expression {
       }
     }
 
+    if (Platform.isIOS) {
+      if (list[0] is! String && list.map((it) => it.runtimeType).toSet().length == 1) {
+        list = ['literal', list];
+      } else if (list.every((it) => it is String)) {
+        list = ['literal', list];
+      }
+    }
+
     final String operator = list[0];
     final List<Expression> arguments = <Expression>[];
     for (int i = 1; i < list.length; i++) {

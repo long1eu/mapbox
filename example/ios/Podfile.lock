@@ -1,15 +1,15 @@
 PODS:
   - Flutter (1.0.0)
-  - Mapbox-iOS-SDK (5.2.0)
-  - mapbox_gl (0.0.1):
+  - flutter_mapbox_gl (0.0.1):
     - Flutter
     - Mapbox-iOS-SDK (~> 5.2)
     - SwiftProtobuf (~> 1.0)
+  - Mapbox-iOS-SDK (5.2.0)
   - SwiftProtobuf (1.6.0)
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
-  - mapbox_gl (from `/Users/long1eu/IdeaProjects/mapbox_gl/ios/mapbox_gl.podspec`)
+  - flutter_mapbox_gl (from `/Users/long1eu/IdeaProjects/mapbox_gl/ios/flutter_mapbox_gl.podspec`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -19,13 +19,13 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: ".symlinks/flutter/ios"
-  mapbox_gl:
-    :path: "/Users/long1eu/IdeaProjects/mapbox_gl/ios/mapbox_gl.podspec"
+  flutter_mapbox_gl:
+    :path: "/Users/long1eu/IdeaProjects/mapbox_gl/ios/flutter_mapbox_gl.podspec"
 
 SPEC CHECKSUMS:
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  flutter_mapbox_gl: 85a5a4b8e9071d228002ea3d99bab21b4d298dd4
   Mapbox-iOS-SDK: 3e095b305126d52ba166fe215d847b15b6fbee63
-  mapbox_gl: 764d0adefd92a6c47b11217a016288152500a53c
   SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
 
 PODFILE CHECKSUM: c6b4a59910c809a0e5a23b6b0b1b1be15d7d4f61

@@ -17,10 +17,10 @@ import com.mapbox.mapboxsdk.style.light.Light
 import com.mapbox.mapboxsdk.style.sources.*
 import com.mapbox.mapboxsdk.style.types.Formatted
 import com.mapbox.mapboxsdk.utils.ColorUtils
-import com.tophap.mapbox_gl.proto.Mapbox
-import com.tophap.mapbox_gl.proto.MapboxUtil
-import com.tophap.mapbox_gl.proto.Sources
-import com.tophap.mapbox_gl.proto.StyleOuterClass
+import com.tophap.mapboxgl.proto.Mapbox
+import com.tophap.mapboxgl.proto.MapboxUtil
+import com.tophap.mapboxgl.proto.Sources
+import com.tophap.mapboxgl.proto.StyleOuterClass
 
 val gson = Gson()
 
@@ -457,6 +457,7 @@ fun Light.toProto(): StyleOuterClass.Style.Light {
     val builder = StyleOuterClass.Style.Light.newBuilder()
 
     builder.anchor = anchor.anchor()
+    // todo builder.position = position.proto()
     try {
         builder.color = ColorUtils.rgbaToColor(color).color()
     } catch (e: Error) {

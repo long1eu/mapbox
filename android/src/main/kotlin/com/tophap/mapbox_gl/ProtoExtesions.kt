@@ -13,15 +13,14 @@ import com.mapbox.mapboxsdk.maps.MapboxMapOptions
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
-import com.tophap.mapbox_gl.proto.Mapbox
-import com.tophap.mapbox_gl.proto.MapboxUtil
-import com.tophap.mapbox_gl.proto.StyleOuterClass
+import com.tophap.mapboxgl.proto.Mapbox
+import com.tophap.mapboxgl.proto.MapboxUtil
+import com.tophap.mapboxgl.proto.StyleOuterClass
 
 
 @Style.StyleUrl
 fun StyleOuterClass.Style.MapboxStyle.fieldValue(): String {
     return when (this) {
-        StyleOuterClass.Style.MapboxStyle.UNRECOGNIZED,
         StyleOuterClass.Style.MapboxStyle.MAPBOX_STREETS -> Style.MAPBOX_STREETS
         StyleOuterClass.Style.MapboxStyle.OUTDOORS -> Style.OUTDOORS
         StyleOuterClass.Style.MapboxStyle.LIGHT -> Style.LIGHT
@@ -30,6 +29,7 @@ fun StyleOuterClass.Style.MapboxStyle.fieldValue(): String {
         StyleOuterClass.Style.MapboxStyle.SATELLITE_STREETS -> Style.SATELLITE_STREETS
         StyleOuterClass.Style.MapboxStyle.TRAFFIC_DAY -> Style.TRAFFIC_DAY
         StyleOuterClass.Style.MapboxStyle.TRAFFIC_NIGHT -> Style.TRAFFIC_NIGHT
+        else -> throw IllegalArgumentException("Unknown style $this")
     }
 }
 

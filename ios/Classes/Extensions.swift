@@ -8,8 +8,25 @@ import SwiftProtobuf
 extension NSExpression {
   var proto: SwiftProtobuf.Google_Protobuf_StringValue {
     return SwiftProtobuf.Google_Protobuf_StringValue.with {
-      let data = try! JSONSerialization.data(withJSONObject: mgl_jsonExpressionObject)
-      $0.value = String(data: data, encoding: .utf8)!
+      var object = mgl_jsonExpressionObject
+
+      if (object is Array<String> || object is Array<Float>) {
+        print(object)
+      }
+
+      let valid = JSONSerialization.isValidJSONObject(object)
+      if (valid) {
+        let data = try! JSONSerialization.data(withJSONObject: object)
+        $0.value = String(data: data, encoding: .utf8)!
+      } else {
+        if (object is String) {
+          $0.value = "[\"literal\", \"\(object)\"]"
+        } else if (object is Double || object is Float || object is Int || object is Bool) {
+          $0.value = "[\"literal\", \(object)]"
+        } else {
+          Swift.fatalError("Unknown type \(object).")
+        }
+      }
     }
   }
 }
@@ -17,7 +34,8 @@ extension NSExpression {
 extension NSPredicate {
   var proto: SwiftProtobuf.Google_Protobuf_StringValue {
     return SwiftProtobuf.Google_Protobuf_StringValue.with {
-      let data = try! JSONSerialization.data(withJSONObject: mgl_jsonExpressionObject)
+      let object = mgl_jsonExpressionObject
+      let data = try! JSONSerialization.data(withJSONObject: object)
       $0.value = String(data: data, encoding: .utf8)!
     }
   }
@@ -36,6 +54,12 @@ extension String {
 }
 
 extension Int32 {
+  var cgFloat: CGFloat {
+    return CGFloat(self)
+  }
+}
+
+extension Double {
   var cgFloat: CGFloat {
     return CGFloat(self)
   }
@@ -85,27 +109,6 @@ extension MGLIconAnchor {
   }
 }
 
-extension MGLTextJustification {
-  func proto() -> Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextJustify {
-    switch (self) {
-    case .auto: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextJustify.justifyAuto
-    case .left: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextJustify.justifyLeft
-    case .center: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextJustify.justifyCenter
-    case .right: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextJustify.justifyRight
-    }
-  }
-}
-
-extension MGLTextTransform {
-  func proto() -> Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextTransform {
-    switch (self) {
-    case .none: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextTransform.transformNone
-    case .uppercase: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextTransform.transformUppercase
-    case .lowercase: return Com_Tophap_Mapboxgl_Proto_Layer.Symbol.TextTransform.transformLowercase
-    }
-  }
-}
-
 extension MGLOrnamentPosition {
   func proto() -> Com_Tophap_Mapboxgl_Proto_OrnamentPosition {
     switch (self) {
@@ -118,12 +121,12 @@ extension MGLOrnamentPosition {
 }
 
 extension MGLMapCamera {
-  func proto(mapView: MGLMapView) -> Com_Tophap_Mapboxgl_Proto_Map_.CameraPosition {
+  func proto(mapView: MGLMapView) -> Com_Tophap_Mapboxgl_Proto_Map.CameraPosition {
     let zoom = MGLZoomLevelForAltitude(self.altitude, self.pitch, self.centerCoordinate.latitude, mapView.frame.size)
-    return Com_Tophap_Mapboxgl_Proto_Map_.CameraPosition.with {
+    return Com_Tophap_Mapboxgl_Proto_Map.CameraPosition.with {
       $0.target = centerCoordinate.proto(altitude: altitude)
       $0.zoom = zoom
-      $0.tilt = zoom
+      $0.tilt = Double(pitch)
       $0.bearing = heading
     }
   }
@@ -150,34 +153,79 @@ extension MGLTransition {
   }
 }
 
-
-extension NSExpression {
-  func formatted() {
-    /*let data = mgl_jsonExpressionObject as! [Any]
-    let type = data[0] as! String
-    assert(type == "format")
-
-    let layer = MGLSymbolStyleLayer(identifier: "", source: <#T##MGLSource##Mapbox.MGLSource#>)
-
-
-    NSPredicate(format: "%K == 'US-OH'", "ds")
-
-
-    for i in stride(from: 1, through: data.count, by: 2) {
-        let string = data[i]
-        let data = data[i + 1]
-
-
-
+extension MGLCoordinateQuad {
+  var proto: Com_Tophap_Mapboxgl_Proto_LatLngQuad {
+    return Com_Tophap_Mapboxgl_Proto_LatLngQuad.with { quad in
+      quad.topLeft = topLeft.proto(altitude: 0)
+      quad.bottomLeft = bottomLeft.proto(altitude: 0)
+      quad.bottomRight = bottomRight.proto(altitude: 0)
+      quad.topRight = topRight.proto(altitude: 0)
     }
-*/
-    /*
-   ["format",
-     "foo", { "font-scale": 1.2 , "text-font": array<string>, "text-color": "argb()"},
-     "bar", { "font-scale": 0.8 }
-    ]
-    mgl_jsonExpressionObject
-   */
   }
 }
 
+extension Array where Iterator.Element == Int32 {
+  var edgePadding: UIEdgeInsets {
+    return UIEdgeInsets(top: self[0].cgFloat, left: self[1].cgFloat, bottom: self[2].cgFloat, right: self[3].cgFloat)
+  }
+}
+
+extension UIEdgeInsets {
+  var proto: Array<Int32> {
+    return [
+      Int32(top),
+      Int32(left),
+      Int32(bottom),
+      Int32(right),
+    ]
+  }
+}
+
+extension MGLStyle {
+  var proto: Com_Tophap_Mapboxgl_Proto_Style {
+    return Com_Tophap_Mapboxgl_Proto_Style.with { style in
+      // todo style.uri = uri
+      // todo style.json = json
+      style.sources = sources.map { (source: MGLSource) -> Com_Tophap_Mapboxgl_Proto_Source in
+        source.proto
+      }
+      style.layers = layers.map { (layer: MGLStyleLayer) -> Com_Tophap_Mapboxgl_Proto_Layer in
+        layer.toProto()
+      }
+      style.transition = transition.proto
+      style.light = light.proto
+    }
+  }
+}
+
+extension MGLLight {
+  var proto: Com_Tophap_Mapboxgl_Proto_Style.Light {
+    return Com_Tophap_Mapboxgl_Proto_Style.Light.with { light in
+      // todo light.anchor = anchor.proto           make them expressions
+      // todo light.color = color.proto             make them expressions
+      // todo light.position = position.proto       make them expressions
+      // todo light.intensity = intensity.proto     make them expressions
+      light.positionTransition = positionTransition.proto
+      light.colorTransition = colorTransition.proto
+      light.intensityTransition = intensityTransition.proto
+    }
+  }
+}
+
+extension MGLMapView {
+  func getAltitude(zoom: Double) -> Double {
+    return MGLAltitudeForZoomLevel(zoom, camera.pitch, camera.centerCoordinate.latitude, frame.size)
+  }
+
+  var zoom: Double {
+    return MGLZoomLevelForAltitude(camera.altitude, camera.pitch, camera.centerCoordinate.latitude, frame.size)
+  }
+
+  var image: Data? {
+    UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
+    drawHierarchy(in: bounds, afterScreenUpdates: false)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image?.pngData()
+  }
+}

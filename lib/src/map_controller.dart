@@ -9,8 +9,8 @@ class MapController {
       : assert(info != null),
         assert(calls != null),
         _calls = calls,
-        _viewId = info.viewId,
-        _channel = MethodChannel('com.tophap/mapboxgl_factory_${info.viewId}'),
+        _viewId = info.viewId.toInt(),
+        _channel = MethodChannel('com.tophap/mapboxgl_factory_${info.viewId.toInt()}'),
         _prefetchesTiles = info.prefetchesTiles,
         _minZoom = info.minZoom,
         _maxZoom = info.maxZoom,
@@ -90,7 +90,7 @@ class MapController {
   Future<CameraOperationResult> moveCamera(CameraUpdate update) async {
     assert(update != null);
     final int index = await _channel.invokeMethod('map#moveCamera', update.data);
-    return CameraOperationResult.values.elementAt(index);
+    //return CameraOperationResult.values.elementAt(index);
   }
 
   Future<CameraOperationResult> easeCamera(
