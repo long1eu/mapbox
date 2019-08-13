@@ -163,74 +163,59 @@ abstract class SymbolLayer with _Channel implements Layer, Built<SymbolLayer, Sy
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..symbolPlacement = symbolPlacementEx ?? symbolPlacement != null ? symbolPlacement : null
-        ..symbolSpacing = symbolSpacingEx ?? symbolSpacing != null ? literalDouble(symbolSpacing) : null
-        ..symbolAvoidEdges = symbolAvoidEdgesEx ?? symbolAvoidEdges != null ? literalBool(symbolAvoidEdges) : null
-        ..symbolZOrder = symbolZOrderEx ?? symbolZOrder != null ? symbolZOrder : null
-        ..iconAllowOverlap = iconAllowOverlapEx ?? iconAllowOverlap != null ? literalBool(iconAllowOverlap) : null
-        ..iconIgnorePlacement =
-            iconIgnorePlacementEx ?? iconIgnorePlacement != null ? literalBool(iconIgnorePlacement) : null
-        ..iconOptional = iconOptionalEx ?? iconOptional != null ? literalBool(iconOptional) : null
-        ..iconRotationAlignment =
-            iconRotationAlignmentEx ?? iconRotationAlignment != null ? iconRotationAlignment : null
-        ..iconSize = iconSizeEx ?? iconSize != null ? literalDouble(iconSize) : null
-        ..iconTextFit = iconTextFitEx ?? iconTextFit != null ? iconTextFit : null
-        ..iconTextFitPadding = iconTextFitPaddingEx ?? iconTextFitPadding != null
-            ? literalList([
-                iconTextFitPadding.top * window.devicePixelRatio,
-                iconTextFitPadding.right * window.devicePixelRatio,
-                iconTextFitPadding.bottom * window.devicePixelRatio,
-                iconTextFitPadding.left * window.devicePixelRatio
-              ])
-            : null
-        ..iconImage = iconImageEx ?? iconImage != null ? literalString(iconImage) : null
-        ..iconRotate = iconRotateEx ?? iconRotate != null ? literalDouble(iconRotate) : null
-        ..iconPadding = iconPaddingEx ?? iconPadding != null ? literalDouble(iconPadding) : null
-        ..iconKeepUpright = iconKeepUprightEx ?? iconKeepUpright != null ? literalBool(iconKeepUpright) : null
-        ..iconOffset = iconOffsetEx ?? iconOffset != null ? literalList([iconOffset.dx, iconOffset.dy]) : null
-        ..iconAnchor = iconAnchorEx ?? iconAnchor != null ? iconAnchor : null
-        ..iconPitchAlignment = iconPitchAlignmentEx ?? iconPitchAlignment != null ? iconPitchAlignment : null
-        ..textPitchAlignment = textPitchAlignmentEx ?? textPitchAlignment != null ? textPitchAlignment : null
-        ..textRotationAlignment =
-            textRotationAlignmentEx ?? textRotationAlignment != null ? textRotationAlignment : null
-        ..textField = textFieldEx ?? textField != null ? format(textField.map((it) => it.expression).toList()) : null
-        ..textFont = textFontEx ?? textFont != null ? literalList(textFont) : null
-        ..textSize = textSizeEx ?? textSize != null ? literalDouble(textSize) : null
-        ..textMaxWidth = textMaxWidthEx ?? textMaxWidth != null ? literalDouble(textMaxWidth) : null
-        ..textLineHeight = textLineHeightEx ?? textLineHeight != null ? literalDouble(textLineHeight) : null
-        ..textLetterSpacing = textLetterSpacingEx ?? textLetterSpacing != null ? literalDouble(textLetterSpacing) : null
-        ..textJustify = textJustifyEx ?? textJustify != null ? textJustify : null
-        ..textRadialOffset = textRadialOffsetEx ?? textRadialOffset != null ? literalDouble(textRadialOffset) : null
-        ..textVariableAnchor = textVariableAnchorEx ?? textVariableAnchor != null
-            ? literalList(textVariableAnchor.map((it) => it.toString()).toList())
-            : null
-        ..textAnchor = textAnchorEx ?? textAnchor != null ? textAnchor : null
-        ..textMaxAngle = textMaxAngleEx ?? textMaxAngle != null ? literalDouble(textMaxAngle) : null
-        ..textRotate = textRotateEx ?? textRotate != null ? literalDouble(textRotate) : null
-        ..textPadding = textPaddingEx ?? textPadding != null ? literalDouble(textPadding) : null
-        ..textKeepUpright = textKeepUprightEx ?? textKeepUpright != null ? literalBool(textKeepUpright) : null
-        ..textTransform = textTransformEx ?? textTransform != null ? textTransform : null
-        ..textOffset = textOffsetEx ?? textOffset != null ? literalList([textOffset.dx, textOffset.dy]) : null
-        ..textAllowOverlap = textAllowOverlapEx ?? textAllowOverlap != null ? literalBool(textAllowOverlap) : null
-        ..textIgnorePlacement =
-            textIgnorePlacementEx ?? textIgnorePlacement != null ? literalBool(textIgnorePlacement) : null
-        ..textOptional = textOptionalEx ?? textOptional != null ? literalBool(textOptional) : null
-        ..iconOpacity = iconOpacityEx ?? iconOpacity != null ? literalDouble(iconOpacity) : null
-        ..iconColor = iconColorEx ?? iconColor != null ? color$(iconColor) : null
-        ..iconHaloColor = iconHaloColorEx ?? iconHaloColor != null ? color$(iconHaloColor) : null
-        ..iconHaloWidth = iconHaloWidthEx ?? iconHaloWidth != null ? literalDouble(iconHaloWidth) : null
-        ..iconHaloBlur = iconHaloBlurEx ?? iconHaloBlur != null ? literalDouble(iconHaloBlur) : null
-        ..iconTranslate =
-            iconTranslateEx ?? iconTranslate != null ? literalList([iconTranslate.dx, iconTranslate.dy]) : null
-        ..iconTranslateAnchor = iconTranslateAnchorEx ?? iconTranslateAnchor != null ? iconTranslateAnchor : null
-        ..textOpacity = textOpacityEx ?? textOpacity != null ? literalDouble(textOpacity) : null
-        ..textColor = textColorEx ?? textColor != null ? color$(textColor) : null
-        ..textHaloColor = textHaloColorEx ?? textHaloColor != null ? color$(textHaloColor) : null
-        ..textHaloWidth = textHaloWidthEx ?? textHaloWidth != null ? literalDouble(textHaloWidth) : null
-        ..textHaloBlur = textHaloBlurEx ?? textHaloBlur != null ? literalDouble(textHaloBlur) : null
-        ..textTranslate =
-            textTranslateEx ?? textTranslate != null ? literalList([textTranslate.dx, textTranslate.dy]) : null
-        ..textTranslateAnchor = textTranslateAnchorEx ?? textTranslateAnchor != null ? textTranslateAnchor : null
+        ..symbolPlacement = symbolPlacementEx ?? (symbolPlacement != null ? symbolPlacement : null)
+        ..symbolSpacing = symbolSpacingEx ?? (symbolSpacing != null ? literalDouble(symbolSpacing) : null)
+        ..symbolAvoidEdges = symbolAvoidEdgesEx ?? (symbolAvoidEdges != null ? literalBool(symbolAvoidEdges) : null)
+        ..symbolZOrder = symbolZOrderEx ?? (symbolZOrder != null ? symbolZOrder : null)
+        ..iconAllowOverlap = iconAllowOverlapEx ?? (iconAllowOverlap != null ? literalBool(iconAllowOverlap) : null)
+        ..iconIgnorePlacement = iconIgnorePlacementEx ?? (iconIgnorePlacement != null ? literalBool(iconIgnorePlacement) : null)
+        ..iconOptional = iconOptionalEx ?? (iconOptional != null ? literalBool(iconOptional) : null)
+        ..iconRotationAlignment = iconRotationAlignmentEx ?? (iconRotationAlignment != null ? iconRotationAlignment : null)
+        ..iconSize = iconSizeEx ?? (iconSize != null ? literalDouble(iconSize) : null)
+        ..iconTextFit = iconTextFitEx ?? (iconTextFit != null ? iconTextFit : null)
+        ..iconTextFitPadding = iconTextFitPaddingEx ?? (iconTextFitPadding != null ? literalList([iconTextFitPadding.top * window.devicePixelRatio, iconTextFitPadding.right * window.devicePixelRatio, iconTextFitPadding.bottom * window.devicePixelRatio, iconTextFitPadding.left * window.devicePixelRatio]) : null)
+        ..iconImage = iconImageEx ?? (iconImage != null ? literalString(iconImage) : null)
+        ..iconRotate = iconRotateEx ?? (iconRotate != null ? literalDouble(iconRotate) : null)
+        ..iconPadding = iconPaddingEx ?? (iconPadding != null ? literalDouble(iconPadding) : null)
+        ..iconKeepUpright = iconKeepUprightEx ?? (iconKeepUpright != null ? literalBool(iconKeepUpright) : null)
+        ..iconOffset = iconOffsetEx ?? (iconOffset != null ? literalList([iconOffset.dx, iconOffset.dy]) : null)
+        ..iconAnchor = iconAnchorEx ?? (iconAnchor != null ? iconAnchor : null)
+        ..iconPitchAlignment = iconPitchAlignmentEx ?? (iconPitchAlignment != null ? iconPitchAlignment : null)
+        ..textPitchAlignment = textPitchAlignmentEx ?? (textPitchAlignment != null ? textPitchAlignment : null)
+        ..textRotationAlignment = textRotationAlignmentEx ?? (textRotationAlignment != null ? textRotationAlignment : null)
+        ..textField = textFieldEx ?? (textField != null ? format(textField.map((it) => it.expression).toList()) : null)
+        ..textFont = textFontEx ?? (textFont != null ? literalList(textFont) : null)
+        ..textSize = textSizeEx ?? (textSize != null ? literalDouble(textSize) : null)
+        ..textMaxWidth = textMaxWidthEx ?? (textMaxWidth != null ? literalDouble(textMaxWidth) : null)
+        ..textLineHeight = textLineHeightEx ?? (textLineHeight != null ? literalDouble(textLineHeight) : null)
+        ..textLetterSpacing = textLetterSpacingEx ?? (textLetterSpacing != null ? literalDouble(textLetterSpacing) : null)
+        ..textJustify = textJustifyEx ?? (textJustify != null ? textJustify : null)
+        ..textRadialOffset = textRadialOffsetEx ?? (textRadialOffset != null ? literalDouble(textRadialOffset) : null)
+        ..textVariableAnchor = textVariableAnchorEx ?? (textVariableAnchor != null ? literalList(textVariableAnchor) : null)
+        ..textAnchor = textAnchorEx ?? (textAnchor != null ? textAnchor : null)
+        ..textMaxAngle = textMaxAngleEx ?? (textMaxAngle != null ? literalDouble(textMaxAngle) : null)
+        ..textRotate = textRotateEx ?? (textRotate != null ? literalDouble(textRotate) : null)
+        ..textPadding = textPaddingEx ?? (textPadding != null ? literalDouble(textPadding) : null)
+        ..textKeepUpright = textKeepUprightEx ?? (textKeepUpright != null ? literalBool(textKeepUpright) : null)
+        ..textTransform = textTransformEx ?? (textTransform != null ? textTransform : null)
+        ..textOffset = textOffsetEx ?? (textOffset != null ? literalList([textOffset.dx, textOffset.dy]) : null)
+        ..textAllowOverlap = textAllowOverlapEx ?? (textAllowOverlap != null ? literalBool(textAllowOverlap) : null)
+        ..textIgnorePlacement = textIgnorePlacementEx ?? (textIgnorePlacement != null ? literalBool(textIgnorePlacement) : null)
+        ..textOptional = textOptionalEx ?? (textOptional != null ? literalBool(textOptional) : null)
+        ..iconOpacity = iconOpacityEx ?? (iconOpacity != null ? literalDouble(iconOpacity) : null)
+        ..iconColor = iconColorEx ?? (iconColor != null ? rgb(iconColor.red, iconColor.green, iconColor.blue) : null)
+        ..iconHaloColor = iconHaloColorEx ?? (iconHaloColor != null ? rgb(iconHaloColor.red, iconHaloColor.green, iconHaloColor.blue) : null)
+        ..iconHaloWidth = iconHaloWidthEx ?? (iconHaloWidth != null ? literalDouble(iconHaloWidth) : null)
+        ..iconHaloBlur = iconHaloBlurEx ?? (iconHaloBlur != null ? literalDouble(iconHaloBlur) : null)
+        ..iconTranslate = iconTranslateEx ?? (iconTranslate != null ? literalList([iconTranslate.dx, iconTranslate.dy]) : null)
+        ..iconTranslateAnchor = iconTranslateAnchorEx ?? (iconTranslateAnchor != null ? iconTranslateAnchor : null)
+        ..textOpacity = textOpacityEx ?? (textOpacity != null ? literalDouble(textOpacity) : null)
+        ..textColor = textColorEx ?? (textColor != null ? rgb(textColor.red, textColor.green, textColor.blue) : null)
+        ..textHaloColor = textHaloColorEx ?? (textHaloColor != null ? rgb(textHaloColor.red, textHaloColor.green, textHaloColor.blue) : null)
+        ..textHaloWidth = textHaloWidthEx ?? (textHaloWidth != null ? literalDouble(textHaloWidth) : null)
+        ..textHaloBlur = textHaloBlurEx ?? (textHaloBlur != null ? literalDouble(textHaloBlur) : null)
+        ..textTranslate = textTranslateEx ?? (textTranslate != null ? literalList([textTranslate.dx, textTranslate.dy]) : null)
+        ..textTranslateAnchor = textTranslateAnchorEx ?? (textTranslateAnchor != null ? textTranslateAnchor : null)
         ..iconOpacityTransition = (iconOpacityTransition ?? transitionOptions).toBuilder()
         ..iconColorTransition = (iconColorTransition ?? transitionOptions).toBuilder()
         ..iconHaloColorTransition = (iconHaloColorTransition ?? transitionOptions).toBuilder()
@@ -265,27 +250,21 @@ abstract class SymbolLayer with _Channel implements Layer, Built<SymbolLayer, Sy
         ..symbolAvoidEdges = proto.hasSymbolAvoidEdges() ? Expression.fromProtoString(proto.symbolAvoidEdges) : null
         ..symbolZOrder = proto.hasSymbolZOrder() ? Expression.fromProtoString(proto.symbolZOrder) : null
         ..iconAllowOverlap = proto.hasIconAllowOverlap() ? Expression.fromProtoString(proto.iconAllowOverlap) : null
-        ..iconIgnorePlacement =
-            proto.hasIconIgnorePlacement() ? Expression.fromProtoString(proto.iconIgnorePlacement) : null
+        ..iconIgnorePlacement = proto.hasIconIgnorePlacement() ? Expression.fromProtoString(proto.iconIgnorePlacement) : null
         ..iconOptional = proto.hasIconOptional() ? Expression.fromProtoString(proto.iconOptional) : null
-        ..iconRotationAlignment =
-            proto.hasIconRotationAlignment() ? Expression.fromProtoString(proto.iconRotationAlignment) : null
+        ..iconRotationAlignment = proto.hasIconRotationAlignment() ? Expression.fromProtoString(proto.iconRotationAlignment) : null
         ..iconSize = proto.hasIconSize() ? Expression.fromProtoString(proto.iconSize) : null
         ..iconTextFit = proto.hasIconTextFit() ? Expression.fromProtoString(proto.iconTextFit) : null
-        ..iconTextFitPadding =
-            proto.hasIconTextFitPadding() ? Expression.fromProtoString(proto.iconTextFitPadding) : null
+        ..iconTextFitPadding = proto.hasIconTextFitPadding() ? Expression.fromProtoString(proto.iconTextFitPadding) : null
         ..iconImage = proto.hasIconImage() ? Expression.fromProtoString(proto.iconImage) : null
         ..iconRotate = proto.hasIconRotate() ? Expression.fromProtoString(proto.iconRotate) : null
         ..iconPadding = proto.hasIconPadding() ? Expression.fromProtoString(proto.iconPadding) : null
         ..iconKeepUpright = proto.hasIconKeepUpright() ? Expression.fromProtoString(proto.iconKeepUpright) : null
         ..iconOffset = proto.hasIconOffset() ? Expression.fromProtoString(proto.iconOffset) : null
         ..iconAnchor = proto.hasIconAnchor() ? Expression.fromProtoString(proto.iconAnchor) : null
-        ..iconPitchAlignment =
-            proto.hasIconPitchAlignment() ? Expression.fromProtoString(proto.iconPitchAlignment) : null
-        ..textPitchAlignment =
-            proto.hasTextPitchAlignment() ? Expression.fromProtoString(proto.textPitchAlignment) : null
-        ..textRotationAlignment =
-            proto.hasTextRotationAlignment() ? Expression.fromProtoString(proto.textRotationAlignment) : null
+        ..iconPitchAlignment = proto.hasIconPitchAlignment() ? Expression.fromProtoString(proto.iconPitchAlignment) : null
+        ..textPitchAlignment = proto.hasTextPitchAlignment() ? Expression.fromProtoString(proto.textPitchAlignment) : null
+        ..textRotationAlignment = proto.hasTextRotationAlignment() ? Expression.fromProtoString(proto.textRotationAlignment) : null
         ..textField = proto.hasTextField() ? Expression.fromProtoString(proto.textField) : null
         ..textFont = proto.hasTextFont() ? Expression.fromProtoString(proto.textFont) : null
         ..textSize = proto.hasTextSize() ? Expression.fromProtoString(proto.textSize) : null
@@ -294,8 +273,7 @@ abstract class SymbolLayer with _Channel implements Layer, Built<SymbolLayer, Sy
         ..textLetterSpacing = proto.hasTextLetterSpacing() ? Expression.fromProtoString(proto.textLetterSpacing) : null
         ..textJustify = proto.hasTextJustify() ? Expression.fromProtoString(proto.textJustify) : null
         ..textRadialOffset = proto.hasTextRadialOffset() ? Expression.fromProtoString(proto.textRadialOffset) : null
-        ..textVariableAnchor =
-            proto.hasTextVariableAnchor() ? Expression.fromProtoString(proto.textVariableAnchor) : null
+        ..textVariableAnchor = proto.hasTextVariableAnchor() ? Expression.fromProtoString(proto.textVariableAnchor) : null
         ..textAnchor = proto.hasTextAnchor() ? Expression.fromProtoString(proto.textAnchor) : null
         ..textMaxAngle = proto.hasTextMaxAngle() ? Expression.fromProtoString(proto.textMaxAngle) : null
         ..textRotate = proto.hasTextRotate() ? Expression.fromProtoString(proto.textRotate) : null
@@ -304,8 +282,7 @@ abstract class SymbolLayer with _Channel implements Layer, Built<SymbolLayer, Sy
         ..textTransform = proto.hasTextTransform() ? Expression.fromProtoString(proto.textTransform) : null
         ..textOffset = proto.hasTextOffset() ? Expression.fromProtoString(proto.textOffset) : null
         ..textAllowOverlap = proto.hasTextAllowOverlap() ? Expression.fromProtoString(proto.textAllowOverlap) : null
-        ..textIgnorePlacement =
-            proto.hasTextIgnorePlacement() ? Expression.fromProtoString(proto.textIgnorePlacement) : null
+        ..textIgnorePlacement = proto.hasTextIgnorePlacement() ? Expression.fromProtoString(proto.textIgnorePlacement) : null
         ..textOptional = proto.hasTextOptional() ? Expression.fromProtoString(proto.textOptional) : null
         ..iconOpacity = proto.hasIconOpacity() ? Expression.fromProtoString(proto.iconOpacity) : null
         ..iconColor = proto.hasIconColor() ? Expression.fromProtoString(proto.iconColor) : null
@@ -313,16 +290,14 @@ abstract class SymbolLayer with _Channel implements Layer, Built<SymbolLayer, Sy
         ..iconHaloWidth = proto.hasIconHaloWidth() ? Expression.fromProtoString(proto.iconHaloWidth) : null
         ..iconHaloBlur = proto.hasIconHaloBlur() ? Expression.fromProtoString(proto.iconHaloBlur) : null
         ..iconTranslate = proto.hasIconTranslate() ? Expression.fromProtoString(proto.iconTranslate) : null
-        ..iconTranslateAnchor =
-            proto.hasIconTranslateAnchor() ? Expression.fromProtoString(proto.iconTranslateAnchor) : null
+        ..iconTranslateAnchor = proto.hasIconTranslateAnchor() ? Expression.fromProtoString(proto.iconTranslateAnchor) : null
         ..textOpacity = proto.hasTextOpacity() ? Expression.fromProtoString(proto.textOpacity) : null
         ..textColor = proto.hasTextColor() ? Expression.fromProtoString(proto.textColor) : null
         ..textHaloColor = proto.hasTextHaloColor() ? Expression.fromProtoString(proto.textHaloColor) : null
         ..textHaloWidth = proto.hasTextHaloWidth() ? Expression.fromProtoString(proto.textHaloWidth) : null
         ..textHaloBlur = proto.hasTextHaloBlur() ? Expression.fromProtoString(proto.textHaloBlur) : null
         ..textTranslate = proto.hasTextTranslate() ? Expression.fromProtoString(proto.textTranslate) : null
-        ..textTranslateAnchor =
-            proto.hasTextTranslateAnchor() ? Expression.fromProtoString(proto.textTranslateAnchor) : null
+        ..textTranslateAnchor = proto.hasTextTranslateAnchor() ? Expression.fromProtoString(proto.textTranslateAnchor) : null
         ..iconOpacityTransition = TransitionOptions.fromProto(proto.iconOpacityTransition).toBuilder()
         ..iconColorTransition = TransitionOptions.fromProto(proto.iconColorTransition).toBuilder()
         ..iconHaloColorTransition = TransitionOptions.fromProto(proto.iconHaloColorTransition).toBuilder()
@@ -716,95 +691,59 @@ abstract class SymbolLayer with _Channel implements Layer, Built<SymbolLayer, Sy
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..symbolPlacement = symbolPlacementEx ?? symbolPlacement != null ? symbolPlacement : this.symbolPlacement
-        ..symbolSpacing = symbolSpacingEx ?? symbolSpacing != null ? literalDouble(symbolSpacing) : this.symbolSpacing
-        ..symbolAvoidEdges =
-            symbolAvoidEdgesEx ?? symbolAvoidEdges != null ? literalBool(symbolAvoidEdges) : this.symbolAvoidEdges
-        ..symbolZOrder = symbolZOrderEx ?? symbolZOrder != null ? symbolZOrder : this.symbolZOrder
-        ..iconAllowOverlap =
-            iconAllowOverlapEx ?? iconAllowOverlap != null ? literalBool(iconAllowOverlap) : this.iconAllowOverlap
-        ..iconIgnorePlacement = iconIgnorePlacementEx ?? iconIgnorePlacement != null
-            ? literalBool(iconIgnorePlacement)
-            : this.iconIgnorePlacement
-        ..iconOptional = iconOptionalEx ?? iconOptional != null ? literalBool(iconOptional) : this.iconOptional
-        ..iconRotationAlignment = iconRotationAlignmentEx ?? iconRotationAlignment != null
-            ? iconRotationAlignment
-            : this.iconRotationAlignment
-        ..iconSize = iconSizeEx ?? iconSize != null ? literalDouble(iconSize) : this.iconSize
-        ..iconTextFit = iconTextFitEx ?? iconTextFit ?? this.iconTextFit
-        ..iconTextFitPadding = iconTextFitPaddingEx ?? iconTextFitPadding != null
-            ? literalList([
-                iconTextFitPadding.top * window.devicePixelRatio,
-                iconTextFitPadding.right * window.devicePixelRatio,
-                iconTextFitPadding.bottom * window.devicePixelRatio,
-                iconTextFitPadding.left * window.devicePixelRatio
-              ])
-            : this.iconTextFitPadding
-        ..iconImage = iconImageEx ?? iconImage != null ? literalString(iconImage) : this.iconImage
-        ..iconRotate = iconRotateEx ?? iconRotate != null ? literalDouble(iconRotate) : this.iconRotate
-        ..iconPadding = iconPaddingEx ?? iconPadding != null ? literalDouble(iconPadding) : this.iconPadding
-        ..iconKeepUpright =
-            iconKeepUprightEx ?? iconKeepUpright != null ? literalBool(iconKeepUpright) : this.iconKeepUpright
-        ..iconOffset =
-            iconOffsetEx ?? iconOffset != null ? literalList([iconOffset.dx, iconOffset.dy]) : this.iconOffset
-        ..iconAnchor = iconAnchorEx ?? iconAnchor != null ? iconAnchor : this.iconAnchor
-        ..iconPitchAlignment =
-            iconPitchAlignmentEx ?? iconPitchAlignment != null ? iconPitchAlignment : this.iconPitchAlignment
-        ..textPitchAlignment =
-            textPitchAlignmentEx ?? textPitchAlignment != null ? textPitchAlignment : this.textPitchAlignment
-        ..textRotationAlignment = textRotationAlignmentEx ?? textRotationAlignment != null
-            ? textRotationAlignment
-            : this.textRotationAlignment
-        ..textField =
-            textFieldEx ?? textField != null ? format(textField.map((it) => it.expression).toList()) : this.textField
-        ..textFont = textFontEx ?? textFont != null ? literalList(textFont) : this.textFont
-        ..textSize = textSizeEx ?? textSize != null ? literalDouble(textSize) : this.textSize
-        ..textMaxWidth = textMaxWidthEx ?? textMaxWidth != null ? literalDouble(textMaxWidth) : this.textMaxWidth
-        ..textLineHeight =
-            textLineHeightEx ?? textLineHeight != null ? literalDouble(textLineHeight) : this.textLineHeight
-        ..textLetterSpacing =
-            textLetterSpacingEx ?? textLetterSpacing != null ? literalDouble(textLetterSpacing) : this.textLetterSpacing
-        ..textJustify = textJustifyEx ?? textJustify != null ? textJustify : this.textJustify
-        ..textRadialOffset =
-            textRadialOffsetEx ?? textRadialOffset != null ? literalDouble(textRadialOffset) : this.textRadialOffset
-        ..textVariableAnchor = textVariableAnchorEx ?? textVariableAnchor != null
-            ? literalList(textVariableAnchor.map((it) => it.toString()).toList())
-            : this.textVariableAnchor
-        ..textAnchor = textAnchorEx ?? textAnchor != null ? textAnchor : this.textAnchor
-        ..textMaxAngle = textMaxAngleEx ?? textMaxAngle != null ? literalDouble(textMaxAngle) : this.textMaxAngle
-        ..textRotate = textRotateEx ?? textRotate != null ? literalDouble(textRotate) : this.textRotate
-        ..textPadding = textPaddingEx ?? textPadding != null ? literalDouble(textPadding) : this.textPadding
-        ..textKeepUpright =
-            textKeepUprightEx ?? textKeepUpright != null ? literalBool(textKeepUpright) : this.textKeepUpright
-        ..textTransform = textTransformEx ?? textTransform != null ? textTransform : this.textTransform
-        ..textOffset =
-            textOffsetEx ?? textOffset != null ? literalList([textOffset.dx, textOffset.dy]) : this.textOffset
-        ..textAllowOverlap =
-            textAllowOverlapEx ?? textAllowOverlap != null ? literalBool(textAllowOverlap) : this.textAllowOverlap
-        ..textIgnorePlacement = textIgnorePlacementEx ?? textIgnorePlacement != null
-            ? literalBool(textIgnorePlacement)
-            : this.textIgnorePlacement
-        ..textOptional = textOptionalEx ?? textOptional != null ? literalBool(textOptional) : this.textOptional
-        ..iconOpacity = iconOpacityEx ?? iconOpacity != null ? literalDouble(iconOpacity) : this.iconOpacity
-        ..iconColor = iconColorEx ?? iconColor != null ? color$(iconColor) : this.iconColor
-        ..iconHaloColor = iconHaloColorEx ?? iconHaloColor != null ? color$(iconHaloColor) : this.iconHaloColor
-        ..iconHaloWidth = iconHaloWidthEx ?? iconHaloWidth != null ? literalDouble(iconHaloWidth) : this.iconHaloWidth
-        ..iconHaloBlur = iconHaloBlurEx ?? iconHaloBlur != null ? literalDouble(iconHaloBlur) : this.iconHaloBlur
-        ..iconTranslate = iconTranslateEx ?? iconTranslate != null
-            ? literalList([iconTranslate.dx, iconTranslate.dy])
-            : this.iconTranslate
-        ..iconTranslateAnchor =
-            iconTranslateAnchorEx ?? iconTranslateAnchor != null ? iconTranslateAnchor : this.iconTranslateAnchor
-        ..textOpacity = textOpacityEx ?? textOpacity != null ? literalDouble(textOpacity) : this.textOpacity
-        ..textColor = textColorEx ?? textColor != null ? color$(textColor) : this.textColor
-        ..textHaloColor = textHaloColorEx ?? textHaloColor != null ? color$(textHaloColor) : this.textHaloColor
-        ..textHaloWidth = textHaloWidthEx ?? textHaloWidth != null ? literalDouble(textHaloWidth) : this.textHaloWidth
-        ..textHaloBlur = textHaloBlurEx ?? textHaloBlur != null ? literalDouble(textHaloBlur) : this.textHaloBlur
-        ..textTranslate = textTranslateEx ?? textTranslate != null
-            ? literalList([textTranslate.dx, textTranslate.dy])
-            : this.textTranslate
-        ..textTranslateAnchor =
-            textTranslateAnchorEx ?? textTranslateAnchor != null ? textTranslateAnchor : this.textTranslateAnchor
+        ..symbolPlacement = symbolPlacementEx ?? (symbolPlacement != null ? symbolPlacement : this.symbolPlacement)
+        ..symbolSpacing = symbolSpacingEx ?? (symbolSpacing != null ? literalDouble(symbolSpacing) : this.symbolSpacing)
+        ..symbolAvoidEdges = symbolAvoidEdgesEx ?? (symbolAvoidEdges != null ? literalBool(symbolAvoidEdges) : this.symbolAvoidEdges)
+        ..symbolZOrder = symbolZOrderEx ?? (symbolZOrder != null ? symbolZOrder : this.symbolZOrder)
+        ..iconAllowOverlap = iconAllowOverlapEx ?? (iconAllowOverlap != null ? literalBool(iconAllowOverlap) : this.iconAllowOverlap)
+        ..iconIgnorePlacement = iconIgnorePlacementEx ?? (iconIgnorePlacement != null ? literalBool(iconIgnorePlacement) : this.iconIgnorePlacement)
+        ..iconOptional = iconOptionalEx ?? (iconOptional != null ? literalBool(iconOptional) : this.iconOptional)
+        ..iconRotationAlignment = iconRotationAlignmentEx ?? (iconRotationAlignment != null ? iconRotationAlignment : this.iconRotationAlignment)
+        ..iconSize = iconSizeEx ?? (iconSize != null ? literalDouble(iconSize) : this.iconSize)
+        ..iconTextFit = iconTextFitEx ?? (iconTextFit ?? this.iconTextFit)
+        ..iconTextFitPadding = iconTextFitPaddingEx ?? (iconTextFitPadding != null ? literalList([iconTextFitPadding.top * window.devicePixelRatio, iconTextFitPadding.right * window.devicePixelRatio, iconTextFitPadding.bottom * window.devicePixelRatio, iconTextFitPadding.left * window.devicePixelRatio]) : this.iconTextFitPadding)
+        ..iconImage = iconImageEx ?? (iconImage != null ? literalString(iconImage) : this.iconImage)
+        ..iconRotate = iconRotateEx ?? (iconRotate != null ? literalDouble(iconRotate) : this.iconRotate)
+        ..iconPadding = iconPaddingEx ?? (iconPadding != null ? literalDouble(iconPadding) : this.iconPadding)
+        ..iconKeepUpright = iconKeepUprightEx ?? (iconKeepUpright != null ? literalBool(iconKeepUpright) : this.iconKeepUpright)
+        ..iconOffset = iconOffsetEx ?? (iconOffset != null ? literalList([iconOffset.dx, iconOffset.dy]) : this.iconOffset)
+        ..iconAnchor = iconAnchorEx ?? (iconAnchor != null ? iconAnchor : this.iconAnchor)
+        ..iconPitchAlignment = iconPitchAlignmentEx ?? (iconPitchAlignment != null ? iconPitchAlignment : this.iconPitchAlignment)
+        ..textPitchAlignment = textPitchAlignmentEx ?? (textPitchAlignment != null ? textPitchAlignment : this.textPitchAlignment)
+        ..textRotationAlignment = textRotationAlignmentEx ?? (textRotationAlignment != null ? textRotationAlignment : this.textRotationAlignment)
+        ..textField = textFieldEx ?? (textField != null ? format(textField.map((it) => it.expression).toList()) : this.textField)
+        ..textFont = textFontEx ?? (textFont != null ? literalList(textFont) : this.textFont)
+        ..textSize = textSizeEx ?? (textSize != null ? literalDouble(textSize) : this.textSize)
+        ..textMaxWidth = textMaxWidthEx ?? (textMaxWidth != null ? literalDouble(textMaxWidth) : this.textMaxWidth)
+        ..textLineHeight = textLineHeightEx ?? (textLineHeight != null ? literalDouble(textLineHeight) : this.textLineHeight)
+        ..textLetterSpacing = textLetterSpacingEx ?? (textLetterSpacing != null ? literalDouble(textLetterSpacing) : this.textLetterSpacing)
+        ..textJustify = textJustifyEx ?? (textJustify != null ? textJustify : this.textJustify)
+        ..textRadialOffset = textRadialOffsetEx ?? (textRadialOffset != null ? literalDouble(textRadialOffset) : this.textRadialOffset)
+        ..textVariableAnchor = textVariableAnchorEx ?? (textVariableAnchor != null ? literalList(textVariableAnchor.map((it) => it.toString()).toList()) : this.textVariableAnchor)
+        ..textAnchor = textAnchorEx ?? (textAnchor != null ? textAnchor : this.textAnchor)
+        ..textMaxAngle = textMaxAngleEx ?? (textMaxAngle != null ? literalDouble(textMaxAngle) : this.textMaxAngle)
+        ..textRotate = textRotateEx ?? (textRotate != null ? literalDouble(textRotate) : this.textRotate)
+        ..textPadding = textPaddingEx ?? (textPadding != null ? literalDouble(textPadding) : this.textPadding)
+        ..textKeepUpright = textKeepUprightEx ?? (textKeepUpright != null ? literalBool(textKeepUpright) : this.textKeepUpright)
+        ..textTransform = textTransformEx ?? (textTransform != null ? textTransform : this.textTransform)
+        ..textOffset = textOffsetEx ?? (textOffset != null ? literalList([textOffset.dx, textOffset.dy]) : this.textOffset)
+        ..textAllowOverlap = textAllowOverlapEx ?? (textAllowOverlap != null ? literalBool(textAllowOverlap) : this.textAllowOverlap)
+        ..textIgnorePlacement = textIgnorePlacementEx ?? (textIgnorePlacement != null ? literalBool(textIgnorePlacement) : this.textIgnorePlacement)
+        ..textOptional = textOptionalEx ?? (textOptional != null ? literalBool(textOptional) : this.textOptional)
+        ..iconOpacity = iconOpacityEx ?? (iconOpacity != null ? literalDouble(iconOpacity) : this.iconOpacity)
+        ..iconColor = iconColorEx ?? (iconColor != null ? rgb(iconColor.red, iconColor.green, iconColor.blue) : this.iconColor)
+        ..iconHaloColor = iconHaloColorEx ?? (iconHaloColor != null ? rgb(iconHaloColor.red, iconHaloColor.green, iconHaloColor.blue) : this.iconHaloColor)
+        ..iconHaloWidth = iconHaloWidthEx ?? (iconHaloWidth != null ? literalDouble(iconHaloWidth) : this.iconHaloWidth)
+        ..iconHaloBlur = iconHaloBlurEx ?? (iconHaloBlur != null ? literalDouble(iconHaloBlur) : this.iconHaloBlur)
+        ..iconTranslate = iconTranslateEx ?? (iconTranslate != null ? literalList([iconTranslate.dx, iconTranslate.dy]) : this.iconTranslate)
+        ..iconTranslateAnchor = iconTranslateAnchorEx ?? (iconTranslateAnchor != null ? iconTranslateAnchor : this.iconTranslateAnchor)
+        ..textOpacity = textOpacityEx ?? (textOpacity != null ? literalDouble(textOpacity) : this.textOpacity)
+        ..textColor = textColorEx ?? (textColor != null ? rgb(textColor.red, textColor.green, textColor.blue) : this.textColor)
+        ..textHaloColor = textHaloColorEx ?? (textHaloColor != null ? rgb(textHaloColor.red, textHaloColor.green, textHaloColor.blue) : this.textHaloColor)
+        ..textHaloWidth = textHaloWidthEx ?? (textHaloWidth != null ? literalDouble(textHaloWidth) : this.textHaloWidth)
+        ..textHaloBlur = textHaloBlurEx ?? (textHaloBlur != null ? literalDouble(textHaloBlur) : this.textHaloBlur)
+        ..textTranslate = textTranslateEx ?? (textTranslate != null ? literalList([textTranslate.dx, textTranslate.dy]) : this.textTranslate)
+        ..textTranslateAnchor = textTranslateAnchorEx ?? (textTranslateAnchor != null ? textTranslateAnchor : this.textTranslateAnchor)
         ..iconOpacityTransition = (iconOpacityTransition ?? this.iconOpacityTransition).toBuilder()
         ..iconColorTransition = (iconColorTransition ?? this.iconColorTransition).toBuilder()
         ..iconHaloColorTransition = (iconHaloColorTransition ?? this.iconHaloColorTransition).toBuilder()

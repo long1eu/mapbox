@@ -32,7 +32,7 @@ extension MGLStyleLayer {
       }
     }
   }
-
+  
   func updateFrom(layer: Tophap_MapboxGl_Layer) {
     if let me = self as? MGLBackgroundStyleLayer {
       me.update(layer: layer.backgroundLayer)
@@ -65,15 +65,15 @@ extension MGLBackgroundStyleLayer {
       background.visible = isVisible.proto
       background.minZoom = minimumZoomLevel.proto
       background.maxZoom = maximumZoomLevel.proto
-      background.opacity = backgroundColor.proto
-      background.color = backgroundOpacity.proto
+      background.opacity = backgroundOpacity.proto
+      background.color = backgroundColor.proto
       background.pattern = backgroundPattern.proto
       background.colorTransition = backgroundColorTransition.proto
       background.patternTransition = backgroundPatternTransition.proto
       background.opacityTransition = backgroundOpacityTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Background) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -93,6 +93,9 @@ extension MGLCircleStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Circle {
     return Tophap_MapboxGl_Layer.Circle.with { circle in
       circle.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        circle.sourceID = sourceId
+      }
       circle.visible = isVisible.proto
       circle.minZoom = minimumZoomLevel.proto
       circle.maxZoom = maximumZoomLevel.proto
@@ -102,7 +105,7 @@ extension MGLCircleStyleLayer {
       if let filter = predicate {
         circle.filter = filter.proto
       }
-
+      
       circle.radius = circleRadius.proto
       circle.color = circleColor.proto
       circle.blur = circleBlur.proto
@@ -124,7 +127,7 @@ extension MGLCircleStyleLayer {
       circle.strokeOpacityTransition = circleStrokeOpacityTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Circle) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -136,7 +139,7 @@ extension MGLCircleStyleLayer {
     if layer.hasColor { circleColor = layer.color.expression }
     if layer.hasBlur { circleBlur = layer.blur.expression }
     if layer.hasOpacity { circleOpacity = layer.opacity.expression }
-    if layer.hasTranslate { circleTranslation = layer.translate.expression }
+    if layer.hasTranslate { circleTranslation = layer.translate.vectorOrExpression }
     if layer.hasTranslateAnchor { circleTranslationAnchor = layer.translateAnchor.expression }
     if layer.hasPitchScale { circlePitchAlignment = layer.pitchScale.expression }
     if layer.hasPitchAlignment { circlePitchAlignment = layer.pitchAlignment.expression }
@@ -159,6 +162,9 @@ extension MGLFillStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Fill {
     return Tophap_MapboxGl_Layer.Fill.with { fill in
       fill.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        fill.sourceID = sourceId
+      }
       fill.visible = isVisible.proto
       fill.minZoom = minimumZoomLevel.proto
       fill.maxZoom = maximumZoomLevel.proto
@@ -168,8 +174,8 @@ extension MGLFillStyleLayer {
       if let filter = predicate {
         fill.filter = filter.proto
       }
-
-      fill.antialias = fillAntialiased.proto
+      
+      fill.antialias = fillAntialiased.boolOrExpression
       fill.opacity = fillOpacity.proto
       fill.color = fillColor.proto
       fill.outlineColor = fillOutlineColor.proto
@@ -183,7 +189,7 @@ extension MGLFillStyleLayer {
       fill.patternTransition = fillPatternTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Fill) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -195,9 +201,9 @@ extension MGLFillStyleLayer {
     if layer.hasOpacity { fillOpacity = layer.opacity.expression }
     if layer.hasColor { fillColor = layer.color.expression }
     if layer.hasOutlineColor { fillOutlineColor = layer.outlineColor.expression }
-    // todo if layer.hasTranslate { fillTranslation = layer.translate.expression }
-    // todo if layer.hasTranslateAnchor { fillTranslationAnchor = layer.translateAnchor.expression }
-    // todo if layer.hasPattern { fillPattern = layer.pattern.expression }
+    if layer.hasTranslate { fillTranslation = layer.translate.vectorOrExpression }
+    if layer.hasTranslateAnchor { fillTranslationAnchor = layer.translateAnchor.expression }
+    if layer.hasPattern { fillPattern = layer.pattern.expression }
     if layer.hasOpacityTransition { fillOpacityTransition = layer.opacityTransition.value }
     if layer.hasColorTransition { fillColorTransition = layer.colorTransition.value }
     if layer.hasOutlineColorTransition { fillOutlineColorTransition = layer.outlineColorTransition.value }
@@ -211,6 +217,9 @@ extension MGLFillExtrusionStyleLayer {
   var proto: Tophap_MapboxGl_Layer.FillExtrusion {
     return Tophap_MapboxGl_Layer.FillExtrusion.with { extrusion in
       extrusion.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        extrusion.sourceID = sourceId
+      }
       extrusion.visible = isVisible.proto
       extrusion.minZoom = minimumZoomLevel.proto
       extrusion.maxZoom = maximumZoomLevel.proto
@@ -220,7 +229,7 @@ extension MGLFillExtrusionStyleLayer {
       if let filter = predicate {
         extrusion.filter = filter.proto
       }
-
+      
       extrusion.opacity = fillExtrusionOpacity.proto
       extrusion.color = fillExtrusionColor.proto
       extrusion.translate = fillExtrusionTranslation.proto
@@ -228,7 +237,7 @@ extension MGLFillExtrusionStyleLayer {
       extrusion.pattern = fillExtrusionPattern.proto
       extrusion.height = fillExtrusionHeight.proto
       extrusion.base = fillExtrusionBase.proto
-      extrusion.verticalGradient = fillExtrusionHasVerticalGradient.proto
+      extrusion.verticalGradient = fillExtrusionHasVerticalGradient.boolOrExpression
       extrusion.opacityTransition = fillExtrusionOpacityTransition.proto
       extrusion.colorTransition = fillExtrusionColorTransition.proto
       extrusion.translateTransition = fillExtrusionTranslationTransition.proto
@@ -237,7 +246,7 @@ extension MGLFillExtrusionStyleLayer {
       extrusion.baseTransition = fillExtrusionBaseTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.FillExtrusion) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -247,7 +256,7 @@ extension MGLFillExtrusionStyleLayer {
     if layer.hasFilter { predicate = layer.filter.predicate }
     if layer.hasOpacity { fillExtrusionOpacity = layer.opacity.expression }
     if layer.hasColor { fillExtrusionColor = layer.color.expression }
-    if layer.hasTranslate { fillExtrusionTranslation = layer.translate.expression }
+    if layer.hasTranslate { fillExtrusionTranslation = layer.translate.vectorOrExpression }
     if layer.hasTranslateAnchor { fillExtrusionTranslationAnchor = layer.translateAnchor.expression }
     if layer.hasPattern { fillExtrusionPattern = layer.pattern.expression }
     if layer.hasHeight { fillExtrusionHeight = layer.height.expression }
@@ -267,6 +276,9 @@ extension MGLHeatmapStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Heatmap {
     return Tophap_MapboxGl_Layer.Heatmap.with { heatmap in
       heatmap.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        heatmap.sourceID = sourceId
+      }
       heatmap.visible = isVisible.proto
       heatmap.minZoom = minimumZoomLevel.proto
       heatmap.maxZoom = maximumZoomLevel.proto
@@ -276,7 +288,7 @@ extension MGLHeatmapStyleLayer {
       if let filter = predicate {
         heatmap.filter = filter.proto
       }
-
+      
       heatmap.radius = heatmapRadius.proto
       heatmap.weight = heatmapWeight.proto
       heatmap.intensity = heatmapIntensity.proto
@@ -287,7 +299,7 @@ extension MGLHeatmapStyleLayer {
       heatmap.opacityTransition = heatmapOpacityTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Heatmap) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -311,11 +323,13 @@ extension MGLHillshadeStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Hillshade {
     return Tophap_MapboxGl_Layer.Hillshade.with { hillshade in
       hillshade.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        hillshade.sourceID = sourceId
+      }
       hillshade.visible = isVisible.proto
       hillshade.minZoom = minimumZoomLevel.proto
       hillshade.maxZoom = maximumZoomLevel.proto
       // todo if let sourceLayer = sourceLayerIdentifier { hillshade.sourceLayer = sourceLayer.proto }
-
       hillshade.illuminationDirection = hillshadeIlluminationDirection.proto
       hillshade.illuminationAnchor = hillshadeIlluminationAnchor.proto
       hillshade.exaggeration = hillshadeExaggeration.proto
@@ -328,7 +342,7 @@ extension MGLHillshadeStyleLayer {
       hillshade.accentColorTransition = hillshadeAccentColorTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Hillshade) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -353,6 +367,9 @@ extension MGLLineStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Line {
     return Tophap_MapboxGl_Layer.Line.with { line in
       line.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        line.sourceID = sourceId
+      }
       line.visible = isVisible.proto
       line.minZoom = minimumZoomLevel.proto
       line.maxZoom = maximumZoomLevel.proto
@@ -362,7 +379,7 @@ extension MGLLineStyleLayer {
       if let filter = predicate {
         line.filter = filter.proto
       }
-
+      
       line.cap = lineCap.proto
       line.join = lineJoin.proto
       line.miterLimit = lineMiterLimit.proto
@@ -377,7 +394,9 @@ extension MGLLineStyleLayer {
       line.blur = lineBlur.proto
       line.dasharray = lineDashPattern.proto
       line.pattern = linePattern.proto
-      if let _lineGradient = lineGradient { line.gradient = _lineGradient.proto }
+      if let _lineGradient = lineGradient {
+        line.gradient = _lineGradient.proto
+      }
       line.opacityTransition = lineOpacityTransition.proto
       line.colorTransition = lineColorTransition.proto
       line.translateTransition = lineTranslationTransition.proto
@@ -389,7 +408,7 @@ extension MGLLineStyleLayer {
       line.patternTransition = linePatternTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Line) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -403,7 +422,7 @@ extension MGLLineStyleLayer {
     if layer.hasRoundLimit { lineRoundLimit = layer.roundLimit.expression }
     if layer.hasOpacity { lineOpacity = layer.opacity.expression }
     if layer.hasColor { lineColor = layer.color.expression }
-    if layer.hasTranslate { lineTranslation = layer.translate.expression }
+    if layer.hasTranslate { lineTranslation = layer.translate.vectorOrExpression }
     if layer.hasTranslateAnchor { lineTranslationAnchor = layer.translateAnchor.expression }
     if layer.hasWidth { lineWidth = layer.width.expression }
     if layer.hasGapWidth { lineGapWidth = layer.gapWidth.expression }
@@ -429,11 +448,14 @@ extension MGLRasterStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Raster {
     return Tophap_MapboxGl_Layer.Raster.with { raster in
       raster.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        raster.sourceID = sourceId
+      }
       raster.visible = isVisible.proto
       raster.minZoom = minimumZoomLevel.proto
       raster.maxZoom = maximumZoomLevel.proto
       // todo if let sourceLayer = sourceLayerIdentifier { raster.sourceLayer = sourceLayer.proto }
-
+      
       raster.opacity = rasterOpacity.proto
       raster.hueRotate = rasterHueRotation.proto
       raster.brightnessMin = minimumRasterBrightness.proto
@@ -450,7 +472,7 @@ extension MGLRasterStyleLayer {
       raster.contrastTransition = rasterContrastTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Raster) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -479,6 +501,9 @@ extension MGLSymbolStyleLayer {
   var proto: Tophap_MapboxGl_Layer.Symbol {
     return Tophap_MapboxGl_Layer.Symbol.with { symbol in
       symbol.id = identifier
+      if let sourceId = sourceIdentifier?.proto {
+        symbol.sourceID = sourceId
+      }
       symbol.visible = isVisible.proto
       symbol.minZoom = minimumZoomLevel.proto
       symbol.maxZoom = maximumZoomLevel.proto
@@ -488,14 +513,14 @@ extension MGLSymbolStyleLayer {
       if let filter = predicate {
         symbol.filter = filter.proto
       }
-
+      
       symbol.symbolPlacement = symbolPlacement.proto
       symbol.symbolSpacing = symbolSpacing.proto
-      symbol.symbolAvoidEdges = symbolAvoidsEdges.proto
+      symbol.symbolAvoidEdges = symbolAvoidsEdges.boolOrExpression
       symbol.symbolZOrder = symbolZOrder.proto
-      symbol.iconAllowOverlap = iconAllowsOverlap.proto
-      symbol.iconIgnorePlacement = iconIgnoresPlacement.proto
-      symbol.iconOptional = iconOptional.proto
+      symbol.iconAllowOverlap = iconAllowsOverlap.boolOrExpression
+      symbol.iconIgnorePlacement = iconIgnoresPlacement.boolOrExpression
+      symbol.iconOptional = iconOptional.boolOrExpression
       symbol.iconRotationAlignment = iconRotationAlignment.proto
       symbol.iconSize = iconScale.proto
       symbol.iconTextFit = iconTextFit.proto
@@ -503,7 +528,7 @@ extension MGLSymbolStyleLayer {
       symbol.iconImage = iconImageName.proto
       symbol.iconRotate = iconRotation.proto
       symbol.iconPadding = iconPadding.proto
-      symbol.iconKeepUpright = keepsIconUpright.proto
+      symbol.iconKeepUpright = keepsIconUpright.boolOrExpression
       symbol.iconOffset = iconOffset.proto
       symbol.iconAnchor = iconAnchor.proto
       symbol.iconPitchAlignment = iconPitchAlignment.proto
@@ -522,12 +547,12 @@ extension MGLSymbolStyleLayer {
       symbol.textMaxAngle = maximumTextAngle.proto
       symbol.textRotate = textRotation.proto
       symbol.textPadding = textPadding.proto
-      symbol.textKeepUpright = keepsTextUpright.proto
+      symbol.textKeepUpright = keepsTextUpright.boolOrExpression
       symbol.textTransform = textTransform.proto
       symbol.textOffset = textOffset.proto
-      symbol.textAllowOverlap = textAllowsOverlap.proto
-      symbol.textIgnorePlacement = textIgnoresPlacement.proto
-      symbol.textOptional = textOptional.proto
+      symbol.textAllowOverlap = textAllowsOverlap.boolOrExpression
+      symbol.textIgnorePlacement = textIgnoresPlacement.boolOrExpression
+      symbol.textOptional = textOptional.boolOrExpression
       symbol.iconOpacity = iconOpacity.proto
       symbol.iconColor = iconColor.proto
       symbol.iconHaloColor = iconHaloColor.proto
@@ -556,7 +581,7 @@ extension MGLSymbolStyleLayer {
       symbol.textTranslateTransition = textTranslationTransition.proto
     }
   }
-
+  
   func update(layer: Tophap_MapboxGl_Layer.Symbol) {
     // @formatter:off
     if layer.hasVisible { isVisible = layer.visible.value }
@@ -573,17 +598,17 @@ extension MGLSymbolStyleLayer {
     if layer.hasIconOptional { iconOptional = layer.iconOptional.expression }
     if layer.hasIconRotationAlignment { iconRotationAlignment = layer.iconRotationAlignment.expression }
     if layer.hasIconSize { iconScale = layer.iconSize.expression }
-    // todo if layer.hasIconTextFit { iconTextFit = layer.iconTextFit.expression }
-    // todo if layer.hasIconTextFitPadding { iconTextFitPadding = layer.iconTextFitPadding.expression }
+    if layer.hasIconTextFit { iconTextFit = layer.iconTextFit.expression }
+    if layer.hasIconTextFitPadding { iconTextFitPadding = layer.iconTextFitPadding.edgeInsetsOrExpression }
     if layer.hasIconImage { iconImageName = layer.iconImage.expression }
     if layer.hasIconRotate { iconRotation = layer.iconRotate.expression }
     if layer.hasIconPadding { iconPadding = layer.iconPadding.expression }
     if layer.hasIconKeepUpright { keepsIconUpright = layer.iconKeepUpright.expression }
-    // todo if layer.hasIconOffset { iconOffset = layer.iconOffset.expression }
+    if layer.hasIconOffset { iconOffset = layer.iconOffset.vectorOrExpression }
     if layer.hasIconPitchAlignment { iconPitchAlignment = layer.iconPitchAlignment.expression }
     if layer.hasTextPitchAlignment { textPitchAlignment = layer.textPitchAlignment.expression }
     if layer.hasTextRotationAlignment { textRotationAlignment = layer.textRotationAlignment.expression }
-    // todo if layer.hasTextField { text = layer.textField.expression }
+    if layer.hasTextField { text = layer.textField.expression }
     if layer.hasTextFont { textFontNames = layer.textFont.expression }
     if layer.hasTextSize { textFontSize = layer.textSize.expression }
     if layer.hasTextMaxWidth { maximumTextWidth = layer.textMaxWidth.expression }
@@ -598,7 +623,7 @@ extension MGLSymbolStyleLayer {
     if layer.hasTextPadding { textPadding = layer.textPadding.expression }
     if layer.hasTextKeepUpright { keepsTextUpright = layer.textKeepUpright.expression }
     if layer.hasTextTransform { textTransform = layer.textTransform.expression }
-    // todo if layer.hasTextOffset { textOffset = layer.textOffset.expression }
+    if layer.hasTextOffset { textOffset = layer.textOffset.vectorOrExpression }
     if layer.hasTextAllowOverlap { textAllowsOverlap = layer.textAllowOverlap.expression }
     if layer.hasTextIgnorePlacement { textIgnoresPlacement = layer.textIgnorePlacement.expression }
     if layer.hasTextOptional { textOptional = layer.textOptional.expression }
@@ -607,14 +632,14 @@ extension MGLSymbolStyleLayer {
     if layer.hasIconHaloColor { iconHaloColor = layer.iconHaloColor.expression }
     if layer.hasIconHaloWidth { iconHaloWidth = layer.iconHaloWidth.expression }
     if layer.hasIconHaloBlur { iconHaloBlur = layer.iconHaloBlur.expression }
-    // todo if layer.hasIconTranslate { iconTranslation = layer.iconTranslate.expression }
+    if layer.hasIconTranslate { iconTranslation = layer.iconTranslate.vectorOrExpression }
     if layer.hasIconTranslateAnchor { iconTranslationAnchor = layer.iconTranslateAnchor.expression }
     if layer.hasTextOpacity { textOpacity = layer.textOpacity.expression }
     if layer.hasTextColor { textColor = layer.textColor.expression }
     if layer.hasTextHaloColor { textHaloColor = layer.textHaloColor.expression }
     if layer.hasTextHaloWidth { textHaloWidth = layer.textHaloWidth.expression }
     if layer.hasTextHaloBlur { textHaloBlur = layer.textHaloBlur.expression }
-    // todo if layer.hasTextTranslate { textTranslation = layer.textTranslate.expression }
+    if layer.hasTextTranslate { textTranslation = layer.textTranslate.vectorOrExpression }
     if layer.hasTextTranslateAnchor { textTranslationAnchor = layer.textTranslateAnchor.expression }
     if layer.hasIconOpacityTransition { iconOpacityTransition = layer.iconOpacityTransition.value }
     if layer.hasIconColorTransition { iconColorTransition = layer.iconColorTransition.value }

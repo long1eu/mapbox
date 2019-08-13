@@ -29,24 +29,15 @@ import 'package:flutter_mapbox_gl/src/models/translate_anchor.dart';
 import 'package:meta/meta.dart' hide literal;
 import 'package:protobuf/protobuf.dart' as pb;
 
-part 'background_layer.dart';
-
+part 'background.dart';
 part 'circle.dart';
-
 part 'fill.dart';
-
 part 'fill_extrusion.dart';
-
 part 'heatmap.dart';
-
 part 'hillshade.dart';
-
 part 'layer.g.dart';
-
 part 'line.dart';
-
 part 'raster.dart';
-
 part 'symbol.dart';
 
 @BuiltValue(instantiable: false)
@@ -82,6 +73,10 @@ abstract class Layer extends Object with _Channel {
   Layer rebuild(void Function(LayerBuilder) updates);
 
   LayerBuilder toBuilder();
+
+  static Layer fromProtoData(Uint8List data) {
+    return fromProto(pb.Layer.fromBuffer(data));
+  }
 
   static Layer fromProto(pb.Layer proto) {
     switch (proto.whichType()) {

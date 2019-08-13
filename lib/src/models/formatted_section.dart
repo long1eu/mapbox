@@ -12,11 +12,28 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
+import 'package:meta/meta.dart';
 
 part 'formatted_section.g.dart';
 
 abstract class FormattedSection implements Built<FormattedSection, FormattedSectionBuilder> {
-  factory FormattedSection([void Function(FormattedSectionBuilder b) updates]) = _$FormattedSection;
+  factory FormattedSection({
+    @required String text,
+    double fontScale,
+    List<String> fontStack,
+    int textColor = 0xFF000000,
+  }) {
+    assert(text != null && text.isNotEmpty);
+    assert(textColor != null);
+
+    return _$FormattedSection((FormattedSectionBuilder b) {
+      b
+        ..text = text
+        ..fontScale = fontScale
+        ..fontStack = fontStack != null ? ListBuilder<String>(fontStack) : null
+        ..textColor = textColor;
+    });
+  }
 
   factory FormattedSection.fromProtoData(Uint8List data) {
     return FormattedSection.fromProto(pb.FormattedSection.fromBuffer(data));

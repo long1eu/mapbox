@@ -47,11 +47,11 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..radius = radiusEx ?? radius != null ? literalDouble(radius) : null
-        ..weight = weightEx ?? weight != null ? literalDouble(weight) : null
-        ..intensity = intensityEx ?? intensity != null ? literalDouble(intensity) : null
-        ..color = opacityEx ?? color != null ? literalDouble(opacity) : null
-        ..opacity = colorEx ?? opacity != null ? color$(color) : null
+        ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : null)
+        ..weight = weightEx ?? (weight != null ? literalDouble(weight) : null)
+        ..intensity = intensityEx ?? (intensity != null ? literalDouble(intensity) : null)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
         ..radiusTransition = (radiusTransition ?? transitionOptions).toBuilder()
         ..intensityTransition = (intensityTransition ?? transitionOptions).toBuilder()
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder();
@@ -146,11 +146,11 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..radius = radiusEx ?? radius != null ? literalDouble(radius) : this.radius
-        ..weight = weightEx ?? weight != null ? literalDouble(weight) : this.weight
-        ..intensity = intensityEx ?? intensity != null ? literalDouble(intensity) : this.intensity
-        ..color = opacityEx ?? color != null ? literalDouble(opacity) : this.color
-        ..opacity = colorEx ?? opacity != null ? color$(color) : this.opacity
+        ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : this.radius)
+        ..weight = weightEx ?? (weight != null ? literalDouble(weight) : this.weight)
+        ..intensity = intensityEx ?? (intensity != null ? literalDouble(intensity) : this.intensity)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
         ..radiusTransition = (radiusTransition ?? this.radiusTransition).toBuilder()
         ..intensityTransition = (intensityTransition ?? this.intensityTransition).toBuilder()
         ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder();

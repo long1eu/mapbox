@@ -51,13 +51,13 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..antialias = antialiasEx ?? antialias != null ? literalBool(antialias) : null
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : null
-        ..color = colorEx ?? color != null ? color$(color) : null
-        ..outlineColor = outlineColorEx ?? outlineColor != null ? color$(outlineColor) : null
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : null
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? null
-        ..pattern = patternEx ?? pattern != null ? literalString(pattern) : null
+        ..antialias = antialiasEx ?? (antialias != null ? literalBool(antialias) : null)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..outlineColor = outlineColorEx ?? (outlineColor != null ? rgb(outlineColor.red, outlineColor.green, outlineColor.blue) : null)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..outlineColorTransition = (outlineColorTransition ?? transitionOptions).toBuilder()
@@ -176,20 +176,19 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..antialias = antialiasEx ?? antialias != null ? literalBool(antialias) : this.antialias
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : this.opacity
-        ..color = colorEx ?? color != null ? color$(color) : this.color
-        ..outlineColor = outlineColorEx ?? outlineColor != null ? color$(outlineColor) : this.outlineColor
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : this.translate
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? this.translateAnchor
-        ..pattern = patternEx ?? pattern != null ? literalString(pattern) : this.pattern
+        ..antialias = antialiasEx ?? (antialias != null ? literalBool(antialias) : this.antialias)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..outlineColor = outlineColorEx ?? (outlineColor != null ? rgb(outlineColor.red, outlineColor.green, outlineColor.blue) : this.outlineColor)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
+        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
         ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
         ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
         ..outlineColorTransition = (outlineColorTransition ?? this.outlineColorTransition).toBuilder()
         ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()
         ..patternTransition = (patternTransition ?? this.patternTransition).toBuilder();
     });
-    print('isAttached: $isAttached');
     if (!isAttached || this == layer) return layer;
     return _update(layer);
   }

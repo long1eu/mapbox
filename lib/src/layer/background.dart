@@ -33,9 +33,9 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
         ..visible = visible
         ..minZoom = minZoom
         ..maxZoom = maxZoom
-        ..color = colorEx ?? color != null ? color$(color) : null
-        ..pattern = patternEx ?? pattern != null ? literal(pattern) : null
-        ..opacity = opacityEx ?? opacity != null ? literal(opacity) : null
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..patternTransition = (patternTransition ?? transitionOptions).toBuilder()
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder();
@@ -101,9 +101,9 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
-        ..color = colorEx ?? color != null ? color$(color) : this.color
-        ..pattern = patternEx ?? pattern != null ? literal(pattern) : this.pattern
-        ..opacity = opacityEx ?? opacity != null ? literal(opacity) : this.opacity
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
         ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
         ..patternTransition = (patternTransition ?? this.patternTransition).toBuilder()
         ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder();

@@ -46,13 +46,12 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
         ..minZoom = minZoom
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
-        ..illuminationDirection =
-            illuminationDirectionEx ?? illuminationDirection != null ? literalDouble(illuminationDirection) : null
-        ..illuminationAnchor = illuminationAnchorEx ?? illuminationAnchor != null ? illuminationAnchor : null
-        ..exaggeration = exaggerationEx ?? exaggeration != null ? literalDouble(exaggeration) : null
-        ..shadowColor = shadowColorEx ?? shadowColor != null ? color$(shadowColor) : null
-        ..highlightColor = highlightColorEx ?? highlightColor != null ? color$(highlightColor) : null
-        ..accentColor = accentColorEx ?? accentColor != null ? color$(accentColor) : null
+        ..illuminationDirection = illuminationDirectionEx ?? (illuminationDirection != null ? literalDouble(illuminationDirection) : null)
+        ..illuminationAnchor = illuminationAnchorEx ?? (illuminationAnchor != null ? illuminationAnchor : null)
+        ..exaggeration = exaggerationEx ?? (exaggeration != null ? literalDouble(exaggeration) : null)
+        ..shadowColor = shadowColorEx ?? (shadowColor != null ? rgb(shadowColor.red, shadowColor.green, shadowColor.blue) : null)
+        ..highlightColor = highlightColorEx ?? (highlightColor != null ? rgb(highlightColor.red, highlightColor.green, highlightColor.blue) : null)
+        ..accentColor = accentColorEx ?? (accentColor != null ? rgb(accentColor.red, accentColor.green, accentColor.blue) : null)
         ..exaggerationTransition = (exaggerationTransition ?? transitionOptions).toBuilder()
         ..shadowColorTransition = (shadowColorTransition ?? transitionOptions).toBuilder()
         ..highlightColorTransition = (highlightColorTransition ?? transitionOptions).toBuilder()
@@ -73,10 +72,8 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..illuminationDirection =
-            proto.hasIlluminationDirection() ? Expression.fromProtoString(proto.illuminationDirection) : null
-        ..illuminationAnchor =
-            proto.hasIlluminationAnchor() ? Expression.fromProtoString(proto.illuminationAnchor) : null
+        ..illuminationDirection = proto.hasIlluminationDirection() ? Expression.fromProtoString(proto.illuminationDirection) : null
+        ..illuminationAnchor = proto.hasIlluminationAnchor() ? Expression.fromProtoString(proto.illuminationAnchor) : null
         ..exaggeration = proto.hasExaggeration() ? Expression.fromProtoString(proto.exaggeration) : null
         ..shadowColor = proto.hasShadowColor() ? Expression.fromProtoString(proto.shadowColor) : null
         ..highlightColor = proto.hasHighlightColor() ? Expression.fromProtoString(proto.highlightColor) : null
@@ -155,15 +152,12 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
-        ..illuminationDirection = illuminationDirectionEx ?? illuminationDirection != null
-            ? literalDouble(illuminationDirection)
-            : this.illuminationDirection
-        ..illuminationAnchor =
-            illuminationAnchorEx ?? illuminationAnchor != null ? illuminationAnchor : this.illuminationAnchor
-        ..exaggeration = exaggerationEx ?? exaggeration != null ? literalDouble(exaggeration) : this.exaggeration
-        ..shadowColor = shadowColorEx ?? shadowColor != null ? color$(shadowColor) : this.shadowColor
-        ..highlightColor = highlightColorEx ?? highlightColor != null ? color$(highlightColor) : this.highlightColor
-        ..accentColor = accentColorEx ?? accentColor != null ? color$(accentColor) : this.accentColor
+        ..illuminationDirection = illuminationDirectionEx ?? (illuminationDirection != null ? literalDouble(illuminationDirection) : this.illuminationDirection)
+        ..illuminationAnchor = illuminationAnchorEx ?? (illuminationAnchor != null ? illuminationAnchor : this.illuminationAnchor)
+        ..exaggeration = exaggerationEx ?? (exaggeration != null ? literalDouble(exaggeration) : this.exaggeration)
+        ..shadowColor = shadowColorEx ?? (shadowColor != null ? rgb(shadowColor.red, shadowColor.green, shadowColor.blue) : this.shadowColor)
+        ..highlightColor = highlightColorEx ?? (highlightColor != null ? rgb(highlightColor.red, highlightColor.green, highlightColor.blue) : this.highlightColor)
+        ..accentColor = accentColorEx ?? (accentColor != null ? rgb(accentColor.red, accentColor.green, accentColor.blue) : this.accentColor)
         ..exaggerationTransition = (exaggerationTransition ?? this.exaggerationTransition).toBuilder()
         ..shadowColorTransition = (shadowColorTransition ?? this.shadowColorTransition).toBuilder()
         ..highlightColorTransition = (highlightColorTransition ?? this.highlightColorTransition).toBuilder()

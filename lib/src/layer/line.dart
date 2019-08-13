@@ -37,7 +37,7 @@ abstract class LineLayer with _Channel implements Layer, Built<LineLayer, LineLa
     Expression offsetEx,
     double blur = 0.0,
     Expression blurEx,
-    List<double> dasharray,
+    List<double> dasharray = const <double>[],
     Expression dasharrayEx,
     String pattern,
     Expression patternEx,
@@ -62,7 +62,7 @@ abstract class LineLayer with _Channel implements Layer, Built<LineLayer, LineLa
     if (width != null) assert(width >= 0);
     if (gapWidth != null) assert(gapWidth >= 0);
     if (blur != null) assert(blur >= 0);
-    if (dasharray != null) assert(dasharray.every((it) => it > 0));
+    if (dasharray != null) assert(dasharray.every((it) => it >= 0));
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$LineLayer((LineLayerBuilder b) {
@@ -74,21 +74,21 @@ abstract class LineLayer with _Channel implements Layer, Built<LineLayer, LineLa
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..cap = capEx ?? cap != null ? cap : null
-        ..join = joinEx ?? join != null ? join : null
-        ..miterLimit = miterLimitEx ?? miterLimit != null ? literalDouble(miterLimit) : null
-        ..roundLimit = roundLimitEx ?? roundLimit != null ? literalDouble(roundLimit) : null
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : null
-        ..color = colorEx ?? color != null ? color$(color) : null
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : null
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? null
-        ..width = widthEx ?? width != null ? literalDouble(width) : null
-        ..gapWidth = gapWidthEx ?? gapWidth != null ? literalDouble(gapWidth) : null
-        ..offset = offsetEx ?? offset != null ? literalDouble(offset) : null
-        ..blur = blurEx ?? blur != null ? literalDouble(blur) : null
-        ..dasharray = dasharrayEx ?? dasharray != null ? literalList(dasharray) : null
-        ..pattern = patternEx ?? pattern != null ? literalString(pattern) : null
-        ..gradient = gradientEx ?? gradient != null ? color$(gradient) : null
+        ..cap = capEx ?? (cap != null ? cap : null)
+        ..join = joinEx ?? (join != null ? join : null)
+        ..miterLimit = miterLimitEx ?? (miterLimit != null ? literalDouble(miterLimit) : null)
+        ..roundLimit = roundLimitEx ?? (roundLimit != null ? literalDouble(roundLimit) : null)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
+        ..width = widthEx ?? (width != null ? literalDouble(width) : null)
+        ..gapWidth = gapWidthEx ?? (gapWidth != null ? literalDouble(gapWidth) : null)
+        ..offset = offsetEx ?? (offset != null ? literalDouble(offset) : null)
+        ..blur = blurEx ?? (blur != null ? literalDouble(blur) : null)
+        ..dasharray = dasharrayEx ?? (dasharray != null ? literalList(dasharray) : null)
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
+        ..gradient = gradientEx ?? (gradient != null ? rgb(gradient.red, gradient.green, gradient.blue) : null)
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..translateTransition = (translateTransition ?? transitionOptions).toBuilder()
@@ -283,21 +283,21 @@ abstract class LineLayer with _Channel implements Layer, Built<LineLayer, LineLa
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..cap = capEx ?? cap != null ? cap : this.cap
-        ..join = joinEx ?? join != null ? join : this.join
-        ..miterLimit = miterLimitEx ?? miterLimit != null ? literalDouble(miterLimit) : this.miterLimit
-        ..roundLimit = roundLimitEx ?? roundLimit != null ? literalDouble(roundLimit) : this.roundLimit
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : this.opacity
-        ..color = colorEx ?? color != null ? color$(color) : this.color
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : this.translate
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? this.translateAnchor
-        ..width = widthEx ?? width != null ? literalDouble(width) : this.width
-        ..gapWidth = gapWidthEx ?? gapWidth != null ? literalDouble(gapWidth) : this.gapWidth
-        ..offset = offsetEx ?? offset != null ? literalDouble(offset) : this.offset
-        ..blur = blurEx ?? blur != null ? literalDouble(blur) : this.blur
-        ..dasharray = dasharrayEx ?? dasharray != null ? literalList(dasharray) : this.dasharray
-        ..pattern = patternEx ?? pattern != null ? literalString(pattern) : this.pattern
-        ..gradient = gradientEx ?? gradient != null ? color$(gradient) : this.gradient
+        ..cap = capEx ?? (cap != null ? cap : this.cap)
+        ..join = joinEx ?? (join != null ? join : this.join)
+        ..miterLimit = miterLimitEx ?? (miterLimit != null ? literalDouble(miterLimit) : this.miterLimit)
+        ..roundLimit = roundLimitEx ?? (roundLimit != null ? literalDouble(roundLimit) : this.roundLimit)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
+        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
+        ..width = widthEx ?? (width != null ? literalDouble(width) : this.width)
+        ..gapWidth = gapWidthEx ?? (gapWidth != null ? literalDouble(gapWidth) : this.gapWidth)
+        ..offset = offsetEx ?? (offset != null ? literalDouble(offset) : this.offset)
+        ..blur = blurEx ?? (blur != null ? literalDouble(blur) : this.blur)
+        ..dasharray = dasharrayEx ?? (dasharray != null ? literalList(dasharray) : this.dasharray)
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
+        ..gradient = gradientEx ?? (gradient != null ? rgb(gradient.red, gradient.green, gradient.blue) : this.gradient)
         ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
         ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
         ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()

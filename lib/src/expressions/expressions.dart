@@ -31,7 +31,7 @@ Expression literalList(List<dynamic> value) {
   return Expression._e1(kLiteralOperator, _ExpressionLiteralList(value));
 }
 
-Expression literal(dynamic value) {
+Expression literal$(dynamic value) {
   if (value is double) {
     return literalDouble(value);
   } else if (value is int) {

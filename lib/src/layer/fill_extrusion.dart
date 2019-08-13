@@ -56,14 +56,14 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : null
-        ..color = colorEx ?? color != null ? color$(color) : null
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : null
-        ..translateAnchor = translateAnchorEx ?? translateAnchor != null ? translateAnchor : null
-        ..pattern = patternEx ?? pattern != null ? literalString(pattern) : null
-        ..height = heightEx ?? height != null ? literalDouble(height) : null
-        ..base = baseEx ?? base != null ? literalDouble(base) : null
-        ..verticalGradient = verticalGradientEx ?? literalBool(verticalGradient)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..translateAnchor = translateAnchorEx ?? translateAnchor
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
+        ..height = heightEx ?? (height != null ? literalDouble(height) : null)
+        ..base = baseEx ?? (base != null ? literalDouble(base) : null)
+        ..verticalGradient = verticalGradientEx ?? (verticalGradient != null ? literalBool(verticalGradient) : null)
         ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..translateTransition = (translateTransition ?? transitionOptions).toBuilder()
@@ -194,15 +194,14 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : this.opacity
-        ..color = colorEx ?? color != null ? color$(color) : this.color
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : this.translate
-        ..translateAnchor = translateAnchorEx ?? translateAnchor != null ? translateAnchor : this.translateAnchor
-        ..pattern = patternEx ?? pattern != null ? literalString(pattern) : this.pattern
-        ..height = heightEx ?? height != null ? literalDouble(height) : this.height
-        ..base = baseEx ?? base != null ? literalDouble(base) : this.base
-        ..verticalGradient =
-            verticalGradientEx ?? verticalGradient != null ? literalBool(verticalGradient) : this.verticalGradient
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
+        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? this.translateAnchor
+        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
+        ..height = heightEx ?? (height != null ? literalDouble(height) : this.height)
+        ..base = baseEx ?? (base != null ? literalDouble(base) : this.base)
+        ..verticalGradient = verticalGradientEx ?? (verticalGradient != null ? literalBool(verticalGradient) : this.verticalGradient)
         ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
         ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
         ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()

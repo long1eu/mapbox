@@ -10,34 +10,72 @@ extension NSExpression {
     return SwiftProtobuf.Google_Protobuf_StringValue.with {
       let object = mgl_jsonExpressionObject
       let valid = JSONSerialization.isValidJSONObject(object)
-      if (valid) {
-        /*switch (expressionType) {
-        case .constantValue: print("\(object) is -> constantValue");
-        case .evaluatedObject: print("\(object) is -> evaluatedObject");
-        case .variable: print("\(object) is -> variable");
-        case .keyPath: print("\(object) is -> keyPath");
-        case .function: print("\(object) is -> function");
-        case .unionSet: print("\(object) is -> unionSet");
-        case .intersectSet: print("\(object) is -> intersectSet");
-        case .minusSet: print("\(object) is -> minusSet");
-        case .subquery: print("\(object) is -> subquery");
-        case .aggregate: print("\(object) is -> aggregate");
-        case .anyKey: print("\(object) is -> anyKey");
-        case .block: print("\(object) is -> block");
-        case .conditional: print("\(object) is -> conditional");
-        }*/
-
-
+      
+      /*switch (expressionType) {
+      case .constantValue:
+        print("constantValue: \(constantValue!)")
+        break;
+      case .function:
+        print("function: \(function)")
+        break;
+      case .aggregate:
+        print("aggregate: \(collection)")
+        break;
+      case .conditional:
+        print("conditional: \(self.true)")
+        break;
+      default:
+        // @formatter:off
+        var type:String = ""
+        if expressionType == .constantValue { type = "constantValue"}
+        if expressionType == .evaluatedObject { type = "evaluatedObject"}
+        if expressionType == .variable { type = "variable"}
+        if expressionType == .keyPath { type = "keyPath"}
+        if expressionType == .function { type = "function"}
+        if expressionType == .unionSet { type = "unionSet"}
+        if expressionType == .intersectSet { type = "intersectSet"}
+        if expressionType == .minusSet { type = "minusSet"}
+        if expressionType == .subquery { type = "subquery"}
+        if expressionType == .aggregate { type = "aggregate"}
+        if expressionType == .anyKey { type = "anyKey"}
+        if expressionType == .block { type = "block"}
+        if expressionType == .conditional { type = "conditional"}
+        // @formatter:on
+        
+        fatalError("unnown type \(type)")
+      }*/
+      
+      
+      if expressionType == .constantValue {
+        if object is [Any] {
+          assert(valid)
+          let data = try! JSONSerialization.data(withJSONObject: object)
+          $0.value = String(data: data, encoding: .utf8)!
+        } else if object is String {
+          $0.value = "[\"literal\", \"\(object)\"]"
+        } else if object is Double || object is Float || object is Int {
+          $0.value = "[\"literal\", \(object)]"
+        } else if let o = object as? Bool {
+          $0.value = "[\"literal\", \(o ? "true" : "false")]"
+        }
+      } else {
+        assert(valid)
+        
+        let data = try! JSONSerialization.data(withJSONObject: object)
+        $0.value = String(data: data, encoding: .utf8)!
+      }
+    }
+  }
+  
+  var boolOrExpression: SwiftProtobuf.Google_Protobuf_StringValue {
+    return  SwiftProtobuf.Google_Protobuf_StringValue.with {
+      let object = mgl_jsonExpressionObject
+      let valid = JSONSerialization.isValidJSONObject(object)
+      if valid {
         let data = try! JSONSerialization.data(withJSONObject: object)
         $0.value = String(data: data, encoding: .utf8)!
       } else {
-        if (object is String) {
-          $0.value = "[\"literal\", \"\(object)\"]"
-        } else if (object is Double || object is Float || object is Int || object is Bool) {
-          $0.value = "[\"literal\", \(object)]"
-        } else {
-          fatalError("Unknown type \(object).")
-        }
+        $0.value = "[\"literal\", \(object as! Bool ? "true" : "false")]"
       }
     }
   }
@@ -57,7 +95,7 @@ extension String {
   var uri: URL {
     return URL(string: self)!
   }
-
+  
   var proto: SwiftProtobuf.Google_Protobuf_StringValue {
     return SwiftProtobuf.Google_Protobuf_StringValue.with {
       $0.value = self
@@ -98,7 +136,49 @@ extension SwiftProtobuf.Google_Protobuf_StringValue {
     let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
     return NSExpression(mglJSONObject: array)
   }
-
+  
+  var numberArray: [NSNumber] {
+    let expression = self.expression;
+    assert(expression.expressionType == .aggregate)
+    let value = expression.constantValue as! [NSExpression]
+    
+    return value.map { (expression: NSExpression) -> NSNumber in
+      expression.constantValue as! NSNumber
+    }
+  }
+  
+  var vectorOrExpression: NSExpression {
+    let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
+    let result = NSExpression(mglJSONObject: array)
+    
+    if result.expressionType == .aggregate {
+      let value = numberArray
+      let dx = CGFloat(value[0].floatValue)
+      let dy = CGFloat(value[1].floatValue)
+      return NSExpression(forConstantValue: CGVector(dx:dx, dy: dy))
+    }
+    
+    return result
+  }
+  
+  var edgeInsetsOrExpression: NSExpression {
+    let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
+    let result = NSExpression(mglJSONObject: array)
+    
+    if result.expressionType == .aggregate {
+      let value = numberArray
+      
+      let top = CGFloat(value[0].floatValue)
+      let right = CGFloat(value[1].floatValue)
+      let bottom = CGFloat(value[2].floatValue)
+      let left = CGFloat(value[3].floatValue)
+      
+      return NSExpression(forConstantValue: UIEdgeInsets(top:top, left:left, bottom:bottom, right:right))
+    }
+    
+    return result
+  }
+  
   var predicate: NSPredicate {
     let array = try! JSONSerialization.jsonObject(with: value.data(using: .utf8)!)
     return NSPredicate(mglJSONObject: array)
@@ -237,11 +317,11 @@ extension MGLMapView {
   func getAltitude(zoom: Double) -> Double {
     return MGLAltitudeForZoomLevel(zoom, camera.pitch, camera.centerCoordinate.latitude, frame.size)
   }
-
+  
   var zoom: Double {
     return MGLZoomLevelForAltitude(camera.altitude, camera.pitch, camera.centerCoordinate.latitude, frame.size)
   }
-
+  
   var image: Data? {
     UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
     drawHierarchy(in: bounds, afterScreenUpdates: false)
@@ -266,7 +346,7 @@ extension MGLCameraChangeReason {
     if contains(.gestureTilt) { values.append("gestureTilt") } // SHOVE
     if contains(.transitionCancelled) { values.append("transitionCancelled") }
     // @formatter:on
-
+  
     let data = try! JSONSerialization.data(withJSONObject: values)
     return String(data: data, encoding: .utf8)!
   }
@@ -277,23 +357,23 @@ extension UIView {
   func addOnTapGesture(action: @escaping (_ sender: UITapGestureRecognizer) -> Void) {
     let tap = OnTapGestureRecognizer(target: self, action: #selector(self.handleOnTap(_:)))
     tap.action = action
-
+    
     self.addGestureRecognizer(tap)
     self.isUserInteractionEnabled = true
   }
-
+  
   func addOnLongTapGesture(action: @escaping (_ sender: UILongPressGestureRecognizer) -> Void) {
     let tap = OnLongPressGestureRecognizer(target: self, action: #selector(self.handleOnLongTap(_:)))
     tap.action = action
-
+    
     self.addGestureRecognizer(tap)
     self.isUserInteractionEnabled = true
   }
-
+  
   @objc func handleOnTap(_ sender: OnTapGestureRecognizer) {
     sender.action!(sender)
   }
-
+  
   @objc func handleOnLongTap(_ sender: OnLongPressGestureRecognizer) {
     sender.action!(sender)
   }

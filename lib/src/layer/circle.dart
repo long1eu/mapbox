@@ -65,17 +65,17 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..radius = radiusEx ?? radius != null ? literalDouble(radius) : null
-        ..color = colorEx ?? color != null ? color$(color) : null
-        ..blur = blurEx ?? blur != null ? literalDouble(blur) : null
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : null
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : null
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? null
-        ..pitchScale = pitchScaleEx ?? pitchScale ?? null
-        ..pitchAlignment = pitchAlignmentEx ?? pitchAlignment ?? null
-        ..strokeWidth = strokeWidthEx ?? strokeWidth != null ? literalDouble(strokeWidth) : null
-        ..strokeColor = strokeColorEx ?? strokeColor != null ? color$(strokeColor) : null
-        ..strokeOpacity = strokeOpacityEx ?? strokeOpacity != null ? literalDouble(strokeOpacity) : null
+        ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : null)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..blur = blurEx ?? (blur != null ? literalDouble(blur) : null)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
+        ..pitchScale = pitchScaleEx ?? (pitchScale ?? null)
+        ..pitchAlignment = pitchAlignmentEx ?? (pitchAlignment ?? null)
+        ..strokeWidth = strokeWidthEx ?? (strokeWidth != null ? literalDouble(strokeWidth) : null)
+        ..strokeColor = strokeColorEx ?? (strokeColor != null ? rgb(strokeColor.red, strokeColor.green, strokeColor.blue) : null)
+        ..strokeOpacity = strokeOpacityEx ?? (strokeOpacity != null ? literalDouble(strokeOpacity) : null)
         ..radiusTransition = (radiusTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..blurTransition = (blurTransition ?? transitionOptions).toBuilder()
@@ -237,17 +237,17 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..radius = radiusEx ?? radius != null ? literalDouble(radius) : this.radius
-        ..color = colorEx ?? color != null ? color$(color) : this.color
-        ..blur = blurEx ?? blur != null ? literalDouble(blur) : this.blur
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : this.opacity
-        ..translate = translateEx ?? translate != null ? literalList([translate.dx, translate.dy]) : this.translate
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? this.translateAnchor
-        ..pitchScale = pitchScaleEx ?? pitchScale ?? this.pitchScale
-        ..pitchAlignment = pitchAlignmentEx ?? pitchAlignment ?? this.pitchAlignment
-        ..strokeWidth = strokeWidthEx ?? strokeWidth != null ? literalDouble(strokeWidth) : this.strokeWidth
-        ..strokeColor = strokeColorEx ?? strokeColor != null ? color$(strokeColor) : this.strokeColor
-        ..strokeOpacity = strokeOpacityEx ?? strokeOpacity != null ? literalDouble(strokeOpacity) : this.strokeOpacity
+        ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : this.radius)
+        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..blur = blurEx ?? (blur != null ? literalDouble(blur) : this.blur)
+        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
+        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
+        ..pitchScale = pitchScaleEx ?? (pitchScale ?? this.pitchScale)
+        ..pitchAlignment = pitchAlignmentEx ?? (pitchAlignment ?? this.pitchAlignment)
+        ..strokeWidth = strokeWidthEx ?? (strokeWidth != null ? literalDouble(strokeWidth) : this.strokeWidth)
+        ..strokeColor = strokeColorEx ?? (strokeColor != null ? rgb(strokeColor.red, strokeColor.green, strokeColor.blue) : this.strokeColor)
+        ..strokeOpacity = strokeOpacityEx ?? (strokeOpacity != null ? literalDouble(strokeOpacity) : this.strokeOpacity)
         ..radiusTransition = (radiusTransition ?? this.radiusTransition).toBuilder()
         ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
         ..blurTransition = (blurTransition ?? this.blurTransition).toBuilder()

@@ -22,4 +22,22 @@ class TranslateAnchor extends ExpressionLiteral {
 
   @override
   String toString() => 'TranslateAnchor.${_names[_i]}';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is ExpressionLiteral) {
+      return value == other.value;
+    }
+    if (other is TranslateAnchor) {
+      return _i == other._i;
+    }
+
+    return super == other;
+  }
+
+  @override
+  int get hashCode => super.hashCode ^ _i.hashCode ^ literal?.hashCode ?? 0;
 }
