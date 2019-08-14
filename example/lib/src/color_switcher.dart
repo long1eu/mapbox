@@ -6,29 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class ColorSwitcher extends Page {
-  ColorSwitcher()
-      : super(
-          const Icon(Icons.map),
-          'Change a layer\'s color',
-          'Using layer set to change a layer\'s fill color.',
-          'Dynamic styling',
-        );
+class ColorSwitcherPage extends StatefulWidget {
+  const ColorSwitcherPage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const _ColorSwitcherState();
+  _ColorSwitcherPageState createState() => _ColorSwitcherPageState();
 }
 
-class _ColorSwitcherState extends StatefulWidget {
-  const _ColorSwitcherState({Key key}) : super(key: key);
-
-  @override
-  _ColorSwitcherStateState createState() => _ColorSwitcherStateState();
-}
-
-class _ColorSwitcherStateState extends State<_ColorSwitcherState> {
+class _ColorSwitcherPageState extends State<ColorSwitcherPage> {
   MapController controller;
   Color waterColor;
 

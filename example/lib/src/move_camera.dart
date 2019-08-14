@@ -7,26 +7,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class MoveCameraPage extends Page {
-  MoveCameraPage()
-      : super(const Icon(Icons.map), 'Camera control', '', 'Getting started');
+class MoveCameraPage extends StatefulWidget {
+  const MoveCameraPage();
 
   @override
-  Widget build(BuildContext context) {
-    return const MoveCamera();
-  }
+  State createState() => MoveCameraPageState();
 }
 
-class MoveCamera extends StatefulWidget {
-  const MoveCamera();
-
-  @override
-  State createState() => MoveCameraState();
-}
-
-class MoveCameraState extends State<MoveCamera> {
+class MoveCameraPageState extends State<MoveCameraPage> {
   MapController mapController;
 
   void _onMapReady(MapController controller) {

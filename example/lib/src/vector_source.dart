@@ -6,29 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class VectorSourcePage extends Page {
-  VectorSourcePage()
-      : super(
-          const Icon(Icons.map),
-          'Add a vector tile source',
-          'Add a vector source to a map and display it as a layer.',
-          'Dynamic styling',
-        );
-
-  @override
-  Widget build(BuildContext context) => const _VectorSourcePage();
-}
-
-class _VectorSourcePage extends StatefulWidget {
-  const _VectorSourcePage({Key key}) : super(key: key);
+class VectorSourcePage extends StatefulWidget {
+  const VectorSourcePage({Key key}) : super(key: key);
 
   @override
   _VectorSourcePageState createState() => _VectorSourcePageState();
 }
 
-class _VectorSourcePageState extends State<_VectorSourcePage> {
+class _VectorSourcePageState extends State<VectorSourcePage> {
   MapController controller;
 
   void onMapReady(MapController controller) async {

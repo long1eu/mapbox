@@ -6,31 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class AdjustLayerOpacityPage extends Page {
-  AdjustLayerOpacityPage()
-      : super(
-          const Icon(Icons.map),
-          'Adjust a layer\'s opacity',
-          'Drag the seek bar to adjust the opacity of a raster layer on top of a map.',
-          'Dynamic styling',
-        );
+class AdjustLayerOpacityPage extends StatefulWidget {
+  const AdjustLayerOpacityPage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const _AdjustLayerOpacityPageState();
+  _AdjustLayerOpacityPageState createState() => _AdjustLayerOpacityPageState();
 }
 
-class _AdjustLayerOpacityPageState extends StatefulWidget {
-  const _AdjustLayerOpacityPageState({Key key}) : super(key: key);
-
-  @override
-  __AdjustLayerOpacityPageStateState createState() =>
-      __AdjustLayerOpacityPageStateState();
-}
-
-class __AdjustLayerOpacityPageStateState
-    extends State<_AdjustLayerOpacityPageState> {
+class _AdjustLayerOpacityPageState extends State<AdjustLayerOpacityPage> {
   double opacity = 1.0;
   MapController controller;
 

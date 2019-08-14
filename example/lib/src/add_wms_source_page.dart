@@ -7,29 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:pub_semver/pub_semver.dart';
 
-import '../page.dart';
-
-class AddWmsSourcePage extends Page {
-  AddWmsSourcePage()
-      : super(
-          const Icon(Icons.map),
-          'Add a WMS source',
-          'Adding an external Web Map Service layer to the map.',
-          'Dynamic styling',
-        );
+class AddWmsSourcePage extends StatefulWidget {
+  const AddWmsSourcePage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const _AddWmsSourcePageState();
+  _AddWmsSourcePageState createState() => _AddWmsSourcePageState();
 }
 
-class _AddWmsSourcePageState extends StatefulWidget {
-  const _AddWmsSourcePageState({Key key}) : super(key: key);
-
-  @override
-  _AddWmsSourcePageStateState createState() => _AddWmsSourcePageStateState();
-}
-
-class _AddWmsSourcePageStateState extends State<_AddWmsSourcePageState> {
+class _AddWmsSourcePageState extends State<AddWmsSourcePage> {
   void onMapReady(MapController controller) {
     controller.style.addLayer(
       RasterLayer(
@@ -45,7 +30,6 @@ class _AddWmsSourcePageStateState extends State<_AddWmsSourcePageState> {
     return MapboxMap(
       onMapReady: onMapReady,
       options: MapOptions(
-        // styleFromMapbox: MapStyle.light,
         styleFromUri: 'mapbox://styles/mapbox/light-v9',
         cameraPosition: CameraPosition(
           target: LatLng(

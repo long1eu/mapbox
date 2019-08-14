@@ -8,18 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
+final LatLng center = LatLng(latitude: 32.080664, longitude: 34.9563837);
 
-class ScrollingMapPage extends Page {
-  ScrollingMapPage()
-      : super(const Icon(Icons.map), 'Scrolling map', '', 'Getting started');
-
-  @override
-  Widget build(BuildContext context) => ScrollingMapBody();
-}
-
-class ScrollingMapBody extends StatelessWidget {
-  final LatLng center = LatLng(latitude: 32.080664, longitude: 34.9563837);
+class ScrollingMapPage extends StatelessWidget {
+  const ScrollingMapPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

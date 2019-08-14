@@ -12,31 +12,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:http/http.dart';
 
-import '../page.dart';
-
-class SpaceStationLocation extends Page {
-  SpaceStationLocation()
-      : super(
-          const Icon(Icons.map),
-          'Icon update based on API response',
-          'Update a SymbolLayer icon based on an API call and response.',
-          'Dynamic Styling',
-        );
+class SpaceStationLocationPage extends StatefulWidget {
+  const SpaceStationLocationPage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const _SpaceStationLocationState();
+  _SpaceStationLocationPageState createState() =>
+      _SpaceStationLocationPageState();
 }
 
-class _SpaceStationLocationState extends StatefulWidget {
-  const _SpaceStationLocationState({Key key}) : super(key: key);
-
-  @override
-  _SpaceStationLocationStateState createState() =>
-      _SpaceStationLocationStateState();
-}
-
-class _SpaceStationLocationStateState
-    extends State<_SpaceStationLocationState> {
+class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
   Timer timer;
   Uint8List image;
   LatLng issPosition;

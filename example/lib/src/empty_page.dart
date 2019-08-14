@@ -6,18 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class EmptyPage extends Page {
-  EmptyPage()
-      : super(const Icon(Icons.map), 'Add a new layer below labels', '', '');
-
-  @override
-  Widget build(BuildContext context) => const _EmptyPageState();
-}
-
-class _EmptyPageState extends StatelessWidget {
-  const _EmptyPageState({Key key}) : super(key: key);
+class EmptyPage extends StatelessWidget {
+  const EmptyPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

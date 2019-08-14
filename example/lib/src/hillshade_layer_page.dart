@@ -6,23 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class HillshadeLayerPage extends Page {
-  HillshadeLayerPage()
-      : super(
-          const Icon(Icons.map),
-          'Add a hillshade layer',
-          'Use elevation data to show and customize hills and mountains.',
-          'Dynamic styling',
-        );
-
-  @override
-  Widget build(BuildContext context) => const _HillshadeLayerPageState();
-}
-
-class _HillshadeLayerPageState extends StatelessWidget {
-  const _HillshadeLayerPageState({Key key}) : super(key: key);
+class HillshadeLayerPage extends StatelessWidget {
+  const HillshadeLayerPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

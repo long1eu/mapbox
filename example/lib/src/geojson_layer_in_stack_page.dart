@@ -6,23 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class GeoJsonLayerInStackPage extends Page {
-  GeoJsonLayerInStackPage()
-      : super(
-          const Icon(Icons.map),
-          'Add a new layer below labels',
-          'Using argument belowId, you can be more precise where your layer ends up in the map stack.',
-          'Dynamic styling',
-        );
-
-  @override
-  Widget build(BuildContext context) => const _GeojsonLayerInStack();
-}
-
-class _GeojsonLayerInStack extends StatelessWidget {
-  const _GeojsonLayerInStack({Key key}) : super(key: key);
+class GeoJsonLayerInStackPage extends StatelessWidget {
+  const GeoJsonLayerInStackPage({Key key}) : super(key: key);
 
   void _onMapReady(MapController controller) {
     controller.style.addLayer(

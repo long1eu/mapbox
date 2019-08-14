@@ -10,31 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class ImageSourceTimeLapsePage extends Page {
-  ImageSourceTimeLapsePage()
-      : super(
-          const Icon(Icons.map),
-          'Add an image source with time lapse',
-          'Use an image source and a runnable to show data changes over time.',
-          'Dynamic styling',
-        );
+class ImageSourceTimeLapsePage extends StatefulWidget {
+  const ImageSourceTimeLapsePage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const _ImageSourceTimeLapsePageState();
+  _ImageSourceTimeLapsePageState createState() =>
+      _ImageSourceTimeLapsePageState();
 }
 
-class _ImageSourceTimeLapsePageState extends StatefulWidget {
-  const _ImageSourceTimeLapsePageState({Key key}) : super(key: key);
-
-  @override
-  _ImageSourceTimeLapsePageStateState createState() =>
-      _ImageSourceTimeLapsePageStateState();
-}
-
-class _ImageSourceTimeLapsePageStateState
-    extends State<_ImageSourceTimeLapsePageState> {
+class _ImageSourceTimeLapsePageState extends State<ImageSourceTimeLapsePage> {
   Timer timer;
   MapController controller;
   List<Uint8List> images;

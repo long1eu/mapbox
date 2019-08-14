@@ -1,71 +1,214 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:mapbox_gl_example/src/page.dart';
-import 'package:mapbox_gl_example/src/pages/add_wms_source_page.dart';
-import 'package:mapbox_gl_example/src/pages/adjust_layer_opacity.dart';
-import 'package:mapbox_gl_example/src/pages/animated_marker.dart';
-import 'package:mapbox_gl_example/src/pages/geojson_layer_in_stack_page.dart';
-import 'package:mapbox_gl_example/src/pages/hillshade_layer_page.dart';
-import 'package:mapbox_gl_example/src/pages/image_source_time_lapse_page.dart';
-import 'package:mapbox_gl_example/src/pages/move_camera.dart';
-import 'package:mapbox_gl_example/src/pages/scrolling_map.dart';
-import 'package:mapbox_gl_example/src/pages/space_station_location.dart';
-import 'package:mapbox_gl_example/src/pages/style_from_file_page.dart';
-import 'package:mapbox_gl_example/src/pages/vector_source.dart';
+import 'package:mapbox_gl_example/src/add_wms_source_page.dart';
+import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
+import 'package:mapbox_gl_example/src/animated_marker.dart';
+import 'package:mapbox_gl_example/src/color_switcher.dart';
+import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
+import 'package:mapbox_gl_example/src/hillshade_layer_page.dart';
+import 'package:mapbox_gl_example/src/image_source_time_lapse_page.dart';
+import 'package:mapbox_gl_example/src/move_camera.dart';
+import 'package:mapbox_gl_example/src/scrolling_map.dart';
+import 'package:mapbox_gl_example/src/space_station_location.dart';
+import 'package:mapbox_gl_example/src/style_from_file_page.dart';
+import 'package:mapbox_gl_example/src/vector_source.dart';
 
-final List<Page> _allPages = <Page>[
-  StyleFromFilePage(),
-  HillshadeLayerPage(),
-  GeoJsonLayerInStackPage(),
-  VectorSourcePage(),
-  AddWmsSourcePage(),
-  ImageSourceTimeLapsePage(),
-  AdjustLayerOpacityPage(),
-  AnimatedMarkerPage(),
-  SpaceStationLocation(),
-  //ColorSwitcher(),
-  MoveCameraPage(),
-  ScrollingMapPage(),
-];
+void main() => runApp(MapsDemo());
 
 class MapsDemo extends StatelessWidget {
-  void _pushPage(BuildContext context, Page page) {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) {
-          return Scaffold(
-            appBar: AppBar(title: Text(page.title)),
-            body: page,
-          );
-        },
-      ),
-    );
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
+  NavigatorState get navigator => navigatorKey.currentState;
+
+  Widget buildCategory(Category category) {
+    switch (category) {
+      case Category.gettingStarted:
+        return ListTile(
+          title: Text(
+            'Getting Started',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        );
+      case Category.dynamicStyling:
+        return ListTile(
+          title: Text(
+            'Dynamic Styling',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        );
+    }
+
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('MapboxMaps examples')),
-      body: ListView.builder(
-        itemCount: _allPages.length,
-        itemBuilder: (_, int index) {
-          final Page page = _allPages[index];
-          return ListTile(
-            leading: page.leading,
-            title: Text(page.title),
-            subtitle: page.info.isNotEmpty ? Text(page.info) : null,
-            onTap: () => _pushPage(context, page),
-          );
-        },
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('MapboxMaps examples')),
+        body: ListView.separated(
+          itemCount: pages.length,
+          itemBuilder: (BuildContext context, int i) {
+            final Page page = pages[i];
+            final Widget tile = ListTile(
+              title: Text(page.title),
+              subtitle: Text(page.description),
+              onTap: () => navigator.pushNamed(page.route),
+            );
+
+            if (i == 0) {
+              return Column(
+                children: <Widget>[buildCategory(page.category), tile],
+              );
+            } else if (page.category != pages[i - 1].category) {
+              return Column(
+                children: <Widget>[buildCategory(page.category), tile],
+              );
+            }
+
+            return tile;
+          },
+          separatorBuilder: (BuildContext context, int i) {
+            if (i == 0) {
+              return Container();
+            } else if (pages[i].category != pages[i + 1].category) {
+              return Divider();
+            }
+
+            return Container();
+          },
+        ),
       ),
+      navigatorKey: navigatorKey,
+      routes: <String, WidgetBuilder>{
+        AppRoutes.styleFromFile: (_) => const StyleFromFilePage(),
+        AppRoutes.hillshadeLayer: (_) => const HillshadeLayerPage(),
+        AppRoutes.geoJsonLayerInStack: (_) => const GeoJsonLayerInStackPage(),
+        AppRoutes.vectorSource: (_) => const VectorSourcePage(),
+        AppRoutes.addWmsSource: (_) => const AddWmsSourcePage(),
+        AppRoutes.imageSourceTimeLapse: (_) => const ImageSourceTimeLapsePage(),
+        AppRoutes.adjustLayerOpacity: (_) => const AdjustLayerOpacityPage(),
+        AppRoutes.animatedMarker: (_) => const AnimatedMarkerPage(),
+        AppRoutes.spaceStationLocation: (_) => const SpaceStationLocationPage(),
+        AppRoutes.colorSwitcher: (_) => const ColorSwitcherPage(),
+        AppRoutes.moveCamera: (_) => const MoveCameraPage(),
+        AppRoutes.scrollingMap: (_) => const ScrollingMapPage(),
+      },
     );
   }
 }
 
-void main() async {
-  const String layerId = 'layer-id';
-  const String sourceId = 'source-id';
-  final MethodChannel channel = MethodChannel('com.tophap/mapbox_gl');
+const List<Page> pages = <Page>[
+  Page(
+    title: 'Camera control',
+    description: 'Move the camera',
+    category: Category.gettingStarted,
+    route: AppRoutes.moveCamera,
+  ),
+  Page(
+    title: 'Add style from asset file',
+    description:
+        'iOS SDK doesn\'t have a way to create Style object from plain json. This implementation add support for just that.',
+    category: Category.gettingStarted,
+    route: AppRoutes.styleFromFile,
+  ),
+  Page(
+    title: 'Scrolling map',
+    description: 'Test scrolling a list containing a map',
+    category: Category.gettingStarted,
+    route: AppRoutes.scrollingMap,
+  ),
+  Page(
+    title: 'Add a hillshade layer',
+    description:
+        'Use elevation data to show and customize hills and mountains.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.hillshadeLayer,
+  ),
+  Page(
+    title: 'Add a new layer below labels',
+    description:
+        'Using argument belowId, you can be more precise where your layer ends up in the map stack.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.geoJsonLayerInStack,
+  ),
+  Page(
+    title: 'Add a vector tile source',
+    description: 'Add a vector source to a map and display it as a layer.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.vectorSource,
+  ),
+  Page(
+    title: 'Add a WMS source',
+    description: 'Adding an external Web Map Service layer to the map.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.addWmsSource,
+  ),
+  Page(
+    title: 'Add an image source with time lapse',
+    description:
+        'Use an image source and a runnable to show data changes over time.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.imageSourceTimeLapse,
+  ),
+  Page(
+    title: 'Adjust a layer\'s opacity',
+    description:
+        'Drag the seek bar to adjust the opacity of a raster layer on top of a map.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.adjustLayerOpacity,
+  ),
+  Page(
+    title: 'Animate marker position',
+    description: 'Animate the marker to a new position on the map.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.animatedMarker,
+  ),
+  Page(
+    title: 'Icon update based on API response ',
+    description:
+        'Update a SymbolLayer icon based on Iternational Space Station current location.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.spaceStationLocation,
+  ),
+  Page(
+    title: 'Change a layer\'s color',
+    description: 'Using layer set to change a layer\'s fill color.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.colorSwitcher,
+  ),
+];
 
-  runApp(MaterialApp(home: MapsDemo()));
+class AppRoutes {
+  static const String styleFromFile = '/styleFromFile';
+  static const String hillshadeLayer = '/hillshadeLayer';
+  static const String geoJsonLayerInStack = '/geoJsonLayerInStack';
+  static const String vectorSource = '/vectorSource';
+  static const String addWmsSource = '/addWmsSource';
+  static const String imageSourceTimeLapse = '/imageSourceTimeLapse';
+  static const String adjustLayerOpacity = '/adjustLayerOpacity';
+  static const String animatedMarker = '/animatedMarker';
+  static const String spaceStationLocation = '/spaceStationLocation';
+  static const String colorSwitcher = '/colorSwitcher';
+  static const String moveCamera = '/moveCamera';
+  static const String scrollingMap = '/scrollingMap';
+}
+
+enum Category { gettingStarted, dynamicStyling }
+
+class Page {
+  const Page({
+    @required this.title,
+    @required this.description,
+    @required this.category,
+    @required this.route,
+  });
+
+  final String title;
+  final String description;
+  final Category category;
+  final String route;
 }

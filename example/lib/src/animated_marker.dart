@@ -11,30 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
-import '../page.dart';
-
-class AnimatedMarkerPage extends Page {
-  AnimatedMarkerPage()
-      : super(
-          const Icon(Icons.map),
-          'Animate marker position',
-          'Animate the marker to a new position on the map.',
-          'Dynamic styling',
-        );
+class AnimatedMarkerPage extends StatefulWidget {
+  const AnimatedMarkerPage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const _AnimatedMarkerPageState();
+  _AnimatedMarkerPageState createState() => _AnimatedMarkerPageState();
 }
 
-class _AnimatedMarkerPageState extends StatefulWidget {
-  const _AnimatedMarkerPageState({Key key}) : super(key: key);
-
-  @override
-  __AnimatedMarkerPageStateState createState() =>
-      __AnimatedMarkerPageStateState();
-}
-
-class __AnimatedMarkerPageStateState extends State<_AnimatedMarkerPageState>
+class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
     with SingleTickerProviderStateMixin {
   final LatLng initialPosition =
       LatLng(latitude: 64.900932, longitude: -18.167040);
