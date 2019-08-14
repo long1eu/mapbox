@@ -26,7 +26,8 @@ Expression literalBool(bool value) {
 
 Expression literalList(List<dynamic> value) {
   assert(value != null);
-  assert(value.every((it) => it is num || it is String || it is bool || it is Expression));
+  assert(value.every(
+      (it) => it is num || it is String || it is bool || it is Expression));
 
   return Expression._e1(kLiteralOperator, _ExpressionLiteralList(value));
 }
@@ -208,7 +209,11 @@ Expression match(List<Expression> input) {
   return Expression(kMatchOperator, input);
 }
 
-Expression matchExpression(Expression input, Expression defaultOutput, [List<_Stop> stops = const <_Stop>[]]) {
+Expression matchExpression(
+  Expression input,
+  Expression defaultOutput, [
+  List<_Stop> stops = const <_Stop>[],
+]) {
   return match(
     _join(
       _join(<Expression>[input], _Stop.toExpressionArray(stops)),
@@ -447,7 +452,9 @@ Expression donwcase(dynamic string) {
 
 Expression concat(List<dynamic> strings) {
   assert(strings != null && strings.isNotEmpty);
-  assert(strings.every((it) => it is String) || strings.every((it) => it is Expression),
+  assert(
+      strings.every((it) => it is String) ||
+          strings.every((it) => it is Expression),
       'YOu must provide eather a list of Strings or a list of Expressions');
 
   final List<Expression> value = strings.first is String //
@@ -487,11 +494,17 @@ Expression bool$(Expression expression) {
   return Expression._e1(kBoolOperator, expression);
 }
 
-Expression collator(dynamic caseSensitive, dynamic diacriticSensitive, [dynamic locale]) {
+Expression collator(
+  dynamic caseSensitive,
+  dynamic diacriticSensitive, [
+  dynamic locale,
+]) {
   final Map<String, Expression> map = <String, Expression>{
     'case-sensitive': _expression(caseSensitive, 'caseSensitive', bool),
-    'diacritic-sensitive': _expression(diacriticSensitive, 'diacriticSensitive', bool),
-    if (locale != null && locale is Locale) 'locale': literalString(locale.toLanguageTag()),
+    'diacritic-sensitive':
+        _expression(diacriticSensitive, 'diacriticSensitive', bool),
+    if (locale != null && locale is Locale)
+      'locale': literalString(locale.toLanguageTag()),
     if (locale != null && locale is Expression) 'locale': locale
   };
   return Expression._e1(kCollatorOperator, _ExpressionMap(map));
@@ -499,7 +512,8 @@ Expression collator(dynamic caseSensitive, dynamic diacriticSensitive, [dynamic 
 
 Expression format(List<FormatEntry> formatEntries) {
   // for each entry we are going to build an input and parameters
-  List<Expression> mappedExpressions = List<Expression>(formatEntries.length * 2);
+  List<Expression> mappedExpressions =
+      List<Expression>(formatEntries.length * 2);
 
   int mappedIndex = 0;
   for (FormatEntry formatEntry in formatEntries) {
@@ -563,7 +577,10 @@ Expression let(List<Expression> input) {
 Expression var$(dynamic variableName) {
   assert(variableName != null);
 
-  return Expression._e1(kVarOperator, _expression(variableName, 'variableName', String));
+  return Expression._e1(
+    kVarOperator,
+    _expression(variableName, 'variableName', String),
+  );
 }
 
 Expression zoom() => Expression(kZoomOperator);
@@ -587,7 +604,11 @@ Expression step(dynamic input, dynamic defaultOutput, List<dynamic> stops) {
   );
 }
 
-Expression interpolate(_Interpolator interpolation, Expression number, List<dynamic> stops) {
+Expression interpolate(
+  _Interpolator interpolation,
+  Expression number,
+  List<dynamic> stops,
+) {
   return new Expression(
     kInterpolateOperator,
     _join([interpolation, number], stops),

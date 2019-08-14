@@ -55,15 +55,19 @@ class _MapboxMapState extends State<MapboxMap> {
       widget.mapTaps?.handleEvent(event);
     } else if (event.method == 'mapReady') {
       final Uint8List data = event.arguments;
-      final pb.Map__Operations_Ready info = pb.Map__Operations_Ready.fromBuffer(data);
+      final pb.Map__Operations_Ready info =
+          pb.Map__Operations_Ready.fromBuffer(data);
       _controller = MapController._(info: info, calls: _methodCall.stream);
       widget.onMapReady?.call(_controller);
 
       Future.wait<dynamic>(<Future<dynamic>>[
-        if (widget.sources != null) ...widget.sources.map(_controller.style.addSource),
-        if (widget.layers != null) ...widget.layers.map(_controller.style.addLayer),
+        if (widget.sources != null)
+          ...widget.sources.map(_controller.style.addSource),
+        if (widget.layers != null)
+          ...widget.layers.map(_controller.style.addLayer),
         if (widget.images != null)
-          ...widget.images.keys.map((String name) => _controller.style.addImage(name, widget.images[name])),
+          ...widget.images.keys.map((String name) =>
+              _controller.style.addImage(name, widget.images[name])),
       ]);
     }
   }
@@ -80,22 +84,31 @@ class _MapboxMapState extends State<MapboxMap> {
     final List<Layer> newLayers = widget.layers ?? <Layer>[];
     final List<Source> newSources = widget.sources ?? <Source>[];
     final List<Source> oldSources = oldWidget.sources ?? <Source>[];
-    final Map<String, Uint8List> newImages = widget.images ?? <String, Uint8List>{};
-    final Map<String, Uint8List> oldImages = oldWidget.images ?? <String, Uint8List>{};
+    final Map<String, Uint8List> newImages =
+        widget.images ?? <String, Uint8List>{};
+    final Map<String, Uint8List> oldImages =
+        oldWidget.images ?? <String, Uint8List>{};
 
-    final bool sameLayers = const ListEquality<Layer>().equals(oldLayers, newLayers);
-    final bool sameSources = const ListEquality<Source>().equals(oldSources, newSources);
-    final bool sameImages = const MapEquality<String, Uint8List>().equals(oldImages, newImages);
+    final bool sameLayers =
+        const ListEquality<Layer>().equals(oldLayers, newLayers);
+    final bool sameSources =
+        const ListEquality<Source>().equals(oldSources, newSources);
+    final bool sameImages =
+        const MapEquality<String, Uint8List>().equals(oldImages, newImages);
     if (sameLayers && sameSources && sameImages) return;
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
     if (!sameLayers) {
-      final Map<String, Layer> oldIds = oldLayers.asMap().map((_, it) => MapEntry(it.id, it));
-      final Map<String, Layer> newIds = newLayers.asMap().map((_, it) => MapEntry(it.id, it));
+      final Map<String, Layer> oldIds =
+          oldLayers.asMap().map((_, it) => MapEntry(it.id, it));
+      final Map<String, Layer> newIds =
+          newLayers.asMap().map((_, it) => MapEntry(it.id, it));
 
       final remove = oldIds.keys.where((id) => !newIds.keys.contains(id));
       final update = newIds.keys.where((it) => oldIds.keys.contains(it));
-      final add = newIds.keys.where((it) => !oldIds.keys.contains(it)).map((id) => newIds[id]);
+      final add = newIds.keys
+          .where((it) => !oldIds.keys.contains(it))
+          .map((id) => newIds[id]);
 
       await Future.wait(remove.map(_controller.style.removeLayer));
 
@@ -115,12 +128,16 @@ class _MapboxMapState extends State<MapboxMap> {
     }
 
     if (!sameSources) {
-      final Map<String, Source> oldIds = oldSources.asMap().map((_, it) => MapEntry(it.id, it));
-      final Map<String, Source> newIds = newSources.asMap().map((_, it) => MapEntry(it.id, it));
+      final Map<String, Source> oldIds =
+          oldSources.asMap().map((_, it) => MapEntry(it.id, it));
+      final Map<String, Source> newIds =
+          newSources.asMap().map((_, it) => MapEntry(it.id, it));
 
       final remove = oldIds.keys.where((id) => !newIds.keys.contains(id));
       final update = newIds.keys.where((it) => oldIds.keys.contains(it));
-      final add = newIds.keys.where((it) => !oldIds.keys.contains(it)).map((id) => newIds[id]);
+      final add = newIds.keys
+          .where((it) => !oldIds.keys.contains(it))
+          .map((id) => newIds[id]);
 
       await Future.wait(remove.map(_controller.style.removeSource));
 
@@ -142,8 +159,10 @@ class _MapboxMapState extends State<MapboxMap> {
     }
 
     if (!sameImages) {
-      final Map<String, Uint8List> oldIds = oldImages.map((name, it) => MapEntry(name, it));
-      final Map<String, Uint8List> newIds = newImages.map((name, it) => MapEntry(name, it));
+      final Map<String, Uint8List> oldIds =
+          oldImages.map((name, it) => MapEntry(name, it));
+      final Map<String, Uint8List> newIds =
+          newImages.map((name, it) => MapEntry(name, it));
 
       final remove = oldIds.keys.where((id) => !newIds.keys.contains(id));
       final add = newIds.keys.where((it) => !oldIds.keys.contains(it));
@@ -152,7 +171,8 @@ class _MapboxMapState extends State<MapboxMap> {
       await Future.wait(futures);
       futures.clear();
 
-      await Future.wait(add.map((String name) => _controller.style.addImage(name, newImages[name])));
+      await Future.wait(add.map(
+          (String name) => _controller.style.addImage(name, newImages[name])));
     }
   }
 

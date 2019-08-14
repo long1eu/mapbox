@@ -4,7 +4,9 @@
 
 part of source;
 
-abstract class RasterSource with _Channel implements Source, Built<RasterSource, RasterSourceBuilder> {
+abstract class RasterSource
+    with _Channel
+    implements Source, Built<RasterSource, RasterSourceBuilder> {
   factory RasterSource({
     @required String id,
     String attribution,
@@ -13,7 +15,8 @@ abstract class RasterSource with _Channel implements Source, Built<RasterSource,
     int tileSize = 512,
   }) {
     assert(id != null);
-    assert(uri != null || tileSet != null, 'You must specify eather the uri or provide a tileSet');
+    assert(uri != null || tileSet != null,
+        'You must specify eather the uri or provide a tileSet');
 
     return _$RasterSource((RasterSourceBuilder b) {
       b
@@ -35,7 +38,9 @@ abstract class RasterSource with _Channel implements Source, Built<RasterSource,
         ..id = proto.id
         ..attribution = proto.hasAttribution() ? proto.attribution : null
         ..uri = proto.hasUri() ? proto.uri : null
-        ..tileSet = proto.hasTileSet() ? TileSet.fromProto(proto.tileSet).toBuilder() : null
+        ..tileSet = proto.hasTileSet()
+            ? TileSet.fromProto(proto.tileSet).toBuilder()
+            : null
         ..tileSize = proto.hasTileSize() ? proto.tileSize : null;
     });
   }
@@ -62,7 +67,8 @@ abstract class RasterSource with _Channel implements Source, Built<RasterSource,
           ..tileSize = source.tileSize ?? tileSize;
       });
     } else {
-      throw ArgumentError('Only a RasterSource can be merged but got ${source.runtimeType}');
+      throw ArgumentError(
+          'Only a RasterSource can be merged but got ${source.runtimeType}');
     }
   }
 

@@ -65,8 +65,10 @@ class _ColorSwitcherStateState extends State<_ColorSwitcherState> {
               onChanged: waterColor != null
                   ? (int value) async {
                       FillLayer water = controller.style.getLayer('water');
-                      water = await water.copyWith(color: waterColor.withRed(value));
-                      if (mounted) setState(() => waterColor = water.color.color);
+                      water = await water.copyWith(
+                          color: waterColor.withRed(value));
+                      if (mounted)
+                        setState(() => waterColor = water.color.color);
                     }
                   : null,
             ),
@@ -76,8 +78,10 @@ class _ColorSwitcherStateState extends State<_ColorSwitcherState> {
               onChanged: waterColor != null
                   ? (int value) async {
                       FillLayer water = controller.style.getLayer('water');
-                      water = await water.copyWith(color: waterColor.withGreen(value));
-                      if (mounted) setState(() => waterColor = water.color.color);
+                      water = await water.copyWith(
+                          color: waterColor.withGreen(value));
+                      if (mounted)
+                        setState(() => waterColor = water.color.color);
                     }
                   : null,
             ),
@@ -87,8 +91,10 @@ class _ColorSwitcherStateState extends State<_ColorSwitcherState> {
               onChanged: waterColor != null
                   ? (int value) async {
                       FillLayer water = controller.style.getLayer('water');
-                      water = await water.copyWith(color: waterColor.withBlue(value));
-                      if (mounted) setState(() => waterColor = water.color.color);
+                      water = await water.copyWith(
+                          color: waterColor.withBlue(value));
+                      if (mounted)
+                        setState(() => waterColor = water.color.color);
                     }
                   : null,
             ),

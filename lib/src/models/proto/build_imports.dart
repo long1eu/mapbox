@@ -10,12 +10,17 @@ void main() {
       .listSync(recursive: true)
       .whereType<File>()
       .map((it) => canonicalize(it.absolute.path))
-      .where((it) => it.endsWith('.dart') && !it.endsWith('index.dart') && !it.endsWith('build_imports.dart'))
+      .where((it) =>
+          it.endsWith('.dart') &&
+          !it.endsWith('index.dart') &&
+          !it.endsWith('build_imports.dart'))
       .map((it) => it.split('lib/src/models/proto/')[1])
       .map((it) => 'export \'$it\';')
       .join('\n');
 
-  StringBuffer buffer = StringBuffer('// File created by\n// Lung Razvan <long1eu>\n// on 2019-08-01\n\n');
+  StringBuffer buffer = StringBuffer(
+      '// File created by\n// Lung Razvan <long1eu>\n// on 2019-08-01\n\n');
   buffer.writeln(exports);
-  File('./lib/src/models/proto/index.dart').writeAsStringSync(buffer.toString());
+  File('./lib/src/models/proto/index.dart')
+      .writeAsStringSync(buffer.toString());
 }

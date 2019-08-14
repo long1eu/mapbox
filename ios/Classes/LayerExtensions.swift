@@ -455,7 +455,6 @@ extension MGLRasterStyleLayer {
       raster.minZoom = minimumZoomLevel.proto
       raster.maxZoom = maximumZoomLevel.proto
       // todo if let sourceLayer = sourceLayerIdentifier { raster.sourceLayer = sourceLayer.proto }
-      
       raster.opacity = rasterOpacity.proto
       raster.hueRotate = rasterHueRotation.proto
       raster.brightnessMin = minimumRasterBrightness.proto
@@ -605,6 +604,7 @@ extension MGLSymbolStyleLayer {
     if layer.hasIconPadding { iconPadding = layer.iconPadding.expression }
     if layer.hasIconKeepUpright { keepsIconUpright = layer.iconKeepUpright.expression }
     if layer.hasIconOffset { iconOffset = layer.iconOffset.vectorOrExpression }
+    if layer.hasIconAnchor { iconAnchor = layer.iconAnchor.expression }
     if layer.hasIconPitchAlignment { iconPitchAlignment = layer.iconPitchAlignment.expression }
     if layer.hasTextPitchAlignment { textPitchAlignment = layer.textPitchAlignment.expression }
     if layer.hasTextRotationAlignment { textRotationAlignment = layer.textRotationAlignment.expression }

@@ -5,19 +5,24 @@
 part of flutter_mapbox_gl;
 
 class MapController extends ValueNotifier<CameraPosition> {
-  MapController._({@required final pb.Map__Operations_Ready info, Stream<MethodCall> calls})
+  MapController._(
+      {@required final pb.Map__Operations_Ready info, Stream<MethodCall> calls})
       : assert(info != null),
         assert(calls != null),
         _calls = calls,
         _viewId = info.viewId.toInt(),
-        _channel = MethodChannel('com.tophap/mapbox_gl_factory_${info.viewId.toInt()}'),
+        _channel = MethodChannel(
+            'com.tophap/mapbox_gl_factory_${info.viewId.toInt()}'),
         _prefetchesTiles = info.prefetchesTiles,
         _minZoom = info.minZoom,
         _maxZoom = info.maxZoom,
         _cameraPosition = CameraPosition.fromProto(info.camera),
         super(CameraPosition.fromProto(info.camera)) {
-    sub = _calls.where((it) => it.method.startsWith('mapEvent#')).listen(_cameraPositionChanged);
-    _style = Style._(channel: _channel, style: StyleModel.fromProto(info.style));
+    sub = _calls
+        .where((it) => it.method.startsWith('mapEvent#'))
+        .listen(_cameraPositionChanged);
+    _style =
+        Style._(channel: _channel, style: StyleModel.fromProto(info.style));
   }
 
   final int _viewId;
@@ -34,9 +39,11 @@ class MapController extends ValueNotifier<CameraPosition> {
 
   Style get style => _style;
 
-  Future<void> setStyle({MapStyle fromMapbox, String fromUri, String fromJson}) async {
+  Future<void> setStyle(
+      {MapStyle fromMapbox, String fromUri, String fromJson}) async {
     assert(fromMapbox != null || fromUri != null || fromJson != null);
-    final pb.Style_Operations_Build message = pb.Style_Operations_Build.create();
+    final pb.Style_Operations_Build message =
+        pb.Style_Operations_Build.create();
     if (fromMapbox != null) {
       message.default_1 = fromMapbox.proto;
     } else if (fromUri != null) {
@@ -45,28 +52,35 @@ class MapController extends ValueNotifier<CameraPosition> {
       message.json = fromJson;
     }
 
-    final Uint8List data = await _channel.invokeMethod('style#set', message.writeToBuffer());
+    final Uint8List data =
+        await _channel.invokeMethod('style#set', message.writeToBuffer());
     _style = Style._(channel: _channel, style: StyleModel.fromProtoData(data));
   }
 
   bool get prefetchesTiles => _prefetchesTiles;
 
   set prefetchesTiles(bool enabled) {
-    _channel.invokeMethod('map#setPrefetchesTiles', enabled).then((_) => _prefetchesTiles = enabled);
+    _channel
+        .invokeMethod('map#setPrefetchesTiles', enabled)
+        .then((_) => _prefetchesTiles = enabled);
   }
 
   double get minZoom => _minZoom;
 
   set minZoom(double minZoom) {
     assert(minZoom >= 0 && minZoom <= 25.5);
-    _channel.invokeMethod('map#setMinZoom', minZoom).then((_) => _minZoom = minZoom);
+    _channel
+        .invokeMethod('map#setMinZoom', minZoom)
+        .then((_) => _minZoom = minZoom);
   }
 
   double get maxZoom => _maxZoom;
 
   set maxZoom(double maxZoom) {
     assert(minZoom >= 0 && minZoom <= 25.5);
-    _channel.invokeMethod('map#setMaxZoom', maxZoom).then((_) => _maxZoom = maxZoom);
+    _channel
+        .invokeMethod('map#setMaxZoom', maxZoom)
+        .then((_) => _maxZoom = maxZoom);
   }
 
 /*
@@ -83,7 +97,9 @@ class MapController extends ValueNotifier<CameraPosition> {
   }
 
   set cameraPosition(CameraPosition cameraPosition) {
-    _channel.invokeMethod('map#setCameraPosition', cameraPosition.data).then((_) => _cameraPosition = cameraPosition);
+    _channel
+        .invokeMethod('map#setCameraPosition', cameraPosition.data)
+        .then((_) => _cameraPosition = cameraPosition);
   }
 
   Future<void> moveCamera(CameraUpdate update) async {
@@ -100,11 +116,12 @@ class MapController extends ValueNotifier<CameraPosition> {
     assert(duration != null);
     assert(easingInterpolator != null);
 
-    final pb.Map__Operations_EaseCamera message = pb.Map__Operations_EaseCamera.create()
-      ..update = update.proto
-      ..duration = duration.inMilliseconds
-      ..easingInterpolator = easingInterpolator
-      ..freeze();
+    final pb.Map__Operations_EaseCamera message =
+        pb.Map__Operations_EaseCamera.create()
+          ..update = update.proto
+          ..duration = duration.inMilliseconds
+          ..easingInterpolator = easingInterpolator
+          ..freeze();
 
     await _channel.invokeMethod('map#easeCamera', message.writeToBuffer());
   }
@@ -116,10 +133,11 @@ class MapController extends ValueNotifier<CameraPosition> {
     assert(update != null);
     assert(duration != null);
 
-    final pb.Map__Operations_AnimateCamera message = pb.Map__Operations_AnimateCamera.create()
-      ..update = update.proto
-      ..duration = duration.inMilliseconds
-      ..freeze();
+    final pb.Map__Operations_AnimateCamera message =
+        pb.Map__Operations_AnimateCamera.create()
+          ..update = update.proto
+          ..duration = duration.inMilliseconds
+          ..freeze();
 
     await _channel.invokeMethod('map#animateCamera', message.writeToBuffer());
   }
@@ -127,9 +145,10 @@ class MapController extends ValueNotifier<CameraPosition> {
   Future<void> scrollBy(double x, double y, {Duration duration}) async {
     assert(x != null);
     assert(y != null);
-    final pb.Map__Operations_ScrollBy message = pb.Map__Operations_ScrollBy.create()
-      ..x = x
-      ..y = y;
+    final pb.Map__Operations_ScrollBy message =
+        pb.Map__Operations_ScrollBy.create()
+          ..x = x
+          ..y = y;
 
     if (duration != null) {
       message.duration = Int64(duration.inMilliseconds);
@@ -141,18 +160,20 @@ class MapController extends ValueNotifier<CameraPosition> {
 
   Future<void> resetNorth() => _channel.invokeMethod('map#resetNorth');
 
-  Future<void> setFocalBearing(double bearing, double focalX, double focalY, Duration duration) async {
+  Future<void> setFocalBearing(
+      double bearing, double focalX, double focalY, Duration duration) async {
     assert(bearing != null);
     assert(focalX != null);
     assert(focalY != null);
     assert(duration != null);
 
-    final pb.Map__Operations_SetFocalBearing message = pb.Map__Operations_SetFocalBearing.create()
-      ..bearing = bearing
-      ..focalX = focalX
-      ..focalY = focalY
-      ..duration = Int64(duration.inMilliseconds)
-      ..freeze();
+    final pb.Map__Operations_SetFocalBearing message =
+        pb.Map__Operations_SetFocalBearing.create()
+          ..bearing = bearing
+          ..focalX = focalX
+          ..focalY = focalY
+          ..duration = Int64(duration.inMilliseconds)
+          ..freeze();
 
     await _channel.invokeMethod('map#setFocalBearing', message.writeToBuffer());
   }
@@ -163,7 +184,8 @@ class MapController extends ValueNotifier<CameraPosition> {
 
   Future<void> setLatLngBoundsForCameraTarget(LatLngBounds latLngBounds) {
     assert(latLngBounds != null);
-    return _channel.invokeMethod('map#setLatLngBoundsForCameraTarget', latLngBounds.data);
+    return _channel.invokeMethod(
+        'map#setLatLngBoundsForCameraTarget', latLngBounds.data);
   }
 
   Future<CameraPosition> getCameraForLatLngBounds(
@@ -177,14 +199,15 @@ class MapController extends ValueNotifier<CameraPosition> {
   }) async {
     assert(latLngBounds != null);
 
-    final pb.Map__Operations_GetCameraForLatLngBounds message = pb.Map__Operations_GetCameraForLatLngBounds.create()
-      ..bounds = latLngBounds.proto
-      ..padding.addAll(<int>[
-        paddingLeft ?? 0,
-        paddingTop ?? 0,
-        paddingRight,
-        paddingBottom ?? 0,
-      ]);
+    final pb.Map__Operations_GetCameraForLatLngBounds message =
+        pb.Map__Operations_GetCameraForLatLngBounds.create()
+          ..bounds = latLngBounds.proto
+          ..padding.addAll(<int>[
+            paddingLeft ?? 0,
+            paddingTop ?? 0,
+            paddingRight,
+            paddingBottom ?? 0,
+          ]);
 
     if (bearing != null) {
       message.bearing = bearing;
@@ -194,7 +217,8 @@ class MapController extends ValueNotifier<CameraPosition> {
     }
 
     message.freeze();
-    final Uint8List data = await _channel.invokeMethod('map#getCameraForLatLngBounds', latLngBounds.data);
+    final Uint8List data = await _channel.invokeMethod(
+        'map#getCameraForLatLngBounds', latLngBounds.data);
     if (data == null) {
       return null;
     }
@@ -202,9 +226,11 @@ class MapController extends ValueNotifier<CameraPosition> {
     return CameraPosition.fromProtoData(data);
   }
 
-  Future<List<int>> get padding => _channel.invokeListMethod<int>('map#getPadding');
+  Future<List<int>> get padding =>
+      _channel.invokeListMethod<int>('map#getPadding');
 
-  Future<Uint8List> snapshot() => _channel.invokeListMethod<int>('map#snapshot');
+  Future<Uint8List> snapshot() =>
+      _channel.invokeListMethod<int>('map#snapshot');
 
   @override
   void dispose() {

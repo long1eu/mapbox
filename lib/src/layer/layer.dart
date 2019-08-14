@@ -127,7 +127,9 @@ mixin _Channel {
   bool get isAttached => channel != null;
 
   Future<T> _update<T extends Layer>(T layer) {
-    return channel.invokeMethod('layer#update', layer.dataSource).then((_) => layer);
+    return channel
+        .invokeMethod('layer#update', layer.dataSource)
+        .then((_) => layer);
   }
 
   Future<Layer> update(Layer layer) {

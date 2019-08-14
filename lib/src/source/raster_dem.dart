@@ -4,7 +4,9 @@
 
 part of source;
 
-abstract class RasterDemSource with _Channel implements Source, Built<RasterDemSource, RasterDemSourceBuilder> {
+abstract class RasterDemSource
+    with _Channel
+    implements Source, Built<RasterDemSource, RasterDemSourceBuilder> {
   factory RasterDemSource({
     @required String id,
     String attribution,
@@ -13,7 +15,8 @@ abstract class RasterDemSource with _Channel implements Source, Built<RasterDemS
     int tileSize = 512,
   }) {
     assert(id != null);
-    assert(uri != null || tileSet != null, 'You must specify eather the uri or provide a tileSet');
+    assert(uri != null || tileSet != null,
+        'You must specify eather the uri or provide a tileSet');
 
     return _$RasterDemSource((RasterDemSourceBuilder b) {
       b
@@ -35,7 +38,9 @@ abstract class RasterDemSource with _Channel implements Source, Built<RasterDemS
         ..id = proto.id
         ..attribution = proto.hasAttribution() ? proto.attribution : null
         ..uri = proto.hasUri() ? proto.uri : null
-        ..tileSet = proto.hasTileSet() ? TileSet.fromProto(proto.tileSet).toBuilder() : null
+        ..tileSet = proto.hasTileSet()
+            ? TileSet.fromProto(proto.tileSet).toBuilder()
+            : null
         ..tileSize = proto.hasTileSize() ? proto.tileSize : null;
     });
   }
@@ -62,7 +67,8 @@ abstract class RasterDemSource with _Channel implements Source, Built<RasterDemS
           ..tileSize = source.tileSize ?? tileSize;
       });
     } else {
-      throw ArgumentError('Only a RasterDemSource can be merged but got ${source.runtimeType}');
+      throw ArgumentError(
+          'Only a RasterDemSource can be merged but got ${source.runtimeType}');
     }
   }
 
@@ -88,5 +94,6 @@ abstract class RasterDemSource with _Channel implements Source, Built<RasterDemS
       ..freeze();
   }
 
-  static Serializer<RasterDemSource> get serializer => _$rasterDemSourceSerializer;
+  static Serializer<RasterDemSource> get serializer =>
+      _$rasterDemSourceSerializer;
 }

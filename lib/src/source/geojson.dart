@@ -4,7 +4,9 @@
 
 part of source;
 
-abstract class GeoJsonSource with _Channel implements Source, Built<GeoJsonSource, GeoJsonSourceBuilder> {
+abstract class GeoJsonSource
+    with _Channel
+    implements Source, Built<GeoJsonSource, GeoJsonSourceBuilder> {
   factory GeoJsonSource({
     @required String id,
     String uri,
@@ -12,7 +14,8 @@ abstract class GeoJsonSource with _Channel implements Source, Built<GeoJsonSourc
     GeoJsonOptions options,
   }) {
     assert(id != null);
-    assert(uri != null || geoJson != null, 'You must specify eather the uri or provide a json source');
+    assert(uri != null || geoJson != null,
+        'You must specify eather the uri or provide a json source');
 
     return _$GeoJsonSource((GeoJsonSourceBuilder b) {
       b
@@ -34,7 +37,9 @@ abstract class GeoJsonSource with _Channel implements Source, Built<GeoJsonSourc
         ..attribution = proto.hasAttribution() ? proto.attribution : null
         ..uri = proto.hasUri() ? proto.uri : null
         ..geoJson = proto.hasGeoJson() ? proto.geoJson : null
-        ..options = proto.hasOptions() ? GeoJsonOptions.fromProto(proto.options).toBuilder() : null;
+        ..options = proto.hasOptions()
+            ? GeoJsonOptions.fromProto(proto.options).toBuilder()
+            : null;
     });
   }
 
@@ -72,7 +77,8 @@ abstract class GeoJsonSource with _Channel implements Source, Built<GeoJsonSourc
           ..options = (source.options ?? this.options)?.toBuilder();
       });
     } else {
-      throw ArgumentError('Only a GeojsonSource can be merged but got ${source.runtimeType}');
+      throw ArgumentError(
+          'Only a GeojsonSource can be merged but got ${source.runtimeType}');
     }
   }
 
@@ -89,7 +95,8 @@ abstract class GeoJsonSource with _Channel implements Source, Built<GeoJsonSourc
       if (!isAttached || this == _source) return _source;
       return _update(_source);
     } else {
-      throw ArgumentError('Only a GeojsonSource can be merged but got ${source.runtimeType}');
+      throw ArgumentError(
+          'Only a GeojsonSource can be merged but got ${source.runtimeType}');
     }
   }
 
@@ -117,7 +124,8 @@ abstract class GeoJsonSource with _Channel implements Source, Built<GeoJsonSourc
   static Serializer<GeoJsonSource> get serializer => _$geoJsonSourceSerializer;
 }
 
-abstract class GeoJsonOptions implements Built<GeoJsonOptions, GeoJsonOptionsBuilder> {
+abstract class GeoJsonOptions
+    implements Built<GeoJsonOptions, GeoJsonOptionsBuilder> {
   factory GeoJsonOptions({
     int minZoom = 0,
     int maxZoom = 25,
@@ -193,5 +201,6 @@ abstract class GeoJsonOptions implements Built<GeoJsonOptions, GeoJsonOptionsBui
   @memoized
   Uint8List get data => proto.writeToBuffer();
 
-  static Serializer<GeoJsonOptions> get serializer => _$geoJsonOptionsSerializer;
+  static Serializer<GeoJsonOptions> get serializer =>
+      _$geoJsonOptionsSerializer;
 }

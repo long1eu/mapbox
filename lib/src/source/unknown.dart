@@ -4,8 +4,11 @@
 
 part of source;
 
-abstract class UnknownSource with _Channel implements Source, Built<UnknownSource, UnknownSourceBuilder> {
-  factory UnknownSource() => throw StateError('You can not create an instance of this class');
+abstract class UnknownSource
+    with _Channel
+    implements Source, Built<UnknownSource, UnknownSourceBuilder> {
+  factory UnknownSource() =>
+      throw StateError('You can not create an instance of this class');
 
   factory UnknownSource.fromProtoData(Uint8List data) {
     return UnknownSource.fromProto(pb.Source_Unknown.fromBuffer(data));
@@ -29,7 +32,8 @@ abstract class UnknownSource with _Channel implements Source, Built<UnknownSourc
           ..attribution = source.attribution ?? attribution;
       });
     } else {
-      throw ArgumentError('Only a UnknownSource can be merged but got ${source.runtimeType}');
+      throw ArgumentError(
+          'Only a UnknownSource can be merged but got ${source.runtimeType}');
     }
   }
 

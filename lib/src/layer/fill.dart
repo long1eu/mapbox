@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLayerBuilder> {
+abstract class FillLayer
+    with _Channel
+    implements Layer, Built<FillLayer, FillLayerBuilder> {
   factory FillLayer({
     @required String id,
     @required String sourceId,
@@ -51,18 +53,32 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..antialias = antialiasEx ?? (antialias != null ? literalBool(antialias) : null)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
-        ..outlineColor = outlineColorEx ?? (outlineColor != null ? rgb(outlineColor.red, outlineColor.green, outlineColor.blue) : null)
-        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..antialias =
+            antialiasEx ?? (antialias != null ? literalBool(antialias) : null)
+        ..opacity =
+            opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..color = colorEx ??
+            (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..outlineColor = outlineColorEx ??
+            (outlineColor != null
+                ? rgb(outlineColor.red, outlineColor.green, outlineColor.blue)
+                : null)
+        ..translate = translateEx ??
+            (translate != null
+                ? literalList([translate.dx, translate.dy])
+                : null)
         ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
-        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
-        ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
+        ..pattern =
+            patternEx ?? (pattern != null ? literalString(pattern) : null)
+        ..opacityTransition =
+            (opacityTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
-        ..outlineColorTransition = (outlineColorTransition ?? transitionOptions).toBuilder()
-        ..translateTransition = (translateTransition ?? transitionOptions).toBuilder()
-        ..patternTransition = (patternTransition ?? transitionOptions).toBuilder();
+        ..outlineColorTransition =
+            (outlineColorTransition ?? transitionOptions).toBuilder()
+        ..translateTransition =
+            (translateTransition ?? transitionOptions).toBuilder()
+        ..patternTransition =
+            (patternTransition ?? transitionOptions).toBuilder();
     });
   }
 
@@ -79,19 +95,39 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..filter = proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
-        ..antialias = proto.hasAntialias() ? Expression.fromProtoString(proto.antialias) : null
-        ..opacity = proto.hasOpacity() ? Expression.fromProtoString(proto.opacity) : null
-        ..color = proto.hasColor() ? Expression.fromProtoString(proto.color) : null
-        ..outlineColor = proto.hasOutlineColor() ? Expression.fromProtoString(proto.outlineColor) : null
-        ..translate = proto.hasTranslate() ? Expression.fromProtoString(proto.translate) : null
-        ..translateAnchor = proto.hasTranslateAnchor() ? Expression.fromProtoString(proto.translateAnchor) : null
-        ..pattern = proto.hasPattern() ? Expression.fromProtoString(proto.pattern) : null
-        ..opacityTransition = TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
-        ..colorTransition = TransitionOptions.fromProto(proto.colorTransition).toBuilder()
-        ..outlineColorTransition = TransitionOptions.fromProto(proto.outlineColorTransition).toBuilder()
-        ..translateTransition = TransitionOptions.fromProto(proto.translateTransition).toBuilder()
-        ..patternTransition = TransitionOptions.fromProto(proto.patternTransition).toBuilder();
+        ..filter =
+            proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
+        ..antialias = proto.hasAntialias()
+            ? Expression.fromProtoString(proto.antialias)
+            : null
+        ..opacity = proto.hasOpacity()
+            ? Expression.fromProtoString(proto.opacity)
+            : null
+        ..color =
+            proto.hasColor() ? Expression.fromProtoString(proto.color) : null
+        ..outlineColor = proto.hasOutlineColor()
+            ? Expression.fromProtoString(proto.outlineColor)
+            : null
+        ..translate = proto.hasTranslate()
+            ? Expression.fromProtoString(proto.translate)
+            : null
+        ..translateAnchor = proto.hasTranslateAnchor()
+            ? Expression.fromProtoString(proto.translateAnchor)
+            : null
+        ..pattern = proto.hasPattern()
+            ? Expression.fromProtoString(proto.pattern)
+            : null
+        ..opacityTransition =
+            TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
+        ..colorTransition =
+            TransitionOptions.fromProto(proto.colorTransition).toBuilder()
+        ..outlineColorTransition =
+            TransitionOptions.fromProto(proto.outlineColorTransition)
+                .toBuilder()
+        ..translateTransition =
+            TransitionOptions.fromProto(proto.translateTransition).toBuilder()
+        ..patternTransition =
+            TransitionOptions.fromProto(proto.patternTransition).toBuilder();
     });
   }
 
@@ -176,18 +212,36 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..antialias = antialiasEx ?? (antialias != null ? literalBool(antialias) : this.antialias)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
-        ..outlineColor = outlineColorEx ?? (outlineColor != null ? rgb(outlineColor.red, outlineColor.green, outlineColor.blue) : this.outlineColor)
-        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
-        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
-        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
-        ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
-        ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
-        ..outlineColorTransition = (outlineColorTransition ?? this.outlineColorTransition).toBuilder()
-        ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()
-        ..patternTransition = (patternTransition ?? this.patternTransition).toBuilder();
+        ..antialias = antialiasEx ??
+            (antialias != null ? literalBool(antialias) : this.antialias)
+        ..opacity = opacityEx ??
+            (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..color = colorEx ??
+            (color != null
+                ? rgb(color.red, color.green, color.blue)
+                : this.color)
+        ..outlineColor = outlineColorEx ??
+            (outlineColor != null
+                ? rgb(outlineColor.red, outlineColor.green, outlineColor.blue)
+                : this.outlineColor)
+        ..translate = translateEx ??
+            (translate != null
+                ? literalList([translate.dx, translate.dy])
+                : this.translate)
+        ..translateAnchor =
+            translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
+        ..pattern = patternEx ??
+            (pattern != null ? literalString(pattern) : this.pattern)
+        ..opacityTransition =
+            (opacityTransition ?? this.opacityTransition).toBuilder()
+        ..colorTransition =
+            (colorTransition ?? this.colorTransition).toBuilder()
+        ..outlineColorTransition =
+            (outlineColorTransition ?? this.outlineColorTransition).toBuilder()
+        ..translateTransition =
+            (translateTransition ?? this.translateTransition).toBuilder()
+        ..patternTransition =
+            (patternTransition ?? this.patternTransition).toBuilder();
     });
     if (!isAttached || this == layer) return layer;
     return _update(layer);
@@ -210,14 +264,21 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
           ..translate = layer.translate ?? translate
           ..translateAnchor = layer.translateAnchor ?? translateAnchor
           ..pattern = layer.pattern ?? pattern
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..outlineColorTransition = (layer.outlineColorTransition ?? outlineColorTransition).toBuilder()
-          ..translateTransition = (layer.translateTransition ?? translateTransition).toBuilder()
-          ..patternTransition = (layer.patternTransition ?? patternTransition).toBuilder();
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..outlineColorTransition =
+              (layer.outlineColorTransition ?? outlineColorTransition)
+                  .toBuilder()
+          ..translateTransition =
+              (layer.translateTransition ?? translateTransition).toBuilder()
+          ..patternTransition =
+              (layer.patternTransition ?? patternTransition).toBuilder();
       });
     } else {
-      throw ArgumentError('Only a FillLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a FillLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -237,17 +298,24 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
           ..translate = layer.translate ?? translate
           ..translateAnchor = layer.translateAnchor ?? translateAnchor
           ..pattern = layer.pattern ?? pattern
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..outlineColorTransition = (layer.outlineColorTransition ?? outlineColorTransition).toBuilder()
-          ..translateTransition = (layer.translateTransition ?? translateTransition).toBuilder()
-          ..patternTransition = (layer.patternTransition ?? patternTransition).toBuilder();
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..outlineColorTransition =
+              (layer.outlineColorTransition ?? outlineColorTransition)
+                  .toBuilder()
+          ..translateTransition =
+              (layer.translateTransition ?? translateTransition).toBuilder()
+          ..patternTransition =
+              (layer.patternTransition ?? patternTransition).toBuilder();
       });
 
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a FillLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a FillLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -270,7 +338,8 @@ abstract class FillLayer with _Channel implements Layer, Built<FillLayer, FillLa
     if (opacity != null) message.opacity = opacity.protoString;
     if (color != null) message.color = color.protoString;
     if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null) message.translateAnchor = translateAnchor.protoString;
+    if (translateAnchor != null)
+      message.translateAnchor = translateAnchor.protoString;
     if (outlineColor != null) message.outlineColor = outlineColor.protoString;
     if (pattern != null) message.pattern = pattern.protoString;
 

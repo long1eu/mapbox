@@ -25,11 +25,13 @@ class MapStyle extends EnumClass {
 
   static BuiltSet<MapStyle> get values => _$values;
 
-  pb.Style_MapboxStyle get proto => pb.Style_MapboxStyle.valueOf(values.toList().indexOf(this));
+  pb.Style_MapboxStyle get proto =>
+      pb.Style_MapboxStyle.valueOf(values.toList().indexOf(this));
 
   static MapStyle valueOf(String name) => _$valueOf(name);
 
   static Serializer<MapStyle> get serializer => _$mapStyleSerializer;
 
-  static MapStyle fromProto(pb.Style_MapboxStyle proto) => values.elementAt(proto.value);
+  static MapStyle fromProto(pb.Style_MapboxStyle proto) =>
+      values.elementAt(proto.value);
 }

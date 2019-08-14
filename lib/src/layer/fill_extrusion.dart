@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtrusionLayer, FillExtrusionLayerBuilder> {
+abstract class FillExtrusionLayer
+    with _Channel
+    implements Layer, Built<FillExtrusionLayer, FillExtrusionLayerBuilder> {
   factory FillExtrusionLayer({
     @required String id,
     @required String sourceId,
@@ -56,25 +58,36 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
-        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..opacity =
+            opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..color = colorEx ??
+            (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..translate = translateEx ??
+            (translate != null
+                ? literalList([translate.dx, translate.dy])
+                : null)
         ..translateAnchor = translateAnchorEx ?? translateAnchor
-        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
+        ..pattern =
+            patternEx ?? (pattern != null ? literalString(pattern) : null)
         ..height = heightEx ?? (height != null ? literalDouble(height) : null)
         ..base = baseEx ?? (base != null ? literalDouble(base) : null)
-        ..verticalGradient = verticalGradientEx ?? (verticalGradient != null ? literalBool(verticalGradient) : null)
-        ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
+        ..verticalGradient = verticalGradientEx ??
+            (verticalGradient != null ? literalBool(verticalGradient) : null)
+        ..opacityTransition =
+            (opacityTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
-        ..translateTransition = (translateTransition ?? transitionOptions).toBuilder()
-        ..patternTransition = (patternTransition ?? transitionOptions).toBuilder()
+        ..translateTransition =
+            (translateTransition ?? transitionOptions).toBuilder()
+        ..patternTransition =
+            (patternTransition ?? transitionOptions).toBuilder()
         ..heightTransition = (heightTransition ?? transitionOptions).toBuilder()
         ..baseTransition = (baseTransition ?? transitionOptions).toBuilder();
     });
   }
 
   factory FillExtrusionLayer.fromProtoData(Uint8List data) {
-    return FillExtrusionLayer.fromProto(pb.Layer_FillExtrusion.fromBuffer(data));
+    return FillExtrusionLayer.fromProto(
+        pb.Layer_FillExtrusion.fromBuffer(data));
   }
 
   factory FillExtrusionLayer.fromProto(pb.Layer_FillExtrusion proto) {
@@ -86,21 +99,40 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..filter = proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
-        ..opacity = proto.hasOpacity() ? Expression.fromProtoString(proto.opacity) : null
-        ..color = proto.hasColor() ? Expression.fromProtoString(proto.color) : null
-        ..translate = proto.hasTranslate() ? Expression.fromProtoString(proto.translate) : null
-        ..translateAnchor = proto.hasTranslateAnchor() ? Expression.fromProtoString(proto.translateAnchor) : null
-        ..pattern = proto.hasPattern() ? Expression.fromProtoString(proto.pattern) : null
-        ..height = proto.hasHeight() ? Expression.fromProtoString(proto.height) : null
+        ..filter =
+            proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
+        ..opacity = proto.hasOpacity()
+            ? Expression.fromProtoString(proto.opacity)
+            : null
+        ..color =
+            proto.hasColor() ? Expression.fromProtoString(proto.color) : null
+        ..translate = proto.hasTranslate()
+            ? Expression.fromProtoString(proto.translate)
+            : null
+        ..translateAnchor = proto.hasTranslateAnchor()
+            ? Expression.fromProtoString(proto.translateAnchor)
+            : null
+        ..pattern = proto.hasPattern()
+            ? Expression.fromProtoString(proto.pattern)
+            : null
+        ..height =
+            proto.hasHeight() ? Expression.fromProtoString(proto.height) : null
         ..base = proto.hasBase() ? Expression.fromProtoString(proto.base) : null
-        ..verticalGradient = proto.hasVerticalGradient() ? Expression.fromProtoString(proto.verticalGradient) : null
-        ..opacityTransition = TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
-        ..colorTransition = TransitionOptions.fromProto(proto.colorTransition).toBuilder()
-        ..translateTransition = TransitionOptions.fromProto(proto.translateTransition).toBuilder()
-        ..patternTransition = TransitionOptions.fromProto(proto.patternTransition).toBuilder()
-        ..heightTransition = TransitionOptions.fromProto(proto.heightTransition).toBuilder()
-        ..baseTransition = TransitionOptions.fromProto(proto.baseTransition).toBuilder();
+        ..verticalGradient = proto.hasVerticalGradient()
+            ? Expression.fromProtoString(proto.verticalGradient)
+            : null
+        ..opacityTransition =
+            TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
+        ..colorTransition =
+            TransitionOptions.fromProto(proto.colorTransition).toBuilder()
+        ..translateTransition =
+            TransitionOptions.fromProto(proto.translateTransition).toBuilder()
+        ..patternTransition =
+            TransitionOptions.fromProto(proto.patternTransition).toBuilder()
+        ..heightTransition =
+            TransitionOptions.fromProto(proto.heightTransition).toBuilder()
+        ..baseTransition =
+            TransitionOptions.fromProto(proto.baseTransition).toBuilder();
     });
   }
 
@@ -194,19 +226,37 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
-        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
-        ..translateAnchor = translateAnchorEx ?? translateAnchor ?? this.translateAnchor
-        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
-        ..height = heightEx ?? (height != null ? literalDouble(height) : this.height)
+        ..opacity = opacityEx ??
+            (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..color = colorEx ??
+            (color != null
+                ? rgb(color.red, color.green, color.blue)
+                : this.color)
+        ..translate = translateEx ??
+            (translate != null
+                ? literalList([translate.dx, translate.dy])
+                : this.translate)
+        ..translateAnchor =
+            translateAnchorEx ?? translateAnchor ?? this.translateAnchor
+        ..pattern = patternEx ??
+            (pattern != null ? literalString(pattern) : this.pattern)
+        ..height =
+            heightEx ?? (height != null ? literalDouble(height) : this.height)
         ..base = baseEx ?? (base != null ? literalDouble(base) : this.base)
-        ..verticalGradient = verticalGradientEx ?? (verticalGradient != null ? literalBool(verticalGradient) : this.verticalGradient)
-        ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
-        ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
-        ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()
-        ..patternTransition = (patternTransition ?? this.patternTransition).toBuilder()
-        ..heightTransition = (heightTransition ?? this.heightTransition).toBuilder()
+        ..verticalGradient = verticalGradientEx ??
+            (verticalGradient != null
+                ? literalBool(verticalGradient)
+                : this.verticalGradient)
+        ..opacityTransition =
+            (opacityTransition ?? this.opacityTransition).toBuilder()
+        ..colorTransition =
+            (colorTransition ?? this.colorTransition).toBuilder()
+        ..translateTransition =
+            (translateTransition ?? this.translateTransition).toBuilder()
+        ..patternTransition =
+            (patternTransition ?? this.patternTransition).toBuilder()
+        ..heightTransition =
+            (heightTransition ?? this.heightTransition).toBuilder()
         ..baseTransition = (baseTransition ?? this.baseTransition).toBuilder();
     });
     if (!isAttached || this == layer) return layer;
@@ -231,15 +281,22 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
           ..height = layer.height ?? height
           ..base = layer.base ?? base
           ..verticalGradient = layer.verticalGradient ?? verticalGradient
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..translateTransition = (layer.translateTransition ?? translateTransition).toBuilder()
-          ..patternTransition = (layer.patternTransition ?? patternTransition).toBuilder()
-          ..heightTransition = (layer.heightTransition ?? heightTransition).toBuilder()
-          ..baseTransition = (layer.baseTransition ?? baseTransition).toBuilder();
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..translateTransition =
+              (layer.translateTransition ?? translateTransition).toBuilder()
+          ..patternTransition =
+              (layer.patternTransition ?? patternTransition).toBuilder()
+          ..heightTransition =
+              (layer.heightTransition ?? heightTransition).toBuilder()
+          ..baseTransition =
+              (layer.baseTransition ?? baseTransition).toBuilder();
       });
     } else {
-      throw ArgumentError('Only a FillExtrusionLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a FillExtrusionLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -261,17 +318,24 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
           ..height = layer.height ?? height
           ..base = layer.base ?? base
           ..verticalGradient = layer.verticalGradient ?? verticalGradient
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..translateTransition = (layer.translateTransition ?? translateTransition).toBuilder()
-          ..patternTransition = (layer.patternTransition ?? patternTransition).toBuilder()
-          ..heightTransition = (layer.heightTransition ?? heightTransition).toBuilder()
-          ..baseTransition = (layer.baseTransition ?? baseTransition).toBuilder();
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..translateTransition =
+              (layer.translateTransition ?? translateTransition).toBuilder()
+          ..patternTransition =
+              (layer.patternTransition ?? patternTransition).toBuilder()
+          ..heightTransition =
+              (layer.heightTransition ?? heightTransition).toBuilder()
+          ..baseTransition =
+              (layer.baseTransition ?? baseTransition).toBuilder();
       });
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a FillExtrusionLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a FillExtrusionLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -294,11 +358,13 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
     if (opacity != null) message.opacity = opacity.protoString;
     if (color != null) message.color = color.protoString;
     if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null) message.translateAnchor = translateAnchor.protoString;
+    if (translateAnchor != null)
+      message.translateAnchor = translateAnchor.protoString;
     if (pattern != null) message.pattern = pattern.protoString;
     if (height != null) message.height = height.protoString;
     if (base != null) message.base = base.protoString;
-    if (verticalGradient != null) message.verticalGradient = verticalGradient.protoString;
+    if (verticalGradient != null)
+      message.verticalGradient = verticalGradient.protoString;
 
     return message..freeze();
   }
@@ -310,5 +376,6 @@ abstract class FillExtrusionLayer with _Channel implements Layer, Built<FillExtr
       ..freeze();
   }
 
-  static Serializer<FillExtrusionLayer> get serializer => _$fillExtrusionLayerSerializer;
+  static Serializer<FillExtrusionLayer> get serializer =>
+      _$fillExtrusionLayerSerializer;
 }

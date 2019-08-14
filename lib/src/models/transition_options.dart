@@ -15,7 +15,8 @@ part 'transition_options.g.dart';
 
 // ignore_for_file: non_constant_identifier_names
 
-abstract class TransitionOptions implements Built<TransitionOptions, TransitionOptionsBuilder> {
+abstract class TransitionOptions
+    implements Built<TransitionOptions, TransitionOptionsBuilder> {
   factory TransitionOptions({
     Duration duration = const Duration(milliseconds: 300),
     Duration delay = Duration.zero,
@@ -61,5 +62,6 @@ abstract class TransitionOptions implements Built<TransitionOptions, TransitionO
   @memoized
   Uint8List get data => proto.writeToBuffer();
 
-  static Serializer<TransitionOptions> get serializer => _$transitionOptionsSerializer;
+  static Serializer<TransitionOptions> get serializer =>
+      _$transitionOptionsSerializer;
 }

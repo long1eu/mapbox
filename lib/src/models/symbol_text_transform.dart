@@ -10,8 +10,10 @@ class SymbolTextTransform extends ExpressionLiteral {
   final int _i;
 
   static const SymbolTextTransform none = SymbolTextTransform._(0, 'none');
-  static const SymbolTextTransform uppercase = SymbolTextTransform._(1, 'uppercase');
-  static const SymbolTextTransform lowercase = SymbolTextTransform._(2, 'lowercase');
+  static const SymbolTextTransform uppercase =
+      SymbolTextTransform._(1, 'uppercase');
+  static const SymbolTextTransform lowercase =
+      SymbolTextTransform._(2, 'lowercase');
 
   static const List<SymbolTextTransform> values = <SymbolTextTransform>[
     none,

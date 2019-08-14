@@ -31,10 +31,12 @@ class _SpaceStationLocationState extends StatefulWidget {
   const _SpaceStationLocationState({Key key}) : super(key: key);
 
   @override
-  _SpaceStationLocationStateState createState() => _SpaceStationLocationStateState();
+  _SpaceStationLocationStateState createState() =>
+      _SpaceStationLocationStateState();
 }
 
-class _SpaceStationLocationStateState extends State<_SpaceStationLocationState> {
+class _SpaceStationLocationStateState
+    extends State<_SpaceStationLocationState> {
   Timer timer;
   Uint8List image;
   LatLng issPosition;
@@ -44,15 +46,18 @@ class _SpaceStationLocationStateState extends State<_SpaceStationLocationState> 
   @override
   void initState() {
     super.initState();
-    rootBundle.load('res/iss.png').then((data) => mounted ? setState(() => image = data.buffer.asUint8List()) : null);
+    rootBundle.load('res/iss.png').then((data) =>
+        mounted ? setState(() => image = data.buffer.asUint8List()) : null);
 
     timer = Timer.periodic(const Duration(seconds: 1), _getData);
     _getData(null);
   }
 
   void _getData(Timer timer) async {
-    final Response data = await Client().get('http://api.open-notify.org/iss-now');
-    final Map<String, String> position = Map<String, String>.from(jsonDecode(data.body)['iss_position']);
+    final Response data =
+        await Client().get('http://api.open-notify.org/iss-now');
+    final Map<String, String> position =
+        Map<String, String>.from(jsonDecode(data.body)['iss_position']);
     final LatLng _issPosition = LatLng(
       latitude: double.parse(position['latitude']),
       longitude: double.parse(position['longitude']),
@@ -62,7 +67,8 @@ class _SpaceStationLocationStateState extends State<_SpaceStationLocationState> 
       setState(() => issPosition = _issPosition);
       if (!setInitialPosition && controller != null) {
         setInitialPosition = true;
-        controller.cameraPosition = controller.cameraPosition.copyWith(target: _issPosition, zoom: 4.5);
+        controller.cameraPosition =
+            controller.cameraPosition.copyWith(target: _issPosition, zoom: 4.5);
       }
     }
   }
@@ -71,7 +77,8 @@ class _SpaceStationLocationStateState extends State<_SpaceStationLocationState> 
     this.controller = controller;
     if (!setInitialPosition && issPosition != null) {
       setInitialPosition = true;
-      controller.cameraPosition = controller.cameraPosition.copyWith(target: issPosition, zoom: 4.5);
+      controller.cameraPosition =
+          controller.cameraPosition.copyWith(target: issPosition, zoom: 4.5);
     }
   }
 

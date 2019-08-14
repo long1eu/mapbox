@@ -97,12 +97,21 @@ class Expression {
       : _operator = operator,
         _arguments = <Expression>[arg1, arg2];
 
-  Expression._e3(String operator, Expression arg1, Expression arg2, Expression arg3)
-      : _operator = operator,
+  Expression._e3(
+    String operator,
+    Expression arg1,
+    Expression arg2,
+    Expression arg3,
+  )   : _operator = operator,
         _arguments = <Expression>[arg1, arg2, arg3];
 
-  Expression._e4(String operator, Expression arg1, Expression arg2, Expression arg3, Expression arg4)
-      : _operator = operator,
+  Expression._e4(
+    String operator,
+    Expression arg1,
+    Expression arg2,
+    Expression arg3,
+    Expression arg4,
+  )   : _operator = operator,
         _arguments = <Expression>[arg1, arg2, arg3, arg4];
 
   Expression._numbers(String operator, dynamic number1, [dynamic number2])
@@ -127,11 +136,13 @@ class Expression {
         ];
 
   factory Expression.fromProtoString(pb.StringValue string) {
-    print(string.value);
-    return string == null ? null : Expression.fromJson(jsonDecode(string.value));
+    return string == null
+        ? null
+        : Expression.fromJson(jsonDecode(string.value));
   }
 
-  static final RegExp colorRegex = RegExp('rgba?\\((.+?),(.+?),(.+?)(,(.+?))?\\)');
+  static final RegExp colorRegex =
+      RegExp('rgba?\\((.+?),(.+?),(.+?)(,(.+?))?\\)');
 
   factory Expression.fromJson(List<dynamic> list) {
     Expression convertElement(dynamic value) {
@@ -170,15 +181,19 @@ class Expression {
       } else if (value == null) {
         return ExpressionLiteral('');
       } else if (value is Map) {
-        final Map<dynamic, Expression> map = value.map((dynamic key, dynamic value) => MapEntry(key, convertElement(value)));
+        final Map<dynamic, Expression> map = value.map(
+            (dynamic key, dynamic value) =>
+                MapEntry(key, convertElement(value)));
         return _ExpressionMap(Map<String, Expression>.from(map));
       } else {
-        throw ArgumentError('Unssuported expression conversion for ${value.runtimeType}.');
+        throw ArgumentError(
+            'Unssuported expression conversion for ${value.runtimeType}.');
       }
     }
 
     if (Platform.isIOS) {
-      if (list[0] is! String && list.map((it) => it.runtimeType).toSet().length == 1) {
+      if (list[0] is! String &&
+          list.map((it) => it.runtimeType).toSet().length == 1) {
         list = ['literal', list];
       }
     }
@@ -195,8 +210,11 @@ class Expression {
       if (operator == 'literal' && item is List) {
         final List nested = item;
         assert(nested.every((it) => it is num || it is String || it is bool));
-        if (nested.any((it) => it is double) && nested.every((it) => it is num)) {
-          arguments.add(_ExpressionLiteralList(nested.map((it) => double.parse(it.toStringAsPrecision(6))).toList()));
+        if (nested.any((it) => it is double) &&
+            nested.every((it) => it is num)) {
+          arguments.add(_ExpressionLiteralList(nested
+              .map((it) => double.parse(it.toStringAsPrecision(6)))
+              .toList()));
         } else {
           arguments.add(_ExpressionLiteralList(nested));
         }
@@ -222,7 +240,8 @@ class Expression {
     assert(_arguments.every((it) => it is ExpressionLiteral));
 
     if (_operator == kRgbOperator) {
-      assert(_arguments.length == 3 && _arguments.every((it) => it is ExpressionLiteral));
+      assert(_arguments.length == 3 &&
+          _arguments.every((it) => it is ExpressionLiteral));
 
       return Color.fromARGB(
         0xFF,
@@ -309,7 +328,8 @@ class Expression {
 
   @override
   int get hashCode {
-    return _operator.hashCode ^ const ListEquality<Expression>().hash(_arguments);
+    return _operator.hashCode ^
+        const ListEquality<Expression>().hash(_arguments);
   }
 }
 
@@ -323,7 +343,12 @@ class _ExpressionMap extends Expression implements _ValueExpression {
   dynamic get value => _jsonValue;
 
   @override
-  Object get _jsonValue => _map.map((String key, Expression expression) => MapEntry(key, expression is _ValueExpression ? (expression as _ValueExpression)._jsonValue : expression.json));
+  Object get _jsonValue => _map.map((String key, Expression expression) =>
+      MapEntry(
+          key,
+          expression is _ValueExpression
+              ? (expression as _ValueExpression)._jsonValue
+              : expression.json));
 
   @override
   String toString() {
@@ -341,7 +366,8 @@ class _ExpressionMap extends Expression implements _ValueExpression {
           const MapEquality<String, Expression>().equals(_map, other._map);
 
   @override
-  int get hashCode => super.hashCode ^ const MapEquality<String, Expression>().hash(_map);
+  int get hashCode =>
+      super.hashCode ^ const MapEquality<String, Expression>().hash(_map);
 }
 
 class ExpressionLiteral extends Expression implements _ValueExpression {
@@ -354,7 +380,8 @@ class ExpressionLiteral extends Expression implements _ValueExpression {
   dynamic get value => _jsonValue;
 
   @override
-  Object get _jsonValue => literal is ExpressionLiteral ? literal.value : literal;
+  Object get _jsonValue =>
+      literal is ExpressionLiteral ? literal.value : literal;
 
   @override
   List<Object> get json => ['literal', literal];
@@ -382,14 +409,16 @@ class _ExpressionLiteralList extends ExpressionLiteral {
     }
 
     if (other is _ExpressionLiteralList) {
-      return const ListEquality<dynamic>(_ExpressionListEquality()).equals(_jsonValue, other._jsonValue);
+      return const ListEquality<dynamic>(_ExpressionListEquality())
+          .equals(_jsonValue, other._jsonValue);
     }
 
     return false;
   }
 
   @override
-  int get hashCode => super.hashCode ^ const ListEquality<dynamic>().hash(literal);
+  int get hashCode =>
+      super.hashCode ^ const ListEquality<dynamic>().hash(literal);
 
   @override
   String toString() => 'literal(${literal.runtimeType}:$value)';
@@ -417,15 +446,26 @@ class _ExpressionListEquality implements Equality<dynamic> {
 }
 
 class _Interpolator extends Expression {
-  _Interpolator(String operator, [List<Expression> arguments]) : super(operator, arguments);
+  _Interpolator(String operator, [List<Expression> arguments])
+      : super(operator, arguments);
 
-  _Interpolator.e1(String operator, Expression arg1) : super._e1(operator, arg1);
+  _Interpolator.e1(String operator, Expression arg1)
+      : super._e1(operator, arg1);
 
-  _Interpolator.e2(String operator, Expression arg1, Expression arg2) : super._e2(operator, arg1, arg2);
+  _Interpolator.e2(String operator, Expression arg1, Expression arg2)
+      : super._e2(operator, arg1, arg2);
 
-  _Interpolator.e3(String operator, Expression arg1, Expression arg2, Expression arg3) : super._e3(operator, arg1, arg2, arg3);
+  _Interpolator.e3(
+      String operator, Expression arg1, Expression arg2, Expression arg3)
+      : super._e3(operator, arg1, arg2, arg3);
 
-  _Interpolator.e4(String operator, Expression arg1, Expression arg2, Expression arg3, Expression arg4) : super._e4(operator, arg1, arg2, arg3, arg4);
+  _Interpolator.e4(
+    String operator,
+    Expression arg1,
+    Expression arg2,
+    Expression arg3,
+    Expression arg4,
+  ) : super._e4(operator, arg1, arg2, arg3, arg4);
 }
 
 class _Stop {
@@ -505,15 +545,22 @@ class _FormatOption {
 List<Expression> _stops(List<dynamic> stops) {
   assert(stops != null && stops.isNotEmpty);
 
-  assert(stops.every((it) => it is _Stop) || stops.every((it) => it is Expression), 'You must provide ether a list of Stops or a list of expressions. We got ${stops.runtimeType}');
+  assert(
+      stops.every((it) => it is _Stop) || stops.every((it) => it is Expression),
+      'You must provide ether a list of Stops or a list of expressions. We got ${stops.runtimeType}');
 
-  return stops.first is _Stop ? _Stop.toExpressionArray(stops) : List<Expression>.from(stops);
+  return stops.first is _Stop
+      ? _Stop.toExpressionArray(stops)
+      : List<Expression>.from(stops);
 }
 
-List<Expression> _join(List<Expression> left, List<Expression> right) => left..addAll(right);
+List<Expression> _join(List<Expression> left, List<Expression> right) =>
+    left..addAll(right);
 
 Expression _expression(dynamic value, [String field, Type enforceType]) {
   if (value is Expression) return value;
-  if (enforceType != null) assert(value.runtimeType == enforceType, '$field should be $enforceType but it is ${value.runtimeType}.');
+  if (enforceType != null)
+    assert(value.runtimeType == enforceType,
+        '$field should be $enforceType but it is ${value.runtimeType}.');
   return literal$(value);
 }

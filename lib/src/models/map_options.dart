@@ -43,7 +43,8 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     EdgeInsets logoMargin = const EdgeInsets.all(4.0),
     bool attribution = true,
     OrnamentPosition attributionPosition = OrnamentPosition.bottomRight,
-    EdgeInsets attributionMargin = const EdgeInsets.only(left: 92, top: 4.0, right: 4.0, bottom: 4.0),
+    EdgeInsets attributionMargin =
+        const EdgeInsets.only(left: 92, top: 4.0, right: 4.0, bottom: 4.0),
     Color attributionTintColor,
     bool renderTextureMode = false,
     bool renderTextureTranslucentSurface = false,
@@ -63,14 +64,26 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(quickZoomGestures != null);
     assert(compass != null);
     assert(compassPosition != null);
-    assert(compassMargin != null && compassMargin.left != null && compassMargin.top != null && compassMargin.right != null && compassMargin.bottom != null);
+    assert(compassMargin != null &&
+        compassMargin.left != null &&
+        compassMargin.top != null &&
+        compassMargin.right != null &&
+        compassMargin.bottom != null);
     assert(compassFadeFacingNorth != null);
     assert(logo != null);
     assert(logoPosition != null);
-    assert(logoMargin != null && logoMargin.left != null && logoMargin.top != null && logoMargin.right != null && logoMargin.bottom != null);
+    assert(logoMargin != null &&
+        logoMargin.left != null &&
+        logoMargin.top != null &&
+        logoMargin.right != null &&
+        logoMargin.bottom != null);
     assert(attribution != null);
     assert(attributionPosition != null);
-    assert(attributionMargin != null && attributionMargin.left != null && attributionMargin.top != null && attributionMargin.right != null && attributionMargin.bottom != null);
+    assert(attributionMargin != null &&
+        attributionMargin.left != null &&
+        attributionMargin.top != null &&
+        attributionMargin.right != null &&
+        attributionMargin.bottom != null);
     assert(renderTextureMode != null);
     assert(renderTextureTranslucentSurface != null);
     assert(enableTilePrefetch != null);
@@ -78,7 +91,9 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(pixelRatio != null);
     assert(foregroundLoadColor != null && foregroundLoadColor.opacity == 1.0);
     cameraPosition ??= CameraPosition();
-    assert([styleFromMapbox, styleFromUri, styleFromJson].any((it) => it != null), 'You need to set at leat one style source.');
+    assert(
+        [styleFromMapbox, styleFromUri, styleFromJson].any((it) => it != null),
+        'You need to set at leat one style source.');
 
     if (attributionTintColor != null) {
       assert(attributionTintColor.opacity == 1.0);
@@ -273,8 +288,10 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     if (styleFromJson != null) message.fromJson_32 = styleFromJson;
 
     if (apiBaseUri != null) message.apiBaseUri = apiBaseUri;
-    if (localIdeographFontFamily != null) message.localIdeographFontFamily = localIdeographFontFamily;
-    if (attributionTintColor != null) message.attributionTintColor = color_(attributionTintColor);
+    if (localIdeographFontFamily != null)
+      message.localIdeographFontFamily = localIdeographFontFamily;
+    if (attributionTintColor != null)
+      message.attributionTintColor = color_(attributionTintColor);
     return message..freeze();
   }
 

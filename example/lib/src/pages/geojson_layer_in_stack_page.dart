@@ -53,7 +53,8 @@ class _GeojsonLayerInStack extends StatelessWidget {
       sources: <Source>[
         GeoJsonSource(
           id: 'urban-areas',
-          uri: 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson',
+          uri:
+              'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson',
         ),
       ],
     );

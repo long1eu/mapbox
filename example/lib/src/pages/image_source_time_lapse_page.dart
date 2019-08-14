@@ -29,10 +29,12 @@ class _ImageSourceTimeLapsePageState extends StatefulWidget {
   const _ImageSourceTimeLapsePageState({Key key}) : super(key: key);
 
   @override
-  _ImageSourceTimeLapsePageStateState createState() => _ImageSourceTimeLapsePageStateState();
+  _ImageSourceTimeLapsePageStateState createState() =>
+      _ImageSourceTimeLapsePageStateState();
 }
 
-class _ImageSourceTimeLapsePageStateState extends State<_ImageSourceTimeLapsePageState> {
+class _ImageSourceTimeLapsePageStateState
+    extends State<_ImageSourceTimeLapsePageState> {
   Timer timer;
   MapController controller;
   List<Uint8List> images;

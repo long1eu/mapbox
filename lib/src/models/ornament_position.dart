@@ -12,8 +12,10 @@ class OrnamentPosition extends ExpressionLiteral {
 
   static const OrnamentPosition topLeft = OrnamentPosition._(0, 'topLeft');
   static const OrnamentPosition topRight = OrnamentPosition._(1, 'topRight');
-  static const OrnamentPosition bottomLeft = OrnamentPosition._(2, 'bottomLeft');
-  static const OrnamentPosition bottomRight = OrnamentPosition._(3, 'bottomRight');
+  static const OrnamentPosition bottomLeft =
+      OrnamentPosition._(2, 'bottomLeft');
+  static const OrnamentPosition bottomRight =
+      OrnamentPosition._(3, 'bottomRight');
 
   static const List<OrnamentPosition> values = <OrnamentPosition>[
     topLeft,
@@ -31,7 +33,8 @@ class OrnamentPosition extends ExpressionLiteral {
 
   pb.OrnamentPosition get proto => pb.OrnamentPosition.valueOf(_i);
 
-  static OrnamentPosition fromProto(pb.OrnamentPosition proto) => values.elementAt(proto.value);
+  static OrnamentPosition fromProto(pb.OrnamentPosition proto) =>
+      values.elementAt(proto.value);
 
   @override
   String toString() => 'OrnamentPosition.${_names[_i]}';

@@ -30,11 +30,14 @@ class _AnimatedMarkerPageState extends StatefulWidget {
   const _AnimatedMarkerPageState({Key key}) : super(key: key);
 
   @override
-  __AnimatedMarkerPageStateState createState() => __AnimatedMarkerPageStateState();
+  __AnimatedMarkerPageStateState createState() =>
+      __AnimatedMarkerPageStateState();
 }
 
-class __AnimatedMarkerPageStateState extends State<_AnimatedMarkerPageState> with SingleTickerProviderStateMixin {
-  final LatLng initialPosition = LatLng(latitude: 64.900932, longitude: -18.167040);
+class __AnimatedMarkerPageStateState extends State<_AnimatedMarkerPageState>
+    with SingleTickerProviderStateMixin {
+  final LatLng initialPosition =
+      LatLng(latitude: 64.900932, longitude: -18.167040);
   final Map<String, Uint8List> images = <String, Uint8List>{};
 
   AnimationController _controller;
@@ -44,10 +47,12 @@ class __AnimatedMarkerPageStateState extends State<_AnimatedMarkerPageState> wit
     super.initState();
     rootBundle
         .load('res/red_marker.png')
-        .then((ByteData data) => images['marker_icon'] = data.buffer.asUint8List())
+        .then((ByteData data) =>
+            images['marker_icon'] = data.buffer.asUint8List())
         .whenComplete(() => mounted ? setState(() {}) : null);
 
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 500))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500))
       ..addListener(() => setState(() {}))
       ..addStatusListener((AnimationStatus status) {
         if (status == AnimationStatus.completed) {

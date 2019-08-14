@@ -27,12 +27,17 @@ abstract class Light implements Built<Light, LightBuilder> {
     return _$Light((LightBuilder b) {
       b
         ..anchor = TranslateAnchor.fromProto(proto.anchor)
-        ..position = proto.hasPosition() ? Position.fromProto(proto.position).toBuilder() : null
+        ..position = proto.hasPosition()
+            ? Position.fromProto(proto.position).toBuilder()
+            : null
         ..color = colorValue_(proto.color)
         ..intensity = proto.intensity
-        ..positionTransition = TransitionOptions.fromProto(proto.positionTransition).toBuilder()
-        ..colorTransition = TransitionOptions.fromProto(proto.colorTransition).toBuilder()
-        ..intensityTransition = TransitionOptions.fromProto(proto.intensityTransition).toBuilder();
+        ..positionTransition =
+            TransitionOptions.fromProto(proto.positionTransition).toBuilder()
+        ..colorTransition =
+            TransitionOptions.fromProto(proto.colorTransition).toBuilder()
+        ..intensityTransition =
+            TransitionOptions.fromProto(proto.intensityTransition).toBuilder();
     });
   }
 

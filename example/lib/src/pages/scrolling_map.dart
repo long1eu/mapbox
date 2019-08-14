@@ -11,7 +11,8 @@ import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import '../page.dart';
 
 class ScrollingMapPage extends Page {
-  ScrollingMapPage() : super(const Icon(Icons.map), 'Scrolling map', '', 'Getting started');
+  ScrollingMapPage()
+      : super(const Icon(Icons.map), 'Scrolling map', '', 'Getting started');
 
   @override
   Widget build(BuildContext context) => ScrollingMapBody();
@@ -45,7 +46,8 @@ class ScrollingMapBody extends StatelessWidget {
                           zoom: 11.0,
                         ),
                       ),
-                      gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+                      gestureRecognizers:
+                          <Factory<OneSequenceGestureRecognizer>>[
                         Factory<OneSequenceGestureRecognizer>(
                           () => EagerGestureRecognizer(),
                         ),
@@ -65,7 +67,8 @@ class ScrollingMapBody extends StatelessWidget {
                 const Text('This map doesn\'t consume the vertical drags.'),
                 const Padding(
                   padding: EdgeInsets.only(bottom: 12.0),
-                  child: Text('It still gets other gestures (e.g scale or tap).'),
+                  child:
+                      Text('It still gets other gestures (e.g scale or tap).'),
                 ),
                 Center(
                   child: SizedBox(
@@ -79,7 +82,8 @@ class ScrollingMapBody extends StatelessWidget {
                           zoom: 11.0,
                         ),
                       ),
-                      gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+                      gestureRecognizers:
+                          <Factory<OneSequenceGestureRecognizer>>[
                         Factory<OneSequenceGestureRecognizer>(
                           () => ScaleGestureRecognizer(),
                         ),

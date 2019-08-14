@@ -16,7 +16,8 @@ class TranslateAnchor extends ExpressionLiteral {
   static const List<TranslateAnchor> values = <TranslateAnchor>[map, viewport];
   static const List<String> _names = <String>['map', 'viewport'];
 
-  static TranslateAnchor fromProto(pb.TranslateAnchor proto) => values[proto.value];
+  static TranslateAnchor fromProto(pb.TranslateAnchor proto) =>
+      values[proto.value];
 
   pb.TranslateAnchor get proto => pb.TranslateAnchor.valueOf(_i);
 

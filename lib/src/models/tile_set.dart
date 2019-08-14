@@ -161,7 +161,12 @@ abstract class TileSet implements Built<TileSet, TileSetBuilder> {
       ..data.addAll(data)
       ..minZoom = minZoom
       ..maxZoom = maxZoom
-      ..bounds.addAll(<double>[bounds.longitudeWest, bounds.latitudeSouth, bounds.longitudeEast, bounds.latitudeNorth]);
+      ..bounds.addAll(<double>[
+        bounds.longitudeWest,
+        bounds.latitudeSouth,
+        bounds.longitudeEast,
+        bounds.latitudeNorth
+      ]);
 
     if (name != null) message.name = name;
     if (description != null) message.description = description;

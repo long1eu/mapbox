@@ -17,7 +17,8 @@ import 'package:flutter_mapbox_gl/src/models/transition_options.dart';
 part 'style.g.dart';
 
 abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
-  factory StyleModel([void Function(StyleModelBuilder b) updates]) = _$StyleModel;
+  factory StyleModel([void Function(StyleModelBuilder b) updates]) =
+      _$StyleModel;
 
   factory StyleModel.fromProtoData(Uint8List data) {
     return StyleModel.fromProto(pb.Style.fromBuffer(data));
@@ -28,10 +29,13 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
       b
         ..uri = proto.uri
         ..json = proto.json
-        ..sources = ListBuilder<Source>(proto.sources.map((it) => Source.fromProto(it)))
-        ..layers = ListBuilder<Layer>(proto.layers.map((it) => Layer.fromProto(it)))
+        ..sources =
+            ListBuilder<Source>(proto.sources.map((it) => Source.fromProto(it)))
+        ..layers =
+            ListBuilder<Layer>(proto.layers.map((it) => Layer.fromProto(it)))
         ..transition = TransitionOptions.fromProto(proto.transition).toBuilder()
-        ..light = proto.hasLight() ? Light.fromProto(proto.light).toBuilder() : null;
+        ..light =
+            proto.hasLight() ? Light.fromProto(proto.light).toBuilder() : null;
     });
   }
 

@@ -25,10 +25,12 @@ class _AdjustLayerOpacityPageState extends StatefulWidget {
   const _AdjustLayerOpacityPageState({Key key}) : super(key: key);
 
   @override
-  __AdjustLayerOpacityPageStateState createState() => __AdjustLayerOpacityPageStateState();
+  __AdjustLayerOpacityPageStateState createState() =>
+      __AdjustLayerOpacityPageStateState();
 }
 
-class __AdjustLayerOpacityPageStateState extends State<_AdjustLayerOpacityPageState> {
+class __AdjustLayerOpacityPageStateState
+    extends State<_AdjustLayerOpacityPageState> {
   double opacity = 1.0;
   MapController controller;
 
@@ -81,7 +83,9 @@ class __AdjustLayerOpacityPageStateState extends State<_AdjustLayerOpacityPageSt
                   height: 26.0,
                   child: Slider(
                     value: opacity,
-                    onChanged: controller == null ? null : (double value) => setState(() => opacity = value),
+                    onChanged: controller == null
+                        ? null
+                        : (double value) => setState(() => opacity = value),
                   ),
                 ),
               ),
@@ -91,7 +95,8 @@ class __AdjustLayerOpacityPageStateState extends State<_AdjustLayerOpacityPageSt
                   borderRadius: BorderRadius.circular(8.0),
                   color: Colors.white,
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                 child: Text(
                   '${(opacity * 100).toInt()} %',
                   textAlign: TextAlign.end,

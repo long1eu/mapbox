@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLayer, HillshadeLayerBuilder> {
+abstract class HillshadeLayer
+    with _Channel
+    implements Layer, Built<HillshadeLayer, HillshadeLayerBuilder> {
   factory HillshadeLayer({
     @required String id,
     @required String sourceId,
@@ -34,7 +36,8 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (illuminationDirection != null) assert(illuminationDirection >= 0 && illuminationDirection < 360);
+    if (illuminationDirection != null)
+      assert(illuminationDirection >= 0 && illuminationDirection < 360);
     if (exaggeration != null) assert(exaggeration >= 0 && exaggeration <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
@@ -46,16 +49,35 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
         ..minZoom = minZoom
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
-        ..illuminationDirection = illuminationDirectionEx ?? (illuminationDirection != null ? literalDouble(illuminationDirection) : null)
-        ..illuminationAnchor = illuminationAnchorEx ?? (illuminationAnchor != null ? illuminationAnchor : null)
-        ..exaggeration = exaggerationEx ?? (exaggeration != null ? literalDouble(exaggeration) : null)
-        ..shadowColor = shadowColorEx ?? (shadowColor != null ? rgb(shadowColor.red, shadowColor.green, shadowColor.blue) : null)
-        ..highlightColor = highlightColorEx ?? (highlightColor != null ? rgb(highlightColor.red, highlightColor.green, highlightColor.blue) : null)
-        ..accentColor = accentColorEx ?? (accentColor != null ? rgb(accentColor.red, accentColor.green, accentColor.blue) : null)
-        ..exaggerationTransition = (exaggerationTransition ?? transitionOptions).toBuilder()
-        ..shadowColorTransition = (shadowColorTransition ?? transitionOptions).toBuilder()
-        ..highlightColorTransition = (highlightColorTransition ?? transitionOptions).toBuilder()
-        ..accentColorTransition = (accentColorTransition ?? transitionOptions).toBuilder();
+        ..illuminationDirection = illuminationDirectionEx ??
+            (illuminationDirection != null
+                ? literalDouble(illuminationDirection)
+                : null)
+        ..illuminationAnchor = illuminationAnchorEx ??
+            (illuminationAnchor != null ? illuminationAnchor : null)
+        ..exaggeration = exaggerationEx ??
+            (exaggeration != null ? literalDouble(exaggeration) : null)
+        ..shadowColor = shadowColorEx ??
+            (shadowColor != null
+                ? rgb(shadowColor.red, shadowColor.green, shadowColor.blue)
+                : null)
+        ..highlightColor = highlightColorEx ??
+            (highlightColor != null
+                ? rgb(highlightColor.red, highlightColor.green,
+                    highlightColor.blue)
+                : null)
+        ..accentColor = accentColorEx ??
+            (accentColor != null
+                ? rgb(accentColor.red, accentColor.green, accentColor.blue)
+                : null)
+        ..exaggerationTransition =
+            (exaggerationTransition ?? transitionOptions).toBuilder()
+        ..shadowColorTransition =
+            (shadowColorTransition ?? transitionOptions).toBuilder()
+        ..highlightColorTransition =
+            (highlightColorTransition ?? transitionOptions).toBuilder()
+        ..accentColorTransition =
+            (accentColorTransition ?? transitionOptions).toBuilder();
     });
   }
 
@@ -72,16 +94,35 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..illuminationDirection = proto.hasIlluminationDirection() ? Expression.fromProtoString(proto.illuminationDirection) : null
-        ..illuminationAnchor = proto.hasIlluminationAnchor() ? Expression.fromProtoString(proto.illuminationAnchor) : null
-        ..exaggeration = proto.hasExaggeration() ? Expression.fromProtoString(proto.exaggeration) : null
-        ..shadowColor = proto.hasShadowColor() ? Expression.fromProtoString(proto.shadowColor) : null
-        ..highlightColor = proto.hasHighlightColor() ? Expression.fromProtoString(proto.highlightColor) : null
-        ..accentColor = proto.hasAccentColor() ? Expression.fromProtoString(proto.accentColor) : null
-        ..exaggerationTransition = TransitionOptions.fromProto(proto.exaggerationTransition).toBuilder()
-        ..shadowColorTransition = TransitionOptions.fromProto(proto.shadowColorTransition).toBuilder()
-        ..highlightColorTransition = TransitionOptions.fromProto(proto.highlightColorTransition).toBuilder()
-        ..accentColorTransition = TransitionOptions.fromProto(proto.accentColorTransition).toBuilder();
+        ..illuminationDirection = proto.hasIlluminationDirection()
+            ? Expression.fromProtoString(proto.illuminationDirection)
+            : null
+        ..illuminationAnchor = proto.hasIlluminationAnchor()
+            ? Expression.fromProtoString(proto.illuminationAnchor)
+            : null
+        ..exaggeration = proto.hasExaggeration()
+            ? Expression.fromProtoString(proto.exaggeration)
+            : null
+        ..shadowColor = proto.hasShadowColor()
+            ? Expression.fromProtoString(proto.shadowColor)
+            : null
+        ..highlightColor = proto.hasHighlightColor()
+            ? Expression.fromProtoString(proto.highlightColor)
+            : null
+        ..accentColor = proto.hasAccentColor()
+            ? Expression.fromProtoString(proto.accentColor)
+            : null
+        ..exaggerationTransition =
+            TransitionOptions.fromProto(proto.exaggerationTransition)
+                .toBuilder()
+        ..shadowColorTransition =
+            TransitionOptions.fromProto(proto.shadowColorTransition).toBuilder()
+        ..highlightColorTransition =
+            TransitionOptions.fromProto(proto.highlightColorTransition)
+                .toBuilder()
+        ..accentColorTransition =
+            TransitionOptions.fromProto(proto.accentColorTransition)
+                .toBuilder();
     });
   }
 
@@ -152,16 +193,40 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
-        ..illuminationDirection = illuminationDirectionEx ?? (illuminationDirection != null ? literalDouble(illuminationDirection) : this.illuminationDirection)
-        ..illuminationAnchor = illuminationAnchorEx ?? (illuminationAnchor != null ? illuminationAnchor : this.illuminationAnchor)
-        ..exaggeration = exaggerationEx ?? (exaggeration != null ? literalDouble(exaggeration) : this.exaggeration)
-        ..shadowColor = shadowColorEx ?? (shadowColor != null ? rgb(shadowColor.red, shadowColor.green, shadowColor.blue) : this.shadowColor)
-        ..highlightColor = highlightColorEx ?? (highlightColor != null ? rgb(highlightColor.red, highlightColor.green, highlightColor.blue) : this.highlightColor)
-        ..accentColor = accentColorEx ?? (accentColor != null ? rgb(accentColor.red, accentColor.green, accentColor.blue) : this.accentColor)
-        ..exaggerationTransition = (exaggerationTransition ?? this.exaggerationTransition).toBuilder()
-        ..shadowColorTransition = (shadowColorTransition ?? this.shadowColorTransition).toBuilder()
-        ..highlightColorTransition = (highlightColorTransition ?? this.highlightColorTransition).toBuilder()
-        ..accentColorTransition = (accentColorTransition ?? this.accentColorTransition).toBuilder();
+        ..illuminationDirection = illuminationDirectionEx ??
+            (illuminationDirection != null
+                ? literalDouble(illuminationDirection)
+                : this.illuminationDirection)
+        ..illuminationAnchor = illuminationAnchorEx ??
+            (illuminationAnchor != null
+                ? illuminationAnchor
+                : this.illuminationAnchor)
+        ..exaggeration = exaggerationEx ??
+            (exaggeration != null
+                ? literalDouble(exaggeration)
+                : this.exaggeration)
+        ..shadowColor = shadowColorEx ??
+            (shadowColor != null
+                ? rgb(shadowColor.red, shadowColor.green, shadowColor.blue)
+                : this.shadowColor)
+        ..highlightColor = highlightColorEx ??
+            (highlightColor != null
+                ? rgb(highlightColor.red, highlightColor.green,
+                    highlightColor.blue)
+                : this.highlightColor)
+        ..accentColor = accentColorEx ??
+            (accentColor != null
+                ? rgb(accentColor.red, accentColor.green, accentColor.blue)
+                : this.accentColor)
+        ..exaggerationTransition =
+            (exaggerationTransition ?? this.exaggerationTransition).toBuilder()
+        ..shadowColorTransition =
+            (shadowColorTransition ?? this.shadowColorTransition).toBuilder()
+        ..highlightColorTransition =
+            (highlightColorTransition ?? this.highlightColorTransition)
+                .toBuilder()
+        ..accentColorTransition =
+            (accentColorTransition ?? this.accentColorTransition).toBuilder();
     });
     if (!isAttached || this == layer) return layer;
     return _update(layer);
@@ -177,19 +242,28 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom
           ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..illuminationDirection = layer.illuminationDirection ?? illuminationDirection
+          ..illuminationDirection =
+              layer.illuminationDirection ?? illuminationDirection
           ..illuminationAnchor = layer.illuminationAnchor ?? illuminationAnchor
           ..exaggeration = layer.exaggeration ?? exaggeration
           ..shadowColor = layer.shadowColor ?? shadowColor
           ..highlightColor = layer.highlightColor ?? highlightColor
           ..accentColor = layer.accentColor ?? accentColor
-          ..exaggerationTransition = (layer.exaggerationTransition ?? exaggerationTransition).toBuilder()
-          ..shadowColorTransition = (layer.shadowColorTransition ?? shadowColorTransition).toBuilder()
-          ..highlightColorTransition = (layer.highlightColorTransition ?? highlightColorTransition).toBuilder()
-          ..accentColorTransition = (layer.accentColorTransition ?? accentColorTransition).toBuilder();
+          ..exaggerationTransition =
+              (layer.exaggerationTransition ?? exaggerationTransition)
+                  .toBuilder()
+          ..shadowColorTransition =
+              (layer.shadowColorTransition ?? shadowColorTransition).toBuilder()
+          ..highlightColorTransition =
+              (layer.highlightColorTransition ?? highlightColorTransition)
+                  .toBuilder()
+          ..accentColorTransition =
+              (layer.accentColorTransition ?? accentColorTransition)
+                  .toBuilder();
       });
     } else {
-      throw ArgumentError('Only a HillshadeLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a HillshadeLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -203,21 +277,30 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom
           ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..illuminationDirection = layer.illuminationDirection ?? illuminationDirection
+          ..illuminationDirection =
+              layer.illuminationDirection ?? illuminationDirection
           ..illuminationAnchor = layer.illuminationAnchor ?? illuminationAnchor
           ..exaggeration = layer.exaggeration ?? exaggeration
           ..shadowColor = layer.shadowColor ?? shadowColor
           ..highlightColor = layer.highlightColor ?? highlightColor
           ..accentColor = layer.accentColor ?? accentColor
-          ..exaggerationTransition = (layer.exaggerationTransition ?? exaggerationTransition).toBuilder()
-          ..shadowColorTransition = (layer.shadowColorTransition ?? shadowColorTransition).toBuilder()
-          ..highlightColorTransition = (layer.highlightColorTransition ?? highlightColorTransition).toBuilder()
-          ..accentColorTransition = (layer.accentColorTransition ?? accentColorTransition).toBuilder();
+          ..exaggerationTransition =
+              (layer.exaggerationTransition ?? exaggerationTransition)
+                  .toBuilder()
+          ..shadowColorTransition =
+              (layer.shadowColorTransition ?? shadowColorTransition).toBuilder()
+          ..highlightColorTransition =
+              (layer.highlightColorTransition ?? highlightColorTransition)
+                  .toBuilder()
+          ..accentColorTransition =
+              (layer.accentColorTransition ?? accentColorTransition)
+                  .toBuilder();
       });
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a HillshadeLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a HillshadeLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -234,11 +317,14 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
       ..accentColorTransition = accentColorTransition.proto;
 
     if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (illuminationDirection != null) message.illuminationDirection = illuminationDirection.protoString;
-    if (illuminationAnchor != null) message.illuminationAnchor = illuminationAnchor.protoString;
+    if (illuminationDirection != null)
+      message.illuminationDirection = illuminationDirection.protoString;
+    if (illuminationAnchor != null)
+      message.illuminationAnchor = illuminationAnchor.protoString;
     if (exaggeration != null) message.exaggeration = exaggeration.protoString;
     if (shadowColor != null) message.shadowColor = shadowColor.protoString;
-    if (highlightColor != null) message.highlightColor = highlightColor.protoString;
+    if (highlightColor != null)
+      message.highlightColor = highlightColor.protoString;
     if (accentColor != null) message.accentColor = accentColor.protoString;
 
     return message.freeze();
@@ -251,5 +337,6 @@ abstract class HillshadeLayer with _Channel implements Layer, Built<HillshadeLay
       ..freeze();
   }
 
-  static Serializer<HillshadeLayer> get serializer => _$hillshadeLayerSerializer;
+  static Serializer<HillshadeLayer> get serializer =>
+      _$hillshadeLayerSerializer;
 }

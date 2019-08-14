@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, CircleLayerBuilder> {
+abstract class CircleLayer
+    with _Channel
+    implements Layer, Built<CircleLayer, CircleLayerBuilder> {
   factory CircleLayer({
     @required String id,
     @required String sourceId,
@@ -66,24 +68,39 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
         ..sourceLayer = sourceLayer
         ..filter = filter
         ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : null)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..color = colorEx ??
+            (color != null ? rgb(color.red, color.green, color.blue) : null)
         ..blur = blurEx ?? (blur != null ? literalDouble(blur) : null)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
-        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : null)
+        ..opacity =
+            opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..translate = translateEx ??
+            (translate != null
+                ? literalList([translate.dx, translate.dy])
+                : null)
         ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
         ..pitchScale = pitchScaleEx ?? (pitchScale ?? null)
         ..pitchAlignment = pitchAlignmentEx ?? (pitchAlignment ?? null)
-        ..strokeWidth = strokeWidthEx ?? (strokeWidth != null ? literalDouble(strokeWidth) : null)
-        ..strokeColor = strokeColorEx ?? (strokeColor != null ? rgb(strokeColor.red, strokeColor.green, strokeColor.blue) : null)
-        ..strokeOpacity = strokeOpacityEx ?? (strokeOpacity != null ? literalDouble(strokeOpacity) : null)
+        ..strokeWidth = strokeWidthEx ??
+            (strokeWidth != null ? literalDouble(strokeWidth) : null)
+        ..strokeColor = strokeColorEx ??
+            (strokeColor != null
+                ? rgb(strokeColor.red, strokeColor.green, strokeColor.blue)
+                : null)
+        ..strokeOpacity = strokeOpacityEx ??
+            (strokeOpacity != null ? literalDouble(strokeOpacity) : null)
         ..radiusTransition = (radiusTransition ?? transitionOptions).toBuilder()
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
         ..blurTransition = (blurTransition ?? transitionOptions).toBuilder()
-        ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
-        ..translateTransition = (translateTransition ?? transitionOptions).toBuilder()
-        ..strokeWidthTransition = (strokeWidthTransition ?? transitionOptions).toBuilder()
-        ..strokeColorTransition = (strokeColorTransition ?? transitionOptions).toBuilder()
-        ..strokeOpacityTransition = (strokeOpacityTransition ?? transitionOptions).toBuilder();
+        ..opacityTransition =
+            (opacityTransition ?? transitionOptions).toBuilder()
+        ..translateTransition =
+            (translateTransition ?? transitionOptions).toBuilder()
+        ..strokeWidthTransition =
+            (strokeWidthTransition ?? transitionOptions).toBuilder()
+        ..strokeColorTransition =
+            (strokeColorTransition ?? transitionOptions).toBuilder()
+        ..strokeOpacityTransition =
+            (strokeOpacityTransition ?? transitionOptions).toBuilder();
     });
   }
 
@@ -100,26 +117,54 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..filter = proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
-        ..radius = proto.hasRadius() ? Expression.fromProtoString(proto.radius) : null
-        ..color = proto.hasColor() ? Expression.fromProtoString(proto.color) : null
+        ..filter =
+            proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
+        ..radius =
+            proto.hasRadius() ? Expression.fromProtoString(proto.radius) : null
+        ..color =
+            proto.hasColor() ? Expression.fromProtoString(proto.color) : null
         ..blur = proto.hasBlur() ? Expression.fromProtoString(proto.blur) : null
-        ..opacity = proto.hasOpacity() ? Expression.fromProtoString(proto.opacity) : null
-        ..translate = proto.hasTranslate() ? Expression.fromProtoString(proto.translate) : null
-        ..translateAnchor = proto.hasTranslateAnchor() ? Expression.fromProtoString(proto.translateAnchor) : null
-        ..pitchScale = proto.hasPitchScale() ? Expression.fromProtoString(proto.pitchScale) : null
-        ..pitchAlignment = proto.hasPitchAlignment() ? Expression.fromProtoString(proto.pitchAlignment) : null
-        ..strokeWidth = proto.hasStrokeWidth() ? Expression.fromProtoString(proto.strokeWidth) : null
-        ..strokeColor = proto.hasStrokeColor() ? Expression.fromProtoString(proto.strokeColor) : null
-        ..strokeOpacity = proto.hasStrokeOpacity() ? Expression.fromProtoString(proto.strokeOpacity) : null
-        ..radiusTransition = TransitionOptions.fromProto(proto.radiusTransition).toBuilder()
-        ..colorTransition = TransitionOptions.fromProto(proto.colorTransition).toBuilder()
-        ..blurTransition = TransitionOptions.fromProto(proto.blurTransition).toBuilder()
-        ..opacityTransition = TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
-        ..translateTransition = TransitionOptions.fromProto(proto.translateTransition).toBuilder()
-        ..strokeWidthTransition = TransitionOptions.fromProto(proto.strokeWidthTransition).toBuilder()
-        ..strokeColorTransition = TransitionOptions.fromProto(proto.strokeColorTransition).toBuilder()
-        ..strokeOpacityTransition = TransitionOptions.fromProto(proto.strokeOpacityTransition).toBuilder();
+        ..opacity = proto.hasOpacity()
+            ? Expression.fromProtoString(proto.opacity)
+            : null
+        ..translate = proto.hasTranslate()
+            ? Expression.fromProtoString(proto.translate)
+            : null
+        ..translateAnchor = proto.hasTranslateAnchor()
+            ? Expression.fromProtoString(proto.translateAnchor)
+            : null
+        ..pitchScale = proto.hasPitchScale()
+            ? Expression.fromProtoString(proto.pitchScale)
+            : null
+        ..pitchAlignment = proto.hasPitchAlignment()
+            ? Expression.fromProtoString(proto.pitchAlignment)
+            : null
+        ..strokeWidth = proto.hasStrokeWidth()
+            ? Expression.fromProtoString(proto.strokeWidth)
+            : null
+        ..strokeColor = proto.hasStrokeColor()
+            ? Expression.fromProtoString(proto.strokeColor)
+            : null
+        ..strokeOpacity = proto.hasStrokeOpacity()
+            ? Expression.fromProtoString(proto.strokeOpacity)
+            : null
+        ..radiusTransition =
+            TransitionOptions.fromProto(proto.radiusTransition).toBuilder()
+        ..colorTransition =
+            TransitionOptions.fromProto(proto.colorTransition).toBuilder()
+        ..blurTransition =
+            TransitionOptions.fromProto(proto.blurTransition).toBuilder()
+        ..opacityTransition =
+            TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
+        ..translateTransition =
+            TransitionOptions.fromProto(proto.translateTransition).toBuilder()
+        ..strokeWidthTransition =
+            TransitionOptions.fromProto(proto.strokeWidthTransition).toBuilder()
+        ..strokeColorTransition =
+            TransitionOptions.fromProto(proto.strokeColorTransition).toBuilder()
+        ..strokeOpacityTransition =
+            TransitionOptions.fromProto(proto.strokeOpacityTransition)
+                .toBuilder();
     });
   }
 
@@ -237,25 +282,52 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : this.radius)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
+        ..radius =
+            radiusEx ?? (radius != null ? literalDouble(radius) : this.radius)
+        ..color = colorEx ??
+            (color != null
+                ? rgb(color.red, color.green, color.blue)
+                : this.color)
         ..blur = blurEx ?? (blur != null ? literalDouble(blur) : this.blur)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
-        ..translate = translateEx ?? (translate != null ? literalList([translate.dx, translate.dy]) : this.translate)
-        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
+        ..opacity = opacityEx ??
+            (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..translate = translateEx ??
+            (translate != null
+                ? literalList([translate.dx, translate.dy])
+                : this.translate)
+        ..translateAnchor =
+            translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
         ..pitchScale = pitchScaleEx ?? (pitchScale ?? this.pitchScale)
-        ..pitchAlignment = pitchAlignmentEx ?? (pitchAlignment ?? this.pitchAlignment)
-        ..strokeWidth = strokeWidthEx ?? (strokeWidth != null ? literalDouble(strokeWidth) : this.strokeWidth)
-        ..strokeColor = strokeColorEx ?? (strokeColor != null ? rgb(strokeColor.red, strokeColor.green, strokeColor.blue) : this.strokeColor)
-        ..strokeOpacity = strokeOpacityEx ?? (strokeOpacity != null ? literalDouble(strokeOpacity) : this.strokeOpacity)
-        ..radiusTransition = (radiusTransition ?? this.radiusTransition).toBuilder()
-        ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
+        ..pitchAlignment =
+            pitchAlignmentEx ?? (pitchAlignment ?? this.pitchAlignment)
+        ..strokeWidth = strokeWidthEx ??
+            (strokeWidth != null
+                ? literalDouble(strokeWidth)
+                : this.strokeWidth)
+        ..strokeColor = strokeColorEx ??
+            (strokeColor != null
+                ? rgb(strokeColor.red, strokeColor.green, strokeColor.blue)
+                : this.strokeColor)
+        ..strokeOpacity = strokeOpacityEx ??
+            (strokeOpacity != null
+                ? literalDouble(strokeOpacity)
+                : this.strokeOpacity)
+        ..radiusTransition =
+            (radiusTransition ?? this.radiusTransition).toBuilder()
+        ..colorTransition =
+            (colorTransition ?? this.colorTransition).toBuilder()
         ..blurTransition = (blurTransition ?? this.blurTransition).toBuilder()
-        ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
-        ..translateTransition = (translateTransition ?? this.translateTransition).toBuilder()
-        ..strokeWidthTransition = (strokeWidthTransition ?? this.strokeWidthTransition).toBuilder()
-        ..strokeColorTransition = (strokeColorTransition ?? this.strokeColorTransition).toBuilder()
-        ..strokeOpacityTransition = (strokeOpacityTransition ?? this.strokeOpacityTransition).toBuilder();
+        ..opacityTransition =
+            (opacityTransition ?? this.opacityTransition).toBuilder()
+        ..translateTransition =
+            (translateTransition ?? this.translateTransition).toBuilder()
+        ..strokeWidthTransition =
+            (strokeWidthTransition ?? this.strokeWidthTransition).toBuilder()
+        ..strokeColorTransition =
+            (strokeColorTransition ?? this.strokeColorTransition).toBuilder()
+        ..strokeOpacityTransition =
+            (strokeOpacityTransition ?? this.strokeOpacityTransition)
+                .toBuilder();
     });
     if (!isAttached || this == layer) return layer;
     return _update(layer);
@@ -282,17 +354,27 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
           ..strokeWidth = layer.strokeWidth ?? strokeWidth
           ..strokeColor = layer.strokeColor ?? strokeColor
           ..strokeOpacity = layer.strokeOpacity ?? strokeOpacity
-          ..radiusTransition = (layer.radiusTransition ?? radiusTransition).toBuilder()
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..blurTransition = (layer.blurTransition ?? blurTransition).toBuilder()
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..translateTransition = (layer.translateTransition ?? translateTransition).toBuilder()
-          ..strokeWidthTransition = (layer.strokeWidthTransition ?? strokeWidthTransition).toBuilder()
-          ..strokeColorTransition = (layer.strokeColorTransition ?? strokeColorTransition).toBuilder()
-          ..strokeOpacityTransition = (layer.strokeOpacityTransition ?? strokeOpacityTransition).toBuilder();
+          ..radiusTransition =
+              (layer.radiusTransition ?? radiusTransition).toBuilder()
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..blurTransition =
+              (layer.blurTransition ?? blurTransition).toBuilder()
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..translateTransition =
+              (layer.translateTransition ?? translateTransition).toBuilder()
+          ..strokeWidthTransition =
+              (layer.strokeWidthTransition ?? strokeWidthTransition).toBuilder()
+          ..strokeColorTransition =
+              (layer.strokeColorTransition ?? strokeColorTransition).toBuilder()
+          ..strokeOpacityTransition =
+              (layer.strokeOpacityTransition ?? strokeOpacityTransition)
+                  .toBuilder();
       });
     } else {
-      throw ArgumentError('Only a CircleLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a CircleLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -316,19 +398,29 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
           ..strokeWidth = layer.strokeWidth ?? strokeWidth
           ..strokeColor = layer.strokeColor ?? strokeColor
           ..strokeOpacity = layer.strokeOpacity ?? strokeOpacity
-          ..radiusTransition = (layer.radiusTransition ?? radiusTransition).toBuilder()
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..blurTransition = (layer.blurTransition ?? blurTransition).toBuilder()
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..translateTransition = (layer.translateTransition ?? translateTransition).toBuilder()
-          ..strokeWidthTransition = (layer.strokeWidthTransition ?? strokeWidthTransition).toBuilder()
-          ..strokeColorTransition = (layer.strokeColorTransition ?? strokeColorTransition).toBuilder()
-          ..strokeOpacityTransition = (layer.strokeOpacityTransition ?? strokeOpacityTransition).toBuilder();
+          ..radiusTransition =
+              (layer.radiusTransition ?? radiusTransition).toBuilder()
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..blurTransition =
+              (layer.blurTransition ?? blurTransition).toBuilder()
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..translateTransition =
+              (layer.translateTransition ?? translateTransition).toBuilder()
+          ..strokeWidthTransition =
+              (layer.strokeWidthTransition ?? strokeWidthTransition).toBuilder()
+          ..strokeColorTransition =
+              (layer.strokeColorTransition ?? strokeColorTransition).toBuilder()
+          ..strokeOpacityTransition =
+              (layer.strokeOpacityTransition ?? strokeOpacityTransition)
+                  .toBuilder();
       });
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a CircleLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a CircleLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -355,12 +447,15 @@ abstract class CircleLayer with _Channel implements Layer, Built<CircleLayer, Ci
     if (blur != null) message.blur = blur.protoString;
     if (opacity != null) message.opacity = opacity.protoString;
     if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null) message.translateAnchor = translateAnchor.protoString;
+    if (translateAnchor != null)
+      message.translateAnchor = translateAnchor.protoString;
     if (pitchScale != null) message.pitchScale = pitchScale.protoString;
-    if (pitchAlignment != null) message.pitchAlignment = pitchAlignment.protoString;
+    if (pitchAlignment != null)
+      message.pitchAlignment = pitchAlignment.protoString;
     if (strokeWidth != null) message.strokeWidth = strokeWidth.protoString;
     if (strokeColor != null) message.strokeColor = strokeColor.protoString;
-    if (strokeOpacity != null) message.strokeOpacity = strokeOpacity.protoString;
+    if (strokeOpacity != null)
+      message.strokeOpacity = strokeOpacity.protoString;
 
     return message..freeze();
   }

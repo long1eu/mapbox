@@ -10,12 +10,12 @@ class Style {
         assert(style != null),
         _style = style,
         _channel = channel,
-        _sources = style.sources
-            .asMap()
-            .map((_, Source element) => MapEntry<String, Source>(element.id, element.markAsAttached(channel, element))),
-        _layers = style.layers
-            .asMap()
-            .map((_, Layer element) => MapEntry<String, Layer>(element.id, element.markAsAttached(channel, element)));
+        _sources = style.sources.asMap().map((_, Source element) =>
+            MapEntry<String, Source>(
+                element.id, element.markAsAttached(channel, element))),
+        _layers = style.layers.asMap().map((_, Layer element) =>
+            MapEntry<String, Layer>(
+                element.id, element.markAsAttached(channel, element)));
 
   final StyleModel _style;
   final MethodChannel _channel;
@@ -37,9 +37,11 @@ class Style {
   T getSource<T extends Source>(String id) => _sources[id];
 
   Future<T> addSource<T extends Source>(T source) async {
-    assert(getSource(source.id) == null, 'You already have a Source with this id. Try getSource(id)');
+    assert(getSource(source.id) == null,
+        'You already have a Source with this id. Try getSource(id)');
 
-    final Uint8List data = await invokeMethod('style#addSource', source.dataSource);
+    final Uint8List data =
+        await invokeMethod('style#addSource', source.dataSource);
     assert(data != null);
 
     final pb.Source proto = pb.Source.fromBuffer(data);
@@ -65,8 +67,10 @@ class Style {
     int index,
   }) async {
     print('addLayer: ${layer.id}');
-    assert(getLayer(layer.id) == null, 'You already have a Layer with this id. Try getLayer(id)');
-    final pb.Operations_Add op = pb.Operations_Add.create()..layer = layer.source;
+    assert(getLayer(layer.id) == null,
+        'You already have a Layer with this id. Try getLayer(id)');
+    final pb.Operations_Add op = pb.Operations_Add.create()
+      ..layer = layer.source;
 
     if (belowId != null) {
       op.belowId = belowId;
@@ -76,7 +80,8 @@ class Style {
       op.index = index;
     }
 
-    final Uint8List data = await invokeMethod('style#addLayer', op.writeToBuffer());
+    final Uint8List data =
+        await invokeMethod('style#addLayer', op.writeToBuffer());
 
     final pb.Layer proto = pb.Layer.fromBuffer(data);
     final T platformLayer = Layer.fromProto(proto);
@@ -113,7 +118,8 @@ class Style {
     assert(transitionOptions != null);
   }
 
-  Future<T> invokeMethod<T>(String method, [dynamic arguments]) => _channel.invokeMethod(method, arguments);
+  Future<T> invokeMethod<T>(String method, [dynamic arguments]) =>
+      _channel.invokeMethod(method, arguments);
 
   Future<List<T>> invokeListMethod<T>(String method, [dynamic arguments]) =>
       _channel.invokeListMethod<T>(method, arguments);

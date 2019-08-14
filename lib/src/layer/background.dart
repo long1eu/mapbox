@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundLayer, BackgroundLayerBuilder> {
+abstract class BackgroundLayer
+    with _Channel
+    implements Layer, Built<BackgroundLayer, BackgroundLayerBuilder> {
   factory BackgroundLayer({
     @required String id,
     bool visible = true,
@@ -33,12 +35,17 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
         ..visible = visible
         ..minZoom = minZoom
         ..maxZoom = maxZoom
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
-        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : null)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..color = colorEx ??
+            (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..pattern =
+            patternEx ?? (pattern != null ? literalString(pattern) : null)
+        ..opacity =
+            opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
         ..colorTransition = (colorTransition ?? transitionOptions).toBuilder()
-        ..patternTransition = (patternTransition ?? transitionOptions).toBuilder()
-        ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder();
+        ..patternTransition =
+            (patternTransition ?? transitionOptions).toBuilder()
+        ..opacityTransition =
+            (opacityTransition ?? transitionOptions).toBuilder();
     });
   }
 
@@ -53,12 +60,20 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
         ..visible = proto.visible.value
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
-        ..color = proto.hasColor() ? Expression.fromProtoString(proto.color) : null
-        ..pattern = proto.hasPattern() ? Expression.fromProtoString(proto.pattern) : null
-        ..opacity = proto.hasOpacity() ? Expression.fromProtoString(proto.opacity) : null
-        ..colorTransition = TransitionOptions.fromProto(proto.colorTransition).toBuilder()
-        ..patternTransition = TransitionOptions.fromProto(proto.patternTransition).toBuilder()
-        ..opacityTransition = TransitionOptions.fromProto(proto.opacityTransition).toBuilder();
+        ..color =
+            proto.hasColor() ? Expression.fromProtoString(proto.color) : null
+        ..pattern = proto.hasPattern()
+            ? Expression.fromProtoString(proto.pattern)
+            : null
+        ..opacity = proto.hasOpacity()
+            ? Expression.fromProtoString(proto.opacity)
+            : null
+        ..colorTransition =
+            TransitionOptions.fromProto(proto.colorTransition).toBuilder()
+        ..patternTransition =
+            TransitionOptions.fromProto(proto.patternTransition).toBuilder()
+        ..opacityTransition =
+            TransitionOptions.fromProto(proto.opacityTransition).toBuilder();
     });
   }
 
@@ -101,12 +116,20 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
-        ..pattern = patternEx ?? (pattern != null ? literalString(pattern) : this.pattern)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
-        ..colorTransition = (colorTransition ?? this.colorTransition).toBuilder()
-        ..patternTransition = (patternTransition ?? this.patternTransition).toBuilder()
-        ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder();
+        ..color = colorEx ??
+            (color != null
+                ? rgb(color.red, color.green, color.blue)
+                : this.color)
+        ..pattern = patternEx ??
+            (pattern != null ? literalString(pattern) : this.pattern)
+        ..opacity = opacityEx ??
+            (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..colorTransition =
+            (colorTransition ?? this.colorTransition).toBuilder()
+        ..patternTransition =
+            (patternTransition ?? this.patternTransition).toBuilder()
+        ..opacityTransition =
+            (opacityTransition ?? this.opacityTransition).toBuilder();
     });
     if (!isAttached || this == layer) return layer;
     return _update(layer);
@@ -123,12 +146,16 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
           ..color = layer.color ?? color
           ..pattern = layer.pattern ?? pattern
           ..opacity = layer.opacity ?? opacity
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..patternTransition = (layer.patternTransition ?? patternTransition).toBuilder()
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder();
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..patternTransition =
+              (layer.patternTransition ?? patternTransition).toBuilder()
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder();
       });
     } else {
-      throw ArgumentError('Only a BackgroundLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a BackgroundLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -142,14 +169,18 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
           ..color = layer.color ?? color
           ..pattern = layer.pattern ?? pattern
           ..opacity = layer.opacity ?? opacity
-          ..colorTransition = (layer.colorTransition ?? colorTransition).toBuilder()
-          ..patternTransition = (layer.patternTransition ?? patternTransition).toBuilder()
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder();
+          ..colorTransition =
+              (layer.colorTransition ?? colorTransition).toBuilder()
+          ..patternTransition =
+              (layer.patternTransition ?? patternTransition).toBuilder()
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder();
       });
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a BackgroundLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a BackgroundLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -178,5 +209,6 @@ abstract class BackgroundLayer with _Channel implements Layer, Built<BackgroundL
       ..freeze();
   }
 
-  static Serializer<BackgroundLayer> get serializer => _$backgroundLayerSerializer;
+  static Serializer<BackgroundLayer> get serializer =>
+      _$backgroundLayerSerializer;
 }

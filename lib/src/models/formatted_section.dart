@@ -16,7 +16,8 @@ import 'package:meta/meta.dart';
 
 part 'formatted_section.g.dart';
 
-abstract class FormattedSection implements Built<FormattedSection, FormattedSectionBuilder> {
+abstract class FormattedSection
+    implements Built<FormattedSection, FormattedSectionBuilder> {
   factory FormattedSection({
     @required String text,
     double fontScale,
@@ -83,12 +84,18 @@ abstract class FormattedSection implements Built<FormattedSection, FormattedSect
   @memoized
   Uint8List get data => proto.writeToBuffer();
 
-  static Serializer<FormattedSection> get serializer => _$formattedSectionSerializer;
+  static Serializer<FormattedSection> get serializer =>
+      _$formattedSectionSerializer;
 
   FormatEntry get expression {
     return formatEntry(
       text,
-      [if (fontScale != null) formatFontScale(fontScale), if (fontStack != null) formatFontStackExpresion(literalList(fontStack.toList())), formatTextColor(textColor)],
+      [
+        if (fontScale != null) formatFontScale(fontScale),
+        if (fontStack != null)
+          formatFontStackExpresion(literalList(fontStack.toList())),
+        formatTextColor(textColor),
+      ],
     );
   }
 }

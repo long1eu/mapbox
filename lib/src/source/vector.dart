@@ -4,10 +4,14 @@
 
 part of source;
 
-abstract class VectorSource with _Channel implements Source, Built<VectorSource, VectorSourceBuilder> {
-  factory VectorSource({@required String id, String attribution, String uri, TileSet tileSet}) {
+abstract class VectorSource
+    with _Channel
+    implements Source, Built<VectorSource, VectorSourceBuilder> {
+  factory VectorSource(
+      {@required String id, String attribution, String uri, TileSet tileSet}) {
     assert(id != null);
-    assert(uri != null || tileSet != null, 'You must specify eather the uri or provided an tileSet');
+    assert(uri != null || tileSet != null,
+        'You must specify eather the uri or provided an tileSet');
 
     return _$VectorSource((VectorSourceBuilder b) {
       b
@@ -28,7 +32,9 @@ abstract class VectorSource with _Channel implements Source, Built<VectorSource,
         ..id = proto.id
         ..attribution = proto.hasAttribution() ? proto.attribution : null
         ..uri = proto.hasUri() ? proto.uri : null
-        ..tileSet = proto.hasTileSet() ? TileSet.fromProto(proto.tileSet).toBuilder() : null;
+        ..tileSet = proto.hasTileSet()
+            ? TileSet.fromProto(proto.tileSet).toBuilder()
+            : null;
     });
   }
 
@@ -50,7 +56,8 @@ abstract class VectorSource with _Channel implements Source, Built<VectorSource,
           ..tileSet = (source.tileSet ?? this.tileSet)?.toBuilder();
       });
     } else {
-      throw ArgumentError('Only a VectorSource can be merged but got ${source.runtimeType}');
+      throw ArgumentError(
+          'Only a VectorSource can be merged but got ${source.runtimeType}');
     }
   }
 

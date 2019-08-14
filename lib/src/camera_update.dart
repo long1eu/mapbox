@@ -33,7 +33,8 @@ class CameraUpdate {
     );
   }
 
-  factory CameraUpdate.newLatLngBounds(LatLngBounds bounds, {double bearing, double tilt, EdgeInsets padding}) {
+  factory CameraUpdate.newLatLngBounds(LatLngBounds bounds,
+      {double bearing, double tilt, EdgeInsets padding}) {
     return CameraUpdate._(
       bounds: bounds,
       bearing: bearing,

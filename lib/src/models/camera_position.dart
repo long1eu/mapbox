@@ -14,8 +14,10 @@ import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
 
 part 'camera_position.g.dart';
 
-abstract class CameraPosition implements Built<CameraPosition, CameraPositionBuilder> {
-  factory CameraPosition({double bearing, LatLng target, double tilt, double zoom}) {
+abstract class CameraPosition
+    implements Built<CameraPosition, CameraPositionBuilder> {
+  factory CameraPosition(
+      {double bearing, LatLng target, double tilt, double zoom}) {
     return _$CameraPosition((CameraPositionBuilder b) {
       b
         ..bearing = bearing ?? 0
@@ -76,14 +78,16 @@ abstract class CameraPosition implements Built<CameraPosition, CameraPositionBui
   @memoized
   Uint8List get data => proto.writeToBuffer();
 
-  static Serializer<CameraPosition> get serializer => _$cameraPositionSerializer;
+  static Serializer<CameraPosition> get serializer =>
+      _$cameraPositionSerializer;
 }
 
 class CameraMoveStartedReason extends EnumClass {
   const CameraMoveStartedReason._(String name) : super(name);
 
   static const CameraMoveStartedReason apiGesture = _$apiGesture;
-  static const CameraMoveStartedReason developerAnimation = _$developerAnimation;
+  static const CameraMoveStartedReason developerAnimation =
+      _$developerAnimation;
   static const CameraMoveStartedReason apiAnimation = _$apiAnimation;
 
   static BuiltSet<CameraMoveStartedReason> get values => _$values;
@@ -93,9 +97,13 @@ class CameraMoveStartedReason extends EnumClass {
 
   static CameraMoveStartedReason valueOf(String name) => _$valueOf(name);
 
-  static Serializer<CameraMoveStartedReason> get serializer => _$cameraMoveStartedReasonSerializer;
+  static Serializer<CameraMoveStartedReason> get serializer =>
+      _$cameraMoveStartedReasonSerializer;
 
-  static CameraMoveStartedReason fromProtoData(int index) => values.elementAt(index);
+  static CameraMoveStartedReason fromProtoData(int index) =>
+      values.elementAt(index);
 
-  static CameraMoveStartedReason fromProto(pb.Map__CameraPosition_MoveReason proto) => values.elementAt(proto.value);
+  static CameraMoveStartedReason fromProto(
+          pb.Map__CameraPosition_MoveReason proto) =>
+      values.elementAt(proto.value);
 }

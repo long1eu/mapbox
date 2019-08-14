@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, HeatmapLayerBuilder> {
+abstract class HeatmapLayer
+    with _Channel
+    implements Layer, Built<HeatmapLayer, HeatmapLayerBuilder> {
   factory HeatmapLayer({
     @required String id,
     @required String sourceId,
@@ -49,12 +51,17 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
         ..filter = filter
         ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : null)
         ..weight = weightEx ?? (weight != null ? literalDouble(weight) : null)
-        ..intensity = intensityEx ?? (intensity != null ? literalDouble(intensity) : null)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : null)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
+        ..intensity =
+            intensityEx ?? (intensity != null ? literalDouble(intensity) : null)
+        ..color = colorEx ??
+            (color != null ? rgb(color.red, color.green, color.blue) : null)
+        ..opacity =
+            opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
         ..radiusTransition = (radiusTransition ?? transitionOptions).toBuilder()
-        ..intensityTransition = (intensityTransition ?? transitionOptions).toBuilder()
-        ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder();
+        ..intensityTransition =
+            (intensityTransition ?? transitionOptions).toBuilder()
+        ..opacityTransition =
+            (opacityTransition ?? transitionOptions).toBuilder();
     });
   }
 
@@ -71,15 +78,26 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..filter = proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
-        ..radius = proto.hasRadius() ? Expression.fromProtoString(proto.radius) : null
-        ..weight = proto.hasWeight() ? Expression.fromProtoString(proto.weight) : null
-        ..intensity = proto.hasIntensity() ? Expression.fromProtoString(proto.intensity) : null
-        ..color = proto.hasColor() ? Expression.fromProtoString(proto.color) : null
-        ..opacity = proto.hasOpacity() ? Expression.fromProtoString(proto.opacity) : null
-        ..radiusTransition = TransitionOptions.fromProto(proto.radiusTransition).toBuilder()
-        ..intensityTransition = TransitionOptions.fromProto(proto.intensityTransition).toBuilder()
-        ..opacityTransition = TransitionOptions.fromProto(proto.opacityTransition).toBuilder();
+        ..filter =
+            proto.hasFilter() ? Expression.fromProtoString(proto.filter) : null
+        ..radius =
+            proto.hasRadius() ? Expression.fromProtoString(proto.radius) : null
+        ..weight =
+            proto.hasWeight() ? Expression.fromProtoString(proto.weight) : null
+        ..intensity = proto.hasIntensity()
+            ? Expression.fromProtoString(proto.intensity)
+            : null
+        ..color =
+            proto.hasColor() ? Expression.fromProtoString(proto.color) : null
+        ..opacity = proto.hasOpacity()
+            ? Expression.fromProtoString(proto.opacity)
+            : null
+        ..radiusTransition =
+            TransitionOptions.fromProto(proto.radiusTransition).toBuilder()
+        ..intensityTransition =
+            TransitionOptions.fromProto(proto.intensityTransition).toBuilder()
+        ..opacityTransition =
+            TransitionOptions.fromProto(proto.opacityTransition).toBuilder();
     });
   }
 
@@ -146,14 +164,24 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..radius = radiusEx ?? (radius != null ? literalDouble(radius) : this.radius)
-        ..weight = weightEx ?? (weight != null ? literalDouble(weight) : this.weight)
-        ..intensity = intensityEx ?? (intensity != null ? literalDouble(intensity) : this.intensity)
-        ..color = colorEx ?? (color != null ? rgb(color.red, color.green, color.blue) : this.color)
-        ..opacity = opacityEx ?? (opacity != null ? literalDouble(opacity) : this.opacity)
-        ..radiusTransition = (radiusTransition ?? this.radiusTransition).toBuilder()
-        ..intensityTransition = (intensityTransition ?? this.intensityTransition).toBuilder()
-        ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder();
+        ..radius =
+            radiusEx ?? (radius != null ? literalDouble(radius) : this.radius)
+        ..weight =
+            weightEx ?? (weight != null ? literalDouble(weight) : this.weight)
+        ..intensity = intensityEx ??
+            (intensity != null ? literalDouble(intensity) : this.intensity)
+        ..color = colorEx ??
+            (color != null
+                ? rgb(color.red, color.green, color.blue)
+                : this.color)
+        ..opacity = opacityEx ??
+            (opacity != null ? literalDouble(opacity) : this.opacity)
+        ..radiusTransition =
+            (radiusTransition ?? this.radiusTransition).toBuilder()
+        ..intensityTransition =
+            (intensityTransition ?? this.intensityTransition).toBuilder()
+        ..opacityTransition =
+            (opacityTransition ?? this.opacityTransition).toBuilder();
     });
     if (!isAttached || this == layer) return layer;
     return _update(layer);
@@ -174,12 +202,16 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
           ..intensity = layer.intensity ?? intensity
           ..color = layer.color ?? color
           ..opacity = layer.opacity ?? opacity
-          ..radiusTransition = (layer.radiusTransition ?? radiusTransition).toBuilder()
-          ..intensityTransition = (layer.intensityTransition ?? intensityTransition).toBuilder()
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder();
+          ..radiusTransition =
+              (layer.radiusTransition ?? radiusTransition).toBuilder()
+          ..intensityTransition =
+              (layer.intensityTransition ?? intensityTransition).toBuilder()
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder();
       });
     } else {
-      throw ArgumentError('Only a HeatmapLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a HeatmapLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -198,14 +230,18 @@ abstract class HeatmapLayer with _Channel implements Layer, Built<HeatmapLayer, 
           ..intensity = layer.intensity ?? intensity
           ..color = layer.color ?? color
           ..opacity = layer.opacity ?? opacity
-          ..radiusTransition = (layer.radiusTransition ?? radiusTransition).toBuilder()
-          ..intensityTransition = (layer.intensityTransition ?? intensityTransition).toBuilder()
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder();
+          ..radiusTransition =
+              (layer.radiusTransition ?? radiusTransition).toBuilder()
+          ..intensityTransition =
+              (layer.intensityTransition ?? intensityTransition).toBuilder()
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder();
       });
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a HeatmapLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a HeatmapLayer can be merged but got ${layer.runtimeType}');
     }
   }
 

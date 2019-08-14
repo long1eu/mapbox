@@ -62,6 +62,8 @@ mixin Channel {
   bool get isAttached => channel != null;
 
   Future<T> _update<T extends Source>(T source) {
-    return channel.invokeMethod('source#update', source.dataSource).then((_) => source);
+    return channel
+        .invokeMethod('source#update', source.dataSource)
+        .then((_) => source);
   }
 }

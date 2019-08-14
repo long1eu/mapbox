@@ -4,7 +4,9 @@
 
 part of layer;
 
-abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, RasterLayerBuilder> {
+abstract class RasterLayer
+    with _Channel
+    implements Layer, Built<RasterLayer, RasterLayerBuilder> {
   factory RasterLayer({
     @required String id,
     @required String sourceId,
@@ -56,19 +58,35 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : null
-        ..hueRotate = hueRotateEx ?? hueRotate != null ? literalDouble(hueRotate) : null
-        ..brightnessMin = brightnessMinEx ?? brightnessMin != null ? literalDouble(brightnessMin) : null
-        ..brightnessMax = brightnessMaxEx ?? brightnessMax != null ? literalDouble(brightnessMax) : null
-        ..saturation = saturationEx ?? saturation != null ? literalDouble(saturation) : null
-        ..contrast = contrastEx ?? contrast != null ? literalDouble(contrast) : null
+        ..hueRotate =
+            hueRotateEx ?? hueRotate != null ? literalDouble(hueRotate) : null
+        ..brightnessMin = brightnessMinEx ?? brightnessMin != null
+            ? literalDouble(brightnessMin)
+            : null
+        ..brightnessMax = brightnessMaxEx ?? brightnessMax != null
+            ? literalDouble(brightnessMax)
+            : null
+        ..saturation = saturationEx ?? saturation != null
+            ? literalDouble(saturation)
+            : null
+        ..contrast =
+            contrastEx ?? contrast != null ? literalDouble(contrast) : null
         ..resampling = resamplingEx ?? resampling
-        ..fadeDuration = fadeDurationEx ?? fadeDuration != null ? literalInt(fadeDuration.inMilliseconds) : null
-        ..opacityTransition = (opacityTransition ?? transitionOptions).toBuilder()
-        ..hueRotateTransition = (hueRotateTransition ?? transitionOptions).toBuilder()
-        ..brightnessMinTransition = (brightnessMinTransition ?? transitionOptions).toBuilder()
-        ..brightnessMaxTransition = (brightnessMaxTransition ?? transitionOptions).toBuilder()
-        ..saturationTransition = (saturationTransition ?? transitionOptions).toBuilder()
-        ..contrastTransition = (contrastTransition ?? transitionOptions).toBuilder();
+        ..fadeDuration = fadeDurationEx ?? fadeDuration != null
+            ? literalInt(fadeDuration.inMilliseconds)
+            : null
+        ..opacityTransition =
+            (opacityTransition ?? transitionOptions).toBuilder()
+        ..hueRotateTransition =
+            (hueRotateTransition ?? transitionOptions).toBuilder()
+        ..brightnessMinTransition =
+            (brightnessMinTransition ?? transitionOptions).toBuilder()
+        ..brightnessMaxTransition =
+            (brightnessMaxTransition ?? transitionOptions).toBuilder()
+        ..saturationTransition =
+            (saturationTransition ?? transitionOptions).toBuilder()
+        ..contrastTransition =
+            (contrastTransition ?? transitionOptions).toBuilder();
     });
   }
 
@@ -85,20 +103,44 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
         ..minZoom = proto.minZoom.value
         ..maxZoom = proto.maxZoom.value
         ..sourceLayer = proto.hasSourceLayer() ? proto.sourceLayer.value : null
-        ..opacity = proto.hasOpacity() ? Expression.fromProtoString(proto.opacity) : null
-        ..hueRotate = proto.hasHueRotate() ? Expression.fromProtoString(proto.hueRotate) : null
-        ..brightnessMin = proto.hasBrightnessMin() ? Expression.fromProtoString(proto.brightnessMin) : null
-        ..brightnessMax = proto.hasBrightnessMax() ? Expression.fromProtoString(proto.brightnessMax) : null
-        ..saturation = proto.hasSaturation() ? Expression.fromProtoString(proto.saturation) : null
-        ..contrast = proto.hasContrast() ? Expression.fromProtoString(proto.contrast) : null
-        ..resampling = proto.hasResampling() ? Expression.fromProtoString(proto.resampling) : null
-        ..fadeDuration = proto.hasFadeDuration() ? Expression.fromProtoString(proto.fadeDuration) : null
-        ..opacityTransition = TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
-        ..hueRotateTransition = TransitionOptions.fromProto(proto.hueRotateTransition).toBuilder()
-        ..brightnessMinTransition = TransitionOptions.fromProto(proto.brightnessMinTransition).toBuilder()
-        ..brightnessMaxTransition = TransitionOptions.fromProto(proto.brightnessMaxTransition).toBuilder()
-        ..saturationTransition = TransitionOptions.fromProto(proto.saturationTransition).toBuilder()
-        ..contrastTransition = TransitionOptions.fromProto(proto.contrastTransition).toBuilder();
+        ..opacity = proto.hasOpacity()
+            ? Expression.fromProtoString(proto.opacity)
+            : null
+        ..hueRotate = proto.hasHueRotate()
+            ? Expression.fromProtoString(proto.hueRotate)
+            : null
+        ..brightnessMin = proto.hasBrightnessMin()
+            ? Expression.fromProtoString(proto.brightnessMin)
+            : null
+        ..brightnessMax = proto.hasBrightnessMax()
+            ? Expression.fromProtoString(proto.brightnessMax)
+            : null
+        ..saturation = proto.hasSaturation()
+            ? Expression.fromProtoString(proto.saturation)
+            : null
+        ..contrast = proto.hasContrast()
+            ? Expression.fromProtoString(proto.contrast)
+            : null
+        ..resampling = proto.hasResampling()
+            ? Expression.fromProtoString(proto.resampling)
+            : null
+        ..fadeDuration = proto.hasFadeDuration()
+            ? Expression.fromProtoString(proto.fadeDuration)
+            : null
+        ..opacityTransition =
+            TransitionOptions.fromProto(proto.opacityTransition).toBuilder()
+        ..hueRotateTransition =
+            TransitionOptions.fromProto(proto.hueRotateTransition).toBuilder()
+        ..brightnessMinTransition =
+            TransitionOptions.fromProto(proto.brightnessMinTransition)
+                .toBuilder()
+        ..brightnessMaxTransition =
+            TransitionOptions.fromProto(proto.brightnessMaxTransition)
+                .toBuilder()
+        ..saturationTransition =
+            TransitionOptions.fromProto(proto.saturationTransition).toBuilder()
+        ..contrastTransition =
+            TransitionOptions.fromProto(proto.contrastTransition).toBuilder();
     });
   }
 
@@ -187,21 +229,41 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
-        ..opacity = opacityEx ?? opacity != null ? literalDouble(opacity) : this.opacity
-        ..hueRotate = hueRotateEx ?? hueRotate != null ? literalDouble(hueRotate) : this.hueRotate
-        ..brightnessMin = brightnessMinEx ?? brightnessMin != null ? literalDouble(brightnessMin) : this.brightnessMin
-        ..brightnessMax = brightnessMaxEx ?? brightnessMax != null ? literalDouble(brightnessMax) : this.brightnessMax
-        ..saturation = saturationEx ?? saturation != null ? literalDouble(saturation) : this.saturation
-        ..contrast = contrastEx ?? contrast != null ? literalDouble(contrast) : this.contrast
-        ..resampling = resamplingEx ?? this.resampling
-        ..fadeDuration =
-            fadeDurationEx ?? fadeDuration != null ? literalInt(fadeDuration.inMilliseconds) : this.fadeDuration
-        ..opacityTransition = (opacityTransition ?? this.opacityTransition).toBuilder()
-        ..hueRotateTransition = (hueRotateTransition ?? this.hueRotateTransition).toBuilder()
-        ..brightnessMinTransition = (brightnessMinTransition ?? this.brightnessMinTransition).toBuilder()
-        ..brightnessMaxTransition = (brightnessMaxTransition ?? this.brightnessMaxTransition).toBuilder()
-        ..saturationTransition = (saturationTransition ?? this.saturationTransition).toBuilder()
-        ..contrastTransition = (contrastTransition ?? this.contrastTransition).toBuilder();
+        ..opacity =
+            opacityEx ?? opacity != null ? literalDouble(opacity) : this.opacity
+        ..hueRotate = hueRotateEx ?? hueRotate != null
+            ? literalDouble(hueRotate)
+            : this.hueRotate
+        ..brightnessMin = brightnessMinEx ?? brightnessMin != null
+            ? literalDouble(brightnessMin)
+            : this.brightnessMin
+        ..brightnessMax = brightnessMaxEx ?? brightnessMax != null
+            ? literalDouble(brightnessMax)
+            : this.brightnessMax
+        ..saturation = saturationEx ?? saturation != null
+            ? literalDouble(saturation)
+            : this.saturation
+        ..contrast = contrastEx ?? contrast != null
+            ? literalDouble(contrast)
+            : this.contrast
+        ..resampling = resamplingEx ?? resampling ?? this.resampling
+        ..fadeDuration = fadeDurationEx ?? fadeDuration != null
+            ? literalInt(fadeDuration.inMilliseconds)
+            : this.fadeDuration
+        ..opacityTransition =
+            (opacityTransition ?? this.opacityTransition).toBuilder()
+        ..hueRotateTransition =
+            (hueRotateTransition ?? this.hueRotateTransition).toBuilder()
+        ..brightnessMinTransition =
+            (brightnessMinTransition ?? this.brightnessMinTransition)
+                .toBuilder()
+        ..brightnessMaxTransition =
+            (brightnessMaxTransition ?? this.brightnessMaxTransition)
+                .toBuilder()
+        ..saturationTransition =
+            (saturationTransition ?? this.saturationTransition).toBuilder()
+        ..contrastTransition =
+            (contrastTransition ?? this.contrastTransition).toBuilder();
     });
     if (!isAttached || this == layer) return layer;
     return _update(layer);
@@ -224,15 +286,24 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
           ..contrast = layer.contrast ?? contrast
           ..resampling = layer.resampling ?? resampling
           ..fadeDuration = layer.fadeDuration ?? fadeDuration
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..hueRotateTransition = (layer.hueRotateTransition ?? hueRotateTransition).toBuilder()
-          ..brightnessMinTransition = (layer.brightnessMinTransition ?? brightnessMinTransition).toBuilder()
-          ..brightnessMaxTransition = (layer.brightnessMaxTransition ?? brightnessMaxTransition).toBuilder()
-          ..saturationTransition = (layer.saturationTransition ?? saturationTransition).toBuilder()
-          ..contrastTransition = (layer.contrastTransition ?? contrastTransition).toBuilder();
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..hueRotateTransition =
+              (layer.hueRotateTransition ?? hueRotateTransition).toBuilder()
+          ..brightnessMinTransition =
+              (layer.brightnessMinTransition ?? brightnessMinTransition)
+                  .toBuilder()
+          ..brightnessMaxTransition =
+              (layer.brightnessMaxTransition ?? brightnessMaxTransition)
+                  .toBuilder()
+          ..saturationTransition =
+              (layer.saturationTransition ?? saturationTransition).toBuilder()
+          ..contrastTransition =
+              (layer.contrastTransition ?? contrastTransition).toBuilder();
       });
     } else {
-      throw ArgumentError('Only a RasterLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a RasterLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -253,17 +324,26 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
           ..contrast = layer.contrast ?? contrast
           ..resampling = layer.resampling ?? resampling
           ..fadeDuration = layer.fadeDuration ?? fadeDuration
-          ..opacityTransition = (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..hueRotateTransition = (layer.hueRotateTransition ?? hueRotateTransition).toBuilder()
-          ..brightnessMinTransition = (layer.brightnessMinTransition ?? brightnessMinTransition).toBuilder()
-          ..brightnessMaxTransition = (layer.brightnessMaxTransition ?? brightnessMaxTransition).toBuilder()
-          ..saturationTransition = (layer.saturationTransition ?? saturationTransition).toBuilder()
-          ..contrastTransition = (layer.contrastTransition ?? contrastTransition).toBuilder();
+          ..opacityTransition =
+              (layer.opacityTransition ?? opacityTransition).toBuilder()
+          ..hueRotateTransition =
+              (layer.hueRotateTransition ?? hueRotateTransition).toBuilder()
+          ..brightnessMinTransition =
+              (layer.brightnessMinTransition ?? brightnessMinTransition)
+                  .toBuilder()
+          ..brightnessMaxTransition =
+              (layer.brightnessMaxTransition ?? brightnessMaxTransition)
+                  .toBuilder()
+          ..saturationTransition =
+              (layer.saturationTransition ?? saturationTransition).toBuilder()
+          ..contrastTransition =
+              (layer.contrastTransition ?? contrastTransition).toBuilder();
       });
       if (!isAttached || this == _layer) return Future.value(_layer);
       return _update(_layer);
     } else {
-      throw ArgumentError('Only a RasterLayer can be merged but got ${layer.runtimeType}');
+      throw ArgumentError(
+          'Only a RasterLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
@@ -284,8 +364,10 @@ abstract class RasterLayer with _Channel implements Layer, Built<RasterLayer, Ra
     if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
     if (opacity != null) message.opacity = opacity.protoString;
     if (hueRotate != null) message.hueRotate = hueRotate.protoString;
-    if (brightnessMin != null) message.brightnessMin = brightnessMin.protoString;
-    if (brightnessMax != null) message.brightnessMax = brightnessMax.protoString;
+    if (brightnessMin != null)
+      message.brightnessMin = brightnessMin.protoString;
+    if (brightnessMax != null)
+      message.brightnessMax = brightnessMax.protoString;
     if (saturation != null) message.saturation = saturation.protoString;
     if (contrast != null) message.contrast = contrast.protoString;
     if (resampling != null) message.resampling = resampling.protoString;
