@@ -56,7 +56,7 @@ class MapsDemo extends StatelessWidget {
             final Widget tile = ListTile(
               title: Text(page.title),
               subtitle: Text(page.description),
-              onTap: () => navigator.pushNamed(page.route),
+              onTap: () => navigator.pushNamed(page.route, arguments: page),
             );
 
             if (i == 0) {

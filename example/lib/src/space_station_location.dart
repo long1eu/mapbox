@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:http/http.dart';
+import 'package:mapbox_gl_example/main.dart';
 
 class SpaceStationLocationPage extends StatefulWidget {
   const SpaceStationLocationPage({Key key}) : super(key: key);
@@ -74,51 +75,58 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MapboxMap(
-      options: MapOptions(
-        styleFromMapbox: MapStyle.satelliteStreets,
-        cameraPosition: CameraPosition(
-          zoom: 4.5,
-        ),
+    final Page page = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(page.title),
       ),
-      images: {
-        if (image != null) 'space-station-icon-id': image,
-      },
-      onMapReady: onMapReady,
-      layers: <Layer>[
-        SymbolLayer(
-          id: 'layer-id',
-          sourceId: 'source-id',
-          iconImage: 'space-station-icon-id',
-          iconIgnorePlacement: true,
-          iconAllowOverlap: true,
-          iconSize: .7,
-        ),
-      ],
-      sources: <Source>[
-        if (issPosition != null)
-          GeoJsonSource(
-            id: 'source-id',
-            geoJson: jsonEncode(
-              {
-                "type": "FeatureCollection",
-                "features": [
-                  {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                      "type": "Point",
-                      "coordinates": [
-                        issPosition.longitude,
-                        issPosition.latitude,
-                      ]
-                    }
-                  }
-                ]
-              },
-            ),
+      body: MapboxMap(
+        options: MapOptions(
+          styleFromMapbox: MapStyle.satelliteStreets,
+          cameraPosition: CameraPosition(
+            zoom: 4.5,
           ),
-      ],
+        ),
+        images: {
+          if (image != null) 'space-station-icon-id': image,
+        },
+        onMapReady: onMapReady,
+        layers: <Layer>[
+          SymbolLayer(
+            id: 'layer-id',
+            sourceId: 'source-id',
+            iconImage: 'space-station-icon-id',
+            iconIgnorePlacement: true,
+            iconAllowOverlap: true,
+            iconSize: .7,
+          ),
+        ],
+        sources: <Source>[
+          if (issPosition != null)
+            GeoJsonSource(
+              id: 'source-id',
+              geoJson: jsonEncode(
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "properties": {},
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                          issPosition.longitude,
+                          issPosition.latitude,
+                        ]
+                      }
+                    }
+                  ]
+                },
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

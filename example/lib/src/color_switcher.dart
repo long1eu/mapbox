@@ -5,6 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+import 'package:mapbox_gl_example/main.dart';
 
 class ColorSwitcherPage extends StatefulWidget {
   const ColorSwitcherPage({Key key}) : super(key: key);
@@ -25,67 +26,74 @@ class _ColorSwitcherPageState extends State<ColorSwitcherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: MapboxMap(
-            onMapReady: onMapReady,
-            options: MapOptions(
-              styleFromMapbox: MapStyle.light,
-              cameraPosition: CameraPosition(
-                target: LatLng(
-                  latitude: 45.4385,
-                  longitude: 12.338,
+    final Page page = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(page.title),
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: MapboxMap(
+              onMapReady: onMapReady,
+              options: MapOptions(
+                styleFromMapbox: MapStyle.light,
+                cameraPosition: CameraPosition(
+                  target: LatLng(
+                    latitude: 45.4385,
+                    longitude: 12.338,
+                  ),
+                  zoom: 17.4,
                 ),
-                zoom: 17.4,
               ),
             ),
           ),
-        ),
-        Column(
-          children: <Widget>[
-            ColorSlider(
-              name: 'red',
-              value: waterColor?.red,
-              onChanged: waterColor != null
-                  ? (int value) async {
-                      FillLayer water = controller.style.getLayer('water');
-                      water = await water.copyWith(
-                          color: waterColor.withRed(value));
-                      if (mounted)
-                        setState(() => waterColor = water.color.color);
-                    }
-                  : null,
-            ),
-            ColorSlider(
-              name: 'green',
-              value: waterColor?.green,
-              onChanged: waterColor != null
-                  ? (int value) async {
-                      FillLayer water = controller.style.getLayer('water');
-                      water = await water.copyWith(
-                          color: waterColor.withGreen(value));
-                      if (mounted)
-                        setState(() => waterColor = water.color.color);
-                    }
-                  : null,
-            ),
-            ColorSlider(
-              name: 'blue',
-              value: waterColor?.blue,
-              onChanged: waterColor != null
-                  ? (int value) async {
-                      FillLayer water = controller.style.getLayer('water');
-                      water = await water.copyWith(
-                          color: waterColor.withBlue(value));
-                      if (mounted)
-                        setState(() => waterColor = water.color.color);
-                    }
-                  : null,
-            ),
-          ],
-        ),
-      ],
+          Column(
+            children: <Widget>[
+              ColorSlider(
+                name: 'red',
+                value: waterColor?.red,
+                onChanged: waterColor != null
+                    ? (int value) async {
+                        FillLayer water = controller.style.getLayer('water');
+                        water = await water.copyWith(
+                            color: waterColor.withRed(value));
+                        if (mounted)
+                          setState(() => waterColor = water.color.color);
+                      }
+                    : null,
+              ),
+              ColorSlider(
+                name: 'green',
+                value: waterColor?.green,
+                onChanged: waterColor != null
+                    ? (int value) async {
+                        FillLayer water = controller.style.getLayer('water');
+                        water = await water.copyWith(
+                            color: waterColor.withGreen(value));
+                        if (mounted)
+                          setState(() => waterColor = water.color.color);
+                      }
+                    : null,
+              ),
+              ColorSlider(
+                name: 'blue',
+                value: waterColor?.blue,
+                onChanged: waterColor != null
+                    ? (int value) async {
+                        FillLayer water = controller.style.getLayer('water');
+                        water = await water.copyWith(
+                            color: waterColor.withBlue(value));
+                        if (mounted)
+                          setState(() => waterColor = water.color.color);
+                      }
+                    : null,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

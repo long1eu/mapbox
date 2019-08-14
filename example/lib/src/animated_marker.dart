@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+import 'package:mapbox_gl_example/main.dart';
 
 class AnimatedMarkerPage extends StatefulWidget {
   const AnimatedMarkerPage({Key key}) : super(key: key);
@@ -75,51 +76,58 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
 
   @override
   Widget build(BuildContext context) {
-    return MapboxMap(
-      mapTaps: MapTaps(
-        onTap: onTap,
+    final Page page = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(page.title),
       ),
-      options: MapOptions(
-        styleFromMapbox: MapStyle.satelliteStreets,
-        cameraPosition: CameraPosition(
-          target: initialPosition,
-          zoom: 4.5,
+      body: MapboxMap(
+        mapTaps: MapTaps(
+          onTap: onTap,
         ),
-      ),
-      images: images,
-      layers: <Layer>[
-        SymbolLayer(
-          id: 'layer-id',
-          sourceId: 'source-id',
-          iconImage: 'marker_icon',
-          iconIgnorePlacement: true,
-          iconAllowOverlap: true,
-          iconSize: 1.0,
-        ),
-      ],
-      sources: <Source>[
-        GeoJsonSource(
-          id: 'source-id',
-          geoJson: jsonEncode(
-            {
-              "type": "FeatureCollection",
-              "features": [
-                {
-                  "type": "Feature",
-                  "properties": {},
-                  "geometry": {
-                    "type": "Point",
-                    "coordinates": [
-                      _animation.value.longitude,
-                      _animation.value.latitude,
-                    ]
-                  }
-                }
-              ]
-            },
+        options: MapOptions(
+          styleFromMapbox: MapStyle.satelliteStreets,
+          cameraPosition: CameraPosition(
+            target: initialPosition,
+            zoom: 4.5,
           ),
         ),
-      ],
+        images: images,
+        layers: <Layer>[
+          SymbolLayer(
+            id: 'layer-id',
+            sourceId: 'source-id',
+            iconImage: 'marker_icon',
+            iconIgnorePlacement: true,
+            iconAllowOverlap: true,
+            iconSize: 1.0,
+          ),
+        ],
+        sources: <Source>[
+          GeoJsonSource(
+            id: 'source-id',
+            geoJson: jsonEncode(
+              {
+                "type": "FeatureCollection",
+                "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        _animation.value.longitude,
+                        _animation.value.latitude,
+                      ]
+                    }
+                  }
+                ]
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

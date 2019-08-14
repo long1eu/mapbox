@@ -5,6 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+import 'package:mapbox_gl_example/main.dart';
 
 class GeoJsonLayerInStackPage extends StatelessWidget {
   const GeoJsonLayerInStackPage({Key key}) : super(key: key);
@@ -23,25 +24,32 @@ class GeoJsonLayerInStackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MapboxMap(
-      onMapReady: _onMapReady,
-      options: MapOptions(
-        styleFromMapbox: MapStyle.mapboxStreets,
-        cameraPosition: CameraPosition(
-          target: LatLng(
-            latitude: 33.749909,
-            longitude: -84.381546,
-          ),
-          zoom: 8.471903,
-        ),
+    final Page page = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(page.title),
       ),
-      sources: <Source>[
-        GeoJsonSource(
-          id: 'urban-areas',
-          uri:
-              'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson',
+      body: MapboxMap(
+        onMapReady: _onMapReady,
+        options: MapOptions(
+          styleFromMapbox: MapStyle.mapboxStreets,
+          cameraPosition: CameraPosition(
+            target: LatLng(
+              latitude: 33.749909,
+              longitude: -84.381546,
+            ),
+            zoom: 8.471903,
+          ),
         ),
-      ],
+        sources: <Source>[
+          GeoJsonSource(
+            id: 'urban-areas',
+            uri:
+                'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson',
+          ),
+        ],
+      ),
     );
   }
 }

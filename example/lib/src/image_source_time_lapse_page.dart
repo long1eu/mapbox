@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+import 'package:mapbox_gl_example/main.dart';
 
 class ImageSourceTimeLapsePage extends StatefulWidget {
   const ImageSourceTimeLapsePage({Key key}) : super(key: key);
@@ -69,37 +70,44 @@ class _ImageSourceTimeLapsePageState extends State<ImageSourceTimeLapsePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MapboxMap(
-      onMapReady: onMapReady,
-      options: MapOptions(
-        styleFromMapbox: MapStyle.mapboxStreets,
-        cameraPosition: CameraPosition(
-          target: LatLng(
-            latitude: 40.879,
-            longitude: -76.476,
-          ),
-          zoom: 5.5,
-        ),
+    final Page page = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(page.title),
       ),
-      layers: <Layer>[
-        RasterLayer(
-          id: 'animated_image_layer',
-          sourceId: 'animated_image_source',
-        ),
-      ],
-      sources: <Source>[
-        if (images != null)
-          ImageSource(
-            id: 'animated_image_source',
-            coordinates: LatLngQuad(
-              topLeft: LatLng(latitude: 46.437, longitude: -80.425),
-              topRight: LatLng(latitude: 46.437, longitude: -71.516),
-              bottomRight: LatLng(latitude: 37.936, longitude: -71.516),
-              bottomLeft: LatLng(latitude: 37.936, longitude: -80.425),
+      body: MapboxMap(
+        onMapReady: onMapReady,
+        options: MapOptions(
+          styleFromMapbox: MapStyle.mapboxStreets,
+          cameraPosition: CameraPosition(
+            target: LatLng(
+              latitude: 40.879,
+              longitude: -76.476,
             ),
-            image: images[i],
+            zoom: 5.5,
           ),
-      ],
+        ),
+        layers: <Layer>[
+          RasterLayer(
+            id: 'animated_image_layer',
+            sourceId: 'animated_image_source',
+          ),
+        ],
+        sources: <Source>[
+          if (images != null)
+            ImageSource(
+              id: 'animated_image_source',
+              coordinates: LatLngQuad(
+                topLeft: LatLng(latitude: 46.437, longitude: -80.425),
+                topRight: LatLng(latitude: 46.437, longitude: -71.516),
+                bottomRight: LatLng(latitude: 37.936, longitude: -71.516),
+                bottomLeft: LatLng(latitude: 37.936, longitude: -80.425),
+              ),
+              image: images[i],
+            ),
+        ],
+      ),
     );
   }
 }
