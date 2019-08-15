@@ -38,3 +38,4 @@ flutter:
     - res/red_marker.png
     - res/iss.png
     - res/la_heatmap_styling_points.geojson
+    - res/bathymetry-data.geojson

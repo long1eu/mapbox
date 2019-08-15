@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mapbox_gl_example/src/add_wms_source_page.dart';
 import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
 import 'package:mapbox_gl_example/src/animated_marker.dart';
+import 'package:mapbox_gl_example/src/bathymetry_page.dart';
 import 'package:mapbox_gl_example/src/click_to_add_image_page.dart';
 import 'package:mapbox_gl_example/src/color_switcher.dart';
 import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
@@ -116,6 +117,7 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.clickToAddImage: (_) => const ClickToAddImagePage(),
         AppRoutes.multipleHeatmapStyling: (_) =>
             const MultipleHeatmapStylingPage(),
+        AppRoutes.bathymetry: (_) => const BathymetryPage(),
       },
     );
   }
@@ -227,6 +229,13 @@ const List<Page> pages = <Page>[
     category: Category.dataVisualisation,
     route: AppRoutes.multipleHeatmapStyling,
   ),
+  Page(
+    title: 'Display water depth',
+    description:
+        'Use data-driven styling to show bathymetry (water depth) data.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.bathymetry,
+  ),
 ];
 
 class AppRoutes {
@@ -246,6 +255,7 @@ class AppRoutes {
   static const String zoomDependentFillColor = '/zoomDependentFillColor';
   static const String clickToAddImage = '/clickToAddImage';
   static const String multipleHeatmapStyling = '/multipleHeatmapStyling';
+  static const String bathymetry = '/bathymetry';
 }
 
 enum Category { gettingStarted, dynamicStyling, dataVisualisation }
