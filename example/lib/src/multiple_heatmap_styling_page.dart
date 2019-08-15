@@ -58,6 +58,8 @@ class _MultipleHeatmapStylingPageState
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    // todo on Android only the first value works
+    // todo on iOS this sometimes crashes the app
 
     return Scaffold(
       appBar: AppBar(

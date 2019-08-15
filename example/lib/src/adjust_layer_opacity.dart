@@ -25,6 +25,7 @@ class _AdjustLayerOpacityPageState extends State<AdjustLayerOpacityPage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    // todo fix opacity on Android
 
     return Scaffold(
       appBar: AppBar(
@@ -80,13 +81,15 @@ class _AdjustLayerOpacityPageState extends State<AdjustLayerOpacityPage> {
                   ),
                 ),
                 Container(
-                  width: 56.0,
+                  width: 64.0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     color: Colors.white,
                   ),
                   padding: const EdgeInsets.symmetric(
-                      vertical: 4.0, horizontal: 8.0),
+                    vertical: 4.0,
+                    horizontal: 8.0,
+                  ),
                   child: Text(
                     '${(opacity * 100).toInt()} %',
                     textAlign: TextAlign.end,

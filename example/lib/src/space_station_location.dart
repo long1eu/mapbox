@@ -103,7 +103,7 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
             iconImage: imageId,
             iconIgnorePlacement: true,
             iconAllowOverlap: true,
-            iconSize: .7,
+            iconSize: 1.2,
           ),
         ],
         sources: <Source>[

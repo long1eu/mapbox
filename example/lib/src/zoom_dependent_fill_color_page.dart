@@ -37,6 +37,7 @@ class ZoomDependentFillColorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    // todo changing the fill color doesn't work at all
 
     return Scaffold(
       appBar: AppBar(

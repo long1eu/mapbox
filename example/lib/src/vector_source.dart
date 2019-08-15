@@ -13,6 +13,7 @@ class VectorSourcePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    // todo line color doesn't work on Android
 
     return Scaffold(
       appBar: AppBar(

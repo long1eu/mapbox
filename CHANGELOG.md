@@ -1,3 +1,7 @@
+## 0.0.4+2
+
+* add Android tests
+
 ## 0.0.4+1
 
 * fix more analysis options

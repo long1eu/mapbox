@@ -64,6 +64,7 @@ class MapsDemo extends StatelessWidget {
         appBar: AppBar(title: const Text('MapboxMaps examples')),
         body: ListView.separated(
           itemCount: pages.length,
+          padding: const EdgeInsets.only(bottom: 24.0),
           itemBuilder: (BuildContext context, int i) {
             final Page page = pages[i];
             final Widget tile = ListTile(

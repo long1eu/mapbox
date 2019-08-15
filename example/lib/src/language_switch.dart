@@ -45,6 +45,7 @@ class _LanguageSwitchPageState extends State<LanguageSwitchPage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    // todo language change doesn't work on Android
 
     return Scaffold(
       appBar: AppBar(

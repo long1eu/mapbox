@@ -14,9 +14,6 @@ public class SwiftMapboxGlPlugin: NSObject, FlutterPlugin {
   
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch (call.method) {
-    case "getPlatformVersion":
-      result("iOS " + UIDevice.current.systemVersion)
-      break;
     case "echo#layer":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let layer = try! Tophap_MapboxGl_Layer(serializedData: data)
