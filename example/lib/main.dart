@@ -11,6 +11,7 @@ import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
 import 'package:mapbox_gl_example/src/hillshade_layer_page.dart';
 import 'package:mapbox_gl_example/src/image_source_time_lapse_page.dart';
 import 'package:mapbox_gl_example/src/language_switch.dart';
+import 'package:mapbox_gl_example/src/line_layer_page.dart';
 import 'package:mapbox_gl_example/src/move_camera.dart';
 import 'package:mapbox_gl_example/src/multiple_heatmap_styling_page.dart';
 import 'package:mapbox_gl_example/src/scrolling_map.dart';
@@ -123,6 +124,7 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.circleLayerClustering: (_) =>
             const CircleLayerClusteringPage(),
         AppRoutes.circleRadius: (_) => const CircleRadiusPage(),
+        AppRoutes.lineLayer: (_) => const LineLayerPage(),
       },
     );
   }
@@ -255,6 +257,13 @@ const List<Page> pages = <Page>[
     category: Category.dataVisualisation,
     route: AppRoutes.circleRadius,
   ),
+  Page(
+    title: 'Create a line layer',
+    description:
+        'Create a GeoJSON line source, style it using properties, and add the layer to the map.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.lineLayer,
+  ),
 ];
 
 class AppRoutes {
@@ -277,6 +286,7 @@ class AppRoutes {
   static const String bathymetry = '/bathymetry';
   static const String circleLayerClustering = '/circleLayerClustering';
   static const String circleRadius = '/circleRadius';
+  static const String lineLayer = '/lineLayer';
 }
 
 enum Category { gettingStarted, dynamicStyling, dataVisualisation }
