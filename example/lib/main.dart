@@ -3,6 +3,7 @@ import 'package:mapbox_gl_example/src/add_wms_source_page.dart';
 import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
 import 'package:mapbox_gl_example/src/animated_marker.dart';
 import 'package:mapbox_gl_example/src/bathymetry_page.dart';
+import 'package:mapbox_gl_example/src/circle_layer_clustering_page.dart';
 import 'package:mapbox_gl_example/src/click_to_add_image_page.dart';
 import 'package:mapbox_gl_example/src/color_switcher.dart';
 import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
@@ -118,6 +119,8 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.multipleHeatmapStyling: (_) =>
             const MultipleHeatmapStylingPage(),
         AppRoutes.bathymetry: (_) => const BathymetryPage(),
+        AppRoutes.circleLayerClustering: (_) =>
+            const CircleLayerClusteringPage(),
       },
     );
   }
@@ -196,12 +199,12 @@ const List<Page> pages = <Page>[
     category: Category.dynamicStyling,
     route: AppRoutes.spaceStationLocation,
   ),
-  /*Page(
+  Page(
     title: 'Change a layer\'s color',
     description: 'Using layer set to change a layer\'s fill color.',
     category: Category.dynamicStyling,
     route: AppRoutes.colorSwitcher,
-  ),*/
+  ),
   Page(
     title: 'Change a map\'s language',
     description: 'Switch the map\'s language dynamically.',
@@ -236,6 +239,13 @@ const List<Page> pages = <Page>[
     category: Category.dataVisualisation,
     route: AppRoutes.bathymetry,
   ),
+  Page(
+    title: 'CircleLayer clusters',
+    description:
+        'Use GeoJSON and circle layers to visualize point data in clusters.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.circleLayerClustering,
+  ),
 ];
 
 class AppRoutes {
@@ -256,6 +266,7 @@ class AppRoutes {
   static const String clickToAddImage = '/clickToAddImage';
   static const String multipleHeatmapStyling = '/multipleHeatmapStyling';
   static const String bathymetry = '/bathymetry';
+  static const String circleLayerClustering = '/circleLayerClustering';
 }
 
 enum Category { gettingStarted, dynamicStyling, dataVisualisation }

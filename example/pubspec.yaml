@@ -39,3 +39,4 @@ flutter:
     - res/iss.png
     - res/la_heatmap_styling_points.geojson
     - res/bathymetry-data.geojson
+    - res/ic_cross.png
