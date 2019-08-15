@@ -8,23 +8,8 @@ import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:mapbox_gl_example/main.dart';
 import 'package:pub_semver/pub_semver.dart';
 
-class AddWmsSourcePage extends StatefulWidget {
+class AddWmsSourcePage extends StatelessWidget {
   const AddWmsSourcePage({Key key}) : super(key: key);
-
-  @override
-  _AddWmsSourcePageState createState() => _AddWmsSourcePageState();
-}
-
-class _AddWmsSourcePageState extends State<AddWmsSourcePage> {
-  void onMapReady(MapController controller) {
-    controller.style.addLayer(
-      RasterLayer(
-        id: 'web-map-layer',
-        sourceId: 'web-map-source',
-      ),
-      belowId: 'aeroway-taxiway',
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +20,6 @@ class _AddWmsSourcePageState extends State<AddWmsSourcePage> {
         title: Text(page.title),
       ),
       body: MapboxMap(
-        onMapReady: onMapReady,
         options: MapOptions(
           styleFromUri: 'mapbox://styles/mapbox/light-v9',
           cameraPosition: CameraPosition(
@@ -46,6 +30,15 @@ class _AddWmsSourcePageState extends State<AddWmsSourcePage> {
             zoom: 8,
           ),
         ),
+        layersPositions: {
+          'web-map-layer': LayerPosition.below('aeroway-taxiway'),
+        },
+        layers: <Layer>[
+          RasterLayer(
+            id: 'web-map-layer',
+            sourceId: 'web-map-source',
+          ),
+        ],
         sources: <Source>[
           RasterSource(
             id: 'web-map-source',

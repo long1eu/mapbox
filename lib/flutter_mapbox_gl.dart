@@ -25,15 +25,10 @@ export 'package:flutter_mapbox_gl/src/models/index.dart';
 export 'package:flutter_mapbox_gl/src/source/source.dart';
 
 part 'src/camera_update.dart';
-
 part 'src/expressions/expressions.dart';
-
 part 'src/expressions/expressions_objects.dart';
-
+part 'src/layer_position.dart';
 part 'src/map_controller.dart';
-
 part 'src/mapbox_map.dart';
-
 part 'src/style.dart';
-
 part 'src/util.dart';

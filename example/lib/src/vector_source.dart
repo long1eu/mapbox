@@ -7,19 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:mapbox_gl_example/main.dart';
 
-class VectorSourcePage extends StatefulWidget {
+class VectorSourcePage extends StatelessWidget {
   const VectorSourcePage({Key key}) : super(key: key);
-
-  @override
-  _VectorSourcePageState createState() => _VectorSourcePageState();
-}
-
-class _VectorSourcePageState extends State<VectorSourcePage> {
-  MapController controller;
-
-  void onMapReady(MapController controller) async {
-    this.controller = controller;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +19,6 @@ class _VectorSourcePageState extends State<VectorSourcePage> {
         title: Text(page.title),
       ),
       body: MapboxMap(
-        onMapReady: onMapReady,
         options: MapOptions(
           styleFromMapbox: MapStyle.light,
           cameraPosition: CameraPosition(

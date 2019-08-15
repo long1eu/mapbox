@@ -60,10 +60,4 @@ mixin Channel {
   Uint8List get dataSource => source.writeToBuffer();
 
   bool get isAttached => channel != null;
-
-  Future<T> _update<T extends Source>(T source) {
-    return channel
-        .invokeMethod('source#update', source.dataSource)
-        .then((_) => source);
-  }
 }

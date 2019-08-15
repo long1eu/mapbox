@@ -19,7 +19,6 @@ class MoveCameraPageState extends State<MoveCameraPage> {
   MapController mapController;
 
   void _onMapReady(MapController controller) {
-    print('created');
     mapController = controller;
   }
 

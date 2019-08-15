@@ -468,17 +468,17 @@ class _Interpolator extends Expression {
   ) : super._e4(operator, arg1, arg2, arg3, arg4);
 }
 
-class _Stop {
-  _Stop(dynamic value, dynamic output)
+class Stop {
+  Stop(dynamic value, dynamic output)
       : _value = value,
         _output = output;
 
   final dynamic _value;
   final dynamic _output;
 
-  static List<Expression> toExpressionArray(List<_Stop> stops) {
+  static List<Expression> toExpressionArray(List<Stop> stops) {
     List<Expression> expressions = new List<Expression>(stops.length * 2);
-    _Stop stop;
+    Stop stop;
     Object inputValue, outputValue;
     for (int i = 0; i < stops.length; i++) {
       stop = stops[i];
@@ -546,11 +546,11 @@ List<Expression> _stops(List<dynamic> stops) {
   assert(stops != null && stops.isNotEmpty);
 
   assert(
-      stops.every((it) => it is _Stop) || stops.every((it) => it is Expression),
+      stops.every((it) => it is Stop) || stops.every((it) => it is Expression),
       'You must provide ether a list of Stops or a list of expressions. We got ${stops.runtimeType}');
 
-  return stops.first is _Stop
-      ? _Stop.toExpressionArray(stops)
+  return stops.first is Stop
+      ? Stop.toExpressionArray(stops)
       : List<Expression>.from(stops);
 }
 
@@ -559,8 +559,14 @@ List<Expression> _join(List<Expression> left, List<Expression> right) =>
 
 Expression _expression(dynamic value, [String field, Type enforceType]) {
   if (value is Expression) return value;
-  if (enforceType != null)
-    assert(value.runtimeType == enforceType,
-        '$field should be $enforceType but it is ${value.runtimeType}.');
+  if (enforceType != null) {
+    if (enforceType == num) {
+      assert(value.runtimeType == double || value.runtimeType == int,
+          '$field should be $enforceType but it is ${value.runtimeType}.');
+    } else {
+      assert(value.runtimeType == enforceType,
+          '$field should be $enforceType but it is ${value.runtimeType}.');
+    }
+  }
   return literal$(value);
 }

@@ -85,8 +85,9 @@ class _ColorSwitcherPageState extends State<ColorSwitcherPage> {
                         FillLayer water = controller.style.getLayer('water');
                         water = await water.copyWith(
                             color: waterColor.withBlue(value));
-                        if (mounted)
+                        if (mounted) {
                           setState(() => waterColor = water.color.color);
+                        }
                       }
                     : null,
               ),

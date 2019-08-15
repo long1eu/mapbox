@@ -22,6 +22,10 @@ class SpaceStationLocationPage extends StatefulWidget {
 }
 
 class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
+  final String layerId = 'layer-id';
+  final String sourceId = 'source-id';
+  final String imageId = 'space-station-icon-id';
+
   Timer timer;
   Uint8List image;
   LatLng issPosition;
@@ -89,14 +93,14 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
           ),
         ),
         images: {
-          if (image != null) 'space-station-icon-id': image,
+          if (image != null) imageId: image,
         },
         onMapReady: onMapReady,
         layers: <Layer>[
           SymbolLayer(
-            id: 'layer-id',
-            sourceId: 'source-id',
-            iconImage: 'space-station-icon-id',
+            id: layerId,
+            sourceId: sourceId,
+            iconImage: imageId,
             iconIgnorePlacement: true,
             iconAllowOverlap: true,
             iconSize: .7,
@@ -105,7 +109,7 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
         sources: <Source>[
           if (issPosition != null)
             GeoJsonSource(
-              id: 'source-id',
+              id: sourceId,
               geoJson: jsonEncode(
                 {
                   "type": "FeatureCollection",

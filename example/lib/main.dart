@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mapbox_gl_example/src/add_wms_source_page.dart';
 import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
 import 'package:mapbox_gl_example/src/animated_marker.dart';
+import 'package:mapbox_gl_example/src/click_to_add_image_page.dart';
 import 'package:mapbox_gl_example/src/color_switcher.dart';
 import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
 import 'package:mapbox_gl_example/src/hillshade_layer_page.dart';
 import 'package:mapbox_gl_example/src/image_source_time_lapse_page.dart';
+import 'package:mapbox_gl_example/src/language_switch.dart';
 import 'package:mapbox_gl_example/src/move_camera.dart';
+import 'package:mapbox_gl_example/src/multiple_heatmap_styling_page.dart';
 import 'package:mapbox_gl_example/src/scrolling_map.dart';
 import 'package:mapbox_gl_example/src/space_station_location.dart';
 import 'package:mapbox_gl_example/src/style_from_file_page.dart';
 import 'package:mapbox_gl_example/src/vector_source.dart';
+import 'package:mapbox_gl_example/src/zoom_dependent_fill_color_page.dart';
 
 void main() => runApp(MapsDemo());
 
@@ -34,6 +38,15 @@ class MapsDemo extends StatelessWidget {
         return ListTile(
           title: Text(
             'Dynamic Styling',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        );
+      case Category.dataVisualisation:
+        return ListTile(
+          title: Text(
+            'Data visualization',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -96,6 +109,12 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.colorSwitcher: (_) => const ColorSwitcherPage(),
         AppRoutes.moveCamera: (_) => const MoveCameraPage(),
         AppRoutes.scrollingMap: (_) => const ScrollingMapPage(),
+        AppRoutes.languageSwitch: (_) => const LanguageSwitchPage(),
+        AppRoutes.zoomDependentFillColor: (_) =>
+            const ZoomDependentFillColorPage(),
+        AppRoutes.clickToAddImage: (_) => const ClickToAddImagePage(),
+        AppRoutes.multipleHeatmapStyling: (_) =>
+            const MultipleHeatmapStylingPage(),
       },
     );
   }
@@ -174,11 +193,38 @@ const List<Page> pages = <Page>[
     category: Category.dynamicStyling,
     route: AppRoutes.spaceStationLocation,
   ),
-  Page(
+  /*Page(
     title: 'Change a layer\'s color',
     description: 'Using layer set to change a layer\'s fill color.',
     category: Category.dynamicStyling,
     route: AppRoutes.colorSwitcher,
+  ),*/
+  Page(
+    title: 'Change a map\'s language',
+    description: 'Switch the map\'s language dynamically.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.languageSwitch,
+  ),
+  Page(
+    title: 'Change color based on zoom level',
+    description:
+        'Make a property depend on the map zoom level, in this case, the water layers fill color.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.zoomDependentFillColor,
+  ),
+  Page(
+    title: 'Click to add photo',
+    description:
+        'Select a photo on the device and add it on the map tap location.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.clickToAddImage,
+  ),
+  Page(
+    title: 'Add multiple heatmap styles',
+    description:
+        'Gain minute control over heat map coloring, size, density, and other styling.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.multipleHeatmapStyling,
   ),
 ];
 
@@ -195,9 +241,13 @@ class AppRoutes {
   static const String colorSwitcher = '/colorSwitcher';
   static const String moveCamera = '/moveCamera';
   static const String scrollingMap = '/scrollingMap';
+  static const String languageSwitch = '/languageSwitch';
+  static const String zoomDependentFillColor = '/zoomDependentFillColor';
+  static const String clickToAddImage = '/clickToAddImage';
+  static const String multipleHeatmapStyling = '/multipleHeatmapStyling';
 }
 
-enum Category { gettingStarted, dynamicStyling }
+enum Category { gettingStarted, dynamicStyling, dataVisualisation }
 
 class Page {
   const Page({

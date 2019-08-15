@@ -4,7 +4,6 @@
 
 import 'dart:convert';
 import 'dart:typed_data';
-import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -127,39 +126,6 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class LatLngTween extends Tween<LatLng> {
-  LatLngTween({LatLng begin, LatLng end}) : super(begin: begin, end: end);
-
-  @override
-  LatLng lerp(double t) {
-    assert(t != null);
-    if (begin == null && end == null) {
-      return null;
-    }
-    if (begin == null) {
-      return LatLng(longitude: end.longitude * t, latitude: end.latitude * t);
-    }
-    if (end == null) {
-      return LatLng(
-        longitude: begin.longitude * (1.0 - t),
-        latitude: begin.latitude * (1.0 - t),
-      );
-    }
-    return LatLng(
-      longitude: lerpDouble(
-        begin.longitude,
-        end.longitude,
-        t,
-      ),
-      latitude: lerpDouble(
-        begin.latitude,
-        end.latitude,
-        t,
       ),
     );
   }

@@ -66,7 +66,6 @@ class Style {
     String aboveId,
     int index,
   }) async {
-    print('addLayer: ${layer.id}');
     assert(getLayer(layer.id) == null,
         'You already have a Layer with this id. Try getLayer(id)');
     final pb.Operations_Add op = pb.Operations_Add.create()
@@ -87,7 +86,6 @@ class Style {
     final T platformLayer = Layer.fromProto(proto);
     layer = layer.markAsAttached(_channel, platformLayer);
     _layers[layer.id] = layer;
-    print('addLayer: ${layer.id} finished');
     return layer;
   }
 

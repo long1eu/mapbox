@@ -55,6 +55,7 @@ abstract class SymbolLayer
     Expression textPitchAlignmentEx,
     SymbolAlignment textRotationAlignment = SymbolAlignment.auto,
     Expression textRotationAlignmentEx,
+    String text,
     List<FormattedSection> textField,
     Expression textFieldEx,
     List<String> textFont = const <String>[
@@ -225,7 +226,8 @@ abstract class SymbolLayer
         ..textField = textFieldEx ??
             (textField != null
                 ? format(textField.map((it) => it.expression).toList())
-                : null)
+                : null) ??
+            (text != null ? literalString(text) : null)
         ..textFont =
             textFontEx ?? (textFont != null ? literalList(textFont) : null)
         ..textSize =
@@ -812,6 +814,7 @@ abstract class SymbolLayer
     Expression textPitchAlignmentEx,
     SymbolAlignment textRotationAlignment,
     Expression textRotationAlignmentEx,
+    String text,
     List<FormattedSection> textField,
     Expression textFieldEx,
     List<String> textFont,
@@ -971,7 +974,9 @@ abstract class SymbolLayer
         ..textField = textFieldEx ??
             (textField != null
                 ? format(textField.map((it) => it.expression).toList())
-                : this.textField)
+                : null) ??
+            (text != null ? literalString(text) : null) ??
+            this.textField
         ..textFont = textFontEx ??
             (textFont != null ? literalList(textFont) : this.textFont)
         ..textSize = textSizeEx ??

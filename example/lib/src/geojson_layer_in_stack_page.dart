@@ -10,28 +10,17 @@ import 'package:mapbox_gl_example/main.dart';
 class GeoJsonLayerInStackPage extends StatelessWidget {
   const GeoJsonLayerInStackPage({Key key}) : super(key: key);
 
-  void _onMapReady(MapController controller) {
-    controller.style.addLayer(
-      FillLayer(
-        id: 'urban-areas-fill',
-        sourceId: 'urban-areas',
-        color: Colors.purple,
-        opacity: .4,
-      ),
-      belowId: 'water',
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    final String layerId = 'urban-areas-fill';
+    final String sourceId = 'urban-areas';
 
     return Scaffold(
       appBar: AppBar(
         title: Text(page.title),
       ),
       body: MapboxMap(
-        onMapReady: _onMapReady,
         options: MapOptions(
           styleFromMapbox: MapStyle.mapboxStreets,
           cameraPosition: CameraPosition(
@@ -42,9 +31,20 @@ class GeoJsonLayerInStackPage extends StatelessWidget {
             zoom: 8.471903,
           ),
         ),
+        layersPositions: {
+          layerId: LayerPosition.below('water'),
+        },
+        layers: <Layer>[
+          FillLayer(
+            id: layerId,
+            sourceId: sourceId,
+            color: Colors.purple,
+            opacity: .4,
+          ),
+        ],
         sources: <Source>[
           GeoJsonSource(
-            id: 'urban-areas',
+            id: sourceId,
             uri:
                 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson',
           ),

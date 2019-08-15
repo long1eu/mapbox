@@ -212,11 +212,11 @@ Expression match(List<Expression> input) {
 Expression matchExpression(
   Expression input,
   Expression defaultOutput, [
-  List<_Stop> stops = const <_Stop>[],
+  List<Stop> stops = const <Stop>[],
 ]) {
   return match(
     _join(
-      _join(<Expression>[input], _Stop.toExpressionArray(stops)),
+      _join(<Expression>[input], Stop.toExpressionArray(stops)),
       <Expression>[defaultOutput],
     ),
   );
@@ -244,7 +244,7 @@ Expression at(dynamic number, Expression expression) {
 
   return Expression._e2(
     kAtOperator,
-    _expression(number, 'number', num),
+    _expression(number, 'number', int),
     expression,
   );
 }
@@ -583,9 +583,9 @@ Expression var$(dynamic variableName) {
   );
 }
 
-Expression zoom() => Expression(kZoomOperator);
+Expression zoom() => const Expression(kZoomOperator);
 
-_Stop stop(dynamic stop, dynamic value) => _Stop(stop, value);
+Stop stop(dynamic stop, dynamic value) => Stop(stop, value);
 
 Expression step(dynamic input, dynamic defaultOutput, List<dynamic> stops) {
   assert(input != null);
@@ -609,9 +609,16 @@ Expression interpolate(
   Expression number,
   List<dynamic> stops,
 ) {
-  return new Expression(
+  assert(stops is List<Expression> || stops is List<Stop>);
+
+  return Expression(
     kInterpolateOperator,
-    _join([interpolation, number], stops),
+    [
+      interpolation,
+      number,
+      if (stops is List<Expression>) ...stops,
+      if (stops is List<Stop>) ...Stop.toExpressionArray(stops),
+    ],
   );
 }
 
@@ -620,7 +627,8 @@ _Interpolator linear() => _Interpolator(kLinearOperator);
 _Interpolator exponential(dynamic base) {
   assert(base != null);
 
-  return _Interpolator.e1(kExponentialOperator, _expression(base, 'base', num));
+  return _Interpolator.e1(
+      kExponentialOperator, _expression(base, 'base', double));
 }
 
 _Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
@@ -631,10 +639,10 @@ _Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
 
   return _Interpolator.e4(
     kCubicBezierOperator,
-    _expression(x1, 'x1', num),
-    _expression(y1, 'y1', num),
-    _expression(x2, 'x2', num),
-    _expression(y2, 'y2', num),
+    _expression(x1, 'x1', double),
+    _expression(y1, 'y1', double),
+    _expression(x2, 'x2', double),
+    _expression(y2, 'y2', double),
   );
 }
 

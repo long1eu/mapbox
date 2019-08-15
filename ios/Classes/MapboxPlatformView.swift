@@ -6,14 +6,14 @@ import Foundation
 import Mapbox
 
 class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
-
+  
   private let options: Tophap_MapboxGl_Map.Options
   private let channel: FlutterMethodChannel
   private let viewId: Int64
   weak var mapView: MGLMapView?
   private var result: FlutterResult?;
   private var initialLoad: Bool = false;
-
+  
   // todo add mapView!.compassView.compassVisibility
   // todo add mapView!.isHapticFeedbackEnabled
   // todo add mapView!.decelerationRate
@@ -22,7 +22,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     self.options = options
     self.channel = channel
     self.viewId = viewId
-
+    
     var mapView: MGLMapView
     switch (options.style!) {
     case .fromMapbox(_): mapView = MGLMapView(frame: frame, styleURL: options.fromMapbox.value)
@@ -30,7 +30,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case .fromJson(_): mapView = MGLMapView(frame: frame, styleURL: getUrlForStyleJson(json: options.fromJson))
     }
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
+    
     // todo apiBaseUri -> ?
     // todo localIdeographFontFamily -> MGLRendererConfiguration
     // todo crossSourceCollisions -> MGLRendererConfiguration
@@ -62,18 +62,18 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     // todo enableZMediaOverlay
     mapView.attributionButton.tintColor = options.attributionTintColor.value
     super.init()
-
+    
     mapView.delegate = self
     self.mapView = mapView
     channel.setMethodCallHandler(onMethodCall)
     mapView.addOnTapGesture(action: self.handleOnTap(sender:))
     mapView.addOnLongTapGesture(action: self.handleOnLongTap(sender:))
   }
-
+  
   // @formatter:off
   func view() -> UIView { return mapView! }
   // @formatter:on
-
+  
   func mapView(_ mapView: MGLMapView, regionWillChangeWith reason: MGLCameraChangeReason, animated: Bool) {
     let cameraData: Data = try! mapView.camera.proto(mapView: mapView).serializedData()
     // @formatter:off
@@ -84,7 +84,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
     // @formatter:on
   }
-
+  
   func mapView(_ mapView: MGLMapView, regionIsChangingWith reason: MGLCameraChangeReason) {
     let cameraData: Data = try! mapView.camera.proto(mapView: mapView).serializedData()
     // @formatter:off
@@ -94,7 +94,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
     // @formatter:on
   }
-
+  
   func mapView(_ mapView: MGLMapView, regionDidChangeWith reason: MGLCameraChangeReason, animated: Bool) {
     let cameraData: Data = try! mapView.camera.proto(mapView: mapView).serializedData()
     // @formatter:off
@@ -105,14 +105,14 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     if reason.contains(.gestureTilt) { channel.invokeMethod("mapEvent#onShove", arguments: cameraData) }
     // @formatter:on
   }
-
+  
   func handleOnTap(sender: UITapGestureRecognizer) {
     let mapView = self.mapView!
     let tapPoint: CGPoint = sender.location(in: mapView)
     let tapCoordinate = mapView.convert(tapPoint, toCoordinateFrom: nil)
     try! channel.invokeMethod("mapTap#onTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
   }
-
+  
   func handleOnLongTap(sender: UILongPressGestureRecognizer) {
     if sender.state == .began {
       let mapView = self.mapView!
@@ -121,14 +121,12 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       try! channel.invokeMethod("mapTap#onLongTap", arguments: tapCoordinate.proto(altitude: mapView.camera.altitude).serializedData())
     }
   }
-
+  
   func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
     if (!initialLoad) {
       initialLoad = true
-      let camera = mapView.camera
-      camera.pitch = options.cameraPosition.tilt.cgFloat
-      mapView.setCamera(camera, animated: false)
-
+      mapView.setCamera(options.cameraPosition.value(mapView: mapView), animated: false)
+      
       let operation = Tophap_MapboxGl_Map.Operations.Ready.with { ready in
         ready.viewID = viewId
         ready.prefetchesTiles = mapView.prefetchesTiles
@@ -137,13 +135,13 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         ready.camera = mapView.camera.proto(mapView: mapView)
         ready.style = style.proto
       }
-
+      
       try! channel.invokeMethod("mapReady", arguments: operation.serializedData())
     } else {
       result?(style.proto)
     }
   }
-
+  
   func onMethodCall(call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch (call.method) {
     case "map#setPrefetchesTiles":
@@ -184,7 +182,8 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "map#animateCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let animate = try! Tophap_MapboxGl_Map.Operations.AnimateCamera(serializedData: data)
-      mapView!.setCamera(animate.update.camera(mapView: mapView!), animated: true)
+      mapView!.setCamera(animate.update.camera(mapView: mapView!), withDuration: Double(animate.duration) / 1000,
+          animationTimingFunction: CAMediaTimingFunction(name: .linear))
       result(nil)
       break;
     case "map#scrollBy":
@@ -199,7 +198,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
           altitude: camera.altitude,
           pitch: camera.pitch,
           heading: camera.heading)
-
+      
       if (duration != 0) {
         mapView!.setCamera(mglMapCamera, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: .easeInEaseOut))
       } else {
@@ -214,14 +213,14 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "map#setFocalBearing":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let setFocalBearing = try! Tophap_MapboxGl_Map.Operations.SetFocalBearing(serializedData: data)
-
+      
       let movedPoint = CGPoint(x: CGFloat(setFocalBearing.focalX), y: CGFloat(setFocalBearing.focalY))
       let mglMapCamera = MGLMapCamera(
           lookingAtCenter: mapView!.convert(movedPoint, toCoordinateFrom: mapView!),
           altitude: mapView!.camera.altitude,
           pitch: mapView!.camera.pitch,
           heading: mapView!.camera.heading)
-
+      
       let duration = Double(setFocalBearing.duration) / 1000
       mapView!.setCamera(mglMapCamera, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: .easeInEaseOut))
       result(nil)
@@ -253,13 +252,13 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "style#set":
       let _data = (call.arguments as! FlutterStandardTypedData).data
       let data = try! Tophap_MapboxGl_Style.Operations.Build(serializedData: _data)
-
+      
       switch (data.source!) {
       case .default(_): mapView!.styleURL = data.default.value
       case .uri(_): mapView!.styleURL = data.uri.uri
       case .json(_): mapView!.styleURL = getUrlForStyleJson(json: data.json)
       }
-
+      
       self.result = result
       break;
     case "style#addSource":
@@ -288,7 +287,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let operation = try! Tophap_MapboxGl_Operations.Add(serializedData: data)
         let layer = operation.layer.value
-
+        
         if let position = operation.position {
           switch (position) {
           case .belowID(_):
@@ -312,7 +311,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         } else {
           style.addLayer(layer)
         }
-
+        
         try! result(style.layer(withIdentifier: layer.identifier)!.toProto().serializedData())
       } else {
         Swift.fatalError("Could not get the style.")
@@ -366,7 +365,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         let args = call.arguments as! [Any]
         let id = args[0] as! String
         let data = (args[1] as! FlutterStandardTypedData).data
-
+        
         if let image = UIImage(data: data) {
           style.setImage(image, forName: id)
         } else {
@@ -389,7 +388,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       result(FlutterMethodNotImplemented)
     }
   }
-
+  
   var cacheDir: String {
     return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
   }

@@ -15,7 +15,7 @@ A new Flutter project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'Mapbox-iOS-SDK', '~> 5.2'
+  s.dependency 'Mapbox-iOS-SDK'
   s.dependency 'SwiftProtobuf', '~> 1.0'
   s.ios.deployment_target = '9.0'
 end

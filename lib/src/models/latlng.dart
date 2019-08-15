@@ -5,9 +5,11 @@
 library latlng;
 
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:flutter/widgets.dart' hide Builder;
 import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
 
 part 'latlng.g.dart';
@@ -64,4 +66,37 @@ abstract class LatLng implements Built<LatLng, LatLngBuilder> {
   Uint8List get data => proto.writeToBuffer();
 
   static Serializer<LatLng> get serializer => _$latLngSerializer;
+}
+
+class LatLngTween extends Tween<LatLng> {
+  LatLngTween({LatLng begin, LatLng end}) : super(begin: begin, end: end);
+
+  @override
+  LatLng lerp(double t) {
+    assert(t != null);
+    if (begin == null && end == null) {
+      return null;
+    }
+    if (begin == null) {
+      return LatLng(longitude: end.longitude * t, latitude: end.latitude * t);
+    }
+    if (end == null) {
+      return LatLng(
+        longitude: begin.longitude * (1.0 - t),
+        latitude: begin.latitude * (1.0 - t),
+      );
+    }
+    return LatLng(
+      longitude: lerpDouble(
+        begin.longitude,
+        end.longitude,
+        t,
+      ),
+      latitude: lerpDouble(
+        begin.latitude,
+        end.latitude,
+        t,
+      ),
+    );
+  }
 }

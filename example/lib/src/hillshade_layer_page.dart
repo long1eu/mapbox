@@ -13,6 +13,8 @@ class HillshadeLayerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
+    final String layerId = 'hillshade-layer';
+    final String sourceId = 'hillshade-source';
 
     return Scaffold(
       appBar: AppBar(
@@ -34,15 +36,15 @@ class HillshadeLayerPage extends StatelessWidget {
         ),
         layers: <Layer>[
           HillshadeLayer(
-            id: 'hillshade-layer',
-            sourceId: 'hillshade-source',
+            id: layerId,
+            sourceId: sourceId,
             highlightColor: Colors.green,
             shadowColor: Colors.black,
           ),
         ],
         sources: <Source>[
           RasterDemSource(
-            id: 'hillshade-source',
+            id: sourceId,
             uri: 'mapbox://mapbox.terrain-rgb',
           ),
         ],
