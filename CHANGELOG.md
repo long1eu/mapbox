@@ -1,3 +1,7 @@
+## 0.0.4+1
+
+* fix more analysis options
+
 ## 0.0.4
 
 * add tests for updating layers
