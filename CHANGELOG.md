@@ -1,3 +1,7 @@
+## 0.0.5
+
+* setLatLngBoundsForCameraTarget dont not animate on iOS anymore
+
 ## 0.0.4+2
 
 * add Android tests
