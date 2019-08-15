@@ -12,7 +12,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'google/protobuf/wrappers.pb.dart' as $0;
 
 export 'util.pbenum.dart';
-
+// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
 class FormattedSection extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('FormattedSection', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'text')

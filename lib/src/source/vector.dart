@@ -46,14 +46,15 @@ abstract class VectorSource
   @nullable
   TileSet get tileSet;
 
+  @override
   Source markAsAttached(MethodChannel channel, Source source) {
     if (source is VectorSource) {
-      return rebuild((b) {
+      return rebuild((VectorSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? this.uri
-          ..tileSet = (source.tileSet ?? this.tileSet)?.toBuilder();
+          ..uri = source.uri ?? uri
+          ..tileSet = (source.tileSet ?? tileSet)?.toBuilder();
       });
     } else {
       throw ArgumentError(
@@ -61,6 +62,7 @@ abstract class VectorSource
     }
   }
 
+  @override
   pb.Source_Vector get proto {
     final pb.Source_Vector message = pb.Source_Vector.create()..id = id;
 
@@ -74,9 +76,10 @@ abstract class VectorSource
     return message..freeze();
   }
 
+  @override
   pb.Source get source {
     return pb.Source.create()
-      ..id = this.id
+      ..id = id
       ..vector = proto
       ..freeze();
   }

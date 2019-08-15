@@ -16,11 +16,17 @@ import 'package:meta/meta.dart';
 import 'package:protobuf/protobuf.dart' as pb;
 
 part 'geojson.dart';
+
 part 'image.dart';
+
 part 'raster.dart';
+
 part 'raster_dem.dart';
+
 part 'source.g.dart';
+
 part 'unknown.dart';
+
 part 'vector.dart';
 
 @BuiltValue(instantiable: false)
@@ -99,7 +105,7 @@ mixin _Channel {
 
   Future<T> _update<T extends Source>(T source) {
     return channel
-        .invokeMethod('source#update', source.dataSource)
-        .then((_) => source);
+        .invokeMethod<dynamic>('source#update', source.dataSource)
+        .then((dynamic _) => source);
   }
 }

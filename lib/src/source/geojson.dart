@@ -66,15 +66,16 @@ abstract class GeoJsonSource
     return _update(source);
   }
 
+  @override
   GeoJsonSource markAsAttached(MethodChannel channel, Source source) {
     if (source is GeoJsonSource) {
-      return rebuild((b) {
+      return rebuild((GeoJsonSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? this.uri
-          ..geoJson = source.geoJson ?? this.geoJson
-          ..options = (source.options ?? this.options)?.toBuilder();
+          ..uri = source.uri ?? uri
+          ..geoJson = source.geoJson ?? geoJson
+          ..options = (source.options ?? options)?.toBuilder();
       });
     } else {
       throw ArgumentError(
@@ -84,13 +85,13 @@ abstract class GeoJsonSource
 
   Future<GeoJsonSource> copyFrom(Source source) async {
     if (source is GeoJsonSource) {
-      final GeoJsonSource _source = rebuild((b) {
+      final GeoJsonSource _source = rebuild((GeoJsonSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? this.uri
-          ..geoJson = source.geoJson ?? this.geoJson
-          ..options = (source.options ?? this.options)?.toBuilder();
+          ..uri = source.uri ?? uri
+          ..geoJson = source.geoJson ?? geoJson
+          ..options = (source.options ?? options)?.toBuilder();
       });
       if (!isAttached || this == _source) return _source;
       return _update(_source);
@@ -100,6 +101,7 @@ abstract class GeoJsonSource
     }
   }
 
+  @override
   pb.Source_GeoJson get proto {
     final pb.Source_GeoJson message = pb.Source_GeoJson.create()..id = id;
 
@@ -114,9 +116,10 @@ abstract class GeoJsonSource
     return message.freeze();
   }
 
+  @override
   pb.Source get source {
     return pb.Source.create()
-      ..id = this.id
+      ..id = id
       ..geoJson = proto
       ..freeze();
   }

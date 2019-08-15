@@ -232,9 +232,10 @@ abstract class HillshadeLayer
     return _update(layer);
   }
 
+  @override
   HillshadeLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is HillshadeLayer) {
-      return rebuild((b) {
+      return rebuild((HillshadeLayerBuilder b) {
         b
           ..channel = channel
           ..sourceId = layer.sourceId ?? sourceId
@@ -267,9 +268,10 @@ abstract class HillshadeLayer
     }
   }
 
+  @override
   Future<HillshadeLayer> copyFrom(Layer layer) {
     if (layer is HillshadeLayer) {
-      final HillshadeLayer _layer = rebuild((b) {
+      final HillshadeLayer _layer = rebuild((HillshadeLayerBuilder b) {
         b
           ..channel = channel
           ..sourceId = layer.sourceId ?? sourceId
@@ -296,14 +298,18 @@ abstract class HillshadeLayer
               (layer.accentColorTransition ?? accentColorTransition)
                   .toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
-      return _update(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<HillshadeLayer>.value(_layer);
+      } else {
+        return _update(_layer);
+      }
     } else {
       throw ArgumentError(
           'Only a HillshadeLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
+  @override
   pb.Layer_Hillshade get proto {
     final pb.Layer_Hillshade message = pb.Layer_Hillshade.create()
       ..id = this.id
@@ -330,6 +336,7 @@ abstract class HillshadeLayer
     return message.freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

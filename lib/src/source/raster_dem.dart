@@ -56,9 +56,10 @@ abstract class RasterDemSource
   @nullable
   int get tileSize;
 
+  @override
   Source markAsAttached(MethodChannel channel, Source source) {
     if (source is RasterDemSource) {
-      return rebuild((b) {
+      return rebuild((RasterDemSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
@@ -72,6 +73,7 @@ abstract class RasterDemSource
     }
   }
 
+  @override
   pb.Source_RasterDem get proto {
     final pb.Source_RasterDem message = pb.Source_RasterDem.create()
       ..id = id
@@ -87,9 +89,10 @@ abstract class RasterDemSource
     return message..freeze();
   }
 
+  @override
   pb.Source get source {
     return pb.Source.create()
-      ..id = this.id
+      ..id = id
       ..rasterDem = proto
       ..freeze();
   }

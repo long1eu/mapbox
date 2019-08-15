@@ -64,7 +64,7 @@ abstract class LineLayer
     if (width != null) assert(width >= 0);
     if (gapWidth != null) assert(gapWidth >= 0);
     if (blur != null) assert(blur >= 0);
-    if (dasharray != null) assert(dasharray.every((it) => it >= 0));
+    if (dasharray != null) assert(dasharray.every((double it) => it >= 0));
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$LineLayer((LineLayerBuilder b) {
@@ -88,9 +88,9 @@ abstract class LineLayer
             (color != null ? rgb(color.red, color.green, color.blue) : null)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : null)
-        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
+        ..translateAnchor = translateAnchorEx ?? translateAnchor
         ..width = widthEx ?? (width != null ? literalDouble(width) : null)
         ..gapWidth =
             gapWidthEx ?? (gapWidth != null ? literalDouble(gapWidth) : null)
@@ -348,7 +348,7 @@ abstract class LineLayer
                 : this.color)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : this.translate)
         ..translateAnchor =
             translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
@@ -388,29 +388,30 @@ abstract class LineLayer
     return _update(layer);
   }
 
+  @override
   LineLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is LineLayer) {
-      return rebuild((b) {
+      return rebuild((LineLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom
-          ..cap = layer.cap ?? this.cap
-          ..join = layer.join ?? this.join
-          ..miterLimit = layer.miterLimit ?? this.miterLimit
-          ..roundLimit = layer.roundLimit ?? this.roundLimit
-          ..opacity = layer.opacity ?? this.opacity
-          ..color = layer.color ?? this.color
-          ..translate = layer.translate ?? this.translate
-          ..translateAnchor = layer.translateAnchor ?? this.translateAnchor
-          ..width = layer.width ?? this.width
-          ..gapWidth = layer.gapWidth ?? this.gapWidth
-          ..offset = layer.offset ?? this.offset
-          ..blur = layer.blur ?? this.blur
-          ..dasharray = layer.dasharray ?? this.dasharray
-          ..pattern = layer.pattern ?? this.pattern
-          ..gradient = layer.gradient ?? this.gradient
+          ..cap = layer.cap ?? cap
+          ..join = layer.join ?? join
+          ..miterLimit = layer.miterLimit ?? miterLimit
+          ..roundLimit = layer.roundLimit ?? roundLimit
+          ..opacity = layer.opacity ?? opacity
+          ..color = layer.color ?? color
+          ..translate = layer.translate ?? translate
+          ..translateAnchor = layer.translateAnchor ?? translateAnchor
+          ..width = layer.width ?? width
+          ..gapWidth = layer.gapWidth ?? gapWidth
+          ..offset = layer.offset ?? offset
+          ..blur = layer.blur ?? blur
+          ..dasharray = layer.dasharray ?? dasharray
+          ..pattern = layer.pattern ?? pattern
+          ..gradient = layer.gradient ?? gradient
           ..opacityTransition =
               (layer.opacityTransition ?? opacityTransition).toBuilder()
           ..colorTransition =
@@ -436,29 +437,30 @@ abstract class LineLayer
     }
   }
 
+  @override
   Future<LineLayer> copyFrom(Layer layer) {
     if (layer is LineLayer) {
-      final LineLayer _layer = rebuild((b) {
+      final LineLayer _layer = rebuild((LineLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom
-          ..cap = layer.cap ?? this.cap
-          ..join = layer.join ?? this.join
-          ..miterLimit = layer.miterLimit ?? this.miterLimit
-          ..roundLimit = layer.roundLimit ?? this.roundLimit
-          ..opacity = layer.opacity ?? this.opacity
-          ..color = layer.color ?? this.color
-          ..translate = layer.translate ?? this.translate
-          ..translateAnchor = layer.translateAnchor ?? this.translateAnchor
-          ..width = layer.width ?? this.width
-          ..gapWidth = layer.gapWidth ?? this.gapWidth
-          ..offset = layer.offset ?? this.offset
-          ..blur = layer.blur ?? this.blur
-          ..dasharray = layer.dasharray ?? this.dasharray
-          ..pattern = layer.pattern ?? this.pattern
-          ..gradient = layer.gradient ?? this.gradient
+          ..cap = layer.cap ?? cap
+          ..join = layer.join ?? join
+          ..miterLimit = layer.miterLimit ?? miterLimit
+          ..roundLimit = layer.roundLimit ?? roundLimit
+          ..opacity = layer.opacity ?? opacity
+          ..color = layer.color ?? color
+          ..translate = layer.translate ?? translate
+          ..translateAnchor = layer.translateAnchor ?? translateAnchor
+          ..width = layer.width ?? width
+          ..gapWidth = layer.gapWidth ?? gapWidth
+          ..offset = layer.offset ?? offset
+          ..blur = layer.blur ?? blur
+          ..dasharray = layer.dasharray ?? dasharray
+          ..pattern = layer.pattern ?? pattern
+          ..gradient = layer.gradient ?? gradient
           ..opacityTransition =
               (layer.opacityTransition ?? opacityTransition).toBuilder()
           ..colorTransition =
@@ -478,7 +480,7 @@ abstract class LineLayer
           ..patternTransition =
               (layer.patternTransition ?? patternTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
+      if (!isAttached || this == _layer) return Future<LineLayer>.value(_layer);
       return _update(_layer);
     } else {
       throw ArgumentError(
@@ -486,6 +488,7 @@ abstract class LineLayer
     }
   }
 
+  @override
   pb.Layer_Line get proto {
     final pb.Layer_Line message = pb.Layer_Line.create()
       ..id = this.id
@@ -525,6 +528,7 @@ abstract class LineLayer
     return message..freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

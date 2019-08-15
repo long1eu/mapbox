@@ -269,9 +269,10 @@ abstract class RasterLayer
     return _update(layer);
   }
 
+  @override
   RasterLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is RasterLayer) {
-      return rebuild((b) {
+      return rebuild((RasterLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -307,9 +308,10 @@ abstract class RasterLayer
     }
   }
 
+  @override
   Future<RasterLayer> copyFrom(Layer layer) {
     if (layer is RasterLayer) {
-      final RasterLayer _layer = rebuild((b) {
+      final RasterLayer _layer = rebuild((RasterLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -339,14 +341,18 @@ abstract class RasterLayer
           ..contrastTransition =
               (layer.contrastTransition ?? contrastTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
-      return _update(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<RasterLayer>.value(_layer);
+      } else {
+        return _update(_layer);
+      }
     } else {
       throw ArgumentError(
           'Only a RasterLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
+  @override
   pb.Layer_Raster get proto {
     final pb.Layer_Raster message = pb.Layer_Raster.create()
       ..id = this.id
@@ -376,6 +382,7 @@ abstract class RasterLayer
     return message..freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

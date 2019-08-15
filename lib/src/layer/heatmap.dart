@@ -187,9 +187,10 @@ abstract class HeatmapLayer
     return _update(layer);
   }
 
+  @override
   HeatmapLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is HeatmapLayer) {
-      return rebuild((b) {
+      return rebuild((HeatmapLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -215,9 +216,10 @@ abstract class HeatmapLayer
     }
   }
 
+  @override
   Future<HeatmapLayer> copyFrom(Layer layer) {
     if (layer is HeatmapLayer) {
-      final HeatmapLayer _layer = rebuild((b) {
+      final HeatmapLayer _layer = rebuild((HeatmapLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -237,14 +239,18 @@ abstract class HeatmapLayer
           ..opacityTransition =
               (layer.opacityTransition ?? opacityTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
-      return _update(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<HeatmapLayer>.value(_layer);
+      } else {
+        return _update(_layer);
+      }
     } else {
       throw ArgumentError(
           'Only a HeatmapLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
+  @override
   pb.Layer_Heatmap get proto {
     final pb.Layer_Heatmap message = pb.Layer_Heatmap.create()
       ..id = this.id
@@ -267,6 +273,7 @@ abstract class HeatmapLayer
     return message.freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

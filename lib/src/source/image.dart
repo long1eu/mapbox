@@ -60,9 +60,9 @@ abstract class ImageSource
     assert(uri == null || image == null,
         'You can have ony one source for the image.');
 
-    final ImageSource source = rebuild((b) {
+    final ImageSource source = rebuild((ImageSourceBuilder b) {
       return b
-        ..coordinates = (coordinate ?? this.coordinates).toBuilder()
+        ..coordinates = (coordinate ?? coordinates).toBuilder()
         ..uri = uri ?? this.uri
         ..image = image ?? this.image;
     });
@@ -70,9 +70,10 @@ abstract class ImageSource
     return _update(source);
   }
 
+  @override
   Source markAsAttached(MethodChannel channel, Source source) {
     if (source is ImageSource) {
-      return rebuild((b) {
+      return rebuild((ImageSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
@@ -88,7 +89,7 @@ abstract class ImageSource
 
   Future<ImageSource> copyFrom(Source source) async {
     if (source is ImageSource) {
-      final ImageSource _source = rebuild((b) {
+      final ImageSource _source = rebuild((ImageSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
@@ -104,6 +105,7 @@ abstract class ImageSource
     }
   }
 
+  @override
   pb.Source_Image get proto {
     final pb.Source_Image message = pb.Source_Image.create()..id = id;
 
@@ -118,9 +120,10 @@ abstract class ImageSource
     return message.freeze();
   }
 
+  @override
   pb.Source get source {
     return pb.Source.create()
-      ..id = this.id
+      ..id = id
       ..image = proto
       ..freeze();
   }

@@ -17,14 +17,12 @@ class MapboxMap extends StatefulWidget {
     List<Source> sources,
     this.images,
   })  : layers = layers != null
-            ? layers
-                .asMap()
-                .map((_, layer) => MapEntry<String, Layer>(layer.id, layer))
+            ? layers.asMap().map(
+                (_, Layer layer) => MapEntry<String, Layer>(layer.id, layer))
             : null,
         sources = sources != null
-            ? sources
-                .asMap()
-                .map((_, source) => MapEntry<String, Source>(source.id, source))
+            ? sources.asMap().map((_, Source source) =>
+                MapEntry<String, Source>(source.id, source))
             : null,
         assert(
           layersPositions != null &&
@@ -37,7 +35,7 @@ class MapboxMap extends StatefulWidget {
                         null,
                   ) ||
               layersPositions == null,
-          'There are no layers found for the following ids: ${layersPositions.keys.where((id) => layers.firstWhere((Layer layer) => layer.id == id, orElse: () => null) == null).toList()}',
+          'There are no layers found for the following ids: ${layersPositions.keys.where((String id) => layers.firstWhere((Layer layer) => layer.id == id, orElse: () => null) == null).toList()}',
         ),
         super(key: key);
 
@@ -59,18 +57,19 @@ class _MapboxMapState extends State<MapboxMap> {
   MapController _controller;
   StreamController<MethodCall> _methodCall;
   StreamSubscription<MethodCall> _sub;
-  MethodChannel channel;
+  MethodChannel _channel;
 
   @override
   void initState() {
     super.initState();
-    _methodCall = StreamController.broadcast();
+    _methodCall = StreamController<MethodCall>.broadcast();
     _sub = _methodCall.stream.listen(_onMapEvent);
   }
 
   void onPlatformViewCreated(int id) {
-    channel = MethodChannel('com.tophap/mapbox_gl_factory_$id');
-    channel.setMethodCallHandler((event) async => _methodCall.add(event));
+    _channel = MethodChannel('com.tophap/mapbox_gl_factory_$id');
+    _channel.setMethodCallHandler(
+        (MethodCall event) async => _methodCall.add(event));
   }
 
   Future<void> _onMapEvent(MethodCall event) async {
@@ -99,7 +98,7 @@ class _MapboxMapState extends State<MapboxMap> {
         final LayerPosition position =
             widget.layersPositions != null ? widget.layersPositions[id] : null;
 
-        Future future;
+        Future<dynamic> future;
         if (position == null) {
           future = _controller.style.addLayer(layer);
         } else {
@@ -160,7 +159,7 @@ class _MapboxMapState extends State<MapboxMap> {
     if (!sameSources) futures.add(_updateSources(oldWidget));
     if (!sameImages) futures.add(_updateImages(oldWidget));
 
-    await Future.wait(futures);
+    await Future.wait<dynamic>(futures);
   }
 
   Future<void> _updateLayers(MapboxMap oldWidget) async {
@@ -180,7 +179,7 @@ class _MapboxMapState extends State<MapboxMap> {
         .toList();
     final List<Layer> add = newLayers.keys
         .where((String id) => oldLayers[id] == null)
-        .map((id) => newLayers[id])
+        .map((String id) => newLayers[id])
         .toList();
 
     // remove
@@ -197,7 +196,7 @@ class _MapboxMapState extends State<MapboxMap> {
         continue;
       }
 
-      Future future;
+      Future<dynamic> future;
       final LayerPosition position = newPosition[id];
       final bool positionChanged = position != oldPosition[id];
       if (positionChanged) {
@@ -206,19 +205,19 @@ class _MapboxMapState extends State<MapboxMap> {
 
       if (positionChanged) {
         if (position == null) {
-          future.then((_) => _controller.style.addLayer(newLayer));
+          future.then((void _) => _controller.style.addLayer(newLayer));
         } else {
           switch (position.where) {
             case Where.above:
-              future.then((_) => _controller.style
+              future.then((void _) => _controller.style
                   .addLayer(newLayer, aboveId: position.value));
               break;
             case Where.below:
-              future.then((_) => _controller.style
+              future.then((void _) => _controller.style
                   .addLayer(newLayer, belowId: position.value));
               break;
             case Where.at:
-              future.then((_) =>
+              future.then((void _) =>
                   _controller.style.addLayer(newLayer, index: position.value));
               break;
           }
@@ -230,12 +229,12 @@ class _MapboxMapState extends State<MapboxMap> {
       assert(future != null);
       futures.add(future);
     }
-    await Future.wait(futures);
+    await Future.wait<dynamic>(futures);
     futures.clear();
 
     // add
     for (Layer layer in add) {
-      Future future;
+      Future<dynamic> future;
       final LayerPosition position = newPosition[layer.id];
       if (position == null) {
         future = _controller.style.addLayer(layer);
@@ -256,22 +255,23 @@ class _MapboxMapState extends State<MapboxMap> {
       assert(future != null);
       futures.add(future);
     }
-    await Future.wait(futures);
+    await Future.wait<dynamic>(futures);
   }
 
-  Future _updateSources(MapboxMap oldWidget) async {
+  Future<void> _updateSources(MapboxMap oldWidget) async {
     final Map<String, Source> newSources = widget.sources ?? <String, Source>{};
-    final oldSources = oldWidget.sources ?? <String, Source>{};
+    final Map<String, Source> oldSources =
+        oldWidget.sources ?? <String, Source>{};
 
     final List<String> remove = oldSources.keys //
-        .where((id) => newSources[id] == null)
+        .where((String id) => newSources[id] == null)
         .toList();
     final List<String> update = newSources.keys //
-        .where((id) => oldSources[id] != null)
+        .where((String id) => oldSources[id] != null)
         .toList();
     final List<Source> add = newSources.keys
-        .where((it) => oldSources[it] == null)
-        .map((id) => newSources[id])
+        .where((String id) => oldSources[id] == null)
+        .map((String id) => newSources[id])
         .toList();
 
     await Future.wait(remove.map(_controller.style.removeSource));
@@ -290,13 +290,13 @@ class _MapboxMapState extends State<MapboxMap> {
         print('The is no way to update ${source.runtimeType}');
       }
     }
-    await Future.wait(futures);
+    await Future.wait<dynamic>(futures);
     futures.clear();
 
     await Future.wait(add.map(_controller.style.addSource));
   }
 
-  Future _updateImages(MapboxMap oldWidget) async {
+  Future<void> _updateImages(MapboxMap oldWidget) async {
     final Map<String, Uint8List> newImages =
         widget.images ?? <String, Uint8List>{};
     final Map<String, Uint8List> oldImages =
@@ -306,23 +306,24 @@ class _MapboxMapState extends State<MapboxMap> {
         .where((String id) => newImages[id] == null)
         .toList();
     final List<String> update = newImages.keys //
-        .where((id) => oldImages[id] != null)
+        .where((String id) => oldImages[id] != null)
         .toList();
     final List<String> add = newImages.keys //
-        .where((it) => oldImages[it] == null)
+        .where((String id) => oldImages[id] == null)
         .toList();
 
     await Future.wait(remove.map(_controller.style.removeImage));
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
     for (String id in update) {
-      if (const ListEquality().equals(oldImages[id], newImages[id])) continue;
+      if (const ListEquality<int>().equals(oldImages[id], newImages[id]))
+        continue;
 
       futures.add(_controller.style
           .removeImage(id)
-          .then((_) => _controller.style.addImage(id, newImages[id])));
+          .then<void>((_) => _controller.style.addImage(id, newImages[id])));
     }
-    await Future.wait(futures);
+    await Future.wait<dynamic>(futures);
     futures.clear();
 
     await Future.wait(
@@ -334,7 +335,7 @@ class _MapboxMapState extends State<MapboxMap> {
     _controller.dispose();
     _sub.cancel();
     _methodCall.close();
-    channel.invokeMethod('dispose');
+    _channel.invokeMethod<void>('dispose');
     super.dispose();
   }
 
@@ -359,7 +360,7 @@ class _MapboxMapState extends State<MapboxMap> {
         creationParamsCodec: const StandardMessageCodec(),
       );
     } else {
-      return Text('Not supported on this platform.');
+      return const Text('Not supported on this platform.');
     }
   }
 }

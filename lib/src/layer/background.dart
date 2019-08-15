@@ -29,7 +29,7 @@ abstract class BackgroundLayer
     if (opacity != null) assert(opacity >= 0 && opacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
-    return _$BackgroundLayer((b) {
+    return _$BackgroundLayer((BackgroundLayerBuilder b) {
       b
         ..id = id
         ..visible = visible
@@ -135,9 +135,10 @@ abstract class BackgroundLayer
     return _update(layer);
   }
 
+  @override
   BackgroundLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is BackgroundLayer) {
-      return rebuild((b) {
+      return rebuild((BackgroundLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -159,9 +160,10 @@ abstract class BackgroundLayer
     }
   }
 
+  @override
   Future<BackgroundLayer> copyFrom(Layer layer) {
     if (layer is BackgroundLayer) {
-      final BackgroundLayer _layer = rebuild((b) {
+      final BackgroundLayer _layer = rebuild((BackgroundLayerBuilder b) {
         b
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
@@ -176,14 +178,18 @@ abstract class BackgroundLayer
           ..opacityTransition =
               (layer.opacityTransition ?? opacityTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
-      return _update(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<BackgroundLayer>.value(_layer);
+      } else {
+        return _update(_layer);
+      }
     } else {
       throw ArgumentError(
           'Only a BackgroundLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
+  @override
   pb.Layer_Background get proto {
     final pb.Layer_Background message = pb.Layer_Background()
       ..id = this.id

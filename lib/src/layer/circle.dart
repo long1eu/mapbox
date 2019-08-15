@@ -75,11 +75,11 @@ abstract class CircleLayer
             opacityEx ?? (opacity != null ? literalDouble(opacity) : null)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : null)
-        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
-        ..pitchScale = pitchScaleEx ?? (pitchScale ?? null)
-        ..pitchAlignment = pitchAlignmentEx ?? (pitchAlignment ?? null)
+        ..translateAnchor = translateAnchorEx ?? translateAnchor
+        ..pitchScale = pitchScaleEx ?? pitchScale
+        ..pitchAlignment = pitchAlignmentEx ?? pitchAlignment
         ..strokeWidth = strokeWidthEx ??
             (strokeWidth != null ? literalDouble(strokeWidth) : null)
         ..strokeColor = strokeColorEx ??
@@ -293,7 +293,7 @@ abstract class CircleLayer
             (opacity != null ? literalDouble(opacity) : this.opacity)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : this.translate)
         ..translateAnchor =
             translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
@@ -333,9 +333,10 @@ abstract class CircleLayer
     return _update(layer);
   }
 
+  @override
   CircleLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is CircleLayer) {
-      return rebuild((b) {
+      return rebuild((CircleLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -378,9 +379,10 @@ abstract class CircleLayer
     }
   }
 
+  @override
   Future<CircleLayer> copyFrom(Layer layer) {
     if (layer is CircleLayer) {
-      final CircleLayer _layer = rebuild((b) {
+      final CircleLayer _layer = rebuild((CircleLayerBuilder b) {
         b
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
@@ -416,14 +418,18 @@ abstract class CircleLayer
               (layer.strokeOpacityTransition ?? strokeOpacityTransition)
                   .toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
-      return _update(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<CircleLayer>.value(_layer);
+      } else {
+        return _update(_layer);
+      }
     } else {
       throw ArgumentError(
           'Only a CircleLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
+  @override
   pb.Layer_Circle get proto {
     final pb.Layer_Circle message = pb.Layer_Circle.create()
       ..id = this.id
@@ -460,6 +466,7 @@ abstract class CircleLayer
     return message..freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

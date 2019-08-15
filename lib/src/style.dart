@@ -53,7 +53,7 @@ class Style {
 
   Future<Source> removeSource(String id) async {
     final Source source = _sources.remove(id);
-    await invokeMethod('style#removeSource', id);
+    await invokeMethod<dynamic>('style#removeSource', id);
     print('removed source: $id');
     return source;
   }
@@ -91,7 +91,7 @@ class Style {
 
   Future<Layer> removeLayer(String id) async {
     final Layer layer = _layers.remove(id);
-    await invokeMethod('style#removeLayer', id);
+    await invokeMethod<dynamic>('style#removeLayer', id);
     print('removed layer: $id');
     return layer;
   }
@@ -104,7 +104,7 @@ class Style {
   Future<void> addImage(String id, Uint8List image) {
     assert(id != null && id.isNotEmpty);
     assert(image != null && image.isNotEmpty);
-    return invokeMethod('addImage', [id, image]);
+    return invokeMethod('addImage', <dynamic>[id, image]);
   }
 
   Future<void> removeImage(String id) {

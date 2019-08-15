@@ -22,7 +22,7 @@ abstract class TransitionOptions
     Duration delay = Duration.zero,
     bool enablePlacementTransitions = true,
   }) {
-    return _$TransitionOptions((b) {
+    return _$TransitionOptions((TransitionOptionsBuilder b) {
       b
         ..duration = duration
         ..delay = delay

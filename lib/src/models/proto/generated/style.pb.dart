@@ -16,7 +16,7 @@ import 'util.pbenum.dart' as $1;
 import 'style.pbenum.dart';
 
 export 'style.pbenum.dart';
-
+// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
 class Style_Light extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Light', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..e<$1.TranslateAnchor>(1, 'anchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)

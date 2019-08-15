@@ -12,12 +12,13 @@ import 'package:built_value/serializer.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
 import 'package:pub_semver/pub_semver.dart';
+import 'package:meta/meta.dart';
 
 part 'tile_set.g.dart';
 
 abstract class TileSet implements Built<TileSet, TileSetBuilder> {
   factory TileSet({
-    Version tileJson,
+    @required Version tileJson,
     String name,
     String description,
     Version version,
@@ -25,7 +26,7 @@ abstract class TileSet implements Built<TileSet, TileSetBuilder> {
     String template,
     String legend,
     String scheme = 'xyz',
-    List<String> tiles,
+    @required List<String> tiles,
     List<String> grids = const <String>[],
     List<String> data = const <String>[],
     double minZoom = 0.0,

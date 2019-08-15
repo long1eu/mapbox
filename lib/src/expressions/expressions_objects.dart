@@ -80,7 +80,7 @@ const String kLinearOperator = 'linear';
 const String kExponentialOperator = 'exponential';
 const String kCubicBezierOperator = 'cubic-bezier';
 
-abstract class _ValueExpression {
+mixin _ValueExpression on Expression {
   dynamic get _jsonValue;
 }
 
@@ -141,9 +141,6 @@ class Expression {
         : Expression.fromJson(jsonDecode(string.value));
   }
 
-  static final RegExp colorRegex =
-      RegExp('rgba?\\((.+?),(.+?),(.+?)(,(.+?))?\\)');
-
   factory Expression.fromJson(List<dynamic> list) {
     Expression convertElement(dynamic value) {
       if (value is List) {
@@ -179,11 +176,11 @@ class Expression {
       } else if (value is bool || value is num) {
         return ExpressionLiteral(value);
       } else if (value == null) {
-        return ExpressionLiteral('');
+        return const ExpressionLiteral('');
       } else if (value is Map) {
-        final Map<dynamic, Expression> map = value.map(
+        final Map<dynamic, Expression> map = value.map<dynamic, Expression>(
             (dynamic key, dynamic value) =>
-                MapEntry(key, convertElement(value)));
+                MapEntry<dynamic, Expression>(key, convertElement(value)));
         return _ExpressionMap(Map<String, Expression>.from(map));
       } else {
         throw ArgumentError(
@@ -193,8 +190,9 @@ class Expression {
 
     if (Platform.isIOS) {
       if (list[0] is! String &&
-          list.map((it) => it.runtimeType).toSet().length == 1) {
-        list = ['literal', list];
+          list.map<dynamic>((dynamic it) => it.runtimeType).toSet().length ==
+              1) {
+        list = <dynamic>['literal', list];
       }
     }
 
@@ -208,12 +206,13 @@ class Expression {
     for (int i = 1; i < list.length; i++) {
       final dynamic item = list[i];
       if (operator == 'literal' && item is List) {
-        final List nested = item;
-        assert(nested.every((it) => it is num || it is String || it is bool));
-        if (nested.any((it) => it is double) &&
-            nested.every((it) => it is num)) {
+        final List<dynamic> nested = item;
+        assert(nested
+            .every((dynamic it) => it is num || it is String || it is bool));
+        if (nested.any((dynamic it) => it is double) &&
+            nested.every((dynamic it) => it is num)) {
           arguments.add(_ExpressionLiteralList(nested
-              .map((it) => double.parse(it.toStringAsPrecision(6)))
+              .map((dynamic it) => double.parse(it.toStringAsPrecision(6)))
               .toList()));
         } else {
           arguments.add(_ExpressionLiteralList(nested));
@@ -226,22 +225,26 @@ class Expression {
     return Expression(operator, arguments.isNotEmpty ? arguments : null);
   }
 
+  static final RegExp colorRegex =
+      RegExp('rgba?\\((.+?),(.+?),(.+?)(,(.+?))?\\)');
+
   final String _operator;
   final List<Expression> _arguments;
 
   bool get isExpression => !isValue;
 
-  bool get isValue => _arguments.every((it) => it is ExpressionLiteral);
+  bool get isValue =>
+      _arguments.every((Expression it) => it is ExpressionLiteral);
 
   dynamic get value => json;
 
   Color get color {
     assert(isValue);
-    assert(_arguments.every((it) => it is ExpressionLiteral));
+    assert(_arguments.every((Expression it) => it is ExpressionLiteral));
 
     if (_operator == kRgbOperator) {
       assert(_arguments.length == 3 &&
-          _arguments.every((it) => it is ExpressionLiteral));
+          _arguments.every((Expression it) => it is ExpressionLiteral));
 
       return Color.fromARGB(
         0xFF,
@@ -264,7 +267,8 @@ class Expression {
   }
 
   Offset get offset {
-    assert(isValue && _arguments.every((it) => it is ExpressionLiteral));
+    assert(isValue &&
+        _arguments.every((Expression it) => it is ExpressionLiteral));
 
     if (_operator == kArrayOperator && _arguments.length == 2) {
       return Offset(_arguments[0].value, _arguments[1].value);
@@ -274,7 +278,8 @@ class Expression {
   }
 
   EdgeInsets get edgeInsets {
-    assert(isValue && _arguments.every((it) => it is ExpressionLiteral));
+    assert(isValue &&
+        _arguments.every((Expression it) => it is ExpressionLiteral));
 
     if (_operator == kArrayOperator && _arguments.length == 4) {
       return EdgeInsets.only(
@@ -291,12 +296,12 @@ class Expression {
   Object toJson() => json;
 
   List<dynamic> get json {
-    List<dynamic> array = <dynamic>[];
+    final List<dynamic> array = <dynamic>[];
     array.add(_operator);
     if (_arguments != null) {
       for (Expression arg in _arguments) {
         if (arg is _ValueExpression) {
-          array.add((arg as _ValueExpression)._jsonValue);
+          array.add(arg._jsonValue);
         } else {
           array.add(arg.json);
         }
@@ -334,21 +339,25 @@ class Expression {
 }
 
 class _ExpressionMap extends Expression implements _ValueExpression {
-  _ExpressionMap(Map<String, Expression> map)
+  const _ExpressionMap(Map<String, Expression> map)
       : _map = map,
         super(null);
 
   final Map<String, Expression> _map;
 
+  @override
   dynamic get value => _jsonValue;
 
   @override
-  Object get _jsonValue => _map.map((String key, Expression expression) =>
-      MapEntry(
+  Map<String, dynamic> get _jsonValue {
+    return _map.map<String, dynamic>((String key, Expression expression) {
+      return MapEntry<String, dynamic>(
           key,
           expression is _ValueExpression
-              ? (expression as _ValueExpression)._jsonValue
-              : expression.json));
+              ? expression._jsonValue
+              : expression.json);
+    });
+  }
 
   @override
   String toString() {
@@ -372,11 +381,14 @@ class _ExpressionMap extends Expression implements _ValueExpression {
 
 class ExpressionLiteral extends Expression implements _ValueExpression {
   const ExpressionLiteral(dynamic value)
-      : literal = value,
+      :
+        // ignore: prefer_initializing_formals
+        literal = value,
         super(null);
 
   final dynamic literal;
 
+  @override
   dynamic get value => _jsonValue;
 
   @override
@@ -384,7 +396,7 @@ class ExpressionLiteral extends Expression implements _ValueExpression {
       literal is ExpressionLiteral ? literal.value : literal;
 
   @override
-  List<Object> get json => ['literal', literal];
+  List<Object> get json => <dynamic>['literal', literal];
 
   @override
   String toString() => 'literal(${literal.runtimeType}:$value)';
@@ -428,7 +440,7 @@ class _ExpressionListEquality implements Equality<dynamic> {
   const _ExpressionListEquality();
 
   @override
-  bool equals(e1, e2) {
+  bool equals(dynamic e1, dynamic e2) {
     if (e1 is String && e2 is PositionAnchor) {
       return e1 == e2.value;
     } else if (e1 is PositionAnchor && e2 is String) {
@@ -477,7 +489,7 @@ class Stop {
   final dynamic _output;
 
   static List<Expression> toExpressionArray(List<Stop> stops) {
-    List<Expression> expressions = new List<Expression>(stops.length * 2);
+    final List<Expression> expressions = List<Expression>(stops.length * 2);
     Stop stop;
     Object inputValue, outputValue;
     for (int i = 0; i < stops.length; i++) {
@@ -509,12 +521,12 @@ class Stop {
 }
 
 class FormatEntry {
-  const FormatEntry(Expression text, List<_FormatOption> options)
+  const FormatEntry(Expression text, List<FormatOption> options)
       : _text = text,
         _options = options;
 
   final Expression _text;
-  final List<_FormatOption> _options;
+  final List<FormatOption> _options;
 
   @override
   String toString() {
@@ -525,8 +537,8 @@ class FormatEntry {
   }
 }
 
-class _FormatOption {
-  const _FormatOption(String type, Expression value)
+class FormatOption {
+  const FormatOption(String type, Expression value)
       : _type = type,
         _value = value;
 
@@ -546,8 +558,9 @@ List<Expression> _stops(List<dynamic> stops) {
   assert(stops != null && stops.isNotEmpty);
 
   assert(
-      stops.every((it) => it is Stop) || stops.every((it) => it is Expression),
-      'You must provide ether a list of Stops or a list of expressions. We got ${stops.runtimeType}');
+      stops.every((dynamic it) => it is Stop) ||
+          stops.every((dynamic it) => it is Expression),
+      'You must provide eather a list of Stop or a list of Expression. We got ${stops.runtimeType}');
 
   return stops.first is Stop
       ? Stop.toExpressionArray(stops)

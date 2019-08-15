@@ -57,7 +57,7 @@ class CameraUpdate {
     );
   }
 
-  factory CameraUpdate.zoomBy(double amount, [Point focus]) {
+  factory CameraUpdate.zoomBy(double amount, [Point<double> focus]) {
     return CameraUpdate._(
       amount: amount,
       focus: focus,
@@ -106,7 +106,7 @@ class CameraUpdate {
   final List<int> padding;
   final double zoom;
   final double amount;
-  final Point focus;
+  final Point<double> focus;
   final pb.Map__Operations_CameraUpdate_Type operation;
 
   pb.Map__Operations_CameraUpdate _proto;
@@ -116,7 +116,7 @@ class CameraUpdate {
       return _proto;
     }
 
-    final message = pb.Map__Operations_CameraUpdate.create();
+    final pb.Map__Operations_CameraUpdate message = pb.Map__Operations_CameraUpdate.create();
     if (cameraPosition != null) {
       message.cameraPosition = cameraPosition.proto;
     }

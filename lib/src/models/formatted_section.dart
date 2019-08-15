@@ -90,7 +90,7 @@ abstract class FormattedSection
   FormatEntry get expression {
     return formatEntry(
       text,
-      [
+      <FormatOption>[
         if (fontScale != null) formatFontScale(fontScale),
         if (fontStack != null)
           formatFontStackExpresion(literalList(fontStack.toList())),

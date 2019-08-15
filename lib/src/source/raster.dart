@@ -56,9 +56,10 @@ abstract class RasterSource
   @nullable
   int get tileSize;
 
+  @override
   Source markAsAttached(MethodChannel channel, Source source) {
     if (source is RasterSource) {
-      return rebuild((b) {
+      return rebuild((RasterSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
@@ -72,6 +73,7 @@ abstract class RasterSource
     }
   }
 
+  @override
   pb.Source_Raster get proto {
     final pb.Source_Raster message = pb.Source_Raster.create()
       ..id = id
@@ -87,9 +89,10 @@ abstract class RasterSource
     return message..freeze();
   }
 
+  @override
   pb.Source get source {
     return pb.Source.create()
-      ..id = this.id
+      ..id = id
       ..raster = proto
       ..freeze();
   }

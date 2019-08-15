@@ -7,7 +7,7 @@
 // ignore_for_file: UNDEFINED_SHOWN_NAME,UNUSED_SHOWN_NAME
 import 'dart:core' as $core show int, dynamic, String, List, Map;
 import 'package:protobuf/protobuf.dart' as $pb;
-
+// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
 class Map__CameraPosition_MoveReason extends $pb.ProtobufEnum {
   static const Map__CameraPosition_MoveReason API_GESTURE = Map__CameraPosition_MoveReason._(0, 'API_GESTURE');
   static const Map__CameraPosition_MoveReason DEVELOPER_ANIMATION = Map__CameraPosition_MoveReason._(1, 'DEVELOPER_ANIMATION');

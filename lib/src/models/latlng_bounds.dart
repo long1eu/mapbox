@@ -31,7 +31,7 @@ abstract class LatLngBounds
     assert(longitudeEast > longitudeWest,
         "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
 
-    return _$LatLngBounds((b) {
+    return _$LatLngBounds((LatLngBoundsBuilder b) {
       b
         ..latitudeNorth = latitudeNorth
         ..latitudeSouth = latitudeSouth
@@ -54,6 +54,16 @@ abstract class LatLngBounds
     });
   }
 
+  LatLngBounds._();
+
+  double get latitudeNorth;
+
+  double get latitudeSouth;
+
+  double get longitudeEast;
+
+  double get longitudeWest;
+
   pb.LatLngBounds get proto {
     return pb.LatLngBounds.create()
       ..latitudeNorth = latitudeNorth
@@ -65,16 +75,6 @@ abstract class LatLngBounds
 
   @memoized
   Uint8List get data => proto.writeToBuffer();
-
-  LatLngBounds._();
-
-  double get latitudeNorth;
-
-  double get latitudeSouth;
-
-  double get longitudeEast;
-
-  double get longitudeWest;
 
   static Serializer<LatLngBounds> get serializer => _$latLngBoundsSerializer;
 }

@@ -24,9 +24,10 @@ abstract class UnknownSource
 
   UnknownSource._();
 
+  @override
   Source markAsAttached(MethodChannel channel, Source source) {
     if (source is UnknownSource) {
-      return rebuild((b) {
+      return rebuild((UnknownSourceBuilder b) {
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution;
@@ -37,15 +38,17 @@ abstract class UnknownSource
     }
   }
 
+  @override
   pb.Source_Unknown get proto {
     final pb.Source_Unknown message = pb.Source_Unknown.create()..id = id;
     if (attribution != null) message.attribution = attribution;
     return message.freeze();
   }
 
+  @override
   pb.Source get source {
     return pb.Source.create()
-      ..id = this.id
+      ..id = id
       ..unknown = proto
       ..freeze();
   }

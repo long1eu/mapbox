@@ -18,6 +18,8 @@ import 'map.pbenum.dart';
 
 export 'map.pbenum.dart';
 
+// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
+
 enum Map__Options_Style {
   fromMapbox, 
   fromUri, 

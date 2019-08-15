@@ -7,7 +7,7 @@
 // ignore_for_file: UNDEFINED_SHOWN_NAME,UNUSED_SHOWN_NAME
 import 'dart:core' as $core show int, dynamic, String, List, Map;
 import 'package:protobuf/protobuf.dart' as $pb;
-
+// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
 class Style_MapboxStyle extends $pb.ProtobufEnum {
   static const Style_MapboxStyle MAPBOX_STREETS = Style_MapboxStyle._(0, 'MAPBOX_STREETS');
   static const Style_MapboxStyle OUTDOORS = Style_MapboxStyle._(1, 'OUTDOORS');

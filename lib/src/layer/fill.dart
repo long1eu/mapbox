@@ -65,9 +65,9 @@ abstract class FillLayer
                 : null)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : null)
-        ..translateAnchor = translateAnchorEx ?? (translateAnchor ?? null)
+        ..translateAnchor = translateAnchorEx ?? translateAnchor
         ..pattern =
             patternEx ?? (pattern != null ? literalString(pattern) : null)
         ..opacityTransition =
@@ -226,7 +226,7 @@ abstract class FillLayer
                 : this.outlineColor)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : this.translate)
         ..translateAnchor =
             translateAnchorEx ?? (translateAnchor ?? this.translateAnchor)
@@ -247,9 +247,10 @@ abstract class FillLayer
     return _update(layer);
   }
 
+  @override
   FillLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is FillLayer) {
-      return rebuild((b) {
+      return rebuild((FillLayerBuilder b) {
         b
           ..channel = channel
           ..visible = layer.visible ?? visible
@@ -282,9 +283,10 @@ abstract class FillLayer
     }
   }
 
+  @override
   Future<FillLayer> copyFrom(Layer layer) {
     if (layer is FillLayer) {
-      final FillLayer _layer = rebuild((b) {
+      final FillLayer _layer = rebuild((FillLayerBuilder b) {
         b
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
@@ -311,7 +313,7 @@ abstract class FillLayer
               (layer.patternTransition ?? patternTransition).toBuilder();
       });
 
-      if (!isAttached || this == _layer) return Future.value(_layer);
+      if (!isAttached || this == _layer) return Future<FillLayer>.value(_layer);
       return _update(_layer);
     } else {
       throw ArgumentError(
@@ -319,6 +321,7 @@ abstract class FillLayer
     }
   }
 
+  @override
   pb.Layer_Fill get proto {
     final pb.Layer_Fill message = pb.Layer_Fill.create()
       ..id = this.id
@@ -346,6 +349,7 @@ abstract class FillLayer
     return message..freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

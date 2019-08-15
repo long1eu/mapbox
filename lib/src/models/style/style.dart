@@ -29,10 +29,10 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
       b
         ..uri = proto.uri
         ..json = proto.json
-        ..sources =
-            ListBuilder<Source>(proto.sources.map((it) => Source.fromProto(it)))
-        ..layers =
-            ListBuilder<Layer>(proto.layers.map((it) => Layer.fromProto(it)))
+        ..sources = ListBuilder<Source>(
+            proto.sources.map<Source>((pb.Source it) => Source.fromProto(it)))
+        ..layers = ListBuilder<Layer>(
+            proto.layers.map<Layer>((pb.Layer it) => Layer.fromProto(it)))
         ..transition = TransitionOptions.fromProto(proto.transition).toBuilder()
         ..light =
             proto.hasLight() ? Light.fromProto(proto.light).toBuilder() : null;
@@ -58,8 +58,8 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
     final pb.Style message = pb.Style.create()
       ..uri = uri
       ..json = json
-      ..sources.addAll(sources.map((it) => it.proto))
-      ..layers.addAll(layers.map((it) => it.proto))
+      ..sources.addAll(sources.map((Source it) => it.proto))
+      ..layers.addAll(layers.map((Layer it) => it.proto))
       ..transition = transition.proto;
 
     if (light != null) {

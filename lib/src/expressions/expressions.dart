@@ -26,8 +26,8 @@ Expression literalBool(bool value) {
 
 Expression literalList(List<dynamic> value) {
   assert(value != null);
-  assert(value.every(
-      (it) => it is num || it is String || it is bool || it is Expression));
+  assert(value.every((dynamic it) =>
+      it is num || it is String || it is bool || it is Expression));
 
   return Expression._e1(kLiteralOperator, _ExpressionLiteralList(value));
 }
@@ -228,15 +228,15 @@ Expression coalesce(List<Expression> input) {
   return Expression(kCoalesceOperator, input);
 }
 
-Expression properties() => Expression(kPropertiesOperator);
+Expression properties() => const Expression(kPropertiesOperator);
 
-Expression geometryType() => Expression(kGeometryTypeOperator);
+Expression geometryType() => const Expression(kGeometryTypeOperator);
 
-Expression id() => Expression(kIdOperator);
+Expression id() => const Expression(kIdOperator);
 
-Expression heatmapDensity() => Expression(kHeatmapDensityOperator);
+Expression heatmapDensity() => const Expression(kHeatmapDensityOperator);
 
-Expression lineProgress() => Expression(kLineProgressOperator);
+Expression lineProgress() => const Expression(kLineProgressOperator);
 
 Expression at(dynamic number, Expression expression) {
   assert(number != null);
@@ -279,18 +279,18 @@ Expression length(dynamic input) {
   return Expression._string(kLengthOperator, input, 'input');
 }
 
-Expression ln2() => Expression(kLn2Operator);
+Expression ln2() => const Expression(kLn2Operator);
 
-Expression pi() => Expression(kPiOperator);
+Expression pi() => const Expression(kPiOperator);
 
-Expression e() => Expression(kEOperator);
+Expression e() => const Expression(kEOperator);
 
 Expression sum(List<dynamic> numbers) {
   assert(numbers != numbers && numbers.length >= 2);
 
   return Expression(
     kSumOperator,
-    numbers.map((it) => _expression(it, 'number', num)).toList(),
+    numbers.map((dynamic it) => _expression(it, 'number', num)).toList(),
   );
 }
 
@@ -299,7 +299,7 @@ Expression product(List<dynamic> numbers) {
 
   return Expression(
     kProductOperator,
-    numbers.map((it) => _expression(it, 'number', num)).toList(),
+    numbers.map((dynamic it) => _expression(it, 'number', num)).toList(),
   );
 }
 
@@ -453,12 +453,12 @@ Expression donwcase(dynamic string) {
 Expression concat(List<dynamic> strings) {
   assert(strings != null && strings.isNotEmpty);
   assert(
-      strings.every((it) => it is String) ||
-          strings.every((it) => it is Expression),
+      strings.every((dynamic it) => it is String) ||
+          strings.every((dynamic it) => it is Expression),
       'YOu must provide eather a list of Strings or a list of Expressions');
 
   final List<Expression> value = strings.first is String //
-      ? strings.map((it) => literalString(it)).toList()
+      ? strings.map((dynamic it) => literalString(it)).toList()
       : List<Expression>.from(strings);
 
   return Expression(kConcatOperator, value);
@@ -512,7 +512,7 @@ Expression collator(
 
 Expression format(List<FormatEntry> formatEntries) {
   // for each entry we are going to build an input and parameters
-  List<Expression> mappedExpressions =
+  final List<Expression> mappedExpressions =
       List<Expression>(formatEntries.length * 2);
 
   int mappedIndex = 0;
@@ -523,18 +523,18 @@ Expression format(List<FormatEntry> formatEntries) {
     // parameters
     final Map<String, Expression> map = <String, Expression>{};
     if (formatEntry._options != null) {
-      for (_FormatOption option in formatEntry._options) {
+      for (FormatOption option in formatEntry._options) {
         map[option._type] = option._value;
       }
     }
 
-    mappedExpressions[mappedIndex++] = new _ExpressionMap(map);
+    mappedExpressions[mappedIndex++] = _ExpressionMap(map);
   }
 
-  return new Expression(kFormatOperator, mappedExpressions);
+  return Expression(kFormatOperator, mappedExpressions);
 }
 
-FormatEntry formatEntry(dynamic text, [List<_FormatOption> formatOptions]) {
+FormatEntry formatEntry(dynamic text, [List<FormatOption> formatOptions]) {
   return FormatEntry(_expression(text, 'text', String), formatOptions);
 }
 
@@ -613,7 +613,7 @@ Expression interpolate(
 
   return Expression(
     kInterpolateOperator,
-    [
+    <Expression>[
       interpolation,
       number,
       if (stops is List<Expression>) ...stops,
@@ -646,28 +646,28 @@ _Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
   );
 }
 
-_FormatOption formatFontScale(dynamic scale) {
+FormatOption formatFontScale(dynamic scale) {
   assert(scale != null);
 
-  return _FormatOption('font-scale', _expression(scale, 'scale', double));
+  return FormatOption('font-scale', _expression(scale, 'scale', double));
 }
 
-_FormatOption formatTextFont(List<String> fontStack) {
+FormatOption formatTextFont(List<String> fontStack) {
   assert(fontStack != null);
 
-  return _FormatOption('text-font', literalList(fontStack));
+  return FormatOption('text-font', literalList(fontStack));
 }
 
-_FormatOption formatFontStackExpresion(Expression fontStack) {
+FormatOption formatFontStackExpresion(Expression fontStack) {
   assert(fontStack != null);
 
-  return _FormatOption('text-font', fontStack);
+  return FormatOption('text-font', fontStack);
 }
 
-_FormatOption formatTextColor(dynamic c) {
+FormatOption formatTextColor(dynamic c) {
   assert(c != null);
   assert(c is Expression || c is Color || c is int);
   if (c is int) c = Color(c);
 
-  return _FormatOption('text-color', c is Expression ? c : color$(c));
+  return FormatOption('text-color', c is Expression ? c : color$(c));
 }

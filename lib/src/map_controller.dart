@@ -5,9 +5,10 @@
 part of flutter_mapbox_gl;
 
 class MapController extends ValueNotifier<CameraPosition> {
-  MapController._(
-      {@required final pb.Map__Operations_Ready info, Stream<MethodCall> calls})
-      : assert(info != null),
+  MapController._({
+    @required final pb.Map__Operations_Ready info,
+    @required Stream<MethodCall> calls,
+  })  : assert(info != null),
         assert(calls != null),
         _calls = calls,
         _viewId = info.viewId.toInt(),
@@ -19,7 +20,7 @@ class MapController extends ValueNotifier<CameraPosition> {
         _cameraPosition = CameraPosition.fromProto(info.camera),
         super(CameraPosition.fromProto(info.camera)) {
     sub = _calls
-        .where((it) => it.method.startsWith('mapEvent#'))
+        .where((MethodCall it) => it.method.startsWith('mapEvent#'))
         .listen(_cameraPositionChanged);
     _style =
         Style._(channel: _channel, style: StyleModel.fromProto(info.style));
@@ -61,8 +62,8 @@ class MapController extends ValueNotifier<CameraPosition> {
 
   set prefetchesTiles(bool enabled) {
     _channel
-        .invokeMethod('map#setPrefetchesTiles', enabled)
-        .then((_) => _prefetchesTiles = enabled);
+        .invokeMethod<dynamic>('map#setPrefetchesTiles', enabled)
+        .then((dynamic _) => _prefetchesTiles = enabled);
   }
 
   double get minZoom => _minZoom;
@@ -70,8 +71,8 @@ class MapController extends ValueNotifier<CameraPosition> {
   set minZoom(double minZoom) {
     assert(minZoom >= 0 && minZoom <= 25.5);
     _channel
-        .invokeMethod('map#setMinZoom', minZoom)
-        .then((_) => _minZoom = minZoom);
+        .invokeMethod<dynamic>('map#setMinZoom', minZoom)
+        .then((dynamic _) => _minZoom = minZoom);
   }
 
   double get maxZoom => _maxZoom;
@@ -79,8 +80,8 @@ class MapController extends ValueNotifier<CameraPosition> {
   set maxZoom(double maxZoom) {
     assert(minZoom >= 0 && minZoom <= 25.5);
     _channel
-        .invokeMethod('map#setMaxZoom', maxZoom)
-        .then((_) => _maxZoom = maxZoom);
+        .invokeMethod<dynamic>('map#setMaxZoom', maxZoom)
+        .then((dynamic _) => _maxZoom = maxZoom);
   }
 
 /*
@@ -98,13 +99,13 @@ class MapController extends ValueNotifier<CameraPosition> {
 
   set cameraPosition(CameraPosition cameraPosition) {
     _channel
-        .invokeMethod('map#setCameraPosition', cameraPosition.data)
-        .then((_) => _cameraPosition = cameraPosition);
+        .invokeMethod<void>('map#setCameraPosition', cameraPosition.data)
+        .then((dynamic _) => _cameraPosition = cameraPosition);
   }
 
   Future<void> moveCamera(CameraUpdate update) async {
     assert(update != null);
-    await _channel.invokeMethod('map#moveCamera', update.data);
+    await _channel.invokeMethod<void>('map#moveCamera', update.data);
   }
 
   Future<void> easeCamera(
@@ -123,7 +124,8 @@ class MapController extends ValueNotifier<CameraPosition> {
           ..easingInterpolator = easingInterpolator
           ..freeze();
 
-    await _channel.invokeMethod('map#easeCamera', message.writeToBuffer());
+    await _channel.invokeMethod<void>(
+        'map#easeCamera', message.writeToBuffer());
   }
 
   Future<void> animateCamera(
@@ -139,7 +141,8 @@ class MapController extends ValueNotifier<CameraPosition> {
           ..duration = duration.inMilliseconds
           ..freeze();
 
-    await _channel.invokeMethod('map#animateCamera', message.writeToBuffer());
+    await _channel.invokeMethod<dynamic>(
+        'map#animateCamera', message.writeToBuffer());
   }
 
   Future<void> scrollBy(double x, double y, {Duration duration}) async {
@@ -155,7 +158,8 @@ class MapController extends ValueNotifier<CameraPosition> {
     }
     message.freeze();
 
-    await _channel.invokeMethod('map#scrollBy', message.writeToBuffer());
+    await _channel.invokeMethod<dynamic>(
+        'map#scrollBy', message.writeToBuffer());
   }
 
   Future<void> resetNorth() => _channel.invokeMethod('map#resetNorth');
@@ -175,7 +179,8 @@ class MapController extends ValueNotifier<CameraPosition> {
           ..duration = Int64(duration.inMilliseconds)
           ..freeze();
 
-    await _channel.invokeMethod('map#setFocalBearing', message.writeToBuffer());
+    await _channel.invokeMethod<void>(
+        'map#setFocalBearing', message.writeToBuffer());
   }
 
   Future<double> get height => _channel.invokeMethod('map#getHeight');

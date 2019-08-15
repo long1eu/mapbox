@@ -4,6 +4,8 @@
 
 part of flutter_mapbox_gl;
 
+// ignore_for_file: non_constant_identifier_names
+
 pb.Int32Value int_(int value) {
   return pb.Int32Value()
     ..value = value
@@ -33,7 +35,7 @@ int colorValue_(pb.Color color) {
 }
 
 pb.Color color_(int color) {
-  final c = Color(color);
+  final Color c = Color(color);
   return pb.Color()
     ..alpha = c.alpha
     ..red = c.red

@@ -92,14 +92,15 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(foregroundLoadColor != null && foregroundLoadColor.opacity == 1.0);
     cameraPosition ??= CameraPosition();
     assert(
-        [styleFromMapbox, styleFromUri, styleFromJson].any((it) => it != null),
+        <dynamic>[styleFromMapbox, styleFromUri, styleFromJson]
+            .any((Object it) => it != null),
         'You need to set at leat one style source.');
 
     if (attributionTintColor != null) {
       assert(attributionTintColor.opacity == 1.0);
     }
 
-    return _$MapOptions((b) {
+    return _$MapOptions((MapOptionsBuilder b) {
       b
         ..apiBaseUri = apiBaseUri
         ..styleFromMapbox = styleFromMapbox

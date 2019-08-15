@@ -20,7 +20,7 @@ abstract class LatLng implements Built<LatLng, LatLngBuilder> {
     double longitude = 0.0,
     double altitude,
   }) {
-    return _$LatLng((b) {
+    return _$LatLng((LatLngBuilder b) {
       b
         ..latitude = latitude
         ..longitude = longitude

@@ -64,7 +64,7 @@ abstract class FillExtrusionLayer
             (color != null ? rgb(color.red, color.green, color.blue) : null)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : null)
         ..translateAnchor = translateAnchorEx ?? translateAnchor
         ..pattern =
@@ -234,7 +234,7 @@ abstract class FillExtrusionLayer
                 : this.color)
         ..translate = translateEx ??
             (translate != null
-                ? literalList([translate.dx, translate.dy])
+                ? literalList(<double>[translate.dx, translate.dy])
                 : this.translate)
         ..translateAnchor =
             translateAnchorEx ?? translateAnchor ?? this.translateAnchor
@@ -263,6 +263,7 @@ abstract class FillExtrusionLayer
     return _update(layer);
   }
 
+  @override
   FillExtrusionLayer markAsAttached(MethodChannel channel, Layer layer) {
     if (layer is FillExtrusionLayer) {
       return rebuild((FillExtrusionLayerBuilder b) {
@@ -300,6 +301,7 @@ abstract class FillExtrusionLayer
     }
   }
 
+  @override
   Future<FillExtrusionLayer> copyFrom(Layer layer) {
     if (layer is FillExtrusionLayer) {
       final FillExtrusionLayer _layer = rebuild((FillExtrusionLayerBuilder b) {
@@ -331,14 +333,18 @@ abstract class FillExtrusionLayer
           ..baseTransition =
               (layer.baseTransition ?? baseTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future.value(_layer);
-      return _update(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<FillExtrusionLayer>.value(_layer);
+      } else {
+        return _update(_layer);
+      }
     } else {
       throw ArgumentError(
           'Only a FillExtrusionLayer can be merged but got ${layer.runtimeType}');
     }
   }
 
+  @override
   pb.Layer_FillExtrusion get proto {
     final pb.Layer_FillExtrusion message = pb.Layer_FillExtrusion.create()
       ..id = this.id
@@ -369,6 +375,7 @@ abstract class FillExtrusionLayer
     return message..freeze();
   }
 
+  @override
   pb.Layer get source {
     return pb.Layer.create()
       ..id = this.id

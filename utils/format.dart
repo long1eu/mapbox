@@ -31,7 +31,7 @@ Future<void> _formatDart() async {
 }
 
 Future<int> runAndStream(String executable, List<String> args,
-    {Directory workingDir, bool exitOnError: false}) async {
+    {Directory workingDir, bool exitOnError = false}) async {
   final Process process =
       await Process.start(executable, args, workingDirectory: workingDir?.path);
   stdout.addStream(process.stdout);
@@ -40,7 +40,7 @@ Future<int> runAndStream(String executable, List<String> args,
     final String error =
         _getErrorString(executable, args, workingDir: workingDir);
     print('$error See above for details.');
-    throw new ToolExit(await process.exitCode);
+    throw ToolExit(await process.exitCode);
   }
   return process.exitCode;
 }

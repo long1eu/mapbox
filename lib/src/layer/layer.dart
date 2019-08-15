@@ -30,14 +30,23 @@ import 'package:meta/meta.dart' hide literal;
 import 'package:protobuf/protobuf.dart' as pb;
 
 part 'background.dart';
+
 part 'circle.dart';
+
 part 'fill.dart';
+
 part 'fill_extrusion.dart';
+
 part 'heatmap.dart';
+
 part 'hillshade.dart';
+
 part 'layer.g.dart';
+
 part 'line.dart';
+
 part 'raster.dart';
+
 part 'symbol.dart';
 
 @BuiltValue(instantiable: false)
@@ -50,26 +59,33 @@ abstract class Layer extends Object with _Channel {
 
   double get maxZoom;
 
+  @override
   pb.GeneratedMessage get proto => null;
 
+  @override
   pb.Layer get source => null;
 
   @memoized
+  @override
   Uint8List get data => null;
 
   @memoized
+  @override
   Uint8List get dataSource => null;
 
   @visibleForOverriding
   Layer markAsAttached(MethodChannel channel, Layer layer);
 
+  @override
   @nullable
   @visibleForOverriding
   @BuiltValueField(compare: false, serialize: false)
   MethodChannel get channel;
 
+  @override
   bool get isAttached => null;
 
+  @override
   Layer rebuild(void Function(LayerBuilder) updates);
 
   LayerBuilder toBuilder();
@@ -103,6 +119,7 @@ abstract class Layer extends Object with _Channel {
     }
   }
 
+  @override
   Future<Layer> copyFrom(Layer layer);
 }
 
@@ -128,8 +145,8 @@ mixin _Channel {
 
   Future<T> _update<T extends Layer>(T layer) {
     return channel
-        .invokeMethod('layer#update', layer.dataSource)
-        .then((_) => layer);
+        .invokeMethod<dynamic>('layer#update', layer.dataSource)
+        .then((dynamic _) => layer);
   }
 
   Future<Layer> update(Layer layer) {
