@@ -27,6 +27,7 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
   AnimationController _controller;
   Animation<LatLng> _animation;
 
+  @override
   void initState() {
     super.initState();
     rootBundle
@@ -107,15 +108,15 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
           GeoJsonSource(
             id: 'source-id',
             geoJson: jsonEncode(
-              {
+              <String, dynamic>{
                 "type": "FeatureCollection",
-                "features": [
-                  {
+                "features": <dynamic>[
+                  <String, dynamic>{
                     "type": "Feature",
-                    "properties": {},
-                    "geometry": {
+                    "properties": <String, dynamic>{},
+                    "geometry": <String, dynamic>{
                       "type": "Point",
-                      "coordinates": [
+                      "coordinates": <double>[
                         _animation.value.longitude,
                         _animation.value.latitude,
                       ]

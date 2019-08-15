@@ -27,27 +27,27 @@ class MapsDemo extends StatelessWidget {
     switch (category) {
       case Category.gettingStarted:
         return ListTile(
-          title: Text(
+          title: const Text(
             'Getting Started',
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
         );
       case Category.dynamicStyling:
         return ListTile(
-          title: Text(
+          title: const Text(
             'Dynamic Styling',
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
         );
       case Category.dataVisualisation:
         return ListTile(
-          title: Text(
+          title: const Text(
             'Data visualization',
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),

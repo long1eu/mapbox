@@ -35,7 +35,7 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
   @override
   void initState() {
     super.initState();
-    rootBundle.load('res/iss.png').then((data) =>
+    rootBundle.load('res/iss.png').then((ByteData data) =>
         mounted ? setState(() => image = data.buffer.asUint8List()) : null);
 
     timer = Timer.periodic(const Duration(seconds: 1), _getData);
@@ -92,7 +92,7 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
             zoom: 4.5,
           ),
         ),
-        images: {
+        images: <String, Uint8List>{
           if (image != null) imageId: image,
         },
         onMapReady: onMapReady,
@@ -111,15 +111,15 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
             GeoJsonSource(
               id: sourceId,
               geoJson: jsonEncode(
-                {
+                <String, dynamic>{
                   "type": "FeatureCollection",
-                  "features": [
-                    {
+                  "features": <dynamic>[
+                    <String, dynamic>{
                       "type": "Feature",
-                      "properties": {},
-                      "geometry": {
+                      "properties": <String, dynamic>{},
+                      "geometry": <String, dynamic>{
                         "type": "Point",
-                        "coordinates": [
+                        "coordinates": <dynamic>[
                           issPosition.longitude,
                           issPosition.latitude,
                         ]

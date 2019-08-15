@@ -31,7 +31,7 @@ class GeoJsonLayerInStackPage extends StatelessWidget {
             zoom: 8.471903,
           ),
         ),
-        layersPositions: {
+        layersPositions: <String, LayerPosition>{
           layerId: LayerPosition.below('water'),
         },
         layers: <Layer>[

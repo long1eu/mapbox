@@ -11,7 +11,6 @@ class MapController extends ValueNotifier<CameraPosition> {
   })  : assert(info != null),
         assert(calls != null),
         _calls = calls,
-        _viewId = info.viewId.toInt(),
         _channel = MethodChannel(
             'com.tophap/mapbox_gl_factory_${info.viewId.toInt()}'),
         _prefetchesTiles = info.prefetchesTiles,
@@ -26,7 +25,6 @@ class MapController extends ValueNotifier<CameraPosition> {
         Style._(channel: _channel, style: StyleModel.fromProto(info.style));
   }
 
-  final int _viewId;
   final MethodChannel _channel;
   final Stream<MethodCall> _calls;
 

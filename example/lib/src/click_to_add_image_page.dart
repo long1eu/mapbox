@@ -22,8 +22,8 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
   final String circleLayerId = 'circle-layer-bounds-corner-id';
   final String circleSourceId = 'circle-source-id';
 
-  List<dynamic> boundsFeatureList = [];
-  List<LatLng> boundsCirclePointList = [];
+  List<dynamic> boundsFeatureList = <dynamic>[];
+  List<LatLng> boundsCirclePointList = <LatLng>[];
   List<ImageSource> images = <ImageSource>[];
   List<RasterLayer> imagesLayers = <RasterLayer>[];
 
@@ -31,19 +31,19 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
 
   void onTap(LatLng value) async {
     if (boundsFeatureList.length == 4) {
-      boundsFeatureList = [];
-      boundsCirclePointList = [];
+      boundsFeatureList = <dynamic>[];
+      boundsCirclePointList = <LatLng>[];
     }
 
     setState(() {
       boundsCirclePointList.add(value);
       boundsFeatureList.add(
-        {
+        <String, dynamic>{
           "type": "Feature",
-          "properties": {},
-          "geometry": {
+          "properties": <String, dynamic>{},
+          "geometry": <String, dynamic>{
             "type": "Point",
-            "coordinates": [
+            "coordinates": <dynamic>[
               value.longitude,
               value.latitude,
             ]
@@ -73,7 +73,7 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
       );
 
       // Delay so the user can see the 4th point being added
-      await Future.delayed(const Duration(milliseconds: 300));
+      await Future<void>.delayed(const Duration(milliseconds: 300));
 
       final File file = await picker.ImagePicker.pickImage(
           source: picker.ImageSource.gallery);
@@ -126,14 +126,14 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
             id: circleLayerId,
             sourceId: circleSourceId,
             radius: 8.0,
-            color: Color(0xFFD004D3),
+            color: const Color(0xFFD004D3),
           ),
           ...imagesLayers,
         ],
         sources: <Source>[
           GeoJsonSource(
             id: circleSourceId,
-            geoJson: jsonEncode({
+            geoJson: jsonEncode(<String, dynamic>{
               "type": "FeatureCollection",
               "features": boundsFeatureList,
             }),

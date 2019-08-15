@@ -41,14 +41,14 @@ void main() {
         pattern: 'nrettap',
         opacity: 0.5,
         colorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         patternTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final BackgroundLayer result = Layer.fromProtoData(data);
 
       expect(result, update);
@@ -77,7 +77,7 @@ void main() {
         minZoom: 5.0,
         maxZoom: 15.0,
         sourceLayer: 'sourceLayer',
-        filter: all([
+        filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
             toNumber(get("point_count")),
@@ -88,7 +88,7 @@ void main() {
         color: Colors.amber,
         blur: .1,
         opacity: .8,
-        translate: Offset(4.5, 4.5),
+        translate: const Offset(4.5, 4.5),
         translateAnchor: TranslateAnchor.viewport,
         pitchScale: TranslateAnchor.map,
         pitchAlignment: TranslateAnchor.map,
@@ -96,25 +96,25 @@ void main() {
         strokeColor: Colors.deepOrangeAccent,
         strokeOpacity: 0.9,
         radiusTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         colorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         blurTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         translateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         strokeWidthTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         strokeColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         strokeOpacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final CircleLayer result = Layer.fromProtoData(data);
 
       expect(result, update);
@@ -126,7 +126,7 @@ void main() {
       id: layerId,
       sourceId: sourceId,
       outlineColor: Colors.red,
-      translate: Offset(0.1, 0.2),
+      translate: const Offset(0.1, 0.2),
       pattern: 'pattern',
     );
 
@@ -144,7 +144,7 @@ void main() {
         visible: false,
         minZoom: 5.0,
         maxZoom: 15.0,
-        filter: all([
+        filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
             toNumber(get("point_count")),
@@ -155,23 +155,23 @@ void main() {
         opacity: 0.8,
         color: Colors.blue,
         outlineColor: Colors.greenAccent,
-        translate: Offset(4.2, 6.5),
+        translate: const Offset(4.2, 6.5),
         translateAnchor: TranslateAnchor.viewport,
         pattern: 'nrettap',
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         colorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         outlineColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         translateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         patternTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final FillLayer result = Layer.fromProtoData(data);
 
       assert(result == update);
@@ -199,7 +199,7 @@ void main() {
         minZoom: 5.0,
         maxZoom: 15.0,
         sourceLayer: 'sourceLayer',
-        filter: all([
+        filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
             toNumber(get("point_count")),
@@ -208,28 +208,28 @@ void main() {
         ]),
         opacity: .9,
         color: Colors.amber,
-        translate: Offset(7.2, 1.2),
+        translate: const Offset(7.2, 1.2),
         translateAnchor: TranslateAnchor.viewport,
         pattern: 'nrettap',
         height: 1.2,
         base: 1.2,
         verticalGradient: false,
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         colorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         translateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         patternTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         heightTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         baseTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final FillExtrusionLayer result = Layer.fromProtoData(data);
 
       expect(result, update);
@@ -257,7 +257,7 @@ void main() {
         minZoom: 5.0,
         maxZoom: 15.0,
         sourceLayer: 'sourceLayer',
-        filter: all([
+        filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
             toNumber(get("point_count")),
@@ -270,15 +270,15 @@ void main() {
         color: Colors.blueAccent,
         opacity: .8,
         radiusTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         intensityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final HeatmapLayer result = Layer.fromProtoData(data);
 
       expect(result, update);
@@ -310,17 +310,17 @@ void main() {
         highlightColor: Colors.green,
         accentColor: Colors.deepPurple,
         exaggerationTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         shadowColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         highlightColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         accentColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final HillshadeLayer result = Layer.fromProtoData(data);
 
       expect(result.id, update.id);
@@ -348,7 +348,7 @@ void main() {
       id: layerId,
       sourceId: sourceId,
       color: Colors.green,
-      dasharray: [0, 1, 2.3, 4.5],
+      dasharray: <double>[0, 1, 2.3, 4.5],
       pattern: 'pattern',
       gradient: Colors.greenAccent,
     );
@@ -367,7 +367,7 @@ void main() {
         minZoom: 5.0,
         maxZoom: 15.0,
         sourceLayer: 'sourceLayer',
-        filter: all([
+        filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
             toNumber(get("point_count")),
@@ -386,31 +386,31 @@ void main() {
         gapWidth: 0.4,
         offset: 0.4,
         blur: 0.4,
-        dasharray: [0.2, 15, 2.55, 4.45],
+        dasharray: <double>[0.2, 15, 2.55, 4.45],
         pattern: 'nrettap',
         gradient: Colors.redAccent,
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         colorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         translateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         widthTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         gapWidthTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         offsetTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         blurTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         dasharrayTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         patternTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final LineLayer result = Layer.fromProtoData(data);
 
       expect(result, update);
@@ -443,21 +443,21 @@ void main() {
         resampling: Resampling.nearest,
         fadeDuration: const Duration(milliseconds: 150),
         opacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         hueRotateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         brightnessMinTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         brightnessMaxTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         saturationTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         contrastTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final RasterLayer result = Layer.fromProtoData(data);
 
       expect(result.id, update.id);
@@ -599,7 +599,7 @@ void main() {
         minZoom: 5.0,
         maxZoom: 15.0,
         sourceLayer: 'sourceLayer',
-        filter: all([
+        filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
             toNumber(get("point_count")),
@@ -616,17 +616,17 @@ void main() {
         iconRotationAlignment: SymbolAlignment.viewport,
         iconSize: 1.5,
         iconTextFit: SymbolTextFit.both,
-        iconTextFitPadding: EdgeInsets.all(4.0),
+        iconTextFitPadding: const EdgeInsets.all(4.0),
         iconImage: 'image',
         iconRotate: 0.4,
         iconPadding: 2.1,
         iconKeepUpright: true,
-        iconOffset: Offset(1.4, 45.5),
+        iconOffset: const Offset(1.4, 45.5),
         iconAnchor: PositionAnchor.bottom,
         iconPitchAlignment: SymbolAlignment.map,
         textPitchAlignment: SymbolAlignment.map,
         textRotationAlignment: SymbolAlignment.map,
-        textField: [FormattedSection(text: 'text')],
+        textField: <FormattedSection>[FormattedSection(text: 'text')],
         textFont: const <String>[
           'Regular Sans Open',
           'Arial Unicode MS Regular'
@@ -637,7 +637,7 @@ void main() {
         textLetterSpacing: 0.5,
         textJustify: SymbolTextJustify.center,
         textRadialOffset: 0.5,
-        textVariableAnchor: [
+        textVariableAnchor: <PositionAnchor>[
           PositionAnchor.right,
         ],
         textAnchor: PositionAnchor.right,
@@ -646,7 +646,7 @@ void main() {
         textPadding: 2.5,
         textKeepUpright: false,
         textTransform: SymbolTextTransform.uppercase,
-        textOffset: Offset(4.8, 8.5),
+        textOffset: const Offset(4.8, 8.5),
         textAllowOverlap: true,
         textIgnorePlacement: true,
         textOptional: true,
@@ -655,43 +655,43 @@ void main() {
         iconHaloColor: const Color(0x45000044),
         iconHaloWidth: 0.4,
         iconHaloBlur: 0.4,
-        iconTranslate: Offset(4.5, 9.6),
+        iconTranslate: const Offset(4.5, 9.6),
         iconTranslateAnchor: TranslateAnchor.viewport,
         textOpacity: .9,
         textColor: const Color(0xFF000000),
         textHaloColor: const Color(0x00000000),
         textHaloWidth: 0.4,
         textHaloBlur: 0.4,
-        textTranslate: Offset(4.5, 9.6),
+        textTranslate: const Offset(4.5, 9.6),
         textTranslateAnchor: TranslateAnchor.viewport,
         iconOpacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         iconColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         iconHaloColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         iconHaloWidthTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         iconHaloBlurTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         iconTranslateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         textOpacityTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         textColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         textHaloColorTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         textHaloWidthTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         textHaloBlurTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
         textTranslateTransition:
-            TransitionOptions(duration: Duration(milliseconds: 150)),
+            TransitionOptions(duration: const Duration(milliseconds: 150)),
       );
 
-      final Uint8List data = await channel
-          .invokeMethod('update#layer', [layer.dataSource, update.dataSource]);
+      final Uint8List data = await channel.invokeMethod(
+          'update#layer', <dynamic>[layer.dataSource, update.dataSource]);
       final SymbolLayer result = Layer.fromProtoData(data);
 
       expect(result.id, update.id);

@@ -137,19 +137,20 @@ class _MapboxMapState extends State<MapboxMap> {
   }
 
   Future<void> updateAll(MapboxMap oldWidget) async {
-    final List<Layer> oldLayers = oldWidget.layers ?? <Layer>[];
-    final List<Layer> newLayers = widget.layers ?? <Layer>[];
-    final List<Source> newSources = widget.sources ?? <Source>[];
-    final List<Source> oldSources = oldWidget.sources ?? <Source>[];
+    final Map<String, Layer> oldLayers = oldWidget.layers ?? <String, Layer>{};
+    final Map<String, Layer> newLayers = widget.layers ?? <String, Layer>{};
+    final Map<String, Source> newSources = widget.sources ?? <String, Source>{};
+    final Map<String, Source> oldSources =
+        oldWidget.sources ?? <String, Source>{};
     final Map<String, Uint8List> newImages =
         widget.images ?? <String, Uint8List>{};
     final Map<String, Uint8List> oldImages =
         oldWidget.images ?? <String, Uint8List>{};
 
     final bool sameLayers =
-        const ListEquality<Layer>().equals(oldLayers, newLayers);
+        const MapEquality<String, Layer>().equals(oldLayers, newLayers);
     final bool sameSources =
-        const ListEquality<Source>().equals(oldSources, newSources);
+        const MapEquality<String, Source>().equals(oldSources, newSources);
     final bool sameImages =
         const MapEquality<String, Uint8List>().equals(oldImages, newImages);
     if (sameLayers && sameSources && sameImages) return;

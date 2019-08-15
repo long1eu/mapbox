@@ -63,23 +63,23 @@ class _LanguageSwitchPageState extends State<LanguageSwitchPage> {
             itemBuilder: (BuildContext context) {
               return <PopupMenuItem<Language>>[
                 PopupMenuItem<Language>(
-                  child: Text('English'),
+                  child: const Text('English'),
                   value: Language.english,
                 ),
                 PopupMenuItem<Language>(
-                  child: Text('French'),
+                  child: const Text('French'),
                   value: Language.french,
                 ),
                 PopupMenuItem<Language>(
-                  child: Text('German'),
+                  child: const Text('German'),
                   value: Language.german,
                 ),
                 PopupMenuItem<Language>(
-                  child: Text('Russian'),
+                  child: const Text('Russian'),
                   value: Language.russian,
                 ),
                 PopupMenuItem<Language>(
-                  child: Text('Spanish'),
+                  child: const Text('Spanish'),
                   value: Language.spanish,
                 ),
               ];

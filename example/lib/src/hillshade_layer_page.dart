@@ -25,7 +25,7 @@ class HillshadeLayerPage extends StatelessWidget {
           styleFromMapbox: MapStyle.outdoors,
           enableTilePrefetch: true,
           logoPosition: OrnamentPosition.topLeft,
-          logoMargin: EdgeInsets.all(16.0),
+          logoMargin: const EdgeInsets.all(16.0),
           cameraPosition: CameraPosition(
             target: LatLng(
               latitude: 46.133872,

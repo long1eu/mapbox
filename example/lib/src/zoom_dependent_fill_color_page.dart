@@ -11,7 +11,7 @@ class ZoomDependentFillColorPage extends StatelessWidget {
   const ZoomDependentFillColorPage({Key key}) : super(key: key);
 
   void onMapReady(MapController controller) async {
-    FillLayer layer = controller.style.getLayer("water");
+    final FillLayer layer = controller.style.getLayer("water");
     if (layer == null) {
       return;
     }
@@ -20,17 +20,17 @@ class ZoomDependentFillColorPage extends StatelessWidget {
       colorEx: interpolate(
         exponential(1.0), zoom(), //
         <Stop>[
-          stop(1.0, color$(Color(0xFF00D116))),
-          stop(8.5, color$(Color(0xFF0A58FF))),
-          stop(10.0, color$(Color(0xFFFF0A0A))),
-          stop(18.0, color$(Color(0xFFFBFF00))),
+          stop(1.0, color$(const Color(0xFF00D116))),
+          stop(8.5, color$(const Color(0xFF0A58FF))),
+          stop(10.0, color$(const Color(0xFFFF0A0A))),
+          stop(18.0, color$(const Color(0xFFFBFF00))),
         ],
       ),
     );
 
     await controller.animateCamera(
       CameraUpdate.zoomTo(12),
-      duration: Duration(seconds: 12),
+      duration: const Duration(seconds: 12),
     );
   }
 

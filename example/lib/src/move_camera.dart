@@ -100,7 +100,7 @@ class MoveCameraPageState extends State<MoveCameraPage> {
                             latitudeNorth: -8.982446,
                             longitudeEast: 153.823821,
                           ),
-                          padding: EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(10.0),
                         ),
                       );
                     },
@@ -135,7 +135,7 @@ class MoveCameraPageState extends State<MoveCameraPage> {
                       mapController.moveCamera(
                         CameraUpdate.zoomBy(
                           -0.5,
-                          Point(30.0, 20.0),
+                          const Point<double>(30.0, 20.0),
                         ),
                       );
                     },

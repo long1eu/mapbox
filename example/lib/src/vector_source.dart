@@ -34,7 +34,7 @@ class VectorSourcePage extends StatelessWidget {
             id: 'terrain-data',
             sourceId: 'terrain-data',
             sourceLayer: 'contour',
-            color: Color(0xFFFF69B4),
+            color: const Color(0xFFFF69B4),
             cap: LineCap.round,
             join: LineJoin.round,
             width: 1.0,

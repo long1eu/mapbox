@@ -30,9 +30,9 @@ class _MultipleHeatmapStylingPageState
   @override
   void initState() {
     super.initState();
-    geoJson = jsonEncode({
+    geoJson = jsonEncode(<String, dynamic>{
       "type": "FeatureCollection",
-      "features": [],
+      "features": <dynamic>[],
     });
 
     rootBundle
@@ -41,7 +41,7 @@ class _MultipleHeatmapStylingPageState
   }
 
   void onMapReady(MapController value) async {
-    setState(() => this.controller = value);
+    setState(() => controller = value);
 
     await controller.animateCamera(
       CameraUpdate.newLatLngZoom(
@@ -51,7 +51,7 @@ class _MultipleHeatmapStylingPageState
         ),
         11.047,
       ),
-      duration: Duration(milliseconds: 2600),
+      duration: const Duration(milliseconds: 2600),
     );
   }
 
@@ -68,10 +68,10 @@ class _MultipleHeatmapStylingPageState
         options: MapOptions(
           styleFromMapbox: MapStyle.light,
         ),
-        layersPositions: {
+        layersPositions: <String, LayerPosition>{
           layerId: LayerPosition.above('waterway-label'),
         },
-        layers: [
+        layers: <Layer>[
           HeatmapLayer(
             id: layerId,
             sourceId: sourceId,

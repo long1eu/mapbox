@@ -46,7 +46,7 @@ class _AdjustLayerOpacityPageState extends State<AdjustLayerOpacityPage> {
               ),
               maxZoom: 13.0,
               minZoom: 7.0,
-              compassMargin: EdgeInsets.only(top: 75.0),
+              compassMargin: const EdgeInsets.only(top: 75.0),
             ),
             layers: <Layer>[
               RasterLayer(
@@ -64,7 +64,7 @@ class _AdjustLayerOpacityPageState extends State<AdjustLayerOpacityPage> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.all(24.0).copyWith(bottom: 10.0),
+            margin: const EdgeInsets.all(24.0).copyWith(bottom: 10.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[

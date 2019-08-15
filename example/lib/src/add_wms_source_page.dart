@@ -30,7 +30,7 @@ class AddWmsSourcePage extends StatelessWidget {
             zoom: 8,
           ),
         ),
-        layersPositions: {
+        layersPositions: <String, LayerPosition>{
           'web-map-layer': LayerPosition.below('aeroway-taxiway'),
         },
         layers: <Layer>[

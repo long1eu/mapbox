@@ -28,12 +28,12 @@ class _ImageSourceTimeLapsePageState extends State<ImageSourceTimeLapsePage> {
   void initState() {
     super.initState();
 
-    Future.wait([
+    Future.wait(<String>[
       'res/southeast_radar_0.png',
       'res/southeast_radar_1.png',
       'res/southeast_radar_2.png',
       'res/southeast_radar_3.png',
-    ].map((it) => rootBundle.load(it))).then(_onImageLoaded);
+    ].map((String it) => rootBundle.load(it))).then(_onImageLoaded);
   }
 
   Future<void> _onImageLoaded(List<ByteData> value) async {
