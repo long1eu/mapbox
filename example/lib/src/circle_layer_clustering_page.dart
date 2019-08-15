@@ -29,11 +29,6 @@ class _CircleLayerClusteringPageState extends State<CircleLayerClusteringPage> {
         mounted ? setState(() => image = data.buffer.asUint8List()) : null);
   }
 
-  void onMapReady(MapController controller) {
-    controller.animateCamera(CameraUpdate.newLatLngZoom(
-        LatLng(latitude: 12.099, longitude: -79.045), 3));
-  }
-
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
@@ -43,15 +38,14 @@ class _CircleLayerClusteringPageState extends State<CircleLayerClusteringPage> {
         title: Text(page.title),
       ),
       body: MapboxMap(
-        onMapReady: onMapReady,
         options: MapOptions(
           styleFromMapbox: MapStyle.light,
           cameraPosition: CameraPosition(
             target: LatLng(
-              latitude: 33.749909,
-              longitude: -84.381546,
+              latitude: 12.099,
+              longitude: -79.045,
             ),
-            zoom: 8.471903,
+            zoom: 3,
           ),
         ),
         layers: <Layer>[

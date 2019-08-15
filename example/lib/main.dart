@@ -4,6 +4,7 @@ import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
 import 'package:mapbox_gl_example/src/animated_marker.dart';
 import 'package:mapbox_gl_example/src/bathymetry_page.dart';
 import 'package:mapbox_gl_example/src/circle_layer_clustering_page.dart';
+import 'package:mapbox_gl_example/src/circle_radius_page.dart';
 import 'package:mapbox_gl_example/src/click_to_add_image_page.dart';
 import 'package:mapbox_gl_example/src/color_switcher.dart';
 import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
@@ -121,6 +122,7 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.bathymetry: (_) => const BathymetryPage(),
         AppRoutes.circleLayerClustering: (_) =>
             const CircleLayerClusteringPage(),
+        AppRoutes.circleRadius: (_) => const CircleRadiusPage(),
       },
     );
   }
@@ -246,6 +248,13 @@ const List<Page> pages = <Page>[
     category: Category.dataVisualisation,
     route: AppRoutes.circleLayerClustering,
   ),
+  Page(
+    title: 'Circle radius',
+    description:
+        'Set the radii of a circle layer\'s circles based on a data property.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.circleRadius,
+  ),
 ];
 
 class AppRoutes {
@@ -267,6 +276,7 @@ class AppRoutes {
   static const String multipleHeatmapStyling = '/multipleHeatmapStyling';
   static const String bathymetry = '/bathymetry';
   static const String circleLayerClustering = '/circleLayerClustering';
+  static const String circleRadius = '/circleRadius';
 }
 
 enum Category { gettingStarted, dynamicStyling, dataVisualisation }
