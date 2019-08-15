@@ -1,3 +1,9 @@
+## 0.0.4
+
+* add tests for updating layers
+* update example app UI
+* add more examples
+
 ## 0.0.3
 
 * add tap events for iOS
