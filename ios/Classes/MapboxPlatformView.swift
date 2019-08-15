@@ -234,7 +234,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case "map#setLatLngBoundsForCameraTarget":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let bounds = try! Tophap_MapboxGl_LatLngBounds(serializedData: data)
-      mapView!.setVisibleCoordinateBounds(bounds.value, animated: true)
+      mapView!.setVisibleCoordinateBounds(bounds.value, animated: false)
       result(nil)
       break;
     case "map#getCameraForLatLngBounds":

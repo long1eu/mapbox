@@ -52,6 +52,7 @@ class Style {
   }
 
   Future<Source> removeSource(String id) async {
+    assert(_sources[id] != null);
     final Source source = _sources.remove(id);
     await invokeMethod<dynamic>('style#removeSource', id);
     print('removed source: $id');
@@ -90,6 +91,7 @@ class Style {
   }
 
   Future<Layer> removeLayer(String id) async {
+    assert(_layers[id] != null);
     final Layer layer = _layers.remove(id);
     await invokeMethod<dynamic>('style#removeLayer', id);
     print('removed layer: $id');
