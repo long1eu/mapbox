@@ -79,11 +79,13 @@ Expression rgb(dynamic red, dynamic green, dynamic blue) {
   );
 }
 
+// todo add some asserts about value range
 Expression rgba(dynamic red, dynamic green, dynamic blue, dynamic alpha) {
   assert(red != null);
   assert(green != null);
   assert(blue != null);
   assert(alpha != null);
+  assert(alpha >= 0.0 && alpha <= 1.0);
 
   return Expression._e4(
     kRgbaOperator,

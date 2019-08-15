@@ -26,6 +26,7 @@ class _AdjustLayerOpacityPageState extends State<AdjustLayerOpacityPage> {
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
     // todo fix opacity on Android
+    // todo hot reload doesnt' work
 
     return Scaffold(
       appBar: AppBar(

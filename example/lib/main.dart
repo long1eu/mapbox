@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:mapbox_gl_example/src/add_rain_fall_style_page.dart';
 import 'package:mapbox_gl_example/src/add_wms_source_page.dart';
 import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
 import 'package:mapbox_gl_example/src/animated_marker.dart';
@@ -7,13 +10,18 @@ import 'package:mapbox_gl_example/src/circle_layer_clustering_page.dart';
 import 'package:mapbox_gl_example/src/circle_radius_page.dart';
 import 'package:mapbox_gl_example/src/click_to_add_image_page.dart';
 import 'package:mapbox_gl_example/src/color_switcher.dart';
+import 'package:mapbox_gl_example/src/draw_geojson_line_page.dart';
 import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
+import 'package:mapbox_gl_example/src/heatmap_page.dart';
 import 'package:mapbox_gl_example/src/hillshade_layer_page.dart';
 import 'package:mapbox_gl_example/src/image_source_time_lapse_page.dart';
 import 'package:mapbox_gl_example/src/language_switch.dart';
+import 'package:mapbox_gl_example/src/line_gradient_page.dart';
 import 'package:mapbox_gl_example/src/line_layer_page.dart';
 import 'package:mapbox_gl_example/src/move_camera.dart';
+import 'package:mapbox_gl_example/src/multiple_geometries_page.dart';
 import 'package:mapbox_gl_example/src/multiple_heatmap_styling_page.dart';
+import 'package:mapbox_gl_example/src/polygon_holes_page.dart';
 import 'package:mapbox_gl_example/src/scrolling_map.dart';
 import 'package:mapbox_gl_example/src/space_station_location.dart';
 import 'package:mapbox_gl_example/src/style_from_file_page.dart';
@@ -125,145 +133,190 @@ class MapsDemo extends StatelessWidget {
             const CircleLayerClusteringPage(),
         AppRoutes.circleRadius: (_) => const CircleRadiusPage(),
         AppRoutes.lineLayer: (_) => const LineLayerPage(),
+        AppRoutes.heatmap: (_) => const HeatmapPage(),
+        AppRoutes.addRainFallStyle: (_) => const AddRainFallStylePage(),
+        AppRoutes.drawGeojsonLine: (_) => const DrawGeoJsonLinePage(),
+        AppRoutes.polygonHoles: (_) => const PolygonHolesPage(),
+        AppRoutes.multipleGeometries: (_) => const MultipleGeometriesPage(),
+        AppRoutes.lineGradient: (_) => const LineGradientPage(),
       },
     );
   }
 }
 
-const List<Page> pages = <Page>[
-  Page(
+final List<Page> pages = <Page>[
+  const Page(
     title: 'Camera control',
     description: 'Move the camera',
     category: Category.gettingStarted,
     route: AppRoutes.moveCamera,
   ),
-  Page(
+  const Page(
     title: 'Add style from asset file',
     description:
         'iOS SDK doesn\'t have a way to create Style object from plain json. This implementation add support for just that.',
     category: Category.gettingStarted,
     route: AppRoutes.styleFromFile,
   ),
-  Page(
+  const Page(
     title: 'Scrolling map',
     description: 'Test scrolling a list containing a map',
     category: Category.gettingStarted,
     route: AppRoutes.scrollingMap,
   ),
-  Page(
+  const Page(
     title: 'Add a hillshade layer',
     description:
         'Use elevation data to show and customize hills and mountains.',
     category: Category.dynamicStyling,
     route: AppRoutes.hillshadeLayer,
   ),
-  Page(
+  const Page(
     title: 'Add a new layer below labels',
     description:
         'Using argument belowId, you can be more precise where your layer ends up in the map stack.',
     category: Category.dynamicStyling,
     route: AppRoutes.geoJsonLayerInStack,
   ),
-  Page(
+  const Page(
     title: 'Add a vector tile source',
     description: 'Add a vector source to a map and display it as a layer.',
     category: Category.dynamicStyling,
     route: AppRoutes.vectorSource,
   ),
-  Page(
+  const Page(
     title: 'Add a WMS source',
     description: 'Adding an external Web Map Service layer to the map.',
     category: Category.dynamicStyling,
     route: AppRoutes.addWmsSource,
   ),
-  Page(
+  const Page(
     title: 'Add an image source with time lapse',
     description:
         'Use an image source and a runnable to show data changes over time.',
     category: Category.dynamicStyling,
     route: AppRoutes.imageSourceTimeLapse,
   ),
-  Page(
+  const Page(
     title: 'Adjust a layer\'s opacity',
     description:
         'Drag the seek bar to adjust the opacity of a raster layer on top of a map.',
     category: Category.dynamicStyling,
     route: AppRoutes.adjustLayerOpacity,
   ),
-  Page(
+  const Page(
     title: 'Animate marker position',
     description: 'Animate the marker to a new position on the map.',
     category: Category.dynamicStyling,
     route: AppRoutes.animatedMarker,
   ),
-  Page(
+  const Page(
     title: 'Icon update based on API response ',
     description:
         'Update a SymbolLayer icon based on Iternational Space Station current location.',
     category: Category.dynamicStyling,
     route: AppRoutes.spaceStationLocation,
   ),
-  Page(
+  const Page(
     title: 'Change a layer\'s color',
     description: 'Using layer set to change a layer\'s fill color.',
     category: Category.dynamicStyling,
     route: AppRoutes.colorSwitcher,
   ),
-  Page(
+  const Page(
     title: 'Change a map\'s language',
     description: 'Switch the map\'s language dynamically.',
     category: Category.dynamicStyling,
     route: AppRoutes.languageSwitch,
   ),
-  Page(
+  const Page(
     title: 'Change color based on zoom level',
     description:
         'Make a property depend on the map zoom level, in this case, the water layers fill color.',
     category: Category.dynamicStyling,
     route: AppRoutes.zoomDependentFillColor,
   ),
-  Page(
+  const Page(
     title: 'Click to add photo',
     description:
         'Select a photo on the device and add it on the map tap location.',
     category: Category.dynamicStyling,
     route: AppRoutes.clickToAddImage,
   ),
-  Page(
+  const Page(
     title: 'Add multiple heatmap styles',
     description:
         'Gain minute control over heat map coloring, size, density, and other styling.',
     category: Category.dataVisualisation,
     route: AppRoutes.multipleHeatmapStyling,
   ),
-  Page(
+  const Page(
     title: 'Display water depth',
     description:
         'Use data-driven styling to show bathymetry (water depth) data.',
     category: Category.dataVisualisation,
     route: AppRoutes.bathymetry,
   ),
-  Page(
+  const Page(
     title: 'CircleLayer clusters',
     description:
         'Use GeoJSON and circle layers to visualize point data in clusters.',
     category: Category.dataVisualisation,
     route: AppRoutes.circleLayerClustering,
   ),
-  Page(
+  const Page(
     title: 'Circle radius',
     description:
         'Set the radii of a circle layer\'s circles based on a data property.',
     category: Category.dataVisualisation,
     route: AppRoutes.circleRadius,
   ),
-  Page(
+  const Page(
     title: 'Create a line layer',
     description:
         'Create a GeoJSON line source, style it using properties, and add the layer to the map.',
     category: Category.dataVisualisation,
     route: AppRoutes.lineLayer,
   ),
+  const Page(
+    title: 'Display a heatmap',
+    description: 'Add and customize a heatmap to visualize data.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.heatmap,
+  ),
+  const Page(
+    title: 'Data time lapse',
+    description:
+        'Use data-driven styling to visualize point data with a time lapse effect; rainfall in China in this example.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.addRainFallStyle,
+  ),
+  const Page(
+    title: 'Draw a GeoJSON line',
+    description: 'Draw a polyline by parsing a GeoJSON file with the Map SDK.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.drawGeojsonLine,
+  ),
+  const Page(
+    title: 'Draw a polygon with holes',
+    description: 'Draw a vector polygon with holes on a map using the Map SDK.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.polygonHoles,
+  ),
+  const Page(
+    title: 'Draw multiple geometries',
+    description:
+        'Gain minute control over heat map coloring, size, density, and other styling.',
+    category: Category.dataVisualisation,
+    route: AppRoutes.multipleGeometries,
+  ),
+  if (!Platform.isIOS)
+    const Page(
+      title: 'Line gradient',
+      description: 'Style a line with colored gradient.',
+      category: Category.dataVisualisation,
+      route: AppRoutes.lineGradient,
+    ),
 ];
 
 class AppRoutes {
@@ -287,6 +340,12 @@ class AppRoutes {
   static const String circleLayerClustering = '/circleLayerClustering';
   static const String circleRadius = '/circleRadius';
   static const String lineLayer = '/lineLayer';
+  static const String heatmap = '/heatmap';
+  static const String addRainFallStyle = '/addRainFallStyle';
+  static const String drawGeojsonLine = '/drawGeojsonLine';
+  static const String polygonHoles = '/polygonHoles';
+  static const String multipleGeometries = '/multipleGeometries';
+  static const String lineGradient = '/lineGradient';
 }
 
 enum Category { gettingStarted, dynamicStyling, dataVisualisation }

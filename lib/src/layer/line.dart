@@ -4,6 +4,7 @@
 
 part of layer;
 
+// todo hot reload doesnt' work
 abstract class LineLayer
     with _Channel
     implements Layer, Built<LineLayer, LineLayerBuilder> {

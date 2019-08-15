@@ -16,6 +16,7 @@ class HillshadeLayerPage extends StatelessWidget {
     final String layerId = 'hillshade-layer';
     final String sourceId = 'hillshade-source';
 
+    // todo hot reload don't work on Android
     return Scaffold(
       appBar: AppBar(
         title: Text(page.title),

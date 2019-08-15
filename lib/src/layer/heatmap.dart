@@ -4,6 +4,7 @@
 
 part of layer;
 
+// todo hot reload doesnt' work
 abstract class HeatmapLayer
     with _Channel
     implements Layer, Built<HeatmapLayer, HeatmapLayerBuilder> {

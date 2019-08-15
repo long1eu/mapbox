@@ -4,6 +4,8 @@
 
 part of layer;
 
+// todo hot reload doesnt' work
+// icon size doesn't match
 abstract class SymbolLayer
     with _Channel
     implements Layer, Built<SymbolLayer, SymbolLayerBuilder> {

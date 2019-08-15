@@ -4,6 +4,7 @@
 
 part of layer;
 
+// todo hot reload doesnt' work on Android
 abstract class RasterLayer
     with _Channel
     implements Layer, Built<RasterLayer, RasterLayerBuilder> {

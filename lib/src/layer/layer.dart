@@ -90,8 +90,9 @@ abstract class Layer extends Object with _Channel {
 
   LayerBuilder toBuilder();
 
-  static Layer fromProtoData(Uint8List data) {
-    return fromProto(pb.Layer.fromBuffer(data));
+  static T fromProtoData<T extends Layer>(Uint8List data) {
+    // ignore: avoid_as
+    return fromProto(pb.Layer.fromBuffer(data)) as T;
   }
 
   static Layer fromProto(pb.Layer proto) {
@@ -146,7 +147,8 @@ mixin _Channel {
   Future<T> _update<T extends Layer>(T layer) {
     return channel
         .invokeMethod<dynamic>('layer#update', layer.dataSource)
-        .then((dynamic _) => layer);
+        // ignore: avoid_as
+        .then<T>((dynamic data) => Layer.fromProtoData(data) as T);
   }
 
   Future<Layer> update(Layer layer) {

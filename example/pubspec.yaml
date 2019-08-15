@@ -40,3 +40,5 @@ flutter:
     - res/la_heatmap_styling_points.geojson
     - res/bathymetry-data.geojson
     - res/ic_cross.png
+    - res/example.geojson
+    - res/fake_norway_campsites.geojson

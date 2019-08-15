@@ -77,7 +77,6 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(page.title),

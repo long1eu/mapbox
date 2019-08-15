@@ -312,7 +312,6 @@ abstract class FillLayer
           ..patternTransition =
               (layer.patternTransition ?? patternTransition).toBuilder();
       });
-
       if (!isAttached || this == _layer) return Future<FillLayer>.value(_layer);
       return _update(_layer);
     } else {

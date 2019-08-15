@@ -104,7 +104,7 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-
+    // todo crashes on Android
     return Scaffold(
       appBar: AppBar(
         title: Text(page.title),

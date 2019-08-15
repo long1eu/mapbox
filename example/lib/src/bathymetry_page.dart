@@ -54,6 +54,7 @@ class _BathymetryPageState extends State<BathymetryPage> {
     final String numberLayerId = 'DEPTH_NUMBER_SYMBOL_LAYER_ID';
     final String polygonLayerId = 'DEPTH_POLYGON_FILL_LAYER_ID';
 
+    // todo depth field not caught on Android
     return Scaffold(
       appBar: AppBar(
         title: Text(page.title),
