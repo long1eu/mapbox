@@ -116,7 +116,8 @@ class CameraUpdate {
       return _proto;
     }
 
-    final pb.Map__Operations_CameraUpdate message = pb.Map__Operations_CameraUpdate.create();
+    final pb.Map__Operations_CameraUpdate message =
+        pb.Map__Operations_CameraUpdate.create();
     if (cameraPosition != null) {
       message.cameraPosition = cameraPosition.proto;
     }
