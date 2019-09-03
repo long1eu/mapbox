@@ -15,14 +15,14 @@ class MapboxMap extends StatefulWidget {
     this.layersPositions,
     List<Layer> layers,
     List<Source> sources,
-    this.images,
-  })  : layers = layers != null
-            ? layers.asMap().map(
-                (_, Layer layer) => MapEntry<String, Layer>(layer.id, layer))
-            : null,
+    List<StyleImage> images,
+  })  : layers =
+            layers != null ? layers.asMap().map((_, Layer layer) => MapEntry<String, Layer>(layer.id, layer)) : null,
         sources = sources != null
-            ? sources.asMap().map((_, Source source) =>
-                MapEntry<String, Source>(source.id, source))
+            ? sources.asMap().map((_, Source source) => MapEntry<String, Source>(source.id, source))
+            : null,
+        images = images != null
+            ? images.asMap().map((_, StyleImage image) => MapEntry<String, StyleImage>(image.id, image))
             : null,
         assert(
           layersPositions != null &&
@@ -47,7 +47,7 @@ class MapboxMap extends StatefulWidget {
   final Map<String, LayerPosition> layersPositions;
   final Map<String, Layer> layers;
   final Map<String, Source> sources;
-  final Map<String, Uint8List> images;
+  final Map<String, StyleImage> images;
 
   @override
   _MapboxMapState createState() => _MapboxMapState();
@@ -68,8 +68,7 @@ class _MapboxMapState extends State<MapboxMap> {
 
   void onPlatformViewCreated(int id) {
     _channel = MethodChannel('com.tophap/mapbox_gl_factory_$id');
-    _channel.setMethodCallHandler(
-        (MethodCall event) async => _methodCall.add(event));
+    _channel.setMethodCallHandler((MethodCall event) async => _methodCall.add(event));
   }
 
   Future<void> _onMapEvent(MethodCall event) async {
@@ -79,14 +78,12 @@ class _MapboxMapState extends State<MapboxMap> {
       widget.mapTaps?.handleEvent(event);
     } else if (event.method == 'mapReady') {
       final Uint8List data = event.arguments;
-      final pb.Map__Operations_Ready info =
-          pb.Map__Operations_Ready.fromBuffer(data);
+      final pb.Map__Operations_Ready info = pb.Map__Operations_Ready.fromBuffer(data);
       _controller = MapController._(info: info, calls: _methodCall.stream);
 
       final Map<String, Source> sources = widget.sources ?? <String, Source>{};
       final Map<String, Layer> layers = widget.layers ?? <String, Layer>{};
-      final Map<String, Uint8List> images =
-          widget.images ?? <String, Uint8List>{};
+      final Map<String, StyleImage> images = widget.images ?? <String, StyleImage>{};
 
       final List<Future<dynamic>> futures = <Future<dynamic>>[];
       for (String id in sources.keys) {
@@ -95,8 +92,7 @@ class _MapboxMapState extends State<MapboxMap> {
 
       for (String id in layers.keys) {
         final Layer layer = layers[id];
-        final LayerPosition position =
-            widget.layersPositions != null ? widget.layersPositions[id] : null;
+        final LayerPosition position = widget.layersPositions != null ? widget.layersPositions[id] : null;
 
         Future<dynamic> future;
         if (position == null) {
@@ -104,12 +100,10 @@ class _MapboxMapState extends State<MapboxMap> {
         } else {
           switch (position.where) {
             case Where.above:
-              future =
-                  _controller.style.addLayer(layer, aboveId: position.value);
+              future = _controller.style.addLayer(layer, aboveId: position.value);
               break;
             case Where.below:
-              future =
-                  _controller.style.addLayer(layer, belowId: position.value);
+              future = _controller.style.addLayer(layer, belowId: position.value);
               break;
             case Where.at:
               future = _controller.style.addLayer(layer, index: position.value);
@@ -121,7 +115,7 @@ class _MapboxMapState extends State<MapboxMap> {
       }
 
       for (String id in images.keys) {
-        futures.add(_controller.style.addImage(id, images[id]));
+        futures.add(_controller.style.addImage(images[id]));
       }
 
       await Future.wait<dynamic>(futures);
@@ -140,19 +134,13 @@ class _MapboxMapState extends State<MapboxMap> {
     final Map<String, Layer> oldLayers = oldWidget.layers ?? <String, Layer>{};
     final Map<String, Layer> newLayers = widget.layers ?? <String, Layer>{};
     final Map<String, Source> newSources = widget.sources ?? <String, Source>{};
-    final Map<String, Source> oldSources =
-        oldWidget.sources ?? <String, Source>{};
-    final Map<String, Uint8List> newImages =
-        widget.images ?? <String, Uint8List>{};
-    final Map<String, Uint8List> oldImages =
-        oldWidget.images ?? <String, Uint8List>{};
+    final Map<String, Source> oldSources = oldWidget.sources ?? <String, Source>{};
+    final Map<String, StyleImage> newImages = widget.images ?? <String, StyleImage>{};
+    final Map<String, StyleImage> oldImages = oldWidget.images ?? <String, StyleImage>{};
 
-    final bool sameLayers =
-        const MapEquality<String, Layer>().equals(oldLayers, newLayers);
-    final bool sameSources =
-        const MapEquality<String, Source>().equals(oldSources, newSources);
-    final bool sameImages =
-        const MapEquality<String, Uint8List>().equals(oldImages, newImages);
+    final bool sameLayers = const MapEquality<String, Layer>().equals(oldLayers, newLayers);
+    final bool sameSources = const MapEquality<String, Source>().equals(oldSources, newSources);
+    final bool sameImages = const MapEquality<String, StyleImage>().equals(oldImages, newImages);
     if (sameLayers && sameSources && sameImages) return;
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
@@ -167,10 +155,8 @@ class _MapboxMapState extends State<MapboxMap> {
     final Map<String, Layer> oldLayers = oldWidget.layers ?? <String, Layer>{};
     final Map<String, Layer> newLayers = (widget.layers ?? <String, Layer>{});
 
-    final Map<String, LayerPosition> oldPosition =
-        oldWidget.layersPositions ?? <String, LayerPosition>{};
-    final Map<String, LayerPosition> newPosition =
-        widget.layersPositions ?? <String, LayerPosition>{};
+    final Map<String, LayerPosition> oldPosition = oldWidget.layersPositions ?? <String, LayerPosition>{};
+    final Map<String, LayerPosition> newPosition = widget.layersPositions ?? <String, LayerPosition>{};
 
     final List<String> remove = oldLayers.keys //
         .where((String id) => newLayers[id] == null)
@@ -178,10 +164,8 @@ class _MapboxMapState extends State<MapboxMap> {
     final List<String> update = newLayers.keys //
         .where((String id) => oldLayers[id] != null)
         .toList();
-    final List<Layer> add = newLayers.keys
-        .where((String id) => oldLayers[id] == null)
-        .map((String id) => newLayers[id])
-        .toList();
+    final List<Layer> add =
+        newLayers.keys.where((String id) => oldLayers[id] == null).map((String id) => newLayers[id]).toList();
 
     // remove
     await Future.wait(remove.map(_controller.style.removeLayer));
@@ -210,16 +194,13 @@ class _MapboxMapState extends State<MapboxMap> {
         } else {
           switch (position.where) {
             case Where.above:
-              future.then((void _) => _controller.style
-                  .addLayer(newLayer, aboveId: position.value));
+              future.then((void _) => _controller.style.addLayer(newLayer, aboveId: position.value));
               break;
             case Where.below:
-              future.then((void _) => _controller.style
-                  .addLayer(newLayer, belowId: position.value));
+              future.then((void _) => _controller.style.addLayer(newLayer, belowId: position.value));
               break;
             case Where.at:
-              future.then((void _) =>
-                  _controller.style.addLayer(newLayer, index: position.value));
+              future.then((void _) => _controller.style.addLayer(newLayer, index: position.value));
               break;
           }
         }
@@ -261,8 +242,7 @@ class _MapboxMapState extends State<MapboxMap> {
 
   Future<void> _updateSources(MapboxMap oldWidget) async {
     final Map<String, Source> newSources = widget.sources ?? <String, Source>{};
-    final Map<String, Source> oldSources =
-        oldWidget.sources ?? <String, Source>{};
+    final Map<String, Source> oldSources = oldWidget.sources ?? <String, Source>{};
 
     final List<String> remove = oldSources.keys //
         .where((String id) => newSources[id] == null)
@@ -270,10 +250,8 @@ class _MapboxMapState extends State<MapboxMap> {
     final List<String> update = newSources.keys //
         .where((String id) => oldSources[id] != null)
         .toList();
-    final List<Source> add = newSources.keys
-        .where((String id) => oldSources[id] == null)
-        .map((String id) => newSources[id])
-        .toList();
+    final List<Source> add =
+        newSources.keys.where((String id) => oldSources[id] == null).map((String id) => newSources[id]).toList();
 
     await Future.wait(remove.map(_controller.style.removeSource));
 
@@ -298,10 +276,8 @@ class _MapboxMapState extends State<MapboxMap> {
   }
 
   Future<void> _updateImages(MapboxMap oldWidget) async {
-    final Map<String, Uint8List> newImages =
-        widget.images ?? <String, Uint8List>{};
-    final Map<String, Uint8List> oldImages =
-        oldWidget.images ?? <String, Uint8List>{};
+    final Map<String, StyleImage> newImages = widget.images ?? <String, StyleImage>{};
+    final Map<String, StyleImage> oldImages = oldWidget.images ?? <String, StyleImage>{};
 
     final List<String> remove = oldImages.keys //
         .where((String id) => newImages[id] == null)
@@ -317,18 +293,14 @@ class _MapboxMapState extends State<MapboxMap> {
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
     for (String id in update) {
-      if (const ListEquality<int>().equals(oldImages[id], newImages[id]))
-        continue;
+      if (oldImages[id] == newImages[id]) continue;
 
-      futures.add(_controller.style
-          .removeImage(id)
-          .then<void>((_) => _controller.style.addImage(id, newImages[id])));
+      futures.add(_controller.style.removeImage(id).then<void>((_) => _controller.style.addImage(newImages[id])));
     }
     await Future.wait<dynamic>(futures);
     futures.clear();
 
-    await Future.wait(
-        add.map((String id) => _controller.style.addImage(id, newImages[id])));
+    await Future.wait(add.map((String id) => _controller.style.addImage(newImages[id])));
   }
 
   @override

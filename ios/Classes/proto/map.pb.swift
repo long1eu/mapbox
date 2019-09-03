@@ -270,38 +270,16 @@ struct Tophap_MapboxGl_Map {
       set {_uniqueStorage()._zoom = newValue}
     }
 
-    var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    enum MoveReason: SwiftProtobuf.Enum {
-      typealias RawValue = Int
-      case apiGesture // = 0
-      case developerAnimation // = 1
-      case apiAnimation // = 2
-      case UNRECOGNIZED(Int)
-
-      init() {
-        self = .apiGesture
-      }
-
-      init?(rawValue: Int) {
-        switch rawValue {
-        case 0: self = .apiGesture
-        case 1: self = .developerAnimation
-        case 2: self = .apiAnimation
-        default: self = .UNRECOGNIZED(rawValue)
-        }
-      }
-
-      var rawValue: Int {
-        switch self {
-        case .apiGesture: return 0
-        case .developerAnimation: return 1
-        case .apiAnimation: return 2
-        case .UNRECOGNIZED(let i): return i
-        }
-      }
-
+    var bounds: Tophap_MapboxGl_LatLngBounds {
+      get {return _storage._bounds ?? Tophap_MapboxGl_LatLngBounds()}
+      set {_uniqueStorage()._bounds = newValue}
     }
+    /// Returns true if `bounds` has been explicitly set.
+    var hasBounds: Bool {return _storage._bounds != nil}
+    /// Clears the value of `bounds`. Subsequent reads from it will return its default value.
+    mutating func clearBounds() {_uniqueStorage()._bounds = nil}
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
 
     init() {}
 
@@ -357,6 +335,11 @@ struct Tophap_MapboxGl_Map {
       var hasStyle: Bool {return _storage._style != nil}
       /// Clears the value of `style`. Subsequent reads from it will return its default value.
       mutating func clearStyle() {_uniqueStorage()._style = nil}
+
+      var padding: [Int32] {
+        get {return _storage._padding}
+        set {_uniqueStorage()._padding = newValue}
+      }
 
       var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1002,6 +985,7 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
     2: .same(proto: "target"),
     3: .same(proto: "tilt"),
     4: .same(proto: "zoom"),
+    5: .same(proto: "bounds"),
   ]
 
   fileprivate class _StorageClass {
@@ -1009,6 +993,7 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
     var _target: Tophap_MapboxGl_LatLng? = nil
     var _tilt: Double = 0
     var _zoom: Double = 0
+    var _bounds: Tophap_MapboxGl_LatLngBounds? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -1019,6 +1004,7 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
       _target = source._target
       _tilt = source._tilt
       _zoom = source._zoom
+      _bounds = source._bounds
     }
   }
 
@@ -1038,6 +1024,7 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
         case 2: try decoder.decodeSingularMessageField(value: &_storage._target)
         case 3: try decoder.decodeSingularDoubleField(value: &_storage._tilt)
         case 4: try decoder.decodeSingularDoubleField(value: &_storage._zoom)
+        case 5: try decoder.decodeSingularMessageField(value: &_storage._bounds)
         default: break
         }
       }
@@ -1058,6 +1045,9 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
       if _storage._zoom != 0 {
         try visitor.visitSingularDoubleField(value: _storage._zoom, fieldNumber: 4)
       }
+      if let v = _storage._bounds {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -1071,6 +1061,7 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
         if _storage._target != rhs_storage._target {return false}
         if _storage._tilt != rhs_storage._tilt {return false}
         if _storage._zoom != rhs_storage._zoom {return false}
+        if _storage._bounds != rhs_storage._bounds {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -1078,14 +1069,6 @@ extension Tophap_MapboxGl_Map.CameraPosition: SwiftProtobuf.Message, SwiftProtob
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
-}
-
-extension Tophap_MapboxGl_Map.CameraPosition.MoveReason: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "API_GESTURE"),
-    1: .same(proto: "DEVELOPER_ANIMATION"),
-    2: .same(proto: "API_ANIMATION"),
-  ]
 }
 
 extension Tophap_MapboxGl_Map.Operations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -1116,6 +1099,7 @@ extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProt
     4: .standard(proto: "max_zoom"),
     5: .same(proto: "camera"),
     6: .same(proto: "style"),
+    7: .same(proto: "padding"),
   ]
 
   fileprivate class _StorageClass {
@@ -1125,6 +1109,7 @@ extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProt
     var _maxZoom: Double = 0
     var _camera: Tophap_MapboxGl_Map.CameraPosition? = nil
     var _style: Tophap_MapboxGl_Style? = nil
+    var _padding: [Int32] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -1137,6 +1122,7 @@ extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProt
       _maxZoom = source._maxZoom
       _camera = source._camera
       _style = source._style
+      _padding = source._padding
     }
   }
 
@@ -1158,6 +1144,7 @@ extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProt
         case 4: try decoder.decodeSingularDoubleField(value: &_storage._maxZoom)
         case 5: try decoder.decodeSingularMessageField(value: &_storage._camera)
         case 6: try decoder.decodeSingularMessageField(value: &_storage._style)
+        case 7: try decoder.decodeRepeatedInt32Field(value: &_storage._padding)
         default: break
         }
       }
@@ -1184,6 +1171,9 @@ extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProt
       if let v = _storage._style {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
+      if !_storage._padding.isEmpty {
+        try visitor.visitPackedInt32Field(value: _storage._padding, fieldNumber: 7)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -1199,6 +1189,7 @@ extension Tophap_MapboxGl_Map.Operations.Ready: SwiftProtobuf.Message, SwiftProt
         if _storage._maxZoom != rhs_storage._maxZoom {return false}
         if _storage._camera != rhs_storage._camera {return false}
         if _storage._style != rhs_storage._style {return false}
+        if _storage._padding != rhs_storage._padding {return false}
         return true
       }
       if !storagesAreEqual {return false}

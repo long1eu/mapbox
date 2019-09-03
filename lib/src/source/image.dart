@@ -4,6 +4,7 @@
 
 part of source;
 
+// todo add asset images support
 abstract class ImageSource
     with _Channel
     implements Source, Built<ImageSource, ImageSourceBuilder> {

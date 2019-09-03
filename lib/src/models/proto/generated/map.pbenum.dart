@@ -7,23 +7,6 @@
 // ignore_for_file: UNDEFINED_SHOWN_NAME,UNUSED_SHOWN_NAME
 import 'dart:core' as $core show int, dynamic, String, List, Map;
 import 'package:protobuf/protobuf.dart' as $pb;
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
-class Map__CameraPosition_MoveReason extends $pb.ProtobufEnum {
-  static const Map__CameraPosition_MoveReason API_GESTURE = Map__CameraPosition_MoveReason._(0, 'API_GESTURE');
-  static const Map__CameraPosition_MoveReason DEVELOPER_ANIMATION = Map__CameraPosition_MoveReason._(1, 'DEVELOPER_ANIMATION');
-  static const Map__CameraPosition_MoveReason API_ANIMATION = Map__CameraPosition_MoveReason._(2, 'API_ANIMATION');
-
-  static const $core.List<Map__CameraPosition_MoveReason> values = <Map__CameraPosition_MoveReason> [
-    API_GESTURE,
-    DEVELOPER_ANIMATION,
-    API_ANIMATION,
-  ];
-
-  static final $core.Map<$core.int, Map__CameraPosition_MoveReason> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static Map__CameraPosition_MoveReason valueOf($core.int value) => _byValue[value];
-
-  const Map__CameraPosition_MoveReason._($core.int v, $core.String n) : super(v, n);
-}
 
 class Map__Operations_CameraUpdate_Result extends $pb.ProtobufEnum {
   static const Map__Operations_CameraUpdate_Result FINISHED = Map__Operations_CameraUpdate_Result._(0, 'FINISHED');

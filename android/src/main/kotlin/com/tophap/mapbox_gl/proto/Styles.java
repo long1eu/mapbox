@@ -2545,6 +2545,1726 @@ public final class Styles {
 
     }
 
+    public interface StyleImageOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:tophap.mapbox_gl.Style.StyleImage)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string id = 1;</code>
+       */
+      java.lang.String getId();
+      /**
+       * <code>string id = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getIdBytes();
+
+      /**
+       * <code>bytes image = 2;</code>
+       */
+      com.google.protobuf.ByteString getImage();
+
+      /**
+       * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+       */
+      boolean hasAsset();
+      /**
+       * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+       */
+      com.tophap.mapbox_gl.proto.Styles.Style.Asset getAsset();
+      /**
+       * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+       */
+      com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder getAssetOrBuilder();
+
+      /**
+       * <code>bool sdf = 4;</code>
+       */
+      boolean getSdf();
+
+      public com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.SourceCase getSourceCase();
+    }
+    /**
+     * Protobuf type {@code tophap.mapbox_gl.Style.StyleImage}
+     */
+    public  static final class StyleImage extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:tophap.mapbox_gl.Style.StyleImage)
+        StyleImageOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use StyleImage.newBuilder() to construct.
+      private StyleImage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private StyleImage() {
+        id_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private StyleImage(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                id_ = s;
+                break;
+              }
+              case 18: {
+                sourceCase_ = 2;
+                source_ = input.readBytes();
+                break;
+              }
+              case 26: {
+                com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder subBuilder = null;
+                if (sourceCase_ == 3) {
+                  subBuilder = ((com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_).toBuilder();
+                }
+                source_ =
+                    input.readMessage(com.tophap.mapbox_gl.proto.Styles.Style.Asset.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom((com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_);
+                  source_ = subBuilder.buildPartial();
+                }
+                sourceCase_ = 3;
+                break;
+              }
+              case 32: {
+
+                sdf_ = input.readBool();
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_StyleImage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_StyleImage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.class, com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.Builder.class);
+      }
+
+      private int sourceCase_ = 0;
+      private java.lang.Object source_;
+      public enum SourceCase
+          implements com.google.protobuf.Internal.EnumLite {
+        IMAGE(2),
+        ASSET(3),
+        SOURCE_NOT_SET(0);
+        private final int value;
+        private SourceCase(int value) {
+          this.value = value;
+        }
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static SourceCase valueOf(int value) {
+          return forNumber(value);
+        }
+
+        public static SourceCase forNumber(int value) {
+          switch (value) {
+            case 2: return IMAGE;
+            case 3: return ASSET;
+            case 0: return SOURCE_NOT_SET;
+            default: return null;
+          }
+        }
+        public int getNumber() {
+          return this.value;
+        }
+      };
+
+      public SourceCase
+      getSourceCase() {
+        return SourceCase.forNumber(
+            sourceCase_);
+      }
+
+      public static final int ID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object id_;
+      /**
+       * <code>string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int IMAGE_FIELD_NUMBER = 2;
+      /**
+       * <code>bytes image = 2;</code>
+       */
+      public com.google.protobuf.ByteString getImage() {
+        if (sourceCase_ == 2) {
+          return (com.google.protobuf.ByteString) source_;
+        }
+        return com.google.protobuf.ByteString.EMPTY;
+      }
+
+      public static final int ASSET_FIELD_NUMBER = 3;
+      /**
+       * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+       */
+      public boolean hasAsset() {
+        return sourceCase_ == 3;
+      }
+      /**
+       * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Styles.Style.Asset getAsset() {
+        if (sourceCase_ == 3) {
+           return (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+      }
+      /**
+       * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder getAssetOrBuilder() {
+        if (sourceCase_ == 3) {
+           return (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_;
+        }
+        return com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+      }
+
+      public static final int SDF_FIELD_NUMBER = 4;
+      private boolean sdf_;
+      /**
+       * <code>bool sdf = 4;</code>
+       */
+      public boolean getSdf() {
+        return sdf_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getIdBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        }
+        if (sourceCase_ == 2) {
+          output.writeBytes(
+              2, (com.google.protobuf.ByteString) source_);
+        }
+        if (sourceCase_ == 3) {
+          output.writeMessage(3, (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_);
+        }
+        if (sdf_ != false) {
+          output.writeBool(4, sdf_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getIdBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        }
+        if (sourceCase_ == 2) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(
+                2, (com.google.protobuf.ByteString) source_);
+        }
+        if (sourceCase_ == 3) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_);
+        }
+        if (sdf_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(4, sdf_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Styles.Style.StyleImage)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Styles.Style.StyleImage other = (com.tophap.mapbox_gl.proto.Styles.Style.StyleImage) obj;
+
+        if (!getId()
+            .equals(other.getId())) return false;
+        if (getSdf()
+            != other.getSdf()) return false;
+        if (!getSourceCase().equals(other.getSourceCase())) return false;
+        switch (sourceCase_) {
+          case 2:
+            if (!getImage()
+                .equals(other.getImage())) return false;
+            break;
+          case 3:
+            if (!getAsset()
+                .equals(other.getAsset())) return false;
+            break;
+          case 0:
+          default:
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId().hashCode();
+        hash = (37 * hash) + SDF_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getSdf());
+        switch (sourceCase_) {
+          case 2:
+            hash = (37 * hash) + IMAGE_FIELD_NUMBER;
+            hash = (53 * hash) + getImage().hashCode();
+            break;
+          case 3:
+            hash = (37 * hash) + ASSET_FIELD_NUMBER;
+            hash = (53 * hash) + getAsset().hashCode();
+            break;
+          case 0:
+          default:
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Styles.Style.StyleImage prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code tophap.mapbox_gl.Style.StyleImage}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:tophap.mapbox_gl.Style.StyleImage)
+          com.tophap.mapbox_gl.proto.Styles.Style.StyleImageOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_StyleImage_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_StyleImage_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.class, com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = "";
+
+          sdf_ = false;
+
+          sourceCase_ = 0;
+          source_ = null;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_StyleImage_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Styles.Style.StyleImage getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Styles.Style.StyleImage build() {
+          com.tophap.mapbox_gl.proto.Styles.Style.StyleImage result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Styles.Style.StyleImage buildPartial() {
+          com.tophap.mapbox_gl.proto.Styles.Style.StyleImage result = new com.tophap.mapbox_gl.proto.Styles.Style.StyleImage(this);
+          result.id_ = id_;
+          if (sourceCase_ == 2) {
+            result.source_ = source_;
+          }
+          if (sourceCase_ == 3) {
+            if (assetBuilder_ == null) {
+              result.source_ = source_;
+            } else {
+              result.source_ = assetBuilder_.build();
+            }
+          }
+          result.sdf_ = sdf_;
+          result.sourceCase_ = sourceCase_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Styles.Style.StyleImage) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Styles.Style.StyleImage)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Styles.Style.StyleImage other) {
+          if (other == com.tophap.mapbox_gl.proto.Styles.Style.StyleImage.getDefaultInstance()) return this;
+          if (!other.getId().isEmpty()) {
+            id_ = other.id_;
+            onChanged();
+          }
+          if (other.getSdf() != false) {
+            setSdf(other.getSdf());
+          }
+          switch (other.getSourceCase()) {
+            case IMAGE: {
+              setImage(other.getImage());
+              break;
+            }
+            case ASSET: {
+              mergeAsset(other.getAsset());
+              break;
+            }
+            case SOURCE_NOT_SET: {
+              break;
+            }
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Styles.Style.StyleImage parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Styles.Style.StyleImage) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int sourceCase_ = 0;
+        private java.lang.Object source_;
+        public SourceCase
+            getSourceCase() {
+          return SourceCase.forNumber(
+              sourceCase_);
+        }
+
+        public Builder clearSource() {
+          sourceCase_ = 0;
+          source_ = null;
+          onChanged();
+          return this;
+        }
+
+
+        private java.lang.Object id_ = "";
+        /**
+         * <code>string id = 1;</code>
+         */
+        public java.lang.String getId() {
+          java.lang.Object ref = id_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            id_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getIdBytes() {
+          java.lang.Object ref = id_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            id_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder clearId() {
+          
+          id_ = getDefaultInstance().getId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string id = 1;</code>
+         */
+        public Builder setIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          id_ = value;
+          onChanged();
+          return this;
+        }
+
+        /**
+         * <code>bytes image = 2;</code>
+         */
+        public com.google.protobuf.ByteString getImage() {
+          if (sourceCase_ == 2) {
+            return (com.google.protobuf.ByteString) source_;
+          }
+          return com.google.protobuf.ByteString.EMPTY;
+        }
+        /**
+         * <code>bytes image = 2;</code>
+         */
+        public Builder setImage(com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  sourceCase_ = 2;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>bytes image = 2;</code>
+         */
+        public Builder clearImage() {
+          if (sourceCase_ == 2) {
+            sourceCase_ = 0;
+            source_ = null;
+            onChanged();
+          }
+          return this;
+        }
+
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Styles.Style.Asset, com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder, com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder> assetBuilder_;
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public boolean hasAsset() {
+          return sourceCase_ == 3;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Styles.Style.Asset getAsset() {
+          if (assetBuilder_ == null) {
+            if (sourceCase_ == 3) {
+              return (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+          } else {
+            if (sourceCase_ == 3) {
+              return assetBuilder_.getMessage();
+            }
+            return com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public Builder setAsset(com.tophap.mapbox_gl.proto.Styles.Style.Asset value) {
+          if (assetBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            source_ = value;
+            onChanged();
+          } else {
+            assetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 3;
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public Builder setAsset(
+            com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder builderForValue) {
+          if (assetBuilder_ == null) {
+            source_ = builderForValue.build();
+            onChanged();
+          } else {
+            assetBuilder_.setMessage(builderForValue.build());
+          }
+          sourceCase_ = 3;
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public Builder mergeAsset(com.tophap.mapbox_gl.proto.Styles.Style.Asset value) {
+          if (assetBuilder_ == null) {
+            if (sourceCase_ == 3 &&
+                source_ != com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance()) {
+              source_ = com.tophap.mapbox_gl.proto.Styles.Style.Asset.newBuilder((com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_)
+                  .mergeFrom(value).buildPartial();
+            } else {
+              source_ = value;
+            }
+            onChanged();
+          } else {
+            if (sourceCase_ == 3) {
+              assetBuilder_.mergeFrom(value);
+            }
+            assetBuilder_.setMessage(value);
+          }
+          sourceCase_ = 3;
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public Builder clearAsset() {
+          if (assetBuilder_ == null) {
+            if (sourceCase_ == 3) {
+              sourceCase_ = 0;
+              source_ = null;
+              onChanged();
+            }
+          } else {
+            if (sourceCase_ == 3) {
+              sourceCase_ = 0;
+              source_ = null;
+            }
+            assetBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder getAssetBuilder() {
+          return getAssetFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder getAssetOrBuilder() {
+          if ((sourceCase_ == 3) && (assetBuilder_ != null)) {
+            return assetBuilder_.getMessageOrBuilder();
+          } else {
+            if (sourceCase_ == 3) {
+              return (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_;
+            }
+            return com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+          }
+        }
+        /**
+         * <code>.tophap.mapbox_gl.Style.Asset asset = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Styles.Style.Asset, com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder, com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder> 
+            getAssetFieldBuilder() {
+          if (assetBuilder_ == null) {
+            if (!(sourceCase_ == 3)) {
+              source_ = com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+            }
+            assetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.tophap.mapbox_gl.proto.Styles.Style.Asset, com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder, com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder>(
+                    (com.tophap.mapbox_gl.proto.Styles.Style.Asset) source_,
+                    getParentForChildren(),
+                    isClean());
+            source_ = null;
+          }
+          sourceCase_ = 3;
+          onChanged();;
+          return assetBuilder_;
+        }
+
+        private boolean sdf_ ;
+        /**
+         * <code>bool sdf = 4;</code>
+         */
+        public boolean getSdf() {
+          return sdf_;
+        }
+        /**
+         * <code>bool sdf = 4;</code>
+         */
+        public Builder setSdf(boolean value) {
+          
+          sdf_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>bool sdf = 4;</code>
+         */
+        public Builder clearSdf() {
+          
+          sdf_ = false;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:tophap.mapbox_gl.Style.StyleImage)
+      }
+
+      // @@protoc_insertion_point(class_scope:tophap.mapbox_gl.Style.StyleImage)
+      private static final com.tophap.mapbox_gl.proto.Styles.Style.StyleImage DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Styles.Style.StyleImage();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Styles.Style.StyleImage getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<StyleImage>
+          PARSER = new com.google.protobuf.AbstractParser<StyleImage>() {
+        @java.lang.Override
+        public StyleImage parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new StyleImage(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<StyleImage> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<StyleImage> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Styles.Style.StyleImage getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface AssetOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:tophap.mapbox_gl.Style.Asset)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string asset = 1;</code>
+       */
+      java.lang.String getAsset();
+      /**
+       * <code>string asset = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getAssetBytes();
+
+      /**
+       * <code>.google.protobuf.StringValue packageName = 2;</code>
+       */
+      boolean hasPackageName();
+      /**
+       * <code>.google.protobuf.StringValue packageName = 2;</code>
+       */
+      com.google.protobuf.StringValue getPackageName();
+      /**
+       * <code>.google.protobuf.StringValue packageName = 2;</code>
+       */
+      com.google.protobuf.StringValueOrBuilder getPackageNameOrBuilder();
+    }
+    /**
+     * Protobuf type {@code tophap.mapbox_gl.Style.Asset}
+     */
+    public  static final class Asset extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:tophap.mapbox_gl.Style.Asset)
+        AssetOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Asset.newBuilder() to construct.
+      private Asset(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Asset() {
+        asset_ = "";
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Asset(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                asset_ = s;
+                break;
+              }
+              case 18: {
+                com.google.protobuf.StringValue.Builder subBuilder = null;
+                if (packageName_ != null) {
+                  subBuilder = packageName_.toBuilder();
+                }
+                packageName_ = input.readMessage(com.google.protobuf.StringValue.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(packageName_);
+                  packageName_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_Asset_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_Asset_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.tophap.mapbox_gl.proto.Styles.Style.Asset.class, com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder.class);
+      }
+
+      public static final int ASSET_FIELD_NUMBER = 1;
+      private volatile java.lang.Object asset_;
+      /**
+       * <code>string asset = 1;</code>
+       */
+      public java.lang.String getAsset() {
+        java.lang.Object ref = asset_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          asset_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string asset = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAssetBytes() {
+        java.lang.Object ref = asset_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          asset_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PACKAGENAME_FIELD_NUMBER = 2;
+      private com.google.protobuf.StringValue packageName_;
+      /**
+       * <code>.google.protobuf.StringValue packageName = 2;</code>
+       */
+      public boolean hasPackageName() {
+        return packageName_ != null;
+      }
+      /**
+       * <code>.google.protobuf.StringValue packageName = 2;</code>
+       */
+      public com.google.protobuf.StringValue getPackageName() {
+        return packageName_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : packageName_;
+      }
+      /**
+       * <code>.google.protobuf.StringValue packageName = 2;</code>
+       */
+      public com.google.protobuf.StringValueOrBuilder getPackageNameOrBuilder() {
+        return getPackageName();
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getAssetBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, asset_);
+        }
+        if (packageName_ != null) {
+          output.writeMessage(2, getPackageName());
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getAssetBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, asset_);
+        }
+        if (packageName_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(2, getPackageName());
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.tophap.mapbox_gl.proto.Styles.Style.Asset)) {
+          return super.equals(obj);
+        }
+        com.tophap.mapbox_gl.proto.Styles.Style.Asset other = (com.tophap.mapbox_gl.proto.Styles.Style.Asset) obj;
+
+        if (!getAsset()
+            .equals(other.getAsset())) return false;
+        if (hasPackageName() != other.hasPackageName()) return false;
+        if (hasPackageName()) {
+          if (!getPackageName()
+              .equals(other.getPackageName())) return false;
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ASSET_FIELD_NUMBER;
+        hash = (53 * hash) + getAsset().hashCode();
+        if (hasPackageName()) {
+          hash = (37 * hash) + PACKAGENAME_FIELD_NUMBER;
+          hash = (53 * hash) + getPackageName().hashCode();
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.tophap.mapbox_gl.proto.Styles.Style.Asset prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code tophap.mapbox_gl.Style.Asset}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:tophap.mapbox_gl.Style.Asset)
+          com.tophap.mapbox_gl.proto.Styles.Style.AssetOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_Asset_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_Asset_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.tophap.mapbox_gl.proto.Styles.Style.Asset.class, com.tophap.mapbox_gl.proto.Styles.Style.Asset.Builder.class);
+        }
+
+        // Construct using com.tophap.mapbox_gl.proto.Styles.Style.Asset.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          asset_ = "";
+
+          if (packageNameBuilder_ == null) {
+            packageName_ = null;
+          } else {
+            packageName_ = null;
+            packageNameBuilder_ = null;
+          }
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.tophap.mapbox_gl.proto.Styles.internal_static_tophap_mapbox_gl_Style_Asset_descriptor;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Styles.Style.Asset getDefaultInstanceForType() {
+          return com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Styles.Style.Asset build() {
+          com.tophap.mapbox_gl.proto.Styles.Style.Asset result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.tophap.mapbox_gl.proto.Styles.Style.Asset buildPartial() {
+          com.tophap.mapbox_gl.proto.Styles.Style.Asset result = new com.tophap.mapbox_gl.proto.Styles.Style.Asset(this);
+          result.asset_ = asset_;
+          if (packageNameBuilder_ == null) {
+            result.packageName_ = packageName_;
+          } else {
+            result.packageName_ = packageNameBuilder_.build();
+          }
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.tophap.mapbox_gl.proto.Styles.Style.Asset) {
+            return mergeFrom((com.tophap.mapbox_gl.proto.Styles.Style.Asset)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.tophap.mapbox_gl.proto.Styles.Style.Asset other) {
+          if (other == com.tophap.mapbox_gl.proto.Styles.Style.Asset.getDefaultInstance()) return this;
+          if (!other.getAsset().isEmpty()) {
+            asset_ = other.asset_;
+            onChanged();
+          }
+          if (other.hasPackageName()) {
+            mergePackageName(other.getPackageName());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.tophap.mapbox_gl.proto.Styles.Style.Asset parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.tophap.mapbox_gl.proto.Styles.Style.Asset) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object asset_ = "";
+        /**
+         * <code>string asset = 1;</code>
+         */
+        public java.lang.String getAsset() {
+          java.lang.Object ref = asset_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            asset_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string asset = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAssetBytes() {
+          java.lang.Object ref = asset_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            asset_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string asset = 1;</code>
+         */
+        public Builder setAsset(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          asset_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string asset = 1;</code>
+         */
+        public Builder clearAsset() {
+          
+          asset_ = getDefaultInstance().getAsset();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string asset = 1;</code>
+         */
+        public Builder setAssetBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          asset_ = value;
+          onChanged();
+          return this;
+        }
+
+        private com.google.protobuf.StringValue packageName_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> packageNameBuilder_;
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public boolean hasPackageName() {
+          return packageNameBuilder_ != null || packageName_ != null;
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public com.google.protobuf.StringValue getPackageName() {
+          if (packageNameBuilder_ == null) {
+            return packageName_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : packageName_;
+          } else {
+            return packageNameBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public Builder setPackageName(com.google.protobuf.StringValue value) {
+          if (packageNameBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            packageName_ = value;
+            onChanged();
+          } else {
+            packageNameBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public Builder setPackageName(
+            com.google.protobuf.StringValue.Builder builderForValue) {
+          if (packageNameBuilder_ == null) {
+            packageName_ = builderForValue.build();
+            onChanged();
+          } else {
+            packageNameBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public Builder mergePackageName(com.google.protobuf.StringValue value) {
+          if (packageNameBuilder_ == null) {
+            if (packageName_ != null) {
+              packageName_ =
+                com.google.protobuf.StringValue.newBuilder(packageName_).mergeFrom(value).buildPartial();
+            } else {
+              packageName_ = value;
+            }
+            onChanged();
+          } else {
+            packageNameBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public Builder clearPackageName() {
+          if (packageNameBuilder_ == null) {
+            packageName_ = null;
+            onChanged();
+          } else {
+            packageName_ = null;
+            packageNameBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public com.google.protobuf.StringValue.Builder getPackageNameBuilder() {
+          
+          onChanged();
+          return getPackageNameFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        public com.google.protobuf.StringValueOrBuilder getPackageNameOrBuilder() {
+          if (packageNameBuilder_ != null) {
+            return packageNameBuilder_.getMessageOrBuilder();
+          } else {
+            return packageName_ == null ?
+                com.google.protobuf.StringValue.getDefaultInstance() : packageName_;
+          }
+        }
+        /**
+         * <code>.google.protobuf.StringValue packageName = 2;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder> 
+            getPackageNameFieldBuilder() {
+          if (packageNameBuilder_ == null) {
+            packageNameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.protobuf.StringValue, com.google.protobuf.StringValue.Builder, com.google.protobuf.StringValueOrBuilder>(
+                    getPackageName(),
+                    getParentForChildren(),
+                    isClean());
+            packageName_ = null;
+          }
+          return packageNameBuilder_;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:tophap.mapbox_gl.Style.Asset)
+      }
+
+      // @@protoc_insertion_point(class_scope:tophap.mapbox_gl.Style.Asset)
+      private static final com.tophap.mapbox_gl.proto.Styles.Style.Asset DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.tophap.mapbox_gl.proto.Styles.Style.Asset();
+      }
+
+      public static com.tophap.mapbox_gl.proto.Styles.Style.Asset getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Asset>
+          PARSER = new com.google.protobuf.AbstractParser<Asset>() {
+        @java.lang.Override
+        public Asset parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Asset(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Asset> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Asset> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.tophap.mapbox_gl.proto.Styles.Style.Asset getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     public interface OperationsOrBuilder extends
         // @@protoc_insertion_point(interface_extends:tophap.mapbox_gl.Style.Operations)
         com.google.protobuf.MessageOrBuilder {
@@ -5474,6 +7194,16 @@ public final class Styles {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_tophap_mapbox_gl_Style_Position_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_tophap_mapbox_gl_Style_StyleImage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_tophap_mapbox_gl_Style_StyleImage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_tophap_mapbox_gl_Style_Asset_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_tophap_mapbox_gl_Style_Asset_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_tophap_mapbox_gl_Style_Operations_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -5492,33 +7222,38 @@ public final class Styles {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013style.proto\022\020tophap.mapbox_gl\032\014layers." +
-      "proto\032\rsources.proto\032\nutil.proto\"\250\007\n\005Sty" +
-      "le\022\013\n\003uri\030\001 \001(\t\022\014\n\004json\030\002 \001(\t\022)\n\007sources" +
-      "\030\003 \003(\0132\030.tophap.mapbox_gl.Source\022\'\n\006laye" +
-      "rs\030\004 \003(\0132\027.tophap.mapbox_gl.Layer\0227\n\ntra" +
-      "nsition\030\005 \001(\0132#.tophap.mapbox_gl.Transit" +
-      "ionOptions\022,\n\005light\030\006 \001(\0132\035.tophap.mapbo" +
-      "x_gl.Style.Light\032\352\002\n\005Light\0221\n\006anchor\030\001 \001" +
-      "(\0162!.tophap.mapbox_gl.TranslateAnchor\0222\n" +
-      "\010position\030\002 \001(\0132 .tophap.mapbox_gl.Style" +
-      ".Position\022&\n\005color\030\003 \001(\0132\027.tophap.mapbox" +
-      "_gl.Color\022\021\n\tintensity\030\004 \001(\002\022?\n\022position" +
-      "Transition\030\005 \001(\0132#.tophap.mapbox_gl.Tran" +
-      "sitionOptions\022<\n\017colorTransition\030\006 \001(\0132#" +
-      ".tophap.mapbox_gl.TransitionOptions\022@\n\023i" +
-      "ntensityTransition\030\007 \001(\0132#.tophap.mapbox" +
-      "_gl.TransitionOptions\032S\n\010Position\022\031\n\021rad" +
-      "ial_coordinate\030\001 \001(\002\022\027\n\017azimuthal_angle\030" +
-      "\002 \001(\002\022\023\n\013polar_angle\030\003 \001(\002\032v\n\nOperations" +
-      "\032h\n\005Build\0226\n\007default\030\001 \001(\0162#.tophap.mapb" +
-      "ox_gl.Style.MapboxStyleH\000\022\r\n\003uri\030\002 \001(\tH\000" +
-      "\022\016\n\004json\030\003 \001(\tH\000B\010\n\006source\"\216\001\n\013MapboxSty" +
-      "le\022\022\n\016MAPBOX_STREETS\020\000\022\014\n\010OUTDOORS\020\001\022\t\n\005" +
-      "LIGHT\020\002\022\010\n\004DARK\020\003\022\r\n\tSATELLITE\020\004\022\025\n\021SATE" +
-      "LLITE_STREETS\020\005\022\017\n\013TRAFFIC_DAY\020\006\022\021\n\rTRAF" +
-      "FIC_NIGHT\020\007B$\n\032com.tophap.mapbox_gl.prot" +
-      "oB\006Stylesb\006proto3"
+      "\n\013style.proto\022\020tophap.mapbox_gl\032\036google/" +
+      "protobuf/wrappers.proto\032\014layers.proto\032\rs" +
+      "ources.proto\032\nutil.proto\"\345\010\n\005Style\022\013\n\003ur" +
+      "i\030\001 \001(\t\022\014\n\004json\030\002 \001(\t\022)\n\007sources\030\003 \003(\0132\030" +
+      ".tophap.mapbox_gl.Source\022\'\n\006layers\030\004 \003(\013" +
+      "2\027.tophap.mapbox_gl.Layer\0227\n\ntransition\030" +
+      "\005 \001(\0132#.tophap.mapbox_gl.TransitionOptio" +
+      "ns\022,\n\005light\030\006 \001(\0132\035.tophap.mapbox_gl.Sty" +
+      "le.Light\032\352\002\n\005Light\0221\n\006anchor\030\001 \001(\0162!.top" +
+      "hap.mapbox_gl.TranslateAnchor\0222\n\010positio" +
+      "n\030\002 \001(\0132 .tophap.mapbox_gl.Style.Positio" +
+      "n\022&\n\005color\030\003 \001(\0132\027.tophap.mapbox_gl.Colo" +
+      "r\022\021\n\tintensity\030\004 \001(\002\022?\n\022positionTransiti" +
+      "on\030\005 \001(\0132#.tophap.mapbox_gl.TransitionOp" +
+      "tions\022<\n\017colorTransition\030\006 \001(\0132#.tophap." +
+      "mapbox_gl.TransitionOptions\022@\n\023intensity" +
+      "Transition\030\007 \001(\0132#.tophap.mapbox_gl.Tran" +
+      "sitionOptions\032S\n\010Position\022\031\n\021radial_coor" +
+      "dinate\030\001 \001(\002\022\027\n\017azimuthal_angle\030\002 \001(\002\022\023\n" +
+      "\013polar_angle\030\003 \001(\002\032p\n\nStyleImage\022\n\n\002id\030\001" +
+      " \001(\t\022\017\n\005image\030\002 \001(\014H\000\022.\n\005asset\030\003 \001(\0132\035.t" +
+      "ophap.mapbox_gl.Style.AssetH\000\022\013\n\003sdf\030\004 \001" +
+      "(\010B\010\n\006source\032I\n\005Asset\022\r\n\005asset\030\001 \001(\t\0221\n\013" +
+      "packageName\030\002 \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\032v\n\nOperations\032h\n\005Build\0226\n\007defaul" +
+      "t\030\001 \001(\0162#.tophap.mapbox_gl.Style.MapboxS" +
+      "tyleH\000\022\r\n\003uri\030\002 \001(\tH\000\022\016\n\004json\030\003 \001(\tH\000B\010\n" +
+      "\006source\"\216\001\n\013MapboxStyle\022\022\n\016MAPBOX_STREET" +
+      "S\020\000\022\014\n\010OUTDOORS\020\001\022\t\n\005LIGHT\020\002\022\010\n\004DARK\020\003\022\r" +
+      "\n\tSATELLITE\020\004\022\025\n\021SATELLITE_STREETS\020\005\022\017\n\013" +
+      "TRAFFIC_DAY\020\006\022\021\n\rTRAFFIC_NIGHT\020\007B$\n\032com." +
+      "tophap.mapbox_gl.protoB\006Stylesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5531,6 +7266,7 @@ public final class Styles {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.WrappersProto.getDescriptor(),
           com.tophap.mapbox_gl.proto.Layers.getDescriptor(),
           com.tophap.mapbox_gl.proto.Sources.getDescriptor(),
           com.tophap.mapbox_gl.proto.Util.getDescriptor(),
@@ -5553,8 +7289,20 @@ public final class Styles {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Style_Position_descriptor,
         new java.lang.String[] { "RadialCoordinate", "AzimuthalAngle", "PolarAngle", });
-    internal_static_tophap_mapbox_gl_Style_Operations_descriptor =
+    internal_static_tophap_mapbox_gl_Style_StyleImage_descriptor =
       internal_static_tophap_mapbox_gl_Style_descriptor.getNestedTypes().get(2);
+    internal_static_tophap_mapbox_gl_Style_StyleImage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_tophap_mapbox_gl_Style_StyleImage_descriptor,
+        new java.lang.String[] { "Id", "Image", "Asset", "Sdf", "Source", });
+    internal_static_tophap_mapbox_gl_Style_Asset_descriptor =
+      internal_static_tophap_mapbox_gl_Style_descriptor.getNestedTypes().get(3);
+    internal_static_tophap_mapbox_gl_Style_Asset_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_tophap_mapbox_gl_Style_Asset_descriptor,
+        new java.lang.String[] { "Asset", "PackageName", });
+    internal_static_tophap_mapbox_gl_Style_Operations_descriptor =
+      internal_static_tophap_mapbox_gl_Style_descriptor.getNestedTypes().get(4);
     internal_static_tophap_mapbox_gl_Style_Operations_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Style_Operations_descriptor,
@@ -5565,6 +7313,7 @@ public final class Styles {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Style_Operations_Build_descriptor,
         new java.lang.String[] { "Default", "Uri", "Json", "Source", });
+    com.google.protobuf.WrappersProto.getDescriptor();
     com.tophap.mapbox_gl.proto.Layers.getDescriptor();
     com.tophap.mapbox_gl.proto.Sources.getDescriptor();
     com.tophap.mapbox_gl.proto.Util.getDescriptor();

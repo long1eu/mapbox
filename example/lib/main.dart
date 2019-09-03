@@ -123,14 +123,11 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.moveCamera: (_) => const MoveCameraPage(),
         AppRoutes.scrollingMap: (_) => const ScrollingMapPage(),
         AppRoutes.languageSwitch: (_) => const LanguageSwitchPage(),
-        AppRoutes.zoomDependentFillColor: (_) =>
-            const ZoomDependentFillColorPage(),
+        AppRoutes.zoomDependentFillColor: (_) => const ZoomDependentFillColorPage(),
         AppRoutes.clickToAddImage: (_) => const ClickToAddImagePage(),
-        AppRoutes.multipleHeatmapStyling: (_) =>
-            const MultipleHeatmapStylingPage(),
+        AppRoutes.multipleHeatmapStyling: (_) => const MultipleHeatmapStylingPage(),
         AppRoutes.bathymetry: (_) => const BathymetryPage(),
-        AppRoutes.circleLayerClustering: (_) =>
-            const CircleLayerClusteringPage(),
+        AppRoutes.circleLayerClustering: (_) => const CircleLayerClusteringPage(),
         AppRoutes.circleRadius: (_) => const CircleRadiusPage(),
         AppRoutes.lineLayer: (_) => const LineLayerPage(),
         AppRoutes.heatmap: (_) => const HeatmapPage(),
@@ -166,15 +163,13 @@ final List<Page> pages = <Page>[
   ),
   const Page(
     title: 'Add a hillshade layer',
-    description:
-        'Use elevation data to show and customize hills and mountains.',
+    description: 'Use elevation data to show and customize hills and mountains.',
     category: Category.dynamicStyling,
     route: AppRoutes.hillshadeLayer,
   ),
   const Page(
     title: 'Add a new layer below labels',
-    description:
-        'Using argument belowId, you can be more precise where your layer ends up in the map stack.',
+    description: 'Using argument belowId, you can be more precise where your layer ends up in the map stack.',
     category: Category.dynamicStyling,
     route: AppRoutes.geoJsonLayerInStack,
   ),
@@ -192,15 +187,13 @@ final List<Page> pages = <Page>[
   ),
   const Page(
     title: 'Add an image source with time lapse',
-    description:
-        'Use an image source and a runnable to show data changes over time.',
+    description: 'Use an image source and a runnable to show data changes over time.',
     category: Category.dynamicStyling,
     route: AppRoutes.imageSourceTimeLapse,
   ),
   const Page(
     title: 'Adjust a layer\'s opacity',
-    description:
-        'Drag the seek bar to adjust the opacity of a raster layer on top of a map.',
+    description: 'Drag the seek bar to adjust the opacity of a raster layer on top of a map.',
     category: Category.dynamicStyling,
     route: AppRoutes.adjustLayerOpacity,
   ),
@@ -212,8 +205,7 @@ final List<Page> pages = <Page>[
   ),
   const Page(
     title: 'Icon update based on API response ',
-    description:
-        'Update a SymbolLayer icon based on Iternational Space Station current location.',
+    description: 'Update a SymbolLayer icon based on Iternational Space Station current location.',
     category: Category.dynamicStyling,
     route: AppRoutes.spaceStationLocation,
   ),
@@ -231,50 +223,43 @@ final List<Page> pages = <Page>[
   ),
   const Page(
     title: 'Change color based on zoom level',
-    description:
-        'Make a property depend on the map zoom level, in this case, the water layers fill color.',
+    description: 'Make a property depend on the map zoom level, in this case, the water layers fill color.',
     category: Category.dynamicStyling,
     route: AppRoutes.zoomDependentFillColor,
   ),
   const Page(
     title: 'Click to add photo',
-    description:
-        'Select a photo on the device and add it on the map tap location.',
+    description: 'Select a photo on the device and add it on the map tap location.',
     category: Category.dynamicStyling,
     route: AppRoutes.clickToAddImage,
   ),
   const Page(
     title: 'Add multiple heatmap styles',
-    description:
-        'Gain minute control over heat map coloring, size, density, and other styling.',
+    description: 'Gain minute control over heat map coloring, size, density, and other styling.',
     category: Category.dataVisualisation,
     route: AppRoutes.multipleHeatmapStyling,
   ),
   const Page(
     title: 'Display water depth',
-    description:
-        'Use data-driven styling to show bathymetry (water depth) data.',
+    description: 'Use data-driven styling to show bathymetry (water depth) data.',
     category: Category.dataVisualisation,
     route: AppRoutes.bathymetry,
   ),
   const Page(
     title: 'CircleLayer clusters',
-    description:
-        'Use GeoJSON and circle layers to visualize point data in clusters.',
+    description: 'Use GeoJSON and circle layers to visualize point data in clusters.',
     category: Category.dataVisualisation,
     route: AppRoutes.circleLayerClustering,
   ),
   const Page(
     title: 'Circle radius',
-    description:
-        'Set the radii of a circle layer\'s circles based on a data property.',
+    description: 'Set the radii of a circle layer\'s circles based on a data property.',
     category: Category.dataVisualisation,
     route: AppRoutes.circleRadius,
   ),
   const Page(
     title: 'Create a line layer',
-    description:
-        'Create a GeoJSON line source, style it using properties, and add the layer to the map.',
+    description: 'Create a GeoJSON line source, style it using properties, and add the layer to the map.',
     category: Category.dataVisualisation,
     route: AppRoutes.lineLayer,
   ),
@@ -305,8 +290,7 @@ final List<Page> pages = <Page>[
   ),
   const Page(
     title: 'Draw multiple geometries',
-    description:
-        'Gain minute control over heat map coloring, size, density, and other styling.',
+    description: 'Gain minute control over heat map coloring, size, density, and other styling.',
     category: Category.dataVisualisation,
     route: AppRoutes.multipleGeometries,
   ),

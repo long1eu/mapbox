@@ -7,6 +7,7 @@ import com.google.protobuf.FloatValue
 import com.google.protobuf.StringValue
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.geometry.LatLng
+import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression.literal
@@ -17,10 +18,10 @@ import com.mapbox.mapboxsdk.style.light.Light
 import com.mapbox.mapboxsdk.style.sources.*
 import com.mapbox.mapboxsdk.style.types.Formatted
 import com.mapbox.mapboxsdk.utils.ColorUtils
-import com.tophap.mapbox_gl.proto.Util
 import com.tophap.mapbox_gl.proto.Mapbox
 import com.tophap.mapbox_gl.proto.Sources
 import com.tophap.mapbox_gl.proto.Styles
+import com.tophap.mapbox_gl.proto.Util
 
 val gson = Gson()
 
@@ -408,20 +409,23 @@ fun Int.position(): Util.OrnamentPosition {
     }
 }
 
-fun Int.cameraMoveReason(): Mapbox.Map.CameraPosition.MoveReason {
-    return when (this) {
-        MapboxMap.OnCameraMoveStartedListener.REASON_API_GESTURE -> Mapbox.Map.CameraPosition.MoveReason.API_GESTURE
-        MapboxMap.OnCameraMoveStartedListener.REASON_DEVELOPER_ANIMATION -> Mapbox.Map.CameraPosition.MoveReason.DEVELOPER_ANIMATION
-        else -> Mapbox.Map.CameraPosition.MoveReason.API_ANIMATION
-    }
+fun MapboxMap.cameraProto(): Mapbox.Map.CameraPosition {
+    val builder = Mapbox.Map.CameraPosition.newBuilder()
+    builder.target = cameraPosition.target.toProto()
+    builder.zoom = cameraPosition.zoom
+    builder.tilt = cameraPosition.tilt
+    builder.bearing = cameraPosition.bearing
+    builder.bounds = projection.visibleRegion.latLngBounds.toProto()
+    return builder.build()
 }
 
-fun CameraPosition.toProto(): Mapbox.Map.CameraPosition {
+fun CameraPosition.toProto(latLngBounds: LatLngBounds): Mapbox.Map.CameraPosition {
     val builder = Mapbox.Map.CameraPosition.newBuilder()
     builder.target = target.toProto()
     builder.zoom = zoom
     builder.tilt = tilt
     builder.bearing = bearing
+    builder.bounds = latLngBounds.toProto()
     return builder.build()
 }
 
@@ -583,5 +587,14 @@ fun Float.toProto(): FloatValue {
 fun String.toProto(): StringValue {
     return StringValue.newBuilder()
             .setValue(this)
+            .build()
+}
+
+fun LatLngBounds.toProto(): Util.LatLngBounds {
+    return Util.LatLngBounds.newBuilder()
+            .setLatitudeNorth(latNorth)
+            .setLongitudeEast(lonEast)
+            .setLatitudeSouth(latSouth)
+            .setLongitudeWest(lonWest)
             .build()
 }

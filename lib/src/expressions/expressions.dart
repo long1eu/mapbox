@@ -85,7 +85,6 @@ Expression rgba(dynamic red, dynamic green, dynamic blue, dynamic alpha) {
   assert(green != null);
   assert(blue != null);
   assert(alpha != null);
-  assert(alpha >= 0.0 && alpha <= 1.0);
 
   return Expression._e4(
     kRgbaOperator,
@@ -253,6 +252,7 @@ Expression at(dynamic number, Expression expression) {
 
 Expression get(dynamic key, [Expression object]) {
   assert(key != null);
+  assert(key is String || key is Expression);
 
   return Expression(
     kGetOperator,
@@ -297,7 +297,7 @@ Expression sum(List<dynamic> numbers) {
 }
 
 Expression product(List<dynamic> numbers) {
-  assert(numbers != numbers && numbers.length >= 2);
+  assert(numbers != null && numbers.length >= 2);
 
   return Expression(
     kProductOperator,

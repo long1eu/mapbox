@@ -2,32 +2,13 @@
 // Lung Razvan <long1eu>
 // on 2019-08-06
 
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:mapbox_gl_example/main.dart';
 
-class CircleLayerClusteringPage extends StatefulWidget {
+class CircleLayerClusteringPage extends StatelessWidget {
   const CircleLayerClusteringPage({Key key}) : super(key: key);
-
-  @override
-  _CircleLayerClusteringPageState createState() =>
-      _CircleLayerClusteringPageState();
-}
-
-class _CircleLayerClusteringPageState extends State<CircleLayerClusteringPage> {
-  Uint8List image;
-
-  @override
-  void initState() {
-    super.initState();
-
-    rootBundle.load('res/ic_cross.png').then((ByteData data) =>
-        mounted ? setState(() => image = data.buffer.asUint8List()) : null);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,9 +94,9 @@ class _CircleLayerClusteringPageState extends State<CircleLayerClusteringPage> {
             ),
           ),
         ],
-        images: <String, Uint8List>{
-          if (image != null) 'cross-icon-id': image,
-        },
+        images: <StyleImage>[
+          StyleImage.asset(id: 'cross-icon-id', asset: 'res/ic_cross.png'),
+        ],
       ),
     );
   }

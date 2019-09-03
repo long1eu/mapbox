@@ -11,12 +11,13 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'sources.pb.dart' as $2;
 import 'layers.pb.dart' as $3;
 import 'util.pb.dart' as $1;
+import 'google/protobuf/wrappers.pb.dart' as $0;
 
 import 'util.pbenum.dart' as $1;
 import 'style.pbenum.dart';
 
 export 'style.pbenum.dart';
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
+
 class Style_Light extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Light', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..e<$1.TranslateAnchor>(1, 'anchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
@@ -115,6 +116,97 @@ class Style_Position extends $pb.GeneratedMessage {
   set polarAngle($core.double v) { $_setFloat(2, v); }
   $core.bool hasPolarAngle() => $_has(2);
   void clearPolarAngle() => clearField(3);
+}
+
+enum Style_StyleImage_Source {
+  image, 
+  asset, 
+  notSet
+}
+
+class Style_StyleImage extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, Style_StyleImage_Source> _Style_StyleImage_SourceByTag = {
+    2 : Style_StyleImage_Source.image,
+    3 : Style_StyleImage_Source.asset,
+    0 : Style_StyleImage_Source.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.StyleImage', package: const $pb.PackageName('tophap.mapbox_gl'))
+    ..oo(0, [2, 3])
+    ..aOS(1, 'id')
+    ..a<$core.List<$core.int>>(2, 'image', $pb.PbFieldType.OY)
+    ..a<Style_Asset>(3, 'asset', $pb.PbFieldType.OM, Style_Asset.getDefault, Style_Asset.create)
+    ..aOB(4, 'sdf')
+    ..hasRequiredFields = false
+  ;
+
+  Style_StyleImage._() : super();
+  factory Style_StyleImage() => create();
+  factory Style_StyleImage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Style_StyleImage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Style_StyleImage clone() => Style_StyleImage()..mergeFromMessage(this);
+  Style_StyleImage copyWith(void Function(Style_StyleImage) updates) => super.copyWith((message) => updates(message as Style_StyleImage));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Style_StyleImage create() => Style_StyleImage._();
+  Style_StyleImage createEmptyInstance() => create();
+  static $pb.PbList<Style_StyleImage> createRepeated() => $pb.PbList<Style_StyleImage>();
+  static Style_StyleImage getDefault() => _defaultInstance ??= create()..freeze();
+  static Style_StyleImage _defaultInstance;
+
+  Style_StyleImage_Source whichSource() => _Style_StyleImage_SourceByTag[$_whichOneof(0)];
+  void clearSource() => clearField($_whichOneof(0));
+
+  $core.String get id => $_getS(0, '');
+  set id($core.String v) { $_setString(0, v); }
+  $core.bool hasId() => $_has(0);
+  void clearId() => clearField(1);
+
+  $core.List<$core.int> get image => $_getN(1);
+  set image($core.List<$core.int> v) { $_setBytes(1, v); }
+  $core.bool hasImage() => $_has(1);
+  void clearImage() => clearField(2);
+
+  Style_Asset get asset => $_getN(2);
+  set asset(Style_Asset v) { setField(3, v); }
+  $core.bool hasAsset() => $_has(2);
+  void clearAsset() => clearField(3);
+
+  $core.bool get sdf => $_get(3, false);
+  set sdf($core.bool v) { $_setBool(3, v); }
+  $core.bool hasSdf() => $_has(3);
+  void clearSdf() => clearField(4);
+}
+
+class Style_Asset extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Asset', package: const $pb.PackageName('tophap.mapbox_gl'))
+    ..aOS(1, 'asset')
+    ..a<$0.StringValue>(2, 'packageName', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
+    ..hasRequiredFields = false
+  ;
+
+  Style_Asset._() : super();
+  factory Style_Asset() => create();
+  factory Style_Asset.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Style_Asset.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  Style_Asset clone() => Style_Asset()..mergeFromMessage(this);
+  Style_Asset copyWith(void Function(Style_Asset) updates) => super.copyWith((message) => updates(message as Style_Asset));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Style_Asset create() => Style_Asset._();
+  Style_Asset createEmptyInstance() => create();
+  static $pb.PbList<Style_Asset> createRepeated() => $pb.PbList<Style_Asset>();
+  static Style_Asset getDefault() => _defaultInstance ??= create()..freeze();
+  static Style_Asset _defaultInstance;
+
+  $core.String get asset => $_getS(0, '');
+  set asset($core.String v) { $_setString(0, v); }
+  $core.bool hasAsset() => $_has(0);
+  void clearAsset() => clearField(1);
+
+  $0.StringValue get packageName => $_getN(1);
+  set packageName($0.StringValue v) { setField(2, v); }
+  $core.bool hasPackageName() => $_has(1);
+  void clearPackageName() => clearField(2);
 }
 
 enum Style_Operations_Build_Source {

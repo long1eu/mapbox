@@ -218,7 +218,7 @@ abstract class FillLayer
             (opacity != null ? literalDouble(opacity) : this.opacity)
         ..color = colorEx ??
             (color != null
-                ? rgb(color.red, color.green, color.blue)
+                ? rgba(color.red, color.green, color.blue, color.opacity)
                 : this.color)
         ..outlineColor = outlineColorEx ??
             (outlineColor != null

@@ -3,11 +3,9 @@
 // on 2019-08-06
 
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:mapbox_gl_example/main.dart';
 
@@ -22,7 +20,6 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
     with SingleTickerProviderStateMixin {
   final LatLng initialPosition =
       LatLng(latitude: 64.900932, longitude: -18.167040);
-  final Map<String, Uint8List> images = <String, Uint8List>{};
 
   AnimationController _controller;
   Animation<LatLng> _animation;
@@ -30,11 +27,6 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
   @override
   void initState() {
     super.initState();
-    rootBundle
-        .load('res/red_marker.png')
-        .then((ByteData data) =>
-            images['marker_icon'] = data.buffer.asUint8List())
-        .whenComplete(() => mounted ? setState(() {}) : null);
 
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 500))
@@ -92,7 +84,9 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
             zoom: 4.5,
           ),
         ),
-        images: images,
+        images: <StyleImage>[
+          StyleImage.asset(id: 'marker_icon', asset: 'res/red_marker.png'),
+        ],
         layers: <Layer>[
           SymbolLayer(
             id: 'layer-id',

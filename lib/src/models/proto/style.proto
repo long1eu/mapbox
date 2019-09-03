@@ -3,6 +3,7 @@ package tophap.mapbox_gl;
 option java_package = "com.tophap.mapbox_gl.proto";
 option java_outer_classname = "Styles";
 
+import "google/protobuf/wrappers.proto";
 import "layers.proto";
 import "sources.proto";
 import "util.proto";
@@ -40,6 +41,21 @@ message Style {
     SATELLITE_STREETS = 5;
     TRAFFIC_DAY = 6;
     TRAFFIC_NIGHT = 7;
+  }
+
+
+  message StyleImage {
+    string id = 1;
+    oneof source {
+      bytes image = 2;
+      Asset asset = 3;
+    }
+    bool sdf = 4;
+  }
+
+  message Asset {
+    string asset = 1;
+    google.protobuf.StringValue packageName = 2;
   }
 
   message Operations {

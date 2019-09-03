@@ -52,12 +52,7 @@ message Map {
     LatLng target = 2;
     double tilt = 3;
     double zoom = 4;
-
-    enum MoveReason {
-      API_GESTURE = 0;
-      DEVELOPER_ANIMATION = 1;
-      API_ANIMATION = 2;
-    }
+    LatLngBounds bounds = 5;
   }
 
   message Operations {
@@ -68,6 +63,7 @@ message Map {
       double max_zoom = 4;
       CameraPosition camera = 5;
       Style style = 6;
+      repeated int32 padding = 7;
     }
 
     message CameraUpdate {

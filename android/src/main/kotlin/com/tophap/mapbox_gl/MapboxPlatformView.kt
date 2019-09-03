@@ -6,6 +6,8 @@ import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import com.mapbox.android.gestures.MoveGestureDetector
@@ -27,7 +29,8 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
-class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Long) :
+
+class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Long, val lookupKeyForAsset: (String, String?) -> String) :
         PlatformView,
         Application.ActivityLifecycleCallbacks,
         ComponentCallbacks,
@@ -84,8 +87,9 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         builder.prefetchesTiles = mapboxMap.prefetchesTiles
         builder.minZoom = mapboxMap.minZoomLevel
         builder.maxZoom = mapboxMap.maxZoomLevel
-        builder.camera = mapboxMap.cameraPosition.toProto()
+        builder.camera = mapboxMap.cameraProto()
         builder.style = style.toProto()
+        builder.paddingList.addAll(mapboxMap.padding.toList())
 
         channel.invokeMethod("mapReady", builder.build().toByteArray())
     }
@@ -117,9 +121,6 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             "map#setMaxZoom" -> {
                 mapboxMap.setMaxZoomPreference(call.arguments as Double)
                 result.success(null)
-            }
-            "map#getCameraPosition" -> {
-                result.success(mapboxMap.cameraPosition.toProto())
             }
             "map#setCameraPosition" -> {
                 val cameraPosition = CameraPosition.parseFrom(call.arguments as ByteArray).fieldValue()
@@ -167,13 +168,20 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             "map#getCameraForLatLngBounds" -> {
                 val cameraForLatLngBounds = Operations.GetCameraForLatLngBounds.parseFrom(call.arguments as ByteArray)
                 val camera = mapboxMap.getCameraForLatLngBounds(cameraForLatLngBounds.bounds.fieldValue(), cameraForLatLngBounds.paddingList.toIntArray(), cameraForLatLngBounds.bearing, cameraForLatLngBounds.tilt)
-                result.success(camera?.toProto()?.toByteArray())
+                result.success(camera?.toProto(cameraForLatLngBounds.bounds.fieldValue())?.toByteArray())
             }
-            "map#getPadding" -> result.success(mapboxMap.padding)
             "map#snapshot" -> {
                 mapboxMap.snapshot {
                     result.success(it.data())
                 }
+            }
+            "map#setPadding" -> {
+                @Suppress("UNCHECKED_CAST")
+                val padding = call.arguments as List<Int>
+                mapboxMap.setPadding(padding[0], padding[1], padding[2], padding[3])
+            }
+            "map#getVisibleBounds" -> {
+                result.success(mapboxMap.projection.visibleRegion.latLngBounds.toProto().toByteArray())
             }
             "style#set" -> {
                 val data = Styles.Style.Operations.Build.parseFrom(call.arguments as ByteArray)
@@ -253,11 +261,15 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             }
             "addImage" -> {
                 mapboxMap.getStyle {
-                    val args = call.arguments as List<*>
-                    val id: String = args[0] as String
-                    val image: ByteArray = args[1] as ByteArray
+                    val imageProto = Styles.Style.StyleImage.parseFrom(call.arguments as ByteArray)
 
-                    it.addImage(id, image.bitmap())
+                    val image = when (imageProto.sourceCase!!) {
+                        Styles.Style.StyleImage.SourceCase.IMAGE -> imageProto.image.toByteArray().bitmap()
+                        Styles.Style.StyleImage.SourceCase.ASSET -> asset(imageProto.asset)
+                        else -> throw IllegalArgumentException("Unknown value ${imageProto.sourceCase}")
+                    }
+
+                    it.addImageAsync(imageProto.id, image, imageProto.sdf)
                     result.success(null)
                 }
             }
@@ -407,6 +419,14 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
                 result.success(Operations.CameraUpdate.Result.CANCELED.number)
             }
         }
+    }
+
+    private fun asset(asset: Styles.Style.Asset): Bitmap {
+        val assetManager = context.assets
+
+        val key = if (asset.hasPackageName()) lookupKeyForAsset(asset.asset, asset.packageName.value) else lookupKeyForAsset(asset.asset, null)
+
+        return BitmapFactory.decodeStream(assetManager.openNonAssetFd(key).createInputStream())
     }
 }
 

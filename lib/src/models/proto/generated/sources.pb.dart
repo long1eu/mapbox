@@ -9,7 +9,7 @@ import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, overr
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'util.pb.dart' as $1;
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
+
 class Source_GeoJson_Options extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson.Options', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..a<$core.int>(1, 'minZoom', $pb.PbFieldType.O3)

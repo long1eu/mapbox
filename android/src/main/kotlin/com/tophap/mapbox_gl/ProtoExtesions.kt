@@ -133,4 +133,4 @@ fun StringValue.fieldValue(): Expression {
 }
 
 
-fun MapboxMap.cameraData(): ByteArray = cameraPosition.toProto().toByteArray()
+fun MapboxMap.cameraData(): ByteArray = cameraProto().toByteArray()

@@ -9,8 +9,6 @@ import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, overr
 import 'package:fixnum/fixnum.dart';
 import 'package:protobuf/protobuf.dart' as $pb;
 
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
-
 class DoubleValue extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('DoubleValue', package: const $pb.PackageName('google.protobuf'))
     ..a<$core.double>(1, 'value', $pb.PbFieldType.OD)

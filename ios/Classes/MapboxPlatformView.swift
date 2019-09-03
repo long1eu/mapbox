@@ -5,6 +5,8 @@
 import Foundation
 import Mapbox
 
+public typealias LookupKeyForAsset = (String, String?) -> String
+
 class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   
   private let options: Tophap_MapboxGl_Map.Options
@@ -13,15 +15,19 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   weak var mapView: MGLMapView?
   private var result: FlutterResult?;
   private var initialLoad: Bool = false;
+  private let lookupKeyForAsset: LookupKeyForAsset
   
   // todo add mapView!.compassView.compassVisibility
   // todo add mapView!.isHapticFeedbackEnabled
   // todo add mapView!.decelerationRate
   // todo add mapView!.resetPosition
-  init(withFrame frame: CGRect, options: Tophap_MapboxGl_Map.Options, channel: FlutterMethodChannel, viewId: Int64) {
+  init(withFrame _frame: CGRect, options: Tophap_MapboxGl_Map.Options, channel: FlutterMethodChannel, viewId: Int64, lookupKeyForAsset: @escaping LookupKeyForAsset) {
     self.options = options
     self.channel = channel
     self.viewId = viewId
+    self.lookupKeyForAsset = lookupKeyForAsset
+    
+    let frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0)
     
     var mapView: MGLMapView
     switch (options.style!) {
@@ -44,14 +50,14 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     mapView.allowsTilting = options.tiltGestures
     // todo doubleTapGestures -> ?
     // todo quickZoomGestures -> ?
-    mapView.compassView.isHidden = options.compass
+    mapView.compassView.isHidden = !options.compass
     mapView.compassViewPosition = options.compassPosition.value
     // todo compassMarginList mapView!.compassViewMargins = options.compassMargin.value, thia has only two points
     // compassFadeFacingNorth -> mapView!.compassView.compassVisibility, not applies?
-    mapView.logoView.isHidden = options.logo
+    mapView.logoView.isHidden = !options.logo
     mapView.logoViewPosition = options.logoPosition.value
     // todo logoMarginList mapView!.logoViewMargins = options.logoMargin
-    mapView.attributionButton.isHidden = options.attribution
+    mapView.attributionButton.isHidden = !options.attribution
     mapView.attributionButtonPosition = options.attributionPosition.value
     // todo attributionMarginList mapView!.attributionButtonMargins = options.attributionMargin
     // todo renderTextureMode -> ?
@@ -134,6 +140,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         ready.maxZoom = mapView.maximumZoomLevel
         ready.camera = mapView.camera.proto(mapView: mapView)
         ready.style = style.proto
+        ready.padding = mapView.contentInset.proto
       }
       
       try! channel.invokeMethod("mapReady", arguments: operation.serializedData())
@@ -143,71 +150,73 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
   }
   
   func onMethodCall(call: FlutterMethodCall, result: @escaping FlutterResult) {
+    let mapView = self.mapView!
+    
     switch (call.method) {
     case "map#setPrefetchesTiles":
-      mapView!.prefetchesTiles = call.arguments as! Bool
+      mapView.prefetchesTiles = call.arguments as! Bool
       result(nil)
       break;
     case "map#setMinZoom":
-      mapView!.minimumZoomLevel = call.arguments as! Double
+      mapView.minimumZoomLevel = call.arguments as! Double
       result(nil)
       break;
     case "map#setMaxZoom":
-      mapView!.maximumZoomLevel = call.arguments as! Double
+      mapView.maximumZoomLevel = call.arguments as! Double
       result(nil)
       break;
     case "map#getCameraPosition":
-      try! result(mapView!.camera.proto(mapView: mapView!).serializedData())
+      try! result(mapView.camera.proto(mapView: mapView).serializedData())
       break;
     case "map#setCameraPosition":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let camera = try! Tophap_MapboxGl_Map.CameraPosition(serializedData: data)
-      mapView!.camera = camera.value(mapView: mapView!)
+      mapView.camera = camera.value(mapView: mapView)
       result(nil)
       break;
     case "map#moveCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let update = try! Tophap_MapboxGl_Map.Operations.CameraUpdate(serializedData: data)
-      mapView!.setCamera(update.camera(mapView: mapView!), animated: false)
+      mapView.setCamera(update.camera(mapView: mapView), animated: false)
       result(nil)
       break;
     case "map#easeCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let easeCamera = try! Tophap_MapboxGl_Map.Operations.EaseCamera(serializedData: data)
       let interpolator: CAMediaTimingFunctionName = easeCamera.easingInterpolator ? .easeInEaseOut : .linear
-      mapView!.setCamera(easeCamera.update.camera(mapView: mapView!), withDuration: Double(easeCamera.duration) / 1000,
+      mapView.setCamera(easeCamera.update.camera(mapView: mapView), withDuration: Double(easeCamera.duration) / 1000,
           animationTimingFunction: CAMediaTimingFunction(name: interpolator))
       result(nil)
       break;
     case "map#animateCamera":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let animate = try! Tophap_MapboxGl_Map.Operations.AnimateCamera(serializedData: data)
-      mapView!.setCamera(animate.update.camera(mapView: mapView!), withDuration: Double(animate.duration) / 1000,
+      mapView.setCamera(animate.update.camera(mapView: mapView), withDuration: Double(animate.duration) / 1000,
           animationTimingFunction: CAMediaTimingFunction(name: .linear))
       result(nil)
       break;
     case "map#scrollBy":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let scrollBy = try! Tophap_MapboxGl_Map.Operations.ScrollBy(serializedData: data)
-      let camera = mapView!.camera
-      let mapPoint = mapView!.convert(camera.centerCoordinate, toPointTo: mapView!)
+      let camera = mapView.camera
+      let mapPoint = mapView.convert(camera.centerCoordinate, toPointTo: mapView)
       let movedPoint = CGPoint(x: mapPoint.x + CGFloat(scrollBy.x), y: mapPoint.y + CGFloat(scrollBy.y))
       let duration = Double(scrollBy.duration) / 1000
       let mglMapCamera = MGLMapCamera(
-          lookingAtCenter: mapView!.convert(movedPoint, toCoordinateFrom: mapView!),
+          lookingAtCenter: mapView.convert(movedPoint, toCoordinateFrom: mapView),
           altitude: camera.altitude,
           pitch: camera.pitch,
           heading: camera.heading)
       
       if (duration != 0) {
-        mapView!.setCamera(mglMapCamera, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: .easeInEaseOut))
+        mapView.setCamera(mglMapCamera, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: .easeInEaseOut))
       } else {
-        mapView!.setCamera(mglMapCamera, animated: false)
+        mapView.setCamera(mglMapCamera, animated: false)
       }
       result(nil)
       break;
     case "map#resetNorth":
-      mapView!.resetNorth()
+      mapView.resetNorth()
       result(nil)
       break;
     case "map#setFocalBearing":
@@ -216,53 +225,68 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       
       let movedPoint = CGPoint(x: CGFloat(setFocalBearing.focalX), y: CGFloat(setFocalBearing.focalY))
       let mglMapCamera = MGLMapCamera(
-          lookingAtCenter: mapView!.convert(movedPoint, toCoordinateFrom: mapView!),
-          altitude: mapView!.camera.altitude,
-          pitch: mapView!.camera.pitch,
-          heading: mapView!.camera.heading)
+          lookingAtCenter: mapView.convert(movedPoint, toCoordinateFrom: mapView),
+          altitude: mapView.camera.altitude,
+          pitch: mapView.camera.pitch,
+          heading: mapView.camera.heading)
       
       let duration = Double(setFocalBearing.duration) / 1000
-      mapView!.setCamera(mglMapCamera, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: .easeInEaseOut))
+      mapView.setCamera(mglMapCamera, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: .easeInEaseOut))
       result(nil)
       break;
     case "map#getHeight":
-      result(mapView!.frame.height)
+      result(mapView.frame.height)
       break;
     case "map#getWidth":
-      result(mapView!.frame.width)
+      result(mapView.frame.width)
       break;
     case "map#setLatLngBoundsForCameraTarget":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let bounds = try! Tophap_MapboxGl_LatLngBounds(serializedData: data)
-      mapView!.setVisibleCoordinateBounds(bounds.value, animated: false)
+      mapView.setVisibleCoordinateBounds(bounds.value, animated: false)
       result(nil)
       break;
     case "map#getCameraForLatLngBounds":
       let data = (call.arguments as! FlutterStandardTypedData).data
       let cameraForLatLngBounds = try! Tophap_MapboxGl_Map.Operations.GetCameraForLatLngBounds(serializedData: data)
-      let camera = mapView!.cameraThatFitsCoordinateBounds(cameraForLatLngBounds.bounds.value, edgePadding: cameraForLatLngBounds.padding.edgePadding)
-      try! result(camera.proto(mapView: mapView!).serializedData())
+      let camera = mapView.cameraThatFitsCoordinateBounds(cameraForLatLngBounds.bounds.value, edgePadding: cameraForLatLngBounds.padding.edgePadding)
+      let zoom = MGLZoomLevelForAltitude(camera.altitude, camera.pitch, camera.centerCoordinate.latitude, mapView.frame.size)
+      try! result(Tophap_MapboxGl_Map.CameraPosition.with {
+        $0.target = camera.centerCoordinate.proto(altitude: camera.altitude)
+        $0.zoom = zoom
+        $0.tilt = Double(camera.pitch)
+        $0.bearing = camera.heading
+        $0.bounds = cameraForLatLngBounds.bounds
+      }.serializedData())
       break;
-    case "map#getPadding":
-      result(mapView!.contentInset.proto)
+    case "map#setPadding":
+      let padding = call.arguments as! [Int32]
+      mapView.contentInset = UIEdgeInsets(
+          top: CGFloat(padding[1]),
+          left: CGFloat(padding[0]),
+          bottom: CGFloat(padding[3]),
+          right: CGFloat(padding[2])
+      )
+      
+      result(nil)
       break;
     case "map#snapshot":
-      result(mapView!.image)
+      result(mapView.image)
       break;
     case "style#set":
       let _data = (call.arguments as! FlutterStandardTypedData).data
       let data = try! Tophap_MapboxGl_Style.Operations.Build(serializedData: _data)
       
       switch (data.source!) {
-      case .default(_): mapView!.styleURL = data.default.value
-      case .uri(_): mapView!.styleURL = data.uri.uri
-      case .json(_): mapView!.styleURL = getUrlForStyleJson(json: data.json)
+      case .default(_): mapView.styleURL = data.default.value
+      case .uri(_): mapView.styleURL = data.uri.uri
+      case .json(_): mapView.styleURL = getUrlForStyleJson(json: data.json)
       }
       
       self.result = result
       break;
     case "style#addSource":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let protoSource = try! Tophap_MapboxGl_Source(serializedData: data)
         let source = protoSource.fieldValue()
@@ -274,16 +298,16 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       }
       break;
     case "style#removeSource":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let source = style.source(withIdentifier: call.arguments as! String)!
         style.removeSource(source)
         result(nil)
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
     case "style#addLayer":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let operation = try! Tophap_MapboxGl_Operations.Add(serializedData: data)
         let layer = operation.layer.value
@@ -314,75 +338,91 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
         
         try! result(style.layer(withIdentifier: layer.identifier)!.toProto().serializedData())
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
     case "style#removeLayer":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let layer = style.layer(withIdentifier: call.arguments as! String)!
         style.removeLayer(layer)
         result(nil)
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
     case "source#update":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let protoSource = try! Tophap_MapboxGl_Source(serializedData: data)
         style.source(withIdentifier: protoSource.id)!.update(source: protoSource)
         try! result(style.source(withIdentifier: protoSource.id)!.proto.serializedData())
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
     case "layer#update":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let protoLayer = try! Tophap_MapboxGl_Layer(serializedData: data)
         style.layer(withIdentifier: protoLayer.id)!.updateFrom(layer: protoLayer)
         try! result(style.layer(withIdentifier: protoLayer.id)!.toProto().serializedData())
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
-    case "dispose":
-      mapView!.delegate = nil
-      mapView!.removeFromSuperview()
-      mapView = nil
-      result(nil)
-      break;
     case "getImage":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let id = call.arguments as! String
         result(style.image(forName: id)?.pngData())
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
       break;
     case "addImage":
-      if let style = mapView!.style {
-        let args = call.arguments as! [Any]
-        let id = args[0] as! String
-        let data = (args[1] as! FlutterStandardTypedData).data
+      if let style = mapView.style {
+        let data = (call.arguments as! FlutterStandardTypedData).data
+        let protoImage = try! Tophap_MapboxGl_Style.StyleImage(serializedData: data)
         
-        if let image = UIImage(data: data) {
-          style.setImage(image, forName: id)
-        } else {
-          fatalError("Failed to parse image.")
+        var image: UIImage
+        switch (protoImage.source!) {
+        case .image(_):
+          image = UIImage(data: protoImage.image)!
+          break;
+        case .asset(_):
+          var key: String
+          if (protoImage.asset.hasPackageName) {
+            key = lookupKeyForAsset(protoImage.asset.asset, protoImage.asset.packageName.value)
+          } else {
+            key = lookupKeyForAsset(protoImage.asset.asset, nil)
+          }
+          let path = Bundle.main.path(forResource: key, ofType: nil)!
+          
+          image = UIImage(contentsOfFile: path)!
+          break;
         }
+        
+        if (protoImage.sdf) {
+          image = image.withRenderingMode(.alwaysTemplate)
+        }
+        style.setImage(image, forName: protoImage.id)
         result(nil)
       } else {
         fatalError("Could not get the style.")
       }
       break;
     case "removeImage":
-      if let style = mapView!.style {
+      if let style = mapView.style {
         let id = call.arguments as! String
         result(style.removeImage(forName: id))
       } else {
-        Swift.fatalError("Could not get the style.")
+        fatalError("Could not get the style.")
       }
+      break;
+    case "dispose":
+      mapView.delegate = nil
+      mapView.removeFromSuperview()
+      self.mapView = nil
+      result(nil)
       break;
     default:
       result(FlutterMethodNotImplemented)

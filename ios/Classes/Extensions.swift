@@ -220,6 +220,7 @@ extension MGLMapCamera {
       $0.zoom = zoom
       $0.tilt = Double(pitch)
       $0.bearing = heading
+      $0.bounds = mapView.convert(mapView.frame, toCoordinateBoundsFrom: nil).proto
     }
   }
 }
@@ -271,13 +272,24 @@ extension Array where Iterator.Element == Float {
   }
 }
 
+extension  MGLCoordinateBounds {
+  var proto: Tophap_MapboxGl_LatLngBounds {
+    return Tophap_MapboxGl_LatLngBounds.with { bounds in
+      bounds.latitudeNorth = ne.latitude
+      bounds.longitudeEast = ne.longitude
+      bounds.latitudeSouth = sw.latitude
+      bounds.longitudeWest = sw.longitude
+    }
+  }
+}
+
 extension UIEdgeInsets {
   var proto: Array<Int32> {
     return [
-      Int32(top),
       Int32(left),
-      Int32(bottom),
+      Int32(top),
       Int32(right),
+      Int32(bottom),
     ]
   }
 }

@@ -27,7 +27,6 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
   final String imageId = 'space-station-icon-id';
 
   Timer timer;
-  Uint8List image;
   LatLng issPosition;
   MapController controller;
   bool setInitialPosition = false;
@@ -35,8 +34,6 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
   @override
   void initState() {
     super.initState();
-    rootBundle.load('res/iss.png').then((ByteData data) =>
-        mounted ? setState(() => image = data.buffer.asUint8List()) : null);
 
     timer = Timer.periodic(const Duration(seconds: 1), _getData);
     _getData(null);
@@ -92,9 +89,9 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
             zoom: 4.5,
           ),
         ),
-        images: <String, Uint8List>{
-          if (image != null) imageId: image,
-        },
+        images: <StyleImage>[
+          StyleImage.asset(id: imageId, asset: 'res/iss.png'),
+        ],
         onMapReady: onMapReady,
         layers: <Layer>[
           SymbolLayer(

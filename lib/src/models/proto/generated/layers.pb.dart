@@ -10,7 +10,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/wrappers.pb.dart' as $0;
 import 'util.pb.dart' as $1;
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
+
 class Layer_Background extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Layer.Background', package: const $pb.PackageName('tophap.mapbox_gl'))
     ..aOS(1, 'id')

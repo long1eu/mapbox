@@ -1,20 +1,9 @@
 <component name="ProjectDictionaryState">
   <dictionary name="long1eu">
     <words>
-      <w>bathymetry</w>
-      <w>donwcase</w>
-      <w>downcase</w>
-      <w>geojson</w>
-      <w>heatmap</w>
-      <w>hillshade</w>
-      <w>lerp</w>
       <w>mapbox</w>
-      <w>mapboxgl</w>
       <w>prefetches</w>
       <w>protobuf</w>
-      <w>tilejson</w>
-      <w>tophap</w>
-      <w>upcase</w>
     </words>
   </dictionary>
 </component>

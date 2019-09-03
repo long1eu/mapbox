@@ -3840,6 +3840,19 @@ public final class Mapbox {
        * <code>double zoom = 4;</code>
        */
       double getZoom();
+
+      /**
+       * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+       */
+      boolean hasBounds();
+      /**
+       * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+       */
+      com.tophap.mapbox_gl.proto.Util.LatLngBounds getBounds();
+      /**
+       * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+       */
+      com.tophap.mapbox_gl.proto.Util.LatLngBoundsOrBuilder getBoundsOrBuilder();
     }
     /**
      * Protobuf type {@code tophap.mapbox_gl.Map.CameraPosition}
@@ -3908,6 +3921,19 @@ public final class Mapbox {
                 zoom_ = input.readDouble();
                 break;
               }
+              case 42: {
+                com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder subBuilder = null;
+                if (bounds_ != null) {
+                  subBuilder = bounds_.toBuilder();
+                }
+                bounds_ = input.readMessage(com.tophap.mapbox_gl.proto.Util.LatLngBounds.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(bounds_);
+                  bounds_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
               default: {
                 if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
@@ -3938,113 +3964,6 @@ public final class Mapbox {
         return com.tophap.mapbox_gl.proto.Mapbox.internal_static_tophap_mapbox_gl_Map_CameraPosition_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.class, com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.Builder.class);
-      }
-
-      /**
-       * Protobuf enum {@code tophap.mapbox_gl.Map.CameraPosition.MoveReason}
-       */
-      public enum MoveReason
-          implements com.google.protobuf.ProtocolMessageEnum {
-        /**
-         * <code>API_GESTURE = 0;</code>
-         */
-        API_GESTURE(0),
-        /**
-         * <code>DEVELOPER_ANIMATION = 1;</code>
-         */
-        DEVELOPER_ANIMATION(1),
-        /**
-         * <code>API_ANIMATION = 2;</code>
-         */
-        API_ANIMATION(2),
-        UNRECOGNIZED(-1),
-        ;
-
-        /**
-         * <code>API_GESTURE = 0;</code>
-         */
-        public static final int API_GESTURE_VALUE = 0;
-        /**
-         * <code>DEVELOPER_ANIMATION = 1;</code>
-         */
-        public static final int DEVELOPER_ANIMATION_VALUE = 1;
-        /**
-         * <code>API_ANIMATION = 2;</code>
-         */
-        public static final int API_ANIMATION_VALUE = 2;
-
-
-        public final int getNumber() {
-          if (this == UNRECOGNIZED) {
-            throw new java.lang.IllegalArgumentException(
-                "Can't get the number of an unknown enum value.");
-          }
-          return value;
-        }
-
-        /**
-         * @deprecated Use {@link #forNumber(int)} instead.
-         */
-        @java.lang.Deprecated
-        public static MoveReason valueOf(int value) {
-          return forNumber(value);
-        }
-
-        public static MoveReason forNumber(int value) {
-          switch (value) {
-            case 0: return API_GESTURE;
-            case 1: return DEVELOPER_ANIMATION;
-            case 2: return API_ANIMATION;
-            default: return null;
-          }
-        }
-
-        public static com.google.protobuf.Internal.EnumLiteMap<MoveReason>
-            internalGetValueMap() {
-          return internalValueMap;
-        }
-        private static final com.google.protobuf.Internal.EnumLiteMap<
-            MoveReason> internalValueMap =
-              new com.google.protobuf.Internal.EnumLiteMap<MoveReason>() {
-                public MoveReason findValueByNumber(int number) {
-                  return MoveReason.forNumber(number);
-                }
-              };
-
-        public final com.google.protobuf.Descriptors.EnumValueDescriptor
-            getValueDescriptor() {
-          return getDescriptor().getValues().get(ordinal());
-        }
-        public final com.google.protobuf.Descriptors.EnumDescriptor
-            getDescriptorForType() {
-          return getDescriptor();
-        }
-        public static final com.google.protobuf.Descriptors.EnumDescriptor
-            getDescriptor() {
-          return com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition.getDescriptor().getEnumTypes().get(0);
-        }
-
-        private static final MoveReason[] VALUES = values();
-
-        public static MoveReason valueOf(
-            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-          if (desc.getType() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "EnumValueDescriptor is not for this type.");
-          }
-          if (desc.getIndex() == -1) {
-            return UNRECOGNIZED;
-          }
-          return VALUES[desc.getIndex()];
-        }
-
-        private final int value;
-
-        private MoveReason(int value) {
-          this.value = value;
-        }
-
-        // @@protoc_insertion_point(enum_scope:tophap.mapbox_gl.Map.CameraPosition.MoveReason)
       }
 
       public static final int BEARING_FIELD_NUMBER = 1;
@@ -4095,6 +4014,27 @@ public final class Mapbox {
         return zoom_;
       }
 
+      public static final int BOUNDS_FIELD_NUMBER = 5;
+      private com.tophap.mapbox_gl.proto.Util.LatLngBounds bounds_;
+      /**
+       * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+       */
+      public boolean hasBounds() {
+        return bounds_ != null;
+      }
+      /**
+       * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Util.LatLngBounds getBounds() {
+        return bounds_ == null ? com.tophap.mapbox_gl.proto.Util.LatLngBounds.getDefaultInstance() : bounds_;
+      }
+      /**
+       * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+       */
+      public com.tophap.mapbox_gl.proto.Util.LatLngBoundsOrBuilder getBoundsOrBuilder() {
+        return getBounds();
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -4121,6 +4061,9 @@ public final class Mapbox {
         if (zoom_ != 0D) {
           output.writeDouble(4, zoom_);
         }
+        if (bounds_ != null) {
+          output.writeMessage(5, getBounds());
+        }
         unknownFields.writeTo(output);
       }
 
@@ -4145,6 +4088,10 @@ public final class Mapbox {
         if (zoom_ != 0D) {
           size += com.google.protobuf.CodedOutputStream
             .computeDoubleSize(4, zoom_);
+        }
+        if (bounds_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(5, getBounds());
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -4175,6 +4122,11 @@ public final class Mapbox {
         if (java.lang.Double.doubleToLongBits(getZoom())
             != java.lang.Double.doubleToLongBits(
                 other.getZoom())) return false;
+        if (hasBounds() != other.hasBounds()) return false;
+        if (hasBounds()) {
+          if (!getBounds()
+              .equals(other.getBounds())) return false;
+        }
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -4199,6 +4151,10 @@ public final class Mapbox {
         hash = (37 * hash) + ZOOM_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             java.lang.Double.doubleToLongBits(getZoom()));
+        if (hasBounds()) {
+          hash = (37 * hash) + BOUNDS_FIELD_NUMBER;
+          hash = (53 * hash) + getBounds().hashCode();
+        }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -4344,6 +4300,12 @@ public final class Mapbox {
 
           zoom_ = 0D;
 
+          if (boundsBuilder_ == null) {
+            bounds_ = null;
+          } else {
+            bounds_ = null;
+            boundsBuilder_ = null;
+          }
           return this;
         }
 
@@ -4378,6 +4340,11 @@ public final class Mapbox {
           }
           result.tilt_ = tilt_;
           result.zoom_ = zoom_;
+          if (boundsBuilder_ == null) {
+            result.bounds_ = bounds_;
+          } else {
+            result.bounds_ = boundsBuilder_.build();
+          }
           onBuilt();
           return result;
         }
@@ -4437,6 +4404,9 @@ public final class Mapbox {
           }
           if (other.getZoom() != 0D) {
             setZoom(other.getZoom());
+          }
+          if (other.hasBounds()) {
+            mergeBounds(other.getBounds());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -4661,6 +4631,123 @@ public final class Mapbox {
           onChanged();
           return this;
         }
+
+        private com.tophap.mapbox_gl.proto.Util.LatLngBounds bounds_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Util.LatLngBounds, com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder, com.tophap.mapbox_gl.proto.Util.LatLngBoundsOrBuilder> boundsBuilder_;
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public boolean hasBounds() {
+          return boundsBuilder_ != null || bounds_ != null;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Util.LatLngBounds getBounds() {
+          if (boundsBuilder_ == null) {
+            return bounds_ == null ? com.tophap.mapbox_gl.proto.Util.LatLngBounds.getDefaultInstance() : bounds_;
+          } else {
+            return boundsBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public Builder setBounds(com.tophap.mapbox_gl.proto.Util.LatLngBounds value) {
+          if (boundsBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            bounds_ = value;
+            onChanged();
+          } else {
+            boundsBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public Builder setBounds(
+            com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder builderForValue) {
+          if (boundsBuilder_ == null) {
+            bounds_ = builderForValue.build();
+            onChanged();
+          } else {
+            boundsBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public Builder mergeBounds(com.tophap.mapbox_gl.proto.Util.LatLngBounds value) {
+          if (boundsBuilder_ == null) {
+            if (bounds_ != null) {
+              bounds_ =
+                com.tophap.mapbox_gl.proto.Util.LatLngBounds.newBuilder(bounds_).mergeFrom(value).buildPartial();
+            } else {
+              bounds_ = value;
+            }
+            onChanged();
+          } else {
+            boundsBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public Builder clearBounds() {
+          if (boundsBuilder_ == null) {
+            bounds_ = null;
+            onChanged();
+          } else {
+            bounds_ = null;
+            boundsBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder getBoundsBuilder() {
+          
+          onChanged();
+          return getBoundsFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        public com.tophap.mapbox_gl.proto.Util.LatLngBoundsOrBuilder getBoundsOrBuilder() {
+          if (boundsBuilder_ != null) {
+            return boundsBuilder_.getMessageOrBuilder();
+          } else {
+            return bounds_ == null ?
+                com.tophap.mapbox_gl.proto.Util.LatLngBounds.getDefaultInstance() : bounds_;
+          }
+        }
+        /**
+         * <code>.tophap.mapbox_gl.LatLngBounds bounds = 5;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            com.tophap.mapbox_gl.proto.Util.LatLngBounds, com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder, com.tophap.mapbox_gl.proto.Util.LatLngBoundsOrBuilder> 
+            getBoundsFieldBuilder() {
+          if (boundsBuilder_ == null) {
+            boundsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                com.tophap.mapbox_gl.proto.Util.LatLngBounds, com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder, com.tophap.mapbox_gl.proto.Util.LatLngBoundsOrBuilder>(
+                    getBounds(),
+                    getParentForChildren(),
+                    isClean());
+            bounds_ = null;
+          }
+          return boundsBuilder_;
+        }
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4837,6 +4924,19 @@ public final class Mapbox {
          * <code>.tophap.mapbox_gl.Style style = 6;</code>
          */
         com.tophap.mapbox_gl.proto.Styles.StyleOrBuilder getStyleOrBuilder();
+
+        /**
+         * <code>repeated int32 padding = 7;</code>
+         */
+        java.util.List<java.lang.Integer> getPaddingList();
+        /**
+         * <code>repeated int32 padding = 7;</code>
+         */
+        int getPaddingCount();
+        /**
+         * <code>repeated int32 padding = 7;</code>
+         */
+        int getPadding(int index);
       }
       /**
        * Protobuf type {@code tophap.mapbox_gl.Map.Operations.Ready}
@@ -4851,6 +4951,7 @@ public final class Mapbox {
           super(builder);
         }
         private Ready() {
+          padding_ = emptyIntList();
         }
 
         @java.lang.Override
@@ -4923,6 +5024,27 @@ public final class Mapbox {
 
                   break;
                 }
+                case 56: {
+                  if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+                    padding_ = newIntList();
+                    mutable_bitField0_ |= 0x00000040;
+                  }
+                  padding_.addInt(input.readInt32());
+                  break;
+                }
+                case 58: {
+                  int length = input.readRawVarint32();
+                  int limit = input.pushLimit(length);
+                  if (!((mutable_bitField0_ & 0x00000040) != 0) && input.getBytesUntilLimit() > 0) {
+                    padding_ = newIntList();
+                    mutable_bitField0_ |= 0x00000040;
+                  }
+                  while (input.getBytesUntilLimit() > 0) {
+                    padding_.addInt(input.readInt32());
+                  }
+                  input.popLimit(limit);
+                  break;
+                }
                 default: {
                   if (!parseUnknownField(
                       input, unknownFields, extensionRegistry, tag)) {
@@ -4938,6 +5060,9 @@ public final class Mapbox {
             throw new com.google.protobuf.InvalidProtocolBufferException(
                 e).setUnfinishedMessage(this);
           } finally {
+            if (((mutable_bitField0_ & 0x00000040) != 0)) {
+              padding_.makeImmutable(); // C
+            }
             this.unknownFields = unknownFields.build();
             makeExtensionsImmutable();
           }
@@ -4955,6 +5080,7 @@ public final class Mapbox {
                   com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.Builder.class);
         }
 
+        private int bitField0_;
         public static final int VIEW_ID_FIELD_NUMBER = 1;
         private long viewId_;
         /**
@@ -5033,6 +5159,29 @@ public final class Mapbox {
           return getStyle();
         }
 
+        public static final int PADDING_FIELD_NUMBER = 7;
+        private com.google.protobuf.Internal.IntList padding_;
+        /**
+         * <code>repeated int32 padding = 7;</code>
+         */
+        public java.util.List<java.lang.Integer>
+            getPaddingList() {
+          return padding_;
+        }
+        /**
+         * <code>repeated int32 padding = 7;</code>
+         */
+        public int getPaddingCount() {
+          return padding_.size();
+        }
+        /**
+         * <code>repeated int32 padding = 7;</code>
+         */
+        public int getPadding(int index) {
+          return padding_.getInt(index);
+        }
+        private int paddingMemoizedSerializedSize = -1;
+
         private byte memoizedIsInitialized = -1;
         @java.lang.Override
         public final boolean isInitialized() {
@@ -5047,6 +5196,7 @@ public final class Mapbox {
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                             throws java.io.IOException {
+          getSerializedSize();
           if (viewId_ != 0L) {
             output.writeInt64(1, viewId_);
           }
@@ -5064,6 +5214,13 @@ public final class Mapbox {
           }
           if (style_ != null) {
             output.writeMessage(6, getStyle());
+          }
+          if (getPaddingList().size() > 0) {
+            output.writeUInt32NoTag(58);
+            output.writeUInt32NoTag(paddingMemoizedSerializedSize);
+          }
+          for (int i = 0; i < padding_.size(); i++) {
+            output.writeInt32NoTag(padding_.getInt(i));
           }
           unknownFields.writeTo(output);
         }
@@ -5097,6 +5254,20 @@ public final class Mapbox {
           if (style_ != null) {
             size += com.google.protobuf.CodedOutputStream
               .computeMessageSize(6, getStyle());
+          }
+          {
+            int dataSize = 0;
+            for (int i = 0; i < padding_.size(); i++) {
+              dataSize += com.google.protobuf.CodedOutputStream
+                .computeInt32SizeNoTag(padding_.getInt(i));
+            }
+            size += dataSize;
+            if (!getPaddingList().isEmpty()) {
+              size += 1;
+              size += com.google.protobuf.CodedOutputStream
+                  .computeInt32SizeNoTag(dataSize);
+            }
+            paddingMemoizedSerializedSize = dataSize;
           }
           size += unknownFields.getSerializedSize();
           memoizedSize = size;
@@ -5133,6 +5304,8 @@ public final class Mapbox {
             if (!getStyle()
                 .equals(other.getStyle())) return false;
           }
+          if (!getPaddingList()
+              .equals(other.getPaddingList())) return false;
           if (!unknownFields.equals(other.unknownFields)) return false;
           return true;
         }
@@ -5163,6 +5336,10 @@ public final class Mapbox {
           if (hasStyle()) {
             hash = (37 * hash) + STYLE_FIELD_NUMBER;
             hash = (53 * hash) + getStyle().hashCode();
+          }
+          if (getPaddingCount() > 0) {
+            hash = (37 * hash) + PADDING_FIELD_NUMBER;
+            hash = (53 * hash) + getPaddingList().hashCode();
           }
           hash = (29 * hash) + unknownFields.hashCode();
           memoizedHashCode = hash;
@@ -5317,6 +5494,8 @@ public final class Mapbox {
               style_ = null;
               styleBuilder_ = null;
             }
+            padding_ = emptyIntList();
+            bitField0_ = (bitField0_ & ~0x00000040);
             return this;
           }
 
@@ -5343,6 +5522,8 @@ public final class Mapbox {
           @java.lang.Override
           public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready buildPartial() {
             com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready(this);
+            int from_bitField0_ = bitField0_;
+            int to_bitField0_ = 0;
             result.viewId_ = viewId_;
             result.prefetchesTiles_ = prefetchesTiles_;
             result.minZoom_ = minZoom_;
@@ -5357,6 +5538,12 @@ public final class Mapbox {
             } else {
               result.style_ = styleBuilder_.build();
             }
+            if (((bitField0_ & 0x00000040) != 0)) {
+              padding_.makeImmutable();
+              bitField0_ = (bitField0_ & ~0x00000040);
+            }
+            result.padding_ = padding_;
+            result.bitField0_ = to_bitField0_;
             onBuilt();
             return result;
           }
@@ -5423,6 +5610,16 @@ public final class Mapbox {
             if (other.hasStyle()) {
               mergeStyle(other.getStyle());
             }
+            if (!other.padding_.isEmpty()) {
+              if (padding_.isEmpty()) {
+                padding_ = other.padding_;
+                bitField0_ = (bitField0_ & ~0x00000040);
+              } else {
+                ensurePaddingIsMutable();
+                padding_.addAll(other.padding_);
+              }
+              onChanged();
+            }
             this.mergeUnknownFields(other.unknownFields);
             onChanged();
             return this;
@@ -5451,6 +5648,7 @@ public final class Mapbox {
             }
             return this;
           }
+          private int bitField0_;
 
           private long viewId_ ;
           /**
@@ -5788,6 +5986,73 @@ public final class Mapbox {
               style_ = null;
             }
             return styleBuilder_;
+          }
+
+          private com.google.protobuf.Internal.IntList padding_ = emptyIntList();
+          private void ensurePaddingIsMutable() {
+            if (!((bitField0_ & 0x00000040) != 0)) {
+              padding_ = mutableCopy(padding_);
+              bitField0_ |= 0x00000040;
+             }
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public java.util.List<java.lang.Integer>
+              getPaddingList() {
+            return ((bitField0_ & 0x00000040) != 0) ?
+                     java.util.Collections.unmodifiableList(padding_) : padding_;
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public int getPaddingCount() {
+            return padding_.size();
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public int getPadding(int index) {
+            return padding_.getInt(index);
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public Builder setPadding(
+              int index, int value) {
+            ensurePaddingIsMutable();
+            padding_.setInt(index, value);
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public Builder addPadding(int value) {
+            ensurePaddingIsMutable();
+            padding_.addInt(value);
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public Builder addAllPadding(
+              java.lang.Iterable<? extends java.lang.Integer> values) {
+            ensurePaddingIsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, padding_);
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>repeated int32 padding = 7;</code>
+           */
+          public Builder clearPadding() {
+            padding_ = emptyIntList();
+            bitField0_ = (bitField0_ & ~0x00000040);
+            onChanged();
+            return this;
           }
           @java.lang.Override
           public final Builder setUnknownFields(
@@ -12076,7 +12341,7 @@ public final class Mapbox {
   static {
     java.lang.String[] descriptorData = {
       "\n\tmap.proto\022\020tophap.mapbox_gl\032\nutil.prot" +
-      "o\032\013style.proto\"\334\023\n\003Map\032\270\010\n\007Options\022\024\n\014ap" +
+      "o\032\013style.proto\"\322\023\n\003Map\032\270\010\n\007Options\022\024\n\014ap" +
       "i_base_uri\030\001 \001(\t\022#\n\033local_ideograph_font" +
       "_family\030\002 \001(\t\022\037\n\027cross_source_collisions" +
       "\030\003 \001(\010\022=\n\017camera_position\030\004 \001(\0132$.tophap" +
@@ -12103,44 +12368,44 @@ public final class Mapbox {
       "olor\030\035 \001(\0132\027.tophap.mapbox_gl.Color\022:\n\013f" +
       "rom_mapbox\030\036 \001(\0162#.tophap.mapbox_gl.Styl" +
       "e.MapboxStyleH\000\022\022\n\010from_uri\030\037 \001(\tH\000\022\023\n\tf" +
-      "rom_json\030  \001(\tH\000B\007\n\005style\032\262\001\n\016CameraPosi" +
+      "rom_json\030  \001(\tH\000B\007\n\005style\032\227\001\n\016CameraPosi" +
       "tion\022\017\n\007bearing\030\001 \001(\001\022(\n\006target\030\002 \001(\0132\030." +
       "tophap.mapbox_gl.LatLng\022\014\n\004tilt\030\003 \001(\001\022\014\n" +
-      "\004zoom\030\004 \001(\001\"I\n\nMoveReason\022\017\n\013API_GESTURE" +
-      "\020\000\022\027\n\023DEVELOPER_ANIMATION\020\001\022\021\n\rAPI_ANIMA" +
-      "TION\020\002\032\344\t\n\nOperations\032\264\001\n\005Ready\022\017\n\007view_" +
-      "id\030\001 \001(\003\022\030\n\020prefetches_tiles\030\002 \001(\010\022\020\n\010mi" +
-      "n_zoom\030\003 \001(\001\022\020\n\010max_zoom\030\004 \001(\001\0224\n\006camera" +
-      "\030\005 \001(\0132$.tophap.mapbox_gl.Map.CameraPosi" +
-      "tion\022&\n\005style\030\006 \001(\0132\027.tophap.mapbox_gl.S" +
-      "tyle\032\270\004\n\014CameraUpdate\022=\n\017camera_position" +
-      "\030\001 \001(\0132$.tophap.mapbox_gl.Map.CameraPosi" +
-      "tion\022)\n\007lat_lng\030\002 \001(\0132\030.tophap.mapbox_gl" +
-      ".LatLng\022.\n\006bounds\030\003 \001(\0132\036.tophap.mapbox_" +
-      "gl.LatLngBounds\022\017\n\007bearing\030\004 \001(\001\022\014\n\004tilt" +
-      "\030\005 \001(\001\022\017\n\007padding\030\006 \003(\005\022\014\n\004zoom\030\007 \001(\001\022\016\n" +
-      "\006amount\030\010 \001(\001\022\017\n\007focus_x\030\t \001(\005\022\017\n\007focus_" +
-      "y\030\n \001(\005\022E\n\toperation\030\013 \001(\01622.tophap.mapb" +
-      "ox_gl.Map.Operations.CameraUpdate.Type\"$" +
-      "\n\006Result\022\014\n\010FINISHED\020\000\022\014\n\010CANCELED\020\001\"\260\001\n" +
-      "\004Type\022\027\n\023NEW_CAMERA_POSITION\020\000\022\017\n\013NEW_LA" +
-      "T_LNG\020\001\022\026\n\022NEW_LAT_LNG_BOUNDS\020\002\022\024\n\020NEW_L" +
-      "AT_LNG_ZOOM\020\003\022\013\n\007ZOOM_BY\020\004\022\013\n\007ZOOM_IN\020\005\022" +
-      "\014\n\010ZOOM_OUT\020\006\022\013\n\007ZOOM_TO\020\007\022\016\n\nBEARING_TO" +
-      "\020\010\022\013\n\007TILT_TO\020\t\032z\n\nEaseCamera\022=\n\006update\030" +
-      "\001 \001(\0132-.tophap.mapbox_gl.Map.Operations." +
-      "CameraUpdate\022\020\n\010duration\030\002 \001(\005\022\033\n\023easing" +
-      "_interpolator\030\003 \001(\010\032`\n\rAnimateCamera\022=\n\006" +
-      "update\030\001 \001(\0132-.tophap.mapbox_gl.Map.Oper" +
-      "ations.CameraUpdate\022\020\n\010duration\030\002 \001(\005\0322\n" +
-      "\010ScrollBy\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\020\n\010durat" +
-      "ion\030\003 \001(\003\032V\n\017SetFocalBearing\022\017\n\007bearing\030" +
-      "\001 \001(\001\022\017\n\007focal_x\030\002 \001(\002\022\017\n\007focal_y\030\003 \001(\002\022" +
-      "\020\n\010duration\030\004 \001(\003\032z\n\030GetCameraForLatLngB" +
-      "ounds\022.\n\006bounds\030\001 \001(\0132\036.tophap.mapbox_gl" +
-      ".LatLngBounds\022\017\n\007padding\030\002 \003(\005\022\017\n\007bearin" +
-      "g\030\003 \001(\001\022\014\n\004tilt\030\004 \001(\001B$\n\032com.tophap.mapb" +
-      "ox_gl.protoB\006Mapboxb\006proto3"
+      "\004zoom\030\004 \001(\001\022.\n\006bounds\030\005 \001(\0132\036.tophap.map" +
+      "box_gl.LatLngBounds\032\365\t\n\nOperations\032\305\001\n\005R" +
+      "eady\022\017\n\007view_id\030\001 \001(\003\022\030\n\020prefetches_tile" +
+      "s\030\002 \001(\010\022\020\n\010min_zoom\030\003 \001(\001\022\020\n\010max_zoom\030\004 " +
+      "\001(\001\0224\n\006camera\030\005 \001(\0132$.tophap.mapbox_gl.M" +
+      "ap.CameraPosition\022&\n\005style\030\006 \001(\0132\027.topha" +
+      "p.mapbox_gl.Style\022\017\n\007padding\030\007 \003(\005\032\270\004\n\014C" +
+      "ameraUpdate\022=\n\017camera_position\030\001 \001(\0132$.t" +
+      "ophap.mapbox_gl.Map.CameraPosition\022)\n\007la" +
+      "t_lng\030\002 \001(\0132\030.tophap.mapbox_gl.LatLng\022.\n" +
+      "\006bounds\030\003 \001(\0132\036.tophap.mapbox_gl.LatLngB" +
+      "ounds\022\017\n\007bearing\030\004 \001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n\007" +
+      "padding\030\006 \003(\005\022\014\n\004zoom\030\007 \001(\001\022\016\n\006amount\030\010 " +
+      "\001(\001\022\017\n\007focus_x\030\t \001(\005\022\017\n\007focus_y\030\n \001(\005\022E\n" +
+      "\toperation\030\013 \001(\01622.tophap.mapbox_gl.Map." +
+      "Operations.CameraUpdate.Type\"$\n\006Result\022\014" +
+      "\n\010FINISHED\020\000\022\014\n\010CANCELED\020\001\"\260\001\n\004Type\022\027\n\023N" +
+      "EW_CAMERA_POSITION\020\000\022\017\n\013NEW_LAT_LNG\020\001\022\026\n" +
+      "\022NEW_LAT_LNG_BOUNDS\020\002\022\024\n\020NEW_LAT_LNG_ZOO" +
+      "M\020\003\022\013\n\007ZOOM_BY\020\004\022\013\n\007ZOOM_IN\020\005\022\014\n\010ZOOM_OU" +
+      "T\020\006\022\013\n\007ZOOM_TO\020\007\022\016\n\nBEARING_TO\020\010\022\013\n\007TILT" +
+      "_TO\020\t\032z\n\nEaseCamera\022=\n\006update\030\001 \001(\0132-.to" +
+      "phap.mapbox_gl.Map.Operations.CameraUpda" +
+      "te\022\020\n\010duration\030\002 \001(\005\022\033\n\023easing_interpola" +
+      "tor\030\003 \001(\010\032`\n\rAnimateCamera\022=\n\006update\030\001 \001" +
+      "(\0132-.tophap.mapbox_gl.Map.Operations.Cam" +
+      "eraUpdate\022\020\n\010duration\030\002 \001(\005\0322\n\010ScrollBy\022" +
+      "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\020\n\010duration\030\003 \001(\003\032" +
+      "V\n\017SetFocalBearing\022\017\n\007bearing\030\001 \001(\001\022\017\n\007f" +
+      "ocal_x\030\002 \001(\002\022\017\n\007focal_y\030\003 \001(\002\022\020\n\010duratio" +
+      "n\030\004 \001(\003\032z\n\030GetCameraForLatLngBounds\022.\n\006b" +
+      "ounds\030\001 \001(\0132\036.tophap.mapbox_gl.LatLngBou" +
+      "nds\022\017\n\007padding\030\002 \003(\005\022\017\n\007bearing\030\003 \001(\001\022\014\n" +
+      "\004tilt\030\004 \001(\001B$\n\032com.tophap.mapbox_gl.prot" +
+      "oB\006Mapboxb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12173,7 +12438,7 @@ public final class Mapbox {
     internal_static_tophap_mapbox_gl_Map_CameraPosition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Map_CameraPosition_descriptor,
-        new java.lang.String[] { "Bearing", "Target", "Tilt", "Zoom", });
+        new java.lang.String[] { "Bearing", "Target", "Tilt", "Zoom", "Bounds", });
     internal_static_tophap_mapbox_gl_Map_Operations_descriptor =
       internal_static_tophap_mapbox_gl_Map_descriptor.getNestedTypes().get(2);
     internal_static_tophap_mapbox_gl_Map_Operations_fieldAccessorTable = new
@@ -12185,7 +12450,7 @@ public final class Mapbox {
     internal_static_tophap_mapbox_gl_Map_Operations_Ready_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Map_Operations_Ready_descriptor,
-        new java.lang.String[] { "ViewId", "PrefetchesTiles", "MinZoom", "MaxZoom", "Camera", "Style", });
+        new java.lang.String[] { "ViewId", "PrefetchesTiles", "MinZoom", "MaxZoom", "Camera", "Style", "Padding", });
     internal_static_tophap_mapbox_gl_Map_Operations_CameraUpdate_descriptor =
       internal_static_tophap_mapbox_gl_Map_Operations_descriptor.getNestedTypes().get(1);
     internal_static_tophap_mapbox_gl_Map_Operations_CameraUpdate_fieldAccessorTable = new

@@ -15,11 +15,11 @@ part 'latlng_bounds.g.dart';
 abstract class LatLngBounds
     implements Built<LatLngBounds, LatLngBoundsBuilder> {
   factory LatLngBounds({
-    double latitudeNorth = 90.0,
-    double latitudeSouth = -90.0,
-    double longitudeEast = 180.0,
-    double longitudeWest = -180.0,
-  }) {
+                         double latitudeNorth = 90.0,
+                         double latitudeSouth = -90.0,
+                         double longitudeEast = 180.0,
+                         double longitudeWest = -180.0,
+                       }) {
     assert(!latitudeNorth.isNaN);
     assert(!latitudeSouth.isNaN);
     assert(!longitudeEast.isNaN && longitudeEast.isFinite);
@@ -27,9 +27,9 @@ abstract class LatLngBounds
     assert(latitudeNorth >= -90 && latitudeNorth <= 90);
     assert(latitudeSouth >= -90 && latitudeSouth <= 90);
     assert(latitudeNorth > latitudeSouth,
-        "latitudeNorth($latitudeNorth) cannot be less than latitudeSouth($latitudeSouth)");
+    "latitudeNorth($latitudeNorth) cannot be less than latitudeSouth($latitudeSouth)");
     assert(longitudeEast > longitudeWest,
-        "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
+    "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
 
     return _$LatLngBounds((LatLngBoundsBuilder b) {
       b

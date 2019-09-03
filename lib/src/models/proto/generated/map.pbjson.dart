@@ -3,7 +3,7 @@
 //  source: map.proto
 ///
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
+
 const Map_$json = const {
   '1': 'Map',
   '3': const [Map__Options$json, Map__CameraPosition$json, Map__Operations$json],
@@ -57,16 +57,7 @@ const Map__CameraPosition$json = const {
     const {'1': 'target', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'target'},
     const {'1': 'tilt', '3': 3, '4': 1, '5': 1, '10': 'tilt'},
     const {'1': 'zoom', '3': 4, '4': 1, '5': 1, '10': 'zoom'},
-  ],
-  '4': const [Map__CameraPosition_MoveReason$json],
-};
-
-const Map__CameraPosition_MoveReason$json = const {
-  '1': 'MoveReason',
-  '2': const [
-    const {'1': 'API_GESTURE', '2': 0},
-    const {'1': 'DEVELOPER_ANIMATION', '2': 1},
-    const {'1': 'API_ANIMATION', '2': 2},
+    const {'1': 'bounds', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLngBounds', '10': 'bounds'},
   ],
 };
 
@@ -84,6 +75,7 @@ const Map__Operations_Ready$json = const {
     const {'1': 'max_zoom', '3': 4, '4': 1, '5': 1, '10': 'maxZoom'},
     const {'1': 'camera', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Map.CameraPosition', '10': 'camera'},
     const {'1': 'style', '3': 6, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style', '10': 'style'},
+    const {'1': 'padding', '3': 7, '4': 3, '5': 5, '10': 'padding'},
   ],
 };
 

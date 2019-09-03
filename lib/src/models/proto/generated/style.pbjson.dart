@@ -3,7 +3,7 @@
 //  source: style.proto
 ///
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
+
 const Style$json = const {
   '1': 'Style',
   '2': const [
@@ -14,7 +14,7 @@ const Style$json = const {
     const {'1': 'transition', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.TransitionOptions', '10': 'transition'},
     const {'1': 'light', '3': 6, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style.Light', '10': 'light'},
   ],
-  '3': const [Style_Light$json, Style_Position$json, Style_Operations$json],
+  '3': const [Style_Light$json, Style_Position$json, Style_StyleImage$json, Style_Asset$json, Style_Operations$json],
   '4': const [Style_MapboxStyle$json],
 };
 
@@ -37,6 +37,27 @@ const Style_Position$json = const {
     const {'1': 'radial_coordinate', '3': 1, '4': 1, '5': 2, '10': 'radialCoordinate'},
     const {'1': 'azimuthal_angle', '3': 2, '4': 1, '5': 2, '10': 'azimuthalAngle'},
     const {'1': 'polar_angle', '3': 3, '4': 1, '5': 2, '10': 'polarAngle'},
+  ],
+};
+
+const Style_StyleImage$json = const {
+  '1': 'StyleImage',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'image', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'image'},
+    const {'1': 'asset', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style.Asset', '9': 0, '10': 'asset'},
+    const {'1': 'sdf', '3': 4, '4': 1, '5': 8, '10': 'sdf'},
+  ],
+  '8': const [
+    const {'1': 'source'},
+  ],
+};
+
+const Style_Asset$json = const {
+  '1': 'Asset',
+  '2': const [
+    const {'1': 'asset', '3': 1, '4': 1, '5': 9, '10': 'asset'},
+    const {'1': 'packageName', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'packageName'},
   ],
 };
 

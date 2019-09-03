@@ -6,37 +6,8 @@ part of camera_position;
 // BuiltValueGenerator
 // **************************************************************************
 
-const CameraMoveStartedReason _$apiGesture =
-    const CameraMoveStartedReason._('apiGesture');
-const CameraMoveStartedReason _$developerAnimation =
-    const CameraMoveStartedReason._('developerAnimation');
-const CameraMoveStartedReason _$apiAnimation =
-    const CameraMoveStartedReason._('apiAnimation');
-
-CameraMoveStartedReason _$valueOf(String name) {
-  switch (name) {
-    case 'apiGesture':
-      return _$apiGesture;
-    case 'developerAnimation':
-      return _$developerAnimation;
-    case 'apiAnimation':
-      return _$apiAnimation;
-    default:
-      throw new ArgumentError(name);
-  }
-}
-
-final BuiltSet<CameraMoveStartedReason> _$values =
-    new BuiltSet<CameraMoveStartedReason>(const <CameraMoveStartedReason>[
-  _$apiGesture,
-  _$developerAnimation,
-  _$apiAnimation,
-]);
-
 Serializer<CameraPosition> _$cameraPositionSerializer =
     new _$CameraPositionSerializer();
-Serializer<CameraMoveStartedReason> _$cameraMoveStartedReasonSerializer =
-    new _$CameraMoveStartedReasonSerializer();
 
 class _$CameraPositionSerializer
     implements StructuredSerializer<CameraPosition> {
@@ -60,7 +31,12 @@ class _$CameraPositionSerializer
       'zoom',
       serializers.serialize(object.zoom, specifiedType: const FullType(double)),
     ];
-
+    if (object.bounds != null) {
+      result
+        ..add('bounds')
+        ..add(serializers.serialize(object.bounds,
+            specifiedType: const FullType(LatLngBounds)));
+    }
     return result;
   }
 
@@ -92,30 +68,15 @@ class _$CameraPositionSerializer
           result.zoom = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
+        case 'bounds':
+          result.bounds.replace(serializers.deserialize(value,
+              specifiedType: const FullType(LatLngBounds)) as LatLngBounds);
+          break;
       }
     }
 
     return result.build();
   }
-}
-
-class _$CameraMoveStartedReasonSerializer
-    implements PrimitiveSerializer<CameraMoveStartedReason> {
-  @override
-  final Iterable<Type> types = const <Type>[CameraMoveStartedReason];
-  @override
-  final String wireName = 'CameraMoveStartedReason';
-
-  @override
-  Object serialize(Serializers serializers, CameraMoveStartedReason object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      object.name;
-
-  @override
-  CameraMoveStartedReason deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      CameraMoveStartedReason.valueOf(serialized as String);
 }
 
 class _$CameraPosition extends CameraPosition {
@@ -127,12 +88,15 @@ class _$CameraPosition extends CameraPosition {
   final double tilt;
   @override
   final double zoom;
+  @override
+  final LatLngBounds bounds;
   Uint8List __data;
 
   factory _$CameraPosition([void Function(CameraPositionBuilder) updates]) =>
       (new CameraPositionBuilder()..update(updates)).build();
 
-  _$CameraPosition._({this.bearing, this.target, this.tilt, this.zoom})
+  _$CameraPosition._(
+      {this.bearing, this.target, this.tilt, this.zoom, this.bounds})
       : super._() {
     if (bearing == null) {
       throw new BuiltValueNullFieldError('CameraPosition', 'bearing');
@@ -166,14 +130,16 @@ class _$CameraPosition extends CameraPosition {
         bearing == other.bearing &&
         target == other.target &&
         tilt == other.tilt &&
-        zoom == other.zoom;
+        zoom == other.zoom &&
+        bounds == other.bounds;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, bearing.hashCode), target.hashCode), tilt.hashCode),
-        zoom.hashCode));
+        $jc($jc($jc($jc(0, bearing.hashCode), target.hashCode), tilt.hashCode),
+            zoom.hashCode),
+        bounds.hashCode));
   }
 
   @override
@@ -182,7 +148,8 @@ class _$CameraPosition extends CameraPosition {
           ..add('bearing', bearing)
           ..add('target', target)
           ..add('tilt', tilt)
-          ..add('zoom', zoom))
+          ..add('zoom', zoom)
+          ..add('bounds', bounds))
         .toString();
   }
 }
@@ -207,6 +174,11 @@ class CameraPositionBuilder
   double get zoom => _$this._zoom;
   set zoom(double zoom) => _$this._zoom = zoom;
 
+  LatLngBoundsBuilder _bounds;
+  LatLngBoundsBuilder get bounds =>
+      _$this._bounds ??= new LatLngBoundsBuilder();
+  set bounds(LatLngBoundsBuilder bounds) => _$this._bounds = bounds;
+
   CameraPositionBuilder();
 
   CameraPositionBuilder get _$this {
@@ -215,6 +187,7 @@ class CameraPositionBuilder
       _target = _$v.target?.toBuilder();
       _tilt = _$v.tilt;
       _zoom = _$v.zoom;
+      _bounds = _$v.bounds?.toBuilder();
       _$v = null;
     }
     return this;
@@ -239,12 +212,19 @@ class CameraPositionBuilder
     try {
       _$result = _$v ??
           new _$CameraPosition._(
-              bearing: bearing, target: target.build(), tilt: tilt, zoom: zoom);
+              bearing: bearing,
+              target: target.build(),
+              tilt: tilt,
+              zoom: zoom,
+              bounds: _bounds?.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'target';
         target.build();
+
+        _$failedField = 'bounds';
+        _bounds?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'CameraPosition', _$failedField, e.toString());

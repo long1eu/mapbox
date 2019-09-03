@@ -14,14 +14,9 @@ const String heatmapLayerId = 'earthquakes-heat';
 const String heatmapLayerSource = 'earthquakes';
 const String circleLayerId = 'earthquakes-circle';
 
-class HeatmapPage extends StatefulWidget {
+class HeatmapPage extends StatelessWidget {
   const HeatmapPage({Key key}) : super(key: key);
 
-  @override
-  _HeatmapPageState createState() => _HeatmapPageState();
-}
-
-class _HeatmapPageState extends State<HeatmapPage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;

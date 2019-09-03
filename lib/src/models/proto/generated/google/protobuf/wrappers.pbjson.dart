@@ -3,7 +3,6 @@
 //  source: google/protobuf/wrappers.proto
 ///
 // ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
 
 const DoubleValue$json = const {
   '1': 'DoubleValue',

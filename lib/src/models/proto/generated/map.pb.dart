@@ -18,8 +18,6 @@ import 'map.pbenum.dart';
 
 export 'map.pbenum.dart';
 
-// ignore_for_file: always_specify_types, sort_constructors_first, sort_unnamed_constructors_first, annotate_overrides, avoid_as, unnecessary_const, directives_ordering
-
 enum Map__Options_Style {
   fromMapbox, 
   fromUri, 
@@ -246,6 +244,7 @@ class Map__CameraPosition extends $pb.GeneratedMessage {
     ..a<$1.LatLng>(2, 'target', $pb.PbFieldType.OM, $1.LatLng.getDefault, $1.LatLng.create)
     ..a<$core.double>(3, 'tilt', $pb.PbFieldType.OD)
     ..a<$core.double>(4, 'zoom', $pb.PbFieldType.OD)
+    ..a<$1.LatLngBounds>(5, 'bounds', $pb.PbFieldType.OM, $1.LatLngBounds.getDefault, $1.LatLngBounds.create)
     ..hasRequiredFields = false
   ;
 
@@ -282,6 +281,11 @@ class Map__CameraPosition extends $pb.GeneratedMessage {
   set zoom($core.double v) { $_setDouble(3, v); }
   $core.bool hasZoom() => $_has(3);
   void clearZoom() => clearField(4);
+
+  $1.LatLngBounds get bounds => $_getN(4);
+  set bounds($1.LatLngBounds v) { setField(5, v); }
+  $core.bool hasBounds() => $_has(4);
+  void clearBounds() => clearField(5);
 }
 
 class Map__Operations_Ready extends $pb.GeneratedMessage {
@@ -292,6 +296,7 @@ class Map__Operations_Ready extends $pb.GeneratedMessage {
     ..a<$core.double>(4, 'maxZoom', $pb.PbFieldType.OD)
     ..a<Map__CameraPosition>(5, 'camera', $pb.PbFieldType.OM, Map__CameraPosition.getDefault, Map__CameraPosition.create)
     ..a<$4.Style>(6, 'style', $pb.PbFieldType.OM, $4.Style.getDefault, $4.Style.create)
+    ..p<$core.int>(7, 'padding', $pb.PbFieldType.P3)
     ..hasRequiredFields = false
   ;
 
@@ -338,6 +343,8 @@ class Map__Operations_Ready extends $pb.GeneratedMessage {
   set style($4.Style v) { setField(6, v); }
   $core.bool hasStyle() => $_has(5);
   void clearStyle() => clearField(6);
+
+  $core.List<$core.int> get padding => $_getList(6);
 }
 
 class Map__Operations_CameraUpdate extends $pb.GeneratedMessage {

@@ -193,6 +193,90 @@ struct Tophap_MapboxGl_Style {
     init() {}
   }
 
+  struct StyleImage {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var id: String {
+      get {return _storage._id}
+      set {_uniqueStorage()._id = newValue}
+    }
+
+    var source: OneOf_Source? {
+      get {return _storage._source}
+      set {_uniqueStorage()._source = newValue}
+    }
+
+    var image: Data {
+      get {
+        if case .image(let v)? = _storage._source {return v}
+        return SwiftProtobuf.Internal.emptyData
+      }
+      set {_uniqueStorage()._source = .image(newValue)}
+    }
+
+    var asset: Tophap_MapboxGl_Style.Asset {
+      get {
+        if case .asset(let v)? = _storage._source {return v}
+        return Tophap_MapboxGl_Style.Asset()
+      }
+      set {_uniqueStorage()._source = .asset(newValue)}
+    }
+
+    var sdf: Bool {
+      get {return _storage._sdf}
+      set {_uniqueStorage()._sdf = newValue}
+    }
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    enum OneOf_Source: Equatable {
+      case image(Data)
+      case asset(Tophap_MapboxGl_Style.Asset)
+
+    #if !swift(>=4.1)
+      static func ==(lhs: Tophap_MapboxGl_Style.StyleImage.OneOf_Source, rhs: Tophap_MapboxGl_Style.StyleImage.OneOf_Source) -> Bool {
+        switch (lhs, rhs) {
+        case (.image(let l), .image(let r)): return l == r
+        case (.asset(let l), .asset(let r)): return l == r
+        default: return false
+        }
+      }
+    #endif
+    }
+
+    init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
+
+  struct Asset {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    var asset: String {
+      get {return _storage._asset}
+      set {_uniqueStorage()._asset = newValue}
+    }
+
+    var packageName: SwiftProtobuf.Google_Protobuf_StringValue {
+      get {return _storage._packageName ?? SwiftProtobuf.Google_Protobuf_StringValue()}
+      set {_uniqueStorage()._packageName = newValue}
+    }
+    /// Returns true if `packageName` has been explicitly set.
+    var hasPackageName: Bool {return _storage._packageName != nil}
+    /// Clears the value of `packageName`. Subsequent reads from it will return its default value.
+    mutating func clearPackageName() {_uniqueStorage()._packageName = nil}
+
+    var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    init() {}
+
+    fileprivate var _storage = _StorageClass.defaultInstance
+  }
+
   struct Operations {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -542,6 +626,169 @@ extension Tophap_MapboxGl_Style.Position: SwiftProtobuf.Message, SwiftProtobuf._
     if lhs.radialCoordinate != rhs.radialCoordinate {return false}
     if lhs.azimuthalAngle != rhs.azimuthalAngle {return false}
     if lhs.polarAngle != rhs.polarAngle {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Tophap_MapboxGl_Style.StyleImage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Style.protoMessageName + ".StyleImage"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+    2: .same(proto: "image"),
+    3: .same(proto: "asset"),
+    4: .same(proto: "sdf"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _id: String = String()
+    var _source: Tophap_MapboxGl_Style.StyleImage.OneOf_Source?
+    var _sdf: Bool = false
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _id = source._id
+      _source = source._source
+      _sdf = source._sdf
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
+        case 2:
+          if _storage._source != nil {try decoder.handleConflictingOneOf()}
+          var v: Data?
+          try decoder.decodeSingularBytesField(value: &v)
+          if let v = v {_storage._source = .image(v)}
+        case 3:
+          var v: Tophap_MapboxGl_Style.Asset?
+          if let current = _storage._source {
+            try decoder.handleConflictingOneOf()
+            if case .asset(let m) = current {v = m}
+          }
+          try decoder.decodeSingularMessageField(value: &v)
+          if let v = v {_storage._source = .asset(v)}
+        case 4: try decoder.decodeSingularBoolField(value: &_storage._sdf)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._id.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
+      }
+      switch _storage._source {
+      case .image(let v)?:
+        try visitor.visitSingularBytesField(value: v, fieldNumber: 2)
+      case .asset(let v)?:
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+      case nil: break
+      }
+      if _storage._sdf != false {
+        try visitor.visitSingularBoolField(value: _storage._sdf, fieldNumber: 4)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Tophap_MapboxGl_Style.StyleImage, rhs: Tophap_MapboxGl_Style.StyleImage) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._id != rhs_storage._id {return false}
+        if _storage._source != rhs_storage._source {return false}
+        if _storage._sdf != rhs_storage._sdf {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Tophap_MapboxGl_Style.Asset: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = Tophap_MapboxGl_Style.protoMessageName + ".Asset"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "asset"),
+    2: .same(proto: "packageName"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _asset: String = String()
+    var _packageName: SwiftProtobuf.Google_Protobuf_StringValue? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _asset = source._asset
+      _packageName = source._packageName
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularStringField(value: &_storage._asset)
+        case 2: try decoder.decodeSingularMessageField(value: &_storage._packageName)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if !_storage._asset.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._asset, fieldNumber: 1)
+      }
+      if let v = _storage._packageName {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Tophap_MapboxGl_Style.Asset, rhs: Tophap_MapboxGl_Style.Asset) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._asset != rhs_storage._asset {return false}
+        if _storage._packageName != rhs_storage._packageName {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
