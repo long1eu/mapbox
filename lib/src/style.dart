@@ -48,6 +48,9 @@ class Style {
     final T platformSource = Source.fromProto(proto);
     source = source.markAsAttached(_channel, platformSource);
     _sources[source.id] = source;
+
+
+    print('sources ${_sources.keys}');
     return source;
   }
 

@@ -59,6 +59,7 @@ const Source_Image$json = const {
     const {'1': 'coordinates', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLngQuad', '10': 'coordinates'},
     const {'1': 'uri', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'uri'},
     const {'1': 'image', '3': 5, '4': 1, '5': 12, '9': 0, '10': 'image'},
+    const {'1': 'asset', '3': 6, '4': 1, '5': 9, '9': 0, '10': 'asset'},
   ],
   '8': const [
     const {'1': 'source'},

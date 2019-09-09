@@ -3,7 +3,7 @@ PODS:
   - flutter_mapbox_gl (0.0.1):
     - Flutter
     - Mapbox-iOS-SDK
-    - SwiftProtobuf (~> 1.0)
+    - SwiftProtobuf (~> 1.6.0)
   - Mapbox-iOS-SDK (5.2.0)
   - SwiftProtobuf (1.6.0)
 
@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_mapbox_gl: 41fc19667149d011f1e05c900603197ee558bb07
+  flutter_mapbox_gl: e9bad94e82acb6203df836463dee57533b010425
   Mapbox-iOS-SDK: 3e095b305126d52ba166fe215d847b15b6fbee63
   SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
 

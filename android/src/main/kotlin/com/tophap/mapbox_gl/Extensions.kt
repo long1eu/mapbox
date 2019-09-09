@@ -22,6 +22,7 @@ import com.tophap.mapbox_gl.proto.Mapbox
 import com.tophap.mapbox_gl.proto.Sources
 import com.tophap.mapbox_gl.proto.Styles
 import com.tophap.mapbox_gl.proto.Util
+import io.flutter.view.FlutterMain
 
 val gson = Gson()
 
@@ -465,17 +466,13 @@ fun Light.toProto(): Styles.Style.Light {
     try {
         builder.color = ColorUtils.rgbaToColor(color).color()
     } catch (e: Error) {
-        //e.printStackTrace()
         builder.color = (0xFF000000).color()
     }
 
     try {
-
         builder.intensity = intensity
     } catch (e: Error) {
-        //e.printStackTrace()
         builder.intensity = 1.0f
-
     }
 
     builder.positionTransition = positionTransition.toProto()
@@ -487,8 +484,8 @@ fun Light.toProto(): Styles.Style.Light {
 
 fun Source.toProto(): Sources.Source {
     val sourceBuilder = Sources.Source.newBuilder()
-    when {
-        this is GeoJsonSource -> {
+    when (this) {
+        is GeoJsonSource -> {
             val source = Sources.Source.GeoJson.newBuilder()
                     .setId(id)
                     .setAttribution(attribution)
@@ -496,15 +493,24 @@ fun Source.toProto(): Sources.Source {
             if (uri != null) source.uri = uri
             sourceBuilder.geoJson = source.build()
         }
-        this is ImageSource -> {
+        is ImageSource -> {
             val source = Sources.Source.Image.newBuilder()
                     .setId(id)
                     .setAttribution(attribution)
 
-            if (uri != null) source.uri = uri
+            if (uri != null) {
+                var path = uri!!.toString()
+                if (path.startsWith("asset://")) {
+                    path = path.substringAfter(FlutterMain.getLookupKeyForAsset(""))
+                    source.asset = path
+                } else {
+                    source.uri = uri
+                }
+            }
+
             sourceBuilder.image = source.build()
         }
-        this is VectorSource -> {
+        is VectorSource -> {
             val source = Sources.Source.Vector.newBuilder()
                     .setId(id)
                     .setAttribution(attribution)
@@ -512,7 +518,7 @@ fun Source.toProto(): Sources.Source {
             if (uri != null) source.uri = uri
             sourceBuilder.vector = source.build()
         }
-        this is RasterSource -> {
+        is RasterSource -> {
             val source = Sources.Source.Raster.newBuilder()
                     .setId(id)
                     .setAttribution(attribution)
@@ -520,7 +526,7 @@ fun Source.toProto(): Sources.Source {
             if (uri != null) source.uri = uri
             sourceBuilder.raster = source.build()
         }
-        this is RasterDemSource -> {
+        is RasterDemSource -> {
             val source = Sources.Source.RasterDem.newBuilder()
                     .setId(id)
                     .setAttribution(attribution)
@@ -528,7 +534,7 @@ fun Source.toProto(): Sources.Source {
             if (uri != null) source.uri = uri
             sourceBuilder.rasterDem = source.build()
         }
-        this is UnknownSource -> {
+        is UnknownSource -> {
             sourceBuilder.unknown = Sources.Source.Unknown.newBuilder()
                     .setId(id)
                     .setAttribution(attribution)

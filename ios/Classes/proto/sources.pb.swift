@@ -245,17 +245,27 @@ struct Tophap_MapboxGl_Source {
       set {_uniqueStorage()._source = .image(newValue)}
     }
 
+    var asset: String {
+      get {
+        if case .asset(let v)? = _storage._source {return v}
+        return String()
+      }
+      set {_uniqueStorage()._source = .asset(newValue)}
+    }
+
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     enum OneOf_Source: Equatable {
       case uri(String)
       case image(Data)
+      case asset(String)
 
     #if !swift(>=4.1)
       static func ==(lhs: Tophap_MapboxGl_Source.Image.OneOf_Source, rhs: Tophap_MapboxGl_Source.Image.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.image(let l), .image(let r)): return l == r
+        case (.asset(let l), .asset(let r)): return l == r
         default: return false
         }
       }
@@ -827,6 +837,7 @@ extension Tophap_MapboxGl_Source.Image: SwiftProtobuf.Message, SwiftProtobuf._Me
     3: .same(proto: "coordinates"),
     4: .same(proto: "uri"),
     5: .same(proto: "image"),
+    6: .same(proto: "asset"),
   ]
 
   fileprivate class _StorageClass {
@@ -872,6 +883,11 @@ extension Tophap_MapboxGl_Source.Image: SwiftProtobuf.Message, SwiftProtobuf._Me
           var v: Data?
           try decoder.decodeSingularBytesField(value: &v)
           if let v = v {_storage._source = .image(v)}
+        case 6:
+          if _storage._source != nil {try decoder.handleConflictingOneOf()}
+          var v: String?
+          try decoder.decodeSingularStringField(value: &v)
+          if let v = v {_storage._source = .asset(v)}
         default: break
         }
       }
@@ -894,6 +910,8 @@ extension Tophap_MapboxGl_Source.Image: SwiftProtobuf.Message, SwiftProtobuf._Me
         try visitor.visitSingularStringField(value: v, fieldNumber: 4)
       case .image(let v)?:
         try visitor.visitSingularBytesField(value: v, fieldNumber: 5)
+      case .asset(let v)?:
+        try visitor.visitSingularStringField(value: v, fieldNumber: 6)
       case nil: break
       }
     }

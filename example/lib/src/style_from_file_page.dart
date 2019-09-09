@@ -38,14 +38,13 @@ class _StyleFromFilePageState extends State<StyleFromFilePage> {
       appBar: AppBar(
         title: Text(page.title),
       ),
-      body:/* json == null
+      body: json == null
           ? Center(
               child: CupertinoActivityIndicator(),
             )
-          :*/ MapboxMap(
+          : MapboxMap(
               options: MapOptions(
-                // styleFromJson: json,
-                styleFromAsset: 'res/style.json',
+                styleFromJson: json,
                 cameraPosition: CameraPosition(
                   target: LatLng(
                     latitude: 42.362,

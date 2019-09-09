@@ -219,7 +219,6 @@ class MapboxPlatformView(private val context: Context,
                 mapboxMap.getStyle {
                     val protoSource = Sources.Source.parseFrom(call.arguments as ByteArray)
                     val source = protoSource.fieldValue()
-                    println("source added ${source.id}")
                     it.addSource(source)
                     result.success(it.getSource(source.id)?.toProto()?.toByteArray())
                 }

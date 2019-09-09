@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.mapbox.mapboxsdk.style.sources.*
 import com.tophap.mapbox_gl.proto.Sources
+import io.flutter.view.FlutterMain
 import java.io.ByteArrayOutputStream
 import java.net.URI
 
@@ -46,6 +47,10 @@ fun Sources.Source.Image.fieldValue(): ImageSource {
             val bytes = image.toByteArray()
             val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
             ImageSource(id, coordinates.fieldValue(), bmp)
+        }
+        Sources.Source.Image.SourceCase.ASSET -> {
+            val key = FlutterMain.getLookupKeyForAsset(asset)
+            ImageSource(id, coordinates.fieldValue(), URI("asset://$key"))
         }
         Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> throw IllegalArgumentException("Unknown source $sourceCase")
     }
@@ -106,18 +111,19 @@ fun Source.update(source: Sources.Source) {
                 }
             }
         }
-        is RasterSource -> {
-        }
-        is RasterDemSource -> {
-        }
         is ImageSource -> {
             if (source.image.hasCoordinates()) setCoordinates(source.image.coordinates.fieldValue())
             when (source.image.sourceCase!!) {
                 Sources.Source.Image.SourceCase.URI -> uri = source.image.uri
                 Sources.Source.Image.SourceCase.IMAGE -> setImage(source.image.image.toByteArray().bitmap())
+                Sources.Source.Image.SourceCase.ASSET -> println("asset://${FlutterMain.getLookupKeyForAsset(source.image.asset)}")
                 Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> {
                 }
             }
+        }
+        is RasterSource -> {
+        }
+        is RasterDemSource -> {
         }
         is VectorSource -> {
         }

@@ -46,6 +46,7 @@ message Source {
     oneof source {
       string uri = 4;
       bytes image = 5;
+      string asset = 6;
     }
   }
 

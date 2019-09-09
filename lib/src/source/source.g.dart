@@ -218,6 +218,12 @@ class _$ImageSourceSerializer implements StructuredSerializer<ImageSource> {
         ..add(serializers.serialize(object.image,
             specifiedType: const FullType(Uint8List)));
     }
+    if (object.asset != null) {
+      result
+        ..add('asset')
+        ..add(serializers.serialize(object.asset,
+            specifiedType: const FullType(String)));
+    }
     if (object.attribution != null) {
       result
         ..add('attribution')
@@ -249,6 +255,10 @@ class _$ImageSourceSerializer implements StructuredSerializer<ImageSource> {
         case 'image':
           result.image = serializers.deserialize(value,
               specifiedType: const FullType(Uint8List)) as Uint8List;
+          break;
+        case 'asset':
+          result.asset = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
@@ -913,6 +923,8 @@ class _$ImageSource extends ImageSource {
   @override
   final Uint8List image;
   @override
+  final String asset;
+  @override
   final String id;
   @override
   final String attribution;
@@ -926,6 +938,7 @@ class _$ImageSource extends ImageSource {
       {this.coordinates,
       this.uri,
       this.image,
+      this.asset,
       this.id,
       this.attribution,
       this.channel})
@@ -949,6 +962,7 @@ class _$ImageSource extends ImageSource {
         coordinates == other.coordinates &&
         uri == other.uri &&
         image == other.image &&
+        asset == other.asset &&
         id == other.id &&
         attribution == other.attribution;
   }
@@ -957,8 +971,10 @@ class _$ImageSource extends ImageSource {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, coordinates.hashCode), uri.hashCode),
-                image.hashCode),
+            $jc(
+                $jc($jc($jc(0, coordinates.hashCode), uri.hashCode),
+                    image.hashCode),
+                asset.hashCode),
             id.hashCode),
         attribution.hashCode));
   }
@@ -969,6 +985,7 @@ class _$ImageSource extends ImageSource {
           ..add('coordinates', coordinates)
           ..add('uri', uri)
           ..add('image', image)
+          ..add('asset', asset)
           ..add('id', id)
           ..add('attribution', attribution)
           ..add('channel', channel))
@@ -994,6 +1011,10 @@ class ImageSourceBuilder
   Uint8List get image => _$this._image;
   set image(Uint8List image) => _$this._image = image;
 
+  String _asset;
+  String get asset => _$this._asset;
+  set asset(String asset) => _$this._asset = asset;
+
   String _id;
   String get id => _$this._id;
   set id(String id) => _$this._id = id;
@@ -1013,6 +1034,7 @@ class ImageSourceBuilder
       _coordinates = _$v.coordinates?.toBuilder();
       _uri = _$v.uri;
       _image = _$v.image;
+      _asset = _$v.asset;
       _id = _$v.id;
       _attribution = _$v.attribution;
       _channel = _$v.channel;
@@ -1043,6 +1065,7 @@ class ImageSourceBuilder
               coordinates: _coordinates?.build(),
               uri: uri,
               image: image,
+              asset: asset,
               id: id,
               attribution: attribution,
               channel: channel);

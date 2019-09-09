@@ -290,7 +290,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       if let style = mapView.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let protoSource = try! Tophap_MapboxGl_Source(serializedData: data)
-        let source = protoSource.fieldValue()
+        let source = protoSource.fieldValue(lookupKeyForAsset: lookupKeyForAsset)
         style.addSource(source)
         print("source added \(source.identifier)")
         try! result(style.source(withIdentifier: source.identifier)!.proto.serializedData())
@@ -355,7 +355,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
       if let style = mapView.style {
         let data = (call.arguments as! FlutterStandardTypedData).data
         let protoSource = try! Tophap_MapboxGl_Source(serializedData: data)
-        style.source(withIdentifier: protoSource.id)!.update(source: protoSource)
+        style.source(withIdentifier: protoSource.id)!.update(source: protoSource, lookupKeyForAsset: lookupKeyForAsset)
         try! result(style.source(withIdentifier: protoSource.id)!.proto.serializedData())
       } else {
         fatalError("Could not get the style.")

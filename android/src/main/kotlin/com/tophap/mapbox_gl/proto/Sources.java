@@ -2528,6 +2528,16 @@ public final class Sources {
        */
       com.google.protobuf.ByteString getImage();
 
+      /**
+       * <code>string asset = 6;</code>
+       */
+      java.lang.String getAsset();
+      /**
+       * <code>string asset = 6;</code>
+       */
+      com.google.protobuf.ByteString
+          getAssetBytes();
+
       public com.tophap.mapbox_gl.proto.Sources.Source.Image.SourceCase getSourceCase();
     }
     /**
@@ -2613,6 +2623,12 @@ public final class Sources {
                 source_ = input.readBytes();
                 break;
               }
+              case 50: {
+                java.lang.String s = input.readStringRequireUtf8();
+                sourceCase_ = 6;
+                source_ = s;
+                break;
+              }
               default: {
                 if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
@@ -2651,6 +2667,7 @@ public final class Sources {
           implements com.google.protobuf.Internal.EnumLite {
         URI(4),
         IMAGE(5),
+        ASSET(6),
         SOURCE_NOT_SET(0);
         private final int value;
         private SourceCase(int value) {
@@ -2668,6 +2685,7 @@ public final class Sources {
           switch (value) {
             case 4: return URI;
             case 5: return IMAGE;
+            case 6: return ASSET;
             case 0: return SOURCE_NOT_SET;
             default: return null;
           }
@@ -2826,6 +2844,49 @@ public final class Sources {
         return com.google.protobuf.ByteString.EMPTY;
       }
 
+      public static final int ASSET_FIELD_NUMBER = 6;
+      /**
+       * <code>string asset = 6;</code>
+       */
+      public java.lang.String getAsset() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 6) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (sourceCase_ == 6) {
+            source_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string asset = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAssetBytes() {
+        java.lang.Object ref = "";
+        if (sourceCase_ == 6) {
+          ref = source_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (sourceCase_ == 6) {
+            source_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -2856,6 +2917,9 @@ public final class Sources {
           output.writeBytes(
               5, (com.google.protobuf.ByteString) source_);
         }
+        if (sourceCase_ == 6) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 6, source_);
+        }
         unknownFields.writeTo(output);
       }
 
@@ -2882,6 +2946,9 @@ public final class Sources {
           size += com.google.protobuf.CodedOutputStream
             .computeBytesSize(
                 5, (com.google.protobuf.ByteString) source_);
+        }
+        if (sourceCase_ == 6) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, source_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -2917,6 +2984,10 @@ public final class Sources {
             if (!getImage()
                 .equals(other.getImage())) return false;
             break;
+          case 6:
+            if (!getAsset()
+                .equals(other.getAsset())) return false;
+            break;
           case 0:
           default:
         }
@@ -2947,6 +3018,10 @@ public final class Sources {
           case 5:
             hash = (37 * hash) + IMAGE_FIELD_NUMBER;
             hash = (53 * hash) + getImage().hashCode();
+            break;
+          case 6:
+            hash = (37 * hash) + ASSET_FIELD_NUMBER;
+            hash = (53 * hash) + getAsset().hashCode();
             break;
           case 0:
           default:
@@ -3135,6 +3210,9 @@ public final class Sources {
           if (sourceCase_ == 5) {
             result.source_ = source_;
           }
+          if (sourceCase_ == 6) {
+            result.source_ = source_;
+          }
           result.sourceCase_ = sourceCase_;
           onBuilt();
           return result;
@@ -3204,6 +3282,12 @@ public final class Sources {
             }
             case IMAGE: {
               setImage(other.getImage());
+              break;
+            }
+            case ASSET: {
+              sourceCase_ = 6;
+              source_ = other.source_;
+              onChanged();
               break;
             }
             case SOURCE_NOT_SET: {
@@ -3619,6 +3703,86 @@ public final class Sources {
             source_ = null;
             onChanged();
           }
+          return this;
+        }
+
+        /**
+         * <code>string asset = 6;</code>
+         */
+        public java.lang.String getAsset() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 6) {
+            ref = source_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (sourceCase_ == 6) {
+              source_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string asset = 6;</code>
+         */
+        public com.google.protobuf.ByteString
+            getAssetBytes() {
+          java.lang.Object ref = "";
+          if (sourceCase_ == 6) {
+            ref = source_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (sourceCase_ == 6) {
+              source_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string asset = 6;</code>
+         */
+        public Builder setAsset(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  sourceCase_ = 6;
+          source_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string asset = 6;</code>
+         */
+        public Builder clearAsset() {
+          if (sourceCase_ == 6) {
+            sourceCase_ = 0;
+            source_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string asset = 6;</code>
+         */
+        public Builder setAssetBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          sourceCase_ = 6;
+          source_ = value;
+          onChanged();
           return this;
         }
         @java.lang.Override
@@ -12319,7 +12483,7 @@ public final class Sources {
   static {
     java.lang.String[] descriptorData = {
       "\n\rsources.proto\022\020tophap.mapbox_gl\032\nutil." +
-      "proto\"\201\014\n\006Source\022\n\n\002id\030\001 \001(\t\0223\n\007geoJson\030" +
+      "proto\"\222\014\n\006Source\022\n\n\002id\030\001 \001(\t\0223\n\007geoJson\030" +
       "\002 \001(\0132 .tophap.mapbox_gl.Source.GeoJsonH" +
       "\000\022/\n\005image\030\003 \001(\0132\036.tophap.mapbox_gl.Sour" +
       "ce.ImageH\000\0228\n\nraster_dem\030\004 \001(\0132\".tophap." +
@@ -12335,30 +12499,31 @@ public final class Sources {
       "zoom\030\002 \001(\005\022\016\n\006buffer\030\003 \001(\005\022\024\n\014line_metri" +
       "cs\030\004 \001(\010\022\021\n\ttolerance\030\005 \001(\002\022\017\n\007cluster\030\006" +
       " \001(\010\022\030\n\020cluster_max_zoom\030\007 \001(\005\022\026\n\016cluste" +
-      "r_radius\030\010 \001(\005B\010\n\006source\032\205\001\n\005Image\022\n\n\002id" +
+      "r_radius\030\010 \001(\005B\010\n\006source\032\226\001\n\005Image\022\n\n\002id" +
       "\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\0221\n\013coordinat" +
       "es\030\003 \001(\0132\034.tophap.mapbox_gl.LatLngQuad\022\r" +
-      "\n\003uri\030\004 \001(\tH\000\022\017\n\005image\030\005 \001(\014H\000B\010\n\006source" +
-      "\032\216\001\n\tRasterDem\022\n\n\002id\030\001 \001(\t\022\023\n\013attributio" +
-      "n\030\002 \001(\t\022\021\n\ttile_size\030\003 \001(\005\022\r\n\003uri\030\004 \001(\tH" +
-      "\000\0224\n\010tile_set\030\005 \001(\0132 .tophap.mapbox_gl.S" +
-      "ource.TileSetH\000B\010\n\006source\032\213\001\n\006Raster\022\n\n\002" +
-      "id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022\021\n\ttile_si" +
-      "ze\030\003 \001(\005\022\r\n\003uri\030\004 \001(\tH\000\0224\n\010tile_set\030\005 \001(" +
-      "\0132 .tophap.mapbox_gl.Source.TileSetH\000B\010\n" +
-      "\006source\032x\n\006Vector\022\n\n\002id\030\001 \001(\t\022\023\n\013attribu" +
-      "tion\030\002 \001(\t\022\r\n\003uri\030\003 \001(\tH\000\0224\n\010tile_set\030\004 " +
-      "\001(\0132 .tophap.mapbox_gl.Source.TileSetH\000B" +
-      "\010\n\006source\032*\n\007Unknown\022\n\n\002id\030\001 \001(\t\022\023\n\013attr" +
-      "ibution\030\002 \001(\t\032\231\002\n\007TileSet\022\021\n\ttile_json\030\001" +
-      " \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022" +
-      "\017\n\007version\030\004 \001(\t\022\023\n\013attribution\030\005 \001(\t\022\020\n" +
-      "\010template\030\006 \001(\t\022\016\n\006legend\030\007 \001(\t\022\016\n\006schem" +
-      "e\030\010 \001(\t\022\r\n\005tiles\030\t \003(\t\022\r\n\005grids\030\n \003(\t\022\014\n" +
-      "\004data\030\013 \003(\t\022\020\n\010min_zoom\030\014 \001(\002\022\020\n\010max_zoo" +
-      "m\030\r \001(\002\022\016\n\006bounds\030\016 \003(\002\022\016\n\006center\030\017 \003(\002\022" +
-      "\020\n\010encoding\030\020 \001(\tB\006\n\004typeB%\n\032com.tophap." +
-      "mapbox_gl.protoB\007Sourcesb\006proto3"
+      "\n\003uri\030\004 \001(\tH\000\022\017\n\005image\030\005 \001(\014H\000\022\017\n\005asset\030" +
+      "\006 \001(\tH\000B\010\n\006source\032\216\001\n\tRasterDem\022\n\n\002id\030\001 " +
+      "\001(\t\022\023\n\013attribution\030\002 \001(\t\022\021\n\ttile_size\030\003 " +
+      "\001(\005\022\r\n\003uri\030\004 \001(\tH\000\0224\n\010tile_set\030\005 \001(\0132 .t" +
+      "ophap.mapbox_gl.Source.TileSetH\000B\010\n\006sour" +
+      "ce\032\213\001\n\006Raster\022\n\n\002id\030\001 \001(\t\022\023\n\013attribution" +
+      "\030\002 \001(\t\022\021\n\ttile_size\030\003 \001(\005\022\r\n\003uri\030\004 \001(\tH\000" +
+      "\0224\n\010tile_set\030\005 \001(\0132 .tophap.mapbox_gl.So" +
+      "urce.TileSetH\000B\010\n\006source\032x\n\006Vector\022\n\n\002id" +
+      "\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\022\r\n\003uri\030\003 \001(\t" +
+      "H\000\0224\n\010tile_set\030\004 \001(\0132 .tophap.mapbox_gl." +
+      "Source.TileSetH\000B\010\n\006source\032*\n\007Unknown\022\n\n" +
+      "\002id\030\001 \001(\t\022\023\n\013attribution\030\002 \001(\t\032\231\002\n\007TileS" +
+      "et\022\021\n\ttile_json\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013d" +
+      "escription\030\003 \001(\t\022\017\n\007version\030\004 \001(\t\022\023\n\013att" +
+      "ribution\030\005 \001(\t\022\020\n\010template\030\006 \001(\t\022\016\n\006lege" +
+      "nd\030\007 \001(\t\022\016\n\006scheme\030\010 \001(\t\022\r\n\005tiles\030\t \003(\t\022" +
+      "\r\n\005grids\030\n \003(\t\022\014\n\004data\030\013 \003(\t\022\020\n\010min_zoom" +
+      "\030\014 \001(\002\022\020\n\010max_zoom\030\r \001(\002\022\016\n\006bounds\030\016 \003(\002" +
+      "\022\016\n\006center\030\017 \003(\002\022\020\n\010encoding\030\020 \001(\tB\006\n\004ty" +
+      "peB%\n\032com.tophap.mapbox_gl.protoB\007Source" +
+      "sb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12388,7 +12553,7 @@ public final class Sources {
     internal_static_tophap_mapbox_gl_Source_Image_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Source_Image_descriptor,
-        new java.lang.String[] { "Id", "Attribution", "Coordinates", "Uri", "Image", "Source", });
+        new java.lang.String[] { "Id", "Attribution", "Coordinates", "Uri", "Image", "Asset", "Source", });
     internal_static_tophap_mapbox_gl_Source_RasterDem_descriptor =
       internal_static_tophap_mapbox_gl_Source_descriptor.getNestedTypes().get(2);
     internal_static_tophap_mapbox_gl_Source_RasterDem_fieldAccessorTable = new

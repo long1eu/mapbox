@@ -147,6 +147,7 @@ class Source_GeoJson extends $pb.GeneratedMessage {
 enum Source_Image_Source {
   uri, 
   image, 
+  asset, 
   notSet
 }
 
@@ -154,15 +155,17 @@ class Source_Image extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, Source_Image_Source> _Source_Image_SourceByTag = {
     4 : Source_Image_Source.uri,
     5 : Source_Image_Source.image,
+    6 : Source_Image_Source.asset,
     0 : Source_Image_Source.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Image', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
-    ..oo(0, [4, 5])
+    ..oo(0, [4, 5, 6])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
     ..a<$1.LatLngQuad>(3, 'coordinates', $pb.PbFieldType.OM, defaultOrMaker: $1.LatLngQuad.getDefault, subBuilder: $1.LatLngQuad.create)
     ..aOS(4, 'uri')
     ..a<$core.List<$core.int>>(5, 'image', $pb.PbFieldType.OY)
+    ..aOS(6, 'asset')
     ..hasRequiredFields = false
   ;
 
@@ -207,6 +210,11 @@ class Source_Image extends $pb.GeneratedMessage {
   set image($core.List<$core.int> v) { $_setBytes(4, v); }
   $core.bool hasImage() => $_has(4);
   void clearImage() => clearField(5);
+
+  $core.String get asset => $_getS(5, '');
+  set asset($core.String v) { $_setString(5, v); }
+  $core.bool hasAsset() => $_has(5);
+  void clearAsset() => clearField(6);
 }
 
 enum Source_RasterDem_Source {

@@ -6,10 +6,10 @@ import Foundation
 import Mapbox
 
 extension Tophap_MapboxGl_Source {
-  func fieldValue() -> MGLSource {
+  func fieldValue(lookupKeyForAsset: @escaping LookupKeyForAsset) -> MGLSource {
     switch (type!) {
     case .geoJson(_): return geoJson.fieldValue()
-    case .image(_): return image.fieldValue()
+    case .image(_): return image.fieldValue(lookupKeyForAsset: lookupKeyForAsset)
     case .vector(_): return vector.fieldValue()
     case .rasterDem(_): return rasterDem.fieldValue()
     case .raster(_): return raster.fieldValue()
@@ -46,10 +46,11 @@ extension Tophap_MapboxGl_Source.GeoJson.Options {
 }
 
 extension Tophap_MapboxGl_Source.Image {
-  func fieldValue() -> MGLImageSource {
+  func fieldValue(lookupKeyForAsset: @escaping LookupKeyForAsset) -> MGLImageSource {
     switch (source!) {
     case .uri(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, url: uri.uri)
     case .image(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, image: UIImage(data: image)!)
+    case .asset(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, url: URL(fileURLWithPath: Bundle.main.path(forResource: lookupKeyForAsset(asset, nil), ofType: nil)!))
     }
   }
 }
@@ -91,11 +92,11 @@ extension Tophap_MapboxGl_Source.TileSet {
       MGLTileSourceOption.coordinateBounds: NSValue(mglCoordinateBounds: bounds.bounds),
       MGLTileSourceOption.attributionHTMLString: attribution,
     ]
-
+    
     if scheme.count != 0 {
       result[MGLTileSourceOption.tileCoordinateSystem] = scheme != "xyz" ? MGLTileCoordinateSystem.TMS.rawValue : MGLTileCoordinateSystem.XYZ.rawValue
     }
-
+    
     return result
   }
 }

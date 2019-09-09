@@ -4,7 +4,6 @@
 
 part of source;
 
-// todo add asset images support
 abstract class ImageSource
     with _Channel
     implements Source, Built<ImageSource, ImageSourceBuilder> {
@@ -13,18 +12,20 @@ abstract class ImageSource
     @required LatLngQuad coordinates,
     String uri,
     Uint8List image,
+    String asset,
   }) {
     assert(id != null);
     assert(coordinates != null);
-    assert(uri != null || image != null,
-        'You must specify eather the uri or provided an image');
+    assert(<dynamic>[uri, image, asset].any((dynamic it) => it != null),
+        'You must specify a uri, provided an image or asset file.');
 
     return _$ImageSource((ImageSourceBuilder b) {
       b
         ..id = id
         ..coordinates = coordinates.toBuilder()
         ..uri = uri
-        ..image = image;
+        ..image = image
+        ..asset = asset;
     });
   }
 
@@ -41,7 +42,8 @@ abstract class ImageSource
             ? LatLngQuad.fromProto(proto.coordinates).toBuilder()
             : null
         ..uri = proto.hasUri() ? proto.uri : null
-        ..image = proto.hasImage() ? Uint8List.fromList(proto.image) : null;
+        ..image = proto.hasImage() ? Uint8List.fromList(proto.image) : null
+        ..asset = proto.hasAsset() ? proto.asset : null;
     });
   }
 
@@ -56,8 +58,15 @@ abstract class ImageSource
   @nullable
   Uint8List get image;
 
-  FutureOr<ImageSource> copyWith(
-      {LatLngQuad coordinate, String uri, Uint8List image}) {
+  @nullable
+  String get asset;
+
+  FutureOr<ImageSource> copyWith({
+    LatLngQuad coordinate,
+    String uri,
+    Uint8List image,
+    String asset,
+  }) {
     assert(uri == null || image == null,
         'You can have ony one source for the image.');
 
@@ -65,7 +74,8 @@ abstract class ImageSource
       return b
         ..coordinates = (coordinate ?? coordinates).toBuilder()
         ..uri = uri ?? this.uri
-        ..image = image ?? this.image;
+        ..image = image ?? this.image
+        ..asset = asset ?? this.asset;
     });
     if (!isAttached || this == source) return source;
     return _update(source);
@@ -80,7 +90,8 @@ abstract class ImageSource
           ..attribution = source.attribution ?? attribution
           ..coordinates = (source.coordinates ?? coordinates).toBuilder()
           ..uri = source.uri ?? uri
-          ..image = source.image ?? image;
+          ..image = source.image ?? image
+          ..asset = source.asset ?? asset;
       });
     } else {
       throw ArgumentError(
@@ -96,7 +107,8 @@ abstract class ImageSource
           ..attribution = source.attribution ?? attribution
           ..coordinates = (source.coordinates ?? coordinates).toBuilder()
           ..uri = source.uri ?? uri
-          ..image = source.image ?? image;
+          ..image = source.image ?? image
+          ..asset = source.asset ?? asset;
       });
       if (!isAttached || this == _source) return _source;
       return _update(_source);
@@ -114,6 +126,8 @@ abstract class ImageSource
       message.uri = uri;
     } else if (image != null) {
       message.image = image;
+    } else if (asset != null) {
+      message.asset = asset;
     }
 
     if (coordinates != null) message.coordinates = coordinates.proto;
