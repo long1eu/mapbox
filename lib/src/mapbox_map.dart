@@ -207,12 +207,19 @@ class _MapboxMapState extends State<MapboxMap> {
 
       Future<dynamic> future;
       final LayerPosition position = newPosition[id];
-      final bool positionChanged = position != oldPosition[id];
-      if (positionChanged) {
+      final bool shouldRemove = position != oldPosition[id] ||
+          // Right now updating the value doesn't update the color on iOS.
+          //
+          // The value is passed on the other side and it get correctly set
+          // but the screen doesn't change.
+          //
+          // This is a hack and maybe we could raise an issue.
+          newLayer is FillLayer;
+      if (shouldRemove) {
         future = _controller.style.removeLayer(id);
       }
 
-      if (positionChanged) {
+      if (shouldRemove) {
         if (position == null) {
           future.then((void _) => _controller.style.addLayer(newLayer));
         } else {
