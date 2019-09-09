@@ -175,8 +175,6 @@ class _MapboxMapState extends State<MapboxMap> {
     final Map<String, Layer> oldLayers = oldWidget.layers ?? <String, Layer>{};
     final Map<String, Layer> newLayers = (widget.layers ?? <String, Layer>{});
 
-    final Map<String, LayerPosition> oldPosition =
-        oldWidget.layersPositions ?? <String, LayerPosition>{};
     final Map<String, LayerPosition> newPosition =
         widget.layersPositions ?? <String, LayerPosition>{};
 
@@ -205,41 +203,32 @@ class _MapboxMapState extends State<MapboxMap> {
         continue;
       }
 
-      Future<dynamic> future;
+      final Future<dynamic> future = _controller.style.removeLayer(id);
       final LayerPosition position = newPosition[id];
-      final bool shouldRemove = position != oldPosition[id] ||
-          // Right now updating the value doesn't update the color on iOS.
-          //
-          // The value is passed on the other side and it get correctly set
-          // but the screen doesn't change.
-          //
-          // This is a hack and maybe we could raise an issue.
-          newLayer is FillLayer;
-      if (shouldRemove) {
-        future = _controller.style.removeLayer(id);
-      }
 
-      if (shouldRemove) {
-        if (position == null) {
-          future.then((void _) => _controller.style.addLayer(newLayer));
-        } else {
-          switch (position.where) {
-            case Where.above:
-              future.then((void _) => _controller.style
-                  .addLayer(newLayer, aboveId: position.value));
-              break;
-            case Where.below:
-              future.then((void _) => _controller.style
-                  .addLayer(newLayer, belowId: position.value));
-              break;
-            case Where.at:
-              future.then((void _) =>
-                  _controller.style.addLayer(newLayer, index: position.value));
-              break;
-          }
-        }
+      // Right now updating the value doesn't update the screen on iOS.
+      //
+      // The value is passed on the other side and it is correctly set
+      // but the screen doesn't change.
+      //
+      // We could raise an issue.
+      if (position == null) {
+        future.then((void _) => _controller.style.addLayer(newLayer));
       } else {
-        future = _controller.style.updateLayer(layer, newLayer);
+        switch (position.where) {
+          case Where.above:
+            future.then((void _) =>
+                _controller.style.addLayer(newLayer, aboveId: position.value));
+            break;
+          case Where.below:
+            future.then((void _) =>
+                _controller.style.addLayer(newLayer, belowId: position.value));
+            break;
+          case Where.at:
+            future.then((void _) =>
+                _controller.style.addLayer(newLayer, index: position.value));
+            break;
+        }
       }
 
       assert(future != null);
