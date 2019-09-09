@@ -68,8 +68,8 @@ extension Tophap_MapboxGl_TransitionOptions {
 extension Tophap_MapboxGl_LatLngBounds {
   var value: MGLCoordinateBounds {
     return MGLCoordinateBounds(
-        sw: CLLocationCoordinate2D(latitude: latitudeSouth, longitude: longitudeWest),
-        ne: CLLocationCoordinate2D(latitude: latitudeNorth, longitude: longitudeEast))
+        sw: CLLocationCoordinate2D(latitude: south, longitude: west),
+        ne: CLLocationCoordinate2D(latitude: north, longitude: east))
   }
 }
 

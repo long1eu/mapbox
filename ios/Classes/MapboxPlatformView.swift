@@ -34,6 +34,7 @@ class MapboxPlatformView: NSObject, FlutterPlatformView, MGLMapViewDelegate {
     case .fromMapbox(_): mapView = MGLMapView(frame: frame, styleURL: options.fromMapbox.value)
     case .fromUri(_): mapView = MGLMapView(frame: frame, styleURL: options.fromUri.uri)
     case .fromJson(_): mapView = MGLMapView(frame: frame, styleURL: getUrlForStyleJson(json: options.fromJson))
+    case .fromAsset(_): mapView = MGLMapView(frame: frame, styleURL: getUrlForStyleAsset(asset: options.fromAsset, lookupKeyForAsset: lookupKeyForAsset))
     }
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     
@@ -440,4 +441,10 @@ private func getUrlForStyleJson(json: String) -> URL {
   let file = tmp.appendingPathComponent("style-\(UUID().uuidString).json")
   try! json.write(to: file, atomically: false, encoding: .utf8)
   return file
+}
+
+private func getUrlForStyleAsset(asset: String, lookupKeyForAsset: @escaping LookupKeyForAsset) -> URL {
+  let key: String = lookupKeyForAsset(asset, nil)
+  let path = Bundle.main.path(forResource: key, ofType: nil)!
+  return URL(fileURLWithPath: path)
 }

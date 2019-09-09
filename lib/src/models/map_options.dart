@@ -23,6 +23,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     MapStyle styleFromMapbox = MapStyle.mapboxStreets,
     String styleFromUri,
     String styleFromJson,
+    String styleFromAsset,
     String apiBaseUri,
     String localIdeographFontFamily,
     bool crossSourceCollisions = true,
@@ -92,7 +93,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     assert(foregroundLoadColor != null && foregroundLoadColor.opacity == 1.0);
     cameraPosition ??= CameraPosition();
     assert(
-        <dynamic>[styleFromMapbox, styleFromUri, styleFromJson]
+        <dynamic>[styleFromMapbox, styleFromUri, styleFromJson, styleFromAsset]
             .any((Object it) => it != null),
         'You need to set at leat one style source.');
 
@@ -106,6 +107,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
         ..styleFromMapbox = styleFromMapbox
         ..styleFromUri = styleFromUri
         ..styleFromJson = styleFromJson
+        ..styleFromAsset = styleFromAsset
         ..localIdeographFontFamily = localIdeographFontFamily
         ..crossSourceCollisions = crossSourceCollisions
         ..cameraPosition = cameraPosition.toBuilder()
@@ -165,6 +167,9 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
 
   @nullable
   String get styleFromJson;
+
+  @nullable
+  String get styleFromAsset;
 
   @nullable
   String get localIdeographFontFamily;
@@ -287,6 +292,7 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
     if (styleFromMapbox != null) message.fromMapbox = styleFromMapbox.proto;
     if (styleFromUri != null) message.fromUri = styleFromUri;
     if (styleFromJson != null) message.fromJson_32 = styleFromJson;
+    if (styleFromAsset != null) message.fromAsset = styleFromAsset;
 
     if (apiBaseUri != null) message.apiBaseUri = apiBaseUri;
     if (localIdeographFontFamily != null)

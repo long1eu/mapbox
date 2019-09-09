@@ -16,6 +16,9 @@ class StyleFromFilePage extends StatefulWidget {
   _StyleFromFilePageState createState() => _StyleFromFilePageState();
 }
 
+/// Note: Don't use this method unless you need to dynamically add the style
+/// since this will copy the json data to a file and then pass it to MapBox.
+/// Instead use [MapOptions.styleFromAsset].
 class _StyleFromFilePageState extends State<StyleFromFilePage> {
   String json;
 
@@ -35,13 +38,14 @@ class _StyleFromFilePageState extends State<StyleFromFilePage> {
       appBar: AppBar(
         title: Text(page.title),
       ),
-      body: json == null
+      body:/* json == null
           ? Center(
               child: CupertinoActivityIndicator(),
             )
-          : MapboxMap(
+          :*/ MapboxMap(
               options: MapOptions(
-                styleFromJson: json,
+                // styleFromJson: json,
+                styleFromAsset: 'res/style.json',
                 cameraPosition: CameraPosition(
                   target: LatLng(
                     latitude: 42.362,
@@ -50,8 +54,6 @@ class _StyleFromFilePageState extends State<StyleFromFilePage> {
                   zoom: 10.0,
                 ),
               ),
-              layers: <Layer>[],
-              sources: <Source>[],
             ),
     );
   }

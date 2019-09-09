@@ -123,6 +123,12 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
         ..add(serializers.serialize(object.styleFromJson,
             specifiedType: const FullType(String)));
     }
+    if (object.styleFromAsset != null) {
+      result
+        ..add('styleFromAsset')
+        ..add(serializers.serialize(object.styleFromAsset,
+            specifiedType: const FullType(String)));
+    }
     if (object.localIdeographFontFamily != null) {
       result
         ..add('localIdeographFontFamily')
@@ -163,6 +169,10 @@ class _$MapOptionsSerializer implements StructuredSerializer<MapOptions> {
           break;
         case 'styleFromJson':
           result.styleFromJson = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'styleFromAsset':
+          result.styleFromAsset = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'localIdeographFontFamily':
@@ -303,6 +313,8 @@ class _$MapOptions extends MapOptions {
   @override
   final String styleFromJson;
   @override
+  final String styleFromAsset;
+  @override
   final String localIdeographFontFamily;
   @override
   final bool crossSourceCollisions;
@@ -368,6 +380,7 @@ class _$MapOptions extends MapOptions {
       this.styleFromMapbox,
       this.styleFromUri,
       this.styleFromJson,
+      this.styleFromAsset,
       this.localIdeographFontFamily,
       this.crossSourceCollisions,
       this.cameraPosition,
@@ -497,6 +510,7 @@ class _$MapOptions extends MapOptions {
         styleFromMapbox == other.styleFromMapbox &&
         styleFromUri == other.styleFromUri &&
         styleFromJson == other.styleFromJson &&
+        styleFromAsset == other.styleFromAsset &&
         localIdeographFontFamily == other.localIdeographFontFamily &&
         crossSourceCollisions == other.crossSourceCollisions &&
         cameraPosition == other.cameraPosition &&
@@ -548,7 +562,7 @@ class _$MapOptions extends MapOptions {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, apiBaseUri.hashCode), styleFromMapbox.hashCode), styleFromUri.hashCode), styleFromJson.hashCode), localIdeographFontFamily.hashCode), crossSourceCollisions.hashCode), cameraPosition.hashCode), maxZoom.hashCode), minZoom.hashCode), zoomGestures.hashCode), scrollGestures.hashCode), rotateGestures.hashCode), tiltGestures.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, apiBaseUri.hashCode), styleFromMapbox.hashCode), styleFromUri.hashCode), styleFromJson.hashCode), styleFromAsset.hashCode), localIdeographFontFamily.hashCode), crossSourceCollisions.hashCode), cameraPosition.hashCode), maxZoom.hashCode), minZoom.hashCode), zoomGestures.hashCode), scrollGestures.hashCode), rotateGestures.hashCode), tiltGestures.hashCode),
                                                                                 doubleTapGestures.hashCode),
                                                                             quickZoomGestures.hashCode),
                                                                         compass.hashCode),
@@ -577,6 +591,7 @@ class _$MapOptions extends MapOptions {
           ..add('styleFromMapbox', styleFromMapbox)
           ..add('styleFromUri', styleFromUri)
           ..add('styleFromJson', styleFromJson)
+          ..add('styleFromAsset', styleFromAsset)
           ..add('localIdeographFontFamily', localIdeographFontFamily)
           ..add('crossSourceCollisions', crossSourceCollisions)
           ..add('cameraPosition', cameraPosition)
@@ -630,6 +645,11 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
   String get styleFromJson => _$this._styleFromJson;
   set styleFromJson(String styleFromJson) =>
       _$this._styleFromJson = styleFromJson;
+
+  String _styleFromAsset;
+  String get styleFromAsset => _$this._styleFromAsset;
+  set styleFromAsset(String styleFromAsset) =>
+      _$this._styleFromAsset = styleFromAsset;
 
   String _localIdeographFontFamily;
   String get localIdeographFontFamily => _$this._localIdeographFontFamily;
@@ -776,6 +796,7 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
       _styleFromMapbox = _$v.styleFromMapbox;
       _styleFromUri = _$v.styleFromUri;
       _styleFromJson = _$v.styleFromJson;
+      _styleFromAsset = _$v.styleFromAsset;
       _localIdeographFontFamily = _$v.localIdeographFontFamily;
       _crossSourceCollisions = _$v.crossSourceCollisions;
       _cameraPosition = _$v.cameraPosition?.toBuilder();
@@ -832,6 +853,7 @@ class MapOptionsBuilder implements Builder<MapOptions, MapOptionsBuilder> {
               styleFromMapbox: styleFromMapbox,
               styleFromUri: styleFromUri,
               styleFromJson: styleFromJson,
+              styleFromAsset: styleFromAsset,
               localIdeographFontFamily: localIdeographFontFamily,
               crossSourceCollisions: crossSourceCollisions,
               cameraPosition: cameraPosition.build(),

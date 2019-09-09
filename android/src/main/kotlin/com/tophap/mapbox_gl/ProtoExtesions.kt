@@ -15,8 +15,8 @@ import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.layers.TransitionOptions
 import com.tophap.mapbox_gl.proto.Mapbox
-import com.tophap.mapbox_gl.proto.Util
 import com.tophap.mapbox_gl.proto.Styles
+import com.tophap.mapbox_gl.proto.Util
 
 
 @Style.StyleUrl

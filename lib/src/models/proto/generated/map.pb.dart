@@ -23,6 +23,7 @@ enum Map__Options_Style {
   fromMapbox, 
   fromUri, 
   fromJson_32, 
+  fromAsset, 
   notSet
 }
 
@@ -31,10 +32,11 @@ class Map__Options extends $pb.GeneratedMessage {
     30 : Map__Options_Style.fromMapbox,
     31 : Map__Options_Style.fromUri,
     32 : Map__Options_Style.fromJson_32,
+    33 : Map__Options_Style.fromAsset,
     0 : Map__Options_Style.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('Map.Options', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
-    ..oo(0, [30, 31, 32])
+    ..oo(0, [30, 31, 32, 33])
     ..aOS(1, 'apiBaseUri')
     ..aOS(2, 'localIdeographFontFamily')
     ..aOB(3, 'crossSourceCollisions')
@@ -67,6 +69,7 @@ class Map__Options extends $pb.GeneratedMessage {
     ..e<$4.Style_MapboxStyle>(30, 'fromMapbox', $pb.PbFieldType.OE, defaultOrMaker: $4.Style_MapboxStyle.MAPBOX_STREETS, valueOf: $4.Style_MapboxStyle.valueOf, enumValues: $4.Style_MapboxStyle.values)
     ..aOS(31, 'fromUri')
     ..aOS(32, 'fromJson')
+    ..aOS(33, 'fromAsset')
     ..hasRequiredFields = false
   ;
 
@@ -237,6 +240,11 @@ class Map__Options extends $pb.GeneratedMessage {
   set fromJson_32($core.String v) { $_setString(31, v); }
   $core.bool hasFromJson_32() => $_has(31);
   void clearFromJson_32() => clearField(32);
+
+  $core.String get fromAsset => $_getS(32, '');
+  set fromAsset($core.String v) { $_setString(32, v); }
+  $core.bool hasFromAsset() => $_has(32);
+  void clearFromAsset() => clearField(33);
 }
 
 class Map__CameraPosition extends $pb.GeneratedMessage {

@@ -45,6 +45,7 @@ const Map__Options$json = const {
     const {'1': 'from_mapbox', '3': 30, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.Style.MapboxStyle', '9': 0, '10': 'fromMapbox'},
     const {'1': 'from_uri', '3': 31, '4': 1, '5': 9, '9': 0, '10': 'fromUri'},
     const {'1': 'from_json', '3': 32, '4': 1, '5': 9, '9': 0, '10': 'fromJson'},
+    const {'1': 'from_asset', '3': 33, '4': 1, '5': 9, '9': 0, '10': 'fromAsset'},
   ],
   '8': const [
     const {'1': 'style'},

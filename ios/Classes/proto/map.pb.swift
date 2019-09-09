@@ -217,12 +217,21 @@ struct Tophap_MapboxGl_Map {
       set {_uniqueStorage()._style = .fromJson(newValue)}
     }
 
+    var fromAsset: String {
+      get {
+        if case .fromAsset(let v)? = _storage._style {return v}
+        return String()
+      }
+      set {_uniqueStorage()._style = .fromAsset(newValue)}
+    }
+
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     enum OneOf_Style: Equatable {
       case fromMapbox(Tophap_MapboxGl_Style.MapboxStyle)
       case fromUri(String)
       case fromJson(String)
+      case fromAsset(String)
 
     #if !swift(>=4.1)
       static func ==(lhs: Tophap_MapboxGl_Map.Options.OneOf_Style, rhs: Tophap_MapboxGl_Map.Options.OneOf_Style) -> Bool {
@@ -230,6 +239,7 @@ struct Tophap_MapboxGl_Map {
         case (.fromMapbox(let l), .fromMapbox(let r)): return l == r
         case (.fromUri(let l), .fromUri(let r)): return l == r
         case (.fromJson(let l), .fromJson(let r)): return l == r
+        case (.fromAsset(let l), .fromAsset(let r)): return l == r
         default: return false
         }
       }
@@ -698,6 +708,7 @@ extension Tophap_MapboxGl_Map.Options: SwiftProtobuf.Message, SwiftProtobuf._Mes
     30: .standard(proto: "from_mapbox"),
     31: .standard(proto: "from_uri"),
     32: .standard(proto: "from_json"),
+    33: .standard(proto: "from_asset"),
   ]
 
   fileprivate class _StorageClass {
@@ -826,6 +837,11 @@ extension Tophap_MapboxGl_Map.Options: SwiftProtobuf.Message, SwiftProtobuf._Mes
           var v: String?
           try decoder.decodeSingularStringField(value: &v)
           if let v = v {_storage._style = .fromJson(v)}
+        case 33:
+          if _storage._style != nil {try decoder.handleConflictingOneOf()}
+          var v: String?
+          try decoder.decodeSingularStringField(value: &v)
+          if let v = v {_storage._style = .fromAsset(v)}
         default: break
         }
       }
@@ -928,6 +944,8 @@ extension Tophap_MapboxGl_Map.Options: SwiftProtobuf.Message, SwiftProtobuf._Mes
         try visitor.visitSingularStringField(value: v, fieldNumber: 31)
       case .fromJson(let v)?:
         try visitor.visitSingularStringField(value: v, fieldNumber: 32)
+      case .fromAsset(let v)?:
+        try visitor.visitSingularStringField(value: v, fieldNumber: 33)
       case nil: break
       }
     }

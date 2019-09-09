@@ -72,6 +72,10 @@ class MapboxPlatformView(private val context: Context,
             Options.StyleCase.FROM_MAPBOX -> mapboxMap.setStyle(options.fromMapbox.fieldValue()) { onStyleLoaded(it) }
             Options.StyleCase.FROM_URI -> mapboxMap.setStyle(Style.Builder().fromUri(options.fromUri)) { onStyleLoaded(it) }
             Options.StyleCase.FROM_JSON -> mapboxMap.setStyle(Style.Builder().fromJson(options.fromJson)) { onStyleLoaded(it) }
+            Options.StyleCase.FROM_ASSET -> {
+                val key = lookupKeyForAsset(options.fromAsset, null)
+                mapboxMap.setStyle(Style.Builder().fromUri("asset://$key")) { onStyleLoaded(it) }
+            }
             Options.StyleCase.STYLE_NOT_SET -> throw IllegalArgumentException("Unknown source ${options.styleCase}")
         }
 
@@ -93,9 +97,7 @@ class MapboxPlatformView(private val context: Context,
         builder.maxZoom = mapboxMap.maxZoomLevel
         builder.camera = mapboxMap.cameraProto()
         builder.style = style.toProto()
-        for (i in mapboxMap.padding) {
-            builder.paddingList.add(i)
-        }
+        builder.addAllPadding(mapboxMap.padding.asList())
 
         channel.invokeMethod("mapReady", builder.build().toByteArray())
     }
@@ -338,7 +340,6 @@ class MapboxPlatformView(private val context: Context,
 
 
     override fun onCameraMoveStarted(reason: Int) {
-        println("MapboxPlatformView.onCameraMoveStarted: $reason")
         if (reason == 3) {
             this.reason = 3
             channel.invokeMethod("mapEvent#onApiMove", mapboxMap.cameraData())

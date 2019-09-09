@@ -343,6 +343,16 @@ public final class Mapbox {
       com.google.protobuf.ByteString
           getFromJsonBytes();
 
+      /**
+       * <code>string from_asset = 33;</code>
+       */
+      java.lang.String getFromAsset();
+      /**
+       * <code>string from_asset = 33;</code>
+       */
+      com.google.protobuf.ByteString
+          getFromAssetBytes();
+
       public com.tophap.mapbox_gl.proto.Mapbox.Map.Options.StyleCase getStyleCase();
     }
     /**
@@ -639,6 +649,12 @@ public final class Mapbox {
                 style_ = s;
                 break;
               }
+              case 266: {
+                java.lang.String s = input.readStringRequireUtf8();
+                styleCase_ = 33;
+                style_ = s;
+                break;
+              }
               default: {
                 if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
@@ -687,6 +703,7 @@ public final class Mapbox {
         FROM_MAPBOX(30),
         FROM_URI(31),
         FROM_JSON(32),
+        FROM_ASSET(33),
         STYLE_NOT_SET(0);
         private final int value;
         private StyleCase(int value) {
@@ -705,6 +722,7 @@ public final class Mapbox {
             case 30: return FROM_MAPBOX;
             case 31: return FROM_URI;
             case 32: return FROM_JSON;
+            case 33: return FROM_ASSET;
             case 0: return STYLE_NOT_SET;
             default: return null;
           }
@@ -1242,6 +1260,49 @@ public final class Mapbox {
         }
       }
 
+      public static final int FROM_ASSET_FIELD_NUMBER = 33;
+      /**
+       * <code>string from_asset = 33;</code>
+       */
+      public java.lang.String getFromAsset() {
+        java.lang.Object ref = "";
+        if (styleCase_ == 33) {
+          ref = style_;
+        }
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (styleCase_ == 33) {
+            style_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>string from_asset = 33;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFromAssetBytes() {
+        java.lang.Object ref = "";
+        if (styleCase_ == 33) {
+          ref = style_;
+        }
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (styleCase_ == 33) {
+            style_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -1364,6 +1425,9 @@ public final class Mapbox {
         }
         if (styleCase_ == 32) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 32, style_);
+        }
+        if (styleCase_ == 33) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 33, style_);
         }
         unknownFields.writeTo(output);
       }
@@ -1528,6 +1592,9 @@ public final class Mapbox {
         if (styleCase_ == 32) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(32, style_);
         }
+        if (styleCase_ == 33) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(33, style_);
+        }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
         return size;
@@ -1623,6 +1690,10 @@ public final class Mapbox {
           case 32:
             if (!getFromJson()
                 .equals(other.getFromJson())) return false;
+            break;
+          case 33:
+            if (!getFromAsset()
+                .equals(other.getFromAsset())) return false;
             break;
           case 0:
           default:
@@ -1738,6 +1809,10 @@ public final class Mapbox {
           case 32:
             hash = (37 * hash) + FROM_JSON_FIELD_NUMBER;
             hash = (53 * hash) + getFromJson().hashCode();
+            break;
+          case 33:
+            hash = (37 * hash) + FROM_ASSET_FIELD_NUMBER;
+            hash = (53 * hash) + getFromAsset().hashCode();
             break;
           case 0:
           default:
@@ -2036,6 +2111,9 @@ public final class Mapbox {
           if (styleCase_ == 32) {
             result.style_ = style_;
           }
+          if (styleCase_ == 33) {
+            result.style_ = style_;
+          }
           result.styleCase_ = styleCase_;
           onBuilt();
           return result;
@@ -2208,6 +2286,12 @@ public final class Mapbox {
             }
             case FROM_JSON: {
               styleCase_ = 32;
+              style_ = other.style_;
+              onChanged();
+              break;
+            }
+            case FROM_ASSET: {
+              styleCase_ = 33;
               style_ = other.style_;
               onChanged();
               break;
@@ -3763,6 +3847,86 @@ public final class Mapbox {
   }
   checkByteStringIsUtf8(value);
           styleCase_ = 32;
+          style_ = value;
+          onChanged();
+          return this;
+        }
+
+        /**
+         * <code>string from_asset = 33;</code>
+         */
+        public java.lang.String getFromAsset() {
+          java.lang.Object ref = "";
+          if (styleCase_ == 33) {
+            ref = style_;
+          }
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (styleCase_ == 33) {
+              style_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string from_asset = 33;</code>
+         */
+        public com.google.protobuf.ByteString
+            getFromAssetBytes() {
+          java.lang.Object ref = "";
+          if (styleCase_ == 33) {
+            ref = style_;
+          }
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            if (styleCase_ == 33) {
+              style_ = b;
+            }
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string from_asset = 33;</code>
+         */
+        public Builder setFromAsset(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  styleCase_ = 33;
+          style_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string from_asset = 33;</code>
+         */
+        public Builder clearFromAsset() {
+          if (styleCase_ == 33) {
+            styleCase_ = 0;
+            style_ = null;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>string from_asset = 33;</code>
+         */
+        public Builder setFromAssetBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          styleCase_ = 33;
           style_ = value;
           onChanged();
           return this;
@@ -12401,7 +12565,7 @@ public final class Mapbox {
   static {
     java.lang.String[] descriptorData = {
       "\n\tmap.proto\022\020tophap.mapbox_gl\032\nutil.prot" +
-      "o\032\013style.proto\"\322\023\n\003Map\032\270\010\n\007Options\022\024\n\014ap" +
+      "o\032\013style.proto\"\350\023\n\003Map\032\316\010\n\007Options\022\024\n\014ap" +
       "i_base_uri\030\001 \001(\t\022#\n\033local_ideograph_font" +
       "_family\030\002 \001(\t\022\037\n\027cross_source_collisions" +
       "\030\003 \001(\010\022=\n\017camera_position\030\004 \001(\0132$.tophap" +
@@ -12428,44 +12592,44 @@ public final class Mapbox {
       "olor\030\035 \001(\0132\027.tophap.mapbox_gl.Color\022:\n\013f" +
       "rom_mapbox\030\036 \001(\0162#.tophap.mapbox_gl.Styl" +
       "e.MapboxStyleH\000\022\022\n\010from_uri\030\037 \001(\tH\000\022\023\n\tf" +
-      "rom_json\030  \001(\tH\000B\007\n\005style\032\227\001\n\016CameraPosi" +
-      "tion\022\017\n\007bearing\030\001 \001(\001\022(\n\006target\030\002 \001(\0132\030." +
-      "tophap.mapbox_gl.LatLng\022\014\n\004tilt\030\003 \001(\001\022\014\n" +
-      "\004zoom\030\004 \001(\001\022.\n\006bounds\030\005 \001(\0132\036.tophap.map" +
-      "box_gl.LatLngBounds\032\365\t\n\nOperations\032\305\001\n\005R" +
-      "eady\022\017\n\007view_id\030\001 \001(\003\022\030\n\020prefetches_tile" +
-      "s\030\002 \001(\010\022\020\n\010min_zoom\030\003 \001(\001\022\020\n\010max_zoom\030\004 " +
-      "\001(\001\0224\n\006camera\030\005 \001(\0132$.tophap.mapbox_gl.M" +
-      "ap.CameraPosition\022&\n\005style\030\006 \001(\0132\027.topha" +
-      "p.mapbox_gl.Style\022\017\n\007padding\030\007 \003(\005\032\270\004\n\014C" +
-      "ameraUpdate\022=\n\017camera_position\030\001 \001(\0132$.t" +
-      "ophap.mapbox_gl.Map.CameraPosition\022)\n\007la" +
-      "t_lng\030\002 \001(\0132\030.tophap.mapbox_gl.LatLng\022.\n" +
-      "\006bounds\030\003 \001(\0132\036.tophap.mapbox_gl.LatLngB" +
-      "ounds\022\017\n\007bearing\030\004 \001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n\007" +
-      "padding\030\006 \003(\005\022\014\n\004zoom\030\007 \001(\001\022\016\n\006amount\030\010 " +
-      "\001(\001\022\017\n\007focus_x\030\t \001(\005\022\017\n\007focus_y\030\n \001(\005\022E\n" +
-      "\toperation\030\013 \001(\01622.tophap.mapbox_gl.Map." +
-      "Operations.CameraUpdate.Type\"$\n\006Result\022\014" +
-      "\n\010FINISHED\020\000\022\014\n\010CANCELED\020\001\"\260\001\n\004Type\022\027\n\023N" +
-      "EW_CAMERA_POSITION\020\000\022\017\n\013NEW_LAT_LNG\020\001\022\026\n" +
-      "\022NEW_LAT_LNG_BOUNDS\020\002\022\024\n\020NEW_LAT_LNG_ZOO" +
-      "M\020\003\022\013\n\007ZOOM_BY\020\004\022\013\n\007ZOOM_IN\020\005\022\014\n\010ZOOM_OU" +
-      "T\020\006\022\013\n\007ZOOM_TO\020\007\022\016\n\nBEARING_TO\020\010\022\013\n\007TILT" +
-      "_TO\020\t\032z\n\nEaseCamera\022=\n\006update\030\001 \001(\0132-.to" +
-      "phap.mapbox_gl.Map.Operations.CameraUpda" +
-      "te\022\020\n\010duration\030\002 \001(\005\022\033\n\023easing_interpola" +
-      "tor\030\003 \001(\010\032`\n\rAnimateCamera\022=\n\006update\030\001 \001" +
-      "(\0132-.tophap.mapbox_gl.Map.Operations.Cam" +
-      "eraUpdate\022\020\n\010duration\030\002 \001(\005\0322\n\010ScrollBy\022" +
-      "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\020\n\010duration\030\003 \001(\003\032" +
-      "V\n\017SetFocalBearing\022\017\n\007bearing\030\001 \001(\001\022\017\n\007f" +
-      "ocal_x\030\002 \001(\002\022\017\n\007focal_y\030\003 \001(\002\022\020\n\010duratio" +
-      "n\030\004 \001(\003\032z\n\030GetCameraForLatLngBounds\022.\n\006b" +
-      "ounds\030\001 \001(\0132\036.tophap.mapbox_gl.LatLngBou" +
-      "nds\022\017\n\007padding\030\002 \003(\005\022\017\n\007bearing\030\003 \001(\001\022\014\n" +
-      "\004tilt\030\004 \001(\001B$\n\032com.tophap.mapbox_gl.prot" +
-      "oB\006Mapboxb\006proto3"
+      "rom_json\030  \001(\tH\000\022\024\n\nfrom_asset\030! \001(\tH\000B\007" +
+      "\n\005style\032\227\001\n\016CameraPosition\022\017\n\007bearing\030\001 " +
+      "\001(\001\022(\n\006target\030\002 \001(\0132\030.tophap.mapbox_gl.L" +
+      "atLng\022\014\n\004tilt\030\003 \001(\001\022\014\n\004zoom\030\004 \001(\001\022.\n\006bou" +
+      "nds\030\005 \001(\0132\036.tophap.mapbox_gl.LatLngBound" +
+      "s\032\365\t\n\nOperations\032\305\001\n\005Ready\022\017\n\007view_id\030\001 " +
+      "\001(\003\022\030\n\020prefetches_tiles\030\002 \001(\010\022\020\n\010min_zoo" +
+      "m\030\003 \001(\001\022\020\n\010max_zoom\030\004 \001(\001\0224\n\006camera\030\005 \001(" +
+      "\0132$.tophap.mapbox_gl.Map.CameraPosition\022" +
+      "&\n\005style\030\006 \001(\0132\027.tophap.mapbox_gl.Style\022" +
+      "\017\n\007padding\030\007 \003(\005\032\270\004\n\014CameraUpdate\022=\n\017cam" +
+      "era_position\030\001 \001(\0132$.tophap.mapbox_gl.Ma" +
+      "p.CameraPosition\022)\n\007lat_lng\030\002 \001(\0132\030.toph" +
+      "ap.mapbox_gl.LatLng\022.\n\006bounds\030\003 \001(\0132\036.to" +
+      "phap.mapbox_gl.LatLngBounds\022\017\n\007bearing\030\004" +
+      " \001(\001\022\014\n\004tilt\030\005 \001(\001\022\017\n\007padding\030\006 \003(\005\022\014\n\004z" +
+      "oom\030\007 \001(\001\022\016\n\006amount\030\010 \001(\001\022\017\n\007focus_x\030\t \001" +
+      "(\005\022\017\n\007focus_y\030\n \001(\005\022E\n\toperation\030\013 \001(\01622" +
+      ".tophap.mapbox_gl.Map.Operations.CameraU" +
+      "pdate.Type\"$\n\006Result\022\014\n\010FINISHED\020\000\022\014\n\010CA" +
+      "NCELED\020\001\"\260\001\n\004Type\022\027\n\023NEW_CAMERA_POSITION" +
+      "\020\000\022\017\n\013NEW_LAT_LNG\020\001\022\026\n\022NEW_LAT_LNG_BOUND" +
+      "S\020\002\022\024\n\020NEW_LAT_LNG_ZOOM\020\003\022\013\n\007ZOOM_BY\020\004\022\013" +
+      "\n\007ZOOM_IN\020\005\022\014\n\010ZOOM_OUT\020\006\022\013\n\007ZOOM_TO\020\007\022\016" +
+      "\n\nBEARING_TO\020\010\022\013\n\007TILT_TO\020\t\032z\n\nEaseCamer" +
+      "a\022=\n\006update\030\001 \001(\0132-.tophap.mapbox_gl.Map" +
+      ".Operations.CameraUpdate\022\020\n\010duration\030\002 \001" +
+      "(\005\022\033\n\023easing_interpolator\030\003 \001(\010\032`\n\rAnima" +
+      "teCamera\022=\n\006update\030\001 \001(\0132-.tophap.mapbox" +
+      "_gl.Map.Operations.CameraUpdate\022\020\n\010durat" +
+      "ion\030\002 \001(\005\0322\n\010ScrollBy\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 " +
+      "\001(\002\022\020\n\010duration\030\003 \001(\003\032V\n\017SetFocalBearing" +
+      "\022\017\n\007bearing\030\001 \001(\001\022\017\n\007focal_x\030\002 \001(\002\022\017\n\007fo" +
+      "cal_y\030\003 \001(\002\022\020\n\010duration\030\004 \001(\003\032z\n\030GetCame" +
+      "raForLatLngBounds\022.\n\006bounds\030\001 \001(\0132\036.toph" +
+      "ap.mapbox_gl.LatLngBounds\022\017\n\007padding\030\002 \003" +
+      "(\005\022\017\n\007bearing\030\003 \001(\001\022\014\n\004tilt\030\004 \001(\001B$\n\032com" +
+      ".tophap.mapbox_gl.protoB\006Mapboxb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12484,7 +12648,7 @@ public final class Mapbox {
     internal_static_tophap_mapbox_gl_Map_Options_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_Map_Options_descriptor,
-        new java.lang.String[] { "ApiBaseUri", "LocalIdeographFontFamily", "CrossSourceCollisions", "CameraPosition", "MaxZoom", "MinZoom", "ZoomGestures", "ScrollGestures", "RotateGestures", "TiltGestures", "DoubleTapGestures", "QuickZoomGestures", "Compass", "CompassPosition", "CompassMargin", "CompassFadeFacingNorth", "Logo", "LogoPosition", "LogoMargin", "Attribution", "AttributionPosition", "AttributionMargin", "AttributionTintColor", "RenderTextureMode", "RenderTextureTranslucentSurface", "EnableTilePrefetch", "EnableZMediaOverlay", "PixelRatio", "ForegroundLoadColor", "FromMapbox", "FromUri", "FromJson", "Style", });
+        new java.lang.String[] { "ApiBaseUri", "LocalIdeographFontFamily", "CrossSourceCollisions", "CameraPosition", "MaxZoom", "MinZoom", "ZoomGestures", "ScrollGestures", "RotateGestures", "TiltGestures", "DoubleTapGestures", "QuickZoomGestures", "Compass", "CompassPosition", "CompassMargin", "CompassFadeFacingNorth", "Logo", "LogoPosition", "LogoMargin", "Attribution", "AttributionPosition", "AttributionMargin", "AttributionTintColor", "RenderTextureMode", "RenderTextureTranslucentSurface", "EnableTilePrefetch", "EnableZMediaOverlay", "PixelRatio", "ForegroundLoadColor", "FromMapbox", "FromUri", "FromJson", "FromAsset", "Style", });
     internal_static_tophap_mapbox_gl_Map_CameraPosition_descriptor =
       internal_static_tophap_mapbox_gl_Map_descriptor.getNestedTypes().get(1);
     internal_static_tophap_mapbox_gl_Map_CameraPosition_fieldAccessorTable = new
