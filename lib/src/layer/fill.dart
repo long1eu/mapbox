@@ -179,7 +179,7 @@ abstract class FillLayer
 
   TransitionOptions get patternTransition;
 
-  FutureOr<FillLayer> copyWith({
+  FillLayer copyWith({
     String sourceLayer,
     Expression filter,
     bool visible,
@@ -205,8 +205,9 @@ abstract class FillLayer
     TransitionOptions translateTransition,
     TransitionOptions patternTransition,
   }) {
-    final FillLayer layer = rebuild((FillLayerBuilder b) {
+    return rebuild((FillLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -243,8 +244,6 @@ abstract class FillLayer
         ..patternTransition =
             (patternTransition ?? this.patternTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

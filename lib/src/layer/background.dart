@@ -97,7 +97,7 @@ abstract class BackgroundLayer
 
   TransitionOptions get opacityTransition;
 
-  FutureOr<BackgroundLayer> copyWith({
+  BackgroundLayer copyWith({
     bool visible,
     double minZoom,
     double maxZoom,
@@ -111,7 +111,7 @@ abstract class BackgroundLayer
     TransitionOptions patternTransition,
     TransitionOptions opacityTransition,
   }) {
-    final BackgroundLayer layer = rebuild((BackgroundLayerBuilder b) {
+    return rebuild((BackgroundLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -131,8 +131,6 @@ abstract class BackgroundLayer
         ..opacityTransition =
             (opacityTransition ?? this.opacityTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

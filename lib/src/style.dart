@@ -100,13 +100,15 @@ class Style {
     final T platformLayer = Layer.fromProto(proto);
     layer = layer.markAsAttached(_channel, platformLayer);
     _layers[layer.id] = layer;
+    print('add layer: ${layer.id}');
     return layer;
   }
 
-  Future<Layer> updateLayer(Layer layer, Layer newLayer) async {
-    layer = await layer.update(newLayer);
+  Future<Layer> updateLayer(String id, Layer newLayer) async {
+    Layer layer = await getLayer(id).update(newLayer);
     layer = layer.markAsAttached(_channel);
     _layers[layer.id] = layer;
+    print('update layer: $id');
     return layer;
   }
 

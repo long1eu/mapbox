@@ -165,7 +165,7 @@ abstract class HillshadeLayer
 
   TransitionOptions get accentColorTransition;
 
-  FutureOr<HillshadeLayer> copyWith({
+  HillshadeLayer copyWith({
     bool visible,
     double minZoom,
     double maxZoom,
@@ -187,7 +187,7 @@ abstract class HillshadeLayer
     TransitionOptions highlightColorTransition,
     TransitionOptions accentColorTransition,
   }) {
-    final HillshadeLayer layer = rebuild((HillshadeLayerBuilder b) {
+    return rebuild((HillshadeLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -228,8 +228,6 @@ abstract class HillshadeLayer
         ..accentColorTransition =
             (accentColorTransition ?? this.accentColorTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

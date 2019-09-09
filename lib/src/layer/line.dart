@@ -282,7 +282,7 @@ abstract class LineLayer
 
   TransitionOptions get patternTransition;
 
-  FutureOr<LineLayer> copyWith({
+  LineLayer copyWith({
     bool visible,
     double minZoom,
     double maxZoom,
@@ -328,7 +328,7 @@ abstract class LineLayer
     TransitionOptions dasharrayTransition,
     TransitionOptions patternTransition,
   }) {
-    final LineLayer layer = rebuild((LineLayerBuilder b) {
+    return rebuild((LineLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -385,8 +385,6 @@ abstract class LineLayer
         ..patternTransition =
             (patternTransition ?? this.patternTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

@@ -190,7 +190,7 @@ abstract class FillExtrusionLayer
 
   TransitionOptions get baseTransition;
 
-  FutureOr<FillExtrusionLayer> copyWith({
+  FillExtrusionLayer copyWith({
     bool visible,
     double minZoom,
     double maxZoom,
@@ -219,7 +219,7 @@ abstract class FillExtrusionLayer
     TransitionOptions heightTransition,
     TransitionOptions baseTransition,
   }) {
-    final FillExtrusionLayer layer = rebuild((FillExtrusionLayerBuilder b) {
+    return rebuild((FillExtrusionLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -259,8 +259,6 @@ abstract class FillExtrusionLayer
             (heightTransition ?? this.heightTransition).toBuilder()
         ..baseTransition = (baseTransition ?? this.baseTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

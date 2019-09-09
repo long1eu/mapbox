@@ -238,7 +238,7 @@ abstract class CircleLayer
 
   TransitionOptions get strokeOpacityTransition;
 
-  FutureOr<CircleLayer> copyWith({
+  CircleLayer copyWith({
     bool visible,
     double minZoom,
     double maxZoom,
@@ -275,7 +275,7 @@ abstract class CircleLayer
     TransitionOptions strokeColorTransition,
     TransitionOptions strokeOpacityTransition,
   }) {
-    final CircleLayer layer = rebuild((CircleLayerBuilder b) {
+    return rebuild((CircleLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -329,8 +329,6 @@ abstract class CircleLayer
             (strokeOpacityTransition ?? this.strokeOpacityTransition)
                 .toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

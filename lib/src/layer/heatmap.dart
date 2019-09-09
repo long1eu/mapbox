@@ -138,7 +138,7 @@ abstract class HeatmapLayer
 
   TransitionOptions get opacityTransition;
 
-  FutureOr<HeatmapLayer> copyWith({
+  HeatmapLayer copyWith({
     bool visible,
     double minZoom,
     double maxZoom,
@@ -158,7 +158,7 @@ abstract class HeatmapLayer
     TransitionOptions intensityTransition,
     TransitionOptions opacityTransition,
   }) {
-    final HeatmapLayer layer = rebuild((HeatmapLayerBuilder b) {
+    return rebuild((HeatmapLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -184,8 +184,6 @@ abstract class HeatmapLayer
         ..opacityTransition =
             (opacityTransition ?? this.opacityTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override

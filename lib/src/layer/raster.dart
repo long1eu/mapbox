@@ -196,7 +196,7 @@ abstract class RasterLayer
 
   TransitionOptions get contrastTransition;
 
-  FutureOr<RasterLayer> copyWith({
+  RasterLayer copyWith({
     String sourceLayer,
     bool visible,
     double minZoom,
@@ -224,7 +224,7 @@ abstract class RasterLayer
     TransitionOptions saturationTransition,
     TransitionOptions contrastTransition,
   }) {
-    final RasterLayer layer = rebuild((RasterLayerBuilder b) {
+    return rebuild((RasterLayerBuilder b) {
       return b
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
@@ -266,8 +266,6 @@ abstract class RasterLayer
         ..contrastTransition =
             (contrastTransition ?? this.contrastTransition).toBuilder();
     });
-    if (!isAttached || this == layer) return layer;
-    return _update(layer);
   }
 
   @override
