@@ -3,8 +3,6 @@ package com.tophap.mapbox_gl
 import android.content.Context
 import android.content.pm.PackageManager
 import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.maps.MapView
-import com.mapbox.mapboxsdk.utils.ThreadUtils
 import com.tophap.mapbox_gl.proto.Layers
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel

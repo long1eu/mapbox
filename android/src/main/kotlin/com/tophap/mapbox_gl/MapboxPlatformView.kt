@@ -30,7 +30,11 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
 
-class MapboxPlatformView(private val context: Context, private val options: Options, private val channel: MethodChannel, private val viewId: Long, val lookupKeyForAsset: (String, String?) -> String) :
+class MapboxPlatformView(private val context: Context,
+                         private val options: Options,
+                         private val channel: MethodChannel,
+                         private val viewId: Long,
+                         val lookupKeyForAsset: (String, String?) -> String) :
         PlatformView,
         Application.ActivityLifecycleCallbacks,
         ComponentCallbacks,
@@ -89,7 +93,9 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
         builder.maxZoom = mapboxMap.maxZoomLevel
         builder.camera = mapboxMap.cameraProto()
         builder.style = style.toProto()
-        builder.paddingList.addAll(mapboxMap.padding.toList())
+        for (i in mapboxMap.padding) {
+            builder.paddingList.add(i)
+        }
 
         channel.invokeMethod("mapReady", builder.build().toByteArray())
     }
@@ -167,7 +173,11 @@ class MapboxPlatformView(private val context: Context, private val options: Opti
             }
             "map#getCameraForLatLngBounds" -> {
                 val cameraForLatLngBounds = Operations.GetCameraForLatLngBounds.parseFrom(call.arguments as ByteArray)
-                val camera = mapboxMap.getCameraForLatLngBounds(cameraForLatLngBounds.bounds.fieldValue(), cameraForLatLngBounds.paddingList.toIntArray(), cameraForLatLngBounds.bearing, cameraForLatLngBounds.tilt)
+                val camera = mapboxMap.getCameraForLatLngBounds(
+                        cameraForLatLngBounds.bounds.fieldValue(),
+                        cameraForLatLngBounds.paddingList.toIntArray(),
+                        cameraForLatLngBounds.bearing,
+                        cameraForLatLngBounds.tilt)
                 result.success(camera?.toProto(cameraForLatLngBounds.bounds.fieldValue())?.toByteArray())
             }
             "map#snapshot" -> {

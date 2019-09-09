@@ -49,17 +49,17 @@ message LatLng {
 }
 
 message LatLngQuad {
-  LatLng topLeft = 1;
-  LatLng topRight = 2;
-  LatLng bottomRight = 3;
-  LatLng bottomLeft = 4;
+  LatLng top_left = 1;
+  LatLng top_right = 2;
+  LatLng bottom_right = 3;
+  LatLng bottom_left = 4;
 }
 
 message LatLngBounds {
-  double latitudeNorth = 1;
-  double latitudeSouth = 2;
-  double longitudeEast = 3;
-  double longitudeWest = 4;
+  double north = 1;
+  double south = 2;
+  double east = 3;
+  double west = 4;
 }
 
 message Color {

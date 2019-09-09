@@ -1,16 +1,19 @@
 ///
 //  Generated code. Do not modify.
 //  source: google/protobuf/wrappers.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
-import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, override, pragma, String;
+import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart';
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class DoubleValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DoubleValue', package: const $pb.PackageName('google.protobuf'))
+import 'package:protobuf/src/protobuf/mixins/well_known.dart' as $mixin;
+
+class DoubleValue extends $pb.GeneratedMessage with $mixin.DoubleValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('DoubleValue', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.DoubleValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.DoubleValueMixin.fromProto3JsonHelper)
     ..a<$core.double>(1, 'value', $pb.PbFieldType.OD)
     ..hasRequiredFields = false
   ;
@@ -35,8 +38,8 @@ class DoubleValue extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class FloatValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FloatValue', package: const $pb.PackageName('google.protobuf'))
+class FloatValue extends $pb.GeneratedMessage with $mixin.FloatValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FloatValue', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.FloatValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.FloatValueMixin.fromProto3JsonHelper)
     ..a<$core.double>(1, 'value', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
@@ -61,8 +64,8 @@ class FloatValue extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class Int64Value extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Int64Value', package: const $pb.PackageName('google.protobuf'))
+class Int64Value extends $pb.GeneratedMessage with $mixin.Int64ValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Int64Value', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.Int64ValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.Int64ValueMixin.fromProto3JsonHelper)
     ..aInt64(1, 'value')
     ..hasRequiredFields = false
   ;
@@ -87,9 +90,9 @@ class Int64Value extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class UInt64Value extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UInt64Value', package: const $pb.PackageName('google.protobuf'))
-    ..a<Int64>(1, 'value', $pb.PbFieldType.OU6, Int64.ZERO)
+class UInt64Value extends $pb.GeneratedMessage with $mixin.UInt64ValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UInt64Value', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.UInt64ValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.UInt64ValueMixin.fromProto3JsonHelper)
+    ..a<Int64>(1, 'value', $pb.PbFieldType.OU6, defaultOrMaker: Int64.ZERO)
     ..hasRequiredFields = false
   ;
 
@@ -113,8 +116,8 @@ class UInt64Value extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class Int32Value extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Int32Value', package: const $pb.PackageName('google.protobuf'))
+class Int32Value extends $pb.GeneratedMessage with $mixin.Int32ValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Int32Value', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.Int32ValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.Int32ValueMixin.fromProto3JsonHelper)
     ..a<$core.int>(1, 'value', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
@@ -139,8 +142,8 @@ class Int32Value extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class UInt32Value extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UInt32Value', package: const $pb.PackageName('google.protobuf'))
+class UInt32Value extends $pb.GeneratedMessage with $mixin.UInt32ValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('UInt32Value', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.UInt32ValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.UInt32ValueMixin.fromProto3JsonHelper)
     ..a<$core.int>(1, 'value', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
@@ -165,8 +168,8 @@ class UInt32Value extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class BoolValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('BoolValue', package: const $pb.PackageName('google.protobuf'))
+class BoolValue extends $pb.GeneratedMessage with $mixin.BoolValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('BoolValue', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.BoolValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.BoolValueMixin.fromProto3JsonHelper)
     ..aOB(1, 'value')
     ..hasRequiredFields = false
   ;
@@ -191,8 +194,8 @@ class BoolValue extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class StringValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('StringValue', package: const $pb.PackageName('google.protobuf'))
+class StringValue extends $pb.GeneratedMessage with $mixin.StringValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('StringValue', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.StringValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.StringValueMixin.fromProto3JsonHelper)
     ..aOS(1, 'value')
     ..hasRequiredFields = false
   ;
@@ -217,8 +220,8 @@ class StringValue extends $pb.GeneratedMessage {
   void clearValue() => clearField(1);
 }
 
-class BytesValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('BytesValue', package: const $pb.PackageName('google.protobuf'))
+class BytesValue extends $pb.GeneratedMessage with $mixin.BytesValueMixin {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('BytesValue', package: const $pb.PackageName('google.protobuf'), createEmptyInstance: create, toProto3Json: $mixin.BytesValueMixin.toProto3JsonHelper, fromProto3Json: $mixin.BytesValueMixin.fromProto3JsonHelper)
     ..a<$core.List<$core.int>>(1, 'value', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
   ;

@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:mapbox_gl_example/main.dart';
+import '../main.dart';
 
 class BathymetryPage extends StatefulWidget {
   const BathymetryPage({Key key}) : super(key: key);
@@ -36,10 +36,10 @@ class _BathymetryPageState extends State<BathymetryPage> {
 
   Future<void> onMapReady(MapController controller) async {
     await controller.setLatLngBoundsForCameraTarget(LatLngBounds(
-      latitudeNorth: 44.935944,
-      latitudeSouth: 44.931691,
-      longitudeEast: -85.668554,
-      longitudeWest: -85.676279,
+      north: 44.935944,
+      south: 44.931691,
+      east: -85.668554,
+      west: -85.676279,
     ));
 
     if (controller.style.getLayer('water-label') != null) {

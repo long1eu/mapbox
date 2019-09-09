@@ -1,32 +1,33 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:mapbox_gl_example/src/add_rain_fall_style_page.dart';
-import 'package:mapbox_gl_example/src/add_wms_source_page.dart';
-import 'package:mapbox_gl_example/src/adjust_layer_opacity.dart';
-import 'package:mapbox_gl_example/src/animated_marker.dart';
-import 'package:mapbox_gl_example/src/bathymetry_page.dart';
-import 'package:mapbox_gl_example/src/circle_layer_clustering_page.dart';
-import 'package:mapbox_gl_example/src/circle_radius_page.dart';
-import 'package:mapbox_gl_example/src/click_to_add_image_page.dart';
-import 'package:mapbox_gl_example/src/color_switcher.dart';
-import 'package:mapbox_gl_example/src/draw_geojson_line_page.dart';
-import 'package:mapbox_gl_example/src/geojson_layer_in_stack_page.dart';
-import 'package:mapbox_gl_example/src/heatmap_page.dart';
-import 'package:mapbox_gl_example/src/hillshade_layer_page.dart';
-import 'package:mapbox_gl_example/src/image_source_time_lapse_page.dart';
-import 'package:mapbox_gl_example/src/language_switch.dart';
-import 'package:mapbox_gl_example/src/line_gradient_page.dart';
-import 'package:mapbox_gl_example/src/line_layer_page.dart';
-import 'package:mapbox_gl_example/src/move_camera.dart';
-import 'package:mapbox_gl_example/src/multiple_geometries_page.dart';
-import 'package:mapbox_gl_example/src/multiple_heatmap_styling_page.dart';
-import 'package:mapbox_gl_example/src/polygon_holes_page.dart';
-import 'package:mapbox_gl_example/src/scrolling_map.dart';
-import 'package:mapbox_gl_example/src/space_station_location.dart';
-import 'package:mapbox_gl_example/src/style_from_file_page.dart';
-import 'package:mapbox_gl_example/src/vector_source.dart';
-import 'package:mapbox_gl_example/src/zoom_dependent_fill_color_page.dart';
+
+import './src/add_rain_fall_style_page.dart';
+import './src/add_wms_source_page.dart';
+import './src/adjust_layer_opacity.dart';
+import './src/animated_marker.dart';
+import './src/bathymetry_page.dart';
+import './src/circle_layer_clustering_page.dart';
+import './src/circle_radius_page.dart';
+import './src/click_to_add_image_page.dart';
+import './src/color_switcher.dart';
+import './src/draw_geojson_line_page.dart';
+import './src/geojson_layer_in_stack_page.dart';
+import './src/heatmap_page.dart';
+import './src/hillshade_layer_page.dart';
+import './src/image_source_time_lapse_page.dart';
+import './src/language_switch.dart';
+import './src/line_gradient_page.dart';
+import './src/line_layer_page.dart';
+import './src/move_camera.dart';
+import './src/multiple_geometries_page.dart';
+import './src/multiple_heatmap_styling_page.dart';
+import './src/polygon_holes_page.dart';
+import './src/scrolling_map.dart';
+import './src/space_station_location.dart';
+import './src/style_from_file_page.dart';
+import './src/vector_source.dart';
+import './src/zoom_dependent_fill_color_page.dart';
 
 void main() => runApp(MapsDemo());
 
@@ -101,7 +102,7 @@ class MapsDemo extends StatelessWidget {
             if (i == 0) {
               return Container();
             } else if (pages[i].category != pages[i + 1].category) {
-              return Divider();
+              return const Divider();
             }
 
             return Container();

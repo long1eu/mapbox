@@ -466,6 +466,13 @@ public final class Util {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FormattedSection();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -510,9 +517,9 @@ public final class Util {
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 fontStack_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               fontStack_.add(s);
               break;
@@ -545,7 +552,7 @@ public final class Util {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           fontStack_ = fontStack_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
@@ -565,7 +572,6 @@ public final class Util {
               com.tophap.mapbox_gl.proto.Util.FormattedSection.class, com.tophap.mapbox_gl.proto.Util.FormattedSection.Builder.class);
     }
 
-    private int bitField0_;
     public static final int TEXT_FIELD_NUMBER = 1;
     private volatile java.lang.Object text_;
     /**
@@ -921,7 +927,7 @@ public final class Util {
           fontScaleBuilder_ = null;
         }
         fontStack_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (textColorBuilder_ == null) {
           textColor_ = null;
         } else {
@@ -955,16 +961,15 @@ public final class Util {
       public com.tophap.mapbox_gl.proto.Util.FormattedSection buildPartial() {
         com.tophap.mapbox_gl.proto.Util.FormattedSection result = new com.tophap.mapbox_gl.proto.Util.FormattedSection(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.text_ = text_;
         if (fontScaleBuilder_ == null) {
           result.fontScale_ = fontScale_;
         } else {
           result.fontScale_ = fontScaleBuilder_.build();
         }
-        if (((bitField0_ & 0x00000004) != 0)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           fontStack_ = fontStack_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.fontStack_ = fontStack_;
         if (textColorBuilder_ == null) {
@@ -972,7 +977,6 @@ public final class Util {
         } else {
           result.textColor_ = textColorBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1031,7 +1035,7 @@ public final class Util {
         if (!other.fontStack_.isEmpty()) {
           if (fontStack_.isEmpty()) {
             fontStack_ = other.fontStack_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureFontStackIsMutable();
             fontStack_.addAll(other.fontStack_);
@@ -1259,9 +1263,9 @@ public final class Util {
 
       private com.google.protobuf.LazyStringList fontStack_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureFontStackIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           fontStack_ = new com.google.protobuf.LazyStringArrayList(fontStack_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000001;
          }
       }
       /**
@@ -1332,7 +1336,7 @@ public final class Util {
        */
       public Builder clearFontStack() {
         fontStack_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -1555,6 +1559,13 @@ public final class Util {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TransitionOptions();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1567,7 +1578,6 @@ public final class Util {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2156,6 +2166,13 @@ public final class Util {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LatLng();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2168,7 +2185,6 @@ public final class Util {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2730,54 +2746,54 @@ public final class Util {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
      */
     boolean hasTopLeft();
     /**
-     * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLng getTopLeft();
     /**
-     * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getTopLeftOrBuilder();
 
     /**
-     * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
      */
     boolean hasTopRight();
     /**
-     * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLng getTopRight();
     /**
-     * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getTopRightOrBuilder();
 
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
      */
     boolean hasBottomRight();
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLng getBottomRight();
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getBottomRightOrBuilder();
 
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
      */
     boolean hasBottomLeft();
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLng getBottomLeft();
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
      */
     com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getBottomLeftOrBuilder();
   }
@@ -2797,6 +2813,13 @@ public final class Util {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LatLngQuad();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2809,7 +2832,6 @@ public final class Util {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2904,85 +2926,85 @@ public final class Util {
               com.tophap.mapbox_gl.proto.Util.LatLngQuad.class, com.tophap.mapbox_gl.proto.Util.LatLngQuad.Builder.class);
     }
 
-    public static final int TOPLEFT_FIELD_NUMBER = 1;
+    public static final int TOP_LEFT_FIELD_NUMBER = 1;
     private com.tophap.mapbox_gl.proto.Util.LatLng topLeft_;
     /**
-     * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
      */
     public boolean hasTopLeft() {
       return topLeft_ != null;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLng getTopLeft() {
       return topLeft_ == null ? com.tophap.mapbox_gl.proto.Util.LatLng.getDefaultInstance() : topLeft_;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getTopLeftOrBuilder() {
       return getTopLeft();
     }
 
-    public static final int TOPRIGHT_FIELD_NUMBER = 2;
+    public static final int TOP_RIGHT_FIELD_NUMBER = 2;
     private com.tophap.mapbox_gl.proto.Util.LatLng topRight_;
     /**
-     * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
      */
     public boolean hasTopRight() {
       return topRight_ != null;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLng getTopRight() {
       return topRight_ == null ? com.tophap.mapbox_gl.proto.Util.LatLng.getDefaultInstance() : topRight_;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+     * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getTopRightOrBuilder() {
       return getTopRight();
     }
 
-    public static final int BOTTOMRIGHT_FIELD_NUMBER = 3;
+    public static final int BOTTOM_RIGHT_FIELD_NUMBER = 3;
     private com.tophap.mapbox_gl.proto.Util.LatLng bottomRight_;
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
      */
     public boolean hasBottomRight() {
       return bottomRight_ != null;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLng getBottomRight() {
       return bottomRight_ == null ? com.tophap.mapbox_gl.proto.Util.LatLng.getDefaultInstance() : bottomRight_;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getBottomRightOrBuilder() {
       return getBottomRight();
     }
 
-    public static final int BOTTOMLEFT_FIELD_NUMBER = 4;
+    public static final int BOTTOM_LEFT_FIELD_NUMBER = 4;
     private com.tophap.mapbox_gl.proto.Util.LatLng bottomLeft_;
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
      */
     public boolean hasBottomLeft() {
       return bottomLeft_ != null;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLng getBottomLeft() {
       return bottomLeft_ == null ? com.tophap.mapbox_gl.proto.Util.LatLng.getDefaultInstance() : bottomLeft_;
     }
     /**
-     * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+     * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
      */
     public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getBottomLeftOrBuilder() {
       return getBottomLeft();
@@ -3086,19 +3108,19 @@ public final class Util {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       if (hasTopLeft()) {
-        hash = (37 * hash) + TOPLEFT_FIELD_NUMBER;
+        hash = (37 * hash) + TOP_LEFT_FIELD_NUMBER;
         hash = (53 * hash) + getTopLeft().hashCode();
       }
       if (hasTopRight()) {
-        hash = (37 * hash) + TOPRIGHT_FIELD_NUMBER;
+        hash = (37 * hash) + TOP_RIGHT_FIELD_NUMBER;
         hash = (53 * hash) + getTopRight().hashCode();
       }
       if (hasBottomRight()) {
-        hash = (37 * hash) + BOTTOMRIGHT_FIELD_NUMBER;
+        hash = (37 * hash) + BOTTOM_RIGHT_FIELD_NUMBER;
         hash = (53 * hash) + getBottomRight().hashCode();
       }
       if (hasBottomLeft()) {
-        hash = (37 * hash) + BOTTOMLEFT_FIELD_NUMBER;
+        hash = (37 * hash) + BOTTOM_LEFT_FIELD_NUMBER;
         hash = (53 * hash) + getBottomLeft().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -3397,13 +3419,13 @@ public final class Util {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> topLeftBuilder_;
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public boolean hasTopLeft() {
         return topLeftBuilder_ != null || topLeft_ != null;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng getTopLeft() {
         if (topLeftBuilder_ == null) {
@@ -3413,7 +3435,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public Builder setTopLeft(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (topLeftBuilder_ == null) {
@@ -3429,7 +3451,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public Builder setTopLeft(
           com.tophap.mapbox_gl.proto.Util.LatLng.Builder builderForValue) {
@@ -3443,7 +3465,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public Builder mergeTopLeft(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (topLeftBuilder_ == null) {
@@ -3461,7 +3483,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public Builder clearTopLeft() {
         if (topLeftBuilder_ == null) {
@@ -3475,7 +3497,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng.Builder getTopLeftBuilder() {
         
@@ -3483,7 +3505,7 @@ public final class Util {
         return getTopLeftFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getTopLeftOrBuilder() {
         if (topLeftBuilder_ != null) {
@@ -3494,7 +3516,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topLeft = 1;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_left = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> 
@@ -3514,13 +3536,13 @@ public final class Util {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> topRightBuilder_;
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public boolean hasTopRight() {
         return topRightBuilder_ != null || topRight_ != null;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng getTopRight() {
         if (topRightBuilder_ == null) {
@@ -3530,7 +3552,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public Builder setTopRight(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (topRightBuilder_ == null) {
@@ -3546,7 +3568,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public Builder setTopRight(
           com.tophap.mapbox_gl.proto.Util.LatLng.Builder builderForValue) {
@@ -3560,7 +3582,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public Builder mergeTopRight(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (topRightBuilder_ == null) {
@@ -3578,7 +3600,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public Builder clearTopRight() {
         if (topRightBuilder_ == null) {
@@ -3592,7 +3614,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng.Builder getTopRightBuilder() {
         
@@ -3600,7 +3622,7 @@ public final class Util {
         return getTopRightFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getTopRightOrBuilder() {
         if (topRightBuilder_ != null) {
@@ -3611,7 +3633,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng topRight = 2;</code>
+       * <code>.tophap.mapbox_gl.LatLng top_right = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> 
@@ -3631,13 +3653,13 @@ public final class Util {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> bottomRightBuilder_;
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public boolean hasBottomRight() {
         return bottomRightBuilder_ != null || bottomRight_ != null;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng getBottomRight() {
         if (bottomRightBuilder_ == null) {
@@ -3647,7 +3669,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public Builder setBottomRight(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (bottomRightBuilder_ == null) {
@@ -3663,7 +3685,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public Builder setBottomRight(
           com.tophap.mapbox_gl.proto.Util.LatLng.Builder builderForValue) {
@@ -3677,7 +3699,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public Builder mergeBottomRight(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (bottomRightBuilder_ == null) {
@@ -3695,7 +3717,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public Builder clearBottomRight() {
         if (bottomRightBuilder_ == null) {
@@ -3709,7 +3731,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng.Builder getBottomRightBuilder() {
         
@@ -3717,7 +3739,7 @@ public final class Util {
         return getBottomRightFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getBottomRightOrBuilder() {
         if (bottomRightBuilder_ != null) {
@@ -3728,7 +3750,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomRight = 3;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_right = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> 
@@ -3748,13 +3770,13 @@ public final class Util {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> bottomLeftBuilder_;
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public boolean hasBottomLeft() {
         return bottomLeftBuilder_ != null || bottomLeft_ != null;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng getBottomLeft() {
         if (bottomLeftBuilder_ == null) {
@@ -3764,7 +3786,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public Builder setBottomLeft(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (bottomLeftBuilder_ == null) {
@@ -3780,7 +3802,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public Builder setBottomLeft(
           com.tophap.mapbox_gl.proto.Util.LatLng.Builder builderForValue) {
@@ -3794,7 +3816,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public Builder mergeBottomLeft(com.tophap.mapbox_gl.proto.Util.LatLng value) {
         if (bottomLeftBuilder_ == null) {
@@ -3812,7 +3834,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public Builder clearBottomLeft() {
         if (bottomLeftBuilder_ == null) {
@@ -3826,7 +3848,7 @@ public final class Util {
         return this;
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLng.Builder getBottomLeftBuilder() {
         
@@ -3834,7 +3856,7 @@ public final class Util {
         return getBottomLeftFieldBuilder().getBuilder();
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       public com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder getBottomLeftOrBuilder() {
         if (bottomLeftBuilder_ != null) {
@@ -3845,7 +3867,7 @@ public final class Util {
         }
       }
       /**
-       * <code>.tophap.mapbox_gl.LatLng bottomLeft = 4;</code>
+       * <code>.tophap.mapbox_gl.LatLng bottom_left = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.tophap.mapbox_gl.proto.Util.LatLng, com.tophap.mapbox_gl.proto.Util.LatLng.Builder, com.tophap.mapbox_gl.proto.Util.LatLngOrBuilder> 
@@ -3918,24 +3940,24 @@ public final class Util {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>double latitudeNorth = 1;</code>
+     * <code>double north = 1;</code>
      */
-    double getLatitudeNorth();
+    double getNorth();
 
     /**
-     * <code>double latitudeSouth = 2;</code>
+     * <code>double south = 2;</code>
      */
-    double getLatitudeSouth();
+    double getSouth();
 
     /**
-     * <code>double longitudeEast = 3;</code>
+     * <code>double east = 3;</code>
      */
-    double getLongitudeEast();
+    double getEast();
 
     /**
-     * <code>double longitudeWest = 4;</code>
+     * <code>double west = 4;</code>
      */
-    double getLongitudeWest();
+    double getWest();
   }
   /**
    * Protobuf type {@code tophap.mapbox_gl.LatLngBounds}
@@ -3953,6 +3975,13 @@ public final class Util {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LatLngBounds();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -3965,7 +3994,6 @@ public final class Util {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -3978,22 +4006,22 @@ public final class Util {
               break;
             case 9: {
 
-              latitudeNorth_ = input.readDouble();
+              north_ = input.readDouble();
               break;
             }
             case 17: {
 
-              latitudeSouth_ = input.readDouble();
+              south_ = input.readDouble();
               break;
             }
             case 25: {
 
-              longitudeEast_ = input.readDouble();
+              east_ = input.readDouble();
               break;
             }
             case 33: {
 
-              longitudeWest_ = input.readDouble();
+              west_ = input.readDouble();
               break;
             }
             default: {
@@ -4028,40 +4056,40 @@ public final class Util {
               com.tophap.mapbox_gl.proto.Util.LatLngBounds.class, com.tophap.mapbox_gl.proto.Util.LatLngBounds.Builder.class);
     }
 
-    public static final int LATITUDENORTH_FIELD_NUMBER = 1;
-    private double latitudeNorth_;
+    public static final int NORTH_FIELD_NUMBER = 1;
+    private double north_;
     /**
-     * <code>double latitudeNorth = 1;</code>
+     * <code>double north = 1;</code>
      */
-    public double getLatitudeNorth() {
-      return latitudeNorth_;
+    public double getNorth() {
+      return north_;
     }
 
-    public static final int LATITUDESOUTH_FIELD_NUMBER = 2;
-    private double latitudeSouth_;
+    public static final int SOUTH_FIELD_NUMBER = 2;
+    private double south_;
     /**
-     * <code>double latitudeSouth = 2;</code>
+     * <code>double south = 2;</code>
      */
-    public double getLatitudeSouth() {
-      return latitudeSouth_;
+    public double getSouth() {
+      return south_;
     }
 
-    public static final int LONGITUDEEAST_FIELD_NUMBER = 3;
-    private double longitudeEast_;
+    public static final int EAST_FIELD_NUMBER = 3;
+    private double east_;
     /**
-     * <code>double longitudeEast = 3;</code>
+     * <code>double east = 3;</code>
      */
-    public double getLongitudeEast() {
-      return longitudeEast_;
+    public double getEast() {
+      return east_;
     }
 
-    public static final int LONGITUDEWEST_FIELD_NUMBER = 4;
-    private double longitudeWest_;
+    public static final int WEST_FIELD_NUMBER = 4;
+    private double west_;
     /**
-     * <code>double longitudeWest = 4;</code>
+     * <code>double west = 4;</code>
      */
-    public double getLongitudeWest() {
-      return longitudeWest_;
+    public double getWest() {
+      return west_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4078,17 +4106,17 @@ public final class Util {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (latitudeNorth_ != 0D) {
-        output.writeDouble(1, latitudeNorth_);
+      if (north_ != 0D) {
+        output.writeDouble(1, north_);
       }
-      if (latitudeSouth_ != 0D) {
-        output.writeDouble(2, latitudeSouth_);
+      if (south_ != 0D) {
+        output.writeDouble(2, south_);
       }
-      if (longitudeEast_ != 0D) {
-        output.writeDouble(3, longitudeEast_);
+      if (east_ != 0D) {
+        output.writeDouble(3, east_);
       }
-      if (longitudeWest_ != 0D) {
-        output.writeDouble(4, longitudeWest_);
+      if (west_ != 0D) {
+        output.writeDouble(4, west_);
       }
       unknownFields.writeTo(output);
     }
@@ -4099,21 +4127,21 @@ public final class Util {
       if (size != -1) return size;
 
       size = 0;
-      if (latitudeNorth_ != 0D) {
+      if (north_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(1, latitudeNorth_);
+          .computeDoubleSize(1, north_);
       }
-      if (latitudeSouth_ != 0D) {
+      if (south_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, latitudeSouth_);
+          .computeDoubleSize(2, south_);
       }
-      if (longitudeEast_ != 0D) {
+      if (east_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(3, longitudeEast_);
+          .computeDoubleSize(3, east_);
       }
-      if (longitudeWest_ != 0D) {
+      if (west_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(4, longitudeWest_);
+          .computeDoubleSize(4, west_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4130,18 +4158,18 @@ public final class Util {
       }
       com.tophap.mapbox_gl.proto.Util.LatLngBounds other = (com.tophap.mapbox_gl.proto.Util.LatLngBounds) obj;
 
-      if (java.lang.Double.doubleToLongBits(getLatitudeNorth())
+      if (java.lang.Double.doubleToLongBits(getNorth())
           != java.lang.Double.doubleToLongBits(
-              other.getLatitudeNorth())) return false;
-      if (java.lang.Double.doubleToLongBits(getLatitudeSouth())
+              other.getNorth())) return false;
+      if (java.lang.Double.doubleToLongBits(getSouth())
           != java.lang.Double.doubleToLongBits(
-              other.getLatitudeSouth())) return false;
-      if (java.lang.Double.doubleToLongBits(getLongitudeEast())
+              other.getSouth())) return false;
+      if (java.lang.Double.doubleToLongBits(getEast())
           != java.lang.Double.doubleToLongBits(
-              other.getLongitudeEast())) return false;
-      if (java.lang.Double.doubleToLongBits(getLongitudeWest())
+              other.getEast())) return false;
+      if (java.lang.Double.doubleToLongBits(getWest())
           != java.lang.Double.doubleToLongBits(
-              other.getLongitudeWest())) return false;
+              other.getWest())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4153,18 +4181,18 @@ public final class Util {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + LATITUDENORTH_FIELD_NUMBER;
+      hash = (37 * hash) + NORTH_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getLatitudeNorth()));
-      hash = (37 * hash) + LATITUDESOUTH_FIELD_NUMBER;
+          java.lang.Double.doubleToLongBits(getNorth()));
+      hash = (37 * hash) + SOUTH_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getLatitudeSouth()));
-      hash = (37 * hash) + LONGITUDEEAST_FIELD_NUMBER;
+          java.lang.Double.doubleToLongBits(getSouth()));
+      hash = (37 * hash) + EAST_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getLongitudeEast()));
-      hash = (37 * hash) + LONGITUDEWEST_FIELD_NUMBER;
+          java.lang.Double.doubleToLongBits(getEast()));
+      hash = (37 * hash) + WEST_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getLongitudeWest()));
+          java.lang.Double.doubleToLongBits(getWest()));
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4298,13 +4326,13 @@ public final class Util {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        latitudeNorth_ = 0D;
+        north_ = 0D;
 
-        latitudeSouth_ = 0D;
+        south_ = 0D;
 
-        longitudeEast_ = 0D;
+        east_ = 0D;
 
-        longitudeWest_ = 0D;
+        west_ = 0D;
 
         return this;
       }
@@ -4332,10 +4360,10 @@ public final class Util {
       @java.lang.Override
       public com.tophap.mapbox_gl.proto.Util.LatLngBounds buildPartial() {
         com.tophap.mapbox_gl.proto.Util.LatLngBounds result = new com.tophap.mapbox_gl.proto.Util.LatLngBounds(this);
-        result.latitudeNorth_ = latitudeNorth_;
-        result.latitudeSouth_ = latitudeSouth_;
-        result.longitudeEast_ = longitudeEast_;
-        result.longitudeWest_ = longitudeWest_;
+        result.north_ = north_;
+        result.south_ = south_;
+        result.east_ = east_;
+        result.west_ = west_;
         onBuilt();
         return result;
       }
@@ -4384,17 +4412,17 @@ public final class Util {
 
       public Builder mergeFrom(com.tophap.mapbox_gl.proto.Util.LatLngBounds other) {
         if (other == com.tophap.mapbox_gl.proto.Util.LatLngBounds.getDefaultInstance()) return this;
-        if (other.getLatitudeNorth() != 0D) {
-          setLatitudeNorth(other.getLatitudeNorth());
+        if (other.getNorth() != 0D) {
+          setNorth(other.getNorth());
         }
-        if (other.getLatitudeSouth() != 0D) {
-          setLatitudeSouth(other.getLatitudeSouth());
+        if (other.getSouth() != 0D) {
+          setSouth(other.getSouth());
         }
-        if (other.getLongitudeEast() != 0D) {
-          setLongitudeEast(other.getLongitudeEast());
+        if (other.getEast() != 0D) {
+          setEast(other.getEast());
         }
-        if (other.getLongitudeWest() != 0D) {
-          setLongitudeWest(other.getLongitudeWest());
+        if (other.getWest() != 0D) {
+          setWest(other.getWest());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4425,106 +4453,106 @@ public final class Util {
         return this;
       }
 
-      private double latitudeNorth_ ;
+      private double north_ ;
       /**
-       * <code>double latitudeNorth = 1;</code>
+       * <code>double north = 1;</code>
        */
-      public double getLatitudeNorth() {
-        return latitudeNorth_;
+      public double getNorth() {
+        return north_;
       }
       /**
-       * <code>double latitudeNorth = 1;</code>
+       * <code>double north = 1;</code>
        */
-      public Builder setLatitudeNorth(double value) {
+      public Builder setNorth(double value) {
         
-        latitudeNorth_ = value;
+        north_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double latitudeNorth = 1;</code>
+       * <code>double north = 1;</code>
        */
-      public Builder clearLatitudeNorth() {
+      public Builder clearNorth() {
         
-        latitudeNorth_ = 0D;
-        onChanged();
-        return this;
-      }
-
-      private double latitudeSouth_ ;
-      /**
-       * <code>double latitudeSouth = 2;</code>
-       */
-      public double getLatitudeSouth() {
-        return latitudeSouth_;
-      }
-      /**
-       * <code>double latitudeSouth = 2;</code>
-       */
-      public Builder setLatitudeSouth(double value) {
-        
-        latitudeSouth_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double latitudeSouth = 2;</code>
-       */
-      public Builder clearLatitudeSouth() {
-        
-        latitudeSouth_ = 0D;
+        north_ = 0D;
         onChanged();
         return this;
       }
 
-      private double longitudeEast_ ;
+      private double south_ ;
       /**
-       * <code>double longitudeEast = 3;</code>
+       * <code>double south = 2;</code>
        */
-      public double getLongitudeEast() {
-        return longitudeEast_;
+      public double getSouth() {
+        return south_;
       }
       /**
-       * <code>double longitudeEast = 3;</code>
+       * <code>double south = 2;</code>
        */
-      public Builder setLongitudeEast(double value) {
+      public Builder setSouth(double value) {
         
-        longitudeEast_ = value;
+        south_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double longitudeEast = 3;</code>
+       * <code>double south = 2;</code>
        */
-      public Builder clearLongitudeEast() {
+      public Builder clearSouth() {
         
-        longitudeEast_ = 0D;
+        south_ = 0D;
         onChanged();
         return this;
       }
 
-      private double longitudeWest_ ;
+      private double east_ ;
       /**
-       * <code>double longitudeWest = 4;</code>
+       * <code>double east = 3;</code>
        */
-      public double getLongitudeWest() {
-        return longitudeWest_;
+      public double getEast() {
+        return east_;
       }
       /**
-       * <code>double longitudeWest = 4;</code>
+       * <code>double east = 3;</code>
        */
-      public Builder setLongitudeWest(double value) {
+      public Builder setEast(double value) {
         
-        longitudeWest_ = value;
+        east_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>double longitudeWest = 4;</code>
+       * <code>double east = 3;</code>
        */
-      public Builder clearLongitudeWest() {
+      public Builder clearEast() {
         
-        longitudeWest_ = 0D;
+        east_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double west_ ;
+      /**
+       * <code>double west = 4;</code>
+       */
+      public double getWest() {
+        return west_;
+      }
+      /**
+       * <code>double west = 4;</code>
+       */
+      public Builder setWest(double value) {
+        
+        west_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double west = 4;</code>
+       */
+      public Builder clearWest() {
+        
+        west_ = 0D;
         onChanged();
         return this;
       }
@@ -4631,6 +4659,13 @@ public final class Util {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Color();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -4643,7 +4678,6 @@ public final class Util {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5416,41 +5450,32 @@ public final class Util {
       "ation\030\001 \001(\003\022\r\n\005delay\030\002 \001(\003\022$\n\034enable_pla" +
       "cement_transitions\030\003 \001(\010\"?\n\006LatLng\022\020\n\010la" +
       "titude\030\001 \001(\001\022\021\n\tlongitude\030\002 \001(\001\022\020\n\010altit" +
-      "ude\030\003 \001(\001\"\300\001\n\nLatLngQuad\022)\n\007topLeft\030\001 \001(" +
-      "\0132\030.tophap.mapbox_gl.LatLng\022*\n\010topRight\030" +
-      "\002 \001(\0132\030.tophap.mapbox_gl.LatLng\022-\n\013botto" +
-      "mRight\030\003 \001(\0132\030.tophap.mapbox_gl.LatLng\022," +
-      "\n\nbottomLeft\030\004 \001(\0132\030.tophap.mapbox_gl.La" +
-      "tLng\"j\n\014LatLngBounds\022\025\n\rlatitudeNorth\030\001 " +
-      "\001(\001\022\025\n\rlatitudeSouth\030\002 \001(\001\022\025\n\rlongitudeE" +
-      "ast\030\003 \001(\001\022\025\n\rlongitudeWest\030\004 \001(\001\"d\n\005Colo" +
-      "r\022\013\n\003red\030\001 \001(\005\022\r\n\005green\030\002 \001(\005\022\014\n\004blue\030\003 " +
-      "\001(\005\022\r\n\005alpha\030\004 \001(\005\022\017\n\007opacity\030\005 \001(\002\022\021\n\th" +
-      "as_color\030\006 \001(\010*R\n\020OrnamentPosition\022\014\n\010TO" +
-      "P_LEFT\020\000\022\r\n\tTOP_RIGHT\020\001\022\017\n\013BOTTOM_LEFT\020\002" +
-      "\022\020\n\014BOTTOM_RIGHT\020\003*(\n\017TranslateAnchor\022\007\n" +
-      "\003MAP\020\000\022\014\n\010VIEWPORT\020\001*\327\001\n\016PositionAnchor\022" +
-      "\023\n\017POSITION_CENTER\020\000\022\021\n\rPOSITION_LEFT\020\001\022" +
-      "\022\n\016POSITION_RIGHT\020\002\022\020\n\014POSITION_TOP\020\003\022\023\n" +
-      "\017POSITION_BOTTOM\020\004\022\025\n\021POSITION_TOP_LEFT\020" +
-      "\005\022\026\n\022POSITION_TOP_RIGHT\020\006\022\030\n\024POSITION_BO" +
-      "TTOM_LEFT\020\007\022\031\n\025POSITION_BOTTOM_RIGHT\020\010B\"" +
-      "\n\032com.tophap.mapbox_gl.protoB\004Utilb\006prot" +
-      "o3"
+      "ude\030\003 \001(\001\"\304\001\n\nLatLngQuad\022*\n\010top_left\030\001 \001" +
+      "(\0132\030.tophap.mapbox_gl.LatLng\022+\n\ttop_righ" +
+      "t\030\002 \001(\0132\030.tophap.mapbox_gl.LatLng\022.\n\014bot" +
+      "tom_right\030\003 \001(\0132\030.tophap.mapbox_gl.LatLn" +
+      "g\022-\n\013bottom_left\030\004 \001(\0132\030.tophap.mapbox_g" +
+      "l.LatLng\"H\n\014LatLngBounds\022\r\n\005north\030\001 \001(\001\022" +
+      "\r\n\005south\030\002 \001(\001\022\014\n\004east\030\003 \001(\001\022\014\n\004west\030\004 \001" +
+      "(\001\"d\n\005Color\022\013\n\003red\030\001 \001(\005\022\r\n\005green\030\002 \001(\005\022" +
+      "\014\n\004blue\030\003 \001(\005\022\r\n\005alpha\030\004 \001(\005\022\017\n\007opacity\030" +
+      "\005 \001(\002\022\021\n\thas_color\030\006 \001(\010*R\n\020OrnamentPosi" +
+      "tion\022\014\n\010TOP_LEFT\020\000\022\r\n\tTOP_RIGHT\020\001\022\017\n\013BOT" +
+      "TOM_LEFT\020\002\022\020\n\014BOTTOM_RIGHT\020\003*(\n\017Translat" +
+      "eAnchor\022\007\n\003MAP\020\000\022\014\n\010VIEWPORT\020\001*\327\001\n\016Posit" +
+      "ionAnchor\022\023\n\017POSITION_CENTER\020\000\022\021\n\rPOSITI" +
+      "ON_LEFT\020\001\022\022\n\016POSITION_RIGHT\020\002\022\020\n\014POSITIO" +
+      "N_TOP\020\003\022\023\n\017POSITION_BOTTOM\020\004\022\025\n\021POSITION" +
+      "_TOP_LEFT\020\005\022\026\n\022POSITION_TOP_RIGHT\020\006\022\030\n\024P" +
+      "OSITION_BOTTOM_LEFT\020\007\022\031\n\025POSITION_BOTTOM" +
+      "_RIGHT\020\010B\"\n\032com.tophap.mapbox_gl.protoB\004" +
+      "Utilb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.WrappersProto.getDescriptor(),
-        }, assigner);
+        });
     internal_static_tophap_mapbox_gl_FormattedSection_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tophap_mapbox_gl_FormattedSection_fieldAccessorTable = new
@@ -5480,7 +5505,7 @@ public final class Util {
     internal_static_tophap_mapbox_gl_LatLngBounds_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_tophap_mapbox_gl_LatLngBounds_descriptor,
-        new java.lang.String[] { "LatitudeNorth", "LatitudeSouth", "LongitudeEast", "LongitudeWest", });
+        new java.lang.String[] { "North", "South", "East", "West", });
     internal_static_tophap_mapbox_gl_Color_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_tophap_mapbox_gl_Color_fieldAccessorTable = new

@@ -5,7 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:mapbox_gl_example/main.dart';
+import '../main.dart';
 
 class VectorSourcePage extends StatelessWidget {
   const VectorSourcePage({Key key}) : super(key: key);

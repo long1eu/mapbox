@@ -4,14 +4,13 @@
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:http/http.dart';
-import 'package:mapbox_gl_example/main.dart';
+
+import '../main.dart';
 
 class SpaceStationLocationPage extends StatefulWidget {
   const SpaceStationLocationPage({Key key}) : super(key: key);

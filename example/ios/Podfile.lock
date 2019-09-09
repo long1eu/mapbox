@@ -4,15 +4,12 @@ PODS:
     - Flutter
     - Mapbox-iOS-SDK
     - SwiftProtobuf (~> 1.0)
-  - image_picker (0.0.1):
-    - Flutter
   - Mapbox-iOS-SDK (5.2.0)
   - SwiftProtobuf (1.6.0)
 
 DEPENDENCIES:
   - Flutter (from `.symlinks/flutter/ios`)
   - flutter_mapbox_gl (from `/Users/long1eu/IdeaProjects/mapbox_gl/ios/flutter_mapbox_gl.podspec`)
-  - "image_picker (from `/Users/long1eu/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.1+2/ios/image_picker.podspec`)"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -24,13 +21,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/flutter/ios"
   flutter_mapbox_gl:
     :path: "/Users/long1eu/IdeaProjects/mapbox_gl/ios/flutter_mapbox_gl.podspec"
-  image_picker:
-    :path: "/Users/long1eu/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.1+2/ios/image_picker.podspec"
 
 SPEC CHECKSUMS:
-  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_mapbox_gl: 41fc19667149d011f1e05c900603197ee558bb07
-  image_picker: 16e5fec1fbc87fd3b297c53e4048521eaf17cd06
   Mapbox-iOS-SDK: 3e095b305126d52ba166fe215d847b15b6fbee63
   SwiftProtobuf: e905ca1366405696411aaf174411c4b19c0ef73d
 

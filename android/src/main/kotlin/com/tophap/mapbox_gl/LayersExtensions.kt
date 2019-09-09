@@ -7,16 +7,16 @@ import com.tophap.mapbox_gl.proto.Layers
 fun Layer.toProto(): Layers.Layer {
     val sourceBuilder = Layers.Layer.newBuilder()
     sourceBuilder.id = id
-    when {
-        this is BackgroundLayer -> sourceBuilder.backgroundLayer = toProto()
-        this is CircleLayer -> sourceBuilder.circleLayer = toProto()
-        this is FillLayer -> sourceBuilder.fillLayer = toProto()
-        this is FillExtrusionLayer -> sourceBuilder.fillExtrusionLayer = toProto()
-        this is HeatmapLayer -> sourceBuilder.heatmapLayer = toProto()
-        this is HillshadeLayer -> sourceBuilder.hillshadeLayer = toProto()
-        this is LineLayer -> sourceBuilder.lineLayer = toProto()
-        this is RasterLayer -> sourceBuilder.rasterLayer = toProto()
-        this is SymbolLayer -> sourceBuilder.symbolLayer = toProto()
+    when (this) {
+        is BackgroundLayer -> sourceBuilder.backgroundLayer = toProto()
+        is CircleLayer -> sourceBuilder.circleLayer = toProto()
+        is FillLayer -> sourceBuilder.fillLayer = toProto()
+        is FillExtrusionLayer -> sourceBuilder.fillExtrusionLayer = toProto()
+        is HeatmapLayer -> sourceBuilder.heatmapLayer = toProto()
+        is HillshadeLayer -> sourceBuilder.hillshadeLayer = toProto()
+        is LineLayer -> sourceBuilder.lineLayer = toProto()
+        is RasterLayer -> sourceBuilder.rasterLayer = toProto()
+        is SymbolLayer -> sourceBuilder.symbolLayer = toProto()
         else -> throw IllegalArgumentException("Unknown layer: $this")
     }
     return sourceBuilder.build()
@@ -317,16 +317,16 @@ fun SymbolLayer.toProto(): Layers.Layer.Symbol {
 
 
 fun Layer.update(layer: Layers.Layer) {
-    when {
-        this is BackgroundLayer -> update(layer.backgroundLayer)
-        this is CircleLayer -> update(layer.circleLayer)
-        this is FillLayer -> update(layer.fillLayer)
-        this is FillExtrusionLayer -> update(layer.fillExtrusionLayer)
-        this is HeatmapLayer -> update(layer.heatmapLayer)
-        this is HillshadeLayer -> update(layer.hillshadeLayer)
-        this is LineLayer -> update(layer.lineLayer)
-        this is RasterLayer -> update(layer.rasterLayer)
-        this is SymbolLayer -> update(layer.symbolLayer)
+    when (this) {
+        is BackgroundLayer -> update(layer.backgroundLayer)
+        is CircleLayer -> update(layer.circleLayer)
+        is FillLayer -> update(layer.fillLayer)
+        is FillExtrusionLayer -> update(layer.fillExtrusionLayer)
+        is HeatmapLayer -> update(layer.heatmapLayer)
+        is HillshadeLayer -> update(layer.hillshadeLayer)
+        is LineLayer -> update(layer.lineLayer)
+        is RasterLayer -> update(layer.rasterLayer)
+        is SymbolLayer -> update(layer.symbolLayer)
         else -> throw IllegalArgumentException("Unknown layer type $this")
     }
 }

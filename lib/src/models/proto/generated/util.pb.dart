@@ -1,10 +1,11 @@
 ///
 //  Generated code. Do not modify.
 //  source: util.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
-import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, override, pragma, String;
+import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart';
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -14,11 +15,11 @@ import 'google/protobuf/wrappers.pb.dart' as $0;
 export 'util.pbenum.dart';
 
 class FormattedSection extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FormattedSection', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('FormattedSection', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..aOS(1, 'text')
-    ..a<$0.DoubleValue>(2, 'fontScale', $pb.PbFieldType.OM, $0.DoubleValue.getDefault, $0.DoubleValue.create)
+    ..a<$0.DoubleValue>(2, 'fontScale', $pb.PbFieldType.OM, defaultOrMaker: $0.DoubleValue.getDefault, subBuilder: $0.DoubleValue.create)
     ..pPS(3, 'fontStack')
-    ..a<Color>(4, 'textColor', $pb.PbFieldType.OM, Color.getDefault, Color.create)
+    ..a<Color>(4, 'textColor', $pb.PbFieldType.OM, defaultOrMaker: Color.getDefault, subBuilder: Color.create)
     ..hasRequiredFields = false
   ;
 
@@ -55,7 +56,7 @@ class FormattedSection extends $pb.GeneratedMessage {
 }
 
 class TransitionOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TransitionOptions', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TransitionOptions', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..aInt64(1, 'duration')
     ..aInt64(2, 'delay')
     ..aOB(3, 'enablePlacementTransitions')
@@ -93,7 +94,7 @@ class TransitionOptions extends $pb.GeneratedMessage {
 }
 
 class LatLng extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLng', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLng', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..a<$core.double>(1, 'latitude', $pb.PbFieldType.OD)
     ..a<$core.double>(2, 'longitude', $pb.PbFieldType.OD)
     ..a<$core.double>(3, 'altitude', $pb.PbFieldType.OD)
@@ -131,11 +132,11 @@ class LatLng extends $pb.GeneratedMessage {
 }
 
 class LatLngQuad extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngQuad', package: const $pb.PackageName('tophap.mapbox_gl'))
-    ..a<LatLng>(1, 'topLeft', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
-    ..a<LatLng>(2, 'topRight', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
-    ..a<LatLng>(3, 'bottomRight', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
-    ..a<LatLng>(4, 'bottomLeft', $pb.PbFieldType.OM, LatLng.getDefault, LatLng.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngQuad', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
+    ..a<LatLng>(1, 'topLeft', $pb.PbFieldType.OM, defaultOrMaker: LatLng.getDefault, subBuilder: LatLng.create)
+    ..a<LatLng>(2, 'topRight', $pb.PbFieldType.OM, defaultOrMaker: LatLng.getDefault, subBuilder: LatLng.create)
+    ..a<LatLng>(3, 'bottomRight', $pb.PbFieldType.OM, defaultOrMaker: LatLng.getDefault, subBuilder: LatLng.create)
+    ..a<LatLng>(4, 'bottomLeft', $pb.PbFieldType.OM, defaultOrMaker: LatLng.getDefault, subBuilder: LatLng.create)
     ..hasRequiredFields = false
   ;
 
@@ -175,11 +176,11 @@ class LatLngQuad extends $pb.GeneratedMessage {
 }
 
 class LatLngBounds extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngBounds', package: const $pb.PackageName('tophap.mapbox_gl'))
-    ..a<$core.double>(1, 'latitudeNorth', $pb.PbFieldType.OD)
-    ..a<$core.double>(2, 'latitudeSouth', $pb.PbFieldType.OD)
-    ..a<$core.double>(3, 'longitudeEast', $pb.PbFieldType.OD)
-    ..a<$core.double>(4, 'longitudeWest', $pb.PbFieldType.OD)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('LatLngBounds', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
+    ..a<$core.double>(1, 'north', $pb.PbFieldType.OD)
+    ..a<$core.double>(2, 'south', $pb.PbFieldType.OD)
+    ..a<$core.double>(3, 'east', $pb.PbFieldType.OD)
+    ..a<$core.double>(4, 'west', $pb.PbFieldType.OD)
     ..hasRequiredFields = false
   ;
 
@@ -197,29 +198,29 @@ class LatLngBounds extends $pb.GeneratedMessage {
   static LatLngBounds getDefault() => _defaultInstance ??= create()..freeze();
   static LatLngBounds _defaultInstance;
 
-  $core.double get latitudeNorth => $_getN(0);
-  set latitudeNorth($core.double v) { $_setDouble(0, v); }
-  $core.bool hasLatitudeNorth() => $_has(0);
-  void clearLatitudeNorth() => clearField(1);
+  $core.double get north => $_getN(0);
+  set north($core.double v) { $_setDouble(0, v); }
+  $core.bool hasNorth() => $_has(0);
+  void clearNorth() => clearField(1);
 
-  $core.double get latitudeSouth => $_getN(1);
-  set latitudeSouth($core.double v) { $_setDouble(1, v); }
-  $core.bool hasLatitudeSouth() => $_has(1);
-  void clearLatitudeSouth() => clearField(2);
+  $core.double get south => $_getN(1);
+  set south($core.double v) { $_setDouble(1, v); }
+  $core.bool hasSouth() => $_has(1);
+  void clearSouth() => clearField(2);
 
-  $core.double get longitudeEast => $_getN(2);
-  set longitudeEast($core.double v) { $_setDouble(2, v); }
-  $core.bool hasLongitudeEast() => $_has(2);
-  void clearLongitudeEast() => clearField(3);
+  $core.double get east => $_getN(2);
+  set east($core.double v) { $_setDouble(2, v); }
+  $core.bool hasEast() => $_has(2);
+  void clearEast() => clearField(3);
 
-  $core.double get longitudeWest => $_getN(3);
-  set longitudeWest($core.double v) { $_setDouble(3, v); }
-  $core.bool hasLongitudeWest() => $_has(3);
-  void clearLongitudeWest() => clearField(4);
+  $core.double get west => $_getN(3);
+  set west($core.double v) { $_setDouble(3, v); }
+  $core.bool hasWest() => $_has(3);
+  void clearWest() => clearField(4);
 }
 
 class Color extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Color', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Color', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..a<$core.int>(1, 'red', $pb.PbFieldType.O3)
     ..a<$core.int>(2, 'green', $pb.PbFieldType.O3)
     ..a<$core.int>(3, 'blue', $pb.PbFieldType.O3)

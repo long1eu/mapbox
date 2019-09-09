@@ -132,6 +132,13 @@ public final class Styles {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Style();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -168,18 +175,18 @@ public final class Styles {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 sources_ = new java.util.ArrayList<com.tophap.mapbox_gl.proto.Sources.Source>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               sources_.add(
                   input.readMessage(com.tophap.mapbox_gl.proto.Sources.Source.parser(), extensionRegistry));
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 layers_ = new java.util.ArrayList<com.tophap.mapbox_gl.proto.Layers.Layer>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000002;
               }
               layers_.add(
                   input.readMessage(com.tophap.mapbox_gl.proto.Layers.Layer.parser(), extensionRegistry));
@@ -226,10 +233,10 @@ public final class Styles {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           sources_ = java.util.Collections.unmodifiableList(sources_);
         }
-        if (((mutable_bitField0_ & 0x00000008) != 0)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           layers_ = java.util.Collections.unmodifiableList(layers_);
         }
         this.unknownFields = unknownFields.build();
@@ -501,6 +508,13 @@ public final class Styles {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Light();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -513,7 +527,6 @@ public final class Styles {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -1976,6 +1989,13 @@ public final class Styles {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Position();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -1988,7 +2008,6 @@ public final class Styles {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -2601,6 +2620,13 @@ public final class Styles {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new StyleImage();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -2613,7 +2639,6 @@ public final class Styles {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -3566,6 +3591,13 @@ public final class Styles {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Asset();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -3578,7 +3610,6 @@ public final class Styles {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -4285,6 +4316,13 @@ public final class Styles {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Operations();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -4390,6 +4428,13 @@ public final class Styles {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new Build();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -4402,7 +4447,6 @@ public final class Styles {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -5600,7 +5644,6 @@ public final class Styles {
 
     }
 
-    private int bitField0_;
     public static final int URI_FIELD_NUMBER = 1;
     private volatile java.lang.Object uri_;
     /**
@@ -6049,13 +6092,13 @@ public final class Styles {
 
         if (sourcesBuilder_ == null) {
           sources_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           sourcesBuilder_.clear();
         }
         if (layersBuilder_ == null) {
           layers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           layersBuilder_.clear();
         }
@@ -6098,22 +6141,21 @@ public final class Styles {
       public com.tophap.mapbox_gl.proto.Styles.Style buildPartial() {
         com.tophap.mapbox_gl.proto.Styles.Style result = new com.tophap.mapbox_gl.proto.Styles.Style(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.uri_ = uri_;
         result.json_ = json_;
         if (sourcesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             sources_ = java.util.Collections.unmodifiableList(sources_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.sources_ = sources_;
         } else {
           result.sources_ = sourcesBuilder_.build();
         }
         if (layersBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             layers_ = java.util.Collections.unmodifiableList(layers_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.layers_ = layers_;
         } else {
@@ -6129,7 +6171,6 @@ public final class Styles {
         } else {
           result.light_ = lightBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6190,7 +6231,7 @@ public final class Styles {
           if (!other.sources_.isEmpty()) {
             if (sources_.isEmpty()) {
               sources_ = other.sources_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureSourcesIsMutable();
               sources_.addAll(other.sources_);
@@ -6203,7 +6244,7 @@ public final class Styles {
               sourcesBuilder_.dispose();
               sourcesBuilder_ = null;
               sources_ = other.sources_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
               sourcesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getSourcesFieldBuilder() : null;
@@ -6216,7 +6257,7 @@ public final class Styles {
           if (!other.layers_.isEmpty()) {
             if (layers_.isEmpty()) {
               layers_ = other.layers_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureLayersIsMutable();
               layers_.addAll(other.layers_);
@@ -6229,7 +6270,7 @@ public final class Styles {
               layersBuilder_.dispose();
               layersBuilder_ = null;
               layers_ = other.layers_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000002);
               layersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getLayersFieldBuilder() : null;
@@ -6415,9 +6456,9 @@ public final class Styles {
       private java.util.List<com.tophap.mapbox_gl.proto.Sources.Source> sources_ =
         java.util.Collections.emptyList();
       private void ensureSourcesIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           sources_ = new java.util.ArrayList<com.tophap.mapbox_gl.proto.Sources.Source>(sources_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -6567,7 +6608,7 @@ public final class Styles {
       public Builder clearSources() {
         if (sourcesBuilder_ == null) {
           sources_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           sourcesBuilder_.clear();
@@ -6644,7 +6685,7 @@ public final class Styles {
           sourcesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.tophap.mapbox_gl.proto.Sources.Source, com.tophap.mapbox_gl.proto.Sources.Source.Builder, com.tophap.mapbox_gl.proto.Sources.SourceOrBuilder>(
                   sources_,
-                  ((bitField0_ & 0x00000004) != 0),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           sources_ = null;
@@ -6655,9 +6696,9 @@ public final class Styles {
       private java.util.List<com.tophap.mapbox_gl.proto.Layers.Layer> layers_ =
         java.util.Collections.emptyList();
       private void ensureLayersIsMutable() {
-        if (!((bitField0_ & 0x00000008) != 0)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           layers_ = new java.util.ArrayList<com.tophap.mapbox_gl.proto.Layers.Layer>(layers_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -6807,7 +6848,7 @@ public final class Styles {
       public Builder clearLayers() {
         if (layersBuilder_ == null) {
           layers_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           layersBuilder_.clear();
@@ -6884,7 +6925,7 @@ public final class Styles {
           layersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.tophap.mapbox_gl.proto.Layers.Layer, com.tophap.mapbox_gl.proto.Layers.Layer.Builder, com.tophap.mapbox_gl.proto.Layers.LayerOrBuilder>(
                   layers_,
-                  ((bitField0_ & 0x00000008) != 0),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           layers_ = null;
@@ -7255,22 +7296,14 @@ public final class Styles {
       "TRAFFIC_DAY\020\006\022\021\n\rTRAFFIC_NIGHT\020\007B$\n\032com." +
       "tophap.mapbox_gl.protoB\006Stylesb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.WrappersProto.getDescriptor(),
           com.tophap.mapbox_gl.proto.Layers.getDescriptor(),
           com.tophap.mapbox_gl.proto.Sources.getDescriptor(),
           com.tophap.mapbox_gl.proto.Util.getDescriptor(),
-        }, assigner);
+        });
     internal_static_tophap_mapbox_gl_Style_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tophap_mapbox_gl_Style_fieldAccessorTable = new

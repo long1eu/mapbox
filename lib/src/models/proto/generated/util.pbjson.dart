@@ -1,8 +1,9 @@
 ///
 //  Generated code. Do not modify.
 //  source: util.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
 const OrnamentPosition$json = const {
   '1': 'OrnamentPosition',
@@ -68,20 +69,20 @@ const LatLng$json = const {
 const LatLngQuad$json = const {
   '1': 'LatLngQuad',
   '2': const [
-    const {'1': 'topLeft', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topLeft'},
-    const {'1': 'topRight', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topRight'},
-    const {'1': 'bottomRight', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomRight'},
-    const {'1': 'bottomLeft', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomLeft'},
+    const {'1': 'top_left', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topLeft'},
+    const {'1': 'top_right', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topRight'},
+    const {'1': 'bottom_right', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomRight'},
+    const {'1': 'bottom_left', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomLeft'},
   ],
 };
 
 const LatLngBounds$json = const {
   '1': 'LatLngBounds',
   '2': const [
-    const {'1': 'latitudeNorth', '3': 1, '4': 1, '5': 1, '10': 'latitudeNorth'},
-    const {'1': 'latitudeSouth', '3': 2, '4': 1, '5': 1, '10': 'latitudeSouth'},
-    const {'1': 'longitudeEast', '3': 3, '4': 1, '5': 1, '10': 'longitudeEast'},
-    const {'1': 'longitudeWest', '3': 4, '4': 1, '5': 1, '10': 'longitudeWest'},
+    const {'1': 'north', '3': 1, '4': 1, '5': 1, '10': 'north'},
+    const {'1': 'south', '3': 2, '4': 1, '5': 1, '10': 'south'},
+    const {'1': 'east', '3': 3, '4': 1, '5': 1, '10': 'east'},
+    const {'1': 'west', '3': 4, '4': 1, '5': 1, '10': 'west'},
   ],
 };
 

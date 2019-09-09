@@ -91,10 +91,10 @@ abstract class TileSet implements Built<TileSet, TileSetBuilder> {
           ..minZoom = proto.minZoom
           ..maxZoom = proto.maxZoom
           ..bounds = LatLngBounds(
-            longitudeWest: proto.bounds[0],
-            latitudeSouth: proto.bounds[1],
-            longitudeEast: proto.bounds[2],
-            latitudeNorth: proto.bounds[3],
+            west: proto.bounds[0],
+            south: proto.bounds[1],
+            east: proto.bounds[2],
+            north: proto.bounds[3],
           ).toBuilder()
           ..center = proto.center.isNotEmpty
               ? LatLng(
@@ -163,10 +163,10 @@ abstract class TileSet implements Built<TileSet, TileSetBuilder> {
       ..minZoom = minZoom
       ..maxZoom = maxZoom
       ..bounds.addAll(<double>[
-        bounds.longitudeWest,
-        bounds.latitudeSouth,
-        bounds.longitudeEast,
-        bounds.latitudeNorth
+        bounds.west,
+        bounds.south,
+        bounds.east,
+        bounds.north
       ]);
 
     if (name != null) message.name = name;

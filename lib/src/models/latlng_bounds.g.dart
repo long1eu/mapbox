@@ -19,18 +19,16 @@ class _$LatLngBoundsSerializer implements StructuredSerializer<LatLngBounds> {
   Iterable<Object> serialize(Serializers serializers, LatLngBounds object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'latitudeNorth',
-      serializers.serialize(object.latitudeNorth,
+      'north',
+      serializers.serialize(object.north,
           specifiedType: const FullType(double)),
-      'latitudeSouth',
-      serializers.serialize(object.latitudeSouth,
+      'south',
+      serializers.serialize(object.south,
           specifiedType: const FullType(double)),
-      'longitudeEast',
-      serializers.serialize(object.longitudeEast,
-          specifiedType: const FullType(double)),
-      'longitudeWest',
-      serializers.serialize(object.longitudeWest,
-          specifiedType: const FullType(double)),
+      'east',
+      serializers.serialize(object.east, specifiedType: const FullType(double)),
+      'west',
+      serializers.serialize(object.west, specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -47,20 +45,20 @@ class _$LatLngBoundsSerializer implements StructuredSerializer<LatLngBounds> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'latitudeNorth':
-          result.latitudeNorth = serializers.deserialize(value,
+        case 'north':
+          result.north = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
-        case 'latitudeSouth':
-          result.latitudeSouth = serializers.deserialize(value,
+        case 'south':
+          result.south = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
-        case 'longitudeEast':
-          result.longitudeEast = serializers.deserialize(value,
+        case 'east':
+          result.east = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
-        case 'longitudeWest':
-          result.longitudeWest = serializers.deserialize(value,
+        case 'west':
+          result.west = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
       }
@@ -72,35 +70,30 @@ class _$LatLngBoundsSerializer implements StructuredSerializer<LatLngBounds> {
 
 class _$LatLngBounds extends LatLngBounds {
   @override
-  final double latitudeNorth;
+  final double north;
   @override
-  final double latitudeSouth;
+  final double south;
   @override
-  final double longitudeEast;
+  final double east;
   @override
-  final double longitudeWest;
+  final double west;
   Uint8List __data;
 
   factory _$LatLngBounds([void Function(LatLngBoundsBuilder) updates]) =>
       (new LatLngBoundsBuilder()..update(updates)).build();
 
-  _$LatLngBounds._(
-      {this.latitudeNorth,
-      this.latitudeSouth,
-      this.longitudeEast,
-      this.longitudeWest})
-      : super._() {
-    if (latitudeNorth == null) {
-      throw new BuiltValueNullFieldError('LatLngBounds', 'latitudeNorth');
+  _$LatLngBounds._({this.north, this.south, this.east, this.west}) : super._() {
+    if (north == null) {
+      throw new BuiltValueNullFieldError('LatLngBounds', 'north');
     }
-    if (latitudeSouth == null) {
-      throw new BuiltValueNullFieldError('LatLngBounds', 'latitudeSouth');
+    if (south == null) {
+      throw new BuiltValueNullFieldError('LatLngBounds', 'south');
     }
-    if (longitudeEast == null) {
-      throw new BuiltValueNullFieldError('LatLngBounds', 'longitudeEast');
+    if (east == null) {
+      throw new BuiltValueNullFieldError('LatLngBounds', 'east');
     }
-    if (longitudeWest == null) {
-      throw new BuiltValueNullFieldError('LatLngBounds', 'longitudeWest');
+    if (west == null) {
+      throw new BuiltValueNullFieldError('LatLngBounds', 'west');
     }
   }
 
@@ -118,27 +111,26 @@ class _$LatLngBounds extends LatLngBounds {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is LatLngBounds &&
-        latitudeNorth == other.latitudeNorth &&
-        latitudeSouth == other.latitudeSouth &&
-        longitudeEast == other.longitudeEast &&
-        longitudeWest == other.longitudeWest;
+        north == other.north &&
+        south == other.south &&
+        east == other.east &&
+        west == other.west;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, latitudeNorth.hashCode), latitudeSouth.hashCode),
-            longitudeEast.hashCode),
-        longitudeWest.hashCode));
+        $jc($jc($jc(0, north.hashCode), south.hashCode), east.hashCode),
+        west.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('LatLngBounds')
-          ..add('latitudeNorth', latitudeNorth)
-          ..add('latitudeSouth', latitudeSouth)
-          ..add('longitudeEast', longitudeEast)
-          ..add('longitudeWest', longitudeWest))
+          ..add('north', north)
+          ..add('south', south)
+          ..add('east', east)
+          ..add('west', west))
         .toString();
   }
 }
@@ -147,34 +139,30 @@ class LatLngBoundsBuilder
     implements Builder<LatLngBounds, LatLngBoundsBuilder> {
   _$LatLngBounds _$v;
 
-  double _latitudeNorth;
-  double get latitudeNorth => _$this._latitudeNorth;
-  set latitudeNorth(double latitudeNorth) =>
-      _$this._latitudeNorth = latitudeNorth;
+  double _north;
+  double get north => _$this._north;
+  set north(double north) => _$this._north = north;
 
-  double _latitudeSouth;
-  double get latitudeSouth => _$this._latitudeSouth;
-  set latitudeSouth(double latitudeSouth) =>
-      _$this._latitudeSouth = latitudeSouth;
+  double _south;
+  double get south => _$this._south;
+  set south(double south) => _$this._south = south;
 
-  double _longitudeEast;
-  double get longitudeEast => _$this._longitudeEast;
-  set longitudeEast(double longitudeEast) =>
-      _$this._longitudeEast = longitudeEast;
+  double _east;
+  double get east => _$this._east;
+  set east(double east) => _$this._east = east;
 
-  double _longitudeWest;
-  double get longitudeWest => _$this._longitudeWest;
-  set longitudeWest(double longitudeWest) =>
-      _$this._longitudeWest = longitudeWest;
+  double _west;
+  double get west => _$this._west;
+  set west(double west) => _$this._west = west;
 
   LatLngBoundsBuilder();
 
   LatLngBoundsBuilder get _$this {
     if (_$v != null) {
-      _latitudeNorth = _$v.latitudeNorth;
-      _latitudeSouth = _$v.latitudeSouth;
-      _longitudeEast = _$v.longitudeEast;
-      _longitudeWest = _$v.longitudeWest;
+      _north = _$v.north;
+      _south = _$v.south;
+      _east = _$v.east;
+      _west = _$v.west;
       _$v = null;
     }
     return this;
@@ -197,10 +185,7 @@ class LatLngBoundsBuilder
   _$LatLngBounds build() {
     final _$result = _$v ??
         new _$LatLngBounds._(
-            latitudeNorth: latitudeNorth,
-            latitudeSouth: latitudeSouth,
-            longitudeEast: longitudeEast,
-            longitudeWest: longitudeWest);
+            north: north, south: south, east: east, west: west);
     replace(_$result);
     return _$result;
   }

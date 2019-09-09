@@ -7,7 +7,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:mapbox_gl_example/main.dart';
+import '../main.dart';
 
 final LatLng center = LatLng(latitude: 32.080664, longitude: 34.9563837);
 

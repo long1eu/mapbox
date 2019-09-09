@@ -1,17 +1,18 @@
 ///
 //  Generated code. Do not modify.
 //  source: sources.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
-import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, override, pragma, String;
+import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'util.pb.dart' as $1;
 
 class Source_GeoJson_Options extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson.Options', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson.Options', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..a<$core.int>(1, 'minZoom', $pb.PbFieldType.O3)
     ..a<$core.int>(2, 'maxZoom', $pb.PbFieldType.O3)
     ..a<$core.int>(3, 'buffer', $pb.PbFieldType.O3)
@@ -90,11 +91,11 @@ class Source_GeoJson extends $pb.GeneratedMessage {
     5 : Source_GeoJson_Source.geoJson,
     0 : Source_GeoJson_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.GeoJson', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
-    ..a<Source_GeoJson_Options>(3, 'options', $pb.PbFieldType.OM, Source_GeoJson_Options.getDefault, Source_GeoJson_Options.create)
+    ..a<Source_GeoJson_Options>(3, 'options', $pb.PbFieldType.OM, defaultOrMaker: Source_GeoJson_Options.getDefault, subBuilder: Source_GeoJson_Options.create)
     ..aOS(4, 'uri')
     ..aOS(5, 'geoJson')
     ..hasRequiredFields = false
@@ -155,11 +156,11 @@ class Source_Image extends $pb.GeneratedMessage {
     5 : Source_Image_Source.image,
     0 : Source_Image_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Image', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Image', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
-    ..a<$1.LatLngQuad>(3, 'coordinates', $pb.PbFieldType.OM, $1.LatLngQuad.getDefault, $1.LatLngQuad.create)
+    ..a<$1.LatLngQuad>(3, 'coordinates', $pb.PbFieldType.OM, defaultOrMaker: $1.LatLngQuad.getDefault, subBuilder: $1.LatLngQuad.create)
     ..aOS(4, 'uri')
     ..a<$core.List<$core.int>>(5, 'image', $pb.PbFieldType.OY)
     ..hasRequiredFields = false
@@ -220,13 +221,13 @@ class Source_RasterDem extends $pb.GeneratedMessage {
     5 : Source_RasterDem_Source.tileSet,
     0 : Source_RasterDem_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.RasterDem', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.RasterDem', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
     ..a<$core.int>(3, 'tileSize', $pb.PbFieldType.O3)
     ..aOS(4, 'uri')
-    ..a<Source_TileSet>(5, 'tileSet', $pb.PbFieldType.OM, Source_TileSet.getDefault, Source_TileSet.create)
+    ..a<Source_TileSet>(5, 'tileSet', $pb.PbFieldType.OM, defaultOrMaker: Source_TileSet.getDefault, subBuilder: Source_TileSet.create)
     ..hasRequiredFields = false
   ;
 
@@ -285,13 +286,13 @@ class Source_Raster extends $pb.GeneratedMessage {
     5 : Source_Raster_Source.tileSet,
     0 : Source_Raster_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Raster', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Raster', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [4, 5])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
     ..a<$core.int>(3, 'tileSize', $pb.PbFieldType.O3)
     ..aOS(4, 'uri')
-    ..a<Source_TileSet>(5, 'tileSet', $pb.PbFieldType.OM, Source_TileSet.getDefault, Source_TileSet.create)
+    ..a<Source_TileSet>(5, 'tileSet', $pb.PbFieldType.OM, defaultOrMaker: Source_TileSet.getDefault, subBuilder: Source_TileSet.create)
     ..hasRequiredFields = false
   ;
 
@@ -350,12 +351,12 @@ class Source_Vector extends $pb.GeneratedMessage {
     4 : Source_Vector_Source.tileSet,
     0 : Source_Vector_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Vector', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Vector', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [3, 4])
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
     ..aOS(3, 'uri')
-    ..a<Source_TileSet>(4, 'tileSet', $pb.PbFieldType.OM, Source_TileSet.getDefault, Source_TileSet.create)
+    ..a<Source_TileSet>(4, 'tileSet', $pb.PbFieldType.OM, defaultOrMaker: Source_TileSet.getDefault, subBuilder: Source_TileSet.create)
     ..hasRequiredFields = false
   ;
 
@@ -398,7 +399,7 @@ class Source_Vector extends $pb.GeneratedMessage {
 }
 
 class Source_Unknown extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Unknown', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.Unknown', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..aOS(1, 'id')
     ..aOS(2, 'attribution')
     ..hasRequiredFields = false
@@ -430,7 +431,7 @@ class Source_Unknown extends $pb.GeneratedMessage {
 }
 
 class Source_TileSet extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.TileSet', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source.TileSet', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..aOS(1, 'tileJson')
     ..aOS(2, 'name')
     ..aOS(3, 'description')
@@ -550,15 +551,15 @@ class Source extends $pb.GeneratedMessage {
     7 : Source_Type.unknown,
     0 : Source_Type.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Source', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [2, 3, 4, 5, 6, 7])
     ..aOS(1, 'id')
-    ..a<Source_GeoJson>(2, 'geoJson', $pb.PbFieldType.OM, Source_GeoJson.getDefault, Source_GeoJson.create)
-    ..a<Source_Image>(3, 'image', $pb.PbFieldType.OM, Source_Image.getDefault, Source_Image.create)
-    ..a<Source_RasterDem>(4, 'rasterDem', $pb.PbFieldType.OM, Source_RasterDem.getDefault, Source_RasterDem.create)
-    ..a<Source_Raster>(5, 'raster', $pb.PbFieldType.OM, Source_Raster.getDefault, Source_Raster.create)
-    ..a<Source_Vector>(6, 'vector', $pb.PbFieldType.OM, Source_Vector.getDefault, Source_Vector.create)
-    ..a<Source_Unknown>(7, 'unknown', $pb.PbFieldType.OM, Source_Unknown.getDefault, Source_Unknown.create)
+    ..a<Source_GeoJson>(2, 'geoJson', $pb.PbFieldType.OM, protoName: 'geoJson', defaultOrMaker: Source_GeoJson.getDefault, subBuilder: Source_GeoJson.create)
+    ..a<Source_Image>(3, 'image', $pb.PbFieldType.OM, defaultOrMaker: Source_Image.getDefault, subBuilder: Source_Image.create)
+    ..a<Source_RasterDem>(4, 'rasterDem', $pb.PbFieldType.OM, defaultOrMaker: Source_RasterDem.getDefault, subBuilder: Source_RasterDem.create)
+    ..a<Source_Raster>(5, 'raster', $pb.PbFieldType.OM, defaultOrMaker: Source_Raster.getDefault, subBuilder: Source_Raster.create)
+    ..a<Source_Vector>(6, 'vector', $pb.PbFieldType.OM, defaultOrMaker: Source_Vector.getDefault, subBuilder: Source_Vector.create)
+    ..a<Source_Unknown>(7, 'unknown', $pb.PbFieldType.OM, defaultOrMaker: Source_Unknown.getDefault, subBuilder: Source_Unknown.create)
     ..hasRequiredFields = false
   ;
 

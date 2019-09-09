@@ -112,7 +112,7 @@ fun Mapbox.Map.Operations.CameraUpdate.fieldValue(): CameraUpdate {
 }
 
 fun Util.LatLngBounds.fieldValue(): LatLngBounds =
-        LatLngBounds.from(latitudeNorth, longitudeEast, latitudeSouth, longitudeWest)
+        LatLngBounds.from(north, east, south, west)
 
 
 fun Util.LatLngQuad.fieldValue(): LatLngQuad = LatLngQuad(topLeft.fieldValue(), topRight.fieldValue(), bottomRight.fieldValue(), bottomLeft.fieldValue())

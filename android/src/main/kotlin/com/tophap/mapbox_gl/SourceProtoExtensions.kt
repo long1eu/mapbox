@@ -97,8 +97,8 @@ fun Sources.Source.TileSet.fieldValue(): TileSet {
 }
 
 fun Source.update(source: Sources.Source) {
-    when {
-        this is GeoJsonSource -> {
+    when (this) {
+        is GeoJsonSource -> {
             when (source.geoJson.sourceCase!!) {
                 Sources.Source.GeoJson.SourceCase.URI -> uri = source.geoJson.uri
                 Sources.Source.GeoJson.SourceCase.GEO_JSON -> setGeoJson(source.geoJson.geoJson)
@@ -106,11 +106,11 @@ fun Source.update(source: Sources.Source) {
                 }
             }
         }
-        this is RasterSource -> {
+        is RasterSource -> {
         }
-        this is RasterDemSource -> {
+        is RasterDemSource -> {
         }
-        this is ImageSource -> {
+        is ImageSource -> {
             if (source.image.hasCoordinates()) setCoordinates(source.image.coordinates.fieldValue())
             when (source.image.sourceCase!!) {
                 Sources.Source.Image.SourceCase.URI -> uri = source.image.uri
@@ -119,7 +119,7 @@ fun Source.update(source: Sources.Source) {
                 }
             }
         }
-        this is VectorSource -> {
+        is VectorSource -> {
         }
         else -> throw IllegalArgumentException("Unknown source type $this")
     }

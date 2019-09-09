@@ -15,28 +15,28 @@ part 'latlng_bounds.g.dart';
 abstract class LatLngBounds
     implements Built<LatLngBounds, LatLngBoundsBuilder> {
   factory LatLngBounds({
-                         double latitudeNorth = 90.0,
-                         double latitudeSouth = -90.0,
-                         double longitudeEast = 180.0,
-                         double longitudeWest = -180.0,
-                       }) {
-    assert(!latitudeNorth.isNaN);
-    assert(!latitudeSouth.isNaN);
-    assert(!longitudeEast.isNaN && longitudeEast.isFinite);
-    assert(!longitudeWest.isNaN && longitudeWest.isFinite);
-    assert(latitudeNorth >= -90 && latitudeNorth <= 90);
-    assert(latitudeSouth >= -90 && latitudeSouth <= 90);
-    assert(latitudeNorth > latitudeSouth,
-    "latitudeNorth($latitudeNorth) cannot be less than latitudeSouth($latitudeSouth)");
-    assert(longitudeEast > longitudeWest,
-    "longitudeEast($longitudeEast) cannot be less than longitudeWest($longitudeWest)");
+    double north = 90.0,
+    double south = -90.0,
+    double east = 180.0,
+    double west = -180.0,
+  }) {
+    assert(!north.isNaN);
+    assert(!south.isNaN);
+    assert(!east.isNaN && east.isFinite);
+    assert(!west.isNaN && west.isFinite);
+    assert(north >= -90 && north <= 90);
+    assert(south >= -90 && south <= 90);
+    assert(north > south,
+        "latitudeNorth($north) cannot be less than latitudeSouth($south)");
+    assert(east > west,
+        "longitudeEast($east) cannot be less than longitudeWest($west)");
 
     return _$LatLngBounds((LatLngBoundsBuilder b) {
       b
-        ..latitudeNorth = latitudeNorth
-        ..latitudeSouth = latitudeSouth
-        ..longitudeEast = longitudeEast
-        ..longitudeWest = longitudeWest;
+        ..north = north
+        ..south = south
+        ..east = east
+        ..west = west;
     });
   }
 
@@ -47,29 +47,29 @@ abstract class LatLngBounds
   factory LatLngBounds.fromProto(pb.LatLngBounds proto) {
     return _$LatLngBounds((LatLngBoundsBuilder b) {
       b
-        ..latitudeNorth = proto.latitudeNorth
-        ..latitudeSouth = proto.latitudeSouth
-        ..longitudeEast = proto.longitudeEast
-        ..longitudeWest = proto.longitudeWest;
+        ..north = proto.north
+        ..south = proto.south
+        ..east = proto.east
+        ..west = proto.west;
     });
   }
 
   LatLngBounds._();
 
-  double get latitudeNorth;
+  double get north;
 
-  double get latitudeSouth;
+  double get south;
 
-  double get longitudeEast;
+  double get east;
 
-  double get longitudeWest;
+  double get west;
 
   pb.LatLngBounds get proto {
     return pb.LatLngBounds.create()
-      ..latitudeNorth = latitudeNorth
-      ..latitudeSouth = latitudeSouth
-      ..longitudeEast = longitudeEast
-      ..longitudeWest = longitudeWest
+      ..north = north
+      ..south = south
+      ..east = east
+      ..west = west
       ..freeze();
   }
 

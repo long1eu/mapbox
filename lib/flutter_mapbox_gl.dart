@@ -6,7 +6,6 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui';
-
 import 'package:built_value/built_value.dart';
 import 'package:collection/collection.dart';
 import 'package:fixnum/fixnum.dart';

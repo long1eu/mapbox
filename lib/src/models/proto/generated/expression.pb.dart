@@ -1,10 +1,11 @@
 ///
 //  Generated code. Do not modify.
 //  source: expression.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
-import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, override, pragma, String;
+import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
@@ -20,12 +21,12 @@ class Expression extends $pb.GeneratedMessage {
     4 : Expression_Data.literal,
     0 : Expression_Data.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Expression', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Expression', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [3, 4])
     ..aOS(1, 'operator')
-    ..pc<Expression>(2, 'arguments', $pb.PbFieldType.PM,Expression.create)
-    ..a<MapExpression>(3, 'map', $pb.PbFieldType.OM, MapExpression.getDefault, MapExpression.create)
-    ..a<Value>(4, 'literal', $pb.PbFieldType.OM, Value.getDefault, Value.create)
+    ..pc<Expression>(2, 'arguments', $pb.PbFieldType.PM, subBuilder: Expression.create)
+    ..a<MapExpression>(3, 'map', $pb.PbFieldType.OM, defaultOrMaker: MapExpression.getDefault, subBuilder: MapExpression.create)
+    ..a<Value>(4, 'literal', $pb.PbFieldType.OM, defaultOrMaker: Value.getDefault, subBuilder: Value.create)
     ..hasRequiredFields = false
   ;
 
@@ -82,13 +83,13 @@ class Value extends $pb.GeneratedMessage {
     5 : Value_Kind.listValue,
     0 : Value_Kind.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Value', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Value', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3, 4, 5])
     ..a<$core.int>(1, 'intValue', $pb.PbFieldType.O3)
     ..a<$core.double>(2, 'doubleValue', $pb.PbFieldType.OD)
     ..aOS(3, 'stringValue')
     ..aOB(4, 'boolValue')
-    ..a<ListValue>(5, 'listValue', $pb.PbFieldType.OM, ListValue.getDefault, ListValue.create)
+    ..a<ListValue>(5, 'listValue', $pb.PbFieldType.OM, defaultOrMaker: ListValue.getDefault, subBuilder: ListValue.create)
     ..hasRequiredFields = false
   ;
 
@@ -136,8 +137,8 @@ class Value extends $pb.GeneratedMessage {
 }
 
 class ListValue extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ListValue', package: const $pb.PackageName('tophap.mapbox_gl'))
-    ..pc<Value>(1, 'values', $pb.PbFieldType.PM,Value.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ListValue', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
+    ..pc<Value>(1, 'values', $pb.PbFieldType.PM, subBuilder: Value.create)
     ..hasRequiredFields = false
   ;
 
@@ -159,8 +160,8 @@ class ListValue extends $pb.GeneratedMessage {
 }
 
 class MapExpression extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MapExpression', package: const $pb.PackageName('tophap.mapbox_gl'))
-    ..m<$core.String, Expression>(1, 'map', 'MapExpression.MapEntry',$pb.PbFieldType.OS, $pb.PbFieldType.OM, Expression.create, null, null , const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('MapExpression', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
+    ..m<$core.String, Expression>(1, 'map', entryClassName: 'MapExpression.MapEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: Expression.create, packageName: const $pb.PackageName('tophap.mapbox_gl'))
     ..hasRequiredFields = false
   ;
 

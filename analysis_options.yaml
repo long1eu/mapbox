@@ -1,7 +1,4 @@
 analyzer:
-  language:
-    enableStrictCallChecks: true
-    enableAssertInitializer: true
   strong-mode:
     implicit-dynamic: false
   errors:
@@ -9,7 +6,7 @@ analyzer:
     missing_return: warning
     todo: ignore
   exclude:
-    - '/**.g.dart'
+    - '**/**.g.dart'
     - 'lib/src/models/proto/generated/**.dart'
 
 linter:

@@ -34,6 +34,13 @@ public final class Mapbox {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Map();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -362,6 +369,13 @@ public final class Mapbox {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Options();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -467,9 +481,9 @@ public final class Mapbox {
                 break;
               }
               case 120: {
-                if (!((mutable_bitField0_ & 0x00004000) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   compassMargin_ = newIntList();
-                  mutable_bitField0_ |= 0x00004000;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 compassMargin_.addInt(input.readInt32());
                 break;
@@ -477,9 +491,9 @@ public final class Mapbox {
               case 122: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00004000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
                   compassMargin_ = newIntList();
-                  mutable_bitField0_ |= 0x00004000;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   compassMargin_.addInt(input.readInt32());
@@ -504,9 +518,9 @@ public final class Mapbox {
                 break;
               }
               case 152: {
-                if (!((mutable_bitField0_ & 0x00040000) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                   logoMargin_ = newIntList();
-                  mutable_bitField0_ |= 0x00040000;
+                  mutable_bitField0_ |= 0x00000002;
                 }
                 logoMargin_.addInt(input.readInt32());
                 break;
@@ -514,9 +528,9 @@ public final class Mapbox {
               case 154: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00040000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
                   logoMargin_ = newIntList();
-                  mutable_bitField0_ |= 0x00040000;
+                  mutable_bitField0_ |= 0x00000002;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   logoMargin_.addInt(input.readInt32());
@@ -536,9 +550,9 @@ public final class Mapbox {
                 break;
               }
               case 176: {
-                if (!((mutable_bitField0_ & 0x00200000) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                   attributionMargin_ = newIntList();
-                  mutable_bitField0_ |= 0x00200000;
+                  mutable_bitField0_ |= 0x00000004;
                 }
                 attributionMargin_.addInt(input.readInt32());
                 break;
@@ -546,9 +560,9 @@ public final class Mapbox {
               case 178: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00200000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
                   attributionMargin_ = newIntList();
-                  mutable_bitField0_ |= 0x00200000;
+                  mutable_bitField0_ |= 0x00000004;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   attributionMargin_.addInt(input.readInt32());
@@ -640,13 +654,13 @@ public final class Mapbox {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00004000) != 0)) {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
             compassMargin_.makeImmutable(); // C
           }
-          if (((mutable_bitField0_ & 0x00040000) != 0)) {
+          if (((mutable_bitField0_ & 0x00000002) != 0)) {
             logoMargin_.makeImmutable(); // C
           }
-          if (((mutable_bitField0_ & 0x00200000) != 0)) {
+          if (((mutable_bitField0_ & 0x00000004) != 0)) {
             attributionMargin_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -666,7 +680,6 @@ public final class Mapbox {
                 com.tophap.mapbox_gl.proto.Mapbox.Map.Options.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Options.Builder.class);
       }
 
-      private int bitField0_;
       private int styleCase_ = 0;
       private java.lang.Object style_;
       public enum StyleCase
@@ -1895,7 +1908,7 @@ public final class Mapbox {
           compassPosition_ = 0;
 
           compassMargin_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00000001);
           compassFadeFacingNorth_ = false;
 
           logo_ = false;
@@ -1903,13 +1916,13 @@ public final class Mapbox {
           logoPosition_ = 0;
 
           logoMargin_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00040000);
+          bitField0_ = (bitField0_ & ~0x00000002);
           attribution_ = false;
 
           attributionPosition_ = 0;
 
           attributionMargin_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00200000);
+          bitField0_ = (bitField0_ & ~0x00000004);
           if (attributionTintColorBuilder_ == null) {
             attributionTintColor_ = null;
           } else {
@@ -1961,7 +1974,6 @@ public final class Mapbox {
         public com.tophap.mapbox_gl.proto.Mapbox.Map.Options buildPartial() {
           com.tophap.mapbox_gl.proto.Mapbox.Map.Options result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Options(this);
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
           result.apiBaseUri_ = apiBaseUri_;
           result.localIdeographFontFamily_ = localIdeographFontFamily_;
           result.crossSourceCollisions_ = crossSourceCollisions_;
@@ -1980,24 +1992,24 @@ public final class Mapbox {
           result.quickZoomGestures_ = quickZoomGestures_;
           result.compass_ = compass_;
           result.compassPosition_ = compassPosition_;
-          if (((bitField0_ & 0x00004000) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             compassMargin_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00004000);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.compassMargin_ = compassMargin_;
           result.compassFadeFacingNorth_ = compassFadeFacingNorth_;
           result.logo_ = logo_;
           result.logoPosition_ = logoPosition_;
-          if (((bitField0_ & 0x00040000) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             logoMargin_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00040000);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.logoMargin_ = logoMargin_;
           result.attribution_ = attribution_;
           result.attributionPosition_ = attributionPosition_;
-          if (((bitField0_ & 0x00200000) != 0)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             attributionMargin_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00200000);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.attributionMargin_ = attributionMargin_;
           if (attributionTintColorBuilder_ == null) {
@@ -2024,7 +2036,6 @@ public final class Mapbox {
           if (styleCase_ == 32) {
             result.style_ = style_;
           }
-          result.bitField0_ = to_bitField0_;
           result.styleCase_ = styleCase_;
           onBuilt();
           return result;
@@ -2121,7 +2132,7 @@ public final class Mapbox {
           if (!other.compassMargin_.isEmpty()) {
             if (compassMargin_.isEmpty()) {
               compassMargin_ = other.compassMargin_;
-              bitField0_ = (bitField0_ & ~0x00004000);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureCompassMarginIsMutable();
               compassMargin_.addAll(other.compassMargin_);
@@ -2140,7 +2151,7 @@ public final class Mapbox {
           if (!other.logoMargin_.isEmpty()) {
             if (logoMargin_.isEmpty()) {
               logoMargin_ = other.logoMargin_;
-              bitField0_ = (bitField0_ & ~0x00040000);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureLogoMarginIsMutable();
               logoMargin_.addAll(other.logoMargin_);
@@ -2156,7 +2167,7 @@ public final class Mapbox {
           if (!other.attributionMargin_.isEmpty()) {
             if (attributionMargin_.isEmpty()) {
               attributionMargin_ = other.attributionMargin_;
-              bitField0_ = (bitField0_ & ~0x00200000);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureAttributionMarginIsMutable();
               attributionMargin_.addAll(other.attributionMargin_);
@@ -2812,9 +2823,9 @@ public final class Mapbox {
 
         private com.google.protobuf.Internal.IntList compassMargin_ = emptyIntList();
         private void ensureCompassMarginIsMutable() {
-          if (!((bitField0_ & 0x00004000) != 0)) {
+          if (!((bitField0_ & 0x00000001) != 0)) {
             compassMargin_ = mutableCopy(compassMargin_);
-            bitField0_ |= 0x00004000;
+            bitField0_ |= 0x00000001;
            }
         }
         /**
@@ -2822,7 +2833,7 @@ public final class Mapbox {
          */
         public java.util.List<java.lang.Integer>
             getCompassMarginList() {
-          return ((bitField0_ & 0x00004000) != 0) ?
+          return ((bitField0_ & 0x00000001) != 0) ?
                    java.util.Collections.unmodifiableList(compassMargin_) : compassMargin_;
         }
         /**
@@ -2872,7 +2883,7 @@ public final class Mapbox {
          */
         public Builder clearCompassMargin() {
           compassMargin_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
@@ -2976,9 +2987,9 @@ public final class Mapbox {
 
         private com.google.protobuf.Internal.IntList logoMargin_ = emptyIntList();
         private void ensureLogoMarginIsMutable() {
-          if (!((bitField0_ & 0x00040000) != 0)) {
+          if (!((bitField0_ & 0x00000002) != 0)) {
             logoMargin_ = mutableCopy(logoMargin_);
-            bitField0_ |= 0x00040000;
+            bitField0_ |= 0x00000002;
            }
         }
         /**
@@ -2986,7 +2997,7 @@ public final class Mapbox {
          */
         public java.util.List<java.lang.Integer>
             getLogoMarginList() {
-          return ((bitField0_ & 0x00040000) != 0) ?
+          return ((bitField0_ & 0x00000002) != 0) ?
                    java.util.Collections.unmodifiableList(logoMargin_) : logoMargin_;
         }
         /**
@@ -3036,7 +3047,7 @@ public final class Mapbox {
          */
         public Builder clearLogoMargin() {
           logoMargin_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00040000);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
           return this;
         }
@@ -3114,9 +3125,9 @@ public final class Mapbox {
 
         private com.google.protobuf.Internal.IntList attributionMargin_ = emptyIntList();
         private void ensureAttributionMarginIsMutable() {
-          if (!((bitField0_ & 0x00200000) != 0)) {
+          if (!((bitField0_ & 0x00000004) != 0)) {
             attributionMargin_ = mutableCopy(attributionMargin_);
-            bitField0_ |= 0x00200000;
+            bitField0_ |= 0x00000004;
            }
         }
         /**
@@ -3124,7 +3135,7 @@ public final class Mapbox {
          */
         public java.util.List<java.lang.Integer>
             getAttributionMarginList() {
-          return ((bitField0_ & 0x00200000) != 0) ?
+          return ((bitField0_ & 0x00000004) != 0) ?
                    java.util.Collections.unmodifiableList(attributionMargin_) : attributionMargin_;
         }
         /**
@@ -3174,7 +3185,7 @@ public final class Mapbox {
          */
         public Builder clearAttributionMargin() {
           attributionMargin_ = emptyIntList();
-          bitField0_ = (bitField0_ & ~0x00200000);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
           return this;
         }
@@ -3870,6 +3881,13 @@ public final class Mapbox {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new CameraPosition();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -3882,7 +3900,6 @@ public final class Mapbox {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -4821,6 +4838,13 @@ public final class Mapbox {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Operations();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -4955,6 +4979,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new Ready();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -5025,9 +5056,9 @@ public final class Mapbox {
                   break;
                 }
                 case 56: {
-                  if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                     padding_ = newIntList();
-                    mutable_bitField0_ |= 0x00000040;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   padding_.addInt(input.readInt32());
                   break;
@@ -5035,9 +5066,9 @@ public final class Mapbox {
                 case 58: {
                   int length = input.readRawVarint32();
                   int limit = input.pushLimit(length);
-                  if (!((mutable_bitField0_ & 0x00000040) != 0) && input.getBytesUntilLimit() > 0) {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
                     padding_ = newIntList();
-                    mutable_bitField0_ |= 0x00000040;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   while (input.getBytesUntilLimit() > 0) {
                     padding_.addInt(input.readInt32());
@@ -5060,7 +5091,7 @@ public final class Mapbox {
             throw new com.google.protobuf.InvalidProtocolBufferException(
                 e).setUnfinishedMessage(this);
           } finally {
-            if (((mutable_bitField0_ & 0x00000040) != 0)) {
+            if (((mutable_bitField0_ & 0x00000001) != 0)) {
               padding_.makeImmutable(); // C
             }
             this.unknownFields = unknownFields.build();
@@ -5080,7 +5111,6 @@ public final class Mapbox {
                   com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready.Builder.class);
         }
 
-        private int bitField0_;
         public static final int VIEW_ID_FIELD_NUMBER = 1;
         private long viewId_;
         /**
@@ -5495,7 +5525,7 @@ public final class Mapbox {
               styleBuilder_ = null;
             }
             padding_ = emptyIntList();
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000001);
             return this;
           }
 
@@ -5523,7 +5553,6 @@ public final class Mapbox {
           public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready buildPartial() {
             com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.Ready(this);
             int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
             result.viewId_ = viewId_;
             result.prefetchesTiles_ = prefetchesTiles_;
             result.minZoom_ = minZoom_;
@@ -5538,12 +5567,11 @@ public final class Mapbox {
             } else {
               result.style_ = styleBuilder_.build();
             }
-            if (((bitField0_ & 0x00000040) != 0)) {
+            if (((bitField0_ & 0x00000001) != 0)) {
               padding_.makeImmutable();
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000001);
             }
             result.padding_ = padding_;
-            result.bitField0_ = to_bitField0_;
             onBuilt();
             return result;
           }
@@ -5613,7 +5641,7 @@ public final class Mapbox {
             if (!other.padding_.isEmpty()) {
               if (padding_.isEmpty()) {
                 padding_ = other.padding_;
-                bitField0_ = (bitField0_ & ~0x00000040);
+                bitField0_ = (bitField0_ & ~0x00000001);
               } else {
                 ensurePaddingIsMutable();
                 padding_.addAll(other.padding_);
@@ -5990,9 +6018,9 @@ public final class Mapbox {
 
           private com.google.protobuf.Internal.IntList padding_ = emptyIntList();
           private void ensurePaddingIsMutable() {
-            if (!((bitField0_ & 0x00000040) != 0)) {
+            if (!((bitField0_ & 0x00000001) != 0)) {
               padding_ = mutableCopy(padding_);
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000001;
              }
           }
           /**
@@ -6000,7 +6028,7 @@ public final class Mapbox {
            */
           public java.util.List<java.lang.Integer>
               getPaddingList() {
-            return ((bitField0_ & 0x00000040) != 0) ?
+            return ((bitField0_ & 0x00000001) != 0) ?
                      java.util.Collections.unmodifiableList(padding_) : padding_;
           }
           /**
@@ -6050,7 +6078,7 @@ public final class Mapbox {
            */
           public Builder clearPadding() {
             padding_ = emptyIntList();
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
             return this;
           }
@@ -6220,6 +6248,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new CameraUpdate();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -6293,9 +6328,9 @@ public final class Mapbox {
                   break;
                 }
                 case 48: {
-                  if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                     padding_ = newIntList();
-                    mutable_bitField0_ |= 0x00000020;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   padding_.addInt(input.readInt32());
                   break;
@@ -6303,9 +6338,9 @@ public final class Mapbox {
                 case 50: {
                   int length = input.readRawVarint32();
                   int limit = input.pushLimit(length);
-                  if (!((mutable_bitField0_ & 0x00000020) != 0) && input.getBytesUntilLimit() > 0) {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
                     padding_ = newIntList();
-                    mutable_bitField0_ |= 0x00000020;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   while (input.getBytesUntilLimit() > 0) {
                     padding_.addInt(input.readInt32());
@@ -6354,7 +6389,7 @@ public final class Mapbox {
             throw new com.google.protobuf.InvalidProtocolBufferException(
                 e).setUnfinishedMessage(this);
           } finally {
-            if (((mutable_bitField0_ & 0x00000020) != 0)) {
+            if (((mutable_bitField0_ & 0x00000001) != 0)) {
               padding_.makeImmutable(); // C
             }
             this.unknownFields = unknownFields.build();
@@ -6642,7 +6677,6 @@ public final class Mapbox {
           // @@protoc_insertion_point(enum_scope:tophap.mapbox_gl.Map.Operations.CameraUpdate.Type)
         }
 
-        private int bitField0_;
         public static final int CAMERA_POSITION_FIELD_NUMBER = 1;
         private com.tophap.mapbox_gl.proto.Mapbox.Map.CameraPosition cameraPosition_;
         /**
@@ -7165,7 +7199,7 @@ public final class Mapbox {
             tilt_ = 0D;
 
             padding_ = emptyIntList();
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000001);
             zoom_ = 0D;
 
             amount_ = 0D;
@@ -7203,7 +7237,6 @@ public final class Mapbox {
           public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate buildPartial() {
             com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.CameraUpdate(this);
             int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
             if (cameraPositionBuilder_ == null) {
               result.cameraPosition_ = cameraPosition_;
             } else {
@@ -7221,9 +7254,9 @@ public final class Mapbox {
             }
             result.bearing_ = bearing_;
             result.tilt_ = tilt_;
-            if (((bitField0_ & 0x00000020) != 0)) {
+            if (((bitField0_ & 0x00000001) != 0)) {
               padding_.makeImmutable();
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000001);
             }
             result.padding_ = padding_;
             result.zoom_ = zoom_;
@@ -7231,7 +7264,6 @@ public final class Mapbox {
             result.focusX_ = focusX_;
             result.focusY_ = focusY_;
             result.operation_ = operation_;
-            result.bitField0_ = to_bitField0_;
             onBuilt();
             return result;
           }
@@ -7298,7 +7330,7 @@ public final class Mapbox {
             if (!other.padding_.isEmpty()) {
               if (padding_.isEmpty()) {
                 padding_ = other.padding_;
-                bitField0_ = (bitField0_ & ~0x00000020);
+                bitField0_ = (bitField0_ & ~0x00000001);
               } else {
                 ensurePaddingIsMutable();
                 padding_.addAll(other.padding_);
@@ -7755,9 +7787,9 @@ public final class Mapbox {
 
           private com.google.protobuf.Internal.IntList padding_ = emptyIntList();
           private void ensurePaddingIsMutable() {
-            if (!((bitField0_ & 0x00000020) != 0)) {
+            if (!((bitField0_ & 0x00000001) != 0)) {
               padding_ = mutableCopy(padding_);
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000001;
              }
           }
           /**
@@ -7765,7 +7797,7 @@ public final class Mapbox {
            */
           public java.util.List<java.lang.Integer>
               getPaddingList() {
-            return ((bitField0_ & 0x00000020) != 0) ?
+            return ((bitField0_ & 0x00000001) != 0) ?
                      java.util.Collections.unmodifiableList(padding_) : padding_;
           }
           /**
@@ -7815,7 +7847,7 @@ public final class Mapbox {
            */
           public Builder clearPadding() {
             padding_ = emptyIntList();
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
             return this;
           }
@@ -8064,6 +8096,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new EaseCamera();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -8076,7 +8115,6 @@ public final class Mapbox {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -8790,6 +8828,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new AnimateCamera();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -8802,7 +8847,6 @@ public final class Mapbox {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -9455,6 +9499,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new ScrollBy();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -9467,7 +9518,6 @@ public final class Mapbox {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -10063,6 +10113,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new SetFocalBearing();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -10075,7 +10132,6 @@ public final class Mapbox {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -10747,6 +10803,13 @@ public final class Mapbox {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new GetCameraForLatLngBounds();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -10784,9 +10847,9 @@ public final class Mapbox {
                   break;
                 }
                 case 16: {
-                  if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                     padding_ = newIntList();
-                    mutable_bitField0_ |= 0x00000002;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   padding_.addInt(input.readInt32());
                   break;
@@ -10794,9 +10857,9 @@ public final class Mapbox {
                 case 18: {
                   int length = input.readRawVarint32();
                   int limit = input.pushLimit(length);
-                  if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+                  if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
                     padding_ = newIntList();
-                    mutable_bitField0_ |= 0x00000002;
+                    mutable_bitField0_ |= 0x00000001;
                   }
                   while (input.getBytesUntilLimit() > 0) {
                     padding_.addInt(input.readInt32());
@@ -10829,7 +10892,7 @@ public final class Mapbox {
             throw new com.google.protobuf.InvalidProtocolBufferException(
                 e).setUnfinishedMessage(this);
           } finally {
-            if (((mutable_bitField0_ & 0x00000002) != 0)) {
+            if (((mutable_bitField0_ & 0x00000001) != 0)) {
               padding_.makeImmutable(); // C
             }
             this.unknownFields = unknownFields.build();
@@ -10849,7 +10912,6 @@ public final class Mapbox {
                   com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.class, com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds.Builder.class);
         }
 
-        private int bitField0_;
         public static final int BOUNDS_FIELD_NUMBER = 1;
         private com.tophap.mapbox_gl.proto.Util.LatLngBounds bounds_;
         /**
@@ -11171,7 +11233,7 @@ public final class Mapbox {
               boundsBuilder_ = null;
             }
             padding_ = emptyIntList();
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
             bearing_ = 0D;
 
             tilt_ = 0D;
@@ -11203,20 +11265,18 @@ public final class Mapbox {
           public com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds buildPartial() {
             com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds result = new com.tophap.mapbox_gl.proto.Mapbox.Map.Operations.GetCameraForLatLngBounds(this);
             int from_bitField0_ = bitField0_;
-            int to_bitField0_ = 0;
             if (boundsBuilder_ == null) {
               result.bounds_ = bounds_;
             } else {
               result.bounds_ = boundsBuilder_.build();
             }
-            if (((bitField0_ & 0x00000002) != 0)) {
+            if (((bitField0_ & 0x00000001) != 0)) {
               padding_.makeImmutable();
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             }
             result.padding_ = padding_;
             result.bearing_ = bearing_;
             result.tilt_ = tilt_;
-            result.bitField0_ = to_bitField0_;
             onBuilt();
             return result;
           }
@@ -11271,7 +11331,7 @@ public final class Mapbox {
             if (!other.padding_.isEmpty()) {
               if (padding_.isEmpty()) {
                 padding_ = other.padding_;
-                bitField0_ = (bitField0_ & ~0x00000002);
+                bitField0_ = (bitField0_ & ~0x00000001);
               } else {
                 ensurePaddingIsMutable();
                 padding_.addAll(other.padding_);
@@ -11433,9 +11493,9 @@ public final class Mapbox {
 
           private com.google.protobuf.Internal.IntList padding_ = emptyIntList();
           private void ensurePaddingIsMutable() {
-            if (!((bitField0_ & 0x00000002) != 0)) {
+            if (!((bitField0_ & 0x00000001) != 0)) {
               padding_ = mutableCopy(padding_);
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
              }
           }
           /**
@@ -11443,7 +11503,7 @@ public final class Mapbox {
            */
           public java.util.List<java.lang.Integer>
               getPaddingList() {
-            return ((bitField0_ & 0x00000002) != 0) ?
+            return ((bitField0_ & 0x00000001) != 0) ?
                      java.util.Collections.unmodifiableList(padding_) : padding_;
           }
           /**
@@ -11493,7 +11553,7 @@ public final class Mapbox {
            */
           public Builder clearPadding() {
             padding_ = emptyIntList();
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
             onChanged();
             return this;
           }
@@ -12407,20 +12467,12 @@ public final class Mapbox {
       "\004tilt\030\004 \001(\001B$\n\032com.tophap.mapbox_gl.prot" +
       "oB\006Mapboxb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.tophap.mapbox_gl.proto.Util.getDescriptor(),
           com.tophap.mapbox_gl.proto.Styles.getDescriptor(),
-        }, assigner);
+        });
     internal_static_tophap_mapbox_gl_Map_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tophap_mapbox_gl_Map_fieldAccessorTable = new

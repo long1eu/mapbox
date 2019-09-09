@@ -1,10 +1,11 @@
 ///
 //  Generated code. Do not modify.
 //  source: style.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
-import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, override, pragma, String;
+import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
@@ -19,14 +20,14 @@ import 'style.pbenum.dart';
 export 'style.pbenum.dart';
 
 class Style_Light extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Light', package: const $pb.PackageName('tophap.mapbox_gl'))
-    ..e<$1.TranslateAnchor>(1, 'anchor', $pb.PbFieldType.OE, $1.TranslateAnchor.MAP, $1.TranslateAnchor.valueOf, $1.TranslateAnchor.values)
-    ..a<Style_Position>(2, 'position', $pb.PbFieldType.OM, Style_Position.getDefault, Style_Position.create)
-    ..a<$1.Color>(3, 'color', $pb.PbFieldType.OM, $1.Color.getDefault, $1.Color.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Light', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
+    ..e<$1.TranslateAnchor>(1, 'anchor', $pb.PbFieldType.OE, defaultOrMaker: $1.TranslateAnchor.MAP, valueOf: $1.TranslateAnchor.valueOf, enumValues: $1.TranslateAnchor.values)
+    ..a<Style_Position>(2, 'position', $pb.PbFieldType.OM, defaultOrMaker: Style_Position.getDefault, subBuilder: Style_Position.create)
+    ..a<$1.Color>(3, 'color', $pb.PbFieldType.OM, defaultOrMaker: $1.Color.getDefault, subBuilder: $1.Color.create)
     ..a<$core.double>(4, 'intensity', $pb.PbFieldType.OF)
-    ..a<$1.TransitionOptions>(5, 'positionTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
-    ..a<$1.TransitionOptions>(6, 'colorTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
-    ..a<$1.TransitionOptions>(7, 'intensityTransition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
+    ..a<$1.TransitionOptions>(5, 'positionTransition', $pb.PbFieldType.OM, protoName: 'positionTransition', defaultOrMaker: $1.TransitionOptions.getDefault, subBuilder: $1.TransitionOptions.create)
+    ..a<$1.TransitionOptions>(6, 'colorTransition', $pb.PbFieldType.OM, protoName: 'colorTransition', defaultOrMaker: $1.TransitionOptions.getDefault, subBuilder: $1.TransitionOptions.create)
+    ..a<$1.TransitionOptions>(7, 'intensityTransition', $pb.PbFieldType.OM, protoName: 'intensityTransition', defaultOrMaker: $1.TransitionOptions.getDefault, subBuilder: $1.TransitionOptions.create)
     ..hasRequiredFields = false
   ;
 
@@ -81,7 +82,7 @@ class Style_Light extends $pb.GeneratedMessage {
 }
 
 class Style_Position extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Position', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Position', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..a<$core.double>(1, 'radialCoordinate', $pb.PbFieldType.OF)
     ..a<$core.double>(2, 'azimuthalAngle', $pb.PbFieldType.OF)
     ..a<$core.double>(3, 'polarAngle', $pb.PbFieldType.OF)
@@ -130,11 +131,11 @@ class Style_StyleImage extends $pb.GeneratedMessage {
     3 : Style_StyleImage_Source.asset,
     0 : Style_StyleImage_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.StyleImage', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.StyleImage', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [2, 3])
     ..aOS(1, 'id')
     ..a<$core.List<$core.int>>(2, 'image', $pb.PbFieldType.OY)
-    ..a<Style_Asset>(3, 'asset', $pb.PbFieldType.OM, Style_Asset.getDefault, Style_Asset.create)
+    ..a<Style_Asset>(3, 'asset', $pb.PbFieldType.OM, defaultOrMaker: Style_Asset.getDefault, subBuilder: Style_Asset.create)
     ..aOB(4, 'sdf')
     ..hasRequiredFields = false
   ;
@@ -178,9 +179,9 @@ class Style_StyleImage extends $pb.GeneratedMessage {
 }
 
 class Style_Asset extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Asset', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Asset', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..aOS(1, 'asset')
-    ..a<$0.StringValue>(2, 'packageName', $pb.PbFieldType.OM, $0.StringValue.getDefault, $0.StringValue.create)
+    ..a<$0.StringValue>(2, 'packageName', $pb.PbFieldType.OM, protoName: 'packageName', defaultOrMaker: $0.StringValue.getDefault, subBuilder: $0.StringValue.create)
     ..hasRequiredFields = false
   ;
 
@@ -223,9 +224,9 @@ class Style_Operations_Build extends $pb.GeneratedMessage {
     3 : Style_Operations_Build_Source.json,
     0 : Style_Operations_Build_Source.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations.Build', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations.Build', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3])
-    ..e<Style_MapboxStyle>(1, 'default_1', $pb.PbFieldType.OE, Style_MapboxStyle.MAPBOX_STREETS, Style_MapboxStyle.valueOf, Style_MapboxStyle.values)
+    ..e<Style_MapboxStyle>(1, 'default', $pb.PbFieldType.OE, defaultOrMaker: Style_MapboxStyle.MAPBOX_STREETS, valueOf: Style_MapboxStyle.valueOf, enumValues: Style_MapboxStyle.values)
     ..aOS(2, 'uri')
     ..aOS(3, 'json')
     ..hasRequiredFields = false
@@ -265,7 +266,7 @@ class Style_Operations_Build extends $pb.GeneratedMessage {
 }
 
 class Style_Operations extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style.Operations', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
@@ -285,13 +286,13 @@ class Style_Operations extends $pb.GeneratedMessage {
 }
 
 class Style extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style', package: const $pb.PackageName('tophap.mapbox_gl'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Style', package: const $pb.PackageName('tophap.mapbox_gl'), createEmptyInstance: create)
     ..aOS(1, 'uri')
     ..aOS(2, 'json')
-    ..pc<$2.Source>(3, 'sources', $pb.PbFieldType.PM,$2.Source.create)
-    ..pc<$3.Layer>(4, 'layers', $pb.PbFieldType.PM,$3.Layer.create)
-    ..a<$1.TransitionOptions>(5, 'transition', $pb.PbFieldType.OM, $1.TransitionOptions.getDefault, $1.TransitionOptions.create)
-    ..a<Style_Light>(6, 'light', $pb.PbFieldType.OM, Style_Light.getDefault, Style_Light.create)
+    ..pc<$2.Source>(3, 'sources', $pb.PbFieldType.PM, subBuilder: $2.Source.create)
+    ..pc<$3.Layer>(4, 'layers', $pb.PbFieldType.PM, subBuilder: $3.Layer.create)
+    ..a<$1.TransitionOptions>(5, 'transition', $pb.PbFieldType.OM, defaultOrMaker: $1.TransitionOptions.getDefault, subBuilder: $1.TransitionOptions.create)
+    ..a<Style_Light>(6, 'light', $pb.PbFieldType.OM, defaultOrMaker: Style_Light.getDefault, subBuilder: Style_Light.create)
     ..hasRequiredFields = false
   ;
 

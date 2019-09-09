@@ -6,7 +6,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:mapbox_gl_example/main.dart';
+import '../main.dart';
 
 class MoveCameraPage extends StatefulWidget {
   const MoveCameraPage();
@@ -95,10 +95,10 @@ class MoveCameraPageState extends State<MoveCameraPage> {
                       mapController.moveCamera(
                         CameraUpdate.newLatLngBounds(
                           LatLngBounds(
-                            latitudeSouth: -38.483935,
-                            longitudeWest: 113.248673,
-                            latitudeNorth: -8.982446,
-                            longitudeEast: 153.823821,
+                            south: -38.483935,
+                            west: 113.248673,
+                            north: -8.982446,
+                            east: 153.823821,
                           ),
                           padding: const EdgeInsets.all(10.0),
                         ),

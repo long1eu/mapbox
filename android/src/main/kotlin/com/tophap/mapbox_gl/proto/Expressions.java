@@ -98,6 +98,13 @@ public final class Expressions {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Expression();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -128,9 +135,9 @@ public final class Expressions {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 arguments_ = new java.util.ArrayList<com.tophap.mapbox_gl.proto.Expressions.Expression>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               arguments_.add(
                   input.readMessage(com.tophap.mapbox_gl.proto.Expressions.Expression.parser(), extensionRegistry));
@@ -179,7 +186,7 @@ public final class Expressions {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           arguments_ = java.util.Collections.unmodifiableList(arguments_);
         }
         this.unknownFields = unknownFields.build();
@@ -199,7 +206,6 @@ public final class Expressions {
               com.tophap.mapbox_gl.proto.Expressions.Expression.class, com.tophap.mapbox_gl.proto.Expressions.Expression.Builder.class);
     }
 
-    private int bitField0_;
     private int dataCase_ = 0;
     private java.lang.Object data_;
     public enum DataCase
@@ -608,7 +614,7 @@ public final class Expressions {
 
         if (argumentsBuilder_ == null) {
           arguments_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           argumentsBuilder_.clear();
         }
@@ -641,12 +647,11 @@ public final class Expressions {
       public com.tophap.mapbox_gl.proto.Expressions.Expression buildPartial() {
         com.tophap.mapbox_gl.proto.Expressions.Expression result = new com.tophap.mapbox_gl.proto.Expressions.Expression(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         result.operator_ = operator_;
         if (argumentsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             arguments_ = java.util.Collections.unmodifiableList(arguments_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.arguments_ = arguments_;
         } else {
@@ -666,7 +671,6 @@ public final class Expressions {
             result.data_ = literalBuilder_.build();
           }
         }
-        result.bitField0_ = to_bitField0_;
         result.dataCase_ = dataCase_;
         onBuilt();
         return result;
@@ -724,7 +728,7 @@ public final class Expressions {
           if (!other.arguments_.isEmpty()) {
             if (arguments_.isEmpty()) {
               arguments_ = other.arguments_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureArgumentsIsMutable();
               arguments_.addAll(other.arguments_);
@@ -737,7 +741,7 @@ public final class Expressions {
               argumentsBuilder_.dispose();
               argumentsBuilder_ = null;
               arguments_ = other.arguments_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               argumentsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getArgumentsFieldBuilder() : null;
@@ -876,9 +880,9 @@ public final class Expressions {
       private java.util.List<com.tophap.mapbox_gl.proto.Expressions.Expression> arguments_ =
         java.util.Collections.emptyList();
       private void ensureArgumentsIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           arguments_ = new java.util.ArrayList<com.tophap.mapbox_gl.proto.Expressions.Expression>(arguments_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -1028,7 +1032,7 @@ public final class Expressions {
       public Builder clearArguments() {
         if (argumentsBuilder_ == null) {
           arguments_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           argumentsBuilder_.clear();
@@ -1105,7 +1109,7 @@ public final class Expressions {
           argumentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.tophap.mapbox_gl.proto.Expressions.Expression, com.tophap.mapbox_gl.proto.Expressions.Expression.Builder, com.tophap.mapbox_gl.proto.Expressions.ExpressionOrBuilder>(
                   arguments_,
-                  ((bitField0_ & 0x00000002) != 0),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           arguments_ = null;
@@ -1497,6 +1501,13 @@ public final class Expressions {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Value();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1509,7 +1520,6 @@ public final class Expressions {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2577,6 +2587,13 @@ public final class Expressions {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ListValue();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -3367,6 +3384,13 @@ public final class Expressions {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MapExpression();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -4085,18 +4109,10 @@ public final class Expressions {
       "x_gl.Expression:\0028\001B)\n\032com.tophap.mapbox" +
       "_gl.protoB\013Expressionsb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_tophap_mapbox_gl_Expression_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tophap_mapbox_gl_Expression_fieldAccessorTable = new

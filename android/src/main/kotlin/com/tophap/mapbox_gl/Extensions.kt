@@ -592,9 +592,9 @@ fun String.toProto(): StringValue {
 
 fun LatLngBounds.toProto(): Util.LatLngBounds {
     return Util.LatLngBounds.newBuilder()
-            .setLatitudeNorth(latNorth)
-            .setLongitudeEast(lonEast)
-            .setLatitudeSouth(latSouth)
-            .setLongitudeWest(lonWest)
+            .setNorth(latNorth)
+            .setEast(lonEast)
+            .setSouth(latSouth)
+            .setWest(lonWest)
             .build()
 }

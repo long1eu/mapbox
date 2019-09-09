@@ -6,7 +6,6 @@ library camera_position;
 
 import 'dart:typed_data';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_mapbox_gl/src/models/latlng.dart';

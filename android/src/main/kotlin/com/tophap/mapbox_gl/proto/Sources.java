@@ -125,6 +125,13 @@ public final class Sources {
     }
 
     @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Source();
+    }
+
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -137,7 +144,6 @@ public final class Sources {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -347,6 +353,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new GeoJson();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -359,7 +372,6 @@ public final class Sources {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -499,6 +511,13 @@ public final class Sources {
         }
 
         @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new Options();
+        }
+
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
           return this.unknownFields;
@@ -511,7 +530,6 @@ public final class Sources {
           if (extensionRegistry == null) {
             throw new java.lang.NullPointerException();
           }
-          int mutable_bitField0_ = 0;
           com.google.protobuf.UnknownFieldSet.Builder unknownFields =
               com.google.protobuf.UnknownFieldSet.newBuilder();
           try {
@@ -2530,6 +2548,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Image();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -2542,7 +2567,6 @@ public final class Sources {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -3722,6 +3746,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new RasterDem();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -3734,7 +3765,6 @@ public final class Sources {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -4919,6 +4949,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Raster();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -4931,7 +4968,6 @@ public final class Sources {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -6111,6 +6147,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Vector();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -6123,7 +6166,6 @@ public final class Sources {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -7221,6 +7263,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Unknown();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -7233,7 +7282,6 @@ public final class Sources {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
-        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -8082,6 +8130,13 @@ public final class Sources {
       }
 
       @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new TileSet();
+      }
+
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return this.unknownFields;
@@ -8155,27 +8210,27 @@ public final class Sources {
               }
               case 74: {
                 java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000100) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                   tiles_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000100;
+                  mutable_bitField0_ |= 0x00000001;
                 }
                 tiles_.add(s);
                 break;
               }
               case 82: {
                 java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000200) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                   grids_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000200;
+                  mutable_bitField0_ |= 0x00000002;
                 }
                 grids_.add(s);
                 break;
               }
               case 90: {
                 java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000400) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                   data_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000400;
+                  mutable_bitField0_ |= 0x00000004;
                 }
                 data_.add(s);
                 break;
@@ -8191,9 +8246,9 @@ public final class Sources {
                 break;
               }
               case 117: {
-                if (!((mutable_bitField0_ & 0x00002000) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                   bounds_ = newFloatList();
-                  mutable_bitField0_ |= 0x00002000;
+                  mutable_bitField0_ |= 0x00000008;
                 }
                 bounds_.addFloat(input.readFloat());
                 break;
@@ -8201,9 +8256,9 @@ public final class Sources {
               case 114: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00002000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
                   bounds_ = newFloatList();
-                  mutable_bitField0_ |= 0x00002000;
+                  mutable_bitField0_ |= 0x00000008;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   bounds_.addFloat(input.readFloat());
@@ -8212,9 +8267,9 @@ public final class Sources {
                 break;
               }
               case 125: {
-                if (!((mutable_bitField0_ & 0x00004000) != 0)) {
+                if (!((mutable_bitField0_ & 0x00000010) != 0)) {
                   center_ = newFloatList();
-                  mutable_bitField0_ |= 0x00004000;
+                  mutable_bitField0_ |= 0x00000010;
                 }
                 center_.addFloat(input.readFloat());
                 break;
@@ -8222,9 +8277,9 @@ public final class Sources {
               case 122: {
                 int length = input.readRawVarint32();
                 int limit = input.pushLimit(length);
-                if (!((mutable_bitField0_ & 0x00004000) != 0) && input.getBytesUntilLimit() > 0) {
+                if (!((mutable_bitField0_ & 0x00000010) != 0) && input.getBytesUntilLimit() > 0) {
                   center_ = newFloatList();
-                  mutable_bitField0_ |= 0x00004000;
+                  mutable_bitField0_ |= 0x00000010;
                 }
                 while (input.getBytesUntilLimit() > 0) {
                   center_.addFloat(input.readFloat());
@@ -8253,19 +8308,19 @@ public final class Sources {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
-          if (((mutable_bitField0_ & 0x00000100) != 0)) {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
             tiles_ = tiles_.getUnmodifiableView();
           }
-          if (((mutable_bitField0_ & 0x00000200) != 0)) {
+          if (((mutable_bitField0_ & 0x00000002) != 0)) {
             grids_ = grids_.getUnmodifiableView();
           }
-          if (((mutable_bitField0_ & 0x00000400) != 0)) {
+          if (((mutable_bitField0_ & 0x00000004) != 0)) {
             data_ = data_.getUnmodifiableView();
           }
-          if (((mutable_bitField0_ & 0x00002000) != 0)) {
+          if (((mutable_bitField0_ & 0x00000008) != 0)) {
             bounds_.makeImmutable(); // C
           }
-          if (((mutable_bitField0_ & 0x00004000) != 0)) {
+          if (((mutable_bitField0_ & 0x00000010) != 0)) {
             center_.makeImmutable(); // C
           }
           this.unknownFields = unknownFields.build();
@@ -8285,7 +8340,6 @@ public final class Sources {
                 com.tophap.mapbox_gl.proto.Sources.Source.TileSet.class, com.tophap.mapbox_gl.proto.Sources.Source.TileSet.Builder.class);
       }
 
-      private int bitField0_;
       public static final int TILE_JSON_FIELD_NUMBER = 1;
       private volatile java.lang.Object tileJson_;
       /**
@@ -9158,19 +9212,19 @@ public final class Sources {
           scheme_ = "";
 
           tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000001);
           grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000002);
           data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000004);
           minZoom_ = 0F;
 
           maxZoom_ = 0F;
 
           bounds_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00000008);
           center_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00000010);
           encoding_ = "";
 
           return this;
@@ -9200,7 +9254,6 @@ public final class Sources {
         public com.tophap.mapbox_gl.proto.Sources.Source.TileSet buildPartial() {
           com.tophap.mapbox_gl.proto.Sources.Source.TileSet result = new com.tophap.mapbox_gl.proto.Sources.Source.TileSet(this);
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
           result.tileJson_ = tileJson_;
           result.name_ = name_;
           result.description_ = description_;
@@ -9209,35 +9262,34 @@ public final class Sources {
           result.template_ = template_;
           result.legend_ = legend_;
           result.scheme_ = scheme_;
-          if (((bitField0_ & 0x00000100) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             tiles_ = tiles_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.tiles_ = tiles_;
-          if (((bitField0_ & 0x00000200) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             grids_ = grids_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000200);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.grids_ = grids_;
-          if (((bitField0_ & 0x00000400) != 0)) {
+          if (((bitField0_ & 0x00000004) != 0)) {
             data_ = data_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000400);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.data_ = data_;
           result.minZoom_ = minZoom_;
           result.maxZoom_ = maxZoom_;
-          if (((bitField0_ & 0x00002000) != 0)) {
+          if (((bitField0_ & 0x00000008) != 0)) {
             bounds_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00002000);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.bounds_ = bounds_;
-          if (((bitField0_ & 0x00004000) != 0)) {
+          if (((bitField0_ & 0x00000010) != 0)) {
             center_.makeImmutable();
-            bitField0_ = (bitField0_ & ~0x00004000);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.center_ = center_;
           result.encoding_ = encoding_;
-          result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
@@ -9321,7 +9373,7 @@ public final class Sources {
           if (!other.tiles_.isEmpty()) {
             if (tiles_.isEmpty()) {
               tiles_ = other.tiles_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureTilesIsMutable();
               tiles_.addAll(other.tiles_);
@@ -9331,7 +9383,7 @@ public final class Sources {
           if (!other.grids_.isEmpty()) {
             if (grids_.isEmpty()) {
               grids_ = other.grids_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureGridsIsMutable();
               grids_.addAll(other.grids_);
@@ -9341,7 +9393,7 @@ public final class Sources {
           if (!other.data_.isEmpty()) {
             if (data_.isEmpty()) {
               data_ = other.data_;
-              bitField0_ = (bitField0_ & ~0x00000400);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureDataIsMutable();
               data_.addAll(other.data_);
@@ -9357,7 +9409,7 @@ public final class Sources {
           if (!other.bounds_.isEmpty()) {
             if (bounds_.isEmpty()) {
               bounds_ = other.bounds_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureBoundsIsMutable();
               bounds_.addAll(other.bounds_);
@@ -9367,7 +9419,7 @@ public final class Sources {
           if (!other.center_.isEmpty()) {
             if (center_.isEmpty()) {
               center_ = other.center_;
-              bitField0_ = (bitField0_ & ~0x00004000);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureCenterIsMutable();
               center_.addAll(other.center_);
@@ -9962,9 +10014,9 @@ public final class Sources {
 
         private com.google.protobuf.LazyStringList tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         private void ensureTilesIsMutable() {
-          if (!((bitField0_ & 0x00000100) != 0)) {
+          if (!((bitField0_ & 0x00000001) != 0)) {
             tiles_ = new com.google.protobuf.LazyStringArrayList(tiles_);
-            bitField0_ |= 0x00000100;
+            bitField0_ |= 0x00000001;
            }
         }
         /**
@@ -10035,7 +10087,7 @@ public final class Sources {
          */
         public Builder clearTiles() {
           tiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
           return this;
         }
@@ -10056,9 +10108,9 @@ public final class Sources {
 
         private com.google.protobuf.LazyStringList grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         private void ensureGridsIsMutable() {
-          if (!((bitField0_ & 0x00000200) != 0)) {
+          if (!((bitField0_ & 0x00000002) != 0)) {
             grids_ = new com.google.protobuf.LazyStringArrayList(grids_);
-            bitField0_ |= 0x00000200;
+            bitField0_ |= 0x00000002;
            }
         }
         /**
@@ -10129,7 +10181,7 @@ public final class Sources {
          */
         public Builder clearGrids() {
           grids_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
           return this;
         }
@@ -10150,9 +10202,9 @@ public final class Sources {
 
         private com.google.protobuf.LazyStringList data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         private void ensureDataIsMutable() {
-          if (!((bitField0_ & 0x00000400) != 0)) {
+          if (!((bitField0_ & 0x00000004) != 0)) {
             data_ = new com.google.protobuf.LazyStringArrayList(data_);
-            bitField0_ |= 0x00000400;
+            bitField0_ |= 0x00000004;
            }
         }
         /**
@@ -10223,7 +10275,7 @@ public final class Sources {
          */
         public Builder clearData() {
           data_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
           return this;
         }
@@ -10296,9 +10348,9 @@ public final class Sources {
 
         private com.google.protobuf.Internal.FloatList bounds_ = emptyFloatList();
         private void ensureBoundsIsMutable() {
-          if (!((bitField0_ & 0x00002000) != 0)) {
+          if (!((bitField0_ & 0x00000008) != 0)) {
             bounds_ = mutableCopy(bounds_);
-            bitField0_ |= 0x00002000;
+            bitField0_ |= 0x00000008;
            }
         }
         /**
@@ -10306,7 +10358,7 @@ public final class Sources {
          */
         public java.util.List<java.lang.Float>
             getBoundsList() {
-          return ((bitField0_ & 0x00002000) != 0) ?
+          return ((bitField0_ & 0x00000008) != 0) ?
                    java.util.Collections.unmodifiableList(bounds_) : bounds_;
         }
         /**
@@ -10356,16 +10408,16 @@ public final class Sources {
          */
         public Builder clearBounds() {
           bounds_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
           return this;
         }
 
         private com.google.protobuf.Internal.FloatList center_ = emptyFloatList();
         private void ensureCenterIsMutable() {
-          if (!((bitField0_ & 0x00004000) != 0)) {
+          if (!((bitField0_ & 0x00000010) != 0)) {
             center_ = mutableCopy(center_);
-            bitField0_ |= 0x00004000;
+            bitField0_ |= 0x00000010;
            }
         }
         /**
@@ -10373,7 +10425,7 @@ public final class Sources {
          */
         public java.util.List<java.lang.Float>
             getCenterList() {
-          return ((bitField0_ & 0x00004000) != 0) ?
+          return ((bitField0_ & 0x00000010) != 0) ?
                    java.util.Collections.unmodifiableList(center_) : center_;
         }
         /**
@@ -10423,7 +10475,7 @@ public final class Sources {
          */
         public Builder clearCenter() {
           center_ = emptyFloatList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
           return this;
         }
@@ -12308,19 +12360,11 @@ public final class Sources {
       "\020\n\010encoding\030\020 \001(\tB\006\n\004typeB%\n\032com.tophap." +
       "mapbox_gl.protoB\007Sourcesb\006proto3"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.tophap.mapbox_gl.proto.Util.getDescriptor(),
-        }, assigner);
+        });
     internal_static_tophap_mapbox_gl_Source_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_tophap_mapbox_gl_Source_fieldAccessorTable = new

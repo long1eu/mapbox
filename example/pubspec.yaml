@@ -3,12 +3,11 @@ description: Demonstrates how to use the mapbox_gl plugin.
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.2.2 <3.0.0"
+  sdk: ">=2.4.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  image_picker: ^0.6.1
 
   cupertino_icons: ^0.1.2
   http: any
@@ -16,8 +15,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_driver:
-    sdk: flutter
+
   flutter_mapbox_gl:
     path: ../
 

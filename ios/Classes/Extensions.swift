@@ -11,41 +11,6 @@ extension NSExpression {
       let object = mgl_jsonExpressionObject
       let valid = JSONSerialization.isValidJSONObject(object)
       
-      /*switch (expressionType) {
-      case .constantValue:
-        print("constantValue: \(constantValue!)")
-        break;
-      case .function:
-        print("function: \(function)")
-        break;
-      case .aggregate:
-        print("aggregate: \(collection)")
-        break;
-      case .conditional:
-        print("conditional: \(self.true)")
-        break;
-      default:
-        // @formatter:off
-        var type:String = ""
-        if expressionType == .constantValue { type = "constantValue"}
-        if expressionType == .evaluatedObject { type = "evaluatedObject"}
-        if expressionType == .variable { type = "variable"}
-        if expressionType == .keyPath { type = "keyPath"}
-        if expressionType == .function { type = "function"}
-        if expressionType == .unionSet { type = "unionSet"}
-        if expressionType == .intersectSet { type = "intersectSet"}
-        if expressionType == .minusSet { type = "minusSet"}
-        if expressionType == .subquery { type = "subquery"}
-        if expressionType == .aggregate { type = "aggregate"}
-        if expressionType == .anyKey { type = "anyKey"}
-        if expressionType == .block { type = "block"}
-        if expressionType == .conditional { type = "conditional"}
-        // @formatter:on
-        
-        fatalError("unnown type \(type)")
-      }*/
-      
-      
       if expressionType == .constantValue {
         if object is [Any] {
           assert(valid)
@@ -68,7 +33,7 @@ extension NSExpression {
   }
   
   var boolOrExpression: SwiftProtobuf.Google_Protobuf_StringValue {
-    return  SwiftProtobuf.Google_Protobuf_StringValue.with {
+    return SwiftProtobuf.Google_Protobuf_StringValue.with {
       let object = mgl_jsonExpressionObject
       let valid = JSONSerialization.isValidJSONObject(object)
       if valid {
@@ -155,7 +120,7 @@ extension SwiftProtobuf.Google_Protobuf_StringValue {
       let value = numberArray
       let dx = CGFloat(value[0].floatValue)
       let dy = CGFloat(value[1].floatValue)
-      return NSExpression(forConstantValue: CGVector(dx:dx, dy: dy))
+      return NSExpression(forConstantValue: CGVector(dx: dx, dy: dy))
     }
     
     return result
@@ -173,7 +138,7 @@ extension SwiftProtobuf.Google_Protobuf_StringValue {
       let bottom = CGFloat(value[2].floatValue)
       let left = CGFloat(value[3].floatValue)
       
-      return NSExpression(forConstantValue: UIEdgeInsets(top:top, left:left, bottom:bottom, right:right))
+      return NSExpression(forConstantValue: UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
     }
     
     return result
@@ -197,6 +162,8 @@ extension MGLIconAnchor {
     case .topRight: return Tophap_MapboxGl_PositionAnchor.positionTopRight
     case .bottomLeft: return Tophap_MapboxGl_PositionAnchor.positionBottomLeft
     case .bottomRight: return Tophap_MapboxGl_PositionAnchor.positionBottomRight
+    @unknown default:
+      fatalError("Unimplemented anchor \(self)")
     }
   }
 }
@@ -208,6 +175,8 @@ extension MGLOrnamentPosition {
     case .topRight: return Tophap_MapboxGl_OrnamentPosition.topRight
     case .bottomLeft: return Tophap_MapboxGl_OrnamentPosition.bottomLeft
     case .bottomRight: return Tophap_MapboxGl_OrnamentPosition.bottomRight
+    @unknown default:
+      fatalError("Unimplemented position \(self)")
     }
   }
 }
@@ -272,13 +241,13 @@ extension Array where Iterator.Element == Float {
   }
 }
 
-extension  MGLCoordinateBounds {
+extension MGLCoordinateBounds {
   var proto: Tophap_MapboxGl_LatLngBounds {
     return Tophap_MapboxGl_LatLngBounds.with { bounds in
-      bounds.latitudeNorth = ne.latitude
-      bounds.longitudeEast = ne.longitude
-      bounds.latitudeSouth = sw.latitude
-      bounds.longitudeWest = sw.longitude
+      bounds.north = ne.latitude
+      bounds.east = ne.longitude
+      bounds.south = sw.latitude
+      bounds.west = sw.longitude
     }
   }
 }
@@ -358,7 +327,7 @@ extension MGLCameraChangeReason {
     if contains(.gestureTilt) { values.append("gestureTilt") } // SHOVE
     if contains(.transitionCancelled) { values.append("transitionCancelled") }
     // @formatter:on
-  
+    
     let data = try! JSONSerialization.data(withJSONObject: values)
     return String(data: data, encoding: .utf8)!
   }

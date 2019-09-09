@@ -300,13 +300,13 @@ struct Tophap_MapboxGl_LatLngBounds {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var latitudeNorth: Double = 0
+  var north: Double = 0
 
-  var latitudeSouth: Double = 0
+  var south: Double = 0
 
-  var longitudeEast: Double = 0
+  var east: Double = 0
 
-  var longitudeWest: Double = 0
+  var west: Double = 0
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -539,10 +539,10 @@ extension Tophap_MapboxGl_LatLng: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 extension Tophap_MapboxGl_LatLngQuad: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".LatLngQuad"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "topLeft"),
-    2: .same(proto: "topRight"),
-    3: .same(proto: "bottomRight"),
-    4: .same(proto: "bottomLeft"),
+    1: .standard(proto: "top_left"),
+    2: .standard(proto: "top_right"),
+    3: .standard(proto: "bottom_right"),
+    4: .standard(proto: "bottom_left"),
   ]
 
   fileprivate class _StorageClass {
@@ -624,45 +624,45 @@ extension Tophap_MapboxGl_LatLngQuad: SwiftProtobuf.Message, SwiftProtobuf._Mess
 extension Tophap_MapboxGl_LatLngBounds: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".LatLngBounds"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "latitudeNorth"),
-    2: .same(proto: "latitudeSouth"),
-    3: .same(proto: "longitudeEast"),
-    4: .same(proto: "longitudeWest"),
+    1: .same(proto: "north"),
+    2: .same(proto: "south"),
+    3: .same(proto: "east"),
+    4: .same(proto: "west"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
-      case 1: try decoder.decodeSingularDoubleField(value: &self.latitudeNorth)
-      case 2: try decoder.decodeSingularDoubleField(value: &self.latitudeSouth)
-      case 3: try decoder.decodeSingularDoubleField(value: &self.longitudeEast)
-      case 4: try decoder.decodeSingularDoubleField(value: &self.longitudeWest)
+      case 1: try decoder.decodeSingularDoubleField(value: &self.north)
+      case 2: try decoder.decodeSingularDoubleField(value: &self.south)
+      case 3: try decoder.decodeSingularDoubleField(value: &self.east)
+      case 4: try decoder.decodeSingularDoubleField(value: &self.west)
       default: break
       }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.latitudeNorth != 0 {
-      try visitor.visitSingularDoubleField(value: self.latitudeNorth, fieldNumber: 1)
+    if self.north != 0 {
+      try visitor.visitSingularDoubleField(value: self.north, fieldNumber: 1)
     }
-    if self.latitudeSouth != 0 {
-      try visitor.visitSingularDoubleField(value: self.latitudeSouth, fieldNumber: 2)
+    if self.south != 0 {
+      try visitor.visitSingularDoubleField(value: self.south, fieldNumber: 2)
     }
-    if self.longitudeEast != 0 {
-      try visitor.visitSingularDoubleField(value: self.longitudeEast, fieldNumber: 3)
+    if self.east != 0 {
+      try visitor.visitSingularDoubleField(value: self.east, fieldNumber: 3)
     }
-    if self.longitudeWest != 0 {
-      try visitor.visitSingularDoubleField(value: self.longitudeWest, fieldNumber: 4)
+    if self.west != 0 {
+      try visitor.visitSingularDoubleField(value: self.west, fieldNumber: 4)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: Tophap_MapboxGl_LatLngBounds, rhs: Tophap_MapboxGl_LatLngBounds) -> Bool {
-    if lhs.latitudeNorth != rhs.latitudeNorth {return false}
-    if lhs.latitudeSouth != rhs.latitudeSouth {return false}
-    if lhs.longitudeEast != rhs.longitudeEast {return false}
-    if lhs.longitudeWest != rhs.longitudeWest {return false}
+    if lhs.north != rhs.north {return false}
+    if lhs.south != rhs.south {return false}
+    if lhs.east != rhs.east {return false}
+    if lhs.west != rhs.west {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
