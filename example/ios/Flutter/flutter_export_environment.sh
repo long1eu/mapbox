@@ -6,3 +6,4 @@ export "FLUTTER_TARGET=/Users/long1eu/IdeaProjects/mapbox_gl/example/lib/main.da
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_FRAMEWORK_DIR=/Users/long1eu/IDE/flutter/bin/cache/artifacts/engine/ios"
+export "TRACK_WIDGET_CREATION=true"

@@ -3,9 +3,11 @@
 // on 2019-08-06
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart' as picker;
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 
 import '../main.dart';
@@ -29,7 +31,6 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
   int imageCountIndex = 0;
 
   void onTap(LatLng value) async {
-    /*
     if (boundsFeatureList.length == 4) {
       boundsFeatureList = <dynamic>[];
       boundsCirclePointList = <LatLng>[];
@@ -99,7 +100,6 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
         });
       }
     }
-    */
   }
 
   @override

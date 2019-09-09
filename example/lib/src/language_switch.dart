@@ -56,9 +56,10 @@ class _LanguageSwitchPageState extends State<LanguageSwitchPage> {
             onSelected: (Language value) async {
               setState(() => language = value);
               final SymbolLayer mapText =
-                  controller.style.getLayer("country-label");
+                  controller.style.getLayer('country-label');
 
-              await mapText.copyWith(text: '{name_${_abbreviation(value)}}');
+              controller.style.updateLayer('country-label',
+                  mapText.copyWith(text: '{name_${_abbreviation(value)}}'));
             },
             enabled: controller != null,
             itemBuilder: (BuildContext context) {

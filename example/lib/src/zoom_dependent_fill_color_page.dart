@@ -11,20 +11,23 @@ class ZoomDependentFillColorPage extends StatelessWidget {
   const ZoomDependentFillColorPage({Key key}) : super(key: key);
 
   void onMapReady(MapController controller) async {
-    final FillLayer layer = controller.style.getLayer("water");
+    final BackgroundLayer layer = controller.style.getLayer("land");
     if (layer == null) {
       return;
     }
 
-    await layer.copyWith(
-      colorEx: interpolate(
-        exponential(1.0), zoom(), //
-        <Stop>[
-          stop(1.0, color$(const Color(0xFF00D116))),
-          stop(8.5, color$(const Color(0xFF0A58FF))),
-          stop(10.0, color$(const Color(0xFFFF0A0A))),
-          stop(18.0, color$(const Color(0xFFFBFF00))),
-        ],
+    await controller.style.updateLayer(
+      layer.id,
+      layer.copyWith(
+        colorEx: interpolate(
+          exponential(1.0), zoom(), //
+          <Stop>[
+            stop(1.0, color$(const Color(0xFF00D116))),
+            stop(8.5, color$(const Color(0xFF0A58FF))),
+            stop(10.0, color$(const Color(0xFFFF0A0A))),
+            stop(18.0, color$(const Color(0xFFFBFF00))),
+          ],
+        ),
       ),
     );
 
@@ -37,7 +40,6 @@ class ZoomDependentFillColorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    // todo changing the fill color doesn't work at all
 
     return Scaffold(
       appBar: AppBar(
