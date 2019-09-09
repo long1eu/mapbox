@@ -82,16 +82,20 @@ abstract class ImageSource
   }
 
   @override
-  Source markAsAttached(MethodChannel channel, Source source) {
-    if (source is ImageSource) {
+  Source markAsAttached(MethodChannel channel, [Source source]) {
+    if (source == null) {
+      return rebuild((SourceBuilder b) => b.channel = channel);
+    } else if (source is ImageSource) {
       return rebuild((ImageSourceBuilder b) {
-        b
-          ..channel = channel
-          ..attribution = source.attribution ?? attribution
-          ..coordinates = (source.coordinates ?? coordinates).toBuilder()
-          ..uri = source.uri ?? uri
-          ..image = source.image ?? image
-          ..asset = source.asset ?? asset;
+        if (source != null) {
+          b
+            ..channel = channel
+            ..attribution = source.attribution ?? attribution
+            ..coordinates = (source.coordinates ?? coordinates).toBuilder()
+            ..uri = source.uri ?? uri
+            ..image = source.image ?? image
+            ..asset = source.asset ?? asset;
+        }
       });
     } else {
       throw ArgumentError(

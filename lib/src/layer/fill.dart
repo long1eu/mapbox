@@ -248,34 +248,38 @@ abstract class FillLayer
   }
 
   @override
-  FillLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is FillLayer) {
+  FillLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is FillLayer) {
       return rebuild((FillLayerBuilder b) {
-        b
-          ..channel = channel
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..filter = layer.filter ?? filter
-          ..antialias = layer.antialias ?? antialias
-          ..opacity = layer.opacity ?? opacity
-          ..color = layer.color ?? color
-          ..outlineColor = layer.outlineColor ?? outlineColor
-          ..translate = layer.translate ?? translate
-          ..translateAnchor = layer.translateAnchor ?? translateAnchor
-          ..pattern = layer.pattern ?? pattern
-          ..opacityTransition =
-              (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition =
-              (layer.colorTransition ?? colorTransition).toBuilder()
-          ..outlineColorTransition =
-              (layer.outlineColorTransition ?? outlineColorTransition)
-                  .toBuilder()
-          ..translateTransition =
-              (layer.translateTransition ?? translateTransition).toBuilder()
-          ..patternTransition =
-              (layer.patternTransition ?? patternTransition).toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..sourceLayer = layer.sourceLayer ?? sourceLayer
+            ..filter = layer.filter ?? filter
+            ..antialias = layer.antialias ?? antialias
+            ..opacity = layer.opacity ?? opacity
+            ..color = layer.color ?? color
+            ..outlineColor = layer.outlineColor ?? outlineColor
+            ..translate = layer.translate ?? translate
+            ..translateAnchor = layer.translateAnchor ?? translateAnchor
+            ..pattern = layer.pattern ?? pattern
+            ..opacityTransition =
+                (layer.opacityTransition ?? opacityTransition).toBuilder()
+            ..colorTransition =
+                (layer.colorTransition ?? colorTransition).toBuilder()
+            ..outlineColorTransition =
+                (layer.outlineColorTransition ?? outlineColorTransition)
+                    .toBuilder()
+            ..translateTransition =
+                (layer.translateTransition ?? translateTransition).toBuilder()
+            ..patternTransition =
+                (layer.patternTransition ?? patternTransition).toBuilder();
+        }
       });
     } else {
       throw ArgumentError(

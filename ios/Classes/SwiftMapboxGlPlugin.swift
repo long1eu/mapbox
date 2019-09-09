@@ -5,6 +5,8 @@ import Mapbox
 
 public class SwiftMapboxGlPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
+    MGLLoggingConfiguration.shared.loggingLevel = MGLLoggingLevel.info
+    
     let channel = FlutterMethodChannel(name: "com.tophap/mapbox_gl", binaryMessenger: registrar.messenger())
     registrar.register(MapboxMapFactory(registrar: registrar), withId: "com.tophap/mapbox_gl_factory")
     

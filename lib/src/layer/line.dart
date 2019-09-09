@@ -390,47 +390,51 @@ abstract class LineLayer
   }
 
   @override
-  LineLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is LineLayer) {
+  LineLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is LineLayer) {
       return rebuild((LineLayerBuilder b) {
-        b
-          ..channel = channel
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..cap = layer.cap ?? cap
-          ..join = layer.join ?? join
-          ..miterLimit = layer.miterLimit ?? miterLimit
-          ..roundLimit = layer.roundLimit ?? roundLimit
-          ..opacity = layer.opacity ?? opacity
-          ..color = layer.color ?? color
-          ..translate = layer.translate ?? translate
-          ..translateAnchor = layer.translateAnchor ?? translateAnchor
-          ..width = layer.width ?? width
-          ..gapWidth = layer.gapWidth ?? gapWidth
-          ..offset = layer.offset ?? offset
-          ..blur = layer.blur ?? blur
-          ..dasharray = layer.dasharray ?? dasharray
-          ..pattern = layer.pattern ?? pattern
-          ..gradient = layer.gradient ?? gradient
-          ..opacityTransition =
-              (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition =
-              (layer.colorTransition ?? colorTransition).toBuilder()
-          ..translateTransition =
-              (layer.translateTransition ?? translateTransition).toBuilder()
-          ..widthTransition =
-              (layer.widthTransition ?? widthTransition).toBuilder()
-          ..gapWidthTransition =
-              (layer.gapWidthTransition ?? gapWidthTransition).toBuilder()
-          ..offsetTransition =
-              (layer.offsetTransition ?? offsetTransition).toBuilder()
-          ..blurTransition =
-              (layer.blurTransition ?? blurTransition).toBuilder()
-          ..dasharrayTransition =
-              (layer.dasharrayTransition ?? dasharrayTransition).toBuilder()
-          ..patternTransition =
-              (layer.patternTransition ?? patternTransition).toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..cap = layer.cap ?? cap
+            ..join = layer.join ?? join
+            ..miterLimit = layer.miterLimit ?? miterLimit
+            ..roundLimit = layer.roundLimit ?? roundLimit
+            ..opacity = layer.opacity ?? opacity
+            ..color = layer.color ?? color
+            ..translate = layer.translate ?? translate
+            ..translateAnchor = layer.translateAnchor ?? translateAnchor
+            ..width = layer.width ?? width
+            ..gapWidth = layer.gapWidth ?? gapWidth
+            ..offset = layer.offset ?? offset
+            ..blur = layer.blur ?? blur
+            ..dasharray = layer.dasharray ?? dasharray
+            ..pattern = layer.pattern ?? pattern
+            ..gradient = layer.gradient ?? gradient
+            ..opacityTransition =
+                (layer.opacityTransition ?? opacityTransition).toBuilder()
+            ..colorTransition =
+                (layer.colorTransition ?? colorTransition).toBuilder()
+            ..translateTransition =
+                (layer.translateTransition ?? translateTransition).toBuilder()
+            ..widthTransition =
+                (layer.widthTransition ?? widthTransition).toBuilder()
+            ..gapWidthTransition =
+                (layer.gapWidthTransition ?? gapWidthTransition).toBuilder()
+            ..offsetTransition =
+                (layer.offsetTransition ?? offsetTransition).toBuilder()
+            ..blurTransition =
+                (layer.blurTransition ?? blurTransition).toBuilder()
+            ..dasharrayTransition =
+                (layer.dasharrayTransition ?? dasharrayTransition).toBuilder()
+            ..patternTransition =
+                (layer.patternTransition ?? patternTransition).toBuilder();
+        }
       });
     } else {
       throw ArgumentError(
@@ -443,7 +447,6 @@ abstract class LineLayer
     if (layer is LineLayer) {
       final LineLayer _layer = rebuild((LineLayerBuilder b) {
         b
-          ..channel = channel
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom

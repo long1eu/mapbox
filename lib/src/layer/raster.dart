@@ -271,37 +271,41 @@ abstract class RasterLayer
   }
 
   @override
-  RasterLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is RasterLayer) {
+  RasterLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is RasterLayer) {
       return rebuild((RasterLayerBuilder b) {
-        b
-          ..channel = channel
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..opacity = layer.opacity ?? opacity
-          ..hueRotate = layer.hueRotate ?? hueRotate
-          ..brightnessMin = layer.brightnessMin ?? brightnessMin
-          ..brightnessMax = layer.brightnessMax ?? brightnessMax
-          ..saturation = layer.saturation ?? saturation
-          ..contrast = layer.contrast ?? contrast
-          ..resampling = layer.resampling ?? resampling
-          ..fadeDuration = layer.fadeDuration ?? fadeDuration
-          ..opacityTransition =
-              (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..hueRotateTransition =
-              (layer.hueRotateTransition ?? hueRotateTransition).toBuilder()
-          ..brightnessMinTransition =
-              (layer.brightnessMinTransition ?? brightnessMinTransition)
-                  .toBuilder()
-          ..brightnessMaxTransition =
-              (layer.brightnessMaxTransition ?? brightnessMaxTransition)
-                  .toBuilder()
-          ..saturationTransition =
-              (layer.saturationTransition ?? saturationTransition).toBuilder()
-          ..contrastTransition =
-              (layer.contrastTransition ?? contrastTransition).toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..sourceLayer = layer.sourceLayer ?? sourceLayer
+            ..opacity = layer.opacity ?? opacity
+            ..hueRotate = layer.hueRotate ?? hueRotate
+            ..brightnessMin = layer.brightnessMin ?? brightnessMin
+            ..brightnessMax = layer.brightnessMax ?? brightnessMax
+            ..saturation = layer.saturation ?? saturation
+            ..contrast = layer.contrast ?? contrast
+            ..resampling = layer.resampling ?? resampling
+            ..fadeDuration = layer.fadeDuration ?? fadeDuration
+            ..opacityTransition =
+                (layer.opacityTransition ?? opacityTransition).toBuilder()
+            ..hueRotateTransition =
+                (layer.hueRotateTransition ?? hueRotateTransition).toBuilder()
+            ..brightnessMinTransition =
+                (layer.brightnessMinTransition ?? brightnessMinTransition)
+                    .toBuilder()
+            ..brightnessMaxTransition =
+                (layer.brightnessMaxTransition ?? brightnessMaxTransition)
+                    .toBuilder()
+            ..saturationTransition =
+                (layer.saturationTransition ?? saturationTransition).toBuilder()
+            ..contrastTransition =
+                (layer.contrastTransition ?? contrastTransition).toBuilder();
+        }
       });
     } else {
       throw ArgumentError(
@@ -314,7 +318,6 @@ abstract class RasterLayer
     if (layer is RasterLayer) {
       final RasterLayer _layer = rebuild((RasterLayerBuilder b) {
         b
-          ..channel = channel
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom

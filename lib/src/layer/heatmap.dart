@@ -189,27 +189,31 @@ abstract class HeatmapLayer
   }
 
   @override
-  HeatmapLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is HeatmapLayer) {
+  HeatmapLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is HeatmapLayer) {
       return rebuild((HeatmapLayerBuilder b) {
-        b
-          ..channel = channel
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..filter = layer.filter ?? filter
-          ..radius = layer.radius ?? radius
-          ..weight = layer.weight ?? weight
-          ..intensity = layer.intensity ?? intensity
-          ..color = layer.color ?? color
-          ..opacity = layer.opacity ?? opacity
-          ..radiusTransition =
-              (layer.radiusTransition ?? radiusTransition).toBuilder()
-          ..intensityTransition =
-              (layer.intensityTransition ?? intensityTransition).toBuilder()
-          ..opacityTransition =
-              (layer.opacityTransition ?? opacityTransition).toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..sourceLayer = layer.sourceLayer ?? sourceLayer
+            ..filter = layer.filter ?? filter
+            ..radius = layer.radius ?? radius
+            ..weight = layer.weight ?? weight
+            ..intensity = layer.intensity ?? intensity
+            ..color = layer.color ?? color
+            ..opacity = layer.opacity ?? opacity
+            ..radiusTransition =
+                (layer.radiusTransition ?? radiusTransition).toBuilder()
+            ..intensityTransition =
+                (layer.intensityTransition ?? intensityTransition).toBuilder()
+            ..opacityTransition =
+                (layer.opacityTransition ?? opacityTransition).toBuilder();
+        }
       });
     } else {
       throw ArgumentError(
@@ -222,7 +226,6 @@ abstract class HeatmapLayer
     if (layer is HeatmapLayer) {
       final HeatmapLayer _layer = rebuild((HeatmapLayerBuilder b) {
         b
-          ..channel = channel
           ..visible = layer.visible ?? visible
           ..minZoom = layer.minZoom ?? minZoom
           ..maxZoom = layer.maxZoom ?? maxZoom

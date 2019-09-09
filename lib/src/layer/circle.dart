@@ -334,44 +334,50 @@ abstract class CircleLayer
   }
 
   @override
-  CircleLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is CircleLayer) {
+  CircleLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is CircleLayer) {
       return rebuild((CircleLayerBuilder b) {
-        b
-          ..channel = channel
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..filter = layer.filter ?? filter
-          ..radius = layer.radius ?? radius
-          ..color = layer.color ?? color
-          ..blur = layer.blur ?? blur
-          ..opacity = layer.opacity ?? opacity
-          ..translate = layer.translate ?? translate
-          ..translateAnchor = layer.translateAnchor ?? translateAnchor
-          ..pitchScale = layer.pitchScale ?? pitchScale
-          ..pitchAlignment = layer.pitchAlignment ?? pitchAlignment
-          ..strokeWidth = layer.strokeWidth ?? strokeWidth
-          ..strokeColor = layer.strokeColor ?? strokeColor
-          ..strokeOpacity = layer.strokeOpacity ?? strokeOpacity
-          ..radiusTransition =
-              (layer.radiusTransition ?? radiusTransition).toBuilder()
-          ..colorTransition =
-              (layer.colorTransition ?? colorTransition).toBuilder()
-          ..blurTransition =
-              (layer.blurTransition ?? blurTransition).toBuilder()
-          ..opacityTransition =
-              (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..translateTransition =
-              (layer.translateTransition ?? translateTransition).toBuilder()
-          ..strokeWidthTransition =
-              (layer.strokeWidthTransition ?? strokeWidthTransition).toBuilder()
-          ..strokeColorTransition =
-              (layer.strokeColorTransition ?? strokeColorTransition).toBuilder()
-          ..strokeOpacityTransition =
-              (layer.strokeOpacityTransition ?? strokeOpacityTransition)
-                  .toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..sourceLayer = layer.sourceLayer ?? sourceLayer
+            ..filter = layer.filter ?? filter
+            ..radius = layer.radius ?? radius
+            ..color = layer.color ?? color
+            ..blur = layer.blur ?? blur
+            ..opacity = layer.opacity ?? opacity
+            ..translate = layer.translate ?? translate
+            ..translateAnchor = layer.translateAnchor ?? translateAnchor
+            ..pitchScale = layer.pitchScale ?? pitchScale
+            ..pitchAlignment = layer.pitchAlignment ?? pitchAlignment
+            ..strokeWidth = layer.strokeWidth ?? strokeWidth
+            ..strokeColor = layer.strokeColor ?? strokeColor
+            ..strokeOpacity = layer.strokeOpacity ?? strokeOpacity
+            ..radiusTransition =
+                (layer.radiusTransition ?? radiusTransition).toBuilder()
+            ..colorTransition =
+                (layer.colorTransition ?? colorTransition).toBuilder()
+            ..blurTransition =
+                (layer.blurTransition ?? blurTransition).toBuilder()
+            ..opacityTransition =
+                (layer.opacityTransition ?? opacityTransition).toBuilder()
+            ..translateTransition =
+                (layer.translateTransition ?? translateTransition).toBuilder()
+            ..strokeWidthTransition =
+                (layer.strokeWidthTransition ?? strokeWidthTransition)
+                    .toBuilder()
+            ..strokeColorTransition =
+                (layer.strokeColorTransition ?? strokeColorTransition)
+                    .toBuilder()
+            ..strokeOpacityTransition =
+                (layer.strokeOpacityTransition ?? strokeOpacityTransition)
+                    .toBuilder();
+        }
       });
     } else {
       throw ArgumentError(

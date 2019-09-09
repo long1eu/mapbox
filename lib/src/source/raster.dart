@@ -57,15 +57,19 @@ abstract class RasterSource
   int get tileSize;
 
   @override
-  Source markAsAttached(MethodChannel channel, Source source) {
-    if (source is RasterSource) {
+  Source markAsAttached(MethodChannel channel, [Source source]) {
+    if (source == null) {
+      return rebuild((SourceBuilder b) => b.channel = channel);
+    } else if (source is RasterSource) {
       return rebuild((RasterSourceBuilder b) {
-        b
-          ..channel = channel
-          ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? uri
-          ..tileSet = (source.tileSet ?? tileSet)?.toBuilder()
-          ..tileSize = source.tileSize ?? tileSize;
+        if (source != null) {
+          b
+            ..channel = channel
+            ..attribution = source.attribution ?? attribution
+            ..uri = source.uri ?? uri
+            ..tileSet = (source.tileSet ?? tileSet)?.toBuilder()
+            ..tileSize = source.tileSize ?? tileSize;
+        }
       });
     } else {
       throw ArgumentError(

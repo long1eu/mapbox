@@ -62,7 +62,7 @@ target 'Runner' do
     pod p[:name], :path => specPath
   }
 
-#  pod 'Mapbox-iOS-SDK', :path => '../../ios/mapbox_gl.podspec'
+  #pod 'Mapbox-iOS-SDK', :path => '../../ios/mapbox_ios_sdk.podspec'
 end
 
 # Prevent Cocoapods from embedding a second Flutter framework and causing an error with the new Xcode build system.

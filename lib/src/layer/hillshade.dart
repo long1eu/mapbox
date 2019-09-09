@@ -233,34 +233,40 @@ abstract class HillshadeLayer
   }
 
   @override
-  HillshadeLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is HillshadeLayer) {
+  HillshadeLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is HillshadeLayer) {
       return rebuild((HillshadeLayerBuilder b) {
-        b
-          ..channel = channel
-          ..sourceId = layer.sourceId ?? sourceId
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..illuminationDirection =
-              layer.illuminationDirection ?? illuminationDirection
-          ..illuminationAnchor = layer.illuminationAnchor ?? illuminationAnchor
-          ..exaggeration = layer.exaggeration ?? exaggeration
-          ..shadowColor = layer.shadowColor ?? shadowColor
-          ..highlightColor = layer.highlightColor ?? highlightColor
-          ..accentColor = layer.accentColor ?? accentColor
-          ..exaggerationTransition =
-              (layer.exaggerationTransition ?? exaggerationTransition)
-                  .toBuilder()
-          ..shadowColorTransition =
-              (layer.shadowColorTransition ?? shadowColorTransition).toBuilder()
-          ..highlightColorTransition =
-              (layer.highlightColorTransition ?? highlightColorTransition)
-                  .toBuilder()
-          ..accentColorTransition =
-              (layer.accentColorTransition ?? accentColorTransition)
-                  .toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..sourceId = layer.sourceId ?? sourceId
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..sourceLayer = layer.sourceLayer ?? sourceLayer
+            ..illuminationDirection =
+                layer.illuminationDirection ?? illuminationDirection
+            ..illuminationAnchor =
+                layer.illuminationAnchor ?? illuminationAnchor
+            ..exaggeration = layer.exaggeration ?? exaggeration
+            ..shadowColor = layer.shadowColor ?? shadowColor
+            ..highlightColor = layer.highlightColor ?? highlightColor
+            ..accentColor = layer.accentColor ?? accentColor
+            ..exaggerationTransition =
+                (layer.exaggerationTransition ?? exaggerationTransition)
+                    .toBuilder()
+            ..shadowColorTransition =
+                (layer.shadowColorTransition ?? shadowColorTransition)
+                    .toBuilder()
+            ..highlightColorTransition =
+                (layer.highlightColorTransition ?? highlightColorTransition)
+                    .toBuilder()
+            ..accentColorTransition =
+                (layer.accentColorTransition ?? accentColorTransition)
+                    .toBuilder();
+        }
       });
     } else {
       throw ArgumentError(
@@ -271,6 +277,7 @@ abstract class HillshadeLayer
   @override
   Future<HillshadeLayer> copyFrom(Layer layer) {
     if (layer is HillshadeLayer) {
+      print('copyFrom: ${layer.highlightColor}');
       final HillshadeLayer _layer = rebuild((HillshadeLayerBuilder b) {
         b
           ..channel = channel
@@ -298,6 +305,7 @@ abstract class HillshadeLayer
               (layer.accentColorTransition ?? accentColorTransition)
                   .toBuilder();
       });
+      print('this == _layer: ${this == _layer}');
       if (!isAttached || this == _layer) {
         return Future<HillshadeLayer>.value(_layer);
       } else {

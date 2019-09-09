@@ -74,7 +74,7 @@ abstract class Layer extends Object with _Channel {
   Uint8List get dataSource => null;
 
   @visibleForOverriding
-  Layer markAsAttached(MethodChannel channel, Layer layer);
+  Layer markAsAttached(MethodChannel channel, [Layer layer]);
 
   @override
   @nullable

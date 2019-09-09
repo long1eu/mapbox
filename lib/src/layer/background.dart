@@ -136,8 +136,10 @@ abstract class BackgroundLayer
   }
 
   @override
-  BackgroundLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is BackgroundLayer) {
+  BackgroundLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is BackgroundLayer) {
       return rebuild((BackgroundLayerBuilder b) {
         b
           ..channel = channel

@@ -67,15 +67,19 @@ abstract class GeoJsonSource
   }
 
   @override
-  GeoJsonSource markAsAttached(MethodChannel channel, Source source) {
-    if (source is GeoJsonSource) {
+  GeoJsonSource markAsAttached(MethodChannel channel, [Source source]) {
+    if (source == null) {
+      return rebuild((SourceBuilder b) => b.channel = channel);
+    } else if (source is GeoJsonSource) {
       return rebuild((GeoJsonSourceBuilder b) {
-        b
-          ..channel = channel
-          ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? uri
-          ..geoJson = source.geoJson ?? geoJson
-          ..options = (source.options ?? options)?.toBuilder();
+        if (source != null) {
+          b
+            ..channel = channel
+            ..attribution = source.attribution ?? attribution
+            ..uri = source.uri ?? uri
+            ..geoJson = source.geoJson ?? geoJson
+            ..options = (source.options ?? options)?.toBuilder();
+        }
       });
     } else {
       throw ArgumentError(

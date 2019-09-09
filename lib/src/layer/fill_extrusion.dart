@@ -264,36 +264,41 @@ abstract class FillExtrusionLayer
   }
 
   @override
-  FillExtrusionLayer markAsAttached(MethodChannel channel, Layer layer) {
-    if (layer is FillExtrusionLayer) {
+  FillExtrusionLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+    if (layer == null) {
+      return rebuild((LayerBuilder b) => b.channel = channel);
+    } else if (layer is FillExtrusionLayer) {
       return rebuild((FillExtrusionLayerBuilder b) {
-        b
-          ..sourceId = layer.sourceId ?? sourceId
-          ..visible = layer.visible ?? visible
-          ..minZoom = layer.minZoom ?? minZoom
-          ..maxZoom = layer.maxZoom ?? maxZoom
-          ..sourceLayer = layer.sourceLayer ?? sourceLayer
-          ..filter = layer.filter ?? filter
-          ..opacity = layer.opacity ?? opacity
-          ..color = layer.color ?? color
-          ..translate = layer.translate ?? translate
-          ..translateAnchor = layer.translateAnchor ?? translateAnchor
-          ..pattern = layer.pattern ?? pattern
-          ..height = layer.height ?? height
-          ..base = layer.base ?? base
-          ..verticalGradient = layer.verticalGradient ?? verticalGradient
-          ..opacityTransition =
-              (layer.opacityTransition ?? opacityTransition).toBuilder()
-          ..colorTransition =
-              (layer.colorTransition ?? colorTransition).toBuilder()
-          ..translateTransition =
-              (layer.translateTransition ?? translateTransition).toBuilder()
-          ..patternTransition =
-              (layer.patternTransition ?? patternTransition).toBuilder()
-          ..heightTransition =
-              (layer.heightTransition ?? heightTransition).toBuilder()
-          ..baseTransition =
-              (layer.baseTransition ?? baseTransition).toBuilder();
+        if (layer != null) {
+          b
+            ..channel = channel
+            ..sourceId = layer.sourceId ?? sourceId
+            ..visible = layer.visible ?? visible
+            ..minZoom = layer.minZoom ?? minZoom
+            ..maxZoom = layer.maxZoom ?? maxZoom
+            ..sourceLayer = layer.sourceLayer ?? sourceLayer
+            ..filter = layer.filter ?? filter
+            ..opacity = layer.opacity ?? opacity
+            ..color = layer.color ?? color
+            ..translate = layer.translate ?? translate
+            ..translateAnchor = layer.translateAnchor ?? translateAnchor
+            ..pattern = layer.pattern ?? pattern
+            ..height = layer.height ?? height
+            ..base = layer.base ?? base
+            ..verticalGradient = layer.verticalGradient ?? verticalGradient
+            ..opacityTransition =
+                (layer.opacityTransition ?? opacityTransition).toBuilder()
+            ..colorTransition =
+                (layer.colorTransition ?? colorTransition).toBuilder()
+            ..translateTransition =
+                (layer.translateTransition ?? translateTransition).toBuilder()
+            ..patternTransition =
+                (layer.patternTransition ?? patternTransition).toBuilder()
+            ..heightTransition =
+                (layer.heightTransition ?? heightTransition).toBuilder()
+            ..baseTransition =
+                (layer.baseTransition ?? baseTransition).toBuilder();
+        }
       });
     } else {
       throw ArgumentError(

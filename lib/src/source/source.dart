@@ -45,7 +45,7 @@ abstract class Source extends Object {
   Uint8List get dataSource => null;
 
   @visibleForOverriding
-  Source markAsAttached(MethodChannel channel, Source source);
+  Source markAsAttached(MethodChannel channel, [Source source]);
 
   @nullable
   @BuiltValueField(compare: false, serialize: false)

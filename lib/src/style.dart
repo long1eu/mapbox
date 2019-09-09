@@ -49,8 +49,18 @@ class Style {
     source = source.markAsAttached(_channel, platformSource);
     _sources[source.id] = source;
 
-
     print('sources ${_sources.keys}');
+    return source;
+  }
+
+  Future<Source> updateSource(String id, Source source) async {
+    if (source is ImageSource) {
+      source = await getSource<ImageSource>(id).copyFrom(source);
+    } else if (source is GeoJsonSource) {
+      source = await getSource<GeoJsonSource>(id).copyFrom(source);
+    }
+    source = source.markAsAttached(_channel);
+    _sources[source.id] = source;
     return source;
   }
 
@@ -89,6 +99,13 @@ class Style {
     final pb.Layer proto = pb.Layer.fromBuffer(data);
     final T platformLayer = Layer.fromProto(proto);
     layer = layer.markAsAttached(_channel, platformLayer);
+    _layers[layer.id] = layer;
+    return layer;
+  }
+
+  Future<Layer> updateLayer(Layer layer, Layer newLayer) async {
+    layer = await layer.update(newLayer);
+    layer = layer.markAsAttached(_channel);
     _layers[layer.id] = layer;
     return layer;
   }

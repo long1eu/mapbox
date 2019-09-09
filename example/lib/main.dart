@@ -111,7 +111,9 @@ class MapsDemo extends StatelessWidget {
       ),
       navigatorKey: navigatorKey,
       routes: <String, WidgetBuilder>{
+        AppRoutes.moveCamera: (_) => const MoveCameraPage(),
         AppRoutes.styleFromFile: (_) => const StyleFromFilePage(),
+        AppRoutes.scrollingMap: (_) => const ScrollingMapPage(),
         AppRoutes.hillshadeLayer: (_) => const HillshadeLayerPage(),
         AppRoutes.geoJsonLayerInStack: (_) => const GeoJsonLayerInStackPage(),
         AppRoutes.vectorSource: (_) => const VectorSourcePage(),
@@ -121,8 +123,6 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.animatedMarker: (_) => const AnimatedMarkerPage(),
         AppRoutes.spaceStationLocation: (_) => const SpaceStationLocationPage(),
         AppRoutes.colorSwitcher: (_) => const ColorSwitcherPage(),
-        AppRoutes.moveCamera: (_) => const MoveCameraPage(),
-        AppRoutes.scrollingMap: (_) => const ScrollingMapPage(),
         AppRoutes.languageSwitch: (_) => const LanguageSwitchPage(),
         AppRoutes.zoomDependentFillColor: (_) => const ZoomDependentFillColorPage(),
         AppRoutes.clickToAddImage: (_) => const ClickToAddImagePage(),

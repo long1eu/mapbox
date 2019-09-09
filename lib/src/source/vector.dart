@@ -47,14 +47,18 @@ abstract class VectorSource
   TileSet get tileSet;
 
   @override
-  Source markAsAttached(MethodChannel channel, Source source) {
-    if (source is VectorSource) {
+  Source markAsAttached(MethodChannel channel, [Source source]) {
+    if (source == null) {
+      return rebuild((SourceBuilder b) => b.channel = channel);
+    } else if (source is VectorSource) {
       return rebuild((VectorSourceBuilder b) {
-        b
-          ..channel = channel
-          ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? uri
-          ..tileSet = (source.tileSet ?? tileSet)?.toBuilder();
+        if (source != null) {
+          b
+            ..channel = channel
+            ..attribution = source.attribution ?? attribution
+            ..uri = source.uri ?? uri
+            ..tileSet = (source.tileSet ?? tileSet)?.toBuilder();
+        }
       });
     } else {
       throw ArgumentError(

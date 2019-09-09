@@ -25,12 +25,16 @@ abstract class UnknownSource
   UnknownSource._();
 
   @override
-  Source markAsAttached(MethodChannel channel, Source source) {
-    if (source is UnknownSource) {
+  Source markAsAttached(MethodChannel channel, [Source source]) {
+    if (source == null) {
+      return rebuild((SourceBuilder b) => b.channel = channel);
+    } else if (source is UnknownSource) {
       return rebuild((UnknownSourceBuilder b) {
-        b
-          ..channel = channel
-          ..attribution = source.attribution ?? attribution;
+        if (source != null) {
+          b
+            ..channel = channel
+            ..attribution = source.attribution ?? attribution;
+        }
       });
     } else {
       throw ArgumentError(

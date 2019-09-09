@@ -232,7 +232,7 @@ class _MapboxMapState extends State<MapboxMap> {
           }
         }
       } else {
-        future = layer.update(newLayer);
+        future = _controller.style.updateLayer(layer, newLayer);
       }
 
       assert(future != null);
@@ -289,12 +289,8 @@ class _MapboxMapState extends State<MapboxMap> {
     for (String id in update) {
       final Source source = newSources[id];
       if (source == oldSources[id]) continue;
-      if (source is GeoJsonSource) {
-        final GeoJsonSource _source = _controller.style.getSource(id);
-        futures.add(_source.copyFrom(source));
-      } else if (source is ImageSource) {
-        final ImageSource _source = _controller.style.getSource(id);
-        futures.add(_source.copyFrom(source));
+      if (source is GeoJsonSource || source is ImageSource) {
+        futures.add(_controller.style.updateSource(id, source));
       } else {
         print('The is no way to update ${source.runtimeType}');
       }
