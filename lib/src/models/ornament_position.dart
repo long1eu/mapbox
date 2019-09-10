@@ -2,8 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
+part of flutter_mapbox_gl;
 
 class OrnamentPosition extends ExpressionLiteral {
   const OrnamentPosition._(this._i, String value) : super(value);

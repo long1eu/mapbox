@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of source;
+part of flutter_mapbox_gl;
 
 abstract class ImageSource
     with _Channel
@@ -84,7 +84,7 @@ abstract class ImageSource
   }
 
   @override
-  Source markAsAttached(MethodChannel channel, [Source source]) {
+  Source _markAsAttached(ChannelWrapper channel, [Source source]) {
     if (source == null) {
       return rebuild((SourceBuilder b) => b.channel = channel);
     } else if (source is ImageSource) {
@@ -127,7 +127,7 @@ abstract class ImageSource
   }
 
   @override
-  pb.Source_Image get proto {
+  pb.Source_Image get _proto {
     final pb.Source_Image message = pb.Source_Image.create()..id = id;
 
     if (uri != null) {
@@ -148,10 +148,10 @@ abstract class ImageSource
   }
 
   @override
-  pb.Source get source {
+  pb.Source get _source {
     return pb.Source.create()
       ..id = id
-      ..image = proto
+      ..image = _proto
       ..freeze();
   }
 

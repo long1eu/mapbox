@@ -11,8 +11,8 @@ class MapController extends ChangeNotifier {
   })  : assert(info != null),
         assert(calls != null),
         _calls = calls,
-        _channel = MethodChannel(
-            'com.tophap/mapbox_gl_factory_${info.viewId.toInt()}'),
+        _channel = ChannelWrapper(MethodChannel(
+            'com.tophap/mapbox_gl_factory_${info.viewId.toInt()}')),
         _prefetchesTiles = info.prefetchesTiles,
         _minZoom = info.minZoom,
         _maxZoom = info.maxZoom,
@@ -30,7 +30,7 @@ class MapController extends ChangeNotifier {
         Style._(channel: _channel, style: StyleModel.fromProto(info.style));
   }
 
-  final MethodChannel _channel;
+  final ChannelWrapper _channel;
   final Stream<MethodCall> _calls;
 
   StreamSubscription<MethodCall> sub;
@@ -58,7 +58,7 @@ class MapController extends ChangeNotifier {
     }
 
     final Uint8List data =
-        await _channel.invokeMethod('style#set', message.writeToBuffer());
+        await _channel._invokeMethod('style#set', message.writeToBuffer());
     _style = Style._(channel: _channel, style: StyleModel.fromProtoData(data));
   }
 
@@ -66,7 +66,7 @@ class MapController extends ChangeNotifier {
 
   set prefetchesTiles(bool enabled) {
     _channel
-        .invokeMethod<dynamic>('map#setPrefetchesTiles', enabled)
+        ._invokeMethod<dynamic>('map#setPrefetchesTiles', enabled)
         .then((dynamic _) => _prefetchesTiles = enabled);
   }
 
@@ -75,7 +75,7 @@ class MapController extends ChangeNotifier {
   set minZoom(double minZoom) {
     assert(minZoom >= 0 && minZoom <= 25.5);
     _channel
-        .invokeMethod<dynamic>('map#setMinZoom', minZoom)
+        ._invokeMethod<dynamic>('map#setMinZoom', minZoom)
         .then((dynamic _) => _minZoom = minZoom);
   }
 
@@ -84,7 +84,7 @@ class MapController extends ChangeNotifier {
   set maxZoom(double maxZoom) {
     assert(minZoom >= 0 && minZoom <= 25.5);
     _channel
-        .invokeMethod<dynamic>('map#setMaxZoom', maxZoom)
+        ._invokeMethod<dynamic>('map#setMaxZoom', maxZoom)
         .then((dynamic _) => _maxZoom = maxZoom);
   }
 
@@ -96,13 +96,13 @@ class MapController extends ChangeNotifier {
 
   set cameraPosition(CameraPosition cameraPosition) {
     _channel
-        .invokeMethod<void>('map#setCameraPosition', cameraPosition.data)
+        ._invokeMethod<void>('map#setCameraPosition', cameraPosition.data)
         .then((dynamic _) => _cameraPosition = cameraPosition);
   }
 
   Future<void> moveCamera(CameraUpdate update) async {
     assert(update != null);
-    await _channel.invokeMethod<void>('map#moveCamera', update.data);
+    await _channel._invokeMethod<void>('map#moveCamera', update.data);
   }
 
   Future<void> easeCamera(
@@ -121,7 +121,7 @@ class MapController extends ChangeNotifier {
           ..easingInterpolator = easingInterpolator
           ..freeze();
 
-    await _channel.invokeMethod<void>(
+    await _channel._invokeMethod<void>(
         'map#easeCamera', message.writeToBuffer());
   }
 
@@ -138,7 +138,7 @@ class MapController extends ChangeNotifier {
           ..duration = duration.inMilliseconds
           ..freeze();
 
-    await _channel.invokeMethod<dynamic>(
+    await _channel._invokeMethod<dynamic>(
         'map#animateCamera', message.writeToBuffer());
   }
 
@@ -155,11 +155,11 @@ class MapController extends ChangeNotifier {
     }
     message.freeze();
 
-    await _channel.invokeMethod<dynamic>(
+    await _channel._invokeMethod<dynamic>(
         'map#scrollBy', message.writeToBuffer());
   }
 
-  Future<void> resetNorth() => _channel.invokeMethod('map#resetNorth');
+  Future<void> resetNorth() => _channel._invokeMethod('map#resetNorth');
 
   Future<void> setFocalBearing(
       double bearing, double focalX, double focalY, Duration duration) async {
@@ -176,17 +176,17 @@ class MapController extends ChangeNotifier {
           ..duration = Int64(duration.inMilliseconds)
           ..freeze();
 
-    await _channel.invokeMethod<void>(
+    await _channel._invokeMethod<void>(
         'map#setFocalBearing', message.writeToBuffer());
   }
 
-  Future<double> get height => _channel.invokeMethod('map#getHeight');
+  Future<double> get height => _channel._invokeMethod('map#getHeight');
 
-  Future<double> get width => _channel.invokeMethod('map#getWidth');
+  Future<double> get width => _channel._invokeMethod('map#getWidth');
 
   Future<void> setLatLngBoundsForCameraTarget(LatLngBounds latLngBounds) {
     assert(latLngBounds != null);
-    return _channel.invokeMethod(
+    return _channel._invokeMethod(
         'map#setLatLngBoundsForCameraTarget', latLngBounds.data);
   }
 
@@ -216,7 +216,7 @@ class MapController extends ChangeNotifier {
     }
 
     message.freeze();
-    final Uint8List data = await _channel.invokeMethod(
+    final Uint8List data = await _channel._invokeMethod(
         'map#getCameraForLatLngBounds', latLngBounds.data);
     if (data == null) {
       return null;
@@ -230,7 +230,7 @@ class MapController extends ChangeNotifier {
   set padding(EdgeInsets padding) {
     assert(padding != null);
 
-    _channel.invokeMethod<dynamic>('map#setPadding', <int>[
+    _channel._invokeMethod<dynamic>('map#setPadding', <int>[
       (padding.left ?? 0).toInt(),
       (padding.top ?? 0).toInt(),
       (padding.right ?? 0).toInt(),
@@ -240,12 +240,12 @@ class MapController extends ChangeNotifier {
 
   Future<LatLngBounds> getVisibleBounds([bool ignorePadding]) async {
     final Uint8List data =
-        await _channel.invokeMethod('map#getVisibleBounds', ignorePadding);
+        await _channel._invokeMethod('map#getVisibleBounds', ignorePadding);
     return LatLngBounds.fromProtoData(data);
   }
 
   Future<Uint8List> snapshot() =>
-      _channel.invokeListMethod<int>('map#snapshot');
+      _channel._invokeListMethod<int>('map#snapshot');
 
   void _cameraPositionChanged(MethodCall event) {
     _cameraPosition = CameraPosition.fromProtoData(event.arguments);

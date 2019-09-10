@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of source;
+part of flutter_mapbox_gl;
 
 abstract class VectorSource
     with _Channel
@@ -47,7 +47,7 @@ abstract class VectorSource
   TileSet get tileSet;
 
   @override
-  Source markAsAttached(MethodChannel channel, [Source source]) {
+  Source _markAsAttached(ChannelWrapper channel, [Source source]) {
     if (source == null) {
       return rebuild((SourceBuilder b) => b.channel = channel);
     } else if (source is VectorSource) {
@@ -67,7 +67,7 @@ abstract class VectorSource
   }
 
   @override
-  pb.Source_Vector get proto {
+  pb.Source_Vector get _proto {
     final pb.Source_Vector message = pb.Source_Vector.create()..id = id;
 
     if (uri != null) {
@@ -83,10 +83,10 @@ abstract class VectorSource
   }
 
   @override
-  pb.Source get source {
+  pb.Source get _source {
     return pb.Source.create()
       ..id = id
-      ..vector = proto
+      ..vector = _proto
       ..freeze();
   }
 

@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of source;
+part of flutter_mapbox_gl;
 
 abstract class RasterSource
     with _Channel
@@ -57,7 +57,7 @@ abstract class RasterSource
   int get tileSize;
 
   @override
-  Source markAsAttached(MethodChannel channel, [Source source]) {
+  Source _markAsAttached(ChannelWrapper channel, [Source source]) {
     if (source == null) {
       return rebuild((SourceBuilder b) => b.channel = channel);
     } else if (source is RasterSource) {
@@ -78,7 +78,7 @@ abstract class RasterSource
   }
 
   @override
-  pb.Source_Raster get proto {
+  pb.Source_Raster get _proto {
     final pb.Source_Raster message = pb.Source_Raster.create()
       ..id = id
       ..tileSize = tileSize;
@@ -96,10 +96,10 @@ abstract class RasterSource
   }
 
   @override
-  pb.Source get source {
+  pb.Source get _source {
     return pb.Source.create()
       ..id = id
-      ..raster = proto
+      ..raster = _proto
       ..freeze();
   }
 

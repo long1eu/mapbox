@@ -2,10 +2,10 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 abstract class FillLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<FillLayer, FillLayerBuilder> {
   factory FillLayer({
     @required String id,
@@ -247,7 +247,7 @@ abstract class FillLayer
   }
 
   @override
-  FillLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  FillLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is FillLayer) {
@@ -287,7 +287,7 @@ abstract class FillLayer
   }
 
   @override
-  Future<FillLayer> copyFrom(Layer layer) {
+  Future<FillLayer> _updateFrom(Layer layer) {
     if (layer is FillLayer) {
       final FillLayer _layer = rebuild((FillLayerBuilder b) {
         b
@@ -318,7 +318,7 @@ abstract class FillLayer
       if (!isAttached || this == _layer) {
         return Future<FillLayer>.value(_layer);
       }
-      return _update(_layer);
+      return _performUpdate(_layer);
     } else {
       throw ArgumentError(
           'Only a FillLayer can be merged but got ${layer.runtimeType}');
@@ -326,9 +326,9 @@ abstract class FillLayer
   }
 
   @override
-  pb.Layer_Fill get proto {
+  pb.Layer_Fill get _proto {
     final pb.Layer_Fill message = pb.Layer_Fill.create()
-      ..id = this.id
+      ..id = id
       ..sourceId = string_(sourceId)
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
@@ -371,10 +371,10 @@ abstract class FillLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..fillLayer = proto
+      ..id = id
+      ..fillLayer = _proto
       ..freeze();
   }
 

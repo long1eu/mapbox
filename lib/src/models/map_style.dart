@@ -2,14 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library map_style;
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-
-part 'map_style.g.dart';
+part of flutter_mapbox_gl;
 
 class MapStyle extends EnumClass {
   const MapStyle._(String name) : super(name);

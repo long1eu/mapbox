@@ -2,58 +2,40 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-library source;
-
-import 'dart:async';
-import 'dart:typed_data';
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_mapbox_gl/src/models/index.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:meta/meta.dart';
-import 'package:protobuf/protobuf.dart' as pb;
-
-part 'geojson.dart';
-
-part 'image.dart';
-
-part 'raster.dart';
-
-part 'raster_dem.dart';
-
-part 'source.g.dart';
-
-part 'unknown.dart';
-
-part 'vector.dart';
+part of flutter_mapbox_gl;
 
 @BuiltValue(instantiable: false)
-abstract class Source extends Object {
+abstract class Source extends Object with _Channel {
   String get id;
 
   @nullable
   String get attribution;
 
-  pb.GeneratedMessage get proto => null;
+  @override
+  pb.GeneratedMessage get _proto => null;
 
-  pb.Source get source => null;
+  @override
+  pb.Source get _source => null;
 
-  Uint8List get data => null;
+  @override
+  Uint8List get _data => null;
 
-  Uint8List get dataSource => null;
+  @override
+  Uint8List get _dataSource => null;
 
   @visibleForOverriding
-  Source markAsAttached(MethodChannel channel, [Source source]);
+  Source _markAsAttached(ChannelWrapper channel, [Source source]);
 
+  @override
   @nullable
   @BuiltValueField(compare: false, serialize: false)
   @visibleForOverriding
-  MethodChannel get channel;
+  ChannelWrapper get channel;
 
+  @override
   bool get isAttached => null;
 
+  @override
   Source rebuild(void Function(SourceBuilder) updates);
 
   SourceBuilder toBuilder();
@@ -89,23 +71,23 @@ mixin _Channel {
   Source rebuild(void Function(SourceBuilder) updates);
 
   @nullable
-  MethodChannel get channel;
+  ChannelWrapper get channel;
 
-  pb.GeneratedMessage get proto;
+  pb.GeneratedMessage get _proto;
 
-  pb.Source get source;
-
-  @memoized
-  Uint8List get data => proto.writeToBuffer();
+  pb.Source get _source;
 
   @memoized
-  Uint8List get dataSource => source.writeToBuffer();
+  Uint8List get _data => _proto.writeToBuffer();
 
-  bool get isAttached => channel != null;
+  @memoized
+  Uint8List get _dataSource => _source.writeToBuffer();
+
+  bool get isAttached => channel.isAttached;
 
   Future<T> _update<T extends Source>(T source) {
     return channel
-        .invokeMethod<dynamic>('source#update', source.dataSource)
+        ._invokeMethod<dynamic>('source#update', source._dataSource)
         .then((dynamic _) => source);
   }
 }

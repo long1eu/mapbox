@@ -2,19 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-05
 
-library tile_set;
-
-import 'dart:typed_data';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:meta/meta.dart';
-import 'package:pub_semver/pub_semver.dart';
-
-part 'tile_set.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class TileSet implements Built<TileSet, TileSetBuilder> {
   factory TileSet({

@@ -2,17 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library latlng;
-
-import 'dart:typed_data';
-import 'dart:ui';
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter/widgets.dart' hide Builder;
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-
-part 'latlng.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class LatLng implements Built<LatLng, LatLngBuilder> {
   factory LatLng({

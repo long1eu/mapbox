@@ -5,20 +5,20 @@
 part of flutter_mapbox_gl;
 
 class Style {
-  Style._({@required MethodChannel channel, @required StyleModel style})
+  Style._({@required ChannelWrapper channel, @required StyleModel style})
       : assert(channel != null),
         assert(style != null),
         _style = style,
         _channel = channel,
         _sources = style.sources.asMap().map((_, Source element) =>
             MapEntry<String, Source>(
-                element.id, element.markAsAttached(channel, element))),
+                element.id, element._markAsAttached(channel, element))),
         _layers = style.layers.asMap().map((_, Layer element) =>
-            MapEntry<String, Layer>(
-                element.id, element.markAsAttached(channel, element)));
+            MapEntry<String, Layer>(element.id,
+                element._markAsAttached(channel, element)));
 
   final StyleModel _style;
-  final MethodChannel _channel;
+  final ChannelWrapper _channel;
   final Map<String, Source> _sources;
   final Map<String, Layer> _layers;
 
@@ -41,12 +41,12 @@ class Style {
         'You already have a Source with this id. Try getSource(id)');
 
     final Uint8List data =
-        await invokeMethod('style#addSource', source.dataSource);
+        await invokeMethod('style#addSource', source._dataSource);
     assert(data != null);
 
     final pb.Source proto = pb.Source.fromBuffer(data);
     final T platformSource = Source.fromProto(proto);
-    source = source.markAsAttached(_channel, platformSource);
+    source = source._markAsAttached(_channel, platformSource);
     _sources[source.id] = source;
 
     print('sources ${_sources.keys}');
@@ -59,7 +59,7 @@ class Style {
     } else if (source is GeoJsonSource) {
       source = await getSource<GeoJsonSource>(id).copyFrom(source);
     }
-    source = source.markAsAttached(_channel);
+    source = source._markAsAttached(_channel);
     _sources[source.id] = source;
     return source;
   }
@@ -83,7 +83,7 @@ class Style {
     assert(getLayer(layer.id) == null,
         'You already have a Layer with this id. Try getLayer(id)');
     final pb.Operations_Add op = pb.Operations_Add.create()
-      ..layer = layer.source;
+      ..layer = layer._source;
 
     if (belowId != null) {
       op.belowId = belowId;
@@ -98,15 +98,15 @@ class Style {
 
     final pb.Layer proto = pb.Layer.fromBuffer(data);
     final T platformLayer = Layer.fromProto(proto);
-    layer = layer.markAsAttached(_channel, platformLayer);
+    layer = layer._markAsAttached(_channel, platformLayer);
     _layers[layer.id] = layer;
     print('add layer: ${layer.id}');
     return layer;
   }
 
   Future<Layer> updateLayer(String id, Layer newLayer) async {
-    Layer layer = await getLayer(id).update(newLayer);
-    layer = layer.markAsAttached(_channel);
+    Layer layer = await getLayer(id)._update(newLayer);
+    layer = layer._markAsAttached(_channel);
     _layers[layer.id] = layer;
     print('update layer: $id');
     return layer;
@@ -141,13 +141,7 @@ class Style {
   */
 
   Future<T> invokeMethod<T>(String method, [dynamic arguments]) =>
-      _channel.invokeMethod(method, arguments);
-
-  Future<List<T>> invokeListMethod<T>(String method, [dynamic arguments]) =>
-      _channel.invokeListMethod<T>(method, arguments);
-
-  Future<Map<K, V>> invokeMapMethod<K, V>(String method, [dynamic arguments]) =>
-      _channel.invokeMapMethod<K, V>(method, arguments);
+      _channel._invokeMethod(method, arguments);
 
   @override
   String toString() {
@@ -158,70 +152,4 @@ class Style {
           ..add('layers', _layers))
         .toString();
   }
-}
-
-class StyleImage {
-  const StyleImage.bytes(this.id, this.image, [this.sdf = false])
-      : assert(id != null),
-        assert(image != null),
-        assert(sdf != null),
-        asset = null,
-        packageName = null;
-
-  const StyleImage.asset({
-    @required this.id,
-    @required this.asset,
-    this.sdf = false,
-    this.packageName,
-  })  : assert(id != null),
-        assert(asset != null),
-        assert(sdf != null),
-        image = null;
-
-  final String id;
-  final Uint8List image;
-  final String asset;
-  final String packageName;
-  final bool sdf;
-
-  pb.Style_StyleImage get proto {
-    final pb.Style_StyleImage message = pb.Style_StyleImage()
-      ..id = id
-      ..sdf = sdf;
-
-    if (image != null) {
-      message.image = image;
-    } else {
-      final pb.Style_Asset asset = pb.Style_Asset()..asset = this.asset;
-      if (packageName != null) {
-        asset
-          ..packageName = (pb.StringValue()
-            ..value = packageName
-            ..freeze());
-      }
-
-      message.asset = asset;
-    }
-
-    return message.freeze();
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StyleImage &&
-          runtimeType == other.runtimeType &&
-          id == other.id &&
-          const ListEquality<int>().equals(image, other.image) &&
-          asset == other.asset &&
-          packageName == other.packageName &&
-          sdf == other.sdf;
-
-  @override
-  int get hashCode =>
-      id.hashCode ^
-      const ListEquality<int>().hash(image) ^
-      asset.hashCode ^
-      packageName.hashCode ^
-      sdf.hashCode;
 }

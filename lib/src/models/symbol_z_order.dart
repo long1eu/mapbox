@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+part of flutter_mapbox_gl;
 
 class SymbolZOrder extends ExpressionLiteral {
   const SymbolZOrder._(this._i, String value) : super(value);

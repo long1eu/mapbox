@@ -2,12 +2,12 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 // todo hot reload doesnt' work
 // icon size doesn't match
 abstract class SymbolLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<SymbolLayer, SymbolLayerBuilder> {
   factory SymbolLayer({
     @required String id,
@@ -903,6 +903,7 @@ abstract class SymbolLayer
   }) {
     return rebuild((SymbolLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -1089,7 +1090,7 @@ abstract class SymbolLayer
   }
 
   @override
-  SymbolLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  SymbolLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is SymbolLayer) {
@@ -1208,7 +1209,7 @@ abstract class SymbolLayer
   }
 
   @override
-  Future<SymbolLayer> copyFrom(Layer layer) {
+  Future<SymbolLayer> _updateFrom(Layer layer) {
     if (layer is SymbolLayer) {
       final SymbolLayer _layer = rebuild((SymbolLayerBuilder b) {
         b
@@ -1311,7 +1312,7 @@ abstract class SymbolLayer
       if (!isAttached || this == _layer) {
         return Future<SymbolLayer>.value(_layer);
       } else {
-        return _update(_layer);
+        return _performUpdate(_layer);
       }
     } else {
       throw ArgumentError(
@@ -1320,9 +1321,9 @@ abstract class SymbolLayer
   }
 
   @override
-  pb.Layer_Symbol get proto {
+  pb.Layer_Symbol get _proto {
     final pb.Layer_Symbol message = pb.Layer_Symbol.create()
-      ..id = this.id
+      ..id = id
       ..sourceId = string_(sourceId)
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
@@ -1510,10 +1511,10 @@ abstract class SymbolLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..symbolLayer = proto
+      ..id = id
+      ..symbolLayer = _proto
       ..freeze();
   }
 

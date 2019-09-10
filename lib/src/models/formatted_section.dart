@@ -2,19 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library formatted_section;
-
-import 'dart:typed_data';
-import 'dart:ui';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:meta/meta.dart';
-
-part 'formatted_section.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class FormattedSection
     implements Built<FormattedSection, FormattedSectionBuilder> {

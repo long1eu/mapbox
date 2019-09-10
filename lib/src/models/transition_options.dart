@@ -2,18 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library transition_options;
-
-import 'dart:typed_data';
-
-import 'package:built_value/built_value.dart';
-import 'package:fixnum/fixnum.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-
-part 'transition_options.g.dart';
-
-// ignore_for_file: non_constant_identifier_names
+part of flutter_mapbox_gl;
 
 abstract class TransitionOptions
     implements Built<TransitionOptions, TransitionOptionsBuilder> {

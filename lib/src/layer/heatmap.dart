@@ -2,11 +2,11 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 // todo hot reload doesnt' work
 abstract class HeatmapLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<HeatmapLayer, HeatmapLayerBuilder> {
   factory HeatmapLayer({
     @required String id,
@@ -160,6 +160,7 @@ abstract class HeatmapLayer
   }) {
     return rebuild((HeatmapLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -187,7 +188,7 @@ abstract class HeatmapLayer
   }
 
   @override
-  HeatmapLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  HeatmapLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is HeatmapLayer) {
@@ -220,7 +221,7 @@ abstract class HeatmapLayer
   }
 
   @override
-  Future<HeatmapLayer> copyFrom(Layer layer) {
+  Future<HeatmapLayer> _updateFrom(Layer layer) {
     if (layer is HeatmapLayer) {
       final HeatmapLayer _layer = rebuild((HeatmapLayerBuilder b) {
         b
@@ -244,7 +245,7 @@ abstract class HeatmapLayer
       if (!isAttached || this == _layer) {
         return Future<HeatmapLayer>.value(_layer);
       } else {
-        return _update(_layer);
+        return _performUpdate(_layer);
       }
     } else {
       throw ArgumentError(
@@ -253,9 +254,9 @@ abstract class HeatmapLayer
   }
 
   @override
-  pb.Layer_Heatmap get proto {
+  pb.Layer_Heatmap get _proto {
     final pb.Layer_Heatmap message = pb.Layer_Heatmap.create()
-      ..id = this.id
+      ..id = id
       ..sourceId = string_(sourceId)
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
@@ -290,10 +291,10 @@ abstract class HeatmapLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..heatmapLayer = proto
+      ..id = id
+      ..heatmapLayer = _proto
       ..freeze();
   }
 

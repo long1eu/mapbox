@@ -29,7 +29,7 @@ Expression literalList(List<dynamic> value) {
   assert(value.every((dynamic it) =>
       it is num || it is String || it is bool || it is Expression));
 
-  return Expression._e1(kLiteralOperator, _ExpressionLiteralList(value));
+  return Expression._e1(_kLiteralOperator, _ExpressionLiteralList(value));
 }
 
 Expression literal$(dynamic value) {
@@ -72,7 +72,7 @@ Expression rgb(dynamic red, dynamic green, dynamic blue) {
   assert(blue != null);
 
   return Expression._e3(
-    kRgbOperator,
+    _kRgbOperator,
     _expression(red, 'red', int),
     _expression(green, 'green', int),
     _expression(blue, 'blue', int),
@@ -87,7 +87,7 @@ Expression rgba(dynamic red, dynamic green, dynamic blue, dynamic alpha) {
   assert(alpha != null);
 
   return Expression._e4(
-    kRgbaOperator,
+    _kRgbaOperator,
     _expression(red, 'red', int),
     _expression(green, 'green', int),
     _expression(blue, 'blue', int),
@@ -97,7 +97,7 @@ Expression rgba(dynamic red, dynamic green, dynamic blue, dynamic alpha) {
 
 Expression toRgba(Expression expression) {
   assert(expression != null);
-  return Expression._e1(kToRgbaOperator, expression);
+  return Expression._e1(_kToRgbaOperator, expression);
 }
 
 Expression eq(Expression one, dynamic two, [Expression collator]) {
@@ -105,7 +105,7 @@ Expression eq(Expression one, dynamic two, [Expression collator]) {
   assert(two != null);
 
   return Expression(
-    kEqOperator,
+    _kEqOperator,
     <Expression>[
       one,
       _expression(two),
@@ -119,7 +119,7 @@ Expression neq(Expression one, dynamic two, [Expression collator]) {
   assert(two != null);
 
   return Expression(
-    kNeqOperator,
+    _kNeqOperator,
     <Expression>[
       one,
       _expression(two),
@@ -133,7 +133,7 @@ Expression gt(Expression one, dynamic two, [Expression collator]) {
   assert(two != null);
 
   return Expression(
-    kGtOperator,
+    _kGtOperator,
     <Expression>[
       one,
       _expression(two),
@@ -147,7 +147,7 @@ Expression lt(Expression one, dynamic two, [Expression collator]) {
   assert(two != null);
 
   return Expression(
-    kLtOperator,
+    _kLtOperator,
     <Expression>[
       one,
       _expression(two),
@@ -161,7 +161,7 @@ Expression gte(Expression one, dynamic two, [Expression collator]) {
   assert(two != null);
 
   return Expression(
-    kGteOperator,
+    _kGteOperator,
     <Expression>[
       one,
       _expression(two),
@@ -174,7 +174,7 @@ Expression lte(Expression one, dynamic two, [Expression collator]) {
   assert(one != null);
   assert(two != null);
   return Expression(
-    kLteOperator,
+    _kLteOperator,
     <Expression>[
       one,
       _expression(two),
@@ -185,29 +185,29 @@ Expression lte(Expression one, dynamic two, [Expression collator]) {
 
 Expression all(List<Expression> input) {
   assert(input != null);
-  return Expression(kAllOperator, input);
+  return Expression(_kAllOperator, input);
 }
 
 Expression any(List<Expression> input) {
   assert(input != null);
-  return Expression(kAnyOperator, input);
+  return Expression(_kAnyOperator, input);
 }
 
 Expression not(dynamic input) {
   assert(input != null);
 
-  return Expression._bool(kAnyOperator, input, 'input');
+  return Expression._bool(_kNotOperator, input, 'input');
 }
 
 Expression switchCase(List<Expression> input) {
   assert(input != null && input.isNotEmpty);
-  return Expression(kSwitchCaseOperator, input);
+  return Expression(_kSwitchCaseOperator, input);
 }
 
 Expression match(List<Expression> input) {
   assert(input != null && input.length >= 2);
 
-  return Expression(kMatchOperator, input);
+  return Expression(_kMatchOperator, input);
 }
 
 Expression matchExpression(
@@ -226,25 +226,25 @@ Expression matchExpression(
 Expression coalesce(List<Expression> input) {
   assert(input != null);
 
-  return Expression(kCoalesceOperator, input);
+  return Expression(_kCoalesceOperator, input);
 }
 
-Expression properties() => const Expression(kPropertiesOperator);
+Expression properties() => const Expression(_kPropertiesOperator);
 
-Expression geometryType() => const Expression(kGeometryTypeOperator);
+Expression geometryType() => const Expression(_kGeometryTypeOperator);
 
-Expression id() => const Expression(kIdOperator);
+Expression id$() => const Expression(_kIdOperator);
 
-Expression heatmapDensity() => const Expression(kHeatmapDensityOperator);
+Expression heatmapDensity() => const Expression(_kHeatmapDensityOperator);
 
-Expression lineProgress() => const Expression(kLineProgressOperator);
+Expression lineProgress() => const Expression(_kLineProgressOperator);
 
 Expression at(dynamic number, Expression expression) {
   assert(number != null);
   assert(expression != null);
 
   return Expression._e2(
-    kAtOperator,
+    _kAtOperator,
     _expression(number, 'number', int),
     expression,
   );
@@ -255,7 +255,7 @@ Expression get(dynamic key, [Expression object]) {
   assert(key is String || key is Expression);
 
   return Expression(
-    kGetOperator,
+    _kGetOperator,
     <Expression>[
       _expression(key, 'key', String),
       if (object != null) object,
@@ -267,7 +267,7 @@ Expression has(dynamic key, [Expression object]) {
   assert(key != null);
 
   return Expression(
-    kHasOperator,
+    _kHasOperator,
     <Expression>[
       _expression(key, 'key', String),
       if (object != null) object,
@@ -278,20 +278,20 @@ Expression has(dynamic key, [Expression object]) {
 Expression length(dynamic input) {
   assert(input != null);
 
-  return Expression._string(kLengthOperator, input, 'input');
+  return Expression._string(_kLengthOperator, input, 'input');
 }
 
-Expression ln2() => const Expression(kLn2Operator);
+Expression ln2() => const Expression(_kLn2Operator);
 
-Expression pi() => const Expression(kPiOperator);
+Expression pi() => const Expression(_kPiOperator);
 
-Expression e() => const Expression(kEOperator);
+Expression e() => const Expression(_kEOperator);
 
 Expression sum(List<dynamic> numbers) {
   assert(numbers != numbers && numbers.length >= 2);
 
   return Expression(
-    kSumOperator,
+    _kSumOperator,
     numbers.map((dynamic it) => _expression(it, 'number', num)).toList(),
   );
 }
@@ -300,7 +300,7 @@ Expression product(List<dynamic> numbers) {
   assert(numbers != null && numbers.length >= 2);
 
   return Expression(
-    kProductOperator,
+    _kProductOperator,
     numbers.map((dynamic it) => _expression(it, 'number', num)).toList(),
   );
 }
@@ -308,148 +308,148 @@ Expression product(List<dynamic> numbers) {
 Expression subtract(dynamic number, [dynamic number2]) {
   assert(number != null);
 
-  return Expression._numbers(kSubtractOperator, number, number2);
+  return Expression._numbers(_kSubtractOperator, number, number2);
 }
 
 Expression division(dynamic number1, dynamic number2) {
   assert(number1 != null);
   assert(number2 != null);
 
-  return Expression._numbers(kDivisionOperator, number1, number2);
+  return Expression._numbers(_kDivisionOperator, number1, number2);
 }
 
 Expression mod(dynamic number1, dynamic number2) {
   assert(number1 != null);
   assert(number2 != null);
 
-  return Expression._numbers(kModOperator, number1, number2);
+  return Expression._numbers(_kModOperator, number1, number2);
 }
 
 Expression pow(dynamic number1, dynamic number2) {
   assert(number1 != null);
   assert(number2 != null);
 
-  return Expression._numbers(kPowOperator, number1, number2);
+  return Expression._numbers(_kPowOperator, number1, number2);
 }
 
 Expression sqrt(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kSqrtOperator, number);
+  return Expression._numbers(_kSqrtOperator, number);
 }
 
 Expression log10(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kLog10Operator, number);
+  return Expression._numbers(_kLog10Operator, number);
 }
 
 Expression ln(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kLnOperator, number);
+  return Expression._numbers(_kLnOperator, number);
 }
 
 Expression log2(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kLog2Operator, number);
+  return Expression._numbers(_kLog2Operator, number);
 }
 
 Expression sin(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kSinOperator, number);
+  return Expression._numbers(_kSinOperator, number);
 }
 
 Expression cos(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kCosOperator, number);
+  return Expression._numbers(_kCosOperator, number);
 }
 
 Expression tan(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kTanOperator, number);
+  return Expression._numbers(_kTanOperator, number);
 }
 
 Expression asin(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kAsinOperator, number);
+  return Expression._numbers(_kAsinOperator, number);
 }
 
 Expression acos(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kAcosOperator, number);
+  return Expression._numbers(_kAcosOperator, number);
 }
 
 Expression atan(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kAtanOperator, number);
+  return Expression._numbers(_kAtanOperator, number);
 }
 
 Expression min(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kMinOperator, number);
+  return Expression._numbers(_kMinOperator, number);
 }
 
 Expression max(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kMaxOperator, number);
+  return Expression._numbers(_kMaxOperator, number);
 }
 
 Expression round(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kRoundOperator, number);
+  return Expression._numbers(_kRoundOperator, number);
 }
 
 Expression abs(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kAbsOperator, number);
+  return Expression._numbers(_kAbsOperator, number);
 }
 
 Expression ceil(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kCeilOperator, number);
+  return Expression._numbers(_kCeilOperator, number);
 }
 
 Expression floor(dynamic number) {
   assert(number != null);
 
-  return Expression._numbers(kFloorOperator, number);
+  return Expression._numbers(_kFloorOperator, number);
 }
 
 Expression resolvedLocale(Expression collator) {
   assert(collator != null);
 
-  return Expression(kResolvedLocaleOperator, <Expression>[collator]);
+  return Expression(_kResolvedLocaleOperator, <Expression>[collator]);
 }
 
 Expression isSupportedScript(dynamic string) {
   assert(string != null);
 
-  return Expression._string(kIsSupportedScriptOperator, string, 'string');
+  return Expression._string(_kIsSupportedScriptOperator, string, 'string');
 }
 
 Expression upcase(dynamic string) {
   assert(string != null);
 
-  return Expression._string(kUpcaseOperator, string, 'string');
+  return Expression._string(_kUpcaseOperator, string, 'string');
 }
 
 Expression donwcase(dynamic string) {
   assert(string != null);
 
-  return Expression._string(kDowncaseOperator, string, 'string');
+  return Expression._string(_kDowncaseOperator, string, 'string');
 }
 
 Expression concat(List<dynamic> strings) {
@@ -463,37 +463,37 @@ Expression concat(List<dynamic> strings) {
       ? strings.map((dynamic it) => literalString(it)).toList()
       : List<Expression>.from(strings);
 
-  return Expression(kConcatOperator, value);
+  return Expression(_kConcatOperator, value);
 }
 
 Expression array(Expression expression) {
   assert(expression != null);
 
-  return Expression._e1(kArrayOperator, expression);
+  return Expression._e1(_kArrayOperator, expression);
 }
 
 Expression typeof(Expression expression) {
   assert(expression != null);
 
-  return Expression._e1(kTypeOfOperator, expression);
+  return Expression._e1(_kTypeOfOperator, expression);
 }
 
 Expression string(Expression expression) {
   assert(expression != null);
 
-  return Expression._e1(kStringOperator, expression);
+  return Expression._e1(_kStringOperator, expression);
 }
 
 Expression number(Expression expression) {
   assert(expression != null);
 
-  return Expression._e1(kNumberOperator, expression);
+  return Expression._e1(_kNumberOperator, expression);
 }
 
 Expression bool$(Expression expression) {
   assert(expression != null);
 
-  return Expression._e1(kBoolOperator, expression);
+  return Expression._e1(_kBoolOperator, expression);
 }
 
 Expression collator(
@@ -509,7 +509,7 @@ Expression collator(
       'locale': literalString(locale.toLanguageTag()),
     if (locale != null && locale is Expression) 'locale': locale
   };
-  return Expression._e1(kCollatorOperator, _ExpressionMap(map));
+  return Expression._e1(_kCollatorOperator, _ExpressionMap(map));
 }
 
 Expression format(List<FormatEntry> formatEntries) {
@@ -533,7 +533,7 @@ Expression format(List<FormatEntry> formatEntries) {
     mappedExpressions[mappedIndex++] = _ExpressionMap(map);
   }
 
-  return Expression(kFormatOperator, mappedExpressions);
+  return Expression(_kFormatOperator, mappedExpressions);
 }
 
 FormatEntry formatEntry(dynamic text, [List<FormatOption> formatOptions]) {
@@ -543,49 +543,49 @@ FormatEntry formatEntry(dynamic text, [List<FormatOption> formatOptions]) {
 Expression object(Expression input) {
   assert(input != null);
 
-  return Expression._e1(kObjectOperator, input);
+  return Expression._e1(_kObjectOperator, input);
 }
 
 Expression toString(Expression input) {
   assert(input != null);
 
-  return Expression._e1(kToStringOperator, input);
+  return Expression._e1(_kToStringOperator, input);
 }
 
 Expression toNumber(Expression input) {
   assert(input != null);
 
-  return Expression._e1(kToNumberOperator, input);
+  return Expression._e1(_kToNumberOperator, input);
 }
 
 Expression toBool(Expression input) {
   assert(input != null);
 
-  return Expression._e1(kToBoolOperator, input);
+  return Expression._e1(_kToBoolOperator, input);
 }
 
 Expression toColor(Expression input) {
   assert(input != null);
 
-  return Expression._e1(kToColorOperator, input);
+  return Expression._e1(_kToColorOperator, input);
 }
 
 Expression let(List<Expression> input) {
   assert(input != null && input.isNotEmpty);
 
-  return Expression(kLetOperator, input);
+  return Expression(_kLetOperator, input);
 }
 
 Expression var$(dynamic variableName) {
   assert(variableName != null);
 
   return Expression._e1(
-    kVarOperator,
+    _kVarOperator,
     _expression(variableName, 'variableName', String),
   );
 }
 
-Expression zoom() => const Expression(kZoomOperator);
+Expression zoom() => const Expression(_kZoomOperator);
 
 Stop stop(dynamic stop, dynamic value) => Stop(stop, value);
 
@@ -595,7 +595,7 @@ Expression step(dynamic input, dynamic defaultOutput, List<dynamic> stops) {
   final List<Expression> stops$ = _stops(stops);
 
   return Expression(
-    kStepOperator,
+    _kStepOperator,
     _join(
       <Expression>[
         _expression(input, 'input', num),
@@ -614,7 +614,7 @@ Expression interpolate(
   assert(stops is List<Expression> || stops is List<Stop>);
 
   return Expression(
-    kInterpolateOperator,
+    _kInterpolateOperator,
     <Expression>[
       interpolation,
       number,
@@ -624,13 +624,13 @@ Expression interpolate(
   );
 }
 
-_Interpolator linear() => _Interpolator(kLinearOperator);
+_Interpolator linear() => _Interpolator(_kLinearOperator);
 
 _Interpolator exponential(dynamic base) {
   assert(base != null);
 
   return _Interpolator.e1(
-      kExponentialOperator, _expression(base, 'base', double));
+      _kExponentialOperator, _expression(base, 'base', double));
 }
 
 _Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
@@ -640,7 +640,7 @@ _Interpolator cubicBezier(dynamic x1, dynamic y1, dynamic x2, dynamic y2) {
   assert(y2 != null);
 
   return _Interpolator.e4(
-    kCubicBezierOperator,
+    _kCubicBezierOperator,
     _expression(x1, 'x1', double),
     _expression(y1, 'y1', double),
     _expression(x2, 'x2', double),

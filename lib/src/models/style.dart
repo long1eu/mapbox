@@ -2,19 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library style;
-
-import 'dart:typed_data';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:flutter_mapbox_gl/src/models/style/light.dart';
-import 'package:flutter_mapbox_gl/src/models/transition_options.dart';
-
-part 'style.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
   factory StyleModel([void Function(StyleModelBuilder b) updates]) =
@@ -58,8 +46,8 @@ abstract class StyleModel implements Built<StyleModel, StyleModelBuilder> {
     final pb.Style message = pb.Style.create()
       ..uri = uri
       ..json = json
-      ..sources.addAll(sources.map((Source it) => it.proto))
-      ..layers.addAll(layers.map((Layer it) => it.proto))
+      ..sources.addAll(sources.map((Source it) => it._proto))
+      ..layers.addAll(layers.map((Layer it) => it._proto))
       ..transition = transition.proto;
 
     if (light != null) {

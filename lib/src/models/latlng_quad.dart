@@ -2,16 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library latlng_quad;
-
-import 'dart:typed_data';
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/src/models/latlng.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-
-part 'latlng_quad.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class LatLngQuad implements Built<LatLngQuad, LatLngQuadBuilder> {
   factory LatLngQuad({

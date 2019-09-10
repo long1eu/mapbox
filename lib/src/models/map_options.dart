@@ -2,20 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library map_options;
-
-import 'dart:typed_data';
-import 'dart:ui';
-
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:flutter_mapbox_gl/src/models/style/map_style.dart';
-
-part 'map_options.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
   factory MapOptions({

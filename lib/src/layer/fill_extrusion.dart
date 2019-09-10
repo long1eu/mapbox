@@ -2,10 +2,10 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 abstract class FillExtrusionLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<FillExtrusionLayer, FillExtrusionLayerBuilder> {
   factory FillExtrusionLayer({
     @required String id,
@@ -221,6 +221,7 @@ abstract class FillExtrusionLayer
   }) {
     return rebuild((FillExtrusionLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -262,7 +263,7 @@ abstract class FillExtrusionLayer
   }
 
   @override
-  FillExtrusionLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  FillExtrusionLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is FillExtrusionLayer) {
@@ -305,7 +306,7 @@ abstract class FillExtrusionLayer
   }
 
   @override
-  Future<FillExtrusionLayer> copyFrom(Layer layer) {
+  Future<FillExtrusionLayer> _updateFrom(Layer layer) {
     if (layer is FillExtrusionLayer) {
       final FillExtrusionLayer _layer = rebuild((FillExtrusionLayerBuilder b) {
         b
@@ -339,7 +340,7 @@ abstract class FillExtrusionLayer
       if (!isAttached || this == _layer) {
         return Future<FillExtrusionLayer>.value(_layer);
       } else {
-        return _update(_layer);
+        return _performUpdate(_layer);
       }
     } else {
       throw ArgumentError(
@@ -348,9 +349,9 @@ abstract class FillExtrusionLayer
   }
 
   @override
-  pb.Layer_FillExtrusion get proto {
+  pb.Layer_FillExtrusion get _proto {
     final pb.Layer_FillExtrusion message = pb.Layer_FillExtrusion.create()
-      ..id = this.id
+      ..id = id
       ..sourceId = string_(sourceId)
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
@@ -397,10 +398,10 @@ abstract class FillExtrusionLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..fillExtrusionLayer = proto
+      ..id = id
+      ..fillExtrusionLayer = _proto
       ..freeze();
   }
 

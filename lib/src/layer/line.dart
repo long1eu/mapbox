@@ -2,11 +2,11 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 // todo hot reload doesnt' work
 abstract class LineLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<LineLayer, LineLayerBuilder> {
   factory LineLayer({
     @required String id,
@@ -330,6 +330,7 @@ abstract class LineLayer
   }) {
     return rebuild((LineLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -388,7 +389,7 @@ abstract class LineLayer
   }
 
   @override
-  LineLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  LineLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is LineLayer) {
@@ -441,7 +442,7 @@ abstract class LineLayer
   }
 
   @override
-  Future<LineLayer> copyFrom(Layer layer) {
+  Future<LineLayer> _updateFrom(Layer layer) {
     if (layer is LineLayer) {
       final LineLayer _layer = rebuild((LineLayerBuilder b) {
         b
@@ -485,7 +486,7 @@ abstract class LineLayer
       if (!isAttached || this == _layer) {
         return Future<LineLayer>.value(_layer);
       }
-      return _update(_layer);
+      return _performUpdate(_layer);
     } else {
       throw ArgumentError(
           'Only a LineLayer can be merged but got ${layer.runtimeType}');
@@ -493,9 +494,9 @@ abstract class LineLayer
   }
 
   @override
-  pb.Layer_Line get proto {
+  pb.Layer_Line get _proto {
     final pb.Layer_Line message = pb.Layer_Line.create()
-      ..id = this.id
+      ..id = id
       ..sourceId = string_(sourceId)
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
@@ -566,10 +567,10 @@ abstract class LineLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..lineLayer = proto
+      ..id = id
+      ..lineLayer = _proto
       ..freeze();
   }
 

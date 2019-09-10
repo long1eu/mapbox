@@ -2,55 +2,10 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-library layer;
-
-import 'dart:async';
-import 'dart:typed_data';
-import 'dart:ui';
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart' hide Builder;
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/formatted_section.dart';
-import 'package:flutter_mapbox_gl/src/models/line_cap.dart';
-import 'package:flutter_mapbox_gl/src/models/line_join.dart';
-import 'package:flutter_mapbox_gl/src/models/position_anchor.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:flutter_mapbox_gl/src/models/symbol_alignment.dart';
-import 'package:flutter_mapbox_gl/src/models/symbol_placement.dart';
-import 'package:flutter_mapbox_gl/src/models/symbol_text_fit.dart';
-import 'package:flutter_mapbox_gl/src/models/symbol_text_justify.dart';
-import 'package:flutter_mapbox_gl/src/models/symbol_text_transform.dart';
-import 'package:flutter_mapbox_gl/src/models/symbol_z_order.dart';
-import 'package:flutter_mapbox_gl/src/models/transition_options.dart';
-import 'package:flutter_mapbox_gl/src/models/translate_anchor.dart';
-import 'package:meta/meta.dart' hide literal;
-import 'package:protobuf/protobuf.dart' as pb;
-
-part 'background.dart';
-
-part 'circle.dart';
-
-part 'fill.dart';
-
-part 'fill_extrusion.dart';
-
-part 'heatmap.dart';
-
-part 'hillshade.dart';
-
-part 'layer.g.dart';
-
-part 'line.dart';
-
-part 'raster.dart';
-
-part 'symbol.dart';
+part of flutter_mapbox_gl;
 
 @BuiltValue(instantiable: false)
-abstract class Layer extends Object with _Channel {
+abstract class Layer extends Object with _LayerChannel {
   String get id;
 
   bool get visible;
@@ -60,27 +15,26 @@ abstract class Layer extends Object with _Channel {
   double get maxZoom;
 
   @override
-  pb.GeneratedMessage get proto => null;
+  pb.GeneratedMessage get _proto => null;
 
   @override
-  pb.Layer get source => null;
+  pb.Layer get _source => null;
 
   @memoized
   @override
-  Uint8List get data => null;
+  Uint8List get _data => null;
 
   @memoized
   @override
   Uint8List get dataSource => null;
 
-  @visibleForOverriding
-  Layer markAsAttached(MethodChannel channel, [Layer layer]);
+  Layer _markAsAttached(ChannelWrapper channel, [Layer layer]);
 
   @override
   @nullable
   @visibleForOverriding
   @BuiltValueField(compare: false, serialize: false)
-  MethodChannel get channel;
+  ChannelWrapper get channel;
 
   @override
   bool get isAttached => null;
@@ -91,8 +45,8 @@ abstract class Layer extends Object with _Channel {
   LayerBuilder toBuilder();
 
   static T fromProtoData<T extends Layer>(Uint8List data) {
-    // ignore: avoid_as
-    return fromProto(pb.Layer.fromBuffer(data)) as T;
+    final T result = fromProto(pb.Layer.fromBuffer(data));
+    return result;
   }
 
   static Layer fromProto(pb.Layer proto) {
@@ -121,57 +75,55 @@ abstract class Layer extends Object with _Channel {
   }
 
   @override
-  Future<Layer> copyFrom(Layer layer);
+  Future<Layer> _updateFrom(Layer layer);
 }
 
-mixin _Channel {
+mixin _LayerChannel {
   Layer rebuild(void Function(LayerBuilder) updates);
 
-  Future<Layer> copyFrom(Layer layer);
+  Future<Layer> _updateFrom(Layer layer);
 
   @nullable
-  MethodChannel get channel;
+  ChannelWrapper get channel;
 
-  pb.GeneratedMessage get proto;
+  pb.GeneratedMessage get _proto;
 
-  pb.Layer get source;
-
-  @memoized
-  Uint8List get data => proto.writeToBuffer();
+  pb.Layer get _source;
 
   @memoized
-  Uint8List get dataSource => source.writeToBuffer();
+  Uint8List get _data => _proto.writeToBuffer();
 
-  bool get isAttached => channel != null;
+  @memoized
+  @visibleForTesting
+  Uint8List get dataSource => _source.writeToBuffer();
 
-  Future<T> _update<T extends Layer>(T layer) {
+  bool get isAttached => channel.isAttached;
+
+  Future<T> _performUpdate<T extends Layer>(T layer) {
     return channel
-        .invokeMethod<dynamic>('layer#update', layer.dataSource)
-        // ignore: avoid_as
-        .then<T>((dynamic data) => Layer.fromProtoData(data) as T);
+        ._invokeMethod<dynamic>('layer#update', layer.dataSource)
+        .then<T>((dynamic data) => Layer.fromProtoData(data));
   }
 
-  /// This is an internal method and should not be used. All updates should go
-  /// through the controller's Style.
-  Future<Layer> update(Layer layer) {
+  Future<Layer> _update(Layer layer) {
     if (layer is BackgroundLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is CircleLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is FillLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is FillExtrusionLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is SymbolLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is HillshadeLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is LineLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is RasterLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else if (layer is HeatmapLayer) {
-      return copyFrom(layer);
+      return _updateFrom(layer);
     } else {
       throw ArgumentError('Unknown layer type ${layer.runtimeType}.');
     }

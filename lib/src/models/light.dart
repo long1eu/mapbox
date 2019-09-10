@@ -2,19 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-01
 
-library light;
-
-import 'dart:typed_data';
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
-import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
-import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:flutter_mapbox_gl/src/models/style/position.dart';
-import 'package:flutter_mapbox_gl/src/models/transition_options.dart';
-import 'package:flutter_mapbox_gl/src/models/translate_anchor.dart';
-
-part 'light.g.dart';
+part of flutter_mapbox_gl;
 
 abstract class Light implements Built<Light, LightBuilder> {
   factory Light([void Function(LightBuilder b) updates]) = _$Light;

@@ -2,10 +2,10 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 abstract class CircleLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<CircleLayer, CircleLayerBuilder> {
   factory CircleLayer({
     @required String id,
@@ -277,6 +277,7 @@ abstract class CircleLayer
   }) {
     return rebuild((CircleLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -332,7 +333,7 @@ abstract class CircleLayer
   }
 
   @override
-  CircleLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  CircleLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is CircleLayer) {
@@ -384,7 +385,7 @@ abstract class CircleLayer
   }
 
   @override
-  Future<CircleLayer> copyFrom(Layer layer) {
+  Future<CircleLayer> _updateFrom(Layer layer) {
     if (layer is CircleLayer) {
       final CircleLayer _layer = rebuild((CircleLayerBuilder b) {
         b
@@ -425,7 +426,7 @@ abstract class CircleLayer
       if (!isAttached || this == _layer) {
         return Future<CircleLayer>.value(_layer);
       } else {
-        return _update(_layer);
+        return _performUpdate(_layer);
       }
     } else {
       throw ArgumentError(
@@ -434,9 +435,9 @@ abstract class CircleLayer
   }
 
   @override
-  pb.Layer_Circle get proto {
+  pb.Layer_Circle get _proto {
     final pb.Layer_Circle message = pb.Layer_Circle.create()
-      ..id = this.id
+      ..id = id
       ..sourceId = string_(sourceId)
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
@@ -494,10 +495,10 @@ abstract class CircleLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..circleLayer = proto
+      ..id = id
+      ..circleLayer = _proto
       ..freeze();
   }
 

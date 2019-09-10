@@ -4,81 +4,81 @@
 
 part of flutter_mapbox_gl;
 
-const String kLiteralOperator = 'literal';
-const String kRgbOperator = 'rgb';
-const String kRgbaOperator = 'rgba';
-const String kToRgbaOperator = 'to-rgba';
-const String kEqOperator = '==';
-const String kNeqOperator = '!=';
-const String kGtOperator = '>';
-const String kLtOperator = '<';
-const String kGteOperator = '>=';
-const String kLteOperator = '<=';
-const String kAllOperator = 'all';
-const String kAnyOperator = 'any';
-const String kNotOperator = '!';
-const String kSwitchCaseOperator = 'case';
-const String kMatchOperator = 'match';
-const String kCoalesceOperator = 'coalesce';
-const String kPropertiesOperator = 'properties';
-const String kGeometryTypeOperator = 'geometry-type';
-const String kIdOperator = 'id';
-const String kHeatmapDensityOperator = 'heatmap-density';
-const String kLineProgressOperator = 'line-progress';
-const String kAtOperator = 'at';
-const String kGetOperator = 'get';
-const String kHasOperator = 'has';
-const String kLengthOperator = 'length';
-const String kLn2Operator = 'ln2';
-const String kPiOperator = 'pi';
-const String kEOperator = 'e';
-const String kSumOperator = '+';
-const String kProductOperator = '*';
-const String kSubtractOperator = '-';
-const String kDivisionOperator = '/';
-const String kModOperator = '%';
-const String kPowOperator = '^';
-const String kSqrtOperator = 'sqrt';
-const String kLog10Operator = 'log10';
-const String kLnOperator = 'ln';
-const String kLog2Operator = 'log2';
-const String kSinOperator = 'sin';
-const String kCosOperator = 'cos';
-const String kTanOperator = 'tan';
-const String kAsinOperator = 'asin';
-const String kAcosOperator = 'acos';
-const String kAtanOperator = 'atan';
-const String kMinOperator = 'min';
-const String kMaxOperator = 'max';
-const String kRoundOperator = 'round';
-const String kAbsOperator = 'abs';
-const String kCeilOperator = 'ceil';
-const String kFloorOperator = 'floor';
-const String kResolvedLocaleOperator = 'resolved-locale';
-const String kIsSupportedScriptOperator = 'is-supported-script';
-const String kUpcaseOperator = 'upcase';
-const String kDowncaseOperator = 'downcase';
-const String kConcatOperator = 'concat';
-const String kArrayOperator = 'array';
-const String kTypeOfOperator = 'typeof';
-const String kStringOperator = 'string';
-const String kNumberOperator = 'number';
-const String kBoolOperator = 'bool';
-const String kCollatorOperator = 'collator';
-const String kFormatOperator = 'format';
-const String kObjectOperator = 'object';
-const String kToStringOperator = 'to-string';
-const String kToNumberOperator = 'to-number';
-const String kToBoolOperator = 'to-bool';
-const String kToColorOperator = 'to-color';
-const String kLetOperator = 'let';
-const String kVarOperator = 'var';
-const String kZoomOperator = 'zoom';
-const String kStepOperator = 'step';
-const String kInterpolateOperator = 'interpolate';
-const String kLinearOperator = 'linear';
-const String kExponentialOperator = 'exponential';
-const String kCubicBezierOperator = 'cubic-bezier';
+const String _kLiteralOperator = 'literal';
+const String _kRgbOperator = 'rgb';
+const String _kRgbaOperator = 'rgba';
+const String _kToRgbaOperator = 'to-rgba';
+const String _kEqOperator = '==';
+const String _kNeqOperator = '!=';
+const String _kGtOperator = '>';
+const String _kLtOperator = '<';
+const String _kGteOperator = '>=';
+const String _kLteOperator = '<=';
+const String _kAllOperator = 'all';
+const String _kAnyOperator = 'any';
+const String _kNotOperator = '!';
+const String _kSwitchCaseOperator = 'case';
+const String _kMatchOperator = 'match';
+const String _kCoalesceOperator = 'coalesce';
+const String _kPropertiesOperator = 'properties';
+const String _kGeometryTypeOperator = 'geometry-type';
+const String _kIdOperator = 'id';
+const String _kHeatmapDensityOperator = 'heatmap-density';
+const String _kLineProgressOperator = 'line-progress';
+const String _kAtOperator = 'at';
+const String _kGetOperator = 'get';
+const String _kHasOperator = 'has';
+const String _kLengthOperator = 'length';
+const String _kLn2Operator = 'ln2';
+const String _kPiOperator = 'pi';
+const String _kEOperator = 'e';
+const String _kSumOperator = '+';
+const String _kProductOperator = '*';
+const String _kSubtractOperator = '-';
+const String _kDivisionOperator = '/';
+const String _kModOperator = '%';
+const String _kPowOperator = '^';
+const String _kSqrtOperator = 'sqrt';
+const String _kLog10Operator = 'log10';
+const String _kLnOperator = 'ln';
+const String _kLog2Operator = 'log2';
+const String _kSinOperator = 'sin';
+const String _kCosOperator = 'cos';
+const String _kTanOperator = 'tan';
+const String _kAsinOperator = 'asin';
+const String _kAcosOperator = 'acos';
+const String _kAtanOperator = 'atan';
+const String _kMinOperator = 'min';
+const String _kMaxOperator = 'max';
+const String _kRoundOperator = 'round';
+const String _kAbsOperator = 'abs';
+const String _kCeilOperator = 'ceil';
+const String _kFloorOperator = 'floor';
+const String _kResolvedLocaleOperator = 'resolved-locale';
+const String _kIsSupportedScriptOperator = 'is-supported-script';
+const String _kUpcaseOperator = 'upcase';
+const String _kDowncaseOperator = 'downcase';
+const String _kConcatOperator = 'concat';
+const String _kArrayOperator = 'array';
+const String _kTypeOfOperator = 'typeof';
+const String _kStringOperator = 'string';
+const String _kNumberOperator = 'number';
+const String _kBoolOperator = 'bool';
+const String _kCollatorOperator = 'collator';
+const String _kFormatOperator = 'format';
+const String _kObjectOperator = 'object';
+const String _kToStringOperator = 'to-string';
+const String _kToNumberOperator = 'to-number';
+const String _kToBoolOperator = 'to-bool';
+const String _kToColorOperator = 'to-color';
+const String _kLetOperator = 'let';
+const String _kVarOperator = 'var';
+const String _kZoomOperator = 'zoom';
+const String _kStepOperator = 'step';
+const String _kInterpolateOperator = 'interpolate';
+const String _kLinearOperator = 'linear';
+const String _kExponentialOperator = 'exponential';
+const String _kCubicBezierOperator = 'cubic-bezier';
 
 mixin _ValueExpression on Expression {
   dynamic get _jsonValue;
@@ -242,7 +242,7 @@ class Expression {
     assert(isValue);
     assert(_arguments.every((Expression it) => it is ExpressionLiteral));
 
-    if (_operator == kRgbOperator) {
+    if (_operator == _kRgbOperator) {
       assert(_arguments.length == 3 &&
           _arguments.every((Expression it) => it is ExpressionLiteral));
 
@@ -252,7 +252,7 @@ class Expression {
         _arguments[1].value.toInt(),
         _arguments[2].value.toInt(),
       );
-    } else if (_operator == kRgbaOperator) {
+    } else if (_operator == _kRgbaOperator) {
       assert(_arguments.length == 4);
 
       return Color.fromARGB(
@@ -270,7 +270,7 @@ class Expression {
     assert(isValue &&
         _arguments.every((Expression it) => it is ExpressionLiteral));
 
-    if (_operator == kArrayOperator && _arguments.length == 2) {
+    if (_operator == _kArrayOperator && _arguments.length == 2) {
       return Offset(_arguments[0].value, _arguments[1].value);
     }
 
@@ -281,7 +281,7 @@ class Expression {
     assert(isValue &&
         _arguments.every((Expression it) => it is ExpressionLiteral));
 
-    if (_operator == kArrayOperator && _arguments.length == 4) {
+    if (_operator == _kArrayOperator && _arguments.length == 4) {
       return EdgeInsets.only(
         top: _arguments[0].value / window.devicePixelRatio,
         right: _arguments[1].value / window.devicePixelRatio,

@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of source;
+part of flutter_mapbox_gl;
 
 abstract class UnknownSource
     with _Channel
@@ -25,7 +25,7 @@ abstract class UnknownSource
   UnknownSource._();
 
   @override
-  Source markAsAttached(MethodChannel channel, [Source source]) {
+  Source _markAsAttached(ChannelWrapper channel, [Source source]) {
     if (source == null) {
       return rebuild((SourceBuilder b) => b.channel = channel);
     } else if (source is UnknownSource) {
@@ -43,7 +43,7 @@ abstract class UnknownSource
   }
 
   @override
-  pb.Source_Unknown get proto {
+  pb.Source_Unknown get _proto {
     final pb.Source_Unknown message = pb.Source_Unknown.create()..id = id;
     if (attribution != null) {
       message.attribution = attribution;
@@ -52,10 +52,10 @@ abstract class UnknownSource
   }
 
   @override
-  pb.Source get source {
+  pb.Source get _source {
     return pb.Source.create()
       ..id = id
-      ..unknown = proto
+      ..unknown = _proto
       ..freeze();
   }
 

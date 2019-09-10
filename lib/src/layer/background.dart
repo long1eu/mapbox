@@ -2,10 +2,10 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of layer;
+part of flutter_mapbox_gl;
 
 abstract class BackgroundLayer
-    with _Channel
+    with _LayerChannel
     implements Layer, Built<BackgroundLayer, BackgroundLayerBuilder> {
   factory BackgroundLayer({
     @required String id,
@@ -113,6 +113,7 @@ abstract class BackgroundLayer
   }) {
     return rebuild((BackgroundLayerBuilder b) {
       return b
+        ..channel = null
         ..visible = visible ?? this.visible
         ..minZoom = minZoom ?? this.minZoom
         ..maxZoom = maxZoom ?? this.maxZoom
@@ -134,7 +135,7 @@ abstract class BackgroundLayer
   }
 
   @override
-  BackgroundLayer markAsAttached(MethodChannel channel, [Layer layer]) {
+  BackgroundLayer _markAsAttached(ChannelWrapper channel, [Layer layer]) {
     if (layer == null) {
       return rebuild((LayerBuilder b) => b.channel = channel);
     } else if (layer is BackgroundLayer) {
@@ -161,7 +162,7 @@ abstract class BackgroundLayer
   }
 
   @override
-  Future<BackgroundLayer> copyFrom(Layer layer) {
+  Future<BackgroundLayer> _updateFrom(Layer layer) {
     if (layer is BackgroundLayer) {
       final BackgroundLayer _layer = rebuild((BackgroundLayerBuilder b) {
         b
@@ -181,7 +182,7 @@ abstract class BackgroundLayer
       if (!isAttached || this == _layer) {
         return Future<BackgroundLayer>.value(_layer);
       } else {
-        return _update(_layer);
+        return _performUpdate(_layer);
       }
     } else {
       throw ArgumentError(
@@ -190,9 +191,9 @@ abstract class BackgroundLayer
   }
 
   @override
-  pb.Layer_Background get proto {
+  pb.Layer_Background get _proto {
     final pb.Layer_Background message = pb.Layer_Background()
-      ..id = this.id
+      ..id = id
       ..visible = bool_(visible)
       ..minZoom = float_(minZoom)
       ..maxZoom = float_(maxZoom)
@@ -214,10 +215,10 @@ abstract class BackgroundLayer
   }
 
   @override
-  pb.Layer get source {
+  pb.Layer get _source {
     return pb.Layer.create()
-      ..id = this.id
-      ..backgroundLayer = proto
+      ..id = id
+      ..backgroundLayer = _proto
       ..freeze();
   }
 

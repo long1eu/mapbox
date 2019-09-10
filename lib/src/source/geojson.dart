@@ -2,7 +2,7 @@
 // Lung Razvan <long1eu>
 // on 2019-08-07
 
-part of source;
+part of flutter_mapbox_gl;
 
 abstract class GeoJsonSource
     with _Channel
@@ -69,7 +69,7 @@ abstract class GeoJsonSource
   }
 
   @override
-  GeoJsonSource markAsAttached(MethodChannel channel, [Source source]) {
+  GeoJsonSource _markAsAttached(ChannelWrapper channel, [Source source]) {
     if (source == null) {
       return rebuild((SourceBuilder b) => b.channel = channel);
     } else if (source is GeoJsonSource) {
@@ -107,7 +107,7 @@ abstract class GeoJsonSource
   }
 
   @override
-  pb.Source_GeoJson get proto {
+  pb.Source_GeoJson get _proto {
     final pb.Source_GeoJson message = pb.Source_GeoJson.create()..id = id;
 
     if (uri != null) {
@@ -126,10 +126,10 @@ abstract class GeoJsonSource
   }
 
   @override
-  pb.Source get source {
+  pb.Source get _source {
     return pb.Source.create()
       ..id = id
-      ..geoJson = proto
+      ..geoJson = _proto
       ..freeze();
   }
 
