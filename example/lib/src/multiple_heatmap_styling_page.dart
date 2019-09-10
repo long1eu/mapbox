@@ -97,17 +97,12 @@ class _MultipleHeatmapStylingPageState
           : FloatingActionButton(
               child: Icon(Icons.compare_arrows),
               onPressed: () {
-                index++;
-                if (index == listOfHeatmapColors.length - 1) {
-                  index = 0;
-                }
-
-                final HeatmapLayer layer = controller.style.getLayer(layerId);
-                layer.copyWith(
-                  colorEx: listOfHeatmapColors[index],
-                  radiusEx: listOfHeatmapRadiusStops[index],
-                  intensity: listOfHeatmapIntensityStops[index],
-                );
+                setState(() {
+                  index++;
+                  if (index == listOfHeatmapColors.length) {
+                    index = 0;
+                  }
+                });
               },
             ),
     );

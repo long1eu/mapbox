@@ -151,6 +151,8 @@ mixin _Channel {
         .then<T>((dynamic data) => Layer.fromProtoData(data) as T);
   }
 
+  /// This is an internal method and should not be used. All updates should go
+  /// through the controller's Style.
   Future<Layer> update(Layer layer) {
     if (layer is BackgroundLayer) {
       return copyFrom(layer);
