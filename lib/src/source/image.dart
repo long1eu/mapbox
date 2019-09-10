@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class ImageSource
-    with _Channel
-    implements Source, Built<ImageSource, ImageSourceBuilder> {
+abstract class ImageSource //
+    with
+        _Channel
+    implements
+        Source,
+        Built<ImageSource, ImageSourceBuilder> //
+{
   factory ImageSource({
     @required String id,
     @required LatLngQuad coordinates,
@@ -61,26 +65,34 @@ abstract class ImageSource
   @nullable
   String get asset;
 
-  FutureOr<ImageSource> copyWith({
+  ImageSource copyWith({
     LatLngQuad coordinate,
     String uri,
     Uint8List image,
     String asset,
   }) {
-    assert(uri == null || image == null,
-        'You can have ony one source for the image.');
+    return rebuild((ImageSourceBuilder b) {
+      b
+        ..channel = null
+        ..coordinates = (coordinate ?? coordinates).toBuilder();
 
-    final ImageSource source = rebuild((ImageSourceBuilder b) {
-      return b
-        ..coordinates = (coordinate ?? coordinates).toBuilder()
-        ..uri = uri ?? this.uri
-        ..image = image ?? this.image
-        ..asset = asset ?? this.asset;
+      if (uri != null) {
+        b
+          ..uri = uri
+          ..image = null
+          ..asset = null;
+      } else if (image != null) {
+        b
+          ..uri = null
+          ..image = image
+          ..asset = null;
+      } else if (asset != null) {
+        b
+          ..uri = null
+          ..image = null
+          ..asset = asset;
+      }
     });
-    if (!isAttached || this == source) {
-      return source;
-    }
-    return _update(source);
   }
 
   @override
@@ -90,13 +102,27 @@ abstract class ImageSource
     } else if (source is ImageSource) {
       return rebuild((ImageSourceBuilder b) {
         if (source != null) {
+          if (source.uri != null) {
+            b
+              ..uri = source.uri
+              ..image = null
+              ..asset = null;
+          } else if (source.image != null) {
+            b
+              ..uri = null
+              ..image = source.image
+              ..asset = null;
+          } else if (source.asset != null) {
+            b
+              ..uri = null
+              ..image = null
+              ..asset = source.asset;
+          }
+
           b
             ..channel = channel
             ..attribution = source.attribution ?? attribution
-            ..coordinates = (source.coordinates ?? coordinates).toBuilder()
-            ..uri = source.uri ?? uri
-            ..image = source.image ?? image
-            ..asset = source.asset ?? asset;
+            ..coordinates = (source.coordinates ?? coordinates).toBuilder();
         }
       });
     } else {
@@ -105,16 +131,30 @@ abstract class ImageSource
     }
   }
 
-  Future<ImageSource> copyFrom(Source source) async {
+  Future<ImageSource> _copyFrom(Source source) async {
     if (source is ImageSource) {
       final ImageSource _source = rebuild((ImageSourceBuilder b) {
+        if (source.uri != null) {
+          b
+            ..uri = source.uri
+            ..image = null
+            ..asset = null;
+        } else if (source.image != null) {
+          b
+            ..uri = null
+            ..image = source.image
+            ..asset = null;
+        } else if (source.asset != null) {
+          b
+            ..uri = null
+            ..image = null
+            ..asset = source.asset;
+        }
+
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
-          ..coordinates = (source.coordinates ?? coordinates).toBuilder()
-          ..uri = source.uri ?? uri
-          ..image = source.image ?? image
-          ..asset = source.asset ?? asset;
+          ..coordinates = (source.coordinates ?? coordinates).toBuilder();
       });
       if (!isAttached || this == _source) {
         return _source;

@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class CircleLayer
-    with _LayerChannel
-    implements Layer, Built<CircleLayer, CircleLayerBuilder> {
+abstract class CircleLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<CircleLayer, CircleLayerBuilder> //
+{
   factory CircleLayer({
     @required String id,
     @required String sourceId,

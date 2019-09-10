@@ -36,3 +36,5 @@ flutter:
     - res/ic_cross.png
     - res/example.geojson
     - res/fake_norway_campsites.geojson
+    - res/white_house_lvl_0.geojson
+    - res/white_house_lvl_1.geojson

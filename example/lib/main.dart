@@ -16,6 +16,7 @@ import 'src/geojson_layer_in_stack_page.dart';
 import 'src/heatmap_page.dart';
 import 'src/hillshade_layer_page.dart';
 import 'src/image_source_time_lapse_page.dart';
+import 'src/indoor_map.dart';
 import 'src/language_switch.dart';
 import 'src/line_gradient_page.dart';
 import 'src/line_layer_page.dart';
@@ -127,6 +128,7 @@ class MapsDemo extends StatelessWidget {
         AppRoutes.zoomDependentFillColor: (_) =>
             const ZoomDependentFillColorPage(),
         AppRoutes.clickToAddImage: (_) => const ClickToAddImagePage(),
+        AppRoutes.indoorMap: (_) => const IndoorMapPage(),
         AppRoutes.multipleHeatmapStyling: (_) =>
             const MultipleHeatmapStylingPage(),
         AppRoutes.bathymetry: (_) => const BathymetryPage(),
@@ -245,6 +247,13 @@ final List<Page> pages = <Page>[
     route: AppRoutes.clickToAddImage,
   ),
   const Page(
+    title: 'Indoor Map',
+    description:
+        'Display an indoor map of a building with toggles to switch between floor levels.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.indoorMap,
+  ),
+  const Page(
     title: 'Add multiple heatmap styles',
     description:
         'Gain minute control over heat map coloring, size, density, and other styling.',
@@ -336,6 +345,8 @@ class AppRoutes {
   static const String languageSwitch = '/languageSwitch';
   static const String zoomDependentFillColor = '/zoomDependentFillColor';
   static const String clickToAddImage = '/clickToAddImage';
+  static const String indoorMap = '/indoorMap';
+
   static const String multipleHeatmapStyling = '/multipleHeatmapStyling';
   static const String bathymetry = '/bathymetry';
   static const String circleLayerClustering = '/circleLayerClustering';

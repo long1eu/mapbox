@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class RasterSource
-    with _Channel
-    implements Source, Built<RasterSource, RasterSourceBuilder> {
+abstract class RasterSource //
+    with
+        _Channel
+    implements
+        Source,
+        Built<RasterSource, RasterSourceBuilder> //
+{
   factory RasterSource({
     @required String id,
     String attribution,
@@ -63,11 +67,15 @@ abstract class RasterSource
     } else if (source is RasterSource) {
       return rebuild((RasterSourceBuilder b) {
         if (source != null) {
+          if (uri != null) {
+            b.uri = source.uri;
+          } else if (tileSet != null) {
+            b.tileSet = source.tileSet.toBuilder();
+          }
+
           b
             ..channel = channel
             ..attribution = source.attribution ?? attribution
-            ..uri = source.uri ?? uri
-            ..tileSet = (source.tileSet ?? tileSet)?.toBuilder()
             ..tileSize = source.tileSize ?? tileSize;
         }
       });

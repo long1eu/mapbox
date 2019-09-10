@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class HillshadeLayer
-    with _LayerChannel
-    implements Layer, Built<HillshadeLayer, HillshadeLayerBuilder> {
+abstract class HillshadeLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<HillshadeLayer, HillshadeLayerBuilder> //
+{
   factory HillshadeLayer({
     @required String id,
     @required String sourceId,

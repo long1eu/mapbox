@@ -66,6 +66,10 @@ extension String {
       $0.value = self
     }
   }
+  
+  func assetUri(lookupKeyForAsset: @escaping LookupKeyForAsset) -> URL {
+    return URL(fileURLWithPath: Bundle.main.path(forResource: lookupKeyForAsset(self, nil), ofType: nil)!)
+  }
 }
 
 extension Int32 {

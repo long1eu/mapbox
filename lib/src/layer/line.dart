@@ -4,10 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-// todo hot reload doesnt' work
-abstract class LineLayer
-    with _LayerChannel
-    implements Layer, Built<LineLayer, LineLayerBuilder> {
+abstract class LineLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<LineLayer, LineLayerBuilder> //
+{
   factory LineLayer({
     @required String id,
     @required String sourceId,

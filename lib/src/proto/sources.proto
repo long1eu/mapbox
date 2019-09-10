@@ -24,6 +24,7 @@ message Source {
     oneof source {
       string uri = 4;
       string geo_json = 5;
+      string asset = 6;
     }
 
     message Options {

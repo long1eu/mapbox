@@ -14,8 +14,8 @@ class Style {
             MapEntry<String, Source>(
                 element.id, element._markAsAttached(channel, element))),
         _layers = style.layers.asMap().map((_, Layer element) =>
-            MapEntry<String, Layer>(element.id,
-                element._markAsAttached(channel, element)));
+            MapEntry<String, Layer>(
+                element.id, element._markAsAttached(channel, element)));
 
   final StyleModel _style;
   final ChannelWrapper _channel;
@@ -55,9 +55,9 @@ class Style {
 
   Future<Source> updateSource(String id, Source source) async {
     if (source is ImageSource) {
-      source = await getSource<ImageSource>(id).copyFrom(source);
+      source = await getSource<ImageSource>(id)._copyFrom(source);
     } else if (source is GeoJsonSource) {
-      source = await getSource<GeoJsonSource>(id).copyFrom(source);
+      source = await getSource<GeoJsonSource>(id)._copyFrom(source);
     }
     source = source._markAsAttached(_channel);
     _sources[source.id] = source;

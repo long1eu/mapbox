@@ -4,10 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-// todo hot reload doesnt' work on Android
-abstract class RasterLayer
-    with _LayerChannel
-    implements Layer, Built<RasterLayer, RasterLayerBuilder> {
+abstract class RasterLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<RasterLayer, RasterLayerBuilder> //
+{
   factory RasterLayer({
     @required String id,
     @required String sourceId,

@@ -4,11 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-// todo hot reload doesnt' work
-// icon size doesn't match
-abstract class SymbolLayer
-    with _LayerChannel
-    implements Layer, Built<SymbolLayer, SymbolLayerBuilder> {
+abstract class SymbolLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<SymbolLayer, SymbolLayerBuilder> //
+{
   factory SymbolLayer({
     @required String id,
     @required String sourceId,

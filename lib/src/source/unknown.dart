@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class UnknownSource
-    with _Channel
-    implements Source, Built<UnknownSource, UnknownSourceBuilder> {
+abstract class UnknownSource //
+    with
+        _Channel
+    implements
+        Source,
+        Built<UnknownSource, UnknownSourceBuilder> //
+{
   factory UnknownSource() =>
       throw StateError('You can not create an instance of this class');
 

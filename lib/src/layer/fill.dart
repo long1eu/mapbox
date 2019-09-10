@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class FillLayer
-    with _LayerChannel
-    implements Layer, Built<FillLayer, FillLayerBuilder> {
+abstract class FillLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<FillLayer, FillLayerBuilder> //
+{
   factory FillLayer({
     @required String id,
     @required String sourceId,

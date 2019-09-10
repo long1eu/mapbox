@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class VectorSource
-    with _Channel
-    implements Source, Built<VectorSource, VectorSourceBuilder> {
+abstract class VectorSource //
+    with
+        _Channel
+    implements
+        Source,
+        Built<VectorSource, VectorSourceBuilder> //
+{
   factory VectorSource(
       {@required String id, String attribution, String uri, TileSet tileSet}) {
     assert(id != null);
@@ -53,11 +57,15 @@ abstract class VectorSource
     } else if (source is VectorSource) {
       return rebuild((VectorSourceBuilder b) {
         if (source != null) {
+          if (uri != null) {
+            b.uri = source.uri;
+          } else if (tileSet != null) {
+            b.tileSet = source.tileSet.toBuilder();
+          }
+
           b
             ..channel = channel
-            ..attribution = source.attribution ?? attribution
-            ..uri = source.uri ?? uri
-            ..tileSet = (source.tileSet ?? tileSet)?.toBuilder();
+            ..attribution = source.attribution ?? attribution;
         }
       });
     } else {

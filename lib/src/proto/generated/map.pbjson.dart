@@ -7,184 +7,45 @@
 
 const Map_$json = const {
   '1': 'Map',
-  '3': const [
-    Map__Options$json,
-    Map__CameraPosition$json,
-    Map__Operations$json
-  ],
+  '3': const [Map__Options$json, Map__CameraPosition$json, Map__Operations$json],
 };
 
 const Map__Options$json = const {
   '1': 'Options',
   '2': const [
     const {'1': 'api_base_uri', '3': 1, '4': 1, '5': 9, '10': 'apiBaseUri'},
-    const {
-      '1': 'local_ideograph_font_family',
-      '3': 2,
-      '4': 1,
-      '5': 9,
-      '10': 'localIdeographFontFamily'
-    },
-    const {
-      '1': 'cross_source_collisions',
-      '3': 3,
-      '4': 1,
-      '5': 8,
-      '10': 'crossSourceCollisions'
-    },
-    const {
-      '1': 'camera_position',
-      '3': 4,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Map.CameraPosition',
-      '10': 'cameraPosition'
-    },
+    const {'1': 'local_ideograph_font_family', '3': 2, '4': 1, '5': 9, '10': 'localIdeographFontFamily'},
+    const {'1': 'cross_source_collisions', '3': 3, '4': 1, '5': 8, '10': 'crossSourceCollisions'},
+    const {'1': 'camera_position', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Map.CameraPosition', '10': 'cameraPosition'},
     const {'1': 'max_zoom', '3': 5, '4': 1, '5': 1, '10': 'maxZoom'},
     const {'1': 'min_zoom', '3': 6, '4': 1, '5': 1, '10': 'minZoom'},
     const {'1': 'zoom_gestures', '3': 7, '4': 1, '5': 8, '10': 'zoomGestures'},
-    const {
-      '1': 'scroll_gestures',
-      '3': 8,
-      '4': 1,
-      '5': 8,
-      '10': 'scrollGestures'
-    },
-    const {
-      '1': 'rotate_gestures',
-      '3': 9,
-      '4': 1,
-      '5': 8,
-      '10': 'rotateGestures'
-    },
+    const {'1': 'scroll_gestures', '3': 8, '4': 1, '5': 8, '10': 'scrollGestures'},
+    const {'1': 'rotate_gestures', '3': 9, '4': 1, '5': 8, '10': 'rotateGestures'},
     const {'1': 'tilt_gestures', '3': 10, '4': 1, '5': 8, '10': 'tiltGestures'},
-    const {
-      '1': 'double_tap_gestures',
-      '3': 11,
-      '4': 1,
-      '5': 8,
-      '10': 'doubleTapGestures'
-    },
-    const {
-      '1': 'quick_zoom_gestures',
-      '3': 12,
-      '4': 1,
-      '5': 8,
-      '10': 'quickZoomGestures'
-    },
+    const {'1': 'double_tap_gestures', '3': 11, '4': 1, '5': 8, '10': 'doubleTapGestures'},
+    const {'1': 'quick_zoom_gestures', '3': 12, '4': 1, '5': 8, '10': 'quickZoomGestures'},
     const {'1': 'compass', '3': 13, '4': 1, '5': 8, '10': 'compass'},
-    const {
-      '1': 'compass_position',
-      '3': 14,
-      '4': 1,
-      '5': 14,
-      '6': '.tophap.mapbox_gl.OrnamentPosition',
-      '10': 'compassPosition'
-    },
-    const {
-      '1': 'compass_margin',
-      '3': 15,
-      '4': 3,
-      '5': 5,
-      '10': 'compassMargin'
-    },
-    const {
-      '1': 'compass_fade_facing_north',
-      '3': 16,
-      '4': 1,
-      '5': 8,
-      '10': 'compassFadeFacingNorth'
-    },
+    const {'1': 'compass_position', '3': 14, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.OrnamentPosition', '10': 'compassPosition'},
+    const {'1': 'compass_margin', '3': 15, '4': 3, '5': 5, '10': 'compassMargin'},
+    const {'1': 'compass_fade_facing_north', '3': 16, '4': 1, '5': 8, '10': 'compassFadeFacingNorth'},
     const {'1': 'logo', '3': 17, '4': 1, '5': 8, '10': 'logo'},
-    const {
-      '1': 'logo_position',
-      '3': 18,
-      '4': 1,
-      '5': 14,
-      '6': '.tophap.mapbox_gl.OrnamentPosition',
-      '10': 'logoPosition'
-    },
+    const {'1': 'logo_position', '3': 18, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.OrnamentPosition', '10': 'logoPosition'},
     const {'1': 'logo_margin', '3': 19, '4': 3, '5': 5, '10': 'logoMargin'},
     const {'1': 'attribution', '3': 20, '4': 1, '5': 8, '10': 'attribution'},
-    const {
-      '1': 'attribution_position',
-      '3': 21,
-      '4': 1,
-      '5': 14,
-      '6': '.tophap.mapbox_gl.OrnamentPosition',
-      '10': 'attributionPosition'
-    },
-    const {
-      '1': 'attribution_margin',
-      '3': 22,
-      '4': 3,
-      '5': 5,
-      '10': 'attributionMargin'
-    },
-    const {
-      '1': 'attribution_tint_color',
-      '3': 23,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Color',
-      '10': 'attributionTintColor'
-    },
-    const {
-      '1': 'render_texture_mode',
-      '3': 24,
-      '4': 1,
-      '5': 8,
-      '10': 'renderTextureMode'
-    },
-    const {
-      '1': 'render_texture_translucent_surface',
-      '3': 25,
-      '4': 1,
-      '5': 8,
-      '10': 'renderTextureTranslucentSurface'
-    },
-    const {
-      '1': 'enable_tile_prefetch',
-      '3': 26,
-      '4': 1,
-      '5': 8,
-      '10': 'enableTilePrefetch'
-    },
-    const {
-      '1': 'enable_z_media_overlay',
-      '3': 27,
-      '4': 1,
-      '5': 8,
-      '10': 'enableZMediaOverlay'
-    },
+    const {'1': 'attribution_position', '3': 21, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.OrnamentPosition', '10': 'attributionPosition'},
+    const {'1': 'attribution_margin', '3': 22, '4': 3, '5': 5, '10': 'attributionMargin'},
+    const {'1': 'attribution_tint_color', '3': 23, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Color', '10': 'attributionTintColor'},
+    const {'1': 'render_texture_mode', '3': 24, '4': 1, '5': 8, '10': 'renderTextureMode'},
+    const {'1': 'render_texture_translucent_surface', '3': 25, '4': 1, '5': 8, '10': 'renderTextureTranslucentSurface'},
+    const {'1': 'enable_tile_prefetch', '3': 26, '4': 1, '5': 8, '10': 'enableTilePrefetch'},
+    const {'1': 'enable_z_media_overlay', '3': 27, '4': 1, '5': 8, '10': 'enableZMediaOverlay'},
     const {'1': 'pixel_ratio', '3': 28, '4': 1, '5': 2, '10': 'pixelRatio'},
-    const {
-      '1': 'foreground_load_color',
-      '3': 29,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Color',
-      '10': 'foregroundLoadColor'
-    },
-    const {
-      '1': 'from_mapbox',
-      '3': 30,
-      '4': 1,
-      '5': 14,
-      '6': '.tophap.mapbox_gl.Style.MapboxStyle',
-      '9': 0,
-      '10': 'fromMapbox'
-    },
+    const {'1': 'foreground_load_color', '3': 29, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Color', '10': 'foregroundLoadColor'},
+    const {'1': 'from_mapbox', '3': 30, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.Style.MapboxStyle', '9': 0, '10': 'fromMapbox'},
     const {'1': 'from_uri', '3': 31, '4': 1, '5': 9, '9': 0, '10': 'fromUri'},
     const {'1': 'from_json', '3': 32, '4': 1, '5': 9, '9': 0, '10': 'fromJson'},
-    const {
-      '1': 'from_asset',
-      '3': 33,
-      '4': 1,
-      '5': 9,
-      '9': 0,
-      '10': 'fromAsset'
-    },
+    const {'1': 'from_asset', '3': 33, '4': 1, '5': 9, '9': 0, '10': 'fromAsset'},
   ],
   '8': const [
     const {'1': 'style'},
@@ -195,69 +56,27 @@ const Map__CameraPosition$json = const {
   '1': 'CameraPosition',
   '2': const [
     const {'1': 'bearing', '3': 1, '4': 1, '5': 1, '10': 'bearing'},
-    const {
-      '1': 'target',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.LatLng',
-      '10': 'target'
-    },
+    const {'1': 'target', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'target'},
     const {'1': 'tilt', '3': 3, '4': 1, '5': 1, '10': 'tilt'},
     const {'1': 'zoom', '3': 4, '4': 1, '5': 1, '10': 'zoom'},
-    const {
-      '1': 'bounds',
-      '3': 5,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.LatLngBounds',
-      '10': 'bounds'
-    },
+    const {'1': 'bounds', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLngBounds', '10': 'bounds'},
   ],
 };
 
 const Map__Operations$json = const {
   '1': 'Operations',
-  '3': const [
-    Map__Operations_Ready$json,
-    Map__Operations_CameraUpdate$json,
-    Map__Operations_EaseCamera$json,
-    Map__Operations_AnimateCamera$json,
-    Map__Operations_ScrollBy$json,
-    Map__Operations_SetFocalBearing$json,
-    Map__Operations_GetCameraForLatLngBounds$json
-  ],
+  '3': const [Map__Operations_Ready$json, Map__Operations_CameraUpdate$json, Map__Operations_EaseCamera$json, Map__Operations_AnimateCamera$json, Map__Operations_ScrollBy$json, Map__Operations_SetFocalBearing$json, Map__Operations_GetCameraForLatLngBounds$json],
 };
 
 const Map__Operations_Ready$json = const {
   '1': 'Ready',
   '2': const [
     const {'1': 'view_id', '3': 1, '4': 1, '5': 3, '10': 'viewId'},
-    const {
-      '1': 'prefetches_tiles',
-      '3': 2,
-      '4': 1,
-      '5': 8,
-      '10': 'prefetchesTiles'
-    },
+    const {'1': 'prefetches_tiles', '3': 2, '4': 1, '5': 8, '10': 'prefetchesTiles'},
     const {'1': 'min_zoom', '3': 3, '4': 1, '5': 1, '10': 'minZoom'},
     const {'1': 'max_zoom', '3': 4, '4': 1, '5': 1, '10': 'maxZoom'},
-    const {
-      '1': 'camera',
-      '3': 5,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Map.CameraPosition',
-      '10': 'camera'
-    },
-    const {
-      '1': 'style',
-      '3': 6,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Style',
-      '10': 'style'
-    },
+    const {'1': 'camera', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Map.CameraPosition', '10': 'camera'},
+    const {'1': 'style', '3': 6, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style', '10': 'style'},
     const {'1': 'padding', '3': 7, '4': 3, '5': 5, '10': 'padding'},
   ],
 };
@@ -265,30 +84,9 @@ const Map__Operations_Ready$json = const {
 const Map__Operations_CameraUpdate$json = const {
   '1': 'CameraUpdate',
   '2': const [
-    const {
-      '1': 'camera_position',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Map.CameraPosition',
-      '10': 'cameraPosition'
-    },
-    const {
-      '1': 'lat_lng',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.LatLng',
-      '10': 'latLng'
-    },
-    const {
-      '1': 'bounds',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.LatLngBounds',
-      '10': 'bounds'
-    },
+    const {'1': 'camera_position', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Map.CameraPosition', '10': 'cameraPosition'},
+    const {'1': 'lat_lng', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'latLng'},
+    const {'1': 'bounds', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLngBounds', '10': 'bounds'},
     const {'1': 'bearing', '3': 4, '4': 1, '5': 1, '10': 'bearing'},
     const {'1': 'tilt', '3': 5, '4': 1, '5': 1, '10': 'tilt'},
     const {'1': 'padding', '3': 6, '4': 3, '5': 5, '10': 'padding'},
@@ -296,19 +94,9 @@ const Map__Operations_CameraUpdate$json = const {
     const {'1': 'amount', '3': 8, '4': 1, '5': 1, '10': 'amount'},
     const {'1': 'focus_x', '3': 9, '4': 1, '5': 5, '10': 'focusX'},
     const {'1': 'focus_y', '3': 10, '4': 1, '5': 5, '10': 'focusY'},
-    const {
-      '1': 'operation',
-      '3': 11,
-      '4': 1,
-      '5': 14,
-      '6': '.tophap.mapbox_gl.Map.Operations.CameraUpdate.Type',
-      '10': 'operation'
-    },
+    const {'1': 'operation', '3': 11, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.Map.Operations.CameraUpdate.Type', '10': 'operation'},
   ],
-  '4': const [
-    Map__Operations_CameraUpdate_Result$json,
-    Map__Operations_CameraUpdate_Type$json
-  ],
+  '4': const [Map__Operations_CameraUpdate_Result$json, Map__Operations_CameraUpdate_Type$json],
 };
 
 const Map__Operations_CameraUpdate_Result$json = const {
@@ -338,36 +126,16 @@ const Map__Operations_CameraUpdate_Type$json = const {
 const Map__Operations_EaseCamera$json = const {
   '1': 'EaseCamera',
   '2': const [
-    const {
-      '1': 'update',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Map.Operations.CameraUpdate',
-      '10': 'update'
-    },
+    const {'1': 'update', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Map.Operations.CameraUpdate', '10': 'update'},
     const {'1': 'duration', '3': 2, '4': 1, '5': 5, '10': 'duration'},
-    const {
-      '1': 'easing_interpolator',
-      '3': 3,
-      '4': 1,
-      '5': 8,
-      '10': 'easingInterpolator'
-    },
+    const {'1': 'easing_interpolator', '3': 3, '4': 1, '5': 8, '10': 'easingInterpolator'},
   ],
 };
 
 const Map__Operations_AnimateCamera$json = const {
   '1': 'AnimateCamera',
   '2': const [
-    const {
-      '1': 'update',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.Map.Operations.CameraUpdate',
-      '10': 'update'
-    },
+    const {'1': 'update', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Map.Operations.CameraUpdate', '10': 'update'},
     const {'1': 'duration', '3': 2, '4': 1, '5': 5, '10': 'duration'},
   ],
 };
@@ -394,16 +162,10 @@ const Map__Operations_SetFocalBearing$json = const {
 const Map__Operations_GetCameraForLatLngBounds$json = const {
   '1': 'GetCameraForLatLngBounds',
   '2': const [
-    const {
-      '1': 'bounds',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tophap.mapbox_gl.LatLngBounds',
-      '10': 'bounds'
-    },
+    const {'1': 'bounds', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLngBounds', '10': 'bounds'},
     const {'1': 'padding', '3': 2, '4': 3, '5': 5, '10': 'padding'},
     const {'1': 'bearing', '3': 3, '4': 1, '5': 1, '10': 'bearing'},
     const {'1': 'tilt', '3': 4, '4': 1, '5': 1, '10': 'tilt'},
   ],
 };
+

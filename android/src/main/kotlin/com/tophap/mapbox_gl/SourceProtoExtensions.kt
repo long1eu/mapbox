@@ -9,6 +9,12 @@ import java.io.ByteArrayOutputStream
 import java.net.URI
 
 
+private val String.assetUri: URI
+    get() {
+        val key = FlutterMain.getLookupKeyForAsset(this)
+        return URI("asset://$key")
+    }
+
 fun Sources.Source.fieldValue(): Source {
     return when (typeCase!!) {
         Sources.Source.TypeCase.GEOJSON -> geoJson.fieldValue()
@@ -26,6 +32,7 @@ fun Sources.Source.GeoJson.fieldValue(): GeoJsonSource {
     return when (sourceCase!!) {
         Sources.Source.GeoJson.SourceCase.URI -> if (hasOptions()) GeoJsonSource(id, URI(uri), options.fieldValue()) else GeoJsonSource(id, URI(uri))
         Sources.Source.GeoJson.SourceCase.GEO_JSON -> if (hasOptions()) GeoJsonSource(id, geoJson, options.fieldValue()) else GeoJsonSource(id, geoJson)
+        Sources.Source.GeoJson.SourceCase.ASSET -> if (hasOptions()) GeoJsonSource(id, asset.assetUri, options.fieldValue()) else GeoJsonSource(id, asset.assetUri)
         else -> throw IllegalArgumentException("Unknown case $sourceCase")
     }
 }
@@ -48,10 +55,7 @@ fun Sources.Source.Image.fieldValue(): ImageSource {
             val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
             ImageSource(id, coordinates.fieldValue(), bmp)
         }
-        Sources.Source.Image.SourceCase.ASSET -> {
-            val key = FlutterMain.getLookupKeyForAsset(asset)
-            ImageSource(id, coordinates.fieldValue(), URI("asset://$key"))
-        }
+        Sources.Source.Image.SourceCase.ASSET -> ImageSource(id, coordinates.fieldValue(), asset.assetUri)
         Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> throw IllegalArgumentException("Unknown source $sourceCase")
     }
 }
@@ -107,6 +111,7 @@ fun Source.update(source: Sources.Source) {
             when (source.geoJson.sourceCase!!) {
                 Sources.Source.GeoJson.SourceCase.URI -> uri = source.geoJson.uri
                 Sources.Source.GeoJson.SourceCase.GEO_JSON -> setGeoJson(source.geoJson.geoJson)
+                Sources.Source.GeoJson.SourceCase.ASSET -> uri = source.geoJson.asset.assetUri.toString()
                 Sources.Source.GeoJson.SourceCase.SOURCE_NOT_SET -> {
                 }
             }
@@ -116,7 +121,7 @@ fun Source.update(source: Sources.Source) {
             when (source.image.sourceCase!!) {
                 Sources.Source.Image.SourceCase.URI -> uri = source.image.uri
                 Sources.Source.Image.SourceCase.IMAGE -> setImage(source.image.image.toByteArray().bitmap())
-                Sources.Source.Image.SourceCase.ASSET -> println("asset://${FlutterMain.getLookupKeyForAsset(source.image.asset)}")
+                Sources.Source.Image.SourceCase.ASSET -> uri = source.image.asset.assetUri.toString()
                 Sources.Source.Image.SourceCase.SOURCE_NOT_SET -> {
                 }
             }

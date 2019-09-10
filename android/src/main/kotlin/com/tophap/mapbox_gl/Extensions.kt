@@ -490,7 +490,15 @@ fun Source.toProto(): Sources.Source {
                     .setId(id)
                     .setAttribution(attribution)
 
-            if (uri != null) source.uri = uri
+            if (uri != null) {
+                var path = uri!!.toString()
+                if (path.startsWith("asset://")) {
+                    path = path.substringAfter(FlutterMain.getLookupKeyForAsset(""))
+                    source.asset = path
+                } else {
+                    source.uri = uri
+                }
+            }
             sourceBuilder.geoJson = source.build()
         }
         is ImageSource -> {

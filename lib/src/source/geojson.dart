@@ -4,17 +4,22 @@
 
 part of flutter_mapbox_gl;
 
-abstract class GeoJsonSource
-    with _Channel
-    implements Source, Built<GeoJsonSource, GeoJsonSourceBuilder> {
+abstract class GeoJsonSource //
+    with
+        _Channel
+    implements
+        Source,
+        Built<GeoJsonSource, GeoJsonSourceBuilder> //
+{
   factory GeoJsonSource({
     @required String id,
     String uri,
     String geoJson,
+    String asset,
     GeoJsonOptions options,
   }) {
     assert(id != null);
-    assert(uri != null || geoJson != null,
+    assert(<String>[uri, geoJson, asset].any((String it) => it != null),
         'You must specify eather the uri or provide a json source');
 
     return _$GeoJsonSource((GeoJsonSourceBuilder b) {
@@ -22,6 +27,7 @@ abstract class GeoJsonSource
         ..id = id
         ..uri = uri
         ..geoJson = geoJson
+        ..asset = asset
         ..options = options?.toBuilder();
     });
   }
@@ -37,6 +43,7 @@ abstract class GeoJsonSource
         ..attribution = proto.hasAttribution() ? proto.attribution : null
         ..uri = proto.hasUri() ? proto.uri : null
         ..geoJson = proto.hasGeoJson() ? proto.geoJson : null
+        ..asset = proto.hasAsset() ? proto.asset : null
         ..options = proto.hasOptions()
             ? GeoJsonOptions.fromProto(proto.options).toBuilder()
             : null;
@@ -52,20 +59,32 @@ abstract class GeoJsonSource
   String get geoJson;
 
   @nullable
+  String get asset;
+
+  @nullable
   GeoJsonOptions get options;
 
-  FutureOr<GeoJsonSource> copyWith({String uri, String geoJson}) {
-    assert(uri == null || geoJson == null, 'Only one source can be passed.');
+  GeoJsonSource copyWith({String uri, String geoJson, String asset}) {
+    return rebuild((GeoJsonSourceBuilder b) {
+      b.channel = null;
 
-    final GeoJsonSource source = rebuild((GeoJsonSourceBuilder b) {
-      return b
-        ..uri = uri ?? this.uri
-        ..geoJson = geoJson ?? this.geoJson;
+      if (uri != null) {
+        b
+          ..uri = uri
+          ..geoJson = null
+          ..asset = null;
+      } else if (geoJson != null) {
+        b
+          ..uri = null
+          ..geoJson = geoJson
+          ..asset = null;
+      } else if (asset != null) {
+        b
+          ..uri = null
+          ..geoJson = null
+          ..asset = asset;
+      }
     });
-    if (!isAttached || this == source) {
-      return source;
-    }
-    return _update(source);
   }
 
   @override
@@ -75,11 +94,29 @@ abstract class GeoJsonSource
     } else if (source is GeoJsonSource) {
       return rebuild((GeoJsonSourceBuilder b) {
         if (source != null) {
+          if (source.uri != null) {
+            b
+              ..uri = source.uri
+              ..geoJson = null
+              ..asset = null;
+          } else if (source.geoJson != null) {
+            b
+              ..uri = null
+              ..geoJson = source.geoJson
+              ..asset = null;
+          } else if (source.asset != null) {
+            b
+              ..uri = null
+              ..geoJson = null
+              ..asset = source.asset;
+          }
+
           b
             ..channel = channel
             ..attribution = source.attribution ?? attribution
             ..uri = source.uri ?? uri
             ..geoJson = source.geoJson ?? geoJson
+            ..asset = source.asset ?? asset
             ..options = (source.options ?? options)?.toBuilder();
         }
       });
@@ -89,14 +126,29 @@ abstract class GeoJsonSource
     }
   }
 
-  Future<GeoJsonSource> copyFrom(Source source) async {
+  Future<GeoJsonSource> _copyFrom(Source source) async {
     if (source is GeoJsonSource) {
       final GeoJsonSource _source = rebuild((GeoJsonSourceBuilder b) {
+        if (source.uri != null) {
+          b
+            ..uri = source.uri
+            ..geoJson = null
+            ..asset = null;
+        } else if (source.geoJson != null) {
+          b
+            ..uri = null
+            ..geoJson = source.geoJson
+            ..asset = null;
+        } else if (source.asset != null) {
+          b
+            ..uri = null
+            ..geoJson = null
+            ..asset = source.asset;
+        }
+
         b
           ..channel = channel
           ..attribution = source.attribution ?? attribution
-          ..uri = source.uri ?? uri
-          ..geoJson = source.geoJson ?? geoJson
           ..options = (source.options ?? options)?.toBuilder();
       });
       return !isAttached || this == _source ? _source : _update(_source);
@@ -114,6 +166,8 @@ abstract class GeoJsonSource
       message.uri = uri;
     } else if (geoJson != null) {
       message.geoJson = geoJson;
+    } else if (asset != null) {
+      message.asset = asset;
     }
 
     if (options != null) {

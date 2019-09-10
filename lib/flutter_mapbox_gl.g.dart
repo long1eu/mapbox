@@ -3552,6 +3552,12 @@ class _$GeoJsonSourceSerializer implements StructuredSerializer<GeoJsonSource> {
         ..add(serializers.serialize(object.geoJson,
             specifiedType: const FullType(String)));
     }
+    if (object.asset != null) {
+      result
+        ..add('asset')
+        ..add(serializers.serialize(object.asset,
+            specifiedType: const FullType(String)));
+    }
     if (object.options != null) {
       result
         ..add('options')
@@ -3585,6 +3591,10 @@ class _$GeoJsonSourceSerializer implements StructuredSerializer<GeoJsonSource> {
           break;
         case 'geoJson':
           result.geoJson = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'asset':
+          result.asset = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'options':
@@ -10596,6 +10606,8 @@ class _$GeoJsonSource extends GeoJsonSource {
   @override
   final String geoJson;
   @override
+  final String asset;
+  @override
   final GeoJsonOptions options;
   @override
   final String id;
@@ -10610,6 +10622,7 @@ class _$GeoJsonSource extends GeoJsonSource {
   _$GeoJsonSource._(
       {this.uri,
       this.geoJson,
+      this.asset,
       this.options,
       this.id,
       this.attribution,
@@ -10633,6 +10646,7 @@ class _$GeoJsonSource extends GeoJsonSource {
     return other is GeoJsonSource &&
         uri == other.uri &&
         geoJson == other.geoJson &&
+        asset == other.asset &&
         options == other.options &&
         id == other.id &&
         attribution == other.attribution;
@@ -10641,7 +10655,11 @@ class _$GeoJsonSource extends GeoJsonSource {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, uri.hashCode), geoJson.hashCode), options.hashCode),
+        $jc(
+            $jc(
+                $jc($jc($jc(0, uri.hashCode), geoJson.hashCode),
+                    asset.hashCode),
+                options.hashCode),
             id.hashCode),
         attribution.hashCode));
   }
@@ -10651,6 +10669,7 @@ class _$GeoJsonSource extends GeoJsonSource {
     return (newBuiltValueToStringHelper('GeoJsonSource')
           ..add('uri', uri)
           ..add('geoJson', geoJson)
+          ..add('asset', asset)
           ..add('options', options)
           ..add('id', id)
           ..add('attribution', attribution)
@@ -10670,6 +10689,10 @@ class GeoJsonSourceBuilder
   String _geoJson;
   String get geoJson => _$this._geoJson;
   set geoJson(String geoJson) => _$this._geoJson = geoJson;
+
+  String _asset;
+  String get asset => _$this._asset;
+  set asset(String asset) => _$this._asset = asset;
 
   GeoJsonOptionsBuilder _options;
   GeoJsonOptionsBuilder get options =>
@@ -10694,6 +10717,7 @@ class GeoJsonSourceBuilder
     if (_$v != null) {
       _uri = _$v.uri;
       _geoJson = _$v.geoJson;
+      _asset = _$v.asset;
       _options = _$v.options?.toBuilder();
       _id = _$v.id;
       _attribution = _$v.attribution;
@@ -10724,6 +10748,7 @@ class GeoJsonSourceBuilder
           new _$GeoJsonSource._(
               uri: uri,
               geoJson: geoJson,
+              asset: asset,
               options: _options?.build(),
               id: id,
               attribution: attribution,

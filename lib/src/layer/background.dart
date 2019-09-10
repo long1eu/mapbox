@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class BackgroundLayer
-    with _LayerChannel
-    implements Layer, Built<BackgroundLayer, BackgroundLayerBuilder> {
+abstract class BackgroundLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<BackgroundLayer, BackgroundLayerBuilder> //
+{
   factory BackgroundLayer({
     @required String id,
     bool visible = true,

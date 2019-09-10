@@ -8,7 +8,6 @@ export 'generated/expression.pbjson.dart';
 export 'generated/google/protobuf/wrappers.pb.dart';
 export 'generated/google/protobuf/wrappers.pbenum.dart';
 export 'generated/google/protobuf/wrappers.pbjson.dart';
-export 'generated/google/protobuf/wrappers.pbserver.dart';
 export 'generated/layers.pb.dart';
 export 'generated/layers.pbenum.dart';
 export 'generated/layers.pbjson.dart';

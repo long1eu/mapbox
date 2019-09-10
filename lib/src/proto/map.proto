@@ -6,7 +6,7 @@ option java_outer_classname = "Mapbox";
 import "util.proto";
 import "style.proto";
 
-// protoc --proto_path=lib/src/models/proto --dart_out=grpc:lib/src/models/proto/generated lib/src/models/proto/**.proto lib/src/models/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/models/proto --java_out=android/src/main/kotlin/ lib/src/models/proto/**.proto && protoc --proto_path=lib/src/models/proto --swift_out=ios/Classes/proto lib/src/models/proto/**.proto
+// protoc --proto_path=lib/src/proto --dart_out=grpc:lib/src/proto/generated lib/src/proto/**.proto lib/src/proto/google/protobuf/**.proto && protoc --proto_path=lib/src/proto --java_out=android/src/main/kotlin/ lib/src/proto/**.proto && protoc --proto_path=lib/src/proto --swift_out=ios/Classes/proto lib/src/proto/**.proto
 
 message Map {
   message Options {

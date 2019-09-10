@@ -152,17 +152,27 @@ struct Tophap_MapboxGl_Source {
       set {_uniqueStorage()._source = .geoJson(newValue)}
     }
 
+    var asset: String {
+      get {
+        if case .asset(let v)? = _storage._source {return v}
+        return String()
+      }
+      set {_uniqueStorage()._source = .asset(newValue)}
+    }
+
     var unknownFields = SwiftProtobuf.UnknownStorage()
 
     enum OneOf_Source: Equatable {
       case uri(String)
       case geoJson(String)
+      case asset(String)
 
     #if !swift(>=4.1)
       static func ==(lhs: Tophap_MapboxGl_Source.GeoJson.OneOf_Source, rhs: Tophap_MapboxGl_Source.GeoJson.OneOf_Source) -> Bool {
         switch (lhs, rhs) {
         case (.uri(let l), .uri(let r)): return l == r
         case (.geoJson(let l), .geoJson(let r)): return l == r
+        case (.asset(let l), .asset(let r)): return l == r
         default: return false
         }
       }
@@ -667,6 +677,7 @@ extension Tophap_MapboxGl_Source.GeoJson: SwiftProtobuf.Message, SwiftProtobuf._
     3: .same(proto: "options"),
     4: .same(proto: "uri"),
     5: .standard(proto: "geo_json"),
+    6: .same(proto: "asset"),
   ]
 
   fileprivate class _StorageClass {
@@ -712,6 +723,11 @@ extension Tophap_MapboxGl_Source.GeoJson: SwiftProtobuf.Message, SwiftProtobuf._
           var v: String?
           try decoder.decodeSingularStringField(value: &v)
           if let v = v {_storage._source = .geoJson(v)}
+        case 6:
+          if _storage._source != nil {try decoder.handleConflictingOneOf()}
+          var v: String?
+          try decoder.decodeSingularStringField(value: &v)
+          if let v = v {_storage._source = .asset(v)}
         default: break
         }
       }
@@ -734,6 +750,8 @@ extension Tophap_MapboxGl_Source.GeoJson: SwiftProtobuf.Message, SwiftProtobuf._
         try visitor.visitSingularStringField(value: v, fieldNumber: 4)
       case .geoJson(let v)?:
         try visitor.visitSingularStringField(value: v, fieldNumber: 5)
+      case .asset(let v)?:
+        try visitor.visitSingularStringField(value: v, fieldNumber: 6)
       case nil: break
       }
     }

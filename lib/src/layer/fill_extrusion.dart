@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class FillExtrusionLayer
-    with _LayerChannel
-    implements Layer, Built<FillExtrusionLayer, FillExtrusionLayerBuilder> {
+abstract class FillExtrusionLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<FillExtrusionLayer, FillExtrusionLayerBuilder> //
+{
   factory FillExtrusionLayer({
     @required String id,
     @required String sourceId,

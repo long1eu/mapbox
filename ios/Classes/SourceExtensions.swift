@@ -16,7 +16,12 @@ extension MGLSource {
           // todo geoJson.attribution = attribution
           
           if let uri = me.url {
-            geoJson.uri = uri.absoluteString
+            let absUri: String = uri.absoluteString
+            if absUri.starts(with: "file:///") {
+              geoJson.asset = absUri.components(separatedBy: "/flutter_assets/").last!;
+            } else {
+              geoJson.uri = absUri
+            }
           }
         }
       } else if let me = self as? MGLImageSource {
@@ -78,15 +83,16 @@ extension MGLSource {
       switch (source.geoJson.source!) {
       case .uri(_): me.url = source.geoJson.uri.uri
       case .geoJson(_): me.shape = try! MGLShape(data: source.geoJson.geoJson.data(using: .utf8)!, encoding: String.Encoding.utf8.rawValue)
+      case .asset(_): me.url = source.geoJson.asset.assetUri(lookupKeyForAsset: lookupKeyForAsset)
       }
     } else if let me = self as? MGLImageSource {
-      if source.image.hasCoordinates {  
+      if source.image.hasCoordinates {
         me.coordinates = source.image.coordinates.value
       }
       switch (source.image.source!) {
       case .uri(_): me.url = source.image.uri.uri
       case .image(_): me.image = UIImage(data: source.image.image)!
-      case .asset(_): me.url = URL(fileURLWithPath: Bundle.main.path(forResource: lookupKeyForAsset(source.image.asset, nil), ofType: nil)!)
+      case .asset(_): me.url = source.image.asset.assetUri(lookupKeyForAsset: lookupKeyForAsset)
       }
     } else if self is MGLVectorTileSource {
     } else if self is MGLRasterDEMSource {

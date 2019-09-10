@@ -4,10 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-// todo hot reload doesnt' work
-abstract class HeatmapLayer
-    with _LayerChannel
-    implements Layer, Built<HeatmapLayer, HeatmapLayerBuilder> {
+abstract class HeatmapLayer //
+    with
+        _LayerChannel
+    implements
+        Layer,
+        Built<HeatmapLayer, HeatmapLayerBuilder> //
+{
   factory HeatmapLayer({
     @required String id,
     @required String sourceId,

@@ -4,9 +4,13 @@
 
 part of flutter_mapbox_gl;
 
-abstract class RasterDemSource
-    with _Channel
-    implements Source, Built<RasterDemSource, RasterDemSourceBuilder> {
+abstract class RasterDemSource //
+    with
+        _Channel
+    implements
+        Source,
+        Built<RasterDemSource, RasterDemSourceBuilder> //
+{
   factory RasterDemSource({
     @required String id,
     String attribution,
@@ -63,11 +67,15 @@ abstract class RasterDemSource
     } else if (source is RasterDemSource) {
       return rebuild((RasterDemSourceBuilder b) {
         if (source != null) {
+          if (uri != null) {
+            b.uri = source.uri;
+          } else if (tileSet != null) {
+            b.tileSet = source.tileSet.toBuilder();
+          }
+
           b
             ..channel = channel
             ..attribution = source.attribution ?? attribution
-            ..uri = source.uri ?? uri
-            ..tileSet = (source.tileSet ?? tileSet)?.toBuilder()
             ..tileSize = source.tileSize ?? tileSize;
         }
       });

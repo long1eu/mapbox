@@ -8,7 +8,7 @@ import Mapbox
 extension Tophap_MapboxGl_Source {
   func fieldValue(lookupKeyForAsset: @escaping LookupKeyForAsset) -> MGLSource {
     switch (type!) {
-    case .geoJson(_): return geoJson.fieldValue()
+    case .geoJson(_): return geoJson.fieldValue(lookupKeyForAsset: lookupKeyForAsset)
     case .image(_): return image.fieldValue(lookupKeyForAsset: lookupKeyForAsset)
     case .vector(_): return vector.fieldValue()
     case .rasterDem(_): return rasterDem.fieldValue()
@@ -19,13 +19,14 @@ extension Tophap_MapboxGl_Source {
 }
 
 extension Tophap_MapboxGl_Source.GeoJson {
-  func fieldValue() -> MGLShapeSource {
+  func fieldValue(lookupKeyForAsset: @escaping LookupKeyForAsset) -> MGLShapeSource {
     let _options: [MGLShapeSourceOption: Any]? = hasOptions ? options.fieldValue() : nil
     switch (source!) {
     case .uri(_): return MGLShapeSource(identifier: id, url: uri.uri, options: _options)
     case .geoJson(_):
       let shape = try! MGLShape(data: geoJson.data(using: .utf8)!, encoding: String.Encoding.utf8.rawValue)
       return MGLShapeSource(identifier: id, shape: shape, options: _options)
+    case .asset(_): return MGLShapeSource(identifier: id, url: asset.assetUri(lookupKeyForAsset: lookupKeyForAsset), options: _options)
     }
   }
 }
@@ -50,7 +51,7 @@ extension Tophap_MapboxGl_Source.Image {
     switch (source!) {
     case .uri(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, url: uri.uri)
     case .image(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, image: UIImage(data: image)!)
-    case .asset(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, url: URL(fileURLWithPath: Bundle.main.path(forResource: lookupKeyForAsset(asset, nil), ofType: nil)!))
+    case .asset(_): return MGLImageSource(identifier: id, coordinateQuad: coordinates.value, url: asset.assetUri(lookupKeyForAsset: lookupKeyForAsset))
     }
   }
 }
