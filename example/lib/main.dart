@@ -20,6 +20,7 @@ import 'src/indoor_map.dart';
 import 'src/language_switch.dart';
 import 'src/line_gradient_page.dart';
 import 'src/line_layer_page.dart';
+import 'src/marker_following_route.dart';
 import 'src/move_camera.dart';
 import 'src/multiple_geometries_page.dart';
 import 'src/multiple_heatmap_styling_page.dart';
@@ -129,6 +130,8 @@ class MapsDemo extends StatelessWidget {
             const ZoomDependentFillColorPage(),
         AppRoutes.clickToAddImage: (_) => const ClickToAddImagePage(),
         AppRoutes.indoorMap: (_) => const IndoorMapPage(),
+        AppRoutes.markerFollowingRoute: (_) => const MarkerFollowingRoutePage(),
+
         AppRoutes.multipleHeatmapStyling: (_) =>
             const MultipleHeatmapStylingPage(),
         AppRoutes.bathymetry: (_) => const BathymetryPage(),
@@ -252,7 +255,16 @@ final List<Page> pages = <Page>[
         'Display an indoor map of a building with toggles to switch between floor levels.',
     category: Category.dynamicStyling,
     route: AppRoutes.indoorMap,
+  ),  const Page(
+    title: 'Marker following route',
+    description:
+        'Using a map matched GeoJSON route, the marker travels along the route at consistent speed.',
+    category: Category.dynamicStyling,
+    route: AppRoutes.markerFollowingRoute,
   ),
+
+
+
   const Page(
     title: 'Add multiple heatmap styles',
     description:
@@ -346,6 +358,7 @@ class AppRoutes {
   static const String zoomDependentFillColor = '/zoomDependentFillColor';
   static const String clickToAddImage = '/clickToAddImage';
   static const String indoorMap = '/indoorMap';
+  static const String markerFollowingRoute = '/markerFollowingRoute';
 
   static const String multipleHeatmapStyling = '/multipleHeatmapStyling';
   static const String bathymetry = '/bathymetry';
