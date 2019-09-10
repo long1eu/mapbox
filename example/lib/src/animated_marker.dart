@@ -102,14 +102,14 @@ class _AnimatedMarkerPageState extends State<AnimatedMarkerPage>
             id: 'source-id',
             geoJson: jsonEncode(
               <String, dynamic>{
-                "type": "FeatureCollection",
-                "features": <dynamic>[
+                'type': 'FeatureCollection',
+                'features': <dynamic>[
                   <String, dynamic>{
-                    "type": "Feature",
-                    "properties": <String, dynamic>{},
-                    "geometry": <String, dynamic>{
-                      "type": "Point",
-                      "coordinates": <double>[
+                    'type': 'Feature',
+                    'properties': <String, dynamic>{},
+                    'geometry': <String, dynamic>{
+                      'type': 'Point',
+                      'coordinates': <double>[
                         _animation.value.longitude,
                         _animation.value.latitude,
                       ]

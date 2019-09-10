@@ -76,7 +76,9 @@ abstract class VectorSource
       message.tileSet = tileSet.proto;
     }
 
-    if (attribution != null) message.attribution = attribution;
+    if (attribution != null) {
+      message.attribution = attribution;
+    }
     return message..freeze();
   }
 

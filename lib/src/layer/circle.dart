@@ -51,11 +51,11 @@ abstract class CircleLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (radius != null) assert(radius >= 0);
-    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
-    if (translate != null) assert(translate.dx != null && translate.dy != null);
-    if (strokeWidth != null) assert(strokeWidth >= 0);
-    if (strokeOpacity != null) assert(strokeOpacity >= 0 && strokeOpacity <= 1);
+    assert(radius == null || radius >= 0);
+    assert(opacity == null || opacity >= 0 && opacity <= 1);
+    assert(translate == null || translate.dx != null && translate.dy != null);
+    assert(strokeWidth == null || strokeWidth >= 0);
+    assert(strokeOpacity == null || strokeOpacity >= 0 && strokeOpacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$CircleLayer((CircleLayerBuilder b) {
@@ -450,22 +450,45 @@ abstract class CircleLayer
       ..colorTransition = colorTransition.proto
       ..blurTransition = blurTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (filter != null) message.filter = filter.protoString;
-    if (radius != null) message.radius = radius.protoString;
-    if (color != null) message.color = color.protoString;
-    if (blur != null) message.blur = blur.protoString;
-    if (opacity != null) message.opacity = opacity.protoString;
-    if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null)
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (filter != null) {
+      message.filter = filter.protoString;
+    }
+    if (radius != null) {
+      message.radius = radius.protoString;
+    }
+    if (color != null) {
+      message.color = color.protoString;
+    }
+    if (blur != null) {
+      message.blur = blur.protoString;
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
+    if (translate != null) {
+      message.translate = translate.protoString;
+    }
+    if (translateAnchor != null) {
       message.translateAnchor = translateAnchor.protoString;
-    if (pitchScale != null) message.pitchScale = pitchScale.protoString;
-    if (pitchAlignment != null)
+    }
+    if (pitchScale != null) {
+      message.pitchScale = pitchScale.protoString;
+    }
+    if (pitchAlignment != null) {
       message.pitchAlignment = pitchAlignment.protoString;
-    if (strokeWidth != null) message.strokeWidth = strokeWidth.protoString;
-    if (strokeColor != null) message.strokeColor = strokeColor.protoString;
-    if (strokeOpacity != null)
+    }
+    if (strokeWidth != null) {
+      message.strokeWidth = strokeWidth.protoString;
+    }
+    if (strokeColor != null) {
+      message.strokeColor = strokeColor.protoString;
+    }
+    if (strokeOpacity != null) {
       message.strokeOpacity = strokeOpacity.protoString;
+    }
 
     return message..freeze();
   }

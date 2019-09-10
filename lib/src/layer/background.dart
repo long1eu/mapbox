@@ -26,7 +26,7 @@ abstract class BackgroundLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
+    assert(opacity == null || opacity >= 0 && opacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$BackgroundLayer((BackgroundLayerBuilder b) {
@@ -200,9 +200,15 @@ abstract class BackgroundLayer
       ..patternTransition = patternTransition.proto
       ..opacityTransition = opacityTransition.proto;
 
-    if (color != null) message.color = color.protoString;
-    if (pattern != null) message.pattern = pattern.protoString;
-    if (opacity != null) message.opacity = opacity.protoString;
+    if (color != null) {
+      message.color = color.protoString;
+    }
+    if (pattern != null) {
+      message.pattern = pattern.protoString;
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
 
     return message.freeze();
   }

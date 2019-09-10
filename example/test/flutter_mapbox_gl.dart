@@ -80,7 +80,7 @@ void main() {
         filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
-            toNumber(get("point_count")),
+            toNumber(get('point_count')),
             literal$(Colors.purple.value),
           )
         ]),
@@ -147,7 +147,7 @@ void main() {
         filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
-            toNumber(get("point_count")),
+            toNumber(get('point_count')),
             literal$(Colors.purple.value),
           )
         ]),
@@ -202,7 +202,7 @@ void main() {
         filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
-            toNumber(get("point_count")),
+            toNumber(get('point_count')),
             literal$(Colors.purple.value),
           )
         ]),
@@ -260,7 +260,7 @@ void main() {
         filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
-            toNumber(get("point_count")),
+            toNumber(get('point_count')),
             literal$(Colors.purple.value),
           )
         ]),
@@ -370,7 +370,7 @@ void main() {
         filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
-            toNumber(get("point_count")),
+            toNumber(get('point_count')),
             literal$(Colors.purple.value),
           )
         ]),
@@ -602,7 +602,7 @@ void main() {
         filter: all(<Expression>[
           eq(has('point_count'), true),
           gte(
-            toNumber(get("point_count")),
+            toNumber(get('point_count')),
             literal$(Colors.purple.value),
           )
         ]),

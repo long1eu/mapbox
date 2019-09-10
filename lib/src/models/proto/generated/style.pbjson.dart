@@ -10,33 +10,121 @@ const Style$json = const {
   '2': const [
     const {'1': 'uri', '3': 1, '4': 1, '5': 9, '10': 'uri'},
     const {'1': 'json', '3': 2, '4': 1, '5': 9, '10': 'json'},
-    const {'1': 'sources', '3': 3, '4': 3, '5': 11, '6': '.tophap.mapbox_gl.Source', '10': 'sources'},
-    const {'1': 'layers', '3': 4, '4': 3, '5': 11, '6': '.tophap.mapbox_gl.Layer', '10': 'layers'},
-    const {'1': 'transition', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.TransitionOptions', '10': 'transition'},
-    const {'1': 'light', '3': 6, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style.Light', '10': 'light'},
+    const {
+      '1': 'sources',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Source',
+      '10': 'sources'
+    },
+    const {
+      '1': 'layers',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Layer',
+      '10': 'layers'
+    },
+    const {
+      '1': 'transition',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.TransitionOptions',
+      '10': 'transition'
+    },
+    const {
+      '1': 'light',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Style.Light',
+      '10': 'light'
+    },
   ],
-  '3': const [Style_Light$json, Style_Position$json, Style_StyleImage$json, Style_Asset$json, Style_Operations$json],
+  '3': const [
+    Style_Light$json,
+    Style_Position$json,
+    Style_StyleImage$json,
+    Style_Asset$json,
+    Style_Operations$json
+  ],
   '4': const [Style_MapboxStyle$json],
 };
 
 const Style_Light$json = const {
   '1': 'Light',
   '2': const [
-    const {'1': 'anchor', '3': 1, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.TranslateAnchor', '10': 'anchor'},
-    const {'1': 'position', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style.Position', '10': 'position'},
-    const {'1': 'color', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Color', '10': 'color'},
+    const {
+      '1': 'anchor',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.tophap.mapbox_gl.TranslateAnchor',
+      '10': 'anchor'
+    },
+    const {
+      '1': 'position',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Style.Position',
+      '10': 'position'
+    },
+    const {
+      '1': 'color',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Color',
+      '10': 'color'
+    },
     const {'1': 'intensity', '3': 4, '4': 1, '5': 2, '10': 'intensity'},
-    const {'1': 'positionTransition', '3': 5, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.TransitionOptions', '10': 'positionTransition'},
-    const {'1': 'colorTransition', '3': 6, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.TransitionOptions', '10': 'colorTransition'},
-    const {'1': 'intensityTransition', '3': 7, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.TransitionOptions', '10': 'intensityTransition'},
+    const {
+      '1': 'positionTransition',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.TransitionOptions',
+      '10': 'positionTransition'
+    },
+    const {
+      '1': 'colorTransition',
+      '3': 6,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.TransitionOptions',
+      '10': 'colorTransition'
+    },
+    const {
+      '1': 'intensityTransition',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.TransitionOptions',
+      '10': 'intensityTransition'
+    },
   ],
 };
 
 const Style_Position$json = const {
   '1': 'Position',
   '2': const [
-    const {'1': 'radial_coordinate', '3': 1, '4': 1, '5': 2, '10': 'radialCoordinate'},
-    const {'1': 'azimuthal_angle', '3': 2, '4': 1, '5': 2, '10': 'azimuthalAngle'},
+    const {
+      '1': 'radial_coordinate',
+      '3': 1,
+      '4': 1,
+      '5': 2,
+      '10': 'radialCoordinate'
+    },
+    const {
+      '1': 'azimuthal_angle',
+      '3': 2,
+      '4': 1,
+      '5': 2,
+      '10': 'azimuthalAngle'
+    },
     const {'1': 'polar_angle', '3': 3, '4': 1, '5': 2, '10': 'polarAngle'},
   ],
 };
@@ -46,7 +134,15 @@ const Style_StyleImage$json = const {
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'image', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'image'},
-    const {'1': 'asset', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Style.Asset', '9': 0, '10': 'asset'},
+    const {
+      '1': 'asset',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Style.Asset',
+      '9': 0,
+      '10': 'asset'
+    },
     const {'1': 'sdf', '3': 4, '4': 1, '5': 8, '10': 'sdf'},
   ],
   '8': const [
@@ -58,7 +154,14 @@ const Style_Asset$json = const {
   '1': 'Asset',
   '2': const [
     const {'1': 'asset', '3': 1, '4': 1, '5': 9, '10': 'asset'},
-    const {'1': 'packageName', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '10': 'packageName'},
+    const {
+      '1': 'packageName',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.StringValue',
+      '10': 'packageName'
+    },
   ],
 };
 
@@ -70,7 +173,15 @@ const Style_Operations$json = const {
 const Style_Operations_Build$json = const {
   '1': 'Build',
   '2': const [
-    const {'1': 'default', '3': 1, '4': 1, '5': 14, '6': '.tophap.mapbox_gl.Style.MapboxStyle', '9': 0, '10': 'default'},
+    const {
+      '1': 'default',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.tophap.mapbox_gl.Style.MapboxStyle',
+      '9': 0,
+      '10': 'default'
+    },
     const {'1': 'uri', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'uri'},
     const {'1': 'json', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'json'},
   ],
@@ -92,4 +203,3 @@ const Style_MapboxStyle$json = const {
     const {'1': 'TRAFFIC_NIGHT', '2': 7},
   ],
 };
-

@@ -30,7 +30,7 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
 
   int imageCountIndex = 0;
 
-  void onTap(LatLng value) async {
+  Future<void> onTap(LatLng value) async {
     if (boundsFeatureList.length == 4) {
       boundsFeatureList = <dynamic>[];
       boundsCirclePointList = <LatLng>[];
@@ -40,11 +40,11 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
       boundsCirclePointList.add(value);
       boundsFeatureList.add(
         <String, dynamic>{
-          "type": "Feature",
-          "properties": <String, dynamic>{},
-          "geometry": <String, dynamic>{
-            "type": "Point",
-            "coordinates": <dynamic>[
+          'type': 'Feature',
+          'properties': <String, dynamic>{},
+          'geometry': <String, dynamic>{
+            'type': 'Point',
+            'coordinates': <dynamic>[
               value.longitude,
               value.latitude,
             ]
@@ -135,8 +135,8 @@ class _ClickToAddImagePageState extends State<ClickToAddImagePage> {
           GeoJsonSource(
             id: circleSourceId,
             geoJson: jsonEncode(<String, dynamic>{
-              "type": "FeatureCollection",
-              "features": boundsFeatureList,
+              'type': 'FeatureCollection',
+              'features': boundsFeatureList,
             }),
           ),
           ...images

@@ -38,7 +38,7 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
     _getData(null);
   }
 
-  void _getData(Timer timer) async {
+  Future<void> _getData(Timer timer) async {
     final Response data =
         await Client().get('http://api.open-notify.org/iss-now');
     final Map<String, String> position =
@@ -108,14 +108,14 @@ class _SpaceStationLocationPageState extends State<SpaceStationLocationPage> {
               id: sourceId,
               geoJson: jsonEncode(
                 <String, dynamic>{
-                  "type": "FeatureCollection",
-                  "features": <dynamic>[
+                  'type': 'FeatureCollection',
+                  'features': <dynamic>[
                     <String, dynamic>{
-                      "type": "Feature",
-                      "properties": <String, dynamic>{},
-                      "geometry": <String, dynamic>{
-                        "type": "Point",
-                        "coordinates": <dynamic>[
+                      'type': 'Feature',
+                      'properties': <String, dynamic>{},
+                      'geometry': <String, dynamic>{
+                        'type': 'Point',
+                        'coordinates': <dynamic>[
                           issPosition.longitude,
                           issPosition.latitude,
                         ]

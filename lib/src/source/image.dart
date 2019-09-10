@@ -77,7 +77,9 @@ abstract class ImageSource
         ..image = image ?? this.image
         ..asset = asset ?? this.asset;
     });
-    if (!isAttached || this == source) return source;
+    if (!isAttached || this == source) {
+      return source;
+    }
     return _update(source);
   }
 
@@ -114,7 +116,9 @@ abstract class ImageSource
           ..image = source.image ?? image
           ..asset = source.asset ?? asset;
       });
-      if (!isAttached || this == _source) return _source;
+      if (!isAttached || this == _source) {
+        return _source;
+      }
       return _update(_source);
     } else {
       throw ArgumentError(
@@ -134,8 +138,12 @@ abstract class ImageSource
       message.asset = asset;
     }
 
-    if (coordinates != null) message.coordinates = coordinates.proto;
-    if (attribution != null) message.attribution = attribution;
+    if (coordinates != null) {
+      message.coordinates = coordinates.proto;
+    }
+    if (attribution != null) {
+      message.attribution = attribution;
+    }
     return message.freeze();
   }
 

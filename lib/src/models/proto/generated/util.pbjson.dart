@@ -42,9 +42,23 @@ const FormattedSection$json = const {
   '1': 'FormattedSection',
   '2': const [
     const {'1': 'text', '3': 1, '4': 1, '5': 9, '10': 'text'},
-    const {'1': 'font_scale', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.DoubleValue', '10': 'fontScale'},
+    const {
+      '1': 'font_scale',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.DoubleValue',
+      '10': 'fontScale'
+    },
     const {'1': 'font_stack', '3': 3, '4': 3, '5': 9, '10': 'fontStack'},
-    const {'1': 'text_color', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.Color', '10': 'textColor'},
+    const {
+      '1': 'text_color',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.Color',
+      '10': 'textColor'
+    },
   ],
 };
 
@@ -53,7 +67,13 @@ const TransitionOptions$json = const {
   '2': const [
     const {'1': 'duration', '3': 1, '4': 1, '5': 3, '10': 'duration'},
     const {'1': 'delay', '3': 2, '4': 1, '5': 3, '10': 'delay'},
-    const {'1': 'enable_placement_transitions', '3': 3, '4': 1, '5': 8, '10': 'enablePlacementTransitions'},
+    const {
+      '1': 'enable_placement_transitions',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'enablePlacementTransitions'
+    },
   ],
 };
 
@@ -69,10 +89,38 @@ const LatLng$json = const {
 const LatLngQuad$json = const {
   '1': 'LatLngQuad',
   '2': const [
-    const {'1': 'top_left', '3': 1, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topLeft'},
-    const {'1': 'top_right', '3': 2, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'topRight'},
-    const {'1': 'bottom_right', '3': 3, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomRight'},
-    const {'1': 'bottom_left', '3': 4, '4': 1, '5': 11, '6': '.tophap.mapbox_gl.LatLng', '10': 'bottomLeft'},
+    const {
+      '1': 'top_left',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.LatLng',
+      '10': 'topLeft'
+    },
+    const {
+      '1': 'top_right',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.LatLng',
+      '10': 'topRight'
+    },
+    const {
+      '1': 'bottom_right',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.LatLng',
+      '10': 'bottomRight'
+    },
+    const {
+      '1': 'bottom_left',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.tophap.mapbox_gl.LatLng',
+      '10': 'bottomLeft'
+    },
   ],
 };
 
@@ -97,4 +145,3 @@ const Color$json = const {
     const {'1': 'has_color', '3': 6, '4': 1, '5': 8, '10': 'hasColor'},
   ],
 };
-

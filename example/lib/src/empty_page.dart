@@ -29,8 +29,6 @@ class EmptyPage extends StatelessWidget {
             zoom: 8.471903,
           ),
         ),
-        layers: <Layer>[],
-        sources: <Source>[],
       ),
     );
   }

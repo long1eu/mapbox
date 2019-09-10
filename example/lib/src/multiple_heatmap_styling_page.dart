@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+
 import '../main.dart';
 
 class MultipleHeatmapStylingPage extends StatefulWidget {
@@ -31,8 +32,8 @@ class _MultipleHeatmapStylingPageState
   void initState() {
     super.initState();
     geoJson = jsonEncode(<String, dynamic>{
-      "type": "FeatureCollection",
-      "features": <dynamic>[],
+      'type': 'FeatureCollection',
+      'features': <dynamic>[],
     });
 
     rootBundle
@@ -40,7 +41,7 @@ class _MultipleHeatmapStylingPageState
         .then((String data) => mounted ? setState(() => geoJson = data) : null);
   }
 
-  void onMapReady(MapController value) async {
+  Future<void> onMapReady(MapController value) async {
     setState(() => controller = value);
 
     await controller.animateCamera(

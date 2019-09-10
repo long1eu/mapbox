@@ -61,11 +61,11 @@ abstract class LineLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (translate != null) assert(translate.dx != null && translate.dy != null);
-    if (width != null) assert(width >= 0);
-    if (gapWidth != null) assert(gapWidth >= 0);
-    if (blur != null) assert(blur >= 0);
-    if (dasharray != null) assert(dasharray.every((double it) => it >= 0));
+    assert(translate == null || translate.dx != null && translate.dy != null);
+    assert(width == null || width >= 0);
+    assert(gapWidth == null || gapWidth >= 0);
+    assert(blur == null || blur >= 0);
+    assert(dasharray == null || dasharray.every((double it) => it >= 0));
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$LineLayer((LineLayerBuilder b) {
@@ -77,8 +77,8 @@ abstract class LineLayer
         ..maxZoom = maxZoom
         ..sourceLayer = sourceLayer
         ..filter = filter
-        ..cap = capEx ?? (cap != null ? cap : null)
-        ..join = joinEx ?? (join != null ? join : null)
+        ..cap = capEx ?? cap
+        ..join = joinEx ?? join
         ..miterLimit = miterLimitEx ??
             (miterLimit != null ? literalDouble(miterLimit) : null)
         ..roundLimit = roundLimitEx ??
@@ -335,8 +335,8 @@ abstract class LineLayer
         ..maxZoom = maxZoom ?? this.maxZoom
         ..sourceLayer = sourceLayer ?? this.sourceLayer
         ..filter = filter ?? this.filter
-        ..cap = capEx ?? (cap != null ? cap : this.cap)
-        ..join = joinEx ?? (join != null ? join : this.join)
+        ..cap = capEx ?? cap ?? this.cap
+        ..join = joinEx ?? join ?? this.join
         ..miterLimit = miterLimitEx ??
             (miterLimit != null ? literalDouble(miterLimit) : this.miterLimit)
         ..roundLimit = roundLimitEx ??
@@ -482,7 +482,9 @@ abstract class LineLayer
           ..patternTransition =
               (layer.patternTransition ?? patternTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future<LineLayer>.value(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<LineLayer>.value(_layer);
+      }
       return _update(_layer);
     } else {
       throw ArgumentError(
@@ -508,24 +510,57 @@ abstract class LineLayer
       ..dasharrayTransition = dasharrayTransition.proto
       ..patternTransition = patternTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (filter != null) message.filter = filter.protoString;
-    if (cap != null) message.cap = cap.protoString;
-    if (join != null) message.join = join.protoString;
-    if (miterLimit != null) message.miterLimit = miterLimit.protoString;
-    if (roundLimit != null) message.roundLimit = roundLimit.protoString;
-    if (opacity != null) message.opacity = opacity.protoString;
-    if (color != null) message.color = color.protoString;
-    if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null)
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (filter != null) {
+      message.filter = filter.protoString;
+    }
+    if (cap != null) {
+      message.cap = cap.protoString;
+    }
+    if (join != null) {
+      message.join = join.protoString;
+    }
+    if (miterLimit != null) {
+      message.miterLimit = miterLimit.protoString;
+    }
+    if (roundLimit != null) {
+      message.roundLimit = roundLimit.protoString;
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
+    if (color != null) {
+      message.color = color.protoString;
+    }
+    if (translate != null) {
+      message.translate = translate.protoString;
+    }
+    if (translateAnchor != null) {
       message.translateAnchor = translateAnchor.protoString;
-    if (width != null) message.width = width.protoString;
-    if (gapWidth != null) message.gapWidth = gapWidth.protoString;
-    if (offset != null) message.offset = offset.protoString;
-    if (blur != null) message.blur = blur.protoString;
-    if (dasharray != null) message.dasharray = dasharray.protoString;
-    if (pattern != null) message.pattern = pattern.protoString;
-    if (gradient != null) message.gradient = gradient.protoString;
+    }
+    if (width != null) {
+      message.width = width.protoString;
+    }
+    if (gapWidth != null) {
+      message.gapWidth = gapWidth.protoString;
+    }
+    if (offset != null) {
+      message.offset = offset.protoString;
+    }
+    if (blur != null) {
+      message.blur = blur.protoString;
+    }
+    if (dasharray != null) {
+      message.dasharray = dasharray.protoString;
+    }
+    if (pattern != null) {
+      message.pattern = pattern.protoString;
+    }
+    if (gradient != null) {
+      message.gradient = gradient.protoString;
+    }
 
     return message..freeze();
   }

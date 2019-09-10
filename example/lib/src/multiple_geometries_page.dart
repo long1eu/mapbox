@@ -27,8 +27,8 @@ class _MultipleGeometriesPageState extends State<MultipleGeometriesPage> {
     super.initState();
 
     geoJson = jsonEncode(<String, dynamic>{
-      "type": "FeatureCollection",
-      "features": <dynamic>[],
+      'type': 'FeatureCollection',
+      'features': <dynamic>[],
     });
 
     rootBundle
@@ -48,8 +48,7 @@ class _MultipleGeometriesPageState extends State<MultipleGeometriesPage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    final String sourceId = 'source-id';
-    print('loading: $loading');
+    const String sourceId = 'source-id';
 
     return Scaffold(
       appBar: AppBar(

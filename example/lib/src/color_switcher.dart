@@ -51,7 +51,7 @@ class _ColorSwitcherPageState extends State<ColorSwitcherPage> {
                 ),
               ),
               layersPositions: <String, LayerPosition>{
-                // if (water != null) water.id: LayerPosition.above(belowLayerId),
+                if (bk != null) bk.id: LayerPosition.at(0),
               },
               layers: <Layer>[
                 if (bk != null) bk.copyWith(color: color),

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-void main() async {
+Future<void> main() async {
   await _formatDart();
 }
 
@@ -24,7 +24,7 @@ Future<void> _formatDart() async {
 
   await runAndStream(
     'flutter',
-    <String>['format']..addAll(dartFiles),
+    <String>['format', ...dartFiles],
     workingDir: Directory.current,
     exitOnError: true,
   );

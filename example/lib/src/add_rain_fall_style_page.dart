@@ -24,7 +24,7 @@ class _AddRainFallStylePageState extends State<AddRainFallStylePage> {
   @override
   void initState() {
     super.initState();
-    filter = eq((get('idx')), literalInt(0));
+    filter = eq(get('idx'), literalInt(0));
     startTimer();
   }
 
@@ -72,7 +72,7 @@ class _AddRainFallStylePageState extends State<AddRainFallStylePage> {
             id: 'layer-id',
             sourceId: 'source-id',
             sourceLayer: '201806261518',
-            filter: eq((get('idx')), literalInt(i)),
+            filter: eq(get('idx'), literalInt(i)),
             visible: true,
             colorEx: interpolate(
               exponential(1.0), get('value'), //

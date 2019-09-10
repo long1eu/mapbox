@@ -43,10 +43,10 @@ abstract class FillExtrusionLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
-    if (translate != null) assert(translate.dx != null && translate.dy != null);
-    if (height != null) assert(height >= 0);
-    if (base != null) assert(base >= 0);
+    assert(opacity == null || opacity >= 0 && opacity <= 1);
+    assert(translate == null || translate.dx != null && translate.dy != null);
+    assert(height == null || height >= 0);
+    assert(base == null || base >= 0);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$FillExtrusionLayer((FillExtrusionLayerBuilder b) {
@@ -362,18 +362,36 @@ abstract class FillExtrusionLayer
       ..heightTransition = heightTransition.proto
       ..baseTransition = baseTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (filter != null) message.filter = filter.protoString;
-    if (opacity != null) message.opacity = opacity.protoString;
-    if (color != null) message.color = color.protoString;
-    if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null)
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (filter != null) {
+      message.filter = filter.protoString;
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
+    if (color != null) {
+      message.color = color.protoString;
+    }
+    if (translate != null) {
+      message.translate = translate.protoString;
+    }
+    if (translateAnchor != null) {
       message.translateAnchor = translateAnchor.protoString;
-    if (pattern != null) message.pattern = pattern.protoString;
-    if (height != null) message.height = height.protoString;
-    if (base != null) message.base = base.protoString;
-    if (verticalGradient != null)
+    }
+    if (pattern != null) {
+      message.pattern = pattern.protoString;
+    }
+    if (height != null) {
+      message.height = height.protoString;
+    }
+    if (base != null) {
+      message.base = base.protoString;
+    }
+    if (verticalGradient != null) {
       message.verticalGradient = verticalGradient.protoString;
+    }
 
     return message..freeze();
   }

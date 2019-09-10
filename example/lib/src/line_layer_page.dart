@@ -46,14 +46,14 @@ class LineLayerPage extends StatelessWidget {
           GeoJsonSource(
             id: 'line-source',
             geoJson: jsonEncode(<String, dynamic>{
-              "type": "FeatureCollection",
-              "features": <dynamic>[
+              'type': 'FeatureCollection',
+              'features': <dynamic>[
                 <String, dynamic>{
-                  "type": "Feature",
-                  "properties": <String, dynamic>{},
-                  "geometry": <String, dynamic>{
-                    "type": "LineString",
-                    "coordinates": routeCoordinates,
+                  'type': 'Feature',
+                  'properties': <String, dynamic>{},
+                  'geometry': <String, dynamic>{
+                    'type': 'LineString',
+                    'coordinates': routeCoordinates,
                   }
                 }
               ]

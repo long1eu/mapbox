@@ -10,8 +10,8 @@ import '../main.dart';
 class ZoomDependentFillColorPage extends StatelessWidget {
   const ZoomDependentFillColorPage({Key key}) : super(key: key);
 
-  void onMapReady(MapController controller) async {
-    final BackgroundLayer layer = controller.style.getLayer("land");
+  Future<void> onMapReady(MapController controller) async {
+    final BackgroundLayer layer = controller.style.getLayer('land');
     if (layer == null) {
       return;
     }
@@ -57,8 +57,6 @@ class ZoomDependentFillColorPage extends StatelessWidget {
             zoom: 1.0,
           ),
         ),
-        layers: <Layer>[],
-        sources: <Source>[],
       ),
     );
   }

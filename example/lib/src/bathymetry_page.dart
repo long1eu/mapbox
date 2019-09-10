@@ -25,8 +25,8 @@ class _BathymetryPageState extends State<BathymetryPage> {
     super.initState();
 
     geoJson = jsonEncode(<String, dynamic>{
-      "type": "FeatureCollection",
-      "features": <dynamic>[],
+      'type': 'FeatureCollection',
+      'features': <dynamic>[],
     });
 
     rootBundle
@@ -50,9 +50,9 @@ class _BathymetryPageState extends State<BathymetryPage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    final String sourceId = 'GEOJSON_SOURCE_ID';
-    final String numberLayerId = 'DEPTH_NUMBER_SYMBOL_LAYER_ID';
-    final String polygonLayerId = 'DEPTH_POLYGON_FILL_LAYER_ID';
+    const String sourceId = 'GEOJSON_SOURCE_ID';
+    const String numberLayerId = 'DEPTH_NUMBER_SYMBOL_LAYER_ID';
+    const String polygonLayerId = 'DEPTH_POLYGON_FILL_LAYER_ID';
 
     // todo depth field not caught on Android
     return Scaffold(
@@ -81,7 +81,7 @@ class _BathymetryPageState extends State<BathymetryPage> {
             sourceId: sourceId,
             filter: eq(geometryType(), literalString('Polygon')),
             colorEx: interpolate(
-              linear(), get("depth"), //
+              linear(), get('depth'), //
               <Stop>[
                 stop(5, rgb(16, 158, 210)),
                 stop(10, rgb(37, 116, 145)),

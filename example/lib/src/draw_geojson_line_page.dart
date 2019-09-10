@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+
 import '../main.dart';
 
 class DrawGeoJsonLinePage extends StatefulWidget {
@@ -24,8 +25,8 @@ class _DrawGeoJsonLinePageState extends State<DrawGeoJsonLinePage> {
   void initState() {
     super.initState();
     geoJson = jsonEncode(<String, dynamic>{
-      "type": "FeatureCollection",
-      "features": <dynamic>[],
+      'type': 'FeatureCollection',
+      'features': <dynamic>[],
     });
 
     rootBundle
@@ -36,8 +37,8 @@ class _DrawGeoJsonLinePageState extends State<DrawGeoJsonLinePage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    final String sourceId = 'line-source';
-    final String layerId = 'line-layer';
+    const String sourceId = 'line-source';
+    const String layerId = 'line-layer';
 
     // todo seems like LineLayer and FillLayer don't update values on iOS
     return Scaffold(

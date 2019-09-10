@@ -62,7 +62,9 @@ abstract class GeoJsonSource
         ..uri = uri ?? this.uri
         ..geoJson = geoJson ?? this.geoJson;
     });
-    if (!isAttached || this == source) return source;
+    if (!isAttached || this == source) {
+      return source;
+    }
     return _update(source);
   }
 
@@ -97,8 +99,7 @@ abstract class GeoJsonSource
           ..geoJson = source.geoJson ?? geoJson
           ..options = (source.options ?? options)?.toBuilder();
       });
-      if (!isAttached || this == _source) return _source;
-      return _update(_source);
+      return !isAttached || this == _source ? _source : _update(_source);
     } else {
       throw ArgumentError(
           'Only a GeojsonSource can be merged but got ${source.runtimeType}');
@@ -115,8 +116,12 @@ abstract class GeoJsonSource
       message.geoJson = geoJson;
     }
 
-    if (options != null) message.options = options.proto;
-    if (attribution != null) message.attribution = attribution;
+    if (options != null) {
+      message.options = options.proto;
+    }
+    if (attribution != null) {
+      message.attribution = attribution;
+    }
     return message.freeze();
   }
 

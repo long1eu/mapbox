@@ -140,8 +140,9 @@ class _MapboxMapState extends State<MapboxMap> {
   @override
   void didUpdateWidget(MapboxMap oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (!mapReady) return;
-    updateAll(oldWidget);
+    if (mapReady) {
+      updateAll(oldWidget);
+    }
   }
 
   Future<void> updateAll(MapboxMap oldWidget) async {
@@ -161,19 +162,27 @@ class _MapboxMapState extends State<MapboxMap> {
         const MapEquality<String, Source>().equals(oldSources, newSources);
     final bool sameImages =
         const MapEquality<String, StyleImage>().equals(oldImages, newImages);
-    if (sameLayers && sameSources && sameImages) return;
+    if (sameLayers && sameSources && sameImages) {
+      return;
+    }
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
-    if (!sameLayers) futures.add(_updateLayers(oldWidget));
-    if (!sameSources) futures.add(_updateSources(oldWidget));
-    if (!sameImages) futures.add(_updateImages(oldWidget));
+    if (!sameLayers) {
+      futures.add(_updateLayers(oldWidget));
+    }
+    if (!sameSources) {
+      futures.add(_updateSources(oldWidget));
+    }
+    if (!sameImages) {
+      futures.add(_updateImages(oldWidget));
+    }
 
     await Future.wait<dynamic>(futures);
   }
 
   Future<void> _updateLayers(MapboxMap oldWidget) async {
     final Map<String, Layer> oldLayers = oldWidget.layers ?? <String, Layer>{};
-    final Map<String, Layer> newLayers = (widget.layers ?? <String, Layer>{});
+    final Map<String, Layer> newLayers = widget.layers ?? <String, Layer>{};
 
     final Map<String, LayerPosition> oldPosition =
         oldWidget.layersPositions ?? <String, LayerPosition>{};
@@ -200,7 +209,9 @@ class _MapboxMapState extends State<MapboxMap> {
     // update
     for (String id in update) {
       final Layer newLayer = newLayers[id];
-      if (newLayer == oldLayers[id]) continue;
+      if (newLayer == oldLayers[id]) {
+        continue;
+      }
       final Layer layer = _controller.style.getLayer(id);
       if (layer == null) {
         // not yet ready?
@@ -298,7 +309,9 @@ class _MapboxMapState extends State<MapboxMap> {
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
     for (String id in update) {
       final Source source = newSources[id];
-      if (source == oldSources[id]) continue;
+      if (source == oldSources[id]) {
+        continue;
+      }
       if (source is GeoJsonSource || source is ImageSource) {
         futures.add(_controller.style.updateSource(id, source));
       } else {
@@ -331,7 +344,9 @@ class _MapboxMapState extends State<MapboxMap> {
 
     final List<Future<dynamic>> futures = <Future<dynamic>>[];
     for (String id in update) {
-      if (oldImages[id] == newImages[id]) continue;
+      if (oldImages[id] == newImages[id]) {
+        continue;
+      }
 
       futures.add(_controller.style
           .removeImage(id)

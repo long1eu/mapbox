@@ -14,8 +14,10 @@ import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
 
 part 'camera_position.g.dart';
 
-abstract class CameraPosition implements Built<CameraPosition, CameraPositionBuilder> {
-  factory CameraPosition({double bearing, LatLng target, double tilt, double zoom}) {
+abstract class CameraPosition
+    implements Built<CameraPosition, CameraPositionBuilder> {
+  factory CameraPosition(
+      {double bearing, LatLng target, double tilt, double zoom}) {
     return _$CameraPosition((CameraPositionBuilder b) {
       b
         ..bearing = bearing ?? 0
@@ -80,5 +82,6 @@ abstract class CameraPosition implements Built<CameraPosition, CameraPositionBui
   @memoized
   Uint8List get data => proto.writeToBuffer();
 
-  static Serializer<CameraPosition> get serializer => _$cameraPositionSerializer;
+  static Serializer<CameraPosition> get serializer =>
+      _$cameraPositionSerializer;
 }

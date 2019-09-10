@@ -45,7 +45,9 @@ abstract class UnknownSource
   @override
   pb.Source_Unknown get proto {
     final pb.Source_Unknown message = pb.Source_Unknown.create()..id = id;
-    if (attribution != null) message.attribution = attribution;
+    if (attribution != null) {
+      message.attribution = attribution;
+    }
     return message.freeze();
   }
 

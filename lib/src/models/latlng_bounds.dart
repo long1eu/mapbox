@@ -27,9 +27,9 @@ abstract class LatLngBounds
     assert(north >= -90 && north <= 90);
     assert(south >= -90 && south <= 90);
     assert(north > south,
-        "latitudeNorth($north) cannot be less than latitudeSouth($south)");
+        'latitudeNorth($north) cannot be less than latitudeSouth($south)');
     assert(east > west,
-        "longitudeEast($east) cannot be less than longitudeWest($west)");
+        'longitudeEast($east) cannot be less than longitudeWest($west)');
 
     return _$LatLngBounds((LatLngBoundsBuilder b) {
       b

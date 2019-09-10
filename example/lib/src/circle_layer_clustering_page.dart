@@ -52,18 +52,18 @@ class CircleLayerClusteringPage extends StatelessWidget {
                   ? all(<Expression>[
                       eq(has('point_count'), true),
                       gte(
-                        toNumber(get("point_count")),
+                        toNumber(get('point_count')),
                         literalInt(layers[i].value),
                       )
                     ])
                   : all(<Expression>[
                       eq(has('point_count'), true),
                       gte(
-                        toNumber(get("point_count")),
+                        toNumber(get('point_count')),
                         literalInt(layers[i].value),
                       ),
                       lt(
-                        toNumber(get("point_count")),
+                        toNumber(get('point_count')),
                         literalInt(layers[i - 1].value),
                       )
                     ]),

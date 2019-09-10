@@ -40,7 +40,7 @@ class _StyleFromFilePageState extends State<StyleFromFilePage> {
       ),
       body: json == null
           ? Center(
-              child: CupertinoActivityIndicator(),
+              child: const CupertinoActivityIndicator(),
             )
           : MapboxMap(
               options: MapOptions(

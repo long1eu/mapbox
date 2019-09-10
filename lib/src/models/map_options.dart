@@ -289,12 +289,22 @@ abstract class MapOptions implements Built<MapOptions, MapOptionsBuilder> {
       ..pixelRatio = pixelRatio
       ..foregroundLoadColor = color_(foregroundLoadColor);
 
-    if (styleFromMapbox != null) message.fromMapbox = styleFromMapbox.proto;
-    if (styleFromUri != null) message.fromUri = styleFromUri;
-    if (styleFromJson != null) message.fromJson_32 = styleFromJson;
-    if (styleFromAsset != null) message.fromAsset = styleFromAsset;
+    if (styleFromMapbox != null) {
+      message.fromMapbox = styleFromMapbox.proto;
+    }
+    if (styleFromUri != null) {
+      message.fromUri = styleFromUri;
+    }
+    if (styleFromJson != null) {
+      message.fromJson_32 = styleFromJson;
+    }
+    if (styleFromAsset != null) {
+      message.fromAsset = styleFromAsset;
+    }
 
-    if (apiBaseUri != null) message.apiBaseUri = apiBaseUri;
+    if (apiBaseUri != null) {
+      message.apiBaseUri = apiBaseUri;
+    }
     if (localIdeographFontFamily != null)
       message.localIdeographFontFamily = localIdeographFontFamily;
     if (attributionTintColor != null)

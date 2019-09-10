@@ -11,8 +11,8 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
 import 'package:flutter_mapbox_gl/src/models/proto/index.dart' as pb;
-import 'package:pub_semver/pub_semver.dart';
 import 'package:meta/meta.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 part 'tile_set.g.dart';
 
@@ -162,26 +162,36 @@ abstract class TileSet implements Built<TileSet, TileSetBuilder> {
       ..data.addAll(data)
       ..minZoom = minZoom
       ..maxZoom = maxZoom
-      ..bounds.addAll(<double>[
-        bounds.west,
-        bounds.south,
-        bounds.east,
-        bounds.north
-      ]);
+      ..bounds.addAll(
+          <double>[bounds.west, bounds.south, bounds.east, bounds.north]);
 
-    if (name != null) message.name = name;
-    if (description != null) message.description = description;
-    if (version != null) message.version = version.toString();
-    if (attribution != null) message.attribution = attribution;
-    if (template != null) message.template = template;
-    if (legend != null) message.legend = legend;
+    if (name != null) {
+      message.name = name;
+    }
+    if (description != null) {
+      message.description = description;
+    }
+    if (version != null) {
+      message.version = version.toString();
+    }
+    if (attribution != null) {
+      message.attribution = attribution;
+    }
+    if (template != null) {
+      message.template = template;
+    }
+    if (legend != null) {
+      message.legend = legend;
+    }
     if (center != null && zoom != null)
       message.center.addAll(<double>[
         center.longitude,
         center.latitude,
         zoom.toDouble(),
       ]);
-    if (encoding != null) message.encoding = encoding;
+    if (encoding != null) {
+      message.encoding = encoding;
+    }
 
     return message..freeze();
   }

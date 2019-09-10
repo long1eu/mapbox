@@ -5,6 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+
 import '../main.dart';
 
 const String earthquakeSourceUri =
@@ -62,7 +63,7 @@ class HeatmapPage extends StatelessWidget {
             ),
             // Increase the heatmap weight based on frequency and property magnitude
             weightEx: interpolate(
-              linear(), get("mag"), //
+              linear(), get('mag'), //
               <Stop>[
                 stop(0, 0), //
                 stop(6, 1),
@@ -103,7 +104,7 @@ class HeatmapPage extends StatelessWidget {
               <Expression>[
                 literalDouble(7.0),
                 interpolate(
-                  linear(), get("mag"), //
+                  linear(), get('mag'), //
                   <Stop>[
                     stop(1, 1), //
                     stop(6, 4),
@@ -111,7 +112,7 @@ class HeatmapPage extends StatelessWidget {
                 ),
                 literalDouble(16.0),
                 interpolate(
-                  linear(), get("mag"), //
+                  linear(), get('mag'), //
                   <Stop>[
                     stop(1, 5), //
                     stop(6, 50),
@@ -121,7 +122,7 @@ class HeatmapPage extends StatelessWidget {
             ),
             // Size circle radius by earthquake magnitude and zoom level
             colorEx: interpolate(
-              linear(), get("mag"), //
+              linear(), get('mag'), //
               <Expression>[
                 literalInt(1), rgba(33, 102, 172, 0.0), //
                 literalInt(2), rgb(103, 169, 207),

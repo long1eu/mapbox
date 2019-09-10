@@ -13,8 +13,8 @@ class HillshadeLayerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    final String layerId = 'hillshade-layer';
-    final String sourceId = 'hillshade-source';
+    const String layerId = 'hillshade-layer';
+    const String sourceId = 'hillshade-source';
 
     // todo hot reload don't work on Android
     return Scaffold(

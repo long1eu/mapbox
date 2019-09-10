@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mapbox_gl/flutter_mapbox_gl.dart';
+
 import '../main.dart';
 
 class PolygonHolesPage extends StatelessWidget {
@@ -48,14 +49,14 @@ class PolygonHolesPage extends StatelessWidget {
             id: 'source-id',
             geoJson: jsonEncode(
               <String, dynamic>{
-                "type": "FeatureCollection",
-                "features": <dynamic>[
+                'type': 'FeatureCollection',
+                'features': <dynamic>[
                   <String, dynamic>{
-                    "type": "Feature",
-                    "properties": <String, dynamic>{},
-                    "geometry": <String, dynamic>{
-                      "type": "Polygon",
-                      "coordinates": <List<List<double>>>[
+                    'type': 'Feature',
+                    'properties': <String, dynamic>{},
+                    'geometry': <String, dynamic>{
+                      'type': 'Polygon',
+                      'coordinates': <List<List<double>>>[
                         polygonCoordinates,
                         holeCoordinates[0],
                         holeCoordinates[1],

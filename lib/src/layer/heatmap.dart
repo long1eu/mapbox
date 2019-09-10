@@ -35,10 +35,10 @@ abstract class HeatmapLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (radius != null) assert(radius >= 1);
-    if (weight != null) assert(weight >= 0);
-    if (intensity != null) assert(intensity >= 0);
-    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
+    assert(radius == null || radius >= 1);
+    assert(weight == null || weight >= 0);
+    assert(intensity == null || intensity >= 0);
+    assert(opacity == null || opacity >= 0 && opacity <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$HeatmapLayer((HeatmapLayerBuilder b) {
@@ -264,13 +264,27 @@ abstract class HeatmapLayer
       ..intensityTransition = intensityTransition.proto
       ..opacityTransition = opacityTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (filter != null) message.filter = filter.protoString;
-    if (radius != null) message.radius = radius.protoString;
-    if (weight != null) message.weight = weight.protoString;
-    if (intensity != null) message.intensity = intensity.protoString;
-    if (opacity != null) message.opacity = opacity.protoString;
-    if (color != null) message.color = color.protoString;
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (filter != null) {
+      message.filter = filter.protoString;
+    }
+    if (radius != null) {
+      message.radius = radius.protoString;
+    }
+    if (weight != null) {
+      message.weight = weight.protoString;
+    }
+    if (intensity != null) {
+      message.intensity = intensity.protoString;
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
+    if (color != null) {
+      message.color = color.protoString;
+    }
 
     return message.freeze();
   }

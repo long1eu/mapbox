@@ -67,8 +67,8 @@ class _ImageSourceTimeLapsePageState extends State<ImageSourceTimeLapsePage> {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    final String layerId = 'animated_image_layer';
-    final String sourceId = 'animated_image_source';
+    const String layerId = 'animated_image_layer';
+    const String sourceId = 'animated_image_source';
 
     return Scaffold(
       appBar: AppBar(

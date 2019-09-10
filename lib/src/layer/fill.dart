@@ -40,8 +40,8 @@ abstract class FillLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
-    if (translate != null) assert(translate.dx != null && translate.dy != null);
+    assert(opacity == null || opacity >= 0 && opacity <= 1);
+    assert(translate == null || translate.dx != null && translate.dy != null);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$FillLayer((FillLayerBuilder b) {
@@ -315,7 +315,9 @@ abstract class FillLayer
           ..patternTransition =
               (layer.patternTransition ?? patternTransition).toBuilder();
       });
-      if (!isAttached || this == _layer) return Future<FillLayer>.value(_layer);
+      if (!isAttached || this == _layer) {
+        return Future<FillLayer>.value(_layer);
+      }
       return _update(_layer);
     } else {
       throw ArgumentError(
@@ -337,16 +339,33 @@ abstract class FillLayer
       ..translateTransition = translateTransition.proto
       ..patternTransition = patternTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (filter != null) message.filter = filter.protoString;
-    if (antialias != null) message.antialias = antialias.protoString;
-    if (opacity != null) message.opacity = opacity.protoString;
-    if (color != null) message.color = color.protoString;
-    if (translate != null) message.translate = translate.protoString;
-    if (translateAnchor != null)
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (filter != null) {
+      message.filter = filter.protoString;
+    }
+    if (antialias != null) {
+      message.antialias = antialias.protoString;
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
+    if (color != null) {
+      message.color = color.protoString;
+    }
+    if (translate != null) {
+      message.translate = translate.protoString;
+    }
+    if (translateAnchor != null) {
       message.translateAnchor = translateAnchor.protoString;
-    if (outlineColor != null) message.outlineColor = outlineColor.protoString;
-    if (pattern != null) message.pattern = pattern.protoString;
+    }
+    if (outlineColor != null) {
+      message.outlineColor = outlineColor.protoString;
+    }
+    if (pattern != null) {
+      message.pattern = pattern.protoString;
+    }
 
     return message..freeze();
   }

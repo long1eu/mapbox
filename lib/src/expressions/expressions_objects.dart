@@ -571,7 +571,9 @@ List<Expression> _join(List<Expression> left, List<Expression> right) =>
     left..addAll(right);
 
 Expression _expression(dynamic value, [String field, Type enforceType]) {
-  if (value is Expression) return value;
+  if (value is Expression) {
+    return value;
+  }
   if (enforceType != null) {
     if (enforceType == num) {
       assert(value.runtimeType == double || value.runtimeType == int,

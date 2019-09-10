@@ -36,9 +36,9 @@ abstract class HillshadeLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (illuminationDirection != null)
-      assert(illuminationDirection >= 0 && illuminationDirection < 360);
-    if (exaggeration != null) assert(exaggeration >= 0 && exaggeration <= 1);
+    assert(illuminationDirection == null ||
+        illuminationDirection >= 0 && illuminationDirection < 360);
+    assert(exaggeration == null || exaggeration >= 0 && exaggeration <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$HillshadeLayer((HillshadeLayerBuilder b) {
@@ -53,8 +53,7 @@ abstract class HillshadeLayer
             (illuminationDirection != null
                 ? literalDouble(illuminationDirection)
                 : null)
-        ..illuminationAnchor = illuminationAnchorEx ??
-            (illuminationAnchor != null ? illuminationAnchor : null)
+        ..illuminationAnchor = illuminationAnchorEx ?? illuminationAnchor
         ..exaggeration = exaggerationEx ??
             (exaggeration != null ? literalDouble(exaggeration) : null)
         ..shadowColor = shadowColorEx ??
@@ -198,9 +197,8 @@ abstract class HillshadeLayer
                 ? literalDouble(illuminationDirection)
                 : this.illuminationDirection)
         ..illuminationAnchor = illuminationAnchorEx ??
-            (illuminationAnchor != null
-                ? illuminationAnchor
-                : this.illuminationAnchor)
+            illuminationAnchor ??
+            this.illuminationAnchor
         ..exaggeration = exaggerationEx ??
             (exaggeration != null
                 ? literalDouble(exaggeration)
@@ -328,16 +326,27 @@ abstract class HillshadeLayer
       ..highlightColorTransition = highlightColorTransition.proto
       ..accentColorTransition = accentColorTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (illuminationDirection != null)
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (illuminationDirection != null) {
       message.illuminationDirection = illuminationDirection.protoString;
-    if (illuminationAnchor != null)
+    }
+    if (illuminationAnchor != null) {
       message.illuminationAnchor = illuminationAnchor.protoString;
-    if (exaggeration != null) message.exaggeration = exaggeration.protoString;
-    if (shadowColor != null) message.shadowColor = shadowColor.protoString;
-    if (highlightColor != null)
+    }
+    if (exaggeration != null) {
+      message.exaggeration = exaggeration.protoString;
+    }
+    if (shadowColor != null) {
+      message.shadowColor = shadowColor.protoString;
+    }
+    if (highlightColor != null) {
       message.highlightColor = highlightColor.protoString;
-    if (accentColor != null) message.accentColor = accentColor.protoString;
+    }
+    if (accentColor != null) {
+      message.accentColor = accentColor.protoString;
+    }
 
     return message.freeze();
   }

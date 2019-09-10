@@ -669,7 +669,9 @@ FormatOption formatFontStackExpresion(Expression fontStack) {
 FormatOption formatTextColor(dynamic c) {
   assert(c != null);
   assert(c is Expression || c is Color || c is int);
-  if (c is int) c = Color(c);
+  if (c is int) {
+    c = Color(c);
+  }
 
   return FormatOption('text-color', c is Expression ? c : color$(c));
 }

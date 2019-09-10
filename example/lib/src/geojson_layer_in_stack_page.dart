@@ -13,8 +13,8 @@ class GeoJsonLayerInStackPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Page page = ModalRoute.of(context).settings.arguments;
-    final String layerId = 'urban-areas-fill';
-    final String sourceId = 'urban-areas';
+    const String layerId = 'urban-areas-fill';
+    const String sourceId = 'urban-areas';
 
     return Scaffold(
       appBar: AppBar(

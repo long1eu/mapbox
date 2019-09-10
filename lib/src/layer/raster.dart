@@ -43,11 +43,11 @@ abstract class RasterLayer
     assert(visible != null);
     assert(minZoom != null);
     assert(maxZoom != null);
-    if (opacity != null) assert(opacity >= 0 && opacity <= 1);
-    if (brightnessMin != null) assert(brightnessMin >= 0 && brightnessMin <= 1);
-    if (brightnessMax != null) assert(brightnessMax >= 0 && brightnessMax <= 1);
-    if (saturation != null) assert(saturation >= -1 && saturation <= 1);
-    if (contrast != null) assert(contrast >= -1 && contrast <= 1);
+    assert(opacity == null || opacity >= 0 && opacity <= 1);
+    assert(brightnessMin == null || brightnessMin >= 0 && brightnessMin <= 1);
+    assert(brightnessMax == null || brightnessMax >= 0 && brightnessMax <= 1);
+    assert(saturation == null || saturation >= -1 && saturation <= 1);
+    assert(contrast == null || contrast >= -1 && contrast <= 1);
 
     final TransitionOptions transitionOptions = TransitionOptions();
     return _$RasterLayer((RasterLayerBuilder b) {
@@ -369,17 +369,33 @@ abstract class RasterLayer
       ..saturationTransition = saturationTransition.proto
       ..contrastTransition = contrastTransition.proto;
 
-    if (sourceLayer != null) message.sourceLayer = string_(sourceLayer);
-    if (opacity != null) message.opacity = opacity.protoString;
-    if (hueRotate != null) message.hueRotate = hueRotate.protoString;
-    if (brightnessMin != null)
+    if (sourceLayer != null) {
+      message.sourceLayer = string_(sourceLayer);
+    }
+    if (opacity != null) {
+      message.opacity = opacity.protoString;
+    }
+    if (hueRotate != null) {
+      message.hueRotate = hueRotate.protoString;
+    }
+    if (brightnessMin != null) {
       message.brightnessMin = brightnessMin.protoString;
-    if (brightnessMax != null)
+    }
+    if (brightnessMax != null) {
       message.brightnessMax = brightnessMax.protoString;
-    if (saturation != null) message.saturation = saturation.protoString;
-    if (contrast != null) message.contrast = contrast.protoString;
-    if (resampling != null) message.resampling = resampling.protoString;
-    if (fadeDuration != null) message.fadeDuration = fadeDuration.protoString;
+    }
+    if (saturation != null) {
+      message.saturation = saturation.protoString;
+    }
+    if (contrast != null) {
+      message.contrast = contrast.protoString;
+    }
+    if (resampling != null) {
+      message.resampling = resampling.protoString;
+    }
+    if (fadeDuration != null) {
+      message.fadeDuration = fadeDuration.protoString;
+    }
 
     return message..freeze();
   }
